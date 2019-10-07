@@ -1,0 +1,53 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "standard-react",
+    "plugin:import/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "promise",
+    "import",
+    "react-hooks"
+  ],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "__DEV__": false,
+    "__TEST__": false,
+    "__PROD__": false,
+    "__COVERAGE__": false,
+    "Cypress": false,
+    "cy": true,
+    "expect": true,
+    "describe": true,
+    "it": true,
+    "context": true,
+    "beforeEach": true
+  },
+  "rules": {
+    "react/jsx-indent": [2, 2],
+    "react/jsx-boolean-value": [2, "always"],
+    "key-spacing": "off",
+    "jsx-quotes": [2, "prefer-double"],
+    "max-len": [2, 120, 2],
+    "object-curly-spacing": [2, "always"],
+    "indent": [2, 2],
+    "comma-dangle": "off",
+    "import/order": [2, {"groups": ["builtin", "external", "parent", "sibling", "index"]}],
+    "import/newline-after-import": ["error"],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": ["error"],
+    "react-hooks/rules-of-hooks": ["error"],
+    "react-hooks/exhaustive-deps": ["warn"],
+    "no-console": "error"
+  },
+  "settings": {
+    "import/resolver": "babel-plugin-root-import"
+  }
+}
