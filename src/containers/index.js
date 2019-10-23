@@ -3,7 +3,7 @@ const tester = store => [
   {
     exact: true,
     path: '/',
-    component: () => <div>MAIN COMPONENT</div>
+    component: () => <div>  </div>
   },
   {
     exact: true,
