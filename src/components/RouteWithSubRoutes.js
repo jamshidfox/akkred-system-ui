@@ -9,7 +9,9 @@ const RouteWithSubRoutes = ({ routes, ...route }) => {
         exact={true}
         path={route.path}
         render={props => (
+          <route.layout>
             <route.component {...props} />
+          </route.layout>
         )}
       />
       {routes.map((route, index) => (

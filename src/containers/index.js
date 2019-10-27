@@ -1,9 +1,13 @@
 import React from 'react'
+import Layouts from '../components/Layouts'
+import UIs from './UIs'
+
 const tester = store => [
   {
     exact: true,
     path: '/',
-    component: () => <div>MAIN COMPONENT</div>
+    layout: Layouts,
+    component: UIs
   },
   {
     exact: true,
