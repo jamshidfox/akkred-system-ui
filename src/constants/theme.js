@@ -43,5 +43,7 @@ export default {
     background: '#FAFAFB'
 
   },
+  border: '1px solid #E4E9F2',
+  borderColor: '#E4E9F2',
   borderRadius: '8px',
 }

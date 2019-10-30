@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "hex-to-rgba": "^2.0.1",
     "history": "^4.9.0",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",

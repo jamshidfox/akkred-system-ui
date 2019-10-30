@@ -6,6 +6,7 @@ import Checkbox from '../components/UI/Checkbox'
 import { RadioButton } from '../components/UI/RadioButton'
 import Close from '../icons/Close'
 import Select from '../components/UI/Select'
+import SideMenu from '../components/SideMenu'
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -35,6 +36,7 @@ const UIs = props => {
       <RadioButton label={'Checkbox'} />
 
       <Select label={'Label'} options={options} />
+      <SideMenu />
     </Wrapper>
   )
 }

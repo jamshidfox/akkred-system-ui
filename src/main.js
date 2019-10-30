@@ -33,7 +33,7 @@ const render = () => {
 // ======================================================
 if (__DEV__) {
   if (module.hot) {
-    module.hot.accept(['./App'], () =>
+    module.hot.accept(['./App', './containers'], () =>
       setTimeout(() => {
         ReactDOM.unmountComponentAtNode(MOUNT_NODE)
         render()

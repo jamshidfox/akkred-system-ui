@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 import { compose, forEach, toPairs } from 'ramda'
+import * as actionTypes from '../constants/actionTypes'
+import createThunkReducer from '../utils/createThunkReducer'
 // import authReducers from 'modules/auth/reducers'
 /*
 import confirmDialogReducer, {
@@ -7,11 +9,14 @@ import confirmDialogReducer, {
 } from '~/components/ConfirmDialog/reducer'
 */
 
-export const makeRootReducer = asyncReducers =>
-  combineReducers({
-//    auth: combineReducers(authReducers),
+export const makeRootReducer = asyncReducers => {
+  console.warn(asyncReducers)
+  return combineReducers({
+    //    auth: combineReducers(authReducers),
+    hotelList: createThunkReducer(actionTypes.HOTEL_LIST),
     ...asyncReducers
   })
+}
 
 export const injectReducer = (store, { key, reducer }) => {
   if (Object.hasOwnProperty.call(store.asyncReducers, key)) return

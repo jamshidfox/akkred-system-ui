@@ -35,8 +35,9 @@ export default createGlobalStyle`
    */
   
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
+    background: #FAFAFB;
   }
 
   /**
