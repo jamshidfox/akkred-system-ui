@@ -9,6 +9,7 @@ const tester = store => [
   {
     exact: true,
     path: '/',
+
     layout: Layouts,
     component: Example
   },
