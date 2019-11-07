@@ -5,9 +5,9 @@ import InputError from '../InputError'
 import InputBase from './InputBase'
 import InputWrapper from './InputWrapper'
 
-const Input = props => {
+const Input = ({ width, ...props }) => {
   return (
-    <InputWrapper error={props.error}>
+    <InputWrapper width={width} error={props.error}>
       <InputLabel>{props.label}</InputLabel>
       <InputBase {...props} />
       <InputError>{props.error}</InputError>

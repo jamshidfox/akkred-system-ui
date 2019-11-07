@@ -35,10 +35,10 @@ const ButtonIcon = icon => styled(icon)`
 `
 
 const IconButton = props => {
-  const { icon, size = 'medium', children } = props
+  const { icon, size = 'medium', children, ...rest } = props
 
   const Icon = ButtonIcon(icon)
-  return <BaseIconButton size={size}><Icon size={size} />{children}</BaseIconButton>
+  return <BaseIconButton {...rest} size={size}><Icon size={size} />{children}</BaseIconButton>
 }
 
 IconButton.propTypes = {

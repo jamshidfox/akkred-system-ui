@@ -16,7 +16,7 @@ const options = [
 const SelectWrapper = styled('div')`
   ${({ error }) => error && css`
     & ${InputLabel} {
-      color: ${props => props.theme.cube.colorRed};
+      color: ${props => props.theme.color.danger.default};
     }
   `}
 `

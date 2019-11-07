@@ -1,16 +1,22 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import * as STATE from '../../constants/stateNames'
+import useCreate from '../../hooks/useCreate'
 import Register from './components/Register'
-import { loginAction } from './actions'
+import { hotelCreateAction } from './actions'
 
 const RegisterContainer = props => {
-  const dispatch = useDispatch()
-  const onLogin = (data) => {
-    console.warn(data)
-    return dispatch(loginAction(data))
-  }
+  const data = useCreate({
+    action: hotelCreateAction,
+    stateName: STATE.HOTEL_CREATE,
+    redirectUrl: '/'
+  })
+
+  console.warn(data)
   return (
-    <Register onLogin={onLogin} />
+    <Register
+      {...data}
+    />
   )
 }
 

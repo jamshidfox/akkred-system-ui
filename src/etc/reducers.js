@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import { compose, forEach, toPairs } from 'ramda'
 import * as actionTypes from '../constants/actionTypes'
+import * as STATE from '../constants/stateNames'
 import createThunkReducer from '../utils/createThunkReducer'
-// import authReducers from 'modules/auth/reducers'
 /*
 import confirmDialogReducer, {
   CONFIRM_DIALOG_STATE
@@ -10,10 +10,10 @@ import confirmDialogReducer, {
 */
 
 export const makeRootReducer = asyncReducers => {
-  console.warn(asyncReducers)
   return combineReducers({
-    //    auth: combineReducers(authReducers),
-    hotelList: createThunkReducer(actionTypes.HOTEL_LIST),
+    login: createThunkReducer(actionTypes.LOGIN),
+    [STATE.HOTEL_LIST]: createThunkReducer(actionTypes.HOTEL_LIST),
+    [STATE.HOTEL_CREATE]: createThunkReducer(actionTypes.HOTEL_CREATE),
     ...asyncReducers
   })
 }

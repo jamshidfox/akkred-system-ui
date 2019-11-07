@@ -6,7 +6,7 @@ const InputLabel = styled.div`
   display: ${props => (props.children ? 'block' : 'none')};
   font-size: 12px;
   line-height: 16px;
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 8px;
   text-transform: uppercase;
 `

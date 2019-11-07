@@ -13,3 +13,7 @@ export const AUTH_ME = `/${AUTH}/me/`
 
 export const HOTEL = 'hotels/hotel'
 export const HOTEL_LIST = `/${HOTEL}/`
+export const HOTEL_CREATE = `/${HOTEL}/`
+
+export const HOTEL_TYPE = 'hotels/hotel_type/'
+export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`

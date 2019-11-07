@@ -57,8 +57,8 @@ export default (theme, params) => ({
   menu: provided => ({
     ...provided,
     border: '1px solid',
+    boxShadow: 'none',
     borderColor: theme.input.borderColor,
-//    boxShadow: theme.cube.boxShadow,
     borderRadius: theme.borderRadius,
     margin: '0',
     top: 'calc(100% + 4px)'
@@ -69,6 +69,7 @@ export default (theme, params) => ({
   }),
   option: (provided, state) => ({
     ...provided,
+    fontSize: '13px',
     background: state.isSelected
       ? '#EBECFC'
       : state.isFocused
@@ -92,17 +93,18 @@ export default (theme, params) => ({
   },
   singleValue: provided => ({
     ...provided,
-    fontSize: '15px',
+    fontSize: '14px',
     color: 'inherit'
   }),
   placeholder: provided => ({
     ...provided,
     color: theme.input.placeholderColor,
-    fontSize: '15px',
+    fontSize: '14px',
     margin: '0'
   }),
   noOptionsMessage: provided => ({
     ...provided,
+    fontSize: '14px',
     color: theme.input.placeholderColor
   }),
   loadingMessage: provided => ({

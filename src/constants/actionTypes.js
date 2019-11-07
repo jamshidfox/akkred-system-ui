@@ -16,4 +16,5 @@ export const USERS_GROUP = 'USERS_GROUP'
 
 export const HOTEL_LIST = 'HOTEL_LIST'
 export const HOTEL_ITEM = 'HOTEL_ITEM'
+export const HOTEL_CREATE = 'HOTEL_CREATE'
 

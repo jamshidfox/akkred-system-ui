@@ -6,8 +6,7 @@ import { loginAction } from './actions'
 const LoginContainer = props => {
   const dispatch = useDispatch()
   const onLogin = (data) => {
-    console.warn(data)
-    return dispatch(loginAction(data))
+    return dispatch(loginAction(data)).then(props.history.push('/'))
   }
   return (
     <Login onLogin={onLogin} />

@@ -8,7 +8,7 @@ const Input = styled.input`
   border-radius: ${props => props.theme.borderRadius};
   color: inherit;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   outline: none;
   height: 48px;
   line-height: 24px;
@@ -23,11 +23,11 @@ const Input = styled.input`
 
   ::placeholder {
     color: ${props => props.theme.input.placeholderColor};
-    font-weight: 500;
+    font-weight: 400;
   }
   ::-ms-input-placeholder {
     color: ${props => props.theme.input.placeholderColor};
-    font-weight: 500;
+    font-weight: 400;
   }
 
   :hover {

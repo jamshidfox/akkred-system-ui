@@ -3,11 +3,12 @@ import InputLabel from '../InputLabel'
 
 export default styled.div`
   position: relative;
+  width: ${props => props.width};
   ${props =>
     props.error &&
     css`
       & ${InputLabel} {
-        color: ${props => props.theme.cube.colorRed + '!important'};
+        color: ${props => props.theme.color.danger.default + '!important'};
       }
     `}
 `

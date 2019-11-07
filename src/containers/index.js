@@ -4,11 +4,18 @@ import { LOGIN } from '../constants/routes'
 import UIs from './UIs'
 import Example from './example'
 import Login from './Login'
+import Register from './Register'
 
 const tester = store => [
   {
     exact: true,
     path: '/',
+    layout: Layouts,
+    component: Register
+  },
+  {
+    exact: true,
+    path: '/example',
 
     layout: Layouts,
     component: Example
