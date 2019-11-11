@@ -14,7 +14,6 @@ const Content = styled.div`
 const Layout = props => {
   return (
     <Container>
-      <Header />
       <DisplayFlex>
         <SideMenu />
         <Content>

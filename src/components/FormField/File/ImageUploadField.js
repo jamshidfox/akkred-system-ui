@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { prop, path } from 'ramda'
 import styled from 'styled-components'
 import AddPhoto from '../../../icons/Map'
 import { InputError, InputLabel } from '../../UI'
-import { getFileUrl } from './utils'
-import FileWrapper from './FileWrapper'
+import useFileUploads from './useFileUploads'
 
-const Input = styled('input')`
+const Input = styled.input`
   opacity: 0;
   position: absolute;
   z-index: -999;
@@ -25,11 +23,11 @@ const ImageField = styled('div')`
   display: flex;
   justify-content: center;
   height: 160px;
-  transition: ${props => props.theme.cube.transition};
+  transition: 200ms;
   overflow: hidden;
   width: 160px;
   &:hover {
-    border-color: ${props => props.theme.cube.primaryColor};
+    border-color: ${props => props.theme.color.primary.default};
   }
 `
 
@@ -42,7 +40,7 @@ const Image = styled('div')`
 `
 
 const Placeholder = styled('div')`
-  color: ${props => props.theme.cube.primaryColor};
+  color: ${props => props.theme.color.primary.default};
   font-weight: 500;
   text-align: center;
   & svg {
@@ -55,28 +53,26 @@ const Placeholder = styled('div')`
 
 const ImageUploadField = props => {
   const {
-    store,
+
     label,
-    onInputChange,
     input: { name, value },
-    state: { loading, error }
   } = props
 
-  const storeData = store.getState()
-  const accessToken = path(['auth', 'signIn', 'data', 'accessToken'], storeData)
+  const [state, onChange] = useFileUploads({})
 
-  const fileId = prop('id', value)
-  const imageUrl = value ? getFileUrl(fileId, accessToken) : null
+  const { loading, error, image } = state
+
+  console.warn(state)
 
   const inputId = `imageInput-${name}`
   return (
     <div>
       <InputLabel>{label}</InputLabel>
-      <Input onChange={onInputChange} type="file" id={inputId} />
+      <Input onChange={onChange} type="file" id={inputId} />
       <Label htmlFor={inputId}>
         <ImageField>
           {value ? (
-            <Image url={imageUrl} />
+            <Image />
           ) : (
             <Placeholder>
               <AddPhoto />
@@ -92,10 +88,7 @@ const ImageUploadField = props => {
 
 ImageUploadField.propTypes = {
   label: PropTypes.string,
-  onInputChange: PropTypes.func.isRequired,
-  store: PropTypes.object.isRequired,
-  state: PropTypes.object.isRequired,
   input: PropTypes.object.isRequired
 }
 
-export default FileWrapper(ImageUploadField)
+export default ImageUploadField

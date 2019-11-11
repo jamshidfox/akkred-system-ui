@@ -1,12 +1,10 @@
 import { path, join } from 'ramda'
 import { compose, withHandlers, withReducer } from 'react-fc'
-import * as API from '~/constants/api'
-import { withStore } from '~/components/HOCs'
+import * as API from '../../../constants/api'
 import axios from '~/utils/axios'
 
 export default Component => {
   return compose(
-    withStore,
     withReducer(
       'state',
       'dispatch',
@@ -37,7 +35,7 @@ export default Component => {
         }
         formData.append('file', file)
         dispatch({ loading: true })
-        return axios(store)
+/*        return axios(store)
           .post(API.FILE_UPLOAD, formData)
           .then(response => {
             dispatch({ loading: false, error: null })
@@ -47,7 +45,7 @@ export default Component => {
           .catch(newError => {
             const errorData = path(['response', 'data'], newError)
             dispatch({ loading: false, error: errorData })
-          })
+          })*/
       }
     })
   )(Component)
