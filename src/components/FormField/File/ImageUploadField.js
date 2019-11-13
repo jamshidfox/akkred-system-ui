@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { prop } from 'ramda'
 import AddPhoto from '../../../icons/Map'
 import { InputError, InputLabel } from '../../UI'
 import useFileUploads from './useFileUploads'
@@ -58,21 +59,19 @@ const ImageUploadField = props => {
     input: { name, value },
   } = props
 
-  const [state, onChange] = useFileUploads({})
-
-  const { loading, error, image } = state
-
-  console.warn(state)
+  const [state, onChange] = useFileUploads({ input: props.input })
+  const { loading, error } = state
 
   const inputId = `imageInput-${name}`
+  const src = prop('file', value)
   return (
     <div>
       <InputLabel>{label}</InputLabel>
       <Input onChange={onChange} type="file" id={inputId} />
       <Label htmlFor={inputId}>
         <ImageField>
-          {value ? (
-            <Image />
+          {src ? (
+            <Image url={src} />
           ) : (
             <Placeholder>
               <AddPhoto />

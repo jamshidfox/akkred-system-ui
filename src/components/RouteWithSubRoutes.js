@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
+import { getCookie } from '../utils/cookie'
 
 const RouteWithSubRoutes = ({ routes, ...route }) => {
+  const tokenExists = getCookie('token')
   return (
     <>
+      {!tokenExists && <Redirect to={'/login'} />}
       <Route
         exact={true}
         path={route.path}

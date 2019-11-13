@@ -35,6 +35,8 @@ const Register = props => {
     <Box>
       <EmptyQuery text={'Not Found'} />
       <Form
+        initialValues={{ images: [{a: '1'}] }}
+        keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
         onSubmit={onSubmit}
         render={({ handleSubmit, ...formikProps }) => {
