@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { useLocation } from 'react-router-dom'
 import MenuItem from './MenuItem'
 
 const Menu = props => {
+  const { pathname } = useLocation()
   const { list } = props
-  return list.map(item => {
+  return list.map(({ children, ...item }, index) => {
     return (
-      <MenuItem {...item} />
+      <Fragment key={index}>
+        <MenuItem {...item} key={index} pathname={pathname} />
+        {children && <Menu list={children} />}
+      </Fragment>
     )
   })
 }

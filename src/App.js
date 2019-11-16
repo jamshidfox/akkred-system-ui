@@ -5,12 +5,13 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import NormalizedStyles from 'components/StyledElems/NormalizedStyles'
 import RoutesWithSubRoutes from './components/RouteWithSubRoutes'
 import theme from './constants/theme'
+import AuthLayout from './components/Layouts/AuthLayout'
 
 const App = ({ routes, store }) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <React.Fragment>
+        <AuthLayout>
           <NormalizedStyles />
           <Router>
             <Switch>
@@ -19,7 +20,7 @@ const App = ({ routes, store }) => {
               ))}
             </Switch>
           </Router>
-        </React.Fragment>
+        </AuthLayout>
       </ThemeProvider>
     </Provider>
 

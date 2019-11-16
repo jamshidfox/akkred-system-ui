@@ -1,22 +1,23 @@
 import React from 'react'
 import Layouts, { LoginLayout } from '../components/Layouts'
-import { LOGIN } from '../constants/routes'
+import * as ROUTES from '../constants/routes'
 import UIs from './UIs'
 import Example from './example'
 import Login from './Login'
 import Register from './Register'
+import rooms from './Rooms'
 
 const tester = store => [
+  ...rooms(),
   {
     exact: true,
-    path: '/',
+    path: ROUTES.HOTEL_PATH,
     layout: Layouts,
     component: Register
   },
   {
     exact: true,
-    path: '/example',
-
+    path: '/',
     layout: Layouts,
     component: Example
   },
@@ -27,7 +28,7 @@ const tester = store => [
     component: UIs
   },
   {
-    path: LOGIN,
+    path: ROUTES.LOGIN_PATH,
     layout: LoginLayout,
     component: Login
   },

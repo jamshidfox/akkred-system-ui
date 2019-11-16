@@ -1,6 +1,8 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 export const BaseButton = styled.button`
+cursor: pointer;
   border-radius: ${props => props.theme.borderRadius};
   background: ${({ status = 'primary', theme }) => theme.color[status].default};
   text-transform: uppercase;
@@ -15,11 +17,20 @@ export const BaseButton = styled.button`
     background: ${({ status = 'primary', theme }) => theme.color[status].hover};
   }
   :active {
-    background: ${({ status = 'primary', theme }) => theme.color[status].active};
+    background: ${({ status = 'primary', theme }) =>
+    theme.color[status].active};
   }
-  
-  
+  :disabled {
+    background: rgba(143, 155, 179, 0.16);
+    border: 1px solid rgba(143, 155, 179, 0.24);
+    color: ${props => props.theme.color.basic.default};
+    cursor: not-allowed;
+  }
 `
+
+BaseButton.propTypes = {
+  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning'])
+}
 
 export const GiantButton = styled(BaseButton)`
   padding: 0 24px;
@@ -28,12 +39,15 @@ export const GiantButton = styled(BaseButton)`
   line-height: ${props => props.theme.lineHeight.giant};
 `
 
+GiantButton.propTypes = {
+  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning'])
+}
+
 export const LargeButton = styled(BaseButton)`
   padding: 0 20px;
   height: 48px;
   font-size: ${props => props.theme.fontSize.large};
   line-height: ${props => props.theme.lineHeight.large};
-  
 `
 
 export const MediumButton = styled(BaseButton)`
@@ -49,7 +63,9 @@ export const SmallButton = styled(BaseButton)`
   font-size: ${props => props.theme.fontSize.small};
   line-height: ${props => props.theme.lineHeight.small};
 `
-
+SmallButton.propTypes = {
+  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning'])
+}
 export const TinyButton = styled(BaseButton)`
   padding: 0 12px;
   height: 24px;

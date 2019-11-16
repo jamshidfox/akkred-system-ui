@@ -91,10 +91,10 @@ export default (theme, params) => ({
       padding: isMultiWithValues ? '4px' : '0 20px'
     }
   },
-  singleValue: provided => ({
+  singleValue: (provided, state) => ({
     ...provided,
     fontSize: '14px',
-    color: 'inherit'
+    color: state.isDisabled ? theme.color.disabled : 'inherit'
   }),
   placeholder: provided => ({
     ...provided,
@@ -116,6 +116,7 @@ export default (theme, params) => ({
     const hasValueFocused = state.hasValue && params.menuIsOpen
     return {
       ...provided,
+      color: state.isDisabled ? theme.color.disabled : 'inherit',
       backgroundColor: hasValueFocused
         ? theme.input.backgroundColor
         : '#FAFBFB',

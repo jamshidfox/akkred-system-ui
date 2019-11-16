@@ -4,19 +4,19 @@ import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import arrayMutators from 'final-form-arrays'
 import { FieldArray } from 'react-final-form-arrays'
+import { prop } from 'ramda'
 import BoxUI from '../../../components/StyledElems/Box'
 import DisplayFlex from '../../../components/StyledElems/DisplayFlex'
-import { MediumButton, IconButton as IconButtonUI } from '../../../components/UI'
+import { MediumButton, IconButton as IconButtonUI, TinyButton } from '../../../components/UI'
 import {
   InputField,
   UniversalSearchField,
-  ImageUploadField,
   ImageFieldArray
 } from '../../../components/FormField'
 import { Row as RowUI, Col } from '../../../components/Grid'
-import EmptyQuery from '../../../components/EmptyQuery'
 import Map from '../../../icons/Map'
 import * as API from '../../../constants/api'
+import ServicesDialog from './ServicesDialog'
 
 const IconButton = styled(IconButtonUI)`
   margin-top: 24px;
@@ -28,14 +28,47 @@ const Box = styled(BoxUI)`
   padding: 24px;
 `
 
+const Header = styled.div`
+  font-weight: bold;
+font-size: 18px;
+line-height: 28px;
+letter-spacing: 0.5px;
+color: #8F9BB3;
+`
+export const fields = [
+  'hotelType',
+  'title',
+  'point',
+  'address',
+  'phoneNumber',
+  'additionalPhoneNumber',
+  'email',
+  'entranceTime',
+  'leaveTime',
+  'services',
+  'photos'
+]
 const Register = props => {
-  const { onSubmit } = props
-
+  const {
+    onSubmit,
+    hotelData,
+    isCreated,
+    editData,
+    serviceModal
+  } = props
+  const { isEdit } = editData
+  const initialValues = prop('initialValues', hotelData)
   return (
     <Box>
-      <EmptyQuery text={'Not Found'} />
+      <DisplayFlex justify={'space-between'} style={{ marginBottom: '34px' }}>
+        <Header>Информация о вашем объекте</Header>
+        <div>
+          <TinyButton style={{ marginRight: '10px' }} onClick={editData.onEdit}>Редактировать</TinyButton>
+          <TinyButton status={'danger'}>Удалить</TinyButton>
+        </div>
+      </DisplayFlex>
       <Form
-        initialValues={{ images: [{a: '1'}] }}
+        initialValues={initialValues}
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
         onSubmit={onSubmit}
@@ -45,6 +78,7 @@ const Register = props => {
               <Row gutter={24}>
                 <Col span={12}>
                   <Field
+                    disabled={!isEdit}
                     label={'тип'}
                     name={'hotelType'}
                     api={API.HOTEL_TYPE_LIST}
@@ -53,6 +87,7 @@ const Register = props => {
                 </Col>
                 <Col span={12}>
                   <Field
+                    disabled={!isEdit}
                     label={'название'}
                     placeholder={'Как называется ваша гостиница?'}
                     name={'title'}
@@ -62,6 +97,8 @@ const Register = props => {
               <Row gutter={24}>
                 <Col span={12}>
                   <Field
+                    disabled={!isEdit}
+
                     label={'звездность'}
                     name={'point'}
                     placeholder={'Сколько звезд у вашей гостиницы?'}
@@ -70,6 +107,8 @@ const Register = props => {
                 <Col span={12}>
                   <DisplayFlex justify={'space-between'}>
                     <Field
+                      disabled={!isEdit}
+
                       label={'адрес'}
                       placeholder={'Где находится ваша гостиница?'}
                       name={'address'}
@@ -82,6 +121,8 @@ const Register = props => {
               <Row gutter={24}>
                 <Col span={8}>
                   <Field
+                    disabled={!isEdit}
+
                     label={'номер телефона'}
                     name={'phoneNumber'}
                     placeholder={'Введите номер телефона '}
@@ -89,6 +130,7 @@ const Register = props => {
                 </Col>
                 <Col span={8}>
                   <Field
+                    disabled={!isEdit}
                     label={'доп номер телефона'}
                     placeholder={'Введите дополнительный номер телефона'}
                     name={'additionalPhoneNumber'}
@@ -96,15 +138,17 @@ const Register = props => {
                 </Col>
                 <Col span={8}>
                   <Field
+                    disabled={!isEdit}
                     label={'email (не обязательно)'}
                     placeholder={'Введите Email'}
-                    name={'name'}
+                    name={'email'}
                     component={InputField} />
                 </Col>
               </Row>
               <Row gutter={24}>
                 <Col span={8}>
                   <Field
+                    disabled={!isEdit}
                     label={'вРЕМЯ ЗАЕЗДА'}
                     name={'entranceTime'}
                     placeholder={'Например: 08:00'}
@@ -112,6 +156,8 @@ const Register = props => {
                 </Col>
                 <Col span={8}>
                   <Field
+                    disabled={!isEdit}
+
                     label={'Время выезда'}
                     placeholder={'Например: 18:00'}
                     name={'leaveTime'}
@@ -119,15 +165,19 @@ const Register = props => {
                 </Col>
                 <Col span={8}>
                   <Field
+                    disabled={!isEdit}
+
                     label={'форма оплаты'}
                     placeholder={'Какие способы оплаты вы принимаете?'}
-                    name={'name'}
+                    name={'paymentTypes'}
                     component={InputField} />
                 </Col>
               </Row>
               <Row>
                 <Col span={24}>
                   <Field
+                    disabled={!isEdit}
+
                     label={'услуги гостиницы'}
                     name={'services'}
                     placeholder={'Какие услуги предоставляет ваша гостиница клиентам?'}
@@ -136,14 +186,19 @@ const Register = props => {
               </Row>
               <Row>
                 <Col span={24}>
+                  <ServicesDialog {...serviceModal} />
+                </Col>
+              </Row>
+              <Row>
+                <Col span={24}>
                   <FieldArray
                     label={'услуги гостиницы'}
-                    name={'images'}
+                    name={'photos'}
                     component={ImageFieldArray} />
                 </Col>
               </Row>
               <div style={{ textAlign: 'right' }}>
-                <MediumButton>Сохранить</MediumButton>
+                {!isCreated && <MediumButton>Сохранить</MediumButton>}
               </div>
             </form>
           )
@@ -154,6 +209,9 @@ const Register = props => {
 }
 
 Register.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  editData: PropTypes.object,
+  hotelData: PropTypes.object,
+  isCreated: PropTypes.bool
 }
 export default Register

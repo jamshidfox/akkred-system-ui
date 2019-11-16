@@ -1,6 +1,7 @@
 export default {
   transition: 'all 300ms',
   color: {
+    disabled: '#8F9BB3',
     basic: {
       default: '#8F9BB3',
       hover: '#598BFF',

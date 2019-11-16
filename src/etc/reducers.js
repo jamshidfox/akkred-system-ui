@@ -14,6 +14,8 @@ export const makeRootReducer = asyncReducers => {
     login: createThunkReducer(actionTypes.LOGIN),
     [STATE.HOTEL_LIST]: createThunkReducer(actionTypes.HOTEL_LIST),
     [STATE.HOTEL_CREATE]: createThunkReducer(actionTypes.HOTEL_CREATE),
+    [STATE.USER_INFO]: createThunkReducer(actionTypes.USER_INFO),
+    [STATE.ROOM_LIST]: createThunkReducer(actionTypes.ROOM_LIST),
     ...asyncReducers
   })
 }

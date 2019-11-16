@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Field, useField } from 'react-final-form'
 import PropTypes from 'prop-types'
-import { prop, pipe, filter, join, map } from 'ramda'
+import { prop, pipe, filter, join, map, propOr } from 'ramda'
 import styled from 'styled-components'
 import { ImageUploadField } from '../File'
 import useCompareEffect from '../../../hooks/useCompareEffect'
@@ -16,11 +16,7 @@ const Image = styled.div`
 `
 const ImageFieldArray = props => {
   const { fields } = props
-  const values = prop('value', fields)
-  const ids = pipe(filter(prop('id')), map(prop('id')), join('-'))(values)
-  useCompareEffect(() => {
-    fields.push({})
-  }, [ids])
+  const onAdd = () => fields.push({})
   return (
     <Wrapper>
       {fields.map((name, index) => {
@@ -28,6 +24,7 @@ const ImageFieldArray = props => {
           <Image>
             <Field
               name={`${name}`}
+              onAdd={onAdd}
               component={ImageUploadField} />
           </Image>
         )

@@ -6,6 +6,8 @@ import List from '../../icons/List'
 import People from '../../icons/People'
 import TrendingUp from '../../icons/TrendingUp'
 import Welcome from '../../icons/Welcome'
+import Settings from '../../icons/Settings'
+import * as ROUTES from '../../constants/routes'
 
 export default [
   {
@@ -48,5 +50,24 @@ export default [
     name: 'Финансовая аналитика',
     url: '/',
     icon: TrendingUp,
+  },
+  {
+    name: 'Настройка',
+    url: ROUTES.HOTEL_PATH,
+    icon: Settings,
+    children: [
+      {
+        name: 'Ваш объект',
+        url: ROUTES.HOTEL_PATH,
+      },
+      {
+        name: 'Номерной фонд',
+        url: ROUTES.SETTING_ROOMS,
+      },
+      {
+        name: 'Тарифы и цены',
+        url: ROUTES.SETTING_PRICE_LIST,
+      }
+    ]
   }
 ]

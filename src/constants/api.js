@@ -15,5 +15,9 @@ export const HOTEL = 'hotels/hotel'
 export const HOTEL_LIST = `/${HOTEL}/`
 export const HOTEL_CREATE = `/${HOTEL}/`
 
+export const ROOM = 'hotels/rooms'
+export const ROOM_LIST = `/${ROOM}/`
+export const ROOM_CREATE = `/${ROOM}/`
+
 export const HOTEL_TYPE = 'hotels/hotel_type/'
 export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`
