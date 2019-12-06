@@ -17,7 +17,7 @@ export default [
   },
   {
     name: 'Создать бронь',
-    url: '/',
+    url: ROUTES.RESERVATION_CREATE_URL,
     icon: Plus,
     isActive: true
   },
@@ -53,20 +53,20 @@ export default [
   },
   {
     name: 'Настройка',
-    url: ROUTES.HOTEL_PATH,
+    url: ROUTES.SETTINGS_HOTEL_URL,
     icon: Settings,
     children: [
       {
         name: 'Ваш объект',
-        url: ROUTES.HOTEL_PATH,
+        url: ROUTES.SETTINGS_HOTEL_URL,
       },
       {
         name: 'Номерной фонд',
-        url: ROUTES.SETTING_ROOMS,
+        url: ROUTES.SETTING_ROOMS_TYPE_LIST,
       },
       {
         name: 'Тарифы и цены',
-        url: ROUTES.SETTING_PRICE_LIST,
+        url: ROUTES.SETTING_PRICE_LIST_URL,
       }
     ]
   }

@@ -19,5 +19,16 @@ export const ROOM = 'hotels/rooms'
 export const ROOM_LIST = `/${ROOM}/`
 export const ROOM_CREATE = `/${ROOM}/`
 
+export const ROOM_CREATE_BULK = `/${ROOM}/bulk_create/`
+
+export const ROOM_TYPE = 'hotels/rooms_category'
+export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
+export const ROOM_TYPE_CREATE = `/${ROOM_TYPE}/`
+
 export const HOTEL_TYPE = 'hotels/hotel_type/'
 export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`
+
+const CLIENT = 'clients'
+
+export const RESERVATION = `${CLIENT}/reservation/fast_registration`
+export const RESERVATION_CREATE = `/${RESERVATION}/`

@@ -5,17 +5,17 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const roomCreateAction = data => {
+export const reservationCreateAction = data => {
 
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .post(API.ROOM_CREATE_BULK, data)
+      .post(API.RESERVATION_CREATE, data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.ROOM_CREATE
+      type: actionTypes.RESERVATION_CREATE
     })
   }
 }

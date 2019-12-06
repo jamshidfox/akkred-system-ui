@@ -6,6 +6,8 @@ import NormalizedStyles from 'components/StyledElems/NormalizedStyles'
 import RoutesWithSubRoutes from './components/RouteWithSubRoutes'
 import theme from './constants/theme'
 import AuthLayout from './components/Layouts/AuthLayout'
+import 'react-dates/initialize'
+import 'react-dates/lib/css/_datepicker.css'
 
 const App = ({ routes, store }) => {
   return (

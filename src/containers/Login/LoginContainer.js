@@ -11,7 +11,7 @@ const LoginContainer = props => {
   const onLogin = (data) => {
     return dispatch(loginAction(data))
       .then(({ value }) => dispatch(userInfoFetch(value.token)))
-      .then(() => props.history.push(ROUTES.HOTEL_PATH))
+      .then(() => props.history.push(ROUTES.SETTINGS_HOTEL_URL))
       .then(() => dispatch(hotelFetchList()))
   }
   return (

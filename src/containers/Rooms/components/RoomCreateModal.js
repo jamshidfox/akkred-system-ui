@@ -1,23 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
-import { Modal } from '../../../components/UI'
+import { Modal, MediumButton } from '../../../components/UI'
 import { InputField, UniversalSearchField } from '../../../components/FormField'
+import * as ROUTES from '../../../constants/api'
 
+export const fields = [
+  'roomCategory',
+  'amount'
+]
 const RoomCreateModal = props => {
-  const { open, onClose } = props
+  const { open, onClose, onSubmit } = props
   return (
     <Modal
       title="Новый тип номера"
       open={open}
       onClose={onClose} >
       <Form
-        onSubmit={() => null}
+        onSubmit={onSubmit}
         render={({ handleSubmit, ...formikProps }) => (
           <form onSubmit={handleSubmit}>
-            <Field name="type" label="тип номера" component={UniversalSearchField} />
-            <Field name="type" label="Подкатегория" component={UniversalSearchField} />
-            <Field name="type" label="количество номеров" component={InputField} />
+            <Field
+              name="roomCategory"
+              label="тип номера"
+              component={UniversalSearchField}
+              api={ROUTES.ROOM_TYPE_LIST}
+            />
+            <Field
+              name="child_type"
+              label="Подкатегория"
+              component={UniversalSearchField} />
+            <Field
+              name="amount"
+              label="количество номеров"
+              component={InputField} />
+            <MediumButton>добавить</MediumButton>
           </form>
         )}
       />

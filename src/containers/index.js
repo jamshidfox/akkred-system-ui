@@ -6,12 +6,14 @@ import Example from './example'
 import Login from './Login'
 import Register from './Register'
 import rooms from './Rooms'
+import reservation from './reservation'
 
 const tester = store => [
+  ...reservation(),
   ...rooms(),
   {
     exact: true,
-    path: ROUTES.HOTEL_PATH,
+    path: ROUTES.SETTINGS_HOTEL_URL,
     layout: Layouts,
     component: Register
   },

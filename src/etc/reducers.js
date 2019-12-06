@@ -16,6 +16,9 @@ export const makeRootReducer = asyncReducers => {
     [STATE.HOTEL_CREATE]: createThunkReducer(actionTypes.HOTEL_CREATE),
     [STATE.USER_INFO]: createThunkReducer(actionTypes.USER_INFO),
     [STATE.ROOM_LIST]: createThunkReducer(actionTypes.ROOM_LIST),
+    [STATE.RESERVATION_CREATE]: createThunkReducer(actionTypes.RESERVATION_CREATE),
+    [STATE.RESERVATION_LIST]: createThunkReducer(actionTypes.RESERVATION_LIST),
+    [STATE.RESERVATION_UPDATE]: createThunkReducer(actionTypes.RESERVATION_UPDATE),
     ...asyncReducers
   })
 }

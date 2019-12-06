@@ -1,1 +1,2 @@
-export { default as RoomList } from './RoomList'
+export { default as RoomTypeList } from './RoomTypeList'
+export { fields } from './RoomCreateModal'

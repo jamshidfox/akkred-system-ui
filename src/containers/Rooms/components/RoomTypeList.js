@@ -1,13 +1,14 @@
 import React from 'react'
 import { prop, isEmpty } from 'ramda'
+import { sprintf } from 'sprintf-js'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
+import { SETTING_ROOMS_LIST_URL } from '../../../constants/routes'
 import RoomCreateModal from './RoomCreateModal'
 
-const RoomList = props => {
+const RoomTypeList = props => {
   const { list, createModal } = props
 
-  console.warn(createModal)
   const data = prop('results', list)
 
   return (
@@ -22,10 +23,19 @@ const RoomList = props => {
           <TableCol span={5}>Количество</TableCol>
           <TableCol span={7} />
         </TableRow>
+        {data.map(room => (
+          <TableRow to={sprintf(SETTING_ROOMS_LIST_URL, room.id)}>
+            <TableCol span={6}>Тип номера</TableCol>
+            <TableCol span={6}>Подкатегория</TableCol>
+            <TableCol span={5}>Количество</TableCol>
+            <TableCol span={7} />
+          </TableRow>
+        ))}
+
       </Table>
       <RoomCreateModal {...createModal} />
     </>
   )
 }
 
-export default RoomList
+export default RoomTypeList

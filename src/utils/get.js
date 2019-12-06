@@ -138,7 +138,7 @@ const isNotObject = obj => typeof obj !== 'object'
 const isNotEmptyObj = obj => isObject(obj) && !isEmpty(obj)
 const filterArray = filter(item => isNotObject(item) || isNotEmptyObj(item))
 
-export const getSerializedData = (fields, data) =>
+export const getSerializedData = curry((fields, data) =>
   compose(
     toSnakeCase,
     fromPairs,
@@ -159,7 +159,7 @@ export const getSerializedData = (fields, data) =>
 
       return [key, values]
     })
-  )(fields)
+  )(fields))
 
 export const getIdForInitValues = (data, keys) => pipe(
   map(key => {
