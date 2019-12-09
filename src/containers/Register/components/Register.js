@@ -166,7 +166,6 @@ const Register = props => {
                 <Col span={8}>
                   <Field
                     disabled={!isEdit}
-
                     label={'форма оплаты'}
                     placeholder={'Какие способы оплаты вы принимаете?'}
                     name={'paymentTypes'}

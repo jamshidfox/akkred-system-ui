@@ -20,7 +20,6 @@ const PageTitle = props => {
     <Display align={'center'} justify={'space-between'}>
       <Title>{name}</Title>
       {children}
-      <word-count>5</word-count>
     </Display>
   )
 }

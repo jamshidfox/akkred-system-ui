@@ -11,6 +11,7 @@ import {
   UniversalStaticSelectField,
   DateField
 } from '../../../components/FormField'
+import { GENDER_LIST } from '../../../constants/backend'
 
 export const fields = [
 
@@ -51,18 +52,18 @@ const ReservationCreate = props => {
                 <Field name="name" label="имя" component={InputField} />
               </Col>
               <Col span={8}>
-                <Field name="surname" label="отчество" component={InputField} />
+                <Field name="patrynomic" label="отчество" component={InputField} />
               </Col>
             </Row>
             <Row gutter={24}>
               <Col span={8}>
-                <Field name="citizenship" label="страна рождения" component={UniversalSearchField} />
+                <Field name="fromCountry" label="страна рождения" component={UniversalSearchField} />
               </Col>
               <Col span={8}>
-                <Field name={'birthday'} label="дата рождения" component={DateField} />
+                <Field name="birthDate" label="дата рождения" component={DateField} />
               </Col>
               <Col span={8}>
-                <Field name="gender" label="пол" component={UniversalStaticSelectField} />
+                <Field name="gender" label="пол" component={UniversalStaticSelectField} list={GENDER_LIST} />
               </Col>
             </Row>
             <Label>Информация о документа</Label>

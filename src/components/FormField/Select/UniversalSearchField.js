@@ -20,6 +20,7 @@ const getOptions = (store, { api, search, params, pageSize = 5 }) => {
 }
 
 const getOption = (store, { api }) => id => {
+  console.warn(api)
   return axios(store)
     .get(`${api}${id}/`)
     .then(getPayloadFromSuccess)
