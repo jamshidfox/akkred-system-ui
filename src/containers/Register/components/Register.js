@@ -64,7 +64,6 @@ const Register = props => {
         <Header>Информация о вашем объекте</Header>
         <div>
           {!isEdit && <TinyButton style={{ marginRight: '10px' }} onClick={editData.onEdit}>Редактировать</TinyButton>}
-          <TinyButton status={'danger'}>Удалить</TinyButton>
         </div>
       </DisplayFlex>
       <Form
@@ -186,7 +185,7 @@ const Register = props => {
                 </Col>
               </Row>
               <div style={{ textAlign: 'right' }}>
-                <MediumButton>Сохранить</MediumButton>
+                {(!isCreated || isEdit) && <MediumButton>Сохранить</MediumButton>}
               </div>
             </form>
           )
