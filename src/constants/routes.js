@@ -4,7 +4,7 @@ const ID = ':id(\\d+)'
 
 const SETTINGS = 'settings'
 
-export const HOTEL = '/hotel'
+export const HOTEL = 'hotel'
 export const SETTINGS_HOTEL_URL = `/${SETTINGS}/${HOTEL}/`
 
 export const SETTING_PRICE_LIST = 'price-list'

@@ -1,3 +1,4 @@
+import { sprintf } from 'sprintf-js'
 import * as actionTypes from '../../../constants/actionTypes'
 import * as API from '../../../constants/api'
 import axios, {
@@ -9,10 +10,7 @@ export const hotelCreateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .post(API.HOTEL_CREATE, {
-        ...data,
-        hotel_type: data.hotel_type.id,
-        services: [],
-        currencies: []
+        ...data
       })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
@@ -20,6 +18,22 @@ export const hotelCreateAction = data => {
     return dispatch({
       payload,
       type: actionTypes.HOTEL_CREATE
+    })
+  }
+}
+
+export const hotelUpdateAction = (id, data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .put(sprintf(API.HOTEL_UPDATE, id), {
+        ...data
+      })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.HOTEL_UPDATE
     })
   }
 }

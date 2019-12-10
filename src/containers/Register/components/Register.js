@@ -63,7 +63,7 @@ const Register = props => {
       <DisplayFlex justify={'space-between'} style={{ marginBottom: '34px' }}>
         <Header>Информация о вашем объекте</Header>
         <div>
-          <TinyButton style={{ marginRight: '10px' }} onClick={editData.onEdit}>Редактировать</TinyButton>
+          {!isEdit && <TinyButton style={{ marginRight: '10px' }} onClick={editData.onEdit}>Редактировать</TinyButton>}
           <TinyButton status={'danger'}>Удалить</TinyButton>
         </div>
       </DisplayFlex>
@@ -71,7 +71,7 @@ const Register = props => {
         initialValues={initialValues}
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
-        onSubmit={onSubmit}
+        onSubmit={isEdit ? editData.onSubmit : onSubmit}
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
@@ -174,17 +174,6 @@ const Register = props => {
               </Row>
               <Row>
                 <Col span={24}>
-                  <Field
-                    disabled={!isEdit}
-
-                    label={'услуги гостиницы'}
-                    name={'services'}
-                    placeholder={'Какие услуги предоставляет ваша гостиница клиентам?'}
-                    component={InputField} />
-                </Col>
-              </Row>
-              <Row>
-                <Col span={24}>
                   <ServicesDialog {...serviceModal} />
                 </Col>
               </Row>
@@ -197,7 +186,7 @@ const Register = props => {
                 </Col>
               </Row>
               <div style={{ textAlign: 'right' }}>
-                {!isCreated && <MediumButton>Сохранить</MediumButton>}
+                <MediumButton>Сохранить</MediumButton>
               </div>
             </form>
           )
