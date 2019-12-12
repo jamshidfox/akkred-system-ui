@@ -28,6 +28,9 @@ export const ROOM_TYPE_CREATE = `/${ROOM_TYPE}/`
 export const HOTEL_TYPE = 'hotels/hotel_type'
 export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`
 
+export const COUNTRY = 'hotels/country'
+export const COUNTRY_LIST = `/${COUNTRY}/`
+
 const CLIENT = 'clients'
 
 export const RESERVATION = `${CLIENT}/reservation`

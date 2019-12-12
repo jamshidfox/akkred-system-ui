@@ -15,7 +15,7 @@ const RoomTypeListContainer = props => {
   const create = useCreate(getRoomCreateParams())
   return (
     <ReservationCreate
-      create={create}
+      {...create}
     />
   )
 }
