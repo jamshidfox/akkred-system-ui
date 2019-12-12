@@ -21,7 +21,7 @@ const ImageFieldArray = props => {
     <Wrapper>
       {fields.map((name, index) => {
         return (
-          <Image>
+          <Image key={index}>
             <Field
               name={`${name}`}
               onAdd={onAdd}
@@ -34,6 +34,6 @@ const ImageFieldArray = props => {
 }
 
 ImageFieldArray.propTypes = {
-  fields: PropTypes.array
+  fields: PropTypes.object
 }
 export default ImageFieldArray

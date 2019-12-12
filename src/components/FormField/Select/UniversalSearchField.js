@@ -20,7 +20,6 @@ const getOptions = (store, { api, search, params, pageSize = 5 }) => {
 }
 
 const getOption = (store, { api }) => id => {
-  console.warn(api)
   return axios(store)
     .get(`${api}${id}/`)
     .then(getPayloadFromSuccess)
@@ -41,7 +40,6 @@ const UniversalSearchField = props => {
 }
 
 UniversalSearchField.propTypes = {
-  store: PropTypes.object.isRequired,
   api: PropTypes.string.isRequired,
   params: PropTypes.object,
   itemText: PropTypes.array

@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 import { head, prop, union, isEmpty } from 'ramda'
 import * as STATE from '../../constants/stateNames'
 import { useCreate, useFetchList, useModal } from '../../hooks'
 import { getSerializedData, getParamFromHistory } from '../../utils/get'
 import { replaceParamsRoute } from '../../utils/route'
 import Register, { fields } from './components/Register'
-import { hotelCreateAction, hotelFetchList } from './actions'
+import { hotelCreateAction, hotelFetchList, hotelUpdateAction } from './actions'
 
+const EDIT = 'edit'
 const serializer = (values) => {
   return {
     ...getSerializedData(fields, values),
@@ -24,8 +26,7 @@ const getHotelCreateParams = () => ({
 
 const getHotelListParams = () => ({
   action: hotelFetchList,
-  stateName: STATE.HOTEL_LIST,
-
+  stateName: STATE.HOTEL_LIST
 })
 
 const getInitialValues = (data) => {
@@ -44,18 +45,27 @@ const getInitialValues = (data) => {
 }
 const toBoolean = v => v === 'true' || v === true
 const RegisterContainer = props => {
+  const dispatch = useDispatch()
   const { history } = props
   const data = useCreate(getHotelCreateParams())
   const serviceModal = useModal({})
   const { results, data: d, ...hotelData } = useFetchList(getHotelListParams())
-  const onEdit = () => replaceParamsRoute({ 'edit': true }, history)
-  const isEdit = toBoolean(getParamFromHistory('edit', history))
   const hotel = head(results)
+
+  const onEditOpen = () => replaceParamsRoute({ [EDIT]: true }, history)
+  const onEdit = data => {
+    return dispatch(hotelUpdateAction(prop('id', hotel), serializer(data)))
+      .then(() => replaceParamsRoute({ [EDIT]: false }, history))
+  }
+
+  const isEdit = toBoolean(getParamFromHistory(EDIT, history))
   const initialValues = getInitialValues(hotel)
+
   const isCreated = !isEmpty(results)
   const editData = {
     isEdit,
-    onEdit
+    onEdit: onEditOpen,
+    onSubmit: onEdit
   }
   return (
     <Register
