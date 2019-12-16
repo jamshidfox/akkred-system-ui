@@ -43,6 +43,7 @@ const mapIndexKey = (arr) => {
 }
 const getInitialValues = (data) => {
   const services = pipe(prop('services'), toPairs, map(mapIndexKey), fromPairs)(data)
+
   return ({
     hotelType: prop('hotelType', data),
     additionalPhoneNumber: prop('additionalPhoneNumber', data),

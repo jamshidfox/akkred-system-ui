@@ -68,13 +68,13 @@ const Register = props => {
       </DisplayFlex>
       <Form
         initialValues={initialValues}
-
+        keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
         onSubmit={isEdit ? editData.onSubmit : onSubmit}
         render={({ handleSubmit, values, form, ...formikProps }) => {
 
           const onServiceCancel = () => {
-            form.change('services', [])
+            form.change('services', {})
             serviceModal.onClose()
           }
           return (
@@ -177,6 +177,7 @@ const Register = props => {
               <Row>
                 <Col span={24}>
                   <ServicesDialog
+                    isEdit={isEdit}
                     serviceTypes={values.services}
                     onServiceCancel={onServiceCancel}
                     {...serviceModal} />

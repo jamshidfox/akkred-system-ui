@@ -3,14 +3,17 @@ import PropTypes from 'prop-types'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
 import { useStore } from 'react-redux'
-import {pipe, prop, isEmpty, flatten, filter, values} from 'ramda'
+import { pipe, prop, isEmpty, flatten, values } from 'ramda'
 import { Modal, MediumButton } from '../../../components/UI'
 
-import { UniversalMultiSelectField } from '../../../components/FormField'
+import { UniversalMultiSelectField, NoopFields } from '../../../components/FormField'
 import axios, { getPayloadFromSuccess } from '../../../utils/axios'
 import * as ROUTES from '../../../constants/api'
 
-const Selected = styled.div`
+const Selected = styled.button`
+  display: block;
+    width: 100%;
+    text-align: left;
   border: ${props => props.theme.border};
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.input.placeholderColor};
@@ -21,7 +24,10 @@ const Selected = styled.div`
   cursor: pointer;
   transition: 200ms;
     :hover {
-    background: ${props => props.theme.input.backgroundColorHover};
+      background: ${props => props.theme.input.backgroundColorHover};
+  }
+  :disabled {
+    background: ${props => props.theme.input.background};
   }
 `
 
@@ -50,7 +56,14 @@ const Buttons = styled.div`
 `
 const defArr = []
 const ServicesDialog = props => {
-  const { open, onClose, onOpen, onServiceCancel, serviceTypes = defArr } = props
+  const {
+    open,
+    onClose,
+    onOpen,
+    isEdit,
+    onServiceCancel,
+    serviceTypes = defArr
+  } = props
   const [typeList, setTypeList] = useState(defArr)
   const store = useStore()
   useEffect(() => {
@@ -65,18 +78,26 @@ const ServicesDialog = props => {
     flatten
   )(serviceTypes)
 
+  const fieldNames = () => typeList.map(type => 'services[_' + type.id + ']')
+
   if (!open) {
     if (!isEmpty(serviceTypes)) {
       return (
-        <Selected onClick={onOpen}>
+        <Selected disabled={!isEdit} onClick={onOpen}>
           {services.map(type => {
-            return <Tag>{type.name}</Tag>
+            return <Tag key={type.id}>{type.name}</Tag>
           })}
+          <NoopFields names={fieldNames()} />
         </Selected>
       )
     }
     return (
-      <Selected onClick={onOpen}>Какие услуги предоставляет ваша гостиница клиентам?</Selected>
+      <Selected
+        disabled={!isEdit}
+        onClick={onOpen}>
+        Какие услуги предоставляет ваша гостиница клиентам?
+        <NoopFields names={fieldNames()} />
+      </Selected>
     )
   }
 
@@ -111,7 +132,7 @@ ServicesDialog.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
-  serviceTypes: PropTypes.array,
+  serviceTypes: PropTypes.object,
   onServiceCancel: PropTypes.func
 }
 export default ServicesDialog
