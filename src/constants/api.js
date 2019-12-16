@@ -29,6 +29,12 @@ export const ROOM_TYPE_CREATE = `/${ROOM_TYPE}/`
 export const HOTEL_TYPE = 'hotels/hotel_type'
 export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`
 
+export const HOTEL_SERVICE_TYPE = 'hotels/hotel_services_type'
+export const HOTEL_SERVICE_TYPE_LIST = `/${HOTEL_SERVICE_TYPE}/`
+
+export const HOTEL_SERVICE = 'hotels/hotel_services'
+export const HOTEL_SERVICE_LIST = `/${HOTEL_SERVICE}/`
+
 const CLIENT = 'clients'
 
 export const RESERVATION = `${CLIENT}/reservation`
