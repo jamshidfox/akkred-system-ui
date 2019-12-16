@@ -19,6 +19,8 @@ export const HOTEL_UPDATE = `/${HOTEL}/%d/`
 export const ROOM = 'hotels/rooms'
 export const ROOM_LIST = `/${ROOM}/`
 export const ROOM_CREATE = `/${ROOM}/`
+export const ROOM_UPDATE = `/${ROOM}/%d/`
+export const ROOM_ITEM = `/${ROOM}/%d/`
 
 export const ROOM_CREATE_BULK = `/${ROOM}/bulk_create/`
 

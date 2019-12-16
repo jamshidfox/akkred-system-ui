@@ -22,6 +22,7 @@ export const HOTEL_UPDATE = 'HOTEL_UPDATE'
 export const ROOM_LIST = 'ROOM_LIST'
 export const ROOM_ITEM = 'ROOM_ITEM'
 export const ROOM_CREATE = 'ROOM_CREATE'
+export const ROOM_UPDATE = 'ROOM_UPDATE'
 
 export const RESERVATION_LIST = 'RESERVATION_LIST'
 export const RESERVATION_UPDATE = 'RESERVATION_UPDATE'

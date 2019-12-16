@@ -1,19 +1,20 @@
 import * as ROUTES from '../../constants/routes'
 import Layouts from '../../components/Layouts/Layout'
 
+import RoomCreateContainer from './containers/RoomCreateContainer'
 import RoomTypeListContainer from './containers/RoomTypeListContainer'
-import RoomUpdateContainer from './containers/RoomUpdateContainer'
 
 export default () => [
   {
     exact: true,
-    path: ROUTES.SETTING_ROOMS_TYPE_LIST,
+    path: ROUTES.ROOM_CREATE_URL,
     layout: Layouts,
-    component: RoomTypeListContainer,
+    component: RoomCreateContainer
   },
   {
-    path: ROUTES.ROOM_UPDATE_PATH,
+    exact: true,
+    path: ROUTES.ROOM_LIST_URL,
     layout: Layouts,
-    component: RoomUpdateContainer,
+    component: RoomTypeListContainer
   }
 ]

@@ -7,10 +7,12 @@ import Login from './Login'
 import Register from './Register'
 import rooms from './Rooms'
 import reservation from './reservation'
+import room from './RoomCreate'
 
 const tester = store => [
   ...reservation(),
   ...rooms(),
+  ...room(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,

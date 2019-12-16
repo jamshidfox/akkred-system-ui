@@ -1,8 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
-import { Row } from '../Grid'
+import styled from 'styled-components'
+import { Row as RowUI } from '../Grid'
 
+const Row = styled(RowUI)`
+  padding: 15px 0;
+  border-bottom: 1px #efefef solid;
+  cursor: pointer;
+`
 const TableRow = props => {
   const { children, header, to, ...rest } = props
 
