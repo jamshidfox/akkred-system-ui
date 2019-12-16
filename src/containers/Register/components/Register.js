@@ -68,10 +68,15 @@ const Register = props => {
       </DisplayFlex>
       <Form
         initialValues={initialValues}
-        keepDirtyOnReinitialize={true}
+
         mutators={arrayMutators}
         onSubmit={isEdit ? editData.onSubmit : onSubmit}
-        render={({ handleSubmit, ...formikProps }) => {
+        render={({ handleSubmit, values, form, ...formikProps }) => {
+
+          const onServiceCancel = () => {
+            form.change('services', [])
+            serviceModal.onClose()
+          }
           return (
             <form onSubmit={handleSubmit}>
               <Row gutter={24}>
@@ -107,7 +112,6 @@ const Register = props => {
                   <DisplayFlex justify={'space-between'}>
                     <Field
                       disabled={!isEdit}
-
                       label={'адрес'}
                       placeholder={'Где находится ваша гостиница?'}
                       name={'address'}
@@ -156,7 +160,6 @@ const Register = props => {
                 <Col span={8}>
                   <Field
                     disabled={!isEdit}
-
                     label={'Время выезда'}
                     placeholder={'Например: 18:00'}
                     name={'leaveTime'}
@@ -173,7 +176,10 @@ const Register = props => {
               </Row>
               <Row>
                 <Col span={24}>
-                  <ServicesDialog {...serviceModal} />
+                  <ServicesDialog
+                    serviceTypes={values.services}
+                    onServiceCancel={onServiceCancel}
+                    {...serviceModal} />
                 </Col>
               </Row>
               <Row>
@@ -199,6 +205,7 @@ Register.propTypes = {
   onSubmit: PropTypes.func,
   editData: PropTypes.object,
   hotelData: PropTypes.object,
+  serviceModal: PropTypes.object,
   isCreated: PropTypes.bool
 }
 export default Register

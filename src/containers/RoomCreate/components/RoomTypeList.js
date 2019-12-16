@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import { sprintf } from 'sprintf-js'
 import { TableCol, Table, TableRow } from '../../../components/Table'
-import { PageTitle } from '../../../components/UI'
-import { SETTING_ROOMS_LIST_URL ,ROOM_UPDATE_URL} from '../../../constants/routes'
+import { MediumButton, PageTitle } from '../../../components/UI'
+import { SETTING_ROOMS_LIST_URL, ROOM_UPDATE_URL } from '../../../constants/routes'
 
 const RoomTypeList = props => {
   const { list } = props
@@ -18,7 +19,12 @@ const RoomTypeList = props => {
 
   return (
     <>
-      <PageTitle name="Номерной фонд" />
+      <PageTitle name="Номерной фонд" >
+        <MediumButton ><Link style={{
+          color: '#FFF',
+          textDecoration: 'none'
+        }} to={`/rooms/create`} >добавить</Link></MediumButton>
+      </PageTitle>
       <Table isEmpty={isEmpty(data)}>
         <TableRow header={true} >
           <TableCol span={6}>Нумерация номера</TableCol>

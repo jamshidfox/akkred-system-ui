@@ -9,7 +9,7 @@ export default (theme, params) => ({
         ? `${theme.color.danger.default} !important`
         : theme.color.primary.default
       : theme.input.borderColor,
-    transition: theme.transition,
+    transition: 'color 300ms, transform 150ms',
     height: params.height,
     minHeight: params.height ? 'unset' : '48px',
     '&:hover': {
@@ -121,8 +121,9 @@ export default (theme, params) => ({
         ? theme.input.backgroundColor
         : '#FAFBFB',
       border: '1px solid transparent',
-      borderRadius: theme.input.borderRadius,
-      transition: theme.cube.transition,
+      borderColor: theme.color.basic.default,
+      borderRadius: theme.borderRadius,
+      transition: theme.transition,
       margin: '4px',
       '&:hover': {
         borderColor: theme.input.borderColor

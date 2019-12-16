@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { head, prop, union, isEmpty } from 'ramda'
+import { head, prop, union, isEmpty, pipe, flatten, filter, map, fromPairs, toPairs, values } from 'ramda'
 import * as STATE from '../../constants/stateNames'
 import { useCreate, useFetchList, useModal } from '../../hooks'
 import { getSerializedData, getParamFromHistory } from '../../utils/get'
@@ -10,10 +10,16 @@ import Register, { fields } from './components/Register'
 import { hotelCreateAction, hotelFetchList, hotelUpdateAction } from './actions'
 
 const EDIT = 'edit'
-const serializer = (values) => {
+const serializer = (val) => {
+  const services = pipe(
+    values,
+    flatten,
+    map(prop('id'))
+  )(val.services)
+
   return {
-    ...getSerializedData(fields, values),
-    services: [],
+    ...getSerializedData(fields, val),
+    services: services,
     currencies: []
   }
 }
@@ -29,7 +35,14 @@ const getHotelListParams = () => ({
   stateName: STATE.HOTEL_LIST
 })
 
+const KEY = 0
+const VALUE = 1
+const mapIndexKey = (arr) => {
+  const key = '_' + arr[KEY]
+  return [key, arr[VALUE]]
+}
 const getInitialValues = (data) => {
+  const services = pipe(prop('services'), toPairs, map(mapIndexKey), fromPairs)(data)
   return ({
     hotelType: prop('hotelType', data),
     additionalPhoneNumber: prop('additionalPhoneNumber', data),
@@ -40,7 +53,8 @@ const getInitialValues = (data) => {
     point: prop('point', data),
     leaveTime: prop('leaveTime', data),
     entranceTime: prop('entranceTime', data),
-    photos: union(prop('photos', data), [{}])
+    photos: union(prop('photos', data), [{}]),
+    services
   })
 }
 const toBoolean = v => v === 'true' || v === true
@@ -56,6 +70,7 @@ const RegisterContainer = props => {
   const onEdit = data => {
     return dispatch(hotelUpdateAction(prop('id', hotel), serializer(data)))
       .then(() => replaceParamsRoute({ [EDIT]: false }, history))
+      .then(() => dispatch(hotelFetchList()))
   }
 
   const isEdit = toBoolean(getParamFromHistory(EDIT, history))

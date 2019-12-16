@@ -23,6 +23,7 @@ export const hotelCreateAction = data => {
 }
 
 export const hotelUpdateAction = (id, data) => {
+
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.HOTEL_UPDATE, id), {
@@ -39,6 +40,19 @@ export const hotelUpdateAction = (id, data) => {
 }
 
 export const hotelFetchList = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.HOTEL_LIST)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.HOTEL_LIST
+    })
+  }
+}
+export const hotelServiceTypeFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.HOTEL_LIST)
