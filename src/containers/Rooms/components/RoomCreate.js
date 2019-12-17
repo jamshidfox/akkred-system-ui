@@ -1,9 +1,8 @@
 import React from 'react'
-import { prop } from 'ramda'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
-import { PageTitle, MediumButton, InputLabel } from '../../../components/UI'
+import { PageTitle, MediumButton } from '../../../components/UI'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
@@ -11,13 +10,9 @@ import {
   Field,
   InputField,
   UniversalSearchField,
-  UniversalStaticSelectField,
-  DateField
 } from '../../../components/FormField'
 import { GENDER_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
-import ServicesDialog from '../../Register/components/ServicesDialog'
-import Register from '../../Register/components/Register'
 import FacilitiesDialog from './FacilitiesDialog'
 
 export const fields = [

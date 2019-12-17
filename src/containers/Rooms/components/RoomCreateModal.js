@@ -45,7 +45,8 @@ const RoomCreateModal = props => {
 
 RoomCreateModal.propTypes = {
   open: PropTypes.bool,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  onSubmit: PropTypes.func
 }
 
 export default RoomCreateModal

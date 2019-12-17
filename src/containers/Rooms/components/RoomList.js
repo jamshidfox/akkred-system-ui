@@ -5,18 +5,13 @@ import { sprintf } from 'sprintf-js'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { ROOM_UPDATE_URL } from '../../../constants/routes'
-import Edit from '../../../images/edit.png'
-import Trash from '../../../images/trash-2.png'
+import Edit from '../../../images/edit.svg'
+import Trash from '../../../images/trash-2.svg'
 
 const RoomList = props => {
   const { list } = props
 
   const data = prop('results', list)
-  // const floor = prop('floor', data)
-  // const roomNumber = prop('roomNumber', data)
-  // const capacity = prop('capacity', data)
-  // const area = prop('area', data)
-  // console.warn(floor)
 
   return (
     <>
