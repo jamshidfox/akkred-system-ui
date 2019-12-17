@@ -32,7 +32,7 @@ const RoomList = props => {
           <TableCol span={4}>ЭТАЖ</TableCol>
           <TableCol span={4}>вМЕСТИМОСТЬ</TableCol>
           <TableCol span={4}>пЛОЩАДЬ</TableCol>
-          <TableCol span={4}>удобство</TableCol>
+          <TableCol span={4}>Статус</TableCol>
           <TableCol span={1} />
           <TableCol span={1} />
 
@@ -43,7 +43,7 @@ const RoomList = props => {
             <TableCol span={4}>{room.floor}</TableCol>
             <TableCol span={4}>{room.capacity}</TableCol>
             <TableCol span={4}>{room.area}</TableCol>
-            <TableCol span={4}>удобство</TableCol>
+            <TableCol span={4}>{room.status}</TableCol>
             <TableCol span={1}> <Link style={{
               color: '#FFF',
               textDecoration: 'none'

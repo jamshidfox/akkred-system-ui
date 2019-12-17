@@ -2,6 +2,7 @@ import React from 'react'
 import { prop } from 'ramda'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
+import PropTypes from 'prop-types'
 import { PageTitle, MediumButton, InputLabel } from '../../../components/UI'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
@@ -16,9 +17,8 @@ import {
 import { GENDER_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
 import ServicesDialog from '../../Register/components/ServicesDialog'
-import FacilitiesDialog from './FacilitiesDialog'
-import PropTypes from 'prop-types'
 import Register from '../../Register/components/Register'
+import FacilitiesDialog from './FacilitiesDialog'
 
 export const fields = [
   'roomCategory',
@@ -47,8 +47,7 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const RoomCreate = props => {
-  const { onSubmit, initialValues, isUpdate, serviceModal } = props
-  console.warn(initialValues,'initialValues RoomCreate')
+  const { onSubmit, initialValues, serviceModal } = props
   return (
     <>
       <PageTitle name="Общая информация" />
@@ -82,21 +81,17 @@ const RoomCreate = props => {
               </Row>
               <Row gutter={24}>
 
-                <Col span={8}>
+                <Col span={6}>
                   <Field name="area" label="Площадь" component={InputField} />
                 </Col>
-                <Col span={8}>
+                <Col span={6}>
                   <Field name="capacity" label="Основные места" component={InputField} list={GENDER_LIST} />
                 </Col>
-                <Col span={8}>
+                <Col span={6}>
                   <Field name="additionalCapacity"
                     label="Дополнитеоьные  места " component={InputField} />
                 </Col>
-              </Row>
-
-              <Row gutter={8}>
-
-                <Col span={8}>
+                <Col span={6}>
                   <Field name="roomNumber"
                     label="Номер" component={InputField} />
                 </Col>
@@ -129,6 +124,7 @@ RoomCreate.propTypes = {
   onSubmit: PropTypes.func,
   hotelData: PropTypes.object,
   serviceModal: PropTypes.object,
+  initialValues: PropTypes.object,
 }
 
 export default RoomCreate
