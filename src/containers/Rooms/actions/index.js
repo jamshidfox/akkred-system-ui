@@ -33,3 +33,17 @@ export const roomFetchList = data => {
     })
   }
 }
+
+export const roomTypeFetchList = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.ROOM_TYPE_LIST, {params: {children_only: true}})
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.ROOM_TYPE_LIST
+    })
+  }
+}

@@ -4,18 +4,18 @@ import { useFetchList, useCreateModal } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
 
 import { RoomTypeList, fields } from '../components'
-import { roomFetchList, roomCreateAction } from '../actions'
+import { roomCreateAction, roomTypeFetchList } from '../actions'
 
 const getRoomListParams = () => ({
-  action: roomFetchList,
-  stateName: STATE.ROOM_LIST,
+  action: roomTypeFetchList,
+  stateName: STATE.ROOM_TYPE_LIST,
 })
 
 const getRoomCreateParams = () => ({
   stateName: STATE.ROOM_CREATE,
   action: roomCreateAction,
   serializer: getSerializedData(fields),
-  onSuccess: roomFetchList()
+  onSuccess: roomTypeFetchList()
 })
 const RoomTypeListContainer = props => {
   const list = useFetchList(getRoomListParams())
