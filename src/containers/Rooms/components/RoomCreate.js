@@ -15,6 +15,10 @@ import {
 } from '../../../components/FormField'
 import { GENDER_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
+import ServicesDialog from '../../Register/components/ServicesDialog'
+import FacilitiesDialog from './FacilitiesDialog'
+import PropTypes from 'prop-types'
+import Register from '../../Register/components/Register'
 
 export const fields = [
   'roomCategory',
@@ -24,6 +28,7 @@ export const fields = [
   'capacity',
   'additionalCapacity',
   'roomNumber',
+  'facilities'
 
 ]
 
@@ -42,9 +47,8 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const RoomCreate = props => {
-  const { onSubmit, initialValues, isUpdate } = props
-
-
+  const { onSubmit, initialValues, isUpdate, serviceModal } = props
+  console.warn(initialValues,'initialValues RoomCreate')
   return (
     <>
       <PageTitle name="Общая информация" />
@@ -53,7 +57,11 @@ const RoomCreate = props => {
         mutators={arrayMutators}
         initialValues={initialValues}
         onSubmit={onSubmit}
-        render={({ handleSubmit, ...formikProps }) => {
+        render={({ handleSubmit, values, form, ...formikProps }) => {
+          const onServiceCancel = () => {
+            form.change('facilities', {})
+            serviceModal.onClose()
+          }
           return (
             <form onSubmit={handleSubmit}>
 
@@ -86,18 +94,24 @@ const RoomCreate = props => {
                 </Col>
               </Row>
 
-              <Row gutter={24}>
+              <Row gutter={8}>
 
                 <Col span={8}>
-                  <Field name="facilities" label="facilities" component={InputField} />
-                </Col>
-                {/* <Col span={8}> */}
-                {/*  <Field name="roomCategory" label="room_category " component={InputField} list={GENDER_LIST} /> */}
-                {/* </Col> */}
-                <Col span={8}>
                   <Field name="roomNumber"
-                    label="Дополнитеоьные  места " component={InputField} />
+                    label="Номер" component={InputField} />
                 </Col>
+              </Row>
+
+              <Row gutter={24}>
+
+                <Col span={24}>
+
+                  <FacilitiesDialog
+                    serviceTypes={values.facilities}
+                    onServiceCancel={onServiceCancel}
+                    {...serviceModal} />
+                </Col>
+
               </Row>
 
               <div style={{ textAlign: 'right' }}>
@@ -110,6 +124,11 @@ const RoomCreate = props => {
       />
     </>
   )
+}
+RoomCreate.propTypes = {
+  onSubmit: PropTypes.func,
+  hotelData: PropTypes.object,
+  serviceModal: PropTypes.object,
 }
 
 export default RoomCreate

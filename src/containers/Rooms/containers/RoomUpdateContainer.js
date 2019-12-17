@@ -1,22 +1,48 @@
 import React from 'react'
-import { prop } from 'ramda'
+import { flatten, fromPairs, map, pipe, prop, toPairs, union, values } from 'ramda'
 import * as STATE from '../../../constants/stateNames'
 import * as ROUTES from '../../../constants/routes'
-import { useFetchList, useUpdate, useFetchItem } from '../../../hooks'
+import { useFetchList, useUpdate, useFetchItem, useModal } from '../../../hooks'
 import { getSerializedData, getIdForInitValues } from '../../../utils/get'
-import RoomCreate, { fields } from '../../RoomCreate/components/RoomCreate'
+import RoomCreate, { fields } from '../components/RoomCreate'
 import { roomFetchList, roomFetchItem, roomUpdateAction } from '../actions'
 
 const getRoomItemParams = () => ({
   action: roomFetchItem,
   stateName: STATE.ROOM_ITEM,
 })
+const KEY = 0
+const VALUE = 1
+const mapIndexKey = (arr) => {
+  const key = '_' + arr[KEY]
+  return [key, arr[VALUE]]
+}
 
-const serializer = (values) => {
+const serializer = (val) => {
+  const facilities = pipe(
+    values,
+    flatten,
+    map(prop('id'))
+  )(val.facilities)
   return {
-    ...getSerializedData(fields, values),
-    facilities: [],
+    ...getSerializedData(fields, val),
+    facilities: facilities,
   }
+}
+
+const getInitialValues = (data) => {
+  const facilities = pipe(prop('facilities'), toPairs, map(mapIndexKey), fromPairs)(data)
+
+  return ({
+    roomCategory: prop('roomCategory', data),
+    detail: prop('detail', data),
+    floor: prop('floor', data),
+    area: prop('area', data),
+    capacity: prop('capacity', data),
+    additionalCapacity: prop('additionalCapacity', data),
+    roomNumber: prop('roomNumber', data),
+    facilities
+  })
 }
 
 const getRoomUpdateParams = () => ({
@@ -28,12 +54,18 @@ const getRoomUpdateParams = () => ({
 const itemFields = ['roomCategory']
 const RoomUpdateContainer = props => {
   const { data } = useFetchItem(getRoomItemParams())
+  const serviceModal = useModal({})
 
-  const initialValues = { ...data, ...getIdForInitValues(data, itemFields) }
+  // const initialValues = { ...data, ...getIdForInitValues(data, itemFields) }
+  const initialValues = getInitialValues(data)
   const updateData = useUpdate(getRoomUpdateParams())
 
   return (
-    <RoomCreate {...updateData} initialValues={initialValues} />
+    <RoomCreate
+      {...updateData}
+      initialValues={initialValues}
+      serviceModal={serviceModal}
+    />
   )
 }
 

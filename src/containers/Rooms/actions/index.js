@@ -20,6 +20,20 @@ export const roomCreateAction = data => {
   }
 }
 
+export const roomSingleCreateAction = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(API.ROOM_CREATE, data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.ROOM_CREATE
+    })
+  }
+}
+
 export const roomUpdateAction = (id, data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })

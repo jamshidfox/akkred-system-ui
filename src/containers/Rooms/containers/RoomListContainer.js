@@ -2,7 +2,7 @@ import React from 'react'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList } from '../../../hooks'
 
-import RoomTypeList from '../components/RoomTypeList'
+import RoomList from '../components/RoomList'
 import { roomFetchList } from '../actions'
 
 const getRoomListParams = () => ({
@@ -10,14 +10,14 @@ const getRoomListParams = () => ({
   stateName: STATE.ROOM_LIST,
 })
 
-const RoomTypeListContainer = props => {
+const RoomListContainer = props => {
   const list = useFetchList(getRoomListParams())
 
   return (
-    <RoomTypeList
+    <RoomList
       list={list}
     />
   )
 }
 
-export default RoomTypeListContainer
+export default RoomListContainer

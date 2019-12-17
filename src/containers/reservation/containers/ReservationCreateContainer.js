@@ -11,7 +11,7 @@
 //   action: reservationCreateAction,
 //   serializer: getSerializedData(fields),
 // })
-// const RoomTypeListContainer = props => {
+// const RoomListContainer = props => {
 //   const create = useCreate(getRoomCreateParams())
 //   return (
 //     <ReservationCreate
@@ -20,4 +20,4 @@
 //   )
 // }
 //
-// export default RoomTypeListContainer
+// export default RoomListContainer

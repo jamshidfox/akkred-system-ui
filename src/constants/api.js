@@ -28,6 +28,12 @@ export const ROOM_TYPE = 'hotels/rooms_category'
 export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
 export const ROOM_TYPE_CREATE = `/${ROOM_TYPE}/`
 
+export const ROOM_FACILITY_TYPE = 'hotels/room_facility_type'
+export const ROOM_FACILITY_TYPE_LIST = `/${ROOM_FACILITY_TYPE}/`
+
+export const FACILITIES = 'hotels/facilities'
+export const FACILITIES_LIST = `/${FACILITIES}/`
+
 export const HOTEL_TYPE = 'hotels/hotel_type'
 export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`
 
