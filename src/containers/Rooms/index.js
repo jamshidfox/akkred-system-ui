@@ -26,7 +26,7 @@ export default () => [
   },
   {
     exact: true,
-    path: ROUTES.ROOM_LIST_URL,
+    path: ROUTES.SETTING_ROOMS_LIST_PATH,
     layout: Layouts,
     component: RoomListContainer
   }

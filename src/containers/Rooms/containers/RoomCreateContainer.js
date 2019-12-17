@@ -3,7 +3,7 @@ import { flatten, map, pipe, prop, values } from 'ramda'
 import * as STATE from '../../../constants/stateNames'
 import { useCreate, useModal } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
-
+import {useParams} from 'react-router-dom'
 import { RoomCreate, fields } from '../components'
 import { roomSingleCreateAction } from '../actions'
 
@@ -27,8 +27,10 @@ const getRoomCreateParams = () => ({
 const RoomTypeListContainer = props => {
   const create = useCreate(getRoomCreateParams())
   const serviceModal = useModal({})
+  const {id} = useParams()
   return (
     <RoomCreate
+      parent={id}
       {...create}
       serviceModal={serviceModal}
     />

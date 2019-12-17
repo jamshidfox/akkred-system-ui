@@ -42,7 +42,7 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const RoomCreate = props => {
-  const { onSubmit, initialValues, serviceModal } = props
+  const { onSubmit, initialValues, serviceModal, parent } = props
   return (
     <>
       <PageTitle name="Общая информация" />
@@ -64,6 +64,7 @@ const RoomCreate = props => {
                   <Field
                     name="roomCategory"
                     label="Тип номера"
+                    params={{ children_only: true, parent }}
                     component={UniversalSearchField}
                     api={API.ROOM_TYPE_LIST} />
                 </Col>

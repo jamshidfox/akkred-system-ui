@@ -37,6 +37,8 @@ export default createGlobalStyle`
   body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
+    color: #222B45;
+    letter-spacing: 0.15px;
     background: #FAFAFB;
   }
 

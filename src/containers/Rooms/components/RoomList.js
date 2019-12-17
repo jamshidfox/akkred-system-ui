@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import { sprintf } from 'sprintf-js'
 import { TableCol, Table, TableRow } from '../../../components/Table'
@@ -8,18 +8,19 @@ import { ROOM_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
 
+const style = {
+  color: '#FFF',
+  textDecoration: 'none'
+}
 const RoomList = props => {
   const { list } = props
 
   const data = prop('results', list)
-
+  const {id} = useParams()
   return (
     <>
       <PageTitle name="Номерной фонд" >
-        <MediumButton ><Link style={{
-          color: '#FFF',
-          textDecoration: 'none'
-        }} to={`/rooms/create`} >добавить</Link></MediumButton>
+        <MediumButton ><Link style={style} to={`/rooms/create/${id}`} >добавить</Link></MediumButton>
       </PageTitle>
       <Table isEmpty={isEmpty(data)}>
         <TableRow header={true} >

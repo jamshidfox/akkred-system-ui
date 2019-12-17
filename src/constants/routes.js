@@ -13,7 +13,7 @@ export const SETTING_PRICE_LIST_URL = `/${SETTINGS}/${SETTING_PRICE_LIST}/`
 export const SETTING_ROOMS = 'rooms'
 export const SETTING_ROOMS_TYPE_LIST = `/${SETTINGS}/${SETTING_ROOMS}/`
 export const SETTING_ROOMS_LIST_URL = `/${SETTINGS}/${SETTING_ROOMS}/%d`
-export const SETTING_ROOMS_LIST_PATH = `/${SETTINGS}/${SETTING_ROOMS}/:d`
+export const SETTING_ROOMS_LIST_PATH = `/${SETTINGS}/${SETTING_ROOMS}/${ID}`
 
 const RESERVATION = 'reservation'
 export const RESERVATION_LIST_URL = `/${RESERVATION}/`
@@ -26,7 +26,7 @@ const ROOM = 'rooms'
 export const ROOM_LIST_URL = `/${ROOM}/`
 export const ROOM_ITEM_URL = `/${ROOM}/%d`
 export const ROOM_ITEM_PATH = `/${ROOM}/${ID}/`
-export const ROOM_CREATE_URL = `/${ROOM}/create`
+export const ROOM_CREATE_URL = `/${ROOM}/create/${ID}`
 export const ROOM_UPDATE_URL = `/${ROOM}/%d`
 export const ROOM_UPDATE_PATH = `/${ROOM}/${ID}/`
 

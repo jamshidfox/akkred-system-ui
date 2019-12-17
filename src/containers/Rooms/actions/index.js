@@ -51,7 +51,7 @@ export const roomUpdateAction = (id, data) => {
 export const roomFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.ROOM_LIST)
+      .get(API.ROOM_LIST, {params: {room_category: data.id}})
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
@@ -72,6 +72,20 @@ export const roomFetchItem = id => {
     return dispatch({
       payload,
       type: actionTypes.ROOM_ITEM
+    })
+  }
+}
+
+export const roomTypeFetchList = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.ROOM_TYPE_LIST, { params: { children_only: true } })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.ROOM_TYPE_LIST
     })
   }
 }

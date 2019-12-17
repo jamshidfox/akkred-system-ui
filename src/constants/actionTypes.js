@@ -18,6 +18,7 @@ export const HOTEL_LIST = 'HOTEL_LIST'
 export const HOTEL_ITEM = 'HOTEL_ITEM'
 export const HOTEL_CREATE = 'HOTEL_CREATE'
 export const HOTEL_UPDATE = 'HOTEL_UPDATE'
+export const ROOM_TYPE_LIST = 'ROOM_TYPE_LIST'
 
 export const ROOM_LIST = 'ROOM_LIST'
 export const ROOM_ITEM = 'ROOM_ITEM'
