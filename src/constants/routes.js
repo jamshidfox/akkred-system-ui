@@ -30,3 +30,9 @@ export const ROOM_CREATE_URL = `/${ROOM}/create/${ID}`
 export const ROOM_UPDATE_URL = `/${ROOM}/%d`
 export const ROOM_UPDATE_PATH = `/${ROOM}/${ID}/`
 
+const CLIENT = 'client'
+export const CLIENT_LIST_URL = `/${CLIENT}/`
+export const CLIENT_ITEM_URL = `/${CLIENT}/%d`
+export const CLIENT_ITEM_PATH = `/${CLIENT}/${ID}/`
+export const CLIENT_CREATE_URL = `/${CLIENT}/create`
+export const CLIENT_UPDATE_URL = `/${CLIENT}/`

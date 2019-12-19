@@ -12,6 +12,7 @@ export const ROOM_ITEM = 'roomItem'
 export const CLIENT_LIST = 'clientList'
 export const CLIENT_UPDATE = 'clientUpdate'
 export const CLIENT_CREATE = 'clientCreate'
+export const CLIENT_ITEM = 'clientItem'
 
 export const RESERVATION_LIST = 'reservationList'
 export const RESERVATION_UPDATE = 'reservationUpdate'
