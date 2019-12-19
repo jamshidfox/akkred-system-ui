@@ -8,29 +8,29 @@ import { clientCreateAction } from '../actions'
 
 const serializer = (val) => {
   const clientDocument = {
-    document_type: val.document_type,
+    document_type: val.documentType,
     series: val.series,
     number: val.number,
-    issuedBy: val.issuedBy,
-    issuedDate: val.issuedDate,
-    validUntil: val.validUntil,
+    issued_by: val.issuedBy,
+    issued_date: val.issuedDate,
+    valid_until: val.validUntil,
   }
   const clientArrival = {
-    arrivedFrom: val.arrivedFrom,
-    arrivalDate: val.arrivalDate,
+    arrived_from: val.arrivedFrom.id,
+    arrival_date: val.arrivalDate,
     checkpoint: val.checkpoint,
-    checkInDate: val.checkInDate,
-    visitType: val.visitType,
-    visaType: val.visaType,
-    visaNumber: val.visaNumber,
-    visaIssuedBy: val.visaIssuedBy,
-    visaDateFrom: val.visaDateFrom,
-    visaDateTo: val.visaDateTo,
+    check_in_date: val.checkInDate,
+    visit_type: val.visitType,
+    visa_type: val.visaType,
+    visa_number: val.visaNumber,
+    visa_issued_by: val.visaIssuedBy,
+    visa_date_from: val.visaDateFrom,
+    visa_date_to: val.visaDateTo,
   }
   return {
     ...getSerializedData(fields, val),
-    clientDocument: clientDocument,
-    clientArrival: clientArrival,
+    client_document: clientDocument,
+    client_arrival: clientArrival,
   }
 }
 
