@@ -35,4 +35,6 @@ export const CLIENT_LIST_URL = `/${CLIENT}/`
 export const CLIENT_ITEM_URL = `/${CLIENT}/%d`
 export const CLIENT_ITEM_PATH = `/${CLIENT}/${ID}/`
 export const CLIENT_CREATE_URL = `/${CLIENT}/create`
-export const CLIENT_UPDATE_URL = `/${CLIENT}/`
+export const CLIENT_UPDATE_URL = `/${CLIENT}/%d`
+export const CLIENT_UPDATE_PATH = `/${CLIENT}/${ID}/`
+

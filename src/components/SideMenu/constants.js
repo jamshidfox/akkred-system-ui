@@ -65,10 +65,6 @@ export default [
         url: ROUTES.SETTING_ROOMS_TYPE_LIST,
       },
       {
-        name: 'Комнаты',
-        url: ROUTES.ROOM_LIST_URL,
-      },
-      {
         name: 'Тарифы и цены',
         url: ROUTES.SETTING_PRICE_LIST_URL,
       }

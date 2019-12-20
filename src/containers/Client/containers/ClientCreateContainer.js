@@ -1,31 +1,33 @@
 import React from 'react'
+import { prop, path } from 'ramda'
 import * as STATE from '../../../constants/stateNames'
 import { useCreate } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
 
 import { ClientCreate, fields } from '../components'
 import { clientCreateAction } from '../actions'
+import * as ROUTES from '../../../constants/routes'
 
 const serializer = (val) => {
   const clientDocument = {
-    document_type: val.documentType,
-    series: val.series,
-    number: val.number,
-    issued_by: val.issuedBy,
-    issued_date: val.issuedDate,
-    valid_until: val.validUntil,
+    document_type: path(['clientDocument', 'documentType'], val),
+    series: path(['clientDocument', 'series'], val),
+    number: path(['clientDocument', 'number'], val),
+    issued_by: path(['clientDocument', 'issuedBy'], val),
+    issued_date: path(['clientDocument', 'issuedDate'], val),
+    valid_until: path(['clientDocument', 'validUntil'], val),
   }
   const clientArrival = {
-    arrived_from: val.arrivedFrom.id,
-    arrival_date: val.arrivalDate,
-    checkpoint: val.checkpoint,
-    check_in_date: val.checkInDate,
-    visit_type: val.visitType,
-    visa_type: val.visaType,
-    visa_number: val.visaNumber,
-    visa_issued_by: val.visaIssuedBy,
-    visa_date_from: val.visaDateFrom,
-    visa_date_to: val.visaDateTo,
+    arrived_from: path(['clientArrival', 'arrivedFrom', 'id'], val),
+    arrival_date: path(['clientArrival', 'arrivalDate'], val),
+    checkpoint: path(['clientArrival', 'checkpoint'], val),
+    check_in_date: path(['clientArrival', 'checkInDate'], val),
+    visit_type: path(['clientArrival', 'visitType'], val),
+    visa_type: path(['clientArrival', 'visaType'], val),
+    visa_number: path(['clientArrival', 'visaNumber'], val),
+    visa_issued_by: path(['clientArrival', 'visaIssuedBy'], val),
+    visa_date_from: path(['clientArrival', 'visaDateFrom'], val),
+    visa_date_to: path(['clientArrival', 'visaDateTo'], val),
   }
   return {
     ...getSerializedData(fields, val),
@@ -37,7 +39,8 @@ const serializer = (val) => {
 const getRoomCreateParams = () => ({
   stateName: STATE.CLIENT_CREATE,
   action: clientCreateAction,
-  serializer: serializer
+  serializer: serializer,
+  redirectUrl: ROUTES.CLIENT_LIST_URL
 })
 const ClientCreateContainer = props => {
   const create = useCreate(getRoomCreateParams())

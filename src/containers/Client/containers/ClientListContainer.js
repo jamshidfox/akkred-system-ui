@@ -12,7 +12,6 @@ const getRoomListParams = () => ({
 
 const ClientListContainer = props => {
   const list = useFetchList(getRoomListParams())
-    console.warn(list,'list')
   return (
     <ClientList
       list={list}

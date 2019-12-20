@@ -6,12 +6,11 @@ import ClientListContainer from './containers/ClientListContainer'
 import ClientUpdateContainer from './containers/ClientUpdateContainer'
 
 export default () => [
-
-  // {
-  //   path: ROUTES.CLIENT_UPDATE_URL,
-  //   layout: Layouts,
-  //   component: ClientUpdateContainer,
-  // },
+  {
+    path: ROUTES.CLIENT_UPDATE_PATH,
+    layout: Layouts,
+    component: ClientUpdateContainer,
+  },
   {
     exact: true,
     path: ROUTES.CLIENT_CREATE_URL,

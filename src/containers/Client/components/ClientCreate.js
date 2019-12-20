@@ -13,7 +13,7 @@ import {
   UniversalStaticSelectField,
   DateField
 } from '../../../components/FormField'
-import { GENDER_LIST } from '../../../constants/backend'
+import { GENDER_LIST, CLIENT_LIST, AGE_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
 
 export const fields = [
@@ -26,24 +26,8 @@ export const fields = [
   'citizenship',
   'phoneNumber',
   'email',
-
-  'documentType',
-  'series',
-  'number',
-  'issuedBy',
-  'issuedDate',
-  'validUntil',
-
-  'checkInDate',
-  'arrivalDate',
-  'arrivedFrom',
-  'checkpoint',
-  'visitType',
-  'visaType',
-  'visaNumber',
-  'visaIssuedBy',
-  'visaDateFrom',
-  'visaDateTo'
+  'clientType',
+  'ageType',
 ]
 
 const Label = styled.div`
@@ -61,19 +45,19 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ReservationCreate = props => {
-  const { onSubmit } = props
+  const { onSubmit, initialValues } = props
 
   return (
     <>
-      <PageTitle name="Номерной фонд" />
+      <PageTitle name="Профиль" />
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
+        initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              {/* {console.warn(formikforms)} */}
               <Label>Основная информация</Label>
               <Row gutter={24}>
                 <Col span={8}>
@@ -87,90 +71,98 @@ const ReservationCreate = props => {
                 </Col>
               </Row>
               <Row gutter={24}>
-                <Col span={8}>
-                  <Field name="fromCountry"
-                    label="страна прибытие " component={UniversalSearchField} api={API.COUNTRY_LIST} />
-                </Col>
-                <Col span={8}>
-                  <Field name="birthDate" label="дата рождения" component={DateField} />
-                </Col>
-                <Col span={8}>
-                  <Field name="gender" label="пол" component={UniversalStaticSelectField} list={GENDER_LIST} />
-                </Col>
-              </Row>
-              <Row gutter={24}>
-                <Col span={8}>
+                <Col span={6}>
                   <Field name="citizenship"
                     label="страна рождения" component={UniversalSearchField} api={API.COUNTRY_LIST} />
                 </Col>
-                <Col span={8}>
+
+                <Col span={6}>
+                  <Field name="birthDate" label="дата рождения" component={DateField} />
+                </Col>
+
+                <Col span={6}>
                   <Field name="phoneNumber" label="Телефон номер" component={InputField} />
                 </Col>
-                <Col span={8}>
+                <Col span={6}>
                   <Field name="email" label="Почта" component={InputField} />
+                </Col>
+              </Row>
+              <Row gutter={24}>
+                <Col span={6}>
+                  <Field name="fromCountry"
+                    label="страна прибытие " component={UniversalSearchField} api={API.COUNTRY_LIST} />
+                </Col>
+                <Col span={6}>
+                  <Field name="gender" label="пол" component={UniversalStaticSelectField} list={GENDER_LIST} />
+                </Col>
+                <Col span={6}>
+                  <Field name="clientType" label="Тип Клиента" component={UniversalStaticSelectField} list={CLIENT_LIST} />
+                </Col>
+                <Col span={6}>
+                  <Field name="ageType" label="Тип возраста" component={UniversalStaticSelectField} list={AGE_LIST} />
                 </Col>
               </Row>
 
               <Label>Информация о документа</Label>
               <Row gutter={24}>
                 <Col span={8}>
-                  <Field name="documentType" label="Тип документа" component={InputField} />
+                  <Field name="clientDocument.documentType" label="Тип документа" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="series" label="Серия паспорта" component={InputField} />
+                  <Field name="clientDocument.series" label="Серия паспорта" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="number" label="Номер паспорта" component={InputField} />
+                  <Field name="clientDocument.number" label="Номер паспорта" component={InputField} />
                 </Col>
               </Row>
               <Row gutter={24}>
                 <Col span={8}>
-                  <Field name="issuedBy" label="Орган выдачи" component={InputField} />
+                  <Field name="clientDocument.issuedBy" label="Орган выдачи" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="issuedDate" label="Дата выдачи" component={DateField} />
+                  <Field name="clientDocument.issuedDate" label="Дата выдачи" component={DateField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="validUntil" label="Действителен до" component={DateField} />
+                  <Field name="clientDocument.validUntil" label="Действителен до" component={DateField} />
                 </Col>
               </Row>
               <Label>Дополнительная информация </Label>
               <Row gutter={24}>
                 <Col span={8}>
-                  <Field name="checkInDate" label="arrivedFrom" component={DateField} />
+                  <Field name="clientArrival.checkInDate" label="arrivedFrom" component={DateField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="arrivalDate" label="дата рождения" component={DateField} />
+                  <Field name="clientArrival.arrivalDate" label="дата рождения" component={DateField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="checkpoint" label="checkpoint" component={InputField} />
+                  <Field name="clientArrival.checkpoint" label="checkpoint" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="arrivedFrom"
+                  <Field name="clientArrival.arrivedFrom"
                     label="страна рождения" component={UniversalSearchField} api={API.COUNTRY_LIST} />
                 </Col>
 
               </Row>
               <Row gutter={24}>
                 <Col span={8}>
-                  <Field name="visitType" label="Тип визита" component={InputField} />
+                  <Field name="clientArrival.visitType" label="Тип визита" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="visaType" label="Тип визы" component={InputField} />
+                  <Field name="clientArrival.visaType" label="Тип визы" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="visaNumber" label="Номер визы" component={InputField} />
+                  <Field name="clientArrival.visaNumber" label="Номер визы" component={InputField} />
                 </Col>
               </Row>
               <Row gutter={24}>
                 <Col span={8}>
-                  <Field name="visaIssuedBy" label="Кем выдан виза" component={InputField} />
+                  <Field name="clientArrival.visaIssuedBy" label="Кем выдан виза" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="visaDateFrom" label="Срок визы с" component={DateField} />
+                  <Field name="clientArrival.visaDateFrom" label="Срок визы с" component={DateField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="visaDateTo" label="Срок визы по" component={DateField} />
+                  <Field name="clientArrival.visaDateTo" label="Срок визы по" component={DateField} />
                 </Col>
               </Row>
               <div style={{ textAlign: 'right' }}>
