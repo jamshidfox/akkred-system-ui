@@ -21,6 +21,7 @@ export const clientCreateAction = data => {
 }
 
 export const clientUpdateAction = (id, data) => {
+
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.CLIENT_UPDATE, id), data)
