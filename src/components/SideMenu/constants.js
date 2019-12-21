@@ -37,8 +37,8 @@ export default [
     icon: CreditCard,
   },
   {
-    name: 'Служба отеля',
-    url: '/',
+    name: 'Клиенты',
+    url: ROUTES.CLIENT_LIST_URL,
     icon: People,
   },
   {

@@ -19,12 +19,21 @@ export const HOTEL_UPDATE = `/${HOTEL}/%d/`
 export const ROOM = 'hotels/rooms'
 export const ROOM_LIST = `/${ROOM}/`
 export const ROOM_CREATE = `/${ROOM}/`
+export const ROOM_UPDATE = `/${ROOM}/%d/`
+export const ROOM_ITEM = `/${ROOM}/%d/`
 
 export const ROOM_CREATE_BULK = `/${ROOM}/bulk_create/`
 
 export const ROOM_TYPE = 'hotels/rooms_category'
 export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
 export const ROOM_TYPE_CREATE = `/${ROOM_TYPE}/`
+
+export const ROOM_FACILITY_TYPE = 'hotels/room_facility_type'
+export const ROOM_FACILITY_TYPE_LIST = `/${ROOM_FACILITY_TYPE}/`
+
+export const COUNTRY_LIST = 'hotels/country'
+export const FACILITIES = 'hotels/facilities'
+export const FACILITIES_LIST = `/${FACILITIES}/`
 
 export const HOTEL_TYPE = 'hotels/hotel_type'
 export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`
@@ -35,7 +44,13 @@ export const HOTEL_SERVICE_TYPE_LIST = `/${HOTEL_SERVICE_TYPE}/`
 export const HOTEL_SERVICE = 'hotels/hotel_services'
 export const HOTEL_SERVICE_LIST = `/${HOTEL_SERVICE}/`
 
-const CLIENT = 'clients'
+const CLIENTS = 'clients'
 
-export const RESERVATION = `${CLIENT}/reservation`
+export const RESERVATION = `${CLIENTS}/reservation`
 export const RESERVATION_CREATE = `/${RESERVATION}/`
+
+export const CLIENT = 'clients/client'
+export const CLIENT_LIST = `/${CLIENT}/`
+export const CLIENT_CREATE = `/${CLIENT}/`
+export const CLIENT_UPDATE = `/${CLIENT}/%d/`
+export const CLIENT_ITEM = `/${CLIENT}/%d/`

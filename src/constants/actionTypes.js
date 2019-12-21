@@ -23,6 +23,12 @@ export const ROOM_TYPE_LIST = 'ROOM_TYPE_LIST'
 export const ROOM_LIST = 'ROOM_LIST'
 export const ROOM_ITEM = 'ROOM_ITEM'
 export const ROOM_CREATE = 'ROOM_CREATE'
+export const ROOM_UPDATE = 'ROOM_UPDATE'
+
+export const CLIENT_LIST = 'CLIENT_LIST'
+export const CLIENT_ITEM = 'CLIENT_ITEM'
+export const CLIENT_CREATE = 'CLIENT_CREATE'
+export const CLIENT_UPDATE = 'CLIENT_UPDATE'
 
 export const RESERVATION_LIST = 'RESERVATION_LIST'
 export const RESERVATION_UPDATE = 'RESERVATION_UPDATE'

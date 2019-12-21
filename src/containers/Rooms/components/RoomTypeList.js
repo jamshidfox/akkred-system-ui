@@ -3,6 +3,7 @@ import { prop, isEmpty, path } from 'ramda'
 import { sprintf } from 'sprintf-js'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
+import Scheduler from '../../../components/Scheduler'
 import { SETTING_ROOMS_LIST_URL } from '../../../constants/routes'
 import RoomCreateModal from './RoomCreateModal'
 

@@ -10,4 +10,14 @@ export const GENDER_LIST = [
   { id: 'female', name: 'женщина' }
 ]
 
+export const AGE_LIST = [
+  { id: 'young', name: 'ребенок' },
+  { id: 'grown', name: 'взрослый' }
+]
+
+export const CLIENT_LIST = [
+  { id: 'local', name: 'местный' },
+  { id: 'foreigner', name: 'иностранец' }
+]
+
 export const GENDER = arrayObjToObj(GENDER_LIST)
