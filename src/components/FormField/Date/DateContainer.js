@@ -36,7 +36,7 @@ export default styled('div')`
   }
   & .SingleDatePickerInput_calendarIcon {
     position: absolute;
-    z-index: 1;
+    z-index: 1; 
     top: 50%;
     margin-left: 5px;
     transform: translateY(-50%);
@@ -46,6 +46,10 @@ export default styled('div')`
     border-radius: 50%;
     }
   }
+  
+  & .SingleDatePicker_picker {
+        z-index: 2
+    }
   
   & .DateInput__disabled {
     background: transparent

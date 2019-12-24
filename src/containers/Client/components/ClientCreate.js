@@ -12,7 +12,7 @@ import {
   UniversalSearchField,
   UniversalStaticSelectField,
   DateField,
-    NoopFields,
+  NoopFields,
 } from '../../../components/FormField'
 import { GENDER_LIST, CLIENT_LIST, AGE_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
@@ -57,7 +57,6 @@ const ReservationCreate = props => {
         initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit, ...formikProps }) => {
-
           return (
             <form onSubmit={handleSubmit}>
               <NoopFields names={['docId', 'arrId']} />

@@ -73,6 +73,7 @@ const DateField = props => {
       <DateContainer height={height}>
         <SingleDatePicker
           {...defaultProps}
+
           id={input.name}
           date={date}
           focused={focusedInput}

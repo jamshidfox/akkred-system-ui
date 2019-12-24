@@ -54,3 +54,10 @@ export const CLIENT_LIST = `/${CLIENT}/`
 export const CLIENT_CREATE = `/${CLIENT}/`
 export const CLIENT_UPDATE = `/${CLIENT}/%d/`
 export const CLIENT_ITEM = `/${CLIENT}/%d/`
+
+const FINANCE = 'finance'
+const RATES = `${FINANCE}/rates`
+export const RATES_LIST = `/${RATES}/`
+export const RATES_ITEM = `/${RATES}/%d`
+export const RATES_CREATE = `/${RATES}/`
+export const RATES_UPDATE = `/${RATES}/%d`

@@ -38,3 +38,11 @@ export const CLIENT_CREATE_URL = `/${CLIENT}/create`
 export const CLIENT_UPDATE_URL = `/${CLIENT}/%d`
 export const CLIENT_UPDATE_PATH = `/${CLIENT}/${ID}/`
 
+const FINANCE = 'finance'
+const RATES = `${FINANCE}/rates`
+export const RATES_LIST_URL = `/${RATES}/`
+export const RATES_ITEM_URL = `/${RATES}/%d`
+export const RATES_ITEM_PATH = `/${RATES}/${ID}/`
+export const RATES_CREATE_URL = `/${RATES}/create`
+export const RATES_UPDATE_URL = `/${RATES}/%d`
+export const RATES_UPDATE_PATH = `/${RATES}/${ID}/`

@@ -8,6 +8,9 @@ const Row = styled(RowUI)`
   padding: 15px 0;
   border-bottom: 1px #efefef solid;
   cursor: pointer;
+  :hover {
+    background: #efefef
+  }
 `
 const TableRow = props => {
   const { children, header, to, ...rest } = props

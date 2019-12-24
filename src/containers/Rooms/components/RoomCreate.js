@@ -16,7 +16,6 @@ import * as API from '../../../constants/api'
 import FacilitiesDialog from './FacilitiesDialog'
 
 export const fields = [
-  'roomCategory',
   'detail',
   'floor',
   'area',
@@ -60,14 +59,6 @@ const RoomCreate = props => {
             <form onSubmit={handleSubmit}>
 
               <Row gutter={24}>
-                <Col span={8}>
-                  <Field
-                    name="roomCategory"
-                    label="Тип номера"
-                    params={{ children_only: true, parent }}
-                    component={UniversalSearchField}
-                    api={API.ROOM_TYPE_LIST} />
-                </Col>
                 <Col span={8}>
                   <Field name="detail" label="Описание" component={InputField} />
                 </Col>

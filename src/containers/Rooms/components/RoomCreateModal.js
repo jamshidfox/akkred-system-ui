@@ -42,6 +42,7 @@ const RoomCreateModal = props => {
                   name="roomCategory"
                   label="Подкатегория"
                   params={{ parent }}
+                  parent={parent}
                   disabled={!parent}
                   api={ROUTES.ROOM_TYPE_LIST}
                   component={UniversalSearchField} />

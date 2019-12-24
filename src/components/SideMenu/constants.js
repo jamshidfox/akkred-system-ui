@@ -32,9 +32,19 @@ export default [
     icon: List,
   },
   {
-    name: 'Расчеты',
+    name: 'Тарифы и цены',
     url: '/',
     icon: CreditCard,
+    children: [
+      {
+        name: 'Тарифы и цены номерного фонда',
+        url: ROUTES.RATES_LIST_URL,
+      },
+      {
+        name: 'Тарифы и цены сервисов',
+        url: ROUTES.SETTING_PRICE_LIST_URL,
+      }
+    ]
   },
   {
     name: 'Клиенты',
@@ -64,10 +74,10 @@ export default [
         name: 'Номерной фонд',
         url: ROUTES.SETTING_ROOMS_TYPE_LIST,
       },
-      {
-        name: 'Тарифы и цены',
-        url: ROUTES.SETTING_PRICE_LIST_URL,
-      }
+      // {
+      //   name: 'Тарифы и цены',
+      //   url: ROUTES.SETTING_PRICE_LIST_URL,
+      // }
     ]
   }
 ]
