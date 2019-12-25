@@ -1,8 +1,8 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useCreateModal } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
-import {useDispatch} from 'react-redux'
 import { RoomTypeList, fields } from '../components'
 import { roomCreateAction, roomTypeFetchList } from '../actions'
 

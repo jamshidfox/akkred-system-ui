@@ -1,21 +1,19 @@
 import React from 'react'
 import * as STATE from '../../../constants/stateNames'
-import { useCreate } from '../../../hooks'
+import { useCreate, useCreateModal } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
 
 import { ReservationCreate, fields } from '../components'
 import { reservationCreateAction } from '../actions'
+import { getRoomCreateParams, serializer } from '../../Client/containers/ClientCreateContainer'
 
-const getRoomCreateParams = () => ({
-  stateName: STATE.RESERVATION_CREATE,
-  action: reservationCreateAction,
-  serializer: getSerializedData(fields),
-})
 const ClientListContainer = props => {
-  const create = useCreate(getRoomCreateParams())
+
+  const clientCreateModal = useCreateModal(getRoomCreateParams())
   return (
     <ReservationCreate
-      {...create}
+      onSubmit={() => null}
+      clientCreateModal={clientCreateModal}
     />
   )
 }

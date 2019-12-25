@@ -1,11 +1,17 @@
 import React from 'react'
 import { prop, isEmpty, path } from 'ramda'
 import { sprintf } from 'sprintf-js'
+import styled from 'styled-components'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import Scheduler from '../../../components/Scheduler'
 import { SETTING_ROOMS_LIST_URL } from '../../../constants/routes'
+import { Box } from '../../../components/StyledElems'
 import RoomCreateModal from './RoomCreateModal'
+
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
 
 const RoomTypeList = props => {
   const { list, createModal } = props
@@ -13,7 +19,7 @@ const RoomTypeList = props => {
   const data = prop('results', list)
 
   return (
-    <>
+    <BoxUI>
       <PageTitle name="Номерной фонд" >
         <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
       </PageTitle>
@@ -35,7 +41,7 @@ const RoomTypeList = props => {
 
       </Table>
       <RoomCreateModal {...createModal} />
-    </>
+    </BoxUI>
   )
 }
 

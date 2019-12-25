@@ -14,6 +14,7 @@ import {
 import { GENDER_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
 import FacilitiesDialog from './FacilitiesDialog'
+import {Box} from "../../../components/StyledElems";
 
 export const fields = [
   'detail',
@@ -40,10 +41,15 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
+
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
+
 const RoomCreate = props => {
   const { onSubmit, initialValues, serviceModal, parent } = props
   return (
-    <>
+    <BoxUI>
       <PageTitle name="Общая информация" />
       <Form
         keepDirtyOnReinitialize={true}
@@ -104,7 +110,7 @@ const RoomCreate = props => {
           )
         }}
       />
-    </>
+    </BoxUI>
   )
 }
 RoomCreate.propTypes = {

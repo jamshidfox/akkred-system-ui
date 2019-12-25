@@ -12,7 +12,6 @@ const serializer = (val) => {
   const fromDate = prop('fromDate', val)
   const fromDateTime = ''.concat(fromDate, ' ', fromTime)
 
-
   const toTime = prop('toTime', val)
   const toDate = prop('toDate', val)
   const toDateTime = ''.concat(toDate, ' ', toTime)
