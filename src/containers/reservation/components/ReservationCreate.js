@@ -10,7 +10,7 @@ import {
 import { Box } from '../../../components/StyledElems'
 import ReservationForm from './ReservationForm'
 import ClientForm from './ClientForm'
-
+import ReservationClientList from './ReservationClientList'
 export const fields = [
 ]
 
@@ -43,6 +43,7 @@ const ReservationCreate = props => {
       />
       <BoxUI>
         <PageTitle name="Разместить гостя" />
+          <ReservationClientList/>
         <ClientForm {...clientCreateModal} />
       </BoxUI>
       <div style={{ textAlign: 'right' }}>

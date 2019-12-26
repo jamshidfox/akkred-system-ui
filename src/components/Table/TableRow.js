@@ -5,11 +5,13 @@ import styled from 'styled-components'
 import { Row as RowUI } from '../Grid'
 
 const Row = styled(RowUI)`
-  padding: 15px 0;
+  padding: 15px 10px;
+  margin: 0 -10px;
   border-bottom: 1px #efefef solid;
   cursor: pointer;
+  transition: all 300ms;
   :hover {
-    background: #efefef
+    background: #FAFAFB
   }
 `
 const TableRow = props => {

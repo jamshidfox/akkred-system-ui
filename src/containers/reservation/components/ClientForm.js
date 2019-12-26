@@ -36,7 +36,7 @@ const ClientForm = props => {
     <Modal onClose={onClose} open={open} width={'90%'}>
       <Form
         onSubmit={onSubmit}
-        render={({handleSubmit }) => {
+        render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
               <NoopFields names={['docId', 'arrId']} />
