@@ -7,17 +7,24 @@ import { MediumButton, PageTitle } from '../../../components/UI'
 import { CLIENT_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
+import styled from "styled-components";
+import {Box} from "../../../components/StyledElems";
 
 const style = {
   color: '#FFF',
   textDecoration: 'none'
 }
+
+
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
 const ClientList = props => {
   const { list } = props
 
   const data = prop('results', list)
   return (
-    <>
+    <BoxUI>
       <PageTitle name="Профили гостей" >
         <Link style={style} to={`/client/create`} ><MediumButton >добавить</MediumButton></Link>
       </PageTitle>
@@ -48,7 +55,7 @@ const ClientList = props => {
         ))}
 
       </Table>
-    </>
+    </BoxUI>
   )
 }
 

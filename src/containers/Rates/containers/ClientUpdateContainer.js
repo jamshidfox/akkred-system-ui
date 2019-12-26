@@ -13,6 +13,7 @@ const getClientItemParams = () => ({
 })
 
 const serializer = (val) => {
+
   const clientDocument = {
     id: prop('docId', val),
     document_type: path(['clientDocument', 'documentType'], val),
@@ -43,10 +44,13 @@ const serializer = (val) => {
 }
 
 const getInitialValues = (data) => {
+
   const clientDocumentS = prop('clientDocument', data)
   const clientArrivalS = prop('clientArrival', data)
   const docId = prop('id', clientDocumentS)
   const arrId = prop('id', clientArrivalS)
+  console.warn(docId)
+
 
   const clientDocument = {
     documentType: prop('documentType', clientDocumentS),

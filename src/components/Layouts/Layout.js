@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import SideMenu from '../SideMenu'
-import { DisplayFlex, Box } from '../StyledElems'
+import { DisplayFlex } from '../StyledElems'
 
 const Container = styled.div`
   padding: 24px;
@@ -11,18 +11,13 @@ const Content = styled.div`
   padding-left: 24px;
 `
 
-const BoxUI = styled(Box)`
-  padding: 25px;
-`
 const Layout = props => {
   return (
     <Container>
       <DisplayFlex>
         <SideMenu />
         <Content>
-          <BoxUI>
-            {props.children}
-          </BoxUI>
+          {props.children}
         </Content>
       </DisplayFlex>
     </Container>

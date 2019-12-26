@@ -14,6 +14,11 @@ export const CLIENT_UPDATE = 'clientUpdate'
 export const CLIENT_CREATE = 'clientCreate'
 export const CLIENT_ITEM = 'clientItem'
 
+export const RATES_LIST = 'ratesList'
+export const RATES_UPDATE = 'ratesUpdate'
+export const RATES_CREATE = 'ratesCreate'
+export const RATES_ITEM = 'ratesItem'
+
 export const RESERVATION_LIST = 'reservationList'
 export const RESERVATION_UPDATE = 'reservationUpdate'
 export const RESERVATION_CREATE = 'reservationCreate'

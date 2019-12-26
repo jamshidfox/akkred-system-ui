@@ -1,40 +1,21 @@
 import React from 'react'
-import { prop } from 'ramda'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import arrayMutators from 'final-form-arrays'
-import { PageTitle, MediumButton, InputLabel } from '../../../components/UI'
-
-import { Row as RowUI, Col } from '../../../components/Grid'
 import {
-  Form,
-  Field,
-  InputField,
-  UniversalSearchField,
-  UniversalStaticSelectField,
   DateField,
-  NoopFields
+  Field,
+  Form,
+  InputField,
+  NoopFields,
+  UniversalSearchField,
+  UniversalStaticSelectField
 } from '../../../components/FormField'
-import { GENDER_LIST, CLIENT_LIST, AGE_LIST } from '../../../constants/backend'
+import { Col, Row as RowUI } from '../../../components/Grid'
 import * as API from '../../../constants/api'
-import { Box } from '../../../components/StyledElems'
+import { AGE_LIST, CLIENT_LIST, GENDER_LIST } from '../../../constants/backend'
+import { MediumButton } from '../../../components/UI/Buttons'
+import { Modal } from '../../../components/UI'
 
-export const fields = [
-  'surname',
-  'name',
-  'fatherName',
-  'fromCountry',
-  'birthDate',
-  'gender',
-  'citizenship',
-  'phoneNumber',
-  'email',
-  'clientType',
-  'ageType'
-]
-
-const BoxUI = styled(Box)`
-  padding: 25px;
-`
 const Label = styled.div`
   margin-bottom: 16px;
   font-family: "Roboto", sans-serif;
@@ -49,18 +30,13 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ReservationCreate = props => {
-  const { onSubmit, initialValues } = props
-
+const ClientForm = props => {
+  const { values, clientCreateModal, onClose, open, onSubmit } = props
   return (
-    <BoxUI>
-      <PageTitle name="Профиль" />
+    <Modal onClose={onClose} open={open} width={'90%'}>
       <Form
-        keepDirtyOnReinitialize={true}
-        mutators={arrayMutators}
-        initialValues={initialValues}
         onSubmit={onSubmit}
-        render={({ handleSubmit, ...formikProps }) => {
+        render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
               <NoopFields names={['docId', 'arrId']} />
@@ -274,14 +250,17 @@ const ReservationCreate = props => {
                 </Col>
               </Row>
               <div style={{ textAlign: 'right' }}>
-                <MediumButton>Сохранить</MediumButton>
+                <MediumButton type="submit">Сохранить</MediumButton>
               </div>
             </form>
           )
         }}
       />
-    </BoxUI>
+    </Modal>
   )
 }
 
-export default ReservationCreate
+ClientForm.propTypes = {
+  values: PropTypes.object
+}
+export default ClientForm

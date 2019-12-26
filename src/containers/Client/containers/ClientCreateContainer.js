@@ -8,7 +8,7 @@ import { ClientCreate, fields } from '../components'
 import { clientCreateAction } from '../actions'
 import * as ROUTES from '../../../constants/routes'
 
-const serializer = (val) => {
+export const serializer = (val) => {
   const clientDocument = {
     document_type: path(['clientDocument', 'documentType'], val),
     series: path(['clientDocument', 'series'], val),
@@ -36,7 +36,7 @@ const serializer = (val) => {
   }
 }
 
-const getRoomCreateParams = () => ({
+export const getRoomCreateParams = () => ({
   stateName: STATE.CLIENT_CREATE,
   action: clientCreateAction,
   serializer: serializer,

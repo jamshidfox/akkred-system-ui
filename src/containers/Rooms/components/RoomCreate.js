@@ -14,9 +14,9 @@ import {
 import { GENDER_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
 import FacilitiesDialog from './FacilitiesDialog'
+import {Box} from "../../../components/StyledElems";
 
 export const fields = [
-  'roomCategory',
   'detail',
   'floor',
   'area',
@@ -41,10 +41,15 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
+
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
+
 const RoomCreate = props => {
   const { onSubmit, initialValues, serviceModal, parent } = props
   return (
-    <>
+    <BoxUI>
       <PageTitle name="Общая информация" />
       <Form
         keepDirtyOnReinitialize={true}
@@ -60,14 +65,6 @@ const RoomCreate = props => {
             <form onSubmit={handleSubmit}>
 
               <Row gutter={24}>
-                <Col span={8}>
-                  <Field
-                    name="roomCategory"
-                    label="Тип номера"
-                    params={{ children_only: true, parent }}
-                    component={UniversalSearchField}
-                    api={API.ROOM_TYPE_LIST} />
-                </Col>
                 <Col span={8}>
                   <Field name="detail" label="Описание" component={InputField} />
                 </Col>
@@ -113,7 +110,7 @@ const RoomCreate = props => {
           )
         }}
       />
-    </>
+    </BoxUI>
   )
 }
 RoomCreate.propTypes = {

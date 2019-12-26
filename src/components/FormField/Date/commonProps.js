@@ -6,6 +6,7 @@ import displayFormat from './displayFormat'
 
 export default {
   // input related props
+  isOutsideRange: () => false,
   block: true,
   noBorder: true,
   customInputIcon,
