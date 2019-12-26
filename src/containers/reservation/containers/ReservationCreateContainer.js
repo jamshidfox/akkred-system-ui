@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 // import * as STATE from '../../../constants/stateNames'
 // import { useCreate } from '../../../hooks'
 // import { getSerializedData } from '../../../utils/get'
@@ -21,3 +21,5 @@
 // }
 //
 // export default ClientListContainer
+
+export default () => <div>Not found</div>
