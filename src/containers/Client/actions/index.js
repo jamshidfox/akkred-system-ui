@@ -21,7 +21,6 @@ export const clientCreateAction = data => {
 }
 
 export const clientUpdateAction = (id, data) => {
-
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.CLIENT_UPDATE, id), data)
@@ -35,10 +34,10 @@ export const clientUpdateAction = (id, data) => {
   }
 }
 
-export const clientFetchList = data => {
+export const clientFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.CLIENT_LIST)
+      .get(API.CLIENT_LIST, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

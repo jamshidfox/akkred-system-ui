@@ -1,5 +1,5 @@
 import React from 'react'
-import { prop } from 'ramda'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import { PageTitle, MediumButton } from '../../../components/UI'
@@ -11,6 +11,7 @@ import { Box } from '../../../components/StyledElems'
 import ReservationForm from './ReservationForm'
 import ClientForm from './ClientForm'
 import ReservationClientList from './ReservationClientList'
+
 export const fields = [
 ]
 
@@ -22,7 +23,11 @@ const BoxUI = styled(Box)`
 export const RESERVATION = 'reservation'
 export const PLACEMENT = 'placement'
 const ReservationCreate = props => {
-  const { onSubmit, clientCreateModal } = props
+  const {
+    onSubmit,
+    clientCreateModal,
+    clientList
+  } = props
   return (
     <>
       <Form
@@ -36,23 +41,30 @@ const ReservationCreate = props => {
                 <PageTitle name="Создать бронь" />
                 <ReservationForm values={values} />
               </BoxUI>
-
             </form>
           )
         }}
       />
       <BoxUI>
         <PageTitle name="Разместить гостя" />
-          <ReservationClientList/>
+        <ReservationClientList
+          onOpen={clientCreateModal.onOpen}
+          {...clientList}
+        />
         <ClientForm {...clientCreateModal} />
       </BoxUI>
       <div style={{ textAlign: 'right' }}>
-        <MediumButton onClick={clientCreateModal.onOpen} type="button">Add Clent</MediumButton>
         <MediumButton>Сохранить</MediumButton>
       </div>
 
     </>
   )
+}
+
+ReservationCreate.propTypes = {
+  onSubmit: PropTypes.func,
+  clientCreateModal: PropTypes.object,
+  clientList: PropTypes.object
 }
 
 export default ReservationCreate

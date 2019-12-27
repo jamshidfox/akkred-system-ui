@@ -42,7 +42,6 @@ export default params => {
   const onSubmit = values => {
     const serializeValues = serializer(values)
     return dispatch(action(serializeValues))
-      .then(onClose)
       .then(data => {
         if (onSuccess) onSuccess(data, values)
       })

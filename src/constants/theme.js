@@ -2,6 +2,12 @@ export default {
   transition: 'all 300ms',
   color: {
     disabled: '#8F9BB3',
+    secondary: {
+      default: '#2E3A59',
+      hover: '#2E3A59',
+      active: '#2E3A59',
+      focus: '#2E3A59',
+    },
     basic: {
       default: '#8F9BB3',
       hover: '#598BFF',
