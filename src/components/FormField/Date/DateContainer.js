@@ -4,7 +4,7 @@ export default styled('div')`
   & .DateInput_input {
     background-color: ${props => props.theme.input.background};
     border-radius: 8px;
-    border-bottom: 0;
+    border: ${props => props.theme.input.border}
     font-family: inherit;
     font-size: 15px;
     font-weight: 400;

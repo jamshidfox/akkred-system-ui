@@ -4,13 +4,13 @@ import { Col } from '../Grid'
 import Label from './Label'
 
 const TableCol = props => {
-  const { span, children, header } = props
+  const { span, children, header, ...rest } = props
   if (header) {
     return (
-      <Col span={span}><Label>{children}</Label></Col>
+      <Col span={span} {...rest}><Label>{children}</Label></Col>
     )
   }
-  return <Col span={span}>{children}</Col>
+  return <Col span={span} {...rest}>{children}</Col>
 }
 
 TableCol.propTypes = {

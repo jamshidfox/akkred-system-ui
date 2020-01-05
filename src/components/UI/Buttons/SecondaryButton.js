@@ -5,18 +5,18 @@ cursor: pointer;
   border-radius: ${props => props.theme.borderRadius};
   text-transform: uppercase;
   font-weight: bold;
-  color: ${props => props.theme.color.secondary.default};
+  color: ${props => props.theme.color.primary.default};
   outline: none;
   border: none;
   transition: background-color 200ms;
   :focus {
- //   background: ${({ status = 'secondary', theme }) => theme.color.secondary.focus};
+    background: ${({ theme }) => theme.color.secondary.focus};
   }
   :hover {
-//    background: ${({ status = 'secondary', theme }) => theme.color[status].hover};
+    background: ${({ theme }) => theme.color.secondary.hover};
   }
   :active {
-//    background: ${({ status = 'secondary', theme }) => theme.color[status].active};
+    background: ${({ theme }) => theme.color.secondary.active};
   }
   :disabled {
     background: rgba(143, 155, 179, 0.16);

@@ -19,10 +19,11 @@ export const getPayloadFromError = compose(
 const errorInterceptors = curry((dispatch, error) => {
   const status = path(['response', 'status'], error)
 
-  if (equals(UNAUTHORIZED, status && history && dispatch)) {
+  if (equals(UNAUTHORIZED, status) && history && dispatch) {
     console.warn('AXIOS ERROR CLEAR')
     dispatch({ type: `${actionTypes.LOGIN}_CLEAR` })
     dispatch({ type: `${actionTypes.USER_INFO}_CLEAR` })
+    window.location.pathname = 'login'
     expireDocumentCookie()
   }
   return Promise.reject(error)

@@ -31,7 +31,7 @@ export const ROOM_TYPE_CREATE = `/${ROOM_TYPE}/`
 export const ROOM_FACILITY_TYPE = 'hotels/room_facility_type'
 export const ROOM_FACILITY_TYPE_LIST = `/${ROOM_FACILITY_TYPE}/`
 
-export const COUNTRY_LIST = 'hotels/country'
+export const COUNTRY_LIST = 'hotels/country/'
 export const FACILITIES = 'hotels/facilities'
 export const FACILITIES_LIST = `/${FACILITIES}/`
 
@@ -54,6 +54,7 @@ export const CLIENT_LIST = `/${CLIENT}/`
 export const CLIENT_CREATE = `/${CLIENT}/`
 export const CLIENT_UPDATE = `/${CLIENT}/%d/`
 export const CLIENT_ITEM = `/${CLIENT}/%d/`
+export const CLIENT_ITEM_DOCS = `/${CLIENT}/%d/docs/`
 
 const FINANCE = 'finance'
 const RATES = `${FINANCE}/rates`

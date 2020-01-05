@@ -5,6 +5,7 @@ const MAX_COL_SIZE = 24
 
 const Col = styled.div`
   flex-grow: 1;
+  align-self: ${props => props.align};
   ${props =>
     props.span &&
     css`

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 export const BaseButton = styled.button`
-cursor: pointer;
+  cursor: pointer;
   border-radius: ${props => props.theme.borderRadius};
   background: ${({ status = 'primary', theme }) => theme.color[status].default};
   text-transform: uppercase;
@@ -10,6 +10,7 @@ cursor: pointer;
   color: #fff;
   outline: none;
   transition: background-color 200ms;
+  float: ${props => props.float};
   :focus {
     background: ${({ status = 'primary', theme }) => theme.color[status].focus};
   }
@@ -29,7 +30,7 @@ cursor: pointer;
 `
 
 BaseButton.propTypes = {
-  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning'])
+  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning', 'transparent'])
 }
 
 export const GiantButton = styled(BaseButton)`
@@ -40,7 +41,7 @@ export const GiantButton = styled(BaseButton)`
 `
 
 GiantButton.propTypes = {
-  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning'])
+  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning', 'transparent'])
 }
 
 export const LargeButton = styled(BaseButton)`
@@ -64,7 +65,7 @@ export const SmallButton = styled(BaseButton)`
   line-height: ${props => props.theme.lineHeight.small};
 `
 SmallButton.propTypes = {
-  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning'])
+  status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning', 'transparent'])
 }
 export const TinyButton = styled(BaseButton)`
   padding: 0 12px;

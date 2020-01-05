@@ -30,8 +30,12 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ClientForm = props => {
-  const { values, clientCreateModal, onClose, open, onSubmit } = props
+const ClientCreateDialog = props => {
+  const {
+    onClose,
+    open,
+    onSubmit
+  } = props
   return (
     <Modal onClose={onClose} open={open} width={'90%'}>
       <Form
@@ -260,7 +264,10 @@ const ClientForm = props => {
   )
 }
 
-ClientForm.propTypes = {
-  values: PropTypes.object
+ClientCreateDialog.propTypes = {
+  values: PropTypes.object,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
+  onSubmit: PropTypes.func
 }
-export default ClientForm
+export default ClientCreateDialog

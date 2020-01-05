@@ -20,6 +20,20 @@ export const clientCreateAction = data => {
   }
 }
 
+export const clientExistingAction = ({ id, ...data }) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(sprintf(API.CLIENT_ITEM_DOCS, id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.CLIENT_CREATE
+    })
+  }
+}
+
 export const clientUpdateAction = (id, data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })

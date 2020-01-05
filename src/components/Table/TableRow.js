@@ -8,20 +8,20 @@ const Row = styled(RowUI)`
   padding: 15px 10px;
   margin: 0 -10px;
   border-bottom: 1px #efefef solid;
-  cursor: pointer;
+  cursor: ${props => props.header ? 'auto' : 'pointer'};
   transition: all 300ms;
   :hover {
-    background: #FAFAFB
+    background: ${props => props.header ? 'unset' : '#FAFAFB'}
   }
 `
 const TableRow = props => {
-  const { children, header, to, ...rest } = props
+  const { children, header, to, align, ...rest } = props
 
   const history = useHistory()
   const onRoute = () => to && history.push(to)
 
-  return <Row onClick={onRoute} {...rest} >
-    {React.Children.map(children, (child) => React.cloneElement(child, { header }))}
+  return <Row header={header} onClick={onRoute} {...rest} >
+    {React.Children.map(children, (child) => React.cloneElement(child, { header, align }))}
   </Row>
 }
 
@@ -29,6 +29,7 @@ TableRow.propTypes = {
   gutter: PropTypes.number,
   children: PropTypes.node,
   header: PropTypes.bool,
+  align: PropTypes.bool,
   to: PropTypes.string
 }
 

@@ -4,9 +4,9 @@ export default {
     disabled: '#8F9BB3',
     secondary: {
       default: '#2E3A59',
-      hover: '#2E3A59',
-      active: '#2E3A59',
-      focus: '#2E3A59',
+      hover: '#EFEFEF',
+      active: 'transparent',
+      focus: '#EFEFED',
     },
     basic: {
       default: '#8F9BB3',
@@ -22,6 +22,10 @@ export default {
     },
     success: {
       default: '#00E096'
+    },
+    transparent: {
+      default: 'transparent',
+      hover: '#efefef'
     },
     info: { default: '#0095FF' },
     warning: { default: '#FFAA00' },

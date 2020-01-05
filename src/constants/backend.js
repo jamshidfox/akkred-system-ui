@@ -21,4 +21,7 @@ export const CLIENT_LIST = [
   { id: 'local', name: 'местный' },
   { id: 'foreigner', name: 'иностранец' }
 ]
-
+export const SERVICE_FREQ = [
+  { id: 'vip', name: 'VIP' },
+  { id: 'simple', name: 'SIMPLE' }
+]
