@@ -1,5 +1,5 @@
 import React from 'react'
-import { path, prop } from 'ramda'
+import { prop } from 'ramda'
 import * as STATE from '../../../constants/stateNames'
 import { useCreate } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
@@ -26,7 +26,6 @@ const getRatesCreateParams = () => ({
   stateName: STATE.RATES_CREATE,
   action: ratesCreateAction,
   serializer: serializer
-  // redirectUrl: ROUTES.RATES_LIST_URL
 })
 const RatesCreateContainer = props => {
   const create = useCreate(getRatesCreateParams())

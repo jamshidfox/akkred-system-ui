@@ -39,11 +39,9 @@ const RatesList = props => {
             <TableCol span={5} >{rates.fromDate}</TableCol>
             <TableCol span={5} >{rates.toDate}</TableCol>
             <TableCol span={1}>
-              {/*<Link style={style} to={sprintf(RATES_UPDATE_URL, rates.id)} ><img src={Edit} alt="Edit" /></Link>*/}
-              <Link style={style} to={''} ><img src={Edit} alt="Edit" /></Link>
+              <Link style={style} to={sprintf(RATES_UPDATE_URL, rates.id)} ><img src={Edit} alt="Edit" /></Link>
             </TableCol>
             <TableCol span={1}>
-              {/*<Link style={style} to={sprintf(RATES_UPDATE_URL, rates.id)} ><img src={Trash} alt="Edit" /></Link>*/}
               <Link style={style} to={''} ><img src={Trash} alt="Edit" /></Link>
             </TableCol>
           </TableRow>

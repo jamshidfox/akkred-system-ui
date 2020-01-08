@@ -9,12 +9,14 @@ import rooms from './Rooms'
 import reservation from './reservation'
 import client from './Client'
 import rates from './Rates'
+import services from './Services'
 
 const tester = store => [
   ...reservation(),
   ...rooms(),
   ...client(),
   ...rates(),
+  ...services(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,

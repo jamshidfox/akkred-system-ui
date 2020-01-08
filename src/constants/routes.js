@@ -46,3 +46,11 @@ export const RATES_ITEM_PATH = `/${RATES}/${ID}/`
 export const RATES_CREATE_URL = `/${RATES}/create`
 export const RATES_UPDATE_URL = `/${RATES}/%d`
 export const RATES_UPDATE_PATH = `/${RATES}/${ID}/`
+
+const SERVICES_PRICE = `${FINANCE}/price`
+export const SERVICES_PRICE_LIST_URL = `/${SERVICES_PRICE}/`
+export const SERVICES_PRICE_ITEM_URL = `/${SERVICES_PRICE}/%d`
+export const SERVICES_PRICE_ITEM_PATH = `/${SERVICES_PRICE}/${ID}/`
+export const SERVICES_PRICE_CREATE_URL = `/${SERVICES_PRICE}/create`
+export const SERVICES_PRICE_UPDATE_URL = `/${SERVICES_PRICE}/%d`
+export const SERVICES_PRICE_UPDATE_PATH = `/${SERVICES_PRICE}/${ID}/`

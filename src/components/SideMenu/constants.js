@@ -42,7 +42,7 @@ export default [
       },
       {
         name: 'Тарифы и цены сервисов',
-        url: ROUTES.SETTING_PRICE_LIST_URL,
+        url: ROUTES.SERVICES_PRICE_LIST_URL,
       }
     ]
   },

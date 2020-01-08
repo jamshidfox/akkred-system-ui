@@ -1,8 +1,9 @@
 import React from 'react'
-import { path, prop } from 'ramda'
+import { path } from 'ramda'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
-import { PageTitle, MediumButton, InputLabel } from '../../../components/UI'
+import PropTypes from 'prop-types'
+import { PageTitle, MediumButton } from '../../../components/UI'
 import * as ROUTES from '../../../constants/api'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
@@ -38,7 +39,7 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ReservationCreate = props => {
-  const { onSubmit } = props
+  const { onSubmit, initialValues } = props
 
   return (
     <>
@@ -46,6 +47,7 @@ const ReservationCreate = props => {
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
+        initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit, values, ...formikProps }) => {
           const parent = path(['category', 'id'], values)
@@ -128,6 +130,10 @@ const ReservationCreate = props => {
       />
     </>
   )
+}
+ReservationCreate.propTypes = {
+  onSubmit: PropTypes.func,
+  initialValues: PropTypes.object,
 }
 
 export default ReservationCreate

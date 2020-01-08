@@ -3,7 +3,7 @@ import Layouts from '../../components/Layouts/Layout'
 
 import RatesContainer from './containers/RatesCreateContainer'
 import RatesListContainer from './containers/RatesListContainer'
-// import ClientUpdateContainer from './containers/ClientUpdateContainer'
+import RatesUpdateContainer from './containers/RatesUpdateContainer'
 
 export default () => [
   {
@@ -11,12 +11,12 @@ export default () => [
     layout: Layouts,
     component: RatesContainer,
   },
-  // {
-  //   exact: true,
-  //   path: ROUTES.CLIENT_CREATE_URL,
-  //   layout: Layouts,
-  //   component: ClientCreateContainer
-  // },
+  {
+    exact: true,
+    path: ROUTES.RATES_UPDATE_PATH,
+    layout: Layouts,
+    component: RatesUpdateContainer
+  },
   {
     exact: true,
     path: ROUTES.RATES_LIST_URL,
