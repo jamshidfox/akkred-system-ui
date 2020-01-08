@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-export const BaseButton = styled.button`
+export const BaseButton = styled.button.attrs(props => ({
+  type: props.type || 'button',
+}))`
   cursor: pointer;
   border-radius: ${props => props.theme.borderRadius};
   background: ${({ status = 'primary', theme }) => theme.color[status].default};

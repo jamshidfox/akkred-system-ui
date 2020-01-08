@@ -9,13 +9,13 @@ import {
   NoopFields,
   UniversalSearchField,
   UniversalStaticSelectField
-} from '../../../components/FormField'
-import { Col, Row as RowUI } from '../../../components/Grid'
-import { FieldWrapper } from '../../../components/StyledElems'
-import * as API from '../../../constants/api'
-import { SERVICE_FREQ } from '../../../constants/backend'
-import { MediumButton } from '../../../components/UI/Buttons'
-import { Modal } from '../../../components/UI'
+} from '../../../../components/FormField'
+import { Col, Row as RowUI } from '../../../../components/Grid'
+import { FieldWrapper } from '../../../../components/StyledElems'
+import * as API from '../../../../constants/api'
+import { SERVICE_FREQ } from '../../../../constants/backend'
+import { MediumButton } from '../../../../components/UI/Buttons'
+import { Modal } from '../../../../components/UI'
 
 const Label = styled.div`
   margin-bottom: 16px;

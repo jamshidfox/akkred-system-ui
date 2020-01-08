@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export default styled('div')`
   & .DateInput_input {
     background-color: ${props => props.theme.input.background};
-    border-radius: 8px;
+    border-radius: ${props => props.theme.borderRadius};
     border: ${props => props.theme.input.border}
     font-family: inherit;
     font-size: 15px;

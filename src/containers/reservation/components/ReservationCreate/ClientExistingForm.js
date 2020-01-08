@@ -3,10 +3,10 @@ import { Field } from 'react-final-form'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { path, prop } from 'ramda'
-import { DateField, InputField, NoopFields, UniversalSearchField } from '../../../components/FormField'
-import * as API from '../../../constants/api'
-import { Col, Row as RowUI } from '../../../components/Grid'
-import { MediumButton } from '../../../components/UI/Buttons'
+import { DateField, InputField, NoopFields, UniversalSearchField } from '../../../../components/FormField'
+import * as API from '../../../../constants/api'
+import { Col, Row as RowUI } from '../../../../components/Grid'
+import { MediumButton } from '../../../../components/UI/Buttons'
 
 const Row = styled(RowUI)`
   margin-bottom: 40px;

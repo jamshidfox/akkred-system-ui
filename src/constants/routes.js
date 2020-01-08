@@ -46,3 +46,7 @@ export const RATES_ITEM_PATH = `/${RATES}/${ID}/`
 export const RATES_CREATE_URL = `/${RATES}/create`
 export const RATES_UPDATE_URL = `/${RATES}/%d`
 export const RATES_UPDATE_PATH = `/${RATES}/${ID}/`
+
+const PLACING = 'placing'
+export const PLACING_LIST_URL = `/${PLACING}/`
+export const PLACING_ITEM_URL = `/${PLACING}/%d`

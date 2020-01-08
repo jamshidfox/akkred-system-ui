@@ -22,6 +22,12 @@ export default [
     isActive: true
   },
   {
+    name: 'Служба приема',
+    url: ROUTES.PLACING_LIST_URL,
+    icon: Plus,
+    isActive: true
+  },
+  {
     name: 'Прием и размещение',
     url: '/',
     icon: Welcome,

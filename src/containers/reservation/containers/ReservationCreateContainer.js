@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {isEmpty, path, map, prop} from 'ramda'
+import { isEmpty, path, map, prop } from 'ramda'
 import * as STATE from '../../../constants/stateNames'
 import * as actionTypes from '../../../constants/actionTypes'
 import { useCreateModal, useCompareEffect, useClearStore, useModal } from '../../../hooks'
@@ -9,7 +9,9 @@ import { serializer } from '../../Client/containers/ClientCreateContainer'
 import { clientCreateAction, clientFetchList, clientExistingAction } from '../../Client/actions'
 import { getDataFromState } from '../../../utils/get'
 import toSnakeCase from '../../../utils/toSnakeCase'
+import * as ROUTES from '../../../constants/routes'
 import { reservationCreateAction } from '../actions'
+import {mapResponseToFormError} from '../../../utils/form'
 
 const EMPTY_ARR = []
 const clientExistingSerializer = (val) => {
@@ -90,14 +92,24 @@ const ClientListContainer = props => {
     serviceModal.onClose()
   }
 
-  const onCreateReservation = (discount) => {
+  const onCreateReservation = (values) => {
     const clientServices = map(mapServices, serviceList)
+    const fromTime = prop('fromTime', values)
+    const toTime = prop('toTime', values)
+    const enterDatetime = prop('enterDatetime', values)
+    const leaveDatetime = prop('leaveDatetime', values)
     const data = toSnakeCase({
       clients,
-      discount,
-      clientServices
+      clientServices,
+      ...values,
+      reserve_type: 'placement',
+      room: path(['room', 'id'], values),
+      enterDatetime: enterDatetime + 'T' + fromTime,
+      leaveDatetime: leaveDatetime + 'T' + toTime
     })
     dispatch(reservationCreateAction(data))
+      .then(() => props.history.push(ROUTES.PLACING_LIST_URL))
+      .catch(mapResponseToFormError)
   }
   return (
     <ReservationCreate

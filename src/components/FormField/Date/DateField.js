@@ -73,7 +73,6 @@ const DateField = props => {
       <DateContainer height={height}>
         <SingleDatePicker
           {...defaultProps}
-
           id={input.name}
           date={date}
           focused={focusedInput}
@@ -101,7 +100,7 @@ DateField.propTypes = {
 
 DateField.defaultProps = {
   dateFormat: DATE_FORMAT_ISO_8601,
-  height: 52
+  height: 48
 }
 
 export default DateField
