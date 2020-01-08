@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 const Box = styled.div`
   background: #ffffff;
   border-radius: ${props => props.theme.borderRadius};
+  padding: ${props => props.padding};
 `
 
 Box.propTypes = {

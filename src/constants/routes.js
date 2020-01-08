@@ -54,3 +54,7 @@ export const SERVICES_PRICE_ITEM_PATH = `/${SERVICES_PRICE}/${ID}/`
 export const SERVICES_PRICE_CREATE_URL = `/${SERVICES_PRICE}/create`
 export const SERVICES_PRICE_UPDATE_URL = `/${SERVICES_PRICE}/%d`
 export const SERVICES_PRICE_UPDATE_PATH = `/${SERVICES_PRICE}/${ID}/`
+
+const PLACING = 'placing'
+export const PLACING_LIST_URL = `/${PLACING}/`
+export const PLACING_ITEM_URL = `/${PLACING}/%d`

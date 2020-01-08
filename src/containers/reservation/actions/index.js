@@ -33,4 +33,17 @@ export const roomFetchList = data => {
     })
   }
 }
+export const placingFetchList = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.PLACING_LIST)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.PLACING_LIST
+    })
+  }
+}
 

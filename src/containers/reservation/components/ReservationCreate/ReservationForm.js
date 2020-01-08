@@ -1,30 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
 import { path } from 'ramda'
+import PropTypes from 'prop-types'
 import {
   DateField,
   Field,
+  DurationField,
   UniversalSearchField
-} from '../../../components/FormField'
-import * as API from '../../../constants/api'
-import { Row as RowUI, Col } from '../../../components/Grid'
-import PropTypes from 'prop-types'
+} from '../../../../components/FormField'
+import * as API from '../../../../constants/api'
+import { Row as RowUI, Col } from '../../../../components/Grid'
+
 const Row = styled(RowUI)`
     margin-bottom: 20px
 `
 
 const ReservationForm = props => {
   const { values } = props
+
   const parent = path(['parentCategory', 'id'], values)
   const roomCategory = path(['roomCategory', 'id'], values)
   return (
     <div>
-      <Row gutter={20}>
-        <Col span={12}>
-          <Field name="enterDatetime" component={DateField} />
+      <Row gutter={20} align={'flex-end'}>
+        <Col span={8}>
+          <Field label="заезд" name="enterDatetime" component={DateField} />
         </Col>
-        <Col span={12}>
-          <Field name="leaveDatetime" component={DateField} />
+        <Col span={4}>
+          <Field name="fromTime" component={DurationField} />
+        </Col>
+        <Col span={8}>
+          <Field label="выезд" name="leaveDatetime" component={DateField} />
+        </Col>
+        <Col span={4}>
+          <Field name="toTime" component={DurationField} />
         </Col>
       </Row>
       <Row gutter={20}>
@@ -55,8 +64,8 @@ const ReservationForm = props => {
             label={'номер'}
             disabled={!roomCategory}
             itemText={['roomNumber']}
-            params={{ roomCategory }}
-            parent={{ roomCategory }}
+            params={{ roomCategory, numberActive: true }}
+            parent={roomCategory}
             component={UniversalSearchField}
           />
         </Col>

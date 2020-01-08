@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const SecondaryBaseButton = styled.button`
+export const SecondaryBaseButton = styled.button.attrs(props => ({
+  type: props.type || 'button',
+}))`
 cursor: pointer;
   border-radius: ${props => props.theme.borderRadius};
   text-transform: uppercase;

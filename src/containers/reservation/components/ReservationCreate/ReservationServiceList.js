@@ -2,8 +2,8 @@ import React from 'react'
 import { isEmpty, path, prop } from 'ramda'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Table, TableCol, TableRow, TableColRight } from '../../../components/Table'
-import { MediumButton, SecondarySmallButton } from '../../../components/UI'
+import { Table, TableCol, TableRow, TableColRight } from '../../../../components/Table'
+import { MediumButton, SecondarySmallButton } from '../../../../components/UI'
 
 const AddBtn = styled(SecondarySmallButton)`
   padding-left: 0;

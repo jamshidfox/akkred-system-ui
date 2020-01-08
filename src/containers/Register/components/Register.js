@@ -58,7 +58,6 @@ const Register = props => {
   } = props
   const { isEdit } = editData
   const initialValues = prop('initialValues', hotelData)
-  console.warn(initialValues,'initialValues')
   return (
     <Box>
       <DisplayFlex justify={'space-between'} style={{ marginBottom: '34px' }}>

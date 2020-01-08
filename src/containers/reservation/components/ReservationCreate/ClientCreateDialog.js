@@ -9,12 +9,12 @@ import {
   NoopFields,
   UniversalSearchField,
   UniversalStaticSelectField
-} from '../../../components/FormField'
-import { Col, Row as RowUI } from '../../../components/Grid'
-import * as API from '../../../constants/api'
-import { AGE_LIST, CLIENT_LIST, GENDER_LIST } from '../../../constants/backend'
-import { MediumButton } from '../../../components/UI/Buttons'
-import { Modal } from '../../../components/UI'
+} from '../../../../components/FormField'
+import { Col, Row as RowUI } from '../../../../components/Grid'
+import * as API from '../../../../constants/api'
+import { AGE_LIST, CLIENT_LIST, GENDER_LIST } from '../../../../constants/backend'
+import { MediumButton } from '../../../../components/UI/Buttons'
+import { Modal } from '../../../../components/UI'
 
 const Label = styled.div`
   margin-bottom: 16px;

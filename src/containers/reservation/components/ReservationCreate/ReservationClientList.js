@@ -2,10 +2,10 @@ import React from 'react'
 import { isEmpty, path, prop } from 'ramda'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Table, TableCol, TableRow, TableColRight } from '../../../components/Table'
-import { InputLabel, SecondarySmallButton, MediumButton } from '../../../components/UI'
-import { DisplayFlex } from '../../../components/StyledElems'
-import { GENDER } from '../../../constants/backend'
+import { Table, TableCol, TableRow, TableColRight } from '../../../../components/Table'
+import { InputLabel, SecondarySmallButton, MediumButton } from '../../../../components/UI'
+import { DisplayFlex } from '../../../../components/StyledElems'
+import { GENDER } from '../../../../constants/backend'
 
 const ButtonRight = styled.div`
   text-align: right;
