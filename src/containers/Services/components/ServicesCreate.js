@@ -12,12 +12,17 @@ import {
   InputField,
   UniversalSearchField,
 } from '../../../components/FormField'
+import { Box } from '../../../components/StyledElems'
 
 export const fields = [
   'service',
   'price',
   'vipPrice',
 ]
+
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
 
 const Label = styled.div`
   margin-bottom: 16px;
@@ -37,7 +42,7 @@ const ReservationCreate = props => {
   const { onSubmit } = props
 
   return (
-    <>
+    <BoxUI>
       <PageTitle name="Тарифы и цены сервисов" />
       <Form
         keepDirtyOnReinitialize={true}
@@ -83,7 +88,7 @@ const ReservationCreate = props => {
           )
         }}
       />
-    </>
+    </BoxUI>
   )
 }
 

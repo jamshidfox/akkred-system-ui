@@ -2,12 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import { sprintf } from 'sprintf-js'
+import styled from 'styled-components'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { RATES_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
+import { Box } from '../../../components/StyledElems'
 
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
 const style = {
   color: '#FFF',
   textDecoration: 'none'
@@ -17,7 +22,7 @@ const RatesList = props => {
 
   const data = prop('results', list)
   return (
-    <>
+    <BoxUI>
       <PageTitle name="Тарифы и цены номерного фонда" >
         <Link style={style} to={`/finance/rates/create`} ><MediumButton >добавить</MediumButton></Link>
       </PageTitle>
@@ -48,7 +53,7 @@ const RatesList = props => {
         ))}
 
       </Table>
-    </>
+    </BoxUI>
   )
 }
 

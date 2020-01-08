@@ -5,6 +5,7 @@ import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import * as ROUTES from '../../../constants/api'
+import { Box } from '../../../components/StyledElems'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
@@ -24,6 +25,9 @@ export const fields = [
   'roomCategory',
 ]
 
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
 const Label = styled.div`
   margin-bottom: 16px;
   font-family: 'Roboto', sans-serif;
@@ -42,7 +46,7 @@ const ReservationCreate = props => {
   const { onSubmit, initialValues } = props
 
   return (
-    <>
+    <BoxUI>
       <PageTitle name="Тарифы и цены номерного фонда" />
       <Form
         keepDirtyOnReinitialize={true}
@@ -128,7 +132,7 @@ const ReservationCreate = props => {
           )
         }}
       />
-    </>
+    </BoxUI>
   )
 }
 ReservationCreate.propTypes = {
