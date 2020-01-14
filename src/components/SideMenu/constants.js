@@ -10,11 +10,11 @@ import Settings from '../../icons/Settings'
 import * as ROUTES from '../../constants/routes'
 
 export default [
-  {
-    name: 'Шахматка',
-    url: '/',
-    icon: Chess
-  },
+  // {
+  //   name: 'Шахматка',
+  //   url: '/',
+  //   icon: Chess
+  // },
   {
     name: 'Создать бронь',
     url: ROUTES.RESERVATION_CREATE_URL,
@@ -27,16 +27,16 @@ export default [
     icon: Plus,
     isActive: true
   },
-  {
-    name: 'Прием и размещение',
-    url: '/',
-    icon: Welcome,
-  },
-  {
-    name: 'Список броней',
-    url: '/',
-    icon: List,
-  },
+  // {
+  //   name: 'Прием и размещение',
+  //   url: '/',
+  //   icon: Welcome,
+  // },
+  // {
+  //   name: 'Список броней',
+  //   url: '/',
+  //   icon: List,
+  // },
   {
     name: 'Тарифы и цены',
     url: '/',
@@ -57,16 +57,16 @@ export default [
     url: ROUTES.CLIENT_LIST_URL,
     icon: People,
   },
-  {
-    name: 'Отчеты',
-    url: '/',
-    icon: BarChart,
-  },
-  {
-    name: 'Финансовая аналитика',
-    url: '/',
-    icon: TrendingUp,
-  },
+  // {
+  //   name: 'Отчеты',
+  //   url: '/',
+  //   icon: BarChart,
+  // },
+  // {
+  //   name: 'Финансовая аналитика',
+  //   url: '/',
+  //   icon: TrendingUp,
+  // },
   {
     name: 'Настройка',
     url: ROUTES.SETTINGS_HOTEL_URL,
@@ -79,6 +79,10 @@ export default [
       {
         name: 'Номерной фонд',
         url: ROUTES.SETTING_ROOMS_TYPE_LIST,
+      },
+      {
+        name: 'Сотрудники',
+        url: ROUTES.EMPLOYEES_LIST_URL,
       },
       // {
       //   name: 'Тарифы и цены',

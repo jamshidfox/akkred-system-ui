@@ -10,6 +10,7 @@ import reservation from './reservation'
 import client from './Client'
 import rates from './Rates'
 import services from './Services'
+import employees from './Employees'
 
 const tester = store => [
   ...reservation(),
@@ -17,6 +18,7 @@ const tester = store => [
   ...client(),
   ...rates(),
   ...services(),
+  ...employees(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,

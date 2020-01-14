@@ -15,6 +15,12 @@ export const SETTING_ROOMS_TYPE_LIST = `/${SETTINGS}/${SETTING_ROOMS}/`
 export const SETTING_ROOMS_LIST_URL = `/${SETTINGS}/${SETTING_ROOMS}/%d`
 export const SETTING_ROOMS_LIST_PATH = `/${SETTINGS}/${SETTING_ROOMS}/${ID}`
 
+export const EMPLOYEES = 'employees'
+export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`
+export const EMPLOYEES_LIST_URL = `/${SETTINGS}/${EMPLOYEES}/`
+export const EMPLOYEES_CREATE_URL = `/${SETTINGS}/${EMPLOYEES}/create`
+export const EMPLOYEES_LIST_PATH = `/${SETTINGS}/${EMPLOYEES}/${ID}`
+
 const RESERVATION = 'reservation'
 export const RESERVATION_LIST_URL = `/${RESERVATION}/`
 export const RESERVATION_ITEM_URL = `/${RESERVATION}/%d`
