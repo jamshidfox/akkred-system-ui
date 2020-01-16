@@ -1,46 +1,74 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { isEmpty, path, map } from 'ramda'
 import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
+import { isEmpty, path, map, prop, pipe, propEq, find } from 'ramda'
+import { useParams } from 'react-router-dom'
 import * as STATE from '../../../constants/stateNames'
+import { SERVICE_FREQ } from '../../../constants/backend'
 import * as actionTypes from '../../../constants/actionTypes'
 import {
   useCreateModal,
   useCompareEffect,
   useClearStore,
   useModal,
+  useFetchItem,
   useClientList
 } from '../../../hooks'
 import { ReservationCreate, GUEST } from '../components'
 import { clientFetchList } from '../../Client/actions'
-import { getDataFromState } from '../../../utils/get'
 import toSnakeCase from '../../../utils/toSnakeCase'
 import * as ROUTES from '../../../constants/routes'
-import { reservationCreateAction } from '../actions'
+import {
+  reservationUpdateAction,
+  placingItemFetch
+} from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
 import {
-  mapServices,
   getClientCreateParams,
-  getClientExistingParams
+  getClientExistingParams,
+  mapServices
 } from './utils'
 
 const EMPTY_ARR = []
 
-const ReservationCreateContainer = props => {
+const ReservationUpdateContainer = props => {
   useClearStore(actionTypes.CLIENT_LIST)
+  const clientList = useClientList()
+
+  const params = useParams()
   const dispatch = useDispatch()
   const [clients, setClients] = useState(EMPTY_ARR)
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
   const [tab, setTab] = useState(GUEST)
-
-  const onTabChange = (val) => {
-    setTab(val)
-  }
   const onClientAppend = (clientId) => {
     setClients([...clients, clientId])
   }
 
-  const clientList = useClientList()
+  const onComplete = ({ value }) => {
+    pipe(
+      prop('clients'),
+      map(prop('id')),
+      setClients
+    )(value)
+
+    pipe(
+      prop('clientServices'),
+      map(service => ({
+        ...service,
+        type: find(propEq('id', service.type), SERVICE_FREQ)
+      })),
+      setServiceList
+    )(value)
+  }
+  const detail = useFetchItem({
+    stateName: STATE.PLACING_ITEM,
+    action: placingItemFetch,
+    onComplete: onComplete
+  })
+
+  const onTabChange = (val) => {
+    setTab(val)
+  }
 
   useCompareEffect(() => {
     if (!isEmpty(clients)) {
@@ -71,12 +99,19 @@ const ReservationCreateContainer = props => {
       reserve_type: 'placement',
       room: path(['room', 'id'], values)
     })
-    dispatch(reservationCreateAction(data))
+    dispatch(reservationUpdateAction(params.id, data))
       .then(() => props.history.push(ROUTES.PLACING_LIST_URL))
       .catch(mapResponseToFormError)
   }
 
-
+  const initialValues = {
+    enterDatetime: path(['data', 'enterDatetime'], detail),
+    parentCategory: path(['data', 'room', 'roomCategory', 'parent'], detail),
+    roomCategory: path(['data', 'room', 'roomCategory'], detail),
+    leaveDatetime: path(['data', 'leaveDatetime'], detail),
+    room: path(['data', 'room'], detail),
+    discount: path(['data', 'discount'], detail)
+  }
   return (
     <ReservationCreate
       onSubmit={() => null}
@@ -86,11 +121,13 @@ const ReservationCreateContainer = props => {
       serviceList={serviceList}
       clientList={clientList}
       tabData={{ tab, onTabChange }}
+      initialValues={initialValues}
       onCreateReservation={onCreateReservation}
     />
   )
 }
-ReservationCreateContainer.propTypes = {
-  history: PropTypes
+
+ReservationUpdateContainer.propTypes = {
+  history: PropTypes.object
 }
-export default ReservationCreateContainer
+export default ReservationUpdateContainer

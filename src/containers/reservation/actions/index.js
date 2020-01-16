@@ -1,3 +1,4 @@
+import { sprintf } from 'sprintf-js'
 import * as actionTypes from '../../../constants/actionTypes'
 import * as API from '../../../constants/api'
 import axios, {
@@ -6,7 +7,6 @@ import axios, {
 } from '../../../utils/axios'
 
 export const reservationCreateAction = data => {
-
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .post(API.RESERVATION_CREATE, data)
@@ -20,16 +20,30 @@ export const reservationCreateAction = data => {
   }
 }
 
-export const roomFetchList = data => {
+export const reservationUpdateAction = (id, data) => {
   return (dispatch, getState) => {
-    const payload = axios({ getState, dispatch })
-      .get(API.ROOM_LIST)
+    const payload = axios({ dispatch, getState })
+      .put(sprintf(API.PLACING_UPDATE, Number(id)), data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.ROOM_LIST
+      type: actionTypes.PLACING_UPDATE
+    })
+  }
+}
+
+export const placingItemFetch = (id, data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(sprintf(API.PLACING_ITEM, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.PLACING_ITEM
     })
   }
 }
@@ -46,4 +60,3 @@ export const placingFetchList = data => {
     })
   }
 }
-

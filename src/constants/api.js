@@ -49,6 +49,8 @@ const CLIENTS = 'clients'
 export const RESERVATION = `${CLIENTS}/reservation`
 export const RESERVATION_CREATE = `/${RESERVATION}/`
 export const PLACING_LIST = `/${RESERVATION}/`
+export const PLACING_ITEM = `/${RESERVATION}/%d/`
+export const PLACING_UPDATE = `/${RESERVATION}/%d/`
 
 export const CLIENT = 'clients/client'
 export const CLIENT_LIST = `/${CLIENT}/`

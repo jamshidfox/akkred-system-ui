@@ -6,7 +6,7 @@ import { sprintf } from 'sprintf-js'
 
 import { TableCol, Table, TableRow } from '../../../../components/Table'
 import { MediumButton, PageTitle } from '../../../../components/UI'
-import { CLIENT_UPDATE_URL, RESERVATION_CREATE_URL } from '../../../../constants/routes'
+import { PLACING_UPDATE_URL, RESERVATION_CREATE_URL } from '../../../../constants/routes'
 import numberFormat from '../../../../utils/numberFormat'
 import Edit from '../../../../images/edit.svg'
 import Trash from '../../../../images/trash-2.svg'
@@ -43,6 +43,7 @@ const PlacingList = props => {
 
         </TableRow>
         {data.map(placing => {
+          const id = prop('id', placing)
           const clients = prop('clients', placing)
           const price = numberFormat(prop('actualPrice', placing))
           const enterDatetime = numberFormat(prop('enterDatetime', placing))
@@ -51,7 +52,7 @@ const PlacingList = props => {
           const roomType = path(['room', 'type', 'name'], placing)
           const roomTypeParent = path(['room', 'typeParent', 'name'], placing)
           return (
-            <TableRow gutter={10}>
+            <TableRow gutter={10} key={id}>
               <TableCol span={2}>{length(clients)}</TableCol>
               <TableCol span={2}>{roomTypeParent}</TableCol>
               <TableCol span={2} >{roomType}</TableCol>
@@ -61,10 +62,10 @@ const PlacingList = props => {
               <TableCol span={3} >{enterDatetime}</TableCol>
               <TableCol span={3} >{leaveDatetime}</TableCol>
               <TableCol span={1}>
-                <Link style={style} to={sprintf(CLIENT_UPDATE_URL, placing.id)} ><img src={Edit} alt="Edit" /></Link>
+                <Link style={style} to={sprintf(PLACING_UPDATE_URL, placing.id)} ><img src={Edit} alt="Edit" /></Link>
               </TableCol>
               <TableCol span={1}>
-                <Link style={style} to={sprintf(CLIENT_UPDATE_URL, placing.id)} ><img src={Trash} alt="Edit" /></Link>
+                <Link style={style} to={sprintf(PLACING_UPDATE_URL, placing.id)} ><img src={Trash} alt="Edit" /></Link>
 
               </TableCol>
             </TableRow>

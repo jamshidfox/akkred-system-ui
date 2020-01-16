@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default styled('div')`
+export default styled('div')`  
   & .DateInput_input {
     background-color: ${props => props.theme.input.background};
     border-radius: ${props => props.theme.borderRadius};

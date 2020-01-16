@@ -37,11 +37,13 @@ const ReservationCreate = props => {
     serviceModal,
     clientList,
     serviceList,
-    tabData
+    tabData,
+    initialValues
   } = props
   return (
     <>
       <Form
+        initialValues={initialValues}
         mutators={arrayMutators}
         onSubmit={onCreateReservation}
         render={({ handleSubmit, values, ...rest }) => {
@@ -105,6 +107,7 @@ ReservationCreate.propTypes = {
   clientExistingModal: PropTypes.object,
   clientList: PropTypes.object,
   tabData: PropTypes.object,
+  initialValues: PropTypes.object,
   serviceList: PropTypes.array
 }
 

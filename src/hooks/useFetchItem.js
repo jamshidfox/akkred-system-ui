@@ -6,14 +6,17 @@ import equal from 'fast-deep-equal'
 import { getDataFromState } from '../utils/get'
 
 const useFetchItem = params => {
-  const { stateName, action, key = 'id' } = params
+  const { stateName, action, key = 'id', onComplete } = params
   const paramsRoute = useParams()
   const dispatch = useDispatch()
   const state = useSelector(getDataFromState(stateName), equal)
   const id = prop(key, paramsRoute)
 
   useEffect(
-    () => { dispatch(action(id)) },
+    () => {
+      dispatch(action(id))
+        .then(onComplete)
+    },
     [id, dispatch, action],
   )
 

@@ -6,7 +6,8 @@ import {
   DateField,
   Field,
   DurationField,
-  UniversalSearchField
+  UniversalSearchField,
+  DateTimeField
 } from '../../../../components/FormField'
 import * as API from '../../../../constants/api'
 import { Row as RowUI, Col } from '../../../../components/Grid'
@@ -23,17 +24,11 @@ const ReservationForm = props => {
   return (
     <div>
       <Row gutter={20} align={'flex-end'}>
-        <Col span={8}>
-          <Field label="заезд" name="enterDatetime" component={DateField} />
+        <Col span={12}>
+          <Field label="заезд" name="enterDatetime" component={DateTimeField} />
         </Col>
-        <Col span={4}>
-          <Field name="fromTime" component={DurationField} />
-        </Col>
-        <Col span={8}>
-          <Field label="выезд" name="leaveDatetime" component={DateField} />
-        </Col>
-        <Col span={4}>
-          <Field name="toTime" component={DurationField} />
+        <Col span={12}>
+          <Field label="выезд" name="leaveDatetime" component={DateTimeField} />
         </Col>
       </Row>
       <Row gutter={20}>
