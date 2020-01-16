@@ -192,7 +192,7 @@ const Register = props => {
                 </Col>
               </Row>
               <div style={{ textAlign: 'right' }}>
-                {(!isCreated || isEdit) && <MediumButton>Сохранить</MediumButton>}
+                {(!isCreated || isEdit) && <MediumButton type="submit">Сохранить</MediumButton>}
               </div>
             </form>
           )

@@ -3,16 +3,13 @@ import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
 import { PageTitle, MediumButton } from '../../../components/UI'
-
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
   Form,
   Field,
-  InputField,
-  UniversalSearchField,
+  InputField
 } from '../../../components/FormField'
 import { GENDER_LIST } from '../../../constants/backend'
-import * as API from '../../../constants/api'
 import { Box } from '../../../components/StyledElems'
 import FacilitiesDialog from './FacilitiesDialog'
 
@@ -24,19 +21,7 @@ export const fields = [
   'additionalCapacity',
   'roomNumber',
   'facilities'
-
 ]
-
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
-`
 
 const Row = styled(RowUI)`
   margin-bottom: 40px;
@@ -47,7 +32,7 @@ const BoxUI = styled(Box)`
 `
 
 const RoomCreate = props => {
-  const { onSubmit, initialValues, serviceModal, parent } = props
+  const { onSubmit, initialValues, serviceModal } = props
   return (
     <BoxUI>
       <PageTitle name="Общая информация" />
@@ -73,7 +58,6 @@ const RoomCreate = props => {
                 </Col>
               </Row>
               <Row gutter={24}>
-
                 <Col span={6}>
                   <Field name="area" label="Площадь" component={InputField} />
                 </Col>
@@ -91,9 +75,7 @@ const RoomCreate = props => {
               </Row>
 
               <Row gutter={24}>
-
                 <Col span={24}>
-
                   <FacilitiesDialog
                     serviceTypes={values.facilities}
                     onServiceCancel={onServiceCancel}
@@ -103,7 +85,7 @@ const RoomCreate = props => {
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton>Сохранить</MediumButton>
+                <MediumButton type="submit">Сохранить</MediumButton>
               </div>
 
             </form>
