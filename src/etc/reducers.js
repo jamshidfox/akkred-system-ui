@@ -29,10 +29,18 @@ export const makeRootReducer = asyncReducers => {
     [STATE.RATES_CREATE]: createThunkReducer(actionTypes.RATES_CREATE),
     [STATE.RATES_UPDATE]: createThunkReducer(actionTypes.RATES_UPDATE),
     [STATE.RATES_ITEM]: createThunkReducer(actionTypes.RATES_ITEM),
+    [STATE.SERVICES_PRICE_LIST]: createThunkReducer(actionTypes.SERVICES_PRICE_LIST),
+    [STATE.SERVICES_PRICE_CREATE]: createThunkReducer(actionTypes.SERVICES_PRICE_CREATE),
+    [STATE.SERVICES_PRICE_UPDATE]: createThunkReducer(actionTypes.SERVICES_PRICE_UPDATE),
+    [STATE.SERVICES_PRICE_ITEM]: createThunkReducer(actionTypes.SERVICES_PRICE_ITEM),
     [STATE.RESERVATION_CREATE]: createThunkReducer(actionTypes.RESERVATION_CREATE),
     [STATE.RESERVATION_LIST]: createThunkReducer(actionTypes.RESERVATION_LIST),
     [STATE.RESERVATION_UPDATE]: createThunkReducer(actionTypes.RESERVATION_UPDATE),
     [STATE.PLACING_LIST]: createThunkReducer(actionTypes.PLACING_LIST),
+    [STATE.EMPLOYEES_LIST]: createThunkReducer(actionTypes.EMPLOYEES_LIST),
+    [STATE.EMPLOYEES_CREATE]: createThunkReducer(actionTypes.EMPLOYEES_CREATE),
+    [STATE.EMPLOYEES_UPDATE]: createThunkReducer(actionTypes.EMPLOYEES_UPDATE),
+    [STATE.EMPLOYEES_ITEM]: createThunkReducer(actionTypes.EMPLOYEES_ITEM),
     ...asyncReducers
   })
 }
