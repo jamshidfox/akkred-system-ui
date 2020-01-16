@@ -6,6 +6,12 @@ export const CHECK_TOKEN = '/main/check_token/'
 export const LOGIN = `${MAIN}/login/`
 export const LOGOUT = `${MAIN}/logout/`
 export const FILE_UPLOAD = '/main/file/'
+
+export const EMPLOYEES_LIST = `${MAIN}/`
+export const EMPLOYEES_CREATE = `${MAIN}`
+export const EMPLOYEES_UPDATE = `/${MAIN}/%d/`
+export const EMPLOYEES_ITEM = `/${MAIN}/%d/`
+
 export const AUTH = 'auth'
 export const AUTH_ACCESS_TOKEN = `/${AUTH}/access-token/`
 export const AUTH_REFRESH_TOKEN = `/${AUTH}/refresh-token/`
@@ -26,7 +32,12 @@ export const ROOM_CREATE_BULK = `/${ROOM}/bulk_create/`
 
 export const ROOM_TYPE = 'hotels/rooms_category'
 export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
-export const ROOM_TYPE_CREATE = `/${ROOM_TYPE}/`
+
+export const SERVICES_TYPE = 'hotels/hotel_services_type'
+export const SERVICES_TYPE_LIST = `/${SERVICES_TYPE}/`
+
+export const SERVICES = 'hotels/hotel_services'
+export const SERVICES_LIST = `/${SERVICES}/`
 
 export const ROOM_FACILITY_TYPE = 'hotels/room_facility_type'
 export const ROOM_FACILITY_TYPE_LIST = `/${ROOM_FACILITY_TYPE}/`
@@ -64,4 +75,10 @@ const RATES = `${FINANCE}/rates`
 export const RATES_LIST = `/${RATES}/`
 export const RATES_ITEM = `/${RATES}/%d`
 export const RATES_CREATE = `/${RATES}/`
-export const RATES_UPDATE = `/${RATES}/%d`
+export const RATES_UPDATE = `/${RATES}/%d/`
+
+const SERVICES_PRICE = `${FINANCE}/service_price`
+export const SERVICES_PRICE_LIST = `/${SERVICES_PRICE}/`
+export const SERVICES_PRICE_ITEM = `/${SERVICES_PRICE}/%d`
+export const SERVICES_PRICE_CREATE = `/${SERVICES_PRICE}/`
+export const SERVICES_PRICE_UPDATE = `/${SERVICES_PRICE}/%d`

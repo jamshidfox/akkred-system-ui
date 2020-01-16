@@ -25,3 +25,9 @@ export const SERVICE_FREQ = [
   { id: 'vip', name: 'VIP' },
   { id: 'simple', name: 'SIMPLE' }
 ]
+
+
+export const USER_TYPES = [
+  { id: 'hole_registrar', name: 'регистратор' },
+  { id: 'hotel_manager', name: 'менеджер' },
+]

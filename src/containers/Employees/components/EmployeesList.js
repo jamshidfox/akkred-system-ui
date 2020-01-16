@@ -17,32 +17,32 @@ const style = {
   color: '#FFF',
   textDecoration: 'none'
 }
-const RatesList = props => {
+const EmployeesList = props => {
   const { list } = props
 
   const data = prop('results', list)
   return (
     <BoxUI>
-      <PageTitle name="Тарифы и цены номерного фонда" >
-        <Link style={style} to={`/finance/rates/create`} ><MediumButton >добавить</MediumButton></Link>
+      <PageTitle name="Сотрудники" >
+        <Link style={style} to={`/settings/employees/create`} ><MediumButton >добавить</MediumButton></Link>
       </PageTitle>
 
       <Table isEmpty={isEmpty(data)}>
         <TableRow header={true} >
-          <TableCol span={6}>НАЗВАНИЕ ТАРИФА</TableCol>
-          <TableCol span={6}>ПОДКАТЕГОРИЯ</TableCol>
-          <TableCol span={5}>ДАТА НАЧАЛО</TableCol>
-          <TableCol span={5}>ДАТА ОКОНЧАНИЕ</TableCol>
+          <TableCol span={22}>НАЗВАНИЕ </TableCol>
+          {/*<TableCol span={6}></TableCol>*/}
+          {/*<TableCol span={5}>ДАТА НАЧАЛО</TableCol>*/}
+          {/*<TableCol span={5}>ДАТА ОКОНЧАНИЕ</TableCol>*/}
           <TableCol span={1} />
           <TableCol span={1} />
 
         </TableRow>
         {data.map(rates => (
           <TableRow>
-            <TableCol span={6}>{rates.name}</TableCol>
-            <TableCol span={6}>{rates.roomCategory.name}</TableCol>
-            <TableCol span={5} >{rates.fromDate}</TableCol>
-            <TableCol span={5} >{rates.toDate}</TableCol>
+            <TableCol span={22}>{rates.username}</TableCol>
+            {/*<TableCol span={6}>{rates.roomCategory.name}</TableCol>*/}
+            {/*<TableCol span={5} >{rates.fromDate}</TableCol>*/}
+            {/*<TableCol span={5} >{rates.toDate}</TableCol>*/}
             <TableCol span={1}>
               <Link style={style} to={sprintf(RATES_UPDATE_URL, rates.id)} ><img src={Edit} alt="Edit" /></Link>
             </TableCol>
@@ -57,4 +57,4 @@ const RatesList = props => {
   )
 }
 
-export default RatesList
+export default EmployeesList

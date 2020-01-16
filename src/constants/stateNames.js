@@ -19,6 +19,16 @@ export const RATES_UPDATE = 'ratesUpdate'
 export const RATES_CREATE = 'ratesCreate'
 export const RATES_ITEM = 'ratesItem'
 
+export const SERVICES_PRICE_LIST = 'servicesList'
+export const SERVICES_PRICE_UPDATE = 'servicesUpdate'
+export const SERVICES_PRICE_CREATE = 'servicesCreate'
+export const SERVICES_PRICE_ITEM = 'servicesItem'
+
+export const EMPLOYEES_LIST = 'employeesList'
+export const EMPLOYEES_ITEM = 'employeesUpdate'
+export const EMPLOYEES_CREATE = 'employeesCreate'
+export const EMPLOYEES_UPDATE = 'employeesItem'
+
 export const RESERVATION_LIST = 'reservationList'
 export const RESERVATION_UPDATE = 'reservationUpdate'
 export const RESERVATION_CREATE = 'reservationCreate'

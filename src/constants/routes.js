@@ -15,6 +15,12 @@ export const SETTING_ROOMS_TYPE_LIST = `/${SETTINGS}/${SETTING_ROOMS}/`
 export const SETTING_ROOMS_LIST_URL = `/${SETTINGS}/${SETTING_ROOMS}/%d`
 export const SETTING_ROOMS_LIST_PATH = `/${SETTINGS}/${SETTING_ROOMS}/${ID}`
 
+export const EMPLOYEES = 'employees'
+export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`
+export const EMPLOYEES_LIST_URL = `/${SETTINGS}/${EMPLOYEES}/`
+export const EMPLOYEES_CREATE_URL = `/${SETTINGS}/${EMPLOYEES}/create`
+export const EMPLOYEES_LIST_PATH = `/${SETTINGS}/${EMPLOYEES}/${ID}`
+
 const RESERVATION = 'reservation'
 export const RESERVATION_LIST_URL = `/${RESERVATION}/`
 export const RESERVATION_ITEM_URL = `/${RESERVATION}/%d`
@@ -46,6 +52,14 @@ export const RATES_ITEM_PATH = `/${RATES}/${ID}/`
 export const RATES_CREATE_URL = `/${RATES}/create`
 export const RATES_UPDATE_URL = `/${RATES}/%d`
 export const RATES_UPDATE_PATH = `/${RATES}/${ID}/`
+
+const SERVICES_PRICE = `${FINANCE}/price`
+export const SERVICES_PRICE_LIST_URL = `/${SERVICES_PRICE}/`
+export const SERVICES_PRICE_ITEM_URL = `/${SERVICES_PRICE}/%d`
+export const SERVICES_PRICE_ITEM_PATH = `/${SERVICES_PRICE}/${ID}/`
+export const SERVICES_PRICE_CREATE_URL = `/${SERVICES_PRICE}/create`
+export const SERVICES_PRICE_UPDATE_URL = `/${SERVICES_PRICE}/%d`
+export const SERVICES_PRICE_UPDATE_PATH = `/${SERVICES_PRICE}/${ID}/`
 
 const PLACING = 'placing'
 export const PLACING_LIST_URL = `/${PLACING}/`

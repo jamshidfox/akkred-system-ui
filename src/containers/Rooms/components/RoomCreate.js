@@ -13,8 +13,8 @@ import {
 } from '../../../components/FormField'
 import { GENDER_LIST } from '../../../constants/backend'
 import * as API from '../../../constants/api'
+import { Box } from '../../../components/StyledElems'
 import FacilitiesDialog from './FacilitiesDialog'
-import {Box} from "../../../components/StyledElems";
 
 export const fields = [
   'detail',

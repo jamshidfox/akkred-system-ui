@@ -1,8 +1,7 @@
 import React from 'react'
-import { prop } from 'ramda'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
-import { PageTitle, MediumButton, InputLabel } from '../../../components/UI'
+import { PageTitle, MediumButton } from '../../../components/UI'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
