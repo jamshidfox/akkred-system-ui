@@ -57,11 +57,11 @@ export default [
     url: ROUTES.CLIENT_LIST_URL,
     icon: People,
   },
-  // {
-  //   name: 'Отчеты',
-  //   url: '/',
-  //   icon: BarChart,
-  // },
+  {
+    name: 'Расчеты',
+    url: ROUTES.TRANSACTION_LIST_URL,
+    icon: BarChart,
+  },
   // {
   //   name: 'Финансовая аналитика',
   //   url: '/',

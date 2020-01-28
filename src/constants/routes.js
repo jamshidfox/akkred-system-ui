@@ -66,3 +66,9 @@ export const PLACING_LIST_URL = `/${PLACING}/`
 export const PLACING_ITEM_URL = `/${PLACING}/%d`
 export const PLACING_UPDATE_URL = `/${PLACING}/%d/update`
 export const PLACING_UPDATE_PATH = `/${PLACING}/${ID}/update`
+
+const TRANSACTION = 'transaction'
+export const TRANSACTION_LIST_URL = `/${TRANSACTION}/`
+export const TRANSACTION_ITEM_URL = `/${TRANSACTION}/%d`
+export const TRANSACTION_UPDATE_URL = `/${TRANSACTION}/%d/update`
+export const TRANSACTION_UPDATE_PATH = `/${TRANSACTION}/${ID}/update`

@@ -82,3 +82,9 @@ export const SERVICES_PRICE_LIST = `/${SERVICES_PRICE}/`
 export const SERVICES_PRICE_ITEM = `/${SERVICES_PRICE}/%d`
 export const SERVICES_PRICE_CREATE = `/${SERVICES_PRICE}/`
 export const SERVICES_PRICE_UPDATE = `/${SERVICES_PRICE}/%d`
+
+const TRANSACTION = `${FINANCE}/transaction`
+export const TRANSACTION_LIST = `/${TRANSACTION}/`
+export const TRANSACTION_ITEM = `/${TRANSACTION}/%d`
+export const TRANSACTION_CREATE = `/${TRANSACTION}/`
+export const TRANSACTION_UPDATE = `/${TRANSACTION}/%d/`
