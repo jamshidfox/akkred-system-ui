@@ -18,3 +18,17 @@ export const transactionFetchList = data => {
     })
   }
 }
+
+export const transactionCreateAction = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(API.TRANSACTION_CREATE, data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.TRANSACTION_CREATE
+    })
+  }
+}

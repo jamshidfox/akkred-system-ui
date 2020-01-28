@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import styled from 'styled-components'
 import { TableCol, Table, TableRow } from '../../../components/Table'
-import { MediumButton, PageTitle, Modal } from '../../../components/UI'
+import { MediumButton, PageTitle } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import numberFormat from '../../../utils/numberFormat'
 import dateFormat from '../../../utils/dateFormat'
+import TransactionCreateModal from './TransactionCreateModal'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -84,14 +85,15 @@ const Outcome = styled('div')`
                     margin-top:-3px;
 `
 const TransactionList = props => {
-  const { list } = props
+  const { list, createModal } = props
+    console.warn(createModal)
 
   const data = prop('results', list)
   return (
     <>
       <BoxUI>
         <PageTitle name="Расчеты" >
-          <Link style={style} to={`/finance/rates/create`} ><MediumButton >добавить</MediumButton></Link>
+          <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
         </PageTitle>
 
         <Table isEmpty={isEmpty(data)}>
@@ -156,6 +158,7 @@ const TransactionList = props => {
           </SumNum>
         </Sum>
       </Result>
+      <TransactionCreateModal {...createModal} />
 
     </>
   )
