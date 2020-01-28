@@ -53,7 +53,7 @@ const RoomCreateModal = props => {
                   label="количество номеров"
                   component={InputField} />
               </FieldWrapper>
-              <MediumButton>добавить</MediumButton>
+              <MediumButton type={'submit'}>добавить</MediumButton>
             </form>
           )
         }}

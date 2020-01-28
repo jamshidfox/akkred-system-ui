@@ -47,7 +47,7 @@ const RoomCreateModal = props => {
                   label="Комментарии"
                   component={InputField} />
               </FieldWrapper>
-              <MediumButton>добавить</MediumButton>
+              <MediumButton type={'submit'}>добавить</MediumButton>
             </form>
           )
         }}
