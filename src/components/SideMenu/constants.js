@@ -84,10 +84,10 @@ export default [
         name: 'Сотрудники',
         url: ROUTES.EMPLOYEES_LIST_URL,
       },
-      // {
-      //   name: 'Тарифы и цены',
-      //   url: ROUTES.SETTING_PRICE_LIST_URL,
-      // }
+      {
+        name: 'Ранний заезд / Поздний выезад ',
+        url: ROUTES.SETTING_RULE_GROUP_LIST,
+      }
     ]
   }
 ]

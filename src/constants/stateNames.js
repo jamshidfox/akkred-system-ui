@@ -41,3 +41,13 @@ export const TRANSACTION_LIST = 'transactionList'
 export const TRANSACTION_ITEM = 'transactionUpdate'
 export const TRANSACTION_CREATE = 'transactionCreate'
 export const TRANSACTION_UPDATE = 'transactionItem'
+
+export const RULE_GROUP_LIST = 'ruleGroupList'
+export const RULE_GROUP_ITEM = 'ruleGroupUpdate'
+export const RULE_GROUP_CREATE = 'ruleGroupCreate'
+export const RULE_GROUP_UPDATE = 'ruleGroupItem'
+
+export const RULE_PRICE_LIST = 'rulePriceList'
+export const RULE_PRICE_ITEM = 'rulePriceUpdate'
+export const RULE_PRICE_CREATE = 'rulePriceCreate'
+export const RULE_PRICE_UPDATE = 'rulePriceItem'

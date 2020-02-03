@@ -9,6 +9,7 @@ import { RATES_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
 import { Box } from '../../../components/StyledElems'
+import dateFormat from '../../../utils/dateFormat'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -41,8 +42,8 @@ const RatesList = props => {
           <TableRow>
             <TableCol span={6}>{rates.name}</TableCol>
             <TableCol span={6}>{rates.roomCategory.name}</TableCol>
-            <TableCol span={5} >{rates.fromDate}</TableCol>
-            <TableCol span={5} >{rates.toDate}</TableCol>
+            <TableCol span={5} >{dateFormat(rates.fromDate)}</TableCol>
+            <TableCol span={5} >{dateFormat(rates.toDate)}</TableCol>
             <TableCol span={1}>
               <Link style={style} to={sprintf(RATES_UPDATE_URL, rates.id)} ><img src={Edit} alt="Edit" /></Link>
             </TableCol>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import styled from 'styled-components'
 import { TableCol, Table, TableRow } from '../../../components/Table'
@@ -86,7 +85,6 @@ const Outcome = styled('div')`
 `
 const TransactionList = props => {
   const { list, createModal } = props
-    console.warn(createModal)
 
   const data = prop('results', list)
   return (

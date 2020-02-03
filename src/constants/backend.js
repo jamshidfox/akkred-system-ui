@@ -35,3 +35,7 @@ export const TRANSACTION_TYPES = [
   { id: 'income', name: 'Доход' },
   { id: 'outcome', name: 'Расход' },
 ]
+export const RULE_TYPES = [
+  { id: 'entrance', name: 'Заезд' },
+  { id: 'leave', name: 'Выезд' },
+]
