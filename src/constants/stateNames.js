@@ -39,3 +39,5 @@ export const PLACING_UPDATE = 'placingUpdate'
 
 export const BOOKING_LIST = 'bookingList'
 export const BOOKING_CREATE = 'bookingCreate'
+export const BOOKING_UPDATE = 'bookingUpdate'
+export const BOOKING_ITEM = 'bookingItem'

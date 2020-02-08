@@ -168,7 +168,7 @@ const BookingCreateDialog = props => {
               <Field
                 name="paymentType"
                 label="paymentType"
-                // list={CONST.PAYMENT_TYPES}
+                list={CONST.PAYMENT_TYPES}
                 component={UniversalStaticSelectField}
               />
             </Col>
@@ -176,7 +176,7 @@ const BookingCreateDialog = props => {
               <Field
                 name="bookingType"
                 label="bookingType"
-                // list={CONST.BOOKING_TYPES}
+                list={CONST.BOOKING_TYPES}
                 component={UniversalStaticSelectField}
               />
             </Col>

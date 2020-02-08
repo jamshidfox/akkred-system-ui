@@ -11,7 +11,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 166,
@@ -26,7 +26,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 165,
@@ -41,7 +41,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 164,
@@ -56,7 +56,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 163,
@@ -71,7 +71,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 162,
@@ -86,7 +86,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 161,
@@ -101,7 +101,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 160,
@@ -116,7 +116,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 159,
@@ -131,7 +131,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 158,
@@ -146,7 +146,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 157,
@@ -161,7 +161,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 156,
@@ -176,7 +176,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 155,
@@ -191,7 +191,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 154,
@@ -206,7 +206,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 153,
@@ -221,7 +221,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 152,
@@ -236,7 +236,7 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }, {
   'id': 151,
@@ -251,6 +251,6 @@ export default [{
   'detail': null,
   'status': null,
   'hotel': 1,
-  'room_category': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
+  'roomCategory': { 'id': 4, 'name': 'Двухместный', 'parent': { 'id': 3, 'name': 'Люкс' } },
   'facilities': {}
 }]

@@ -9,6 +9,7 @@ import {
   isEmpty, sort, has
 } from 'ramda'
 import styled from 'styled-components'
+import equals from 'fast-deep-equal'
 import SchedulerContext from './SchedulerContext'
 
 const ClientInfo = styled('div')`
@@ -123,7 +124,7 @@ const ScheduleRow = props => {
 
   const reservedRoomDays = pipe(
     filter(pathEq(['room', 'id'], room)),
-    map(pick(['client', 'room', 'enter_datetime', 'leave_datetime']))
+    map(pick(['client', 'room', 'enterDatetime', 'leaveDatetime']))
   )(bookingList)
 
   return (
@@ -132,17 +133,17 @@ const ScheduleRow = props => {
         const date = moment(d).format('YYYY-MM-DD')
         const selectingRoomDays = getSelection(selectingRooms)
 
-        const reservedRoomData = find(propEq('enter_datetime', date))(reservedRoomDays)
+        const reservedRoomData = find(propEq('enterDatetime', date))(reservedRoomDays)
 
         const reservedRoomFilter = filter(item => {
-          const itemEnterDate = prop('enter_datetime', item)
-          const itemLeaveDate = prop('leave_datetime', item)
+          const itemEnterDate = prop('enterDatetime', item)
+          const itemLeaveDate = prop('leaveDatetime', item)
           return moment(date).isBetween(itemEnterDate, itemLeaveDate, null, '[]')
         })(reservedRoomDays)
 
         const clientName = path(['client', 'name'], reservedRoomData)
-        const enterDate = prop('enter_datetime', reservedRoomData)
-        const leaveDate = prop('leave_datetime', reservedRoomData)
+        const enterDate = prop('enterDatetime', reservedRoomData)
+        const leaveDate = prop('leaveDatetime', reservedRoomData)
         const reservedDays = moment(leaveDate).diff(enterDate, 'days') + 1
         const isDisabled = !isEmpty(reservedRoomFilter)
 
@@ -188,4 +189,8 @@ ScheduleRow.propTypes = {
   onOpenBooking: PropTypes.func.isRequired,
 }
 
-export default ScheduleRow
+export default React.memo(ScheduleRow, (prev, next) => {
+  const { onOpenBooking, ...restPrev } = prev
+  const { onOpenBooking: onOpen, ...restNext } = next
+  return equals(restNext, restPrev)
+})

@@ -53,3 +53,4 @@ export default [{
   'payment_type': 'card',
   'room': { 'id': 156, 'room_category': { 'id': 5, 'name': 'Трехместный', 'parent': { 'id': 3, 'name': 'Люкс' } } }
 }]
+

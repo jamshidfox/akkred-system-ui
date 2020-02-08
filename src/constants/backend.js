@@ -31,3 +31,13 @@ export const USER_TYPES = [
   { id: 'hole_registrar', name: 'регистратор' },
   { id: 'hotel_manager', name: 'менеджер' },
 ]
+
+export const PAYMENT_TYPES = [
+  { id: 'card', name: 'Card' },
+  { id: 'cash', name: 'Cash' },
+]
+
+export const BOOKING_TYPES = [
+  { id: 'remotely', name: 'remotely' },
+  { id: 'placement', name: 'placement' },
+]

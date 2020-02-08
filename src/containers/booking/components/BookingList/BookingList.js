@@ -5,6 +5,7 @@ import { LinkButton, PageTitle } from '~/components/UI'
 import { Box, DisplayFlex } from '~/components/StyledElems'
 
 const BookingList = props => {
+  const { list, createModal, bookingList } = props
   return (
     <>
       <Box padding={'25px'}>
@@ -15,11 +16,18 @@ const BookingList = props => {
         </PageTitle>
       </Box>
 
-      <Scheduler />
+      <Scheduler
+        list={list}
+        bookingData={bookingList}
+        createModal={createModal} />
     </>
   )
 }
 
-BookingList.propTypes = {}
+BookingList.propTypes = {
+  list: PropTypes.object,
+  createModal: PropTypes.object,
+  bookingList: PropTypes.object
+}
 
 export default BookingList

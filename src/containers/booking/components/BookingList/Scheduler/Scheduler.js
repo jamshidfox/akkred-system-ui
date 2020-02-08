@@ -1,8 +1,7 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import { groupBy, pipe, prop, path, toPairs, head, has } from 'ramda'
 import styled from 'styled-components'
-import roomList from './roomList'
-import bookingList from './bookingList'
+import PropTypes from 'prop-types'
 import SchedulerContext from './SchedulerContext'
 import SchedulerFilter from './SchedulerFilter'
 import SchedulerRight from './SchedulerRight'
@@ -60,11 +59,14 @@ const getToggleIsExpanded = (category, toggleState) => {
 }
 
 const Scheduler = props => {
-  const [openBooking, setOpenBooking] = useState(false)
+  const { list, createModal, bookingData } = props
+  const roomList = path(['results'], list)
+  const bookingList = path(['results'], bookingData)
   const [toggleState, dispatch] = useReducer(reducer, initialState)
 
-  const onOpenBooking = () => setOpenBooking(true)
-  const onCloseBooking = () => setOpenBooking(false)
+  const openBooking = createModal.open
+  const onOpenBooking = () => createModal.onOpen()
+  const onCloseBooking = () => createModal.onClose()
 
   const tableOptions = {
     cellWidth: 40,
@@ -73,7 +75,7 @@ const Scheduler = props => {
   }
 
   const roomListGrouped = pipe(
-    groupBy(path(['room_category', 'id'])),
+    groupBy(path(['roomCategory', 'id'])),
     toPairs
   )(roomList)
 
@@ -86,7 +88,7 @@ const Scheduler = props => {
 
   return (
     <SchedulerContext.Provider value={tableOptions}>
-      <Form onSubmit={() => null}
+      <Form onSubmit={createModal.onSubmit}
         render={formProps => {
           const { form } = formProps
           const onChange = (values) => {
@@ -103,7 +105,7 @@ const Scheduler = props => {
                   <RoomBlock>
                     {roomListGrouped.map(item => {
                       const [roomCategory, roomsList] = item
-                      const categoryData = pipe(head, prop('room_category'))(roomsList)
+                      const categoryData = pipe(head, prop('roomCategory'))(roomsList)
                       const categoryName = prop('name', categoryData)
                       const isExpanded = getToggleIsExpanded(roomCategory, toggleState)
 
@@ -141,10 +143,12 @@ const Scheduler = props => {
                 />
               </Container>
 
-              <BookingCreateDialog
-                open={openBooking}
-                onClose={onCloseBooking}
-              />
+              <form onSubmit={formProps.handleSubmit}>
+                <BookingCreateDialog
+                  open={openBooking}
+                  onClose={onCloseBooking}
+                />
+              </form>
             </>
           )
         }}
@@ -154,6 +158,10 @@ const Scheduler = props => {
   )
 }
 
-Scheduler.propTypes = {}
+Scheduler.propTypes = {
+  list: PropTypes.object,
+  createModal: PropTypes.object,
+  bookingData: PropTypes.object
+}
 
 export default Scheduler
