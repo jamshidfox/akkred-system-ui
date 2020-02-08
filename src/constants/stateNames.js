@@ -36,3 +36,6 @@ export const RESERVATION_CREATE = 'reservationCreate'
 export const PLACING_LIST = 'placingList'
 export const PLACING_ITEM = 'placingItem'
 export const PLACING_UPDATE = 'placingUpdate'
+
+export const BOOKING_LIST = 'bookingList'
+export const BOOKING_CREATE = 'bookingCreate'

@@ -8,9 +8,8 @@ import { PropTypes } from 'prop-types'
 // import 'moment/locale/zh-cn';
 // import 'antd/lib/style/index.less';     //Add this code for locally example
 
-let schedulerData = new SchedulerData(new moment().format(DATE_FORMAT), ViewTypes.Week);
-moment.locale('en');
-schedulerData.setLocaleMoment(moment);
+let schedulerData = new SchedulerData('2017-12-18', ViewTypes.Week)
+schedulerData.setLocaleMoment(moment)
 
 let resources = [
   {
