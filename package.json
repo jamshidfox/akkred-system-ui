@@ -63,6 +63,8 @@
     "react": "^0.14||^15.5.4||^16.1.1",
     "react-big-scheduler": "^0.2.7",
     "react-dates": "^21.5.0",
+    "react-dnd": "^7.5.0",
+    "react-dnd-html5-backend": "^7.5.0",
     "react-dom": "^0.14||^15.5.4||^16.1.1",
     "react-fc": "^0.41.0",
     "react-final-form": "^6.3.3",

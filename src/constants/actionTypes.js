@@ -52,3 +52,6 @@ export const PLACING_UPDATE = 'PLACING_UPDATE'
 
 export const PLACING_LIST = 'PLACING_LIST'
 export const PLACING_ITEM = 'PLACING_ITEM'
+
+export const BOOKING_LIST = 'BOOKING_LIST'
+export const BOOKING_CREATE = 'BOOKING_CREATE'

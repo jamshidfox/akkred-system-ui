@@ -5,6 +5,7 @@ export const BaseButton = styled.button.attrs(props => ({
   type: props.type || 'button',
 }))`
   cursor: pointer;
+  border: none;
   border-radius: ${props => props.theme.borderRadius};
   background: ${({ status = 'primary', theme }) => theme.color[status].default};
   text-transform: uppercase;
@@ -66,9 +67,11 @@ export const SmallButton = styled(BaseButton)`
   font-size: ${props => props.theme.fontSize.small};
   line-height: ${props => props.theme.lineHeight.small};
 `
+
 SmallButton.propTypes = {
   status: PropTypes.oneOf(['primary', 'success', 'info', 'danger', 'warning', 'transparent'])
 }
+
 export const TinyButton = styled(BaseButton)`
   padding: 0 12px;
   height: 24px;
