@@ -11,6 +11,7 @@ import client from './Client'
 import rates from './Rates'
 import services from './Services'
 import employees from './Employees'
+import booking from './booking'
 import transaction from './Transaction'
 import roomsRules from './RoomsRules'
 
@@ -21,6 +22,7 @@ const tester = store => [
   ...rates(),
   ...services(),
   ...employees(),
+  ...booking(),
   ...transaction(),
   ...roomsRules(),
   {

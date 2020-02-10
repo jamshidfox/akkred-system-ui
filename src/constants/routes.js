@@ -77,6 +77,10 @@ export const PLACING_ITEM_URL = `/${PLACING}/%d`
 export const PLACING_UPDATE_URL = `/${PLACING}/%d/update`
 export const PLACING_UPDATE_PATH = `/${PLACING}/${ID}/update`
 
+const BOOKING = 'booking'
+export const BOOKING_LIST_PATH = `/${BOOKING}/`
+export const BOOKING_CREATE_PATH = `/${BOOKING}/create/`
+
 const TRANSACTION = 'transaction'
 export const TRANSACTION_LIST_URL = `/${TRANSACTION}/`
 export const TRANSACTION_ITEM_URL = `/${TRANSACTION}/%d`

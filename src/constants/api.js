@@ -83,6 +83,14 @@ export const SERVICES_PRICE_ITEM = `/${SERVICES_PRICE}/%d`
 export const SERVICES_PRICE_CREATE = `/${SERVICES_PRICE}/`
 export const SERVICES_PRICE_UPDATE = `/${SERVICES_PRICE}/%d`
 
+
+
+const BOOKING = `${CLIENTS}/booking`
+export const BOOKING_LIST = `/${BOOKING}/`
+export const BOOKING_ITEM = `/${BOOKING}/%d`
+export const BOOKING_CREATE = `/${BOOKING}/`
+export const BOOKING_UPDATE = `/${BOOKING}/%d`
+
 const TRANSACTION = `${FINANCE}/transaction`
 export const TRANSACTION_LIST = `/${TRANSACTION}/`
 export const TRANSACTION_ITEM = `/${TRANSACTION}/%d`

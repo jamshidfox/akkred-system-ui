@@ -10,11 +10,11 @@ import Settings from '../../icons/Settings'
 import * as ROUTES from '../../constants/routes'
 
 export default [
-  // {
-  //   name: 'Шахматка',
-  //   url: '/',
-  //   icon: Chess
-  // },
+  {
+    name: 'Шахматка',
+    url: ROUTES.BOOKING_LIST_PATH,
+    icon: Chess
+  },
   {
     name: 'Создать бронь',
     url: ROUTES.RESERVATION_CREATE_URL,

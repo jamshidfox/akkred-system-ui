@@ -11,25 +11,26 @@ import Trash from '../../../images/trash-2.svg'
 import { Box } from '../../../components/StyledElems'
 
 const style = {
-  color: '#FFF',
+  color: '#ffffff',
   textDecoration: 'none'
 }
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
+
 const ClientList = props => {
   const { list } = props
 
   const data = prop('results', list)
   return (
     <BoxUI>
-      <PageTitle name="Профили гостей" >
-        <Link style={style} to={`/client/create`} ><MediumButton >добавить</MediumButton></Link>
+      <PageTitle name="Профили гостей">
+        <Link style={style} to={`/client/create`}><MediumButton>добавить</MediumButton></Link>
       </PageTitle>
 
       <Table isEmpty={isEmpty(data)}>
-        <TableRow header={true} >
+        <TableRow header={true}>
           <TableCol span={8}>Ф.И.О гостя</TableCol>
           <TableCol span={6}>НОМЕР ПАСПОРТА</TableCol>
           <TableCol span={4}>дата рождения</TableCol>
@@ -42,13 +43,13 @@ const ClientList = props => {
           <TableRow>
             <TableCol span={8}>{client.name} {client.surname} {client.fatherName}</TableCol>
             <TableCol span={6}>АА 3545332</TableCol>
-            <TableCol span={4} >{client.birthDate}</TableCol>
-            <TableCol span={3} >2</TableCol>
+            <TableCol span={4}>{client.birthDate}</TableCol>
+            <TableCol span={3}>2</TableCol>
             <TableCol span={1}>
-              <Link style={style} to={sprintf(CLIENT_UPDATE_URL, client.id)} ><img src={Edit} alt="Edit" /></Link>
+              <Link style={style} to={sprintf(CLIENT_UPDATE_URL, client.id)}><img src={Edit} alt="Edit" /></Link>
             </TableCol>
             <TableCol span={1}>
-              <Link style={style} to={sprintf(CLIENT_UPDATE_URL, client.id)} ><img src={Trash} alt="Edit" /></Link>
+              <Link style={style} to={sprintf(CLIENT_UPDATE_URL, client.id)}><img src={Trash} alt="Edit" /></Link>
             </TableCol>
           </TableRow>
         ))}

@@ -37,6 +37,11 @@ export const PLACING_LIST = 'placingList'
 export const PLACING_ITEM = 'placingItem'
 export const PLACING_UPDATE = 'placingUpdate'
 
+export const BOOKING_LIST = 'bookingList'
+export const BOOKING_CREATE = 'bookingCreate'
+export const BOOKING_UPDATE = 'bookingUpdate'
+export const BOOKING_ITEM = 'bookingItem'
+
 export const TRANSACTION_LIST = 'transactionList'
 export const TRANSACTION_ITEM = 'transactionUpdate'
 export const TRANSACTION_CREATE = 'transactionCreate'
