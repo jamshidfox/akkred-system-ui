@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
-import { TableCol, Table, TableRow } from '../../../components/Table'
+import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { CLIENT_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
 import { Box } from '../../../components/StyledElems'
+import CommentListFilterForm from './CommentListFilterForm'
 
 const style = {
   color: '#ffffff',
@@ -20,8 +21,13 @@ const BoxUI = styled(Box)`
 `
 
 const ClientList = props => {
-  const { list } = props
-
+  const { list, filterActions } = props
+  const tableActions = (
+    <TableActions
+      filterForm={<CommentListFilterForm />}
+      filterActions={filterActions}
+    />
+  )
   const data = prop('results', list)
   return (
     <BoxUI>
@@ -29,7 +35,7 @@ const ClientList = props => {
         <Link style={style} to={`/client/create`}><MediumButton>добавить</MediumButton></Link>
       </PageTitle>
 
-      <Table isEmpty={isEmpty(data)}>
+      <Table isEmpty={isEmpty(data)} filterForm={tableActions}>
         <TableRow header={true}>
           <TableCol span={8}>Ф.И.О гостя</TableCol>
           <TableCol span={6}>НОМЕР ПАСПОРТА</TableCol>

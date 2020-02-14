@@ -21,11 +21,11 @@ const InputIcon = icon => styled(icon)`
 
 const StyledInput = styled(props => <InputBase {...props} />)`
   + svg {
-    fill: ${props => props.theme.color.basic.default};
+//    fill: ${props => props.theme.color.basic.default};
   }
   :focus + svg {
     path {
-      fill: ${props => props.theme.color.primary.default};
+      stroke: ${props => props.theme.color.primary.default};
   }
     color: ${props =>
     props.error ? props.theme.color.danger.default : props.theme.color.primary.default};
