@@ -15,6 +15,18 @@ export const SETTING_ROOMS_TYPE_LIST = `/${SETTINGS}/${SETTING_ROOMS}/`
 export const SETTING_ROOMS_LIST_URL = `/${SETTINGS}/${SETTING_ROOMS}/%d`
 export const SETTING_ROOMS_LIST_PATH = `/${SETTINGS}/${SETTING_ROOMS}/${ID}`
 
+export const SETTING_RULE_GROUP = 'rule-group'
+export const SETTING_RULE_GROUP_LIST = `/${SETTINGS}/${SETTING_RULE_GROUP}/`
+export const SETTING_RULE_GROUP_CREATE_URL = `/${SETTINGS}/${SETTING_RULE_GROUP}/create`
+export const SETTING_RULE_GROUP_UPDATE_URL = `/${SETTINGS}/${SETTING_RULE_GROUP}/%d`
+
+export const SETTING_RULE_GROUP_UPDATE_PATH = `/${SETTINGS}/${SETTING_RULE_GROUP}/${ID}/`
+
+export const SETTING_RULE_PRICE = 'rule-price'
+export const SETTING_RULE_PRICE_LIST = `/${SETTINGS}/${SETTING_RULE_PRICE}/`
+export const SETTING_RULE_PRICE_CREATE_URL = `/${SETTINGS}/${SETTING_RULE_PRICE}/create`
+export const SETTING_RULE_PRICE_UPDATE_PATH = `/${SETTINGS}/${SETTING_RULE_PRICE}/${ID}/`
+
 export const EMPLOYEES = 'employees'
 export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`
 export const EMPLOYEES_LIST_URL = `/${SETTINGS}/${EMPLOYEES}/`
@@ -70,3 +82,9 @@ export const PLACING_UPDATE_PATH = `/${PLACING}/${ID}/update`
 const BOOKING = 'booking'
 export const BOOKING_LIST_PATH = `/${BOOKING}/`
 export const BOOKING_CREATE_PATH = `/${BOOKING}/create/`
+
+const TRANSACTION = 'transaction'
+export const TRANSACTION_LIST_URL = `/${TRANSACTION}/`
+export const TRANSACTION_ITEM_URL = `/${TRANSACTION}/%d`
+export const TRANSACTION_UPDATE_URL = `/${TRANSACTION}/%d/update`
+export const TRANSACTION_UPDATE_PATH = `/${TRANSACTION}/${ID}/update`

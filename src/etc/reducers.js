@@ -48,6 +48,18 @@ export const makeRootReducer = asyncReducers => {
     [STATE.BOOKING_CREATE]: createThunkReducer(actionTypes.BOOKING_CREATE),
     [STATE.BOOKING_UPDATE]: createThunkReducer(actionTypes.BOOKING_UPDATE),
     [STATE.BOOKING_ITEM]: createThunkReducer(actionTypes.BOOKING_ITEM),
+    [STATE.TRANSACTION_LIST]: createThunkReducer(actionTypes.TRANSACTION_LIST),
+    [STATE.TRANSACTION_CREATE]: createThunkReducer(actionTypes.TRANSACTION_CREATE),
+    [STATE.TRANSACTION_UPDATE]: createThunkReducer(actionTypes.TRANSACTION_UPDATE),
+    [STATE.TRANSACTION_ITEM]: createThunkReducer(actionTypes.TRANSACTION_ITEM),
+    [STATE.RULE_GROUP_LIST]: createThunkReducer(actionTypes.RULE_GROUP_LIST),
+    [STATE.RULE_GROUP_CREATE]: createThunkReducer(actionTypes.RULE_GROUP_CREATE),
+    [STATE.RULE_GROUP_UPDATE]: createThunkReducer(actionTypes.RULE_GROUP_UPDATE),
+    [STATE.RULE_GROUP_ITEM]: createThunkReducer(actionTypes.RULE_GROUP_ITEM),
+    [STATE.RULE_PRICE_LIST]: createThunkReducer(actionTypes.RULE_PRICE_LIST),
+    [STATE.RULE_PRICE_CREATE]: createThunkReducer(actionTypes.RULE_PRICE_CREATE),
+    [STATE.RULE_PRICE_UPDATE]: createThunkReducer(actionTypes.RULE_PRICE_UPDATE),
+    [STATE.RULE_PRICE_ITEM]: createThunkReducer(actionTypes.RULE_PRICE_ITEM),
     ...asyncReducers
   })
 }

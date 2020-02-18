@@ -39,7 +39,7 @@ export default [
   // },
   {
     name: 'Тарифы и цены',
-    url: '/',
+    url: ROUTES.RATES_LIST_URL,
     icon: CreditCard,
     children: [
       {
@@ -57,11 +57,11 @@ export default [
     url: ROUTES.CLIENT_LIST_URL,
     icon: People,
   },
-  // {
-  //   name: 'Отчеты',
-  //   url: '/',
-  //   icon: BarChart,
-  // },
+  {
+    name: 'Расчеты',
+    url: ROUTES.TRANSACTION_LIST_URL,
+    icon: BarChart,
+  },
   // {
   //   name: 'Финансовая аналитика',
   //   url: '/',
@@ -84,10 +84,10 @@ export default [
         name: 'Сотрудники',
         url: ROUTES.EMPLOYEES_LIST_URL,
       },
-      // {
-      //   name: 'Тарифы и цены',
-      //   url: ROUTES.SETTING_PRICE_LIST_URL,
-      // }
+      {
+        name: 'Ранний заезд / Поздний выезад ',
+        url: ROUTES.SETTING_RULE_GROUP_LIST,
+      }
     ]
   }
 ]

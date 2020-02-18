@@ -26,7 +26,6 @@ export const SERVICE_FREQ = [
   { id: 'simple', name: 'SIMPLE' }
 ]
 
-
 export const USER_TYPES = [
   { id: 'hole_registrar', name: 'регистратор' },
   { id: 'hotel_manager', name: 'менеджер' },
@@ -40,4 +39,13 @@ export const PAYMENT_TYPES = [
 export const BOOKING_TYPES = [
   { id: 'remotely', name: 'remotely' },
   { id: 'placement', name: 'placement' },
+]
+
+export const TRANSACTION_TYPES = [
+  { id: 'income', name: 'Доход' },
+  { id: 'outcome', name: 'Расход' },
+]
+export const RULE_TYPES = [
+  { id: 'entrance', name: 'Заезд' },
+  { id: 'leave', name: 'Выезд' },
 ]

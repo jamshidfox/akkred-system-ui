@@ -2,19 +2,18 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import { sprintf } from 'sprintf-js'
+import styled from 'styled-components'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { ROOM_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
-import styled from "styled-components";
-import {Box} from "../../../components/StyledElems";
+import { Box } from '../../../components/StyledElems'
 
 const style = {
   color: '#FFF',
   textDecoration: 'none'
 }
-
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -23,7 +22,7 @@ const RoomList = props => {
   const { list } = props
 
   const data = prop('results', list)
-  const {id} = useParams()
+  const { id } = useParams()
   return (
     <BoxUI>
       <PageTitle name="Номерной фонд" >

@@ -90,3 +90,21 @@ export const BOOKING_LIST = `/${BOOKING}/`
 export const BOOKING_ITEM = `/${BOOKING}/%d`
 export const BOOKING_CREATE = `/${BOOKING}/`
 export const BOOKING_UPDATE = `/${BOOKING}/%d`
+
+const TRANSACTION = `${FINANCE}/transaction`
+export const TRANSACTION_LIST = `/${TRANSACTION}/`
+export const TRANSACTION_ITEM = `/${TRANSACTION}/%d`
+export const TRANSACTION_CREATE = `/${TRANSACTION}/`
+export const TRANSACTION_UPDATE = `/${TRANSACTION}/%d/`
+
+const RULE_GROUP = `${FINANCE}/hotel_rule_group`
+export const RULE_GROUP_LIST = `/${RULE_GROUP}/`
+export const RULE_GROUP_ITEM = `/${RULE_GROUP}/%d`
+export const RULE_GROUP_CREATE = `/${RULE_GROUP}/`
+export const RULE_GROUP_UPDATE = `/${RULE_GROUP}/%d/`
+
+const RULE_PRICE = `${FINANCE}/hotel_rule_price`
+export const RULE_PRICE_LIST = `/${RULE_PRICE}/`
+export const RULE_PRICE_ITEM = `/${RULE_PRICE}/%d`
+export const RULE_PRICE_CREATE = `/${RULE_PRICE}/`
+export const RULE_PRICE_UPDATE = `/${RULE_PRICE}/%d/`
