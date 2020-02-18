@@ -39,7 +39,7 @@ export default [
   // },
   {
     name: 'Тарифы и цены',
-    url: '/',
+    url: ROUTES.RATES_LIST_URL,
     icon: CreditCard,
     children: [
       {

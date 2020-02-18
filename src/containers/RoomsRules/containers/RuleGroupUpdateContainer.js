@@ -23,7 +23,7 @@ const getRuleGrouptItemParams = () => ({
 
 const getRulePriceCreateParams = (id) => ({
   action: rulePriceCreateAction,
-  stateName: STATE.RULE_GROUP_ITEM,
+  stateName: STATE.RULE_PRICE_CREATE,
   serializer: (val) => serializerPruce(val, id)
 })
 const getInitialValues = (data) => {

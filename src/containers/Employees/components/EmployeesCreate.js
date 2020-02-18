@@ -74,7 +74,7 @@ const ReservationCreate = props => {
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton>Сохранить</MediumButton>
+                <MediumButton type={'submit'}>Сохранить</MediumButton>
               </div>
 
             </form>

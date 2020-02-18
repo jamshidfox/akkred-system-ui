@@ -7,7 +7,7 @@ import { TableCol, Table, TableRow } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import dateFormat from '../../../utils/dateFormat'
-import { SETTING_RULE_GROUP_CREATE_URL, SETTING_RULE_GROUP_UPDATE_PATH } from '../../../constants/routes'
+import { SETTING_RULE_GROUP_CREATE_URL, SETTING_RULE_GROUP_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
 
@@ -48,7 +48,7 @@ const RuleGroupList = props => {
               <TableCol span={8}>{name}</TableCol>
               <TableCol span={6}>{fromDate}</TableCol>
               <TableCol span={6}>{toDate}</TableCol>
-              <TableCol span={2}><Link style={style} to={sprintf(SETTING_RULE_GROUP_UPDATE_PATH, id)}><img
+              <TableCol span={2}><Link style={style} to={sprintf(SETTING_RULE_GROUP_UPDATE_URL, id)}><img
                 src={Edit} alt="Edit" /></Link>
               </TableCol>
               <TableCol span={2}>

@@ -38,6 +38,11 @@ const Label = styled.div`
   color: ${props => props.theme.color.basic.default};
 `
 
+const RuleTime = styled.div`
+  margin-top: 30px;
+  margin-bottom: 30px;
+`
+
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
@@ -75,8 +80,11 @@ const RuleGroupCreate = props => {
                   </Col>
                 </Row>
                 {update &&
-                  (
-                    <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
+                  (<RuleTime>
+                          <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
+
+                      </RuleTime>
+
                   )
                 }
 
