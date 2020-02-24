@@ -4,15 +4,16 @@ import moment from 'moment'
 import {
   filter, find, head,
   path, last, map,
-  pathEq, pick, pipe,
+  pathEq, pipe,
   prop, propEq, sortBy,
-  isEmpty, sort, has
+  isEmpty, sort, has,
+  equals
 } from 'ramda'
 import styled from 'styled-components'
-import equals from 'fast-deep-equal'
 import SchedulerContext from './SchedulerContext'
 
 const ClientInfo = styled('div')`
+  cursor: pointer;
   align-items: center;
   background-color: #FDD297;
   border: 1px solid #FF9500;
@@ -43,6 +44,8 @@ const getTargetIsDisabled = (event) => {
   const targetDataSet = event.target.dataset
   return targetDataSet.isDisabled === 'true' || !has('isDisabled', targetDataSet)
 }
+
+const convertToDate = (date) => moment(date).format('YYYY-MM-DD')
 
 const ScheduleRow = props => {
   const {
@@ -124,7 +127,6 @@ const ScheduleRow = props => {
 
   const reservedRoomDays = pipe(
     filter(pathEq(['room', 'id'], room)),
-    map(pick(['client', 'room', 'enterDatetime', 'leaveDatetime']))
   )(bookingList)
 
   return (
@@ -133,7 +135,11 @@ const ScheduleRow = props => {
         const date = moment(d).format('YYYY-MM-DD')
         const selectingRoomDays = getSelection(selectingRooms)
 
-        const reservedRoomData = find(propEq('enterDatetime', date))(reservedRoomDays)
+        const reservedRoomData = find(pipe(
+          prop('enterDatetime'),
+          convertToDate,
+          equals(date)
+        ))(reservedRoomDays)
 
         const reservedRoomFilter = filter(item => {
           const itemEnterDate = prop('enterDatetime', item)
@@ -141,8 +147,11 @@ const ScheduleRow = props => {
           return moment(date).isBetween(itemEnterDate, itemLeaveDate, null, '[]')
         })(reservedRoomDays)
 
+        const client = path(['client'], reservedRoomData)
         const clientName = path(['client', 'name'], reservedRoomData)
         const enterDate = prop('enterDatetime', reservedRoomData)
+        const bookingType = prop('bookingType', reservedRoomData)
+        const paymentType = prop('paymentType', reservedRoomData)
         const leaveDate = prop('leaveDatetime', reservedRoomData)
         const reservedDays = moment(leaveDate).diff(enterDate, 'days') + 1
         const isDisabled = !isEmpty(reservedRoomFilter)
@@ -169,7 +178,16 @@ const ScheduleRow = props => {
             onMouseOver={(event) => onMouseOver(event, room, date, index)}
             onMouseUp={() => onMouseUp()}>
             {reservedRoomData && (
-              <ClientInfo width={cellWidth * reservedDays}>
+              <ClientInfo
+                onClick={() => onOpenBooking({
+                  room,
+                  enterDate,
+                  leaveDate,
+                  client,
+                  bookingType,
+                  paymentType
+                }, reservedRoomData.id)}
+                width={cellWidth * reservedDays}>
                 {clientName}
               </ClientInfo>
             )}

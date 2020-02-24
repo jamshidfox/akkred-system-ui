@@ -2,16 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import {
-  Form,
-  DateField,
   Field,
   InputField,
   UniversalSearchField,
-  UniversalStaticSelectField
-} from '~/components/FormField'
+  UniversalStaticSelectField,
+  DateTimeField
+} from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '~/components/Grid'
 import { MediumButton, SecondaryMediumButton } from '~/components/UI/Buttons'
-import { Box } from '~/components/StyledElems'
+import { Box, FieldWrapper } from '~/components/StyledElems'
 import * as API from '~/constants/api'
 import * as CONST from '~/constants/backend'
 
@@ -83,32 +82,22 @@ const BookingCreateDialog = props => {
       <SideWrapper open={open}>
         <Background>
           <Label>Основная информация</Label>
-          <Row gutter={24}>
-            <Col span={12}>
-              <Field
-                name="enterDatetime"
-                label="заезд"
-                component={DateField}
-              />
-            </Col>
-            <Col span={12}>
-              <Field
-                name="leaveDatetime"
-                label="выезд"
-                component={DateField}
-              />
-            </Col>
-          </Row>
-
-          <Row gutter={24}>
-            <Col span={12}>
-              <Field
-                name="days"
-                label="Days"
-                component={InputField}
-              />
-            </Col>
-            <Col span={12}>
+          <FieldWrapper>
+            <Field
+              name="enterDatetime"
+              label="заезд"
+              component={DateTimeField}
+            />
+          </FieldWrapper>
+          <FieldWrapper>
+            <Field
+              name="leaveDatetime"
+              label="выезд"
+              component={DateTimeField}
+            />
+          </FieldWrapper>
+          <Row >
+            <Col span={24}>
               <Field
                 name="room"
                 label="Номер"

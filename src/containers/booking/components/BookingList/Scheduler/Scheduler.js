@@ -2,6 +2,10 @@ import React, { useReducer } from 'react'
 import { groupBy, pipe, prop, path, toPairs, head, has } from 'ramda'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { useHistory } from 'react-router-dom'
+import Chev from '../../../../../icons/Chev'
+import { addParamsRoute } from '../../../../../utils/route'
+import { getParamFromHistory } from '../../../../../utils/get'
 import SchedulerContext from './SchedulerContext'
 import SchedulerFilter from './SchedulerFilter'
 import SchedulerRight from './SchedulerRight'
@@ -49,6 +53,13 @@ const Room = styled('div')`
   }
 `
 
+const ChevBtn = styled.span`
+position: absolute;
+ top: 3px;
+  right: 10px; 
+  cursor: pointer;
+`
+
 const reducer = (state, action) => ({ ...state, ...action })
 const initialState = {}
 
@@ -60,6 +71,8 @@ const getToggleIsExpanded = (category, toggleState) => {
 
 const Scheduler = props => {
   const { list, createModal, bookingData } = props
+  const history = useHistory()
+  const updateBookId = getParamFromHistory('bookId', history)
   const roomList = path(['results'], list)
   const bookingList = path(['results'], bookingData)
   const [toggleState, dispatch] = useReducer(reducer, initialState)
@@ -90,13 +103,23 @@ const Scheduler = props => {
     <SchedulerContext.Provider value={tableOptions}>
       <Form onSubmit={createModal.onSubmit}
         render={formProps => {
-          const { form } = formProps
-          const onChange = (values) => {
+          const { form, values } = formProps
+          const onChange = (values, bookId) => {
+            console.warn(values)
+
             form.change('room', { id: values.room })
             form.change('enterDatetime', values.enterDate)
             form.change('leaveDatetime', values.leaveDate)
+            form.change('paymentType.id', values.paymentType)
+            form.change('bookingType.id', values.bookingType)
+            form.change('client', values.client)
+            form.change('citizenship', path(['client', 'citizenship'], values))
+            if (bookId) {
+              addParamsRoute({ bookId }, history)
+            }
             onOpenBooking()
           }
+
           return (
             <>
               <Container>
@@ -113,11 +136,10 @@ const Scheduler = props => {
                         <div key={roomCategory}>
                           <RoomCategory>
                             {categoryName}
-                            <button
-                              style={{ position: 'absolute', top: '3px', right: '10px' }}
+                            <ChevBtn
                               onClick={onToggleState(roomCategory)}>
-                              {isExpanded ? 'hide' : 'show'}
-                            </button>
+                              <Chev />
+                            </ChevBtn>
                           </RoomCategory>
                           {isExpanded && (
                             <RoomList>

@@ -37,8 +37,8 @@ export const PAYMENT_TYPES = [
 ]
 
 export const BOOKING_TYPES = [
-  { id: 'remotely', name: 'remotely' },
-  { id: 'placement', name: 'placement' },
+  { id: 'remotely', name: 'Remotely' },
+  { id: 'placement', name: 'Placement' },
 ]
 
 export const TRANSACTION_TYPES = [
