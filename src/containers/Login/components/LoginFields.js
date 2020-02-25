@@ -65,6 +65,7 @@ const LoginFields = props => {
             name={'password'}
             component={InputField}
             placeholder={'Введите пароль'}
+            type={'password'}
           />
         </InputWrap>
 
