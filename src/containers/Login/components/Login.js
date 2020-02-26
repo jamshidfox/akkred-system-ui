@@ -1,73 +1,47 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {Box as BoxUI, DisplayFlex} from '../../../components/StyledElems'
-import { Input as InputUI, MediumButton } from '../../../components/UI'
+import LoginFields from './LoginFields'
+import { FinalForm } from '~/components/FormField'
 
 const Wrapper = styled.div`
+  font-family: "Open Sans", sans-serif;
   text-align: center;
 `
 
-const Box = styled(BoxUI)`
-  box-shadow: 0px 16px 24px rgba(8, 35, 48, 0.16);
-  width: 430px;
-  padding: 56px;
-
+const LogoWrap = styled.div`
+  
 `
 
 const Logo = styled.div`
-  font-size: 82px;
   color: #fff;
-  letter-spacing: 5px;
+  font-size: 84px;
+  font-family: "Aleo", sans-serif;
 `
 
 const Intro = styled.div`
-font-size: 10px;
-text-align: center;
-letter-spacing: 1.5px;
-text-transform: uppercase;
-margin-bottom: 60px;
-/* White / 60% */
-
-color: rgba(255, 255, 255, 0.6);
-`
-const Input = styled(InputUI)`
-  margin-bottom: 40px;
+  font-size: 10px;
+  text-align: center;
+  letter-spacing: 1.5px;
+  line-height: 16px;
+  text-transform: uppercase;
+  margin: 12px 0 95px;
+  color: rgba(255, 255, 255, 0.6);
 `
 
-const Forgot = styled.div`
-  color: ${props => props.theme.color.basic.default};
-  font-weight: normal;
-font-size: 12px;
-line-height: 16px;
-`
 const Login = props => {
   const { onLogin } = props
 
-  const [state, setState] = React.useState({})
-
-  const onChange = ev => {
-    const name = ev.target.name
-    const value = ev.target.value
-    return setState({ ...state, [name]: value })
-  }
   return (
     <Wrapper>
-      <Logo>
-        Hotilier
-      </Logo>
-      <Intro>
-        Property management system
-      </Intro>
-      <Box>
-        <Input placeholder={'Введите логин'} name={'username'} onChange={onChange} />
-        <Input placeholder={'Введите пароль'} name={'password'} onChange={onChange} />
+      <LogoWrap>
+        <Logo>Hotelier</Logo>
+        <Intro>Property management system</Intro>
+      </LogoWrap>
 
-        <DisplayFlex align={'center'} justify={'space-between'}>
-          <Forgot>Забыли пароль?</Forgot>
-          <MediumButton onClick={() => onLogin(state)} >войти</MediumButton>
-        </DisplayFlex>
-      </Box>
+      <FinalForm onSubmit={onLogin}>
+        <LoginFields />
+      </FinalForm>
     </Wrapper>
   )
 }
