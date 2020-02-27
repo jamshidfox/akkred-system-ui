@@ -32,7 +32,22 @@ export const bookingCreateAction = data => {
 
     return dispatch({
       payload,
-      type: actionTypes.SERVICES_PRICE_CREATE
+      type: actionTypes.BOOKING_CREATE
+    })
+  }
+}
+
+export const bookingUpdateAction = ([id, data]) => {
+
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .put(sprintf(API.BOOKING_UPDATE, id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.BOOKING_UPDATE
     })
   }
 }

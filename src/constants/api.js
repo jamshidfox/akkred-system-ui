@@ -89,7 +89,7 @@ const BOOKING = `${CLIENTS}/booking`
 export const BOOKING_LIST = `/${BOOKING}/`
 export const BOOKING_ITEM = `/${BOOKING}/%d`
 export const BOOKING_CREATE = `/${BOOKING}/`
-export const BOOKING_UPDATE = `/${BOOKING}/%d`
+export const BOOKING_UPDATE = `/${BOOKING}/%d/`
 
 const TRANSACTION = `${FINANCE}/transaction`
 export const TRANSACTION_LIST = `/${TRANSACTION}/`

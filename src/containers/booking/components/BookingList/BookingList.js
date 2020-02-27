@@ -5,7 +5,7 @@ import { LinkButton, PageTitle } from '~/components/UI'
 import { Box, DisplayFlex } from '~/components/StyledElems'
 
 const BookingList = props => {
-  const { list, createModal, bookingList } = props
+  const { list, createModal, bookingList, updateAction } = props
   return (
     <>
       <Box padding={'25px'}>
@@ -19,7 +19,9 @@ const BookingList = props => {
       <Scheduler
         list={list}
         bookingData={bookingList}
-        createModal={createModal} />
+        createModal={createModal}
+        updateAction={updateAction}
+      />
     </>
   )
 }
@@ -27,6 +29,7 @@ const BookingList = props => {
 BookingList.propTypes = {
   list: PropTypes.object,
   createModal: PropTypes.object,
+  updateAction: PropTypes.object,
   bookingList: PropTypes.object
 }
 

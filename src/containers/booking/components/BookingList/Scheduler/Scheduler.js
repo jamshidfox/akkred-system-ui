@@ -70,9 +70,8 @@ const getToggleIsExpanded = (category, toggleState) => {
 }
 
 const Scheduler = props => {
-  const { list, createModal, bookingData } = props
+  const { list, createModal, bookingData, updateAction } = props
   const history = useHistory()
-  const updateBookId = getParamFromHistory('bookId', history)
   const roomList = path(['results'], list)
   const bookingList = path(['results'], bookingData)
   const [toggleState, dispatch] = useReducer(reducer, initialState)
@@ -101,7 +100,7 @@ const Scheduler = props => {
 
   return (
     <SchedulerContext.Provider value={tableOptions}>
-      <Form onSubmit={createModal.onSubmit}
+      <Form onSubmit={updateAction.id ? updateAction.onSubmit : createModal.onSubmit}
         render={formProps => {
           const { form, values } = formProps
           const onChange = (values, bookId) => {
@@ -183,7 +182,8 @@ const Scheduler = props => {
 Scheduler.propTypes = {
   list: PropTypes.object,
   createModal: PropTypes.object,
-  bookingData: PropTypes.object
+  bookingData: PropTypes.object,
+  updateAction: PropTypes.object
 }
 
 export default Scheduler

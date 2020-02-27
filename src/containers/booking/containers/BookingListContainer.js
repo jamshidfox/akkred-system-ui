@@ -1,12 +1,18 @@
 import React from 'react'
 import { path } from 'ramda'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import * as STATE from '../../../constants/stateNames'
-import { useFetchList, useCreateModal } from '../../../hooks'
-import { bookingFetchList, bookingCreateAction } from '../actions'
+import { useFetchList, useCreateModal, useCreate } from '../../../hooks'
+import {
+  bookingFetchList,
+  bookingCreateAction,
+  bookingUpdateAction
+} from '../actions'
 import { roomFetchList } from '../../Rooms/actions'
 import BookingList from '../components/BookingList'
-import { getSerializedData } from '../../../utils/get'
+import { getParamFromHistory, getSerializedData } from '../../../utils/get'
+import { replaceParamsRoute } from '../../../utils/route'
 import toSnakeCase from '../../../utils/toSnakeCase'
 
 const getListParams = () => ({
@@ -28,14 +34,26 @@ const createSerializer = values => {
     client: toSnakeCase({ ...client, citizenship })
   })
 }
+const updateSerializer = values => {
+  const client = values.client
+  return toSnakeCase({
+    ...values,
+    ...getSerializedData(['paymentType', 'bookingType', 'room'], values),
+    client: toSnakeCase({ ...getSerializedData(['name', 'fatherName', 'surname', 'id'], client) })
+
+  })
+}
 
 export default props => {
   const list = useFetchList(getListParams())
   const bookingList = useFetchList(getBookingListParams())
   const dispatch = useDispatch()
+  const history = useHistory()
+
+  const updateBookId = getParamFromHistory('bookId', history)
 
   const onBookSuccess = () => {
-    dispatch(bookingFetchList())
+    return dispatch(bookingFetchList())
   }
   const getCreateParams = () => ({
     stateName: STATE.RESERVATION_CREATE,
@@ -46,11 +64,23 @@ export default props => {
 
   const createModal = useCreateModal(getCreateParams())
 
+  const updateAction = useCreate({
+    action: bookingUpdateAction,
+    stateName: STATE.BOOKING_CREATE,
+    serializer: (values) => [updateBookId, updateSerializer(values)],
+    onSuccess: () => {
+      replaceParamsRoute({bookId: null}, history)
+      onBookSuccess()
+      createModal.onClose()
+    }
+  })
+
   return (
     <BookingList
       list={list}
       bookingList={bookingList}
       createModal={createModal}
+      updateAction={{ ...updateAction, id: updateBookId }}
     />
   )
 }

@@ -149,6 +149,8 @@ const ScheduleRow = props => {
 
         const client = path(['client'], reservedRoomData)
         const clientName = path(['client', 'name'], reservedRoomData)
+        const surname = path(['client', 'surname'], reservedRoomData)
+        const fatherName = path(['client', 'fatherName'], reservedRoomData)
         const enterDate = prop('enterDatetime', reservedRoomData)
         const bookingType = prop('bookingType', reservedRoomData)
         const paymentType = prop('paymentType', reservedRoomData)
@@ -188,7 +190,7 @@ const ScheduleRow = props => {
                   paymentType
                 }, reservedRoomData.id)}
                 width={cellWidth * reservedDays}>
-                {clientName}
+                {clientName} {surname} {fatherName}
               </ClientInfo>
             )}
           </Cell>
