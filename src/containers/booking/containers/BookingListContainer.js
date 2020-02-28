@@ -64,14 +64,17 @@ export default props => {
 
   const createModal = useCreateModal(getCreateParams())
 
+  const onClose = () => {
+    createModal.onClose()
+    replaceParamsRoute({ bookId: null }, history)
+  }
   const updateAction = useCreate({
     action: bookingUpdateAction,
     stateName: STATE.BOOKING_CREATE,
     serializer: (values) => [updateBookId, updateSerializer(values)],
     onSuccess: () => {
-      replaceParamsRoute({bookId: null}, history)
       onBookSuccess()
-      createModal.onClose()
+      onClose()
     }
   })
 
@@ -79,7 +82,7 @@ export default props => {
     <BookingList
       list={list}
       bookingList={bookingList}
-      createModal={createModal}
+      createModal={{ ...createModal, onClose }}
       updateAction={{ ...updateAction, id: updateBookId }}
     />
   )
