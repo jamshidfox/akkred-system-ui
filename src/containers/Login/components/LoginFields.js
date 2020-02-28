@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Field, InputField } from '~/components/FormField'
+import Person from '~/icons/pack/Person'
+import Lock from '~/icons/pack/Lock'
+import { Field, IconInputField } from '~/components/FormField'
 import { MediumButton } from '~/components/UI'
 import { Box as BoxUI } from '~/components/StyledElems'
 
@@ -56,16 +58,18 @@ const LoginFields = props => {
         <InputWrap>
           <Field
             name={'username'}
-            component={InputField}
+            component={IconInputField}
             placeholder={'Введите логин'}
+            icon={Person}
           />
         </InputWrap>
         <InputWrap>
           <Field
             name={'password'}
-            component={InputField}
+            component={IconInputField}
             placeholder={'Введите пароль'}
             type={'password'}
+            icon={Lock}
           />
         </InputWrap>
 
