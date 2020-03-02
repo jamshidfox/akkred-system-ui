@@ -34,11 +34,8 @@ const UniversalMultiSearchField = props => {
     <SearchField
       getText={defaultGetText(itemText || ['name'])}
       getValue={defaultGetValue(['id'])}
-      getOptions={search =>
-        getOptions(store, { api, params, search })
-      }
+      getOptions={search => getOptions(store, { api, params, search })}
       getOption={getOption(store, { api, params })}
-      isMulti={true}
       {...rest}
     />
   )

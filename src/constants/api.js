@@ -55,6 +55,9 @@ export const HOTEL_SERVICE_TYPE_LIST = `/${HOTEL_SERVICE_TYPE}/`
 export const HOTEL_SERVICE = 'hotels/hotel_services'
 export const HOTEL_SERVICE_LIST = `/${HOTEL_SERVICE}/`
 
+export const HOTEL_ATTRACTION_TYPE = `hotels/attractions_type`
+export const HOTEL_ATTRACTION_TYPE_LIST = `/${HOTEL_ATTRACTION_TYPE}/`
+
 const CLIENTS = 'clients'
 
 export const RESERVATION = `${CLIENTS}/reservation`

@@ -62,6 +62,7 @@ const SwitchContainer = styled(SwitchContainerUI)`
       padding-left: 18px;
     `}
 `
+
 const Checkbox = ({ onChange, ...props }) => {
   const onChecked = ev => onChange && onChange(ev.target.checked, ev)
   return (

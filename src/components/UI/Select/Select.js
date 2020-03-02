@@ -86,7 +86,6 @@ const Select = props => {
             onChange(option)
           }
         }}
-        menuPortalTarget={document.body}
         components={{
           MenuList: menuListProps => (
             <MenuList

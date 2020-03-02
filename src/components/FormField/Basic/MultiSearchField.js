@@ -10,7 +10,8 @@ import {
   unionWith,
   pipe,
   not,
-  is, isEmpty
+  is,
+  isEmpty
 } from 'ramda'
 import {
   compose,
@@ -29,8 +30,8 @@ import {
   distinctUntilChanged,
   debounceTime
 } from 'rxjs/operators'
-import { Select } from '../../UI'
-import { getFieldError } from '../../../utils/form'
+import { getFieldError } from '~/utils/form'
+import { MultiSelect } from '~/components/UI'
 
 const DEFAULT_STATE = {
   options: [],
@@ -205,9 +206,8 @@ const SearchField = enhance(props => {
   }
 
   return (
-    <Select
+    <MultiSelect
       {...input}
-      isMulti={true}
       label={label}
       isDisabled={disabled}
       isClearable={isClearable}

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { head, prop, union, isEmpty, pipe, flatten, filter, map, fromPairs, toPairs, values } from 'ramda'
+import { head, prop, union, isEmpty, pipe, flatten, map, fromPairs, toPairs, values, omit, propOr } from 'ramda'
 import * as STATE from '../../constants/stateNames'
 import { useCreate, useFetchList, useModal } from '../../hooks'
 import { getSerializedData, getParamFromHistory } from '../../utils/get'
@@ -12,17 +12,25 @@ import { hotelCreateAction, hotelFetchList, hotelUpdateAction } from './actions'
 const EDIT = 'edit'
 const serializer = (val) => {
   const services = pipe(
+    omit(['attractionTypes', 'attractions']),
     values,
     flatten,
     map(prop('id'))
   )(val.services)
 
+  const attractions = pipe(
+    propOr([], 'attractions'),
+    map(prop('id'))
+  )(val)
+
   return {
     ...getSerializedData(fields, val),
+    attractions,
     services: services,
     currencies: []
   }
 }
+
 const getHotelCreateParams = () => ({
   action: hotelCreateAction,
   stateName: STATE.HOTEL_CREATE,
@@ -63,7 +71,8 @@ const RegisterContainer = props => {
   const dispatch = useDispatch()
   const { history } = props
   const data = useCreate(getHotelCreateParams())
-  const serviceModal = useModal({})
+  const serviceModal = useModal({ key: 'services' })
+  const attractionsModal = useModal({ key: 'attractions' })
   const { results, data: d, ...hotelData } = useFetchList(getHotelListParams())
   const hotel = head(results)
 
@@ -90,6 +99,7 @@ const RegisterContainer = props => {
       isCreated={isCreated}
       hotelData={{ ...hotelData, data: hotel, initialValues }}
       serviceModal={serviceModal}
+      attractionsModal={attractionsModal}
     />
   )
 }
