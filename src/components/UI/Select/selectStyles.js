@@ -69,7 +69,7 @@ export default (theme, params) => ({
   }),
   option: (provided, state) => ({
     ...provided,
-    fontSize: '13px',
+    fontSize: '14px',
     background: state.isSelected
       ? '#EBECFC'
       : state.isFocused

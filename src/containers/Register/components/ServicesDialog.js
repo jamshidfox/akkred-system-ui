@@ -4,16 +4,15 @@ import { Field } from 'react-final-form'
 import styled from 'styled-components'
 import { useStore } from 'react-redux'
 import { pipe, prop, isEmpty, flatten, values } from 'ramda'
-import { Modal, MediumButton } from '../../../components/UI'
-
-import { UniversalMultiSelectField, NoopFields } from '../../../components/FormField'
-import axios, { getPayloadFromSuccess } from '../../../utils/axios'
-import * as ROUTES from '../../../constants/api'
+import axios, { getPayloadFromSuccess } from '~/utils/axios'
+import * as ROUTES from '~/constants/api'
+import { Modal, MediumButton } from '~/components/UI'
+import { UniversalMultiSelectField, NoopFields } from '~/components/FormField'
 
 const Selected = styled.button`
   display: block;
-    width: 100%;
-    text-align: left;
+  width: 100%;
+  text-align: left;
   border: ${props => props.theme.border};
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.input.placeholderColor};
@@ -23,19 +22,17 @@ const Selected = styled.button`
   line-height: 24px;
   cursor: pointer;
   transition: 200ms;
-    :hover {
+    :hover:not(:disabled) {
       background: ${props => props.theme.input.backgroundColorHover};
   }
   :disabled {
     background: ${props => props.theme.input.background};
+    cursor: unset;
   }
 `
 
 const FieldWrapper = styled.div`
-  display: inline-block;
-  width: calc(100%/3);
-  padding: 0 20px;
-  margin-bottom: 20px;
+  
 `
 
 const Tag = styled.div`
@@ -48,12 +45,16 @@ const Tag = styled.div`
 `
 
 const Wrapper = styled.div`
-  margin: 0 -20px;
- 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px 32px;
+  margin-bottom: 32px;
 `
+
 const Buttons = styled.div`
   text-align: right;
 `
+
 const defArr = []
 const ServicesDialog = props => {
   const {
@@ -64,8 +65,10 @@ const ServicesDialog = props => {
     onServiceCancel,
     serviceTypes = defArr
   } = props
+
   const [typeList, setTypeList] = useState(defArr)
   const store = useStore()
+
   useEffect(() => {
     axios(store)
       .get(ROUTES.HOTEL_SERVICE_TYPE_LIST)
@@ -91,6 +94,7 @@ const ServicesDialog = props => {
         </Selected>
       )
     }
+
     return (
       <Selected
         disabled={!isEdit}
@@ -109,16 +113,19 @@ const ServicesDialog = props => {
       onClose={onServiceCancel} >
       <div>
         <Wrapper>
-          {typeList.map(type => (
-            <FieldWrapper>
-              <Field
-                component={UniversalMultiSelectField}
-                api={ROUTES.HOTEL_SERVICE_LIST}
-                params={{ type: type.id }}
-                name={'services[_' + type.id + ']'}
-                label={type.name} />
-            </FieldWrapper>
-          ))}
+          {typeList.map(type => {
+            return (
+              <FieldWrapper key={type.id}>
+                <Field
+                  component={UniversalMultiSelectField}
+                  api={ROUTES.HOTEL_SERVICE_LIST}
+                  params={{ type: type.id }}
+                  name={'services[_' + type.id + ']'}
+                  label={type.name}
+                />
+              </FieldWrapper>
+            )
+          })}
         </Wrapper>
         <Buttons>
           <MediumButton type="button" onClick={onClose}>сохранить</MediumButton>
@@ -130,9 +137,11 @@ const ServicesDialog = props => {
 
 ServicesDialog.propTypes = {
   open: PropTypes.bool,
+  isEdit: PropTypes.bool,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   serviceTypes: PropTypes.object,
   onServiceCancel: PropTypes.func
 }
+
 export default ServicesDialog

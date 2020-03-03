@@ -5,36 +5,40 @@ import { Form, Field } from 'react-final-form'
 import arrayMutators from 'final-form-arrays'
 import { FieldArray } from 'react-final-form-arrays'
 import { prop } from 'ramda'
-import BoxUI from '../../../components/StyledElems/Box'
-import DisplayFlex from '../../../components/StyledElems/DisplayFlex'
-import { MediumButton, IconButton as IconButtonUI, TinyButton } from '../../../components/UI'
+import ServicesDialog from './ServicesDialog'
+import AttractionsDialog from './AttractionsDialog'
+import BoxUI from '~/components/StyledElems/Box'
+import DisplayFlex from '~/components/StyledElems/DisplayFlex'
+import { MediumButton, IconButton as IconButtonUI, TinyButton } from '~/components/UI'
 import {
   InputField,
   UniversalSearchField,
   ImageFieldArray
-} from '../../../components/FormField'
-import { Row as RowUI, Col } from '../../../components/Grid'
-import Map from '../../../icons/Map'
-import * as API from '../../../constants/api'
-import ServicesDialog from './ServicesDialog'
+} from '~/components/FormField'
+import { Row as RowUI, Col } from '~/components/Grid'
+import Map from '~/icons/Map'
+import * as API from '~/constants/api'
 
 const IconButton = styled(IconButtonUI)`
   margin-top: 24px;
 `
+
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
+
 const Box = styled(BoxUI)`
   padding: 24px;
 `
 
 const Header = styled.div`
   font-weight: bold;
-font-size: 18px;
-line-height: 28px;
-letter-spacing: 0.5px;
-color: #8F9BB3;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.5px;
+  color: #8F9BB3;
 `
+
 export const fields = [
   'hotelType',
   'title',
@@ -48,16 +52,20 @@ export const fields = [
   'services',
   'photos'
 ]
+
 const Register = props => {
   const {
     onSubmit,
     hotelData,
     isCreated,
     editData,
-    serviceModal
+    serviceModal,
+    attractionsModal
   } = props
+
   const { isEdit } = editData
   const initialValues = prop('initialValues', hotelData)
+
   return (
     <Box>
       <DisplayFlex justify={'space-between'} style={{ marginBottom: '34px' }}>
@@ -71,8 +79,7 @@ const Register = props => {
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
         onSubmit={isEdit ? editData.onSubmit : onSubmit}
-        render={({ handleSubmit, values, form, ...formikProps }) => {
-
+        render={({ handleSubmit, values, form }) => {
           const onServiceCancel = () => {
             form.change('services', {})
             serviceModal.onClose()
@@ -87,7 +94,8 @@ const Register = props => {
                     name={'hotelType'}
                     api={API.HOTEL_TYPE_LIST}
                     placeholder={'К какой из категорий ниже больше всего подходит ваш объект?'}
-                    component={UniversalSearchField} />
+                    component={UniversalSearchField}
+                  />
                 </Col>
                 <Col span={12}>
                   <Field
@@ -95,18 +103,19 @@ const Register = props => {
                     label={'название'}
                     placeholder={'Как называется ваша гостиница?'}
                     name={'title'}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
               </Row>
               <Row gutter={24}>
                 <Col span={12}>
                   <Field
                     disabled={!isEdit}
-
                     label={'звездность'}
                     name={'point'}
                     placeholder={'Сколько звезд у вашей гостиницы?'}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
                 <Col span={12}>
                   <DisplayFlex justify={'space-between'}>
@@ -116,7 +125,8 @@ const Register = props => {
                       placeholder={'Где находится ваша гостиница?'}
                       name={'address'}
                       width={'calc(100% - 68px)'}
-                      component={InputField} />
+                      component={InputField}
+                    />
                     <IconButton size={'large'} icon={Map} type={'button'} />
                   </DisplayFlex>
                 </Col>
@@ -125,11 +135,11 @@ const Register = props => {
                 <Col span={8}>
                   <Field
                     disabled={!isEdit}
-
                     label={'номер телефона'}
                     name={'phoneNumber'}
                     placeholder={'Введите номер телефона '}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
                 <Col span={8}>
                   <Field
@@ -137,7 +147,8 @@ const Register = props => {
                     label={'доп номер телефона'}
                     placeholder={'Введите дополнительный номер телефона'}
                     name={'additionalPhoneNumber'}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
                 <Col span={8}>
                   <Field
@@ -145,17 +156,19 @@ const Register = props => {
                     label={'email (не обязательно)'}
                     placeholder={'Введите Email'}
                     name={'email'}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
               </Row>
               <Row gutter={24}>
                 <Col span={8}>
                   <Field
                     disabled={!isEdit}
-                    label={'вРЕМЯ ЗАЕЗДА'}
+                    label={'Время заезда'}
                     name={'entranceTime'}
                     placeholder={'Например: 08:00'}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
                 <Col span={8}>
                   <Field
@@ -163,7 +176,8 @@ const Register = props => {
                     label={'Время выезда'}
                     placeholder={'Например: 18:00'}
                     name={'leaveTime'}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
                 <Col span={8}>
                   <Field
@@ -171,7 +185,8 @@ const Register = props => {
                     label={'форма оплаты'}
                     placeholder={'Какие способы оплаты вы принимаете?'}
                     name={'paymentTypes'}
-                    component={InputField} />
+                    component={InputField}
+                  />
                 </Col>
               </Row>
               <Row>
@@ -180,15 +195,24 @@ const Register = props => {
                     isEdit={isEdit}
                     serviceTypes={values.services}
                     onServiceCancel={onServiceCancel}
-                    {...serviceModal} />
+                    {...serviceModal}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col span={24}>
+                  <AttractionsDialog
+                    isEdit={isEdit}
+                    {...attractionsModal}
+                  />
                 </Col>
               </Row>
               <Row>
                 <Col span={24}>
                   <FieldArray
-                    label={'услуги гостиницы'}
                     name={'photos'}
-                    component={ImageFieldArray} />
+                    component={ImageFieldArray}
+                  />
                 </Col>
               </Row>
               <div style={{ textAlign: 'right' }}>
@@ -207,6 +231,7 @@ Register.propTypes = {
   editData: PropTypes.object,
   hotelData: PropTypes.object,
   serviceModal: PropTypes.object,
+  attractionsModal: PropTypes.object,
   isCreated: PropTypes.bool
 }
 export default Register
