@@ -11,24 +11,24 @@ const StyledWrapper = styled(InputWrapper)`
 `
 
 const InputIcon = icon => styled(icon)`
-  font-size: 20px;
+  font-size: 24px;
   position: absolute;
   top: 50%;
-  right: 15px;
+  right: 12px;
   transition: all 300ms;
   transform: translateY(-50%);
+  pointer-events: none;
 `
 
-const StyledInput = styled(props => <InputBase {...props} />)`
+const StyledInput = styled(InputBase)`
   + svg {
-//    fill: ${props => props.theme.color.basic.default};
+    color: ${props => props.theme.color.basic.default};
   }
+
   :focus + svg {
-    path {
-      stroke: ${props => props.theme.color.primary.default};
-  }
-    color: ${props =>
-    props.error ? props.theme.color.danger.default : props.theme.color.primary.default};
+    color: ${props => props.error
+    ? props.theme.color.danger.default
+    : props.theme.color.primary.default};
   }
 `
 

@@ -29,8 +29,8 @@ import {
   distinctUntilChanged,
   debounceTime
 } from 'rxjs/operators'
-import { Select } from '../../UI'
-import { getFieldError } from '../../../utils/form'
+import { getFieldError } from '~/utils/form'
+import { Select } from '~/components/UI'
 
 const DEFAULT_STATE = {
   options: [],
