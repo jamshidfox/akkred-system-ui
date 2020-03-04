@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { join, map, pipe, prop, propOr } from 'ramda'
+import { concat, flatten, isEmpty, join, map, pipe, prop, propOr } from 'ramda'
 import { useFormState } from 'react-final-form'
 import styled from 'styled-components'
 import * as API from '~/constants/api'
 import { Modal, MediumButton } from '~/components/UI'
 import {
   Field,
-  UniversalMultiSelectField
+  UniversalMultiSelectField,
+  UniversalStaticMultiSelect
 } from '~/components/FormField'
 import { FieldWrapper } from '~/components/StyledElems'
 
@@ -46,11 +47,20 @@ const AttractionsDialog = props => {
   } = props
 
   const { values } = useFormState()
-  const attractionTypes = pipe(
-    propOr([], 'attractionTypes'),
+
+  const attractionsParent1 = pipe(
+    propOr([], 'attractionsParent1'),
     map(prop('id')),
     join('-')
   )(values)
+
+  const attractionsParent2 = propOr([], 'attractionsParent2', values)
+
+  const attractionsList = pipe(
+    map(prop('attractions')),
+    concat([]),
+    flatten
+  )(attractionsParent2)
 
   return (
     <>
@@ -65,7 +75,7 @@ const AttractionsDialog = props => {
         width={'1024px'}>
         <FieldWrapper>
           <Field
-            name={'attractionTypes'}
+            name={'attractionsParent1'}
             component={UniversalMultiSelectField}
             api={API.HOTEL_ATTRACTION_TYPE_LIST}
             params={{ children_only: false }}
@@ -74,13 +84,22 @@ const AttractionsDialog = props => {
         </FieldWrapper>
         <FieldWrapper>
           <Field
-            name={'attractions'}
+            name={'attractionsParent2'}
             component={UniversalMultiSelectField}
             api={API.HOTEL_ATTRACTION_TYPE_LIST}
-            params={{ children_only: true, parent: attractionTypes }}
-            parent={attractionTypes}
+            params={{ children_only: true, parent: attractionsParent1 }}
+            parent={attractionsParent1}
             label={'Достопримечательности'}
-            disabled={!attractionTypes}
+            disabled={!attractionsParent1}
+          />
+        </FieldWrapper>
+        <FieldWrapper>
+          <Field
+            name={'attractions'}
+            component={UniversalStaticMultiSelect}
+            label={'Достопримечательности'}
+            list={attractionsList}
+            disabled={isEmpty(attractionsParent2)}
           />
         </FieldWrapper>
 

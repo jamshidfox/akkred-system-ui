@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { head, prop, union, isEmpty, pipe, flatten, map, fromPairs, toPairs, values, omit, propOr } from 'ramda'
+import { head, prop, union, isEmpty, pipe, flatten, map, fromPairs, toPairs, values, propOr } from 'ramda'
 import * as STATE from '../../constants/stateNames'
 import { useCreate, useFetchList, useModal } from '../../hooks'
 import { getSerializedData, getParamFromHistory } from '../../utils/get'
@@ -12,7 +12,6 @@ import { hotelCreateAction, hotelFetchList, hotelUpdateAction } from './actions'
 const EDIT = 'edit'
 const serializer = (val) => {
   const services = pipe(
-    omit(['attractionTypes', 'attractions']),
     values,
     flatten,
     map(prop('id'))
