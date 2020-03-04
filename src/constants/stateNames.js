@@ -3,6 +3,8 @@ export const HOTEL_UPDATE = 'hotelUpdate'
 export const HOTEL_CREATE = 'hotelCreate'
 export const USER_INFO = 'userInfo'
 
+export const REQUISITES_UPDATE = 'REQUISITES_UPDATE'
+
 export const ROOM_LIST = 'roomList'
 export const ROOM_TYPE_LIST = 'roomTypeList'
 export const ROOM_UPDATE = 'roomUpdate'

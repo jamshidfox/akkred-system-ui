@@ -5,6 +5,7 @@ import UIs from './UIs'
 import Example from './example'
 import Login from './Login'
 import Register from './Register'
+import Requisites from './Requisites'
 import rooms from './Rooms'
 import reservation from './reservation'
 import client from './Client'
@@ -30,6 +31,12 @@ const tester = store => [
     path: ROUTES.SETTINGS_HOTEL_URL,
     layout: Layouts,
     component: Register
+  },
+  {
+    exact: true,
+    path: ROUTES.SETTING_REQUISITES,
+    layout: Layouts,
+    component: Requisites
   },
   {
     exact: true,
