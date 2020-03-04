@@ -8,7 +8,7 @@ import { useFetchList } from '../../hooks'
 import { replaceParamsRoute } from '../../utils/route'
 import { hotelFetchList } from '../Register/actions'
 import Requisites from './components/Requisites'
-import { RequisitesUpdateAction } from './actions'
+import { requisitesUpdateAction } from './actions'
 
 const getHotelListParams = () => ({
   action: hotelFetchList,
@@ -79,7 +79,7 @@ const RequisitesContainer = props => {
       nds_reg_id : prop('nds_reg_id ', data),
       paymentTypes: prop('paymentTypes', data),
     }
-    return dispatch(RequisitesUpdateAction(prop('id', hotel), result))
+    return dispatch(requisitesUpdateAction(prop('id', hotel), result))
       .then(() => replaceParamsRoute({ [EDIT]: false }, history))
       .then(() => dispatch(hotelFetchList()))
   }

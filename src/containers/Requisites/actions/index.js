@@ -6,7 +6,7 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const RequisitesUpdateAction = (id, data) => {
+export const requisitesUpdateAction = (id, data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.HOTEL_UPDATE, id), {
