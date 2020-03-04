@@ -77,6 +77,10 @@ export default [
         url: ROUTES.SETTINGS_HOTEL_URL,
       },
       {
+        name: 'Реквизиты',
+        url: ROUTES.SETTING_REQUISITES,
+      },
+      {
         name: 'Номерной фонд',
         url: ROUTES.SETTING_ROOMS_TYPE_LIST,
       },

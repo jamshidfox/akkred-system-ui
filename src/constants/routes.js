@@ -27,6 +27,8 @@ export const SETTING_RULE_PRICE_LIST = `/${SETTINGS}/${SETTING_RULE_PRICE}/`
 export const SETTING_RULE_PRICE_CREATE_URL = `/${SETTINGS}/${SETTING_RULE_PRICE}/create`
 export const SETTING_RULE_PRICE_UPDATE_PATH = `/${SETTINGS}/${SETTING_RULE_PRICE}/${ID}/`
 
+export const SETTING_REQUISITES = `/${SETTINGS}/requisites`
+
 export const EMPLOYEES = 'employees'
 export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`
 export const EMPLOYEES_LIST_URL = `/${SETTINGS}/${EMPLOYEES}/`

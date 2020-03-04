@@ -23,7 +23,6 @@ export const hotelCreateAction = data => {
 }
 
 export const hotelUpdateAction = (id, data) => {
-
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.HOTEL_UPDATE, id), {
