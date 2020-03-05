@@ -22,6 +22,9 @@ export const ROOM_TYPE_LIST = 'ROOM_TYPE_LIST'
 
 export const REQUISITES_UPDATE = 'REQUISITES_UPDATE'
 
+export const BUILDING_CREATE = 'BUILDING_CREATE'
+export const BUILDING_LIST = 'BUILDING_LIST'
+
 export const ROOM_LIST = 'ROOM_LIST'
 export const ROOM_ITEM = 'ROOM_ITEM'
 export const ROOM_CREATE = 'ROOM_CREATE'
