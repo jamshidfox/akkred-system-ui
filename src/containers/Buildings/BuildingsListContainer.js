@@ -1,9 +1,9 @@
 import * as STATE from 'constants/stateNames'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useFetchList, useCreateModal } from '../../hooks'
+import { useFetchList, useCreateModal, useModal } from '../../hooks'
 import { getSerializedData } from '../../utils/get'
-import { buildingCreateAction, buildingsFetchList } from './actions'
+import { buildingCreateAction, buildingsFetchList, buildingDeleteAction } from './actions'
 import { BuildingsList, fields } from './components'
 
 const getBuildingListParams = () => ({
@@ -18,17 +18,32 @@ const getBuildingCreateParams = (onSuccess) => ({
   onSuccess
 })
 
+const getBuildingDeleteParams = (onSuccess) => ({
+  stateName: STATE.BUILDING_DELETE,
+  action: buildingDeleteAction,
+  onSuccess
+})
+
 const BuildingsListContainer = props => {
   const dispatch = useDispatch()
   const list = useFetchList(getBuildingListParams())
   const onSuccess = () => dispatch(buildingsFetchList())
+
   const createModal = useCreateModal(getBuildingCreateParams(onSuccess))
+  const deleteModal = useModal(getBuildingDeleteParams(onSuccess))
   const initialValues = { floors: [''] }
+  const deleteBuilding = id => {
+    return dispatch(buildingDeleteAction(id))
+      .then(onSuccess)
+  }
+
   return (
     <BuildingsList
       list={list}
       createModal={createModal}
       initialValues={initialValues}
+      deleteModal={deleteModal}
+      deleteBuilding={deleteBuilding}
     />
   )
 }

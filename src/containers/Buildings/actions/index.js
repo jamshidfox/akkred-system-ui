@@ -20,6 +20,20 @@ export const buildingCreateAction = data => {
   }
 }
 
+export const buildingDeleteAction = id => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.BUILDING_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.BUILDING_DELETE
+    })
+  }
+}
+
 export const buildingsFetchList = id => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

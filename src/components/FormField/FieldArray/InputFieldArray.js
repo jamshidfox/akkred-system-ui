@@ -2,7 +2,7 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { InputFormArray } from 'components/FormField/'
+import { InputField } from 'components/FormField/'
 import { MediumButton } from 'components/UI'
 import Plus from 'icons/Plus'
 import { Row, Col } from '~/components/Grid'
@@ -33,10 +33,10 @@ const InputFieldArray = props => {
             <Row gutter={24}>
               <Col span={22}>
                 <Field
-                  name={`${name}`}
-                  id={`${index}`}
+                  name={`${name}.name`}
+                  id={index}
                   fields={fields}
-                  component={InputFormArray} />
+                  component={InputField} />
               </Col>
               <Col span={2}>
                 <MediumButton onClick={onAdd}><PlusIcon /></MediumButton>

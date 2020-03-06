@@ -7,6 +7,7 @@ export const REQUISITES_UPDATE = 'REQUISITES_UPDATE'
 
 export const BUILDING_CREATE = 'BUILDING_CREATE'
 export const BUILDING_LIST = 'BUILDING_LIST'
+export const BUILDING_DELETE = 'BUILDING_DELETE'
 
 export const ROOM_LIST = 'roomList'
 export const ROOM_TYPE_LIST = 'roomTypeList'
