@@ -27,7 +27,7 @@ const MultiSelect = props => {
 }
 
 MultiSelect.propTypes = {
-  isNested: PropTypes.bool,
+  isNested: PropTypes.bool
 }
 
 MultiSelect.defaultProps = {

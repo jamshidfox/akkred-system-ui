@@ -8,6 +8,7 @@ import { getSerializedData, getParamFromHistory } from '../../utils/get'
 import { replaceParamsRoute } from '../../utils/route'
 import Register, { fields } from './components/Register'
 import { hotelCreateAction, hotelFetchList, hotelUpdateAction } from './actions'
+import getAttractionTypes from './getAttractionTypes'
 
 const EDIT = 'edit'
 const serializer = (val) => {
@@ -18,7 +19,9 @@ const serializer = (val) => {
   )(val.services)
 
   const attractions = pipe(
-    propOr([], 'attractions'),
+    propOr({}, 'attractionTypes'),
+    values,
+    flatten,
     map(prop('id'))
   )(val)
 
@@ -49,6 +52,7 @@ const mapIndexKey = (arr) => {
   return [key, arr[VALUE]]
 }
 const getInitialValues = (data) => {
+  const attractions = propOr([], 'attractions', data)
   const services = pipe(prop('services'), toPairs, map(mapIndexKey), fromPairs)(data)
 
   return ({
@@ -62,7 +66,8 @@ const getInitialValues = (data) => {
     leaveTime: prop('leaveTime', data),
     entranceTime: prop('entranceTime', data),
     photos: union(prop('photos', data), [{}]),
-    services
+    services,
+    attractionTypes: getAttractionTypes(attractions)
   })
 }
 const toBoolean = v => v === 'true' || v === true

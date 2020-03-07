@@ -1,15 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { concat, flatten, isEmpty, join, map, pipe, prop, propOr } from 'ramda'
-import { useFormState } from 'react-final-form'
+import { pipe, prop, path } from 'ramda'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { hotelAttractionTypeListAction } from '../actions'
 import * as API from '~/constants/api'
 import { Modal, MediumButton } from '~/components/UI'
-import {
-  Field,
-  UniversalMultiSelectField,
-  UniversalStaticMultiSelect
-} from '~/components/FormField'
+import { Field, UniversalMultiSelectField } from '~/components/FormField'
 import { FieldWrapper } from '~/components/StyledElems'
 
 const Selected = styled.button`
@@ -46,21 +43,17 @@ const AttractionsDialog = props => {
     isEdit,
   } = props
 
-  const { values } = useFormState()
+  const dispatch = useDispatch()
+  const [attractionTypes, setAttractionTypes] = useState([])
 
-  const attractionsParent1 = pipe(
-    propOr([], 'attractionsParent1'),
-    map(prop('id')),
-    join('-')
-  )(values)
-
-  const attractionsParent2 = propOr([], 'attractionsParent2', values)
-
-  const attractionsList = pipe(
-    map(prop('attractions')),
-    concat([]),
-    flatten
-  )(attractionsParent2)
+  useEffect(() => {
+    const params = { children_only: false }
+    dispatch(hotelAttractionTypeListAction(params))
+      .then(pipe(
+        path(['value', 'results']),
+        setAttractionTypes
+      ))
+  }, [dispatch])
 
   return (
     <>
@@ -73,35 +66,25 @@ const AttractionsDialog = props => {
         open={open}
         onClose={onClose}
         width={'1024px'}>
-        <FieldWrapper>
-          <Field
-            name={'attractionsParent1'}
-            component={UniversalMultiSelectField}
-            api={API.HOTEL_ATTRACTION_TYPE_LIST}
-            params={{ children_only: false }}
-            label={'Типы достопримечательностей'}
-          />
-        </FieldWrapper>
-        <FieldWrapper>
-          <Field
-            name={'attractionsParent2'}
-            component={UniversalMultiSelectField}
-            api={API.HOTEL_ATTRACTION_TYPE_LIST}
-            params={{ children_only: true, parent: attractionsParent1 }}
-            parent={attractionsParent1}
-            label={'Достопримечательности'}
-            disabled={!attractionsParent1}
-          />
-        </FieldWrapper>
-        <FieldWrapper>
-          <Field
-            name={'attractions'}
-            component={UniversalStaticMultiSelect}
-            label={'Достопримечательности'}
-            list={attractionsList}
-            disabled={isEmpty(attractionsParent2)}
-          />
-        </FieldWrapper>
+        {attractionTypes.map(item => {
+          const id = prop('id', item)
+          const name = prop('name', item)
+
+          return (
+            <FieldWrapper key={id}>
+              <Field
+                label={name}
+                isNested={true}
+                name={`attractionTypes.attraction_${id}`}
+                component={UniversalMultiSelectField}
+                api={API.HOTEL_ATTRACTION_TYPE_LIST}
+                params={{ children_only: true, parent: id }}
+                childKey={'attractions'}
+                placeholder={' '}
+              />
+            </FieldWrapper>
+          )
+        })}
 
         <Buttons>
           <MediumButton type="button" onClick={onClose}>сохранить</MediumButton>
