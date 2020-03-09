@@ -64,3 +64,18 @@ export const hotelServiceTypeFetchList = data => {
     })
   }
 }
+
+export const hotelAttractionTypeListAction = defaultParams => {
+  const params = { page_size: 1000, ...defaultParams }
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.HOTEL_ATTRACTION_TYPE_LIST, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.HOTEL_ATTRACTION_TYPE_LIST
+    })
+  }
+}
