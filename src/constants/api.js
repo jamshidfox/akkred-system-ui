@@ -24,6 +24,10 @@ export const HOTEL_UPDATE = `/${HOTEL}/%d/`
 
 export const REQUISITES_UPDATE = `/${HOTEL}`
 
+export const BUILDING_CREATE = '/hotels/buildings/'
+export const BUILDING_LIST = '/hotels/buildings/'
+export const BUILDING_DELETE = '/hotels/buildings/%d/'
+
 export const ROOM = 'hotels/rooms'
 export const ROOM_LIST = `/${ROOM}/`
 export const ROOM_CREATE = `/${ROOM}/`
@@ -87,8 +91,6 @@ export const SERVICES_PRICE_LIST = `/${SERVICES_PRICE}/`
 export const SERVICES_PRICE_ITEM = `/${SERVICES_PRICE}/%d`
 export const SERVICES_PRICE_CREATE = `/${SERVICES_PRICE}/`
 export const SERVICES_PRICE_UPDATE = `/${SERVICES_PRICE}/%d`
-
-
 
 const BOOKING = `${CLIENTS}/booking`
 export const BOOKING_LIST = `/${BOOKING}/`

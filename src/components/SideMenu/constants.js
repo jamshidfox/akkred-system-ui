@@ -81,6 +81,10 @@ export default [
         url: ROUTES.SETTING_REQUISITES,
       },
       {
+        name: 'Корпусы',
+        url: ROUTES.SETTING_BUILDINGS,
+      },
+      {
         name: 'Номерной фонд',
         url: ROUTES.SETTING_ROOMS_TYPE_LIST,
       },

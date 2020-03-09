@@ -1,6 +1,9 @@
 import {
   defaultTo,
   find,
+  filter,
+  prop,
+  head,
   last,
   map,
   pipe,
@@ -22,8 +25,11 @@ export const getCookie = key =>
   pipe(
     split(';'),
     map(trim),
-    find(startsWith(key)),
-    defaultTo(''),
-    split('='),
+    filter(startsWith(key)),
+    defaultTo([]),
+    map(split('=')),
+    filter(prop(1)),
+    head,
+    defaultTo([]),
     last
   )(document.cookie)

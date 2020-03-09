@@ -13,6 +13,7 @@ import rates from './Rates'
 import services from './Services'
 import employees from './Employees'
 import booking from './booking'
+import Buildings from './Buildings'
 import transaction from './Transaction'
 import roomsRules from './RoomsRules'
 
@@ -37,6 +38,12 @@ const tester = store => [
     path: ROUTES.SETTING_REQUISITES,
     layout: Layouts,
     component: Requisites
+  },
+  {
+    exact: true,
+    path: ROUTES.SETTING_BUILDINGS,
+    layout: Layouts,
+    component: Buildings
   },
   {
     exact: true,
