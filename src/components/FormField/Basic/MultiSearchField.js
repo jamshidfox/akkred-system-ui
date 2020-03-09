@@ -11,7 +11,7 @@ import {
   pipe,
   not,
   is,
-  isEmpty
+  isEmpty, omit
 } from 'ramda'
 import {
   compose,
@@ -55,15 +55,33 @@ const fetchSubscribe = props => {
     getOptions,
     dispatch,
     getValue,
-    getText
+    getText,
+    isNested,
+    childKey
   } = props
 
-  const defaultGetOptionsText = data =>
-    data.map(item => ({
-      name: getText(item),
-      id: getValue(item),
-      ...item
-    }))
+  const defaultGetOptionsText = data => {
+    return data.map(item => {
+      if (isNested) {
+        const child = prop(childKey, item)
+        return {
+          id: getValue(item),
+          name: getText(item),
+          ...omit([childKey], item),
+          child: child.map(ch => ({
+            id: getValue(ch),
+            name: getText(ch),
+            ...ch
+          }))
+        }
+      }
+      return {
+        name: getText(item),
+        id: getValue(item),
+        ...item
+      }
+    })
+  }
 
   getOptions(text)
     .then(data => {
@@ -195,7 +213,8 @@ const SearchField = enhance(props => {
     label,
     onFetchData,
     disabled,
-    isClearable
+    isClearable,
+    ...restProps
   } = props
 
   const onInputChange = (value, { action }) => {
@@ -208,6 +227,7 @@ const SearchField = enhance(props => {
   return (
     <MultiSelect
       {...input}
+      {...restProps}
       label={label}
       isDisabled={disabled}
       isClearable={isClearable}
