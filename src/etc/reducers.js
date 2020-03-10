@@ -18,6 +18,8 @@ export const makeRootReducer = asyncReducers => {
     [STATE.REQUISITES_UPDATE]: createThunkReducer(actionTypes.REQUISITES_UPDATE),
     [STATE.BUILDING_CREATE]: createThunkReducer(actionTypes.BUILDING_CREATE),
     [STATE.BUILDING_LIST]: createThunkReducer(actionTypes.BUILDING_LIST),
+    [STATE.BUILDING_DETAIL]: createThunkReducer(actionTypes.BUILDING_DETAIL),
+    [STATE.BUILDING_DETAIL_FLOORS]: createThunkReducer(actionTypes.BUILDING_DETAIL_FLOORS),
     [STATE.USER_INFO]: createThunkReducer(actionTypes.USER_INFO),
     [STATE.ROOM_LIST]: createThunkReducer(actionTypes.ROOM_LIST),
     [STATE.ROOM_CREATE]: createThunkReducer(actionTypes.ROOM_CREATE),

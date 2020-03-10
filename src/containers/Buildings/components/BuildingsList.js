@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { prop, isEmpty } from 'ramda'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Edit from 'images/edit.svg'
 import Trash from 'images/trash-2.svg'
+import { SETTING_BUILDINGS_ITEM_URL } from '../../../constants/routes'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
@@ -25,7 +27,7 @@ const linkListStyle = {
 }
 
 const BuildingsList = props => {
-  const { list, createModal, initialValues, deleteModal, deleteBuilding } = props
+  const { list, createModal, deleteModal, deleteBuilding } = props
   const [deleteItem, setDeleteItem] = useState({})
   const data = prop('results', list)
 
@@ -36,7 +38,7 @@ const BuildingsList = props => {
 
   return (
     <BoxUI>
-      <PageTitle name="Корпуса">
+      <PageTitle name="Корпусы">
         <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
       </PageTitle>
       <Table isEmpty={isEmpty(data)}>
@@ -47,7 +49,7 @@ const BuildingsList = props => {
           <TableCol span={7} />
         </TableRow>
         {data.map((building, index) => (
-          <TableRow key={index}>
+          <TableRow to={sprintf(SETTING_BUILDINGS_ITEM_URL, building.id)} key={index}>
             <TableCol span={6}>{building.name}</TableCol>
             <TableCol span={6}>{building.floors.length}</TableCol>
             <TableCol span={5}>{building.count}</TableCol>
@@ -60,7 +62,7 @@ const BuildingsList = props => {
           </TableRow>
         ))}
       </Table>
-      <BuildingsCreateModal {...createModal} initialValues={initialValues} />
+      <BuildingsCreateModal {...createModal} />
       <BuildingsDeleteModal {...deleteModal} deleteItem={deleteItem} deleteBuilding={deleteBuilding} />
     </BoxUI>
   )
@@ -70,7 +72,7 @@ BuildingsList.propTypes = {
   list: PropTypes.object,
   createModal: PropTypes.object,
   deleteModal: PropTypes.object,
-  deleteBuilding: PropTypes.object,
+  deleteBuilding: PropTypes.func,
   initialValues: PropTypes.object
 }
 

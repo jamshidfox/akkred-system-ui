@@ -6,22 +6,22 @@ import arrayMutators from 'final-form-arrays'
 import styled from 'styled-components'
 import { Modal, MediumButton } from '../../../components/UI'
 import { InputField } from '../../../components/FormField'
-import { InputFieldArray } from '../../../components/FormField/FieldArray'
+import { CheckboxFieldArray } from '../../../components/FormField/FieldArray'
 
 const FieldWrapper = styled.div`
 margin-bottom: 20px;
 `
-export const fields = [
+export const floorFields = [
   'name',
   'floors'
 ]
 const BuildingsCreateModal = props => {
-  const { open, onClose, onSubmit } = props
-  const initialValues = { floors: [''] }
+  const { open, onClose, onSubmit, initialValues, roomsList } = props
+
+  console.log(initialValues)
   return (
     <Modal
       width="644px"
-      title="Добавить корпус"
       open={open}
       onClose={onClose}>
       <Form
@@ -34,14 +34,14 @@ const BuildingsCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="name"
-                  label="Название корпуса"
+                  label="Название этажа"
                   component={InputField}
                 />
               </FieldWrapper>
               <FieldWrapper>
                 <FieldArray
-                  name="floors"
-                  component={InputFieldArray} />
+                  name="rooms"
+                  component={CheckboxFieldArray} />
               </FieldWrapper>
               <MediumButton type={'submit'}>добавить</MediumButton>
             </form>

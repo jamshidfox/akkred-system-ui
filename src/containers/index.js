@@ -20,6 +20,7 @@ import roomsRules from './RoomsRules'
 const tester = store => [
   ...reservation(),
   ...rooms(),
+  ...Buildings(),
   ...client(),
   ...rates(),
   ...services(),
@@ -38,12 +39,6 @@ const tester = store => [
     path: ROUTES.SETTING_REQUISITES,
     layout: Layouts,
     component: Requisites
-  },
-  {
-    exact: true,
-    path: ROUTES.SETTING_BUILDINGS,
-    layout: Layouts,
-    component: Buildings
   },
   {
     exact: true,

@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { prop, isEmpty } from 'ramda'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Edit from 'images/edit.svg'
 import Trash from 'images/trash-2.svg'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
-import BuildingsCreateModal from './BuildingsCreateModal'
+import FloorsCreateModal from './FloorsCreateModal'
 import BuildingsDeleteModal from './BuildingsDeleteModal'
 
 const BoxUI = styled(Box)`
@@ -24,10 +25,11 @@ const linkListStyle = {
   justifyContent: 'space-around'
 }
 
-const BuildingsList = props => {
-  const { list, createModal, initialValues, deleteModal, deleteBuilding } = props
+const BuildingDetail = props => {
+  const { list, floorsList, createModal, roomsList, initialValues } = props
   const [deleteItem, setDeleteItem] = useState({})
-  const data = prop('results', list)
+  const floors = prop('results', floorsList)
+  const data = prop('data', list)
 
   const deleteItemModal = (id, name) => {
     setDeleteItem({ id: id, name: name })
@@ -36,37 +38,34 @@ const BuildingsList = props => {
 
   return (
     <BoxUI>
-      <PageTitle name="Корпуса">
-        <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
+      <PageTitle name={`Корпусы / ${data && data.name}`}>
+        <MediumButton>добавить</MediumButton>
       </PageTitle>
       <Table isEmpty={isEmpty(data)}>
         <TableRow header={true} >
-          <TableCol span={6}>Название корпуса</TableCol>
-          <TableCol span={6}>Этажность</TableCol>
+          <TableCol span={6}>Название этажа</TableCol>
           <TableCol span={5}>Количество номеров</TableCol>
-          <TableCol span={7} />
+          <TableCol span={10} />
         </TableRow>
-        {data.map((building, index) => (
+        {floors && floors.map((floor, index) => (
           <TableRow key={index}>
-            <TableCol span={6}>{building.name}</TableCol>
-            <TableCol span={6}>{building.floors.length}</TableCol>
-            <TableCol span={5}>{building.count}</TableCol>
-            <TableCol span={5} />
-            <TableCol span={2} style={linkListStyle}>
-              <Link style={linkStyle} to={''}><img src={Edit} alt="Edit" /></Link>
-              <span style={linkStyle} onClick={() => deleteItemModal(building.id, building.name)}><img
+            <TableCol span={6}>{floor.name}</TableCol>
+            <TableCol span={5}>{floor.rooms.length}</TableCol>
+            <TableCol span={8} />
+            <TableCol span={1} style={linkListStyle}>
+              <span style={linkStyle} onClick={createModal.onOpen}><img src={Edit} alt="Edit" /></span>
+              <span style={linkStyle} onClick={() => deleteItemModal(floor.id, floor.name)}><img
                 src={Trash} alt="Delete" /></span>
             </TableCol>
           </TableRow>
         ))}
       </Table>
-      <BuildingsCreateModal {...createModal} initialValues={initialValues} />
-      <BuildingsDeleteModal {...deleteModal} deleteItem={deleteItem} deleteBuilding={deleteBuilding} />
+      <FloorsCreateModal {...createModal} roomsList={roomsList} initialValues={initialValues} />
     </BoxUI>
   )
 }
 
-BuildingsList.propTypes = {
+BuildingDetail.propTypes = {
   list: PropTypes.object,
   createModal: PropTypes.object,
   deleteModal: PropTypes.object,
@@ -74,4 +73,4 @@ BuildingsList.propTypes = {
   initialValues: PropTypes.object
 }
 
-export default BuildingsList
+export default BuildingDetail

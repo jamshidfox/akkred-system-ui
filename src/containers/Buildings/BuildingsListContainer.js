@@ -31,7 +31,6 @@ const BuildingsListContainer = props => {
 
   const createModal = useCreateModal(getBuildingCreateParams(onSuccess))
   const deleteModal = useModal(getBuildingDeleteParams(onSuccess))
-  const initialValues = { floors: [''] }
   const deleteBuilding = id => {
     return dispatch(buildingDeleteAction(id))
       .then(onSuccess)
@@ -41,7 +40,6 @@ const BuildingsListContainer = props => {
     <BuildingsList
       list={list}
       createModal={createModal}
-      initialValues={initialValues}
       deleteModal={deleteModal}
       deleteBuilding={deleteBuilding}
     />

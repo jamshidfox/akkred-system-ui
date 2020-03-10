@@ -27,6 +27,9 @@ export const REQUISITES_UPDATE = `/${HOTEL}`
 export const BUILDING_CREATE = '/hotels/buildings/'
 export const BUILDING_LIST = '/hotels/buildings/'
 export const BUILDING_DELETE = '/hotels/buildings/%d/'
+export const BUILDING_DETAIL = '/hotels/buildings/%d/'
+export const BUILDING_DETAIL_FLOORS = '/hotels/floors/?building=%d'
+export const BUILDING_FLOORS_UPDATE = '/hotels/floors/%d/'
 
 export const ROOM = 'hotels/rooms'
 export const ROOM_LIST = `/${ROOM}/`
