@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { useFetchList, useCreateModal } from '../../hooks'
 import { getSerializedData } from '../../utils/get'
-import { buildingsFetchDetail, buildingsFetchDetailFloors, buldingFloorsUpdate, roomFetchList } from './actions'
+import { buildingsFetchDetail, buildingsFetchDetailFloors, buildingFloorsUpdate, roomFetchList } from './actions'
 import { BuildingDetail, floorFields } from './components'
 
 const getBuildingDetailParams = (id) => ({
@@ -20,11 +20,17 @@ const getBuildingDetailFloorsParams = (id) => ({
 const getRoomListParams = () => ({
   action: roomFetchList,
   stateName: STATE.ROOM_LIST,
+
 })
+
+const updateSerializer = (values) => {
+  const { id, ...data } = getSerializedData(floorFields, values)
+  return [id, data]
+}
 const buildingsFloorsUpdateParams = (onSuccess) => ({
   stateName: STATE.BUILDING_FLOORS_UPDATE,
-  action: buldingFloorsUpdate,
-  serializer: getSerializedData(floorFields),
+  action: buildingFloorsUpdate,
+  serializer: updateSerializer,
   onSuccess
 })
 

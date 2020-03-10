@@ -82,10 +82,10 @@ export const buildingsFetchDetailFloors = id => {
   }
 }
 
-export const buldingFloorsUpdate = (data) => {
+export const buildingFloorsUpdate = ([id, data]) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .put(sprintf(API.BUILDING_FLOORS_UPDATE, data.id), { name: data.name, rooms: data.rooms })
+      .put(sprintf(API.BUILDING_FLOORS_UPDATE, id), data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
     return dispatch({
