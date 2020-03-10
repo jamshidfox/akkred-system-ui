@@ -13,7 +13,8 @@ import { MediumButton, IconButton as IconButtonUI, TinyButton } from '~/componen
 import {
   InputField,
   UniversalSearchField,
-  ImageFieldArray
+  ImageFieldArray,
+  CheckboxGroupField
 } from '~/components/FormField'
 import { Row as RowUI, Col } from '~/components/Grid'
 import Map from '~/icons/Map'
@@ -215,6 +216,12 @@ const Register = props => {
                   />
                 </Col>
               </Row>
+              <Field
+                name={'sddsds'}
+                items={[{ id: 1, name: 'dasdas' }, { id: 2, name: 'ddddd' }]}
+                width={'40%'}
+                component={CheckboxGroupField}
+              />
               <div style={{ textAlign: 'right' }}>
                 {(!isCreated || isEdit) && <MediumButton type="submit">Сохранить</MediumButton>}
               </div>

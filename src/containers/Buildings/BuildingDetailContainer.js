@@ -1,12 +1,11 @@
 import * as STATE from 'constants/stateNames'
 import React from 'react'
-import { prop } from 'ramda'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { useFetchList, useCreateModal, useModal } from '../../hooks'
+import { useFetchList, useCreateModal } from '../../hooks'
 import { getSerializedData } from '../../utils/get'
 import { buildingsFetchDetail, buildingsFetchDetailFloors, buldingFloorsUpdate, roomFetchList } from './actions'
-import { BuildingDetail, fields } from './components'
+import { BuildingDetail, floorFields } from './components'
 
 const getBuildingDetailParams = (id) => ({
   mapper: () => (id),
@@ -23,9 +22,9 @@ const getRoomListParams = () => ({
   stateName: STATE.ROOM_LIST,
 })
 const buildingsFloorsUpdateParams = (onSuccess) => ({
-  stateName: STATE.BUILDING_CREATE,
+  stateName: STATE.BUILDING_FLOORS_UPDATE,
   action: buldingFloorsUpdate,
-  serializer: getSerializedData(fields),
+  serializer: getSerializedData(floorFields),
   onSuccess
 })
 
@@ -37,8 +36,7 @@ const BuildingDetailContainer = props => {
   const onSuccess = () => dispatch(getBuildingDetailFloorsParams())
 
   const createModal = useCreateModal(buildingsFloorsUpdateParams(onSuccess))
-  // const deleteModal = useModal(getBuildingDeleteParams(onSuccess))
-  const initialValues = { rooms: roomsList }
+  const initialValues = {}
 
   return (
     <BuildingDetail

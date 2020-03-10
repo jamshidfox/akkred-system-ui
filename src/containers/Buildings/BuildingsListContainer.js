@@ -18,7 +18,8 @@ const getBuildingCreateParams = (onSuccess) => ({
   onSuccess
 })
 
-const getBuildingDeleteParams = (onSuccess) => ({
+const getBuildingDeleteParams = (id, onSuccess) => ({
+  mapper: () => (id),
   stateName: STATE.BUILDING_DELETE,
   action: buildingDeleteAction,
   onSuccess
