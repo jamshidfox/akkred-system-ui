@@ -178,7 +178,7 @@ Modal.propTypes = {
 }
 
 Modal.defaultProps = {
-  maskClosable: true,
+  maskClosable: false,
   showCloseIcon: true,
   showHeader: true,
   width: '600px',

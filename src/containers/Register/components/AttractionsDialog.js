@@ -1,14 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { join, map, pipe, prop, propOr } from 'ramda'
-import { useFormState } from 'react-final-form'
+import { pipe, prop, path } from 'ramda'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { hotelAttractionTypeListAction } from '../actions'
 import * as API from '~/constants/api'
 import { Modal, MediumButton } from '~/components/UI'
-import {
-  Field,
-  UniversalMultiSelectField
-} from '~/components/FormField'
+import { Field, UniversalMultiSelectField } from '~/components/FormField'
 import { FieldWrapper } from '~/components/StyledElems'
 
 const Selected = styled.button`
@@ -45,12 +43,17 @@ const AttractionsDialog = props => {
     isEdit,
   } = props
 
-  const { values } = useFormState()
-  const attractionTypes = pipe(
-    propOr([], 'attractionTypes'),
-    map(prop('id')),
-    join('-')
-  )(values)
+  const dispatch = useDispatch()
+  const [attractionTypes, setAttractionTypes] = useState([])
+
+  useEffect(() => {
+    const params = { children_only: false }
+    dispatch(hotelAttractionTypeListAction(params))
+      .then(pipe(
+        path(['value', 'results']),
+        setAttractionTypes
+      ))
+  }, [dispatch])
 
   return (
     <>
@@ -63,26 +66,25 @@ const AttractionsDialog = props => {
         open={open}
         onClose={onClose}
         width={'1024px'}>
-        <FieldWrapper>
-          <Field
-            name={'attractionTypes'}
-            component={UniversalMultiSelectField}
-            api={API.HOTEL_ATTRACTION_TYPE_LIST}
-            params={{ children_only: false }}
-            label={'Типы достопримечательностей'}
-          />
-        </FieldWrapper>
-        <FieldWrapper>
-          <Field
-            name={'attractions'}
-            component={UniversalMultiSelectField}
-            api={API.HOTEL_ATTRACTION_TYPE_LIST}
-            params={{ children_only: true, parent: attractionTypes }}
-            parent={attractionTypes}
-            label={'Достопримечательности'}
-            disabled={!attractionTypes}
-          />
-        </FieldWrapper>
+        {attractionTypes.map(item => {
+          const id = prop('id', item)
+          const name = prop('name', item)
+
+          return (
+            <FieldWrapper key={id}>
+              <Field
+                label={name}
+                isNested={true}
+                name={`attractionTypes.attraction_${id}`}
+                component={UniversalMultiSelectField}
+                api={API.HOTEL_ATTRACTION_TYPE_LIST}
+                params={{ children_only: true, parent: id }}
+                childKey={'attractions'}
+                placeholder={' '}
+              />
+            </FieldWrapper>
+          )
+        })}
 
         <Buttons>
           <MediumButton type="button" onClick={onClose}>сохранить</MediumButton>

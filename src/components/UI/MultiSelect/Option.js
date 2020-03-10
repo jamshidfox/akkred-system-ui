@@ -1,18 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { __, equals, filter, includes, length, map, not, pipe, propOr } from 'ramda'
+import {
+  equals, filter, includes,
+  length, map, not, pipe, propOr,
+  prop, find, propEq, isNil
+} from 'ramda'
 import { components } from 'react-select'
 import styled from 'styled-components'
 import Checkbox from '~/components/UI/Checkbox'
 
 const StyledCheckbox = styled(Checkbox)`
   pointer-events: none;
+  margin-left: ${props => props.isChild ? '16px' : 'unset'};
 `
 
-const getParentCheckboxState = (selectedOptions, parentOptions) => {
+const getParentCheckboxState = (parentValue, selectedOptions, parentOptions) => {
+  const selectedOptionsIds = map(prop('id'), selectedOptions)
   const parentOptionsCount = length(parentOptions)
   const checkedParentOptionsCount = pipe(
-    map(includes(__, selectedOptions)),
+    map(child => {
+      const childId = prop('id', child)
+      return includes(childId, selectedOptionsIds)
+    }),
     filter(Boolean),
     length
   )(parentOptions)
@@ -20,7 +29,9 @@ const getParentCheckboxState = (selectedOptions, parentOptions) => {
   const checked = equals(parentOptionsCount, checkedParentOptionsCount)
   const indeterminate = checkedParentOptionsCount > 0 && not(checked)
 
-  return { checked, indeterminate }
+  return {
+    [parentValue]: { checked, indeterminate }
+  }
 }
 
 const Option = props => {
@@ -31,35 +42,69 @@ const Option = props => {
     isSelected,
     selectProps,
     getValue,
-    setValue
+    setValue,
+    selectOption,
+    getStyles,
+    ...restProps
   } = props
+
   const { isNested } = selectProps
 
   if (isNested) {
     const selectedOptions = getValue()
     const child = propOr([], 'child', data)
-    const parentCheckboxState = getParentCheckboxState(selectedOptions, child)
+    const parentCheckboxState = getParentCheckboxState(value, selectedOptions, child)[value]
 
     return (
-      <div
-        className={'parent'}
-        style={{ marginBottom: 30 }}>
-        <Checkbox
-          value={value}
-          label={label}
-          onChange={checked => {
-            if (checked) {
-              setValue(child)
+      <div className={'parent'}>
+        <div
+          style={getStyles('option', {
+            theme: restProps.theme,
+            isSelected: parentCheckboxState.checked
+          })}
+          onClick={() => {
+            if (parentCheckboxState.checked) {
+              const childIds = map(prop('id'), child)
+              const filteredOptions = pipe(
+                filter(item => pipe(
+                  includes(prop('id', item)),
+                  not
+                )(childIds)),
+              )(selectedOptions)
+              setValue(filteredOptions)
+            } else {
+              setValue([...selectedOptions, ...child])
             }
-          }}
-          {...parentCheckboxState}
-        />
+          }}>
+          <StyledCheckbox
+            value={value}
+            label={label}
+            {...parentCheckboxState}
+          />
+        </div>
         {child.map(item => {
+          const id = prop('id', item)
+          const name = prop('name', item)
+          const isChecked = pipe(
+            find(propEq('id', id)),
+            isNil,
+            not
+          )(selectedOptions)
+
           return (
             <div
-              key={item.value}
-              style={{ marginBottom: 10 }}>
-              {item.label} - {item.value}
+              key={id}
+              onClick={() => selectOption(item)}
+              style={getStyles('option', {
+                theme: restProps.theme,
+                isSelected: isChecked
+              })}>
+              <StyledCheckbox
+                value={id}
+                label={name}
+                checked={isChecked}
+                isChild={true}
+              />
             </div>
           )
         })}
@@ -90,6 +135,8 @@ Option.propTypes = {
   selectProps: PropTypes.object.isRequired,
   getValue: PropTypes.func.isRequired,
   setValue: PropTypes.func.isRequired,
+  selectOption: PropTypes.func.isRequired,
+  getStyles: PropTypes.func.isRequired,
 }
 
 export default Option
