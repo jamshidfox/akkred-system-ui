@@ -58,3 +58,8 @@ export const RULE_PRICE_LIST = 'rulePriceList'
 export const RULE_PRICE_ITEM = 'rulePriceUpdate'
 export const RULE_PRICE_CREATE = 'rulePriceCreate'
 export const RULE_PRICE_UPDATE = 'rulePriceItem'
+
+export const PARTNER_LIST = 'partnerList'
+export const PARTNER_ITEM = 'partnerItem'
+export const PARTNER_CREATE = 'partnerCreate'
+export const PARTNER_UPDATE = 'partnerUpdate'

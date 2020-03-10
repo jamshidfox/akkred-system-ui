@@ -15,6 +15,7 @@ import employees from './Employees'
 import booking from './booking'
 import transaction from './Transaction'
 import roomsRules from './RoomsRules'
+import partners from './Partners'
 
 const tester = store => [
   ...reservation(),
@@ -26,6 +27,7 @@ const tester = store => [
   ...booking(),
   ...transaction(),
   ...roomsRules(),
+  ...partners(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,

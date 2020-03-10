@@ -32,6 +32,12 @@ export const ROOM_ITEM = `/${ROOM}/%d/`
 
 export const ROOM_CREATE_BULK = `/${ROOM}/bulk_create/`
 
+export const PARTNER = 'hotels/partner'
+export const PARTNER_LIST = `/${PARTNER}/`
+export const PARTNER_CREATE = `/${PARTNER}/`
+export const PARTNER_UPDATE = `/${PARTNER}/%d/`
+export const PARTNER_ITEM = `/${PARTNER}/%d/`
+
 export const ROOM_TYPE = 'hotels/rooms_category'
 export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
 
@@ -87,8 +93,6 @@ export const SERVICES_PRICE_LIST = `/${SERVICES_PRICE}/`
 export const SERVICES_PRICE_ITEM = `/${SERVICES_PRICE}/%d`
 export const SERVICES_PRICE_CREATE = `/${SERVICES_PRICE}/`
 export const SERVICES_PRICE_UPDATE = `/${SERVICES_PRICE}/%d`
-
-
 
 const BOOKING = `${CLIENTS}/booking`
 export const BOOKING_LIST = `/${BOOKING}/`
