@@ -6,7 +6,6 @@ import arrayMutators from 'final-form-arrays'
 import styled from 'styled-components'
 import { Modal, MediumButton } from '../../../components/UI'
 import { InputField } from '../../../components/FormField'
-import { InputFieldArray } from '../../../components/FormField/FieldArray'
 
 const FieldWrapper = styled.div`
 margin-bottom: 20px;
@@ -18,7 +17,6 @@ export const fields = [
 const BuildingsCreateModal = props => {
   const { open, onClose, onSubmit, updateItem } = props
   const initialValues = { ...updateItem }
-  console.log(updateItem)
   return (
     <Modal
       width="644px"
@@ -46,7 +44,7 @@ const BuildingsCreateModal = props => {
                   component={InputField}
                 />
               </FieldWrapper>
-              <MediumButton type={'submit'}>добавить</MediumButton>
+              <MediumButton type={'submit'}>Изменить</MediumButton>
             </form>
           )
         }}

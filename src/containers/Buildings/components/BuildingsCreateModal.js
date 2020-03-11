@@ -16,8 +16,7 @@ export const fields = [
   'floors'
 ]
 const BuildingsCreateModal = props => {
-  const { open, onClose, onSubmit } = props
-  const initialValues = { floors: [] }
+  const { open, onClose, onSubmit, initialValues } = props
   return (
     <Modal
       width="644px"
@@ -38,6 +37,7 @@ const BuildingsCreateModal = props => {
                   component={InputField}
                 />
               </FieldWrapper>
+              Этажи
               <FieldWrapper>
                 <FieldArray
                   name="floors"
@@ -56,6 +56,7 @@ const BuildingsCreateModal = props => {
 BuildingsCreateModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
+  initialValues: PropTypes.object,
   onSubmit: PropTypes.func
 }
 

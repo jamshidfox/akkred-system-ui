@@ -11,10 +11,6 @@ const FooterModal = styled.div`
 
 const BuildingsDeleteModal = props => {
   const { open, onClose, deleteItem, onSubmit } = props
-  const deleteFunc = (id) => {
-    onSubmit(id)
-    onClose()
-  }
 
   return (
     <Modal
@@ -24,7 +20,7 @@ const BuildingsDeleteModal = props => {
       onClose={onClose}>
       Вы уверены что хотите удалить <b>{deleteItem.name}</b>
       <FooterModal>
-        <SecondaryMediumButton onClick={() => deleteFunc(deleteItem.id)}>
+        <SecondaryMediumButton onClick={() => onSubmit(deleteItem.id)}>
           Удалить
         </SecondaryMediumButton>
         <MediumButton onClick={onClose}>

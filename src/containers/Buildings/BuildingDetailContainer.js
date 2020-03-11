@@ -2,7 +2,7 @@ import * as STATE from 'constants/stateNames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { useFetchList, useCreateModal, useModal } from '../../hooks'
+import { useFetchList, useCreateModal, useDelete } from '../../hooks'
 import { getSerializedData } from '../../utils/get'
 import {
   buildingsFetchDetail,
@@ -56,7 +56,7 @@ const BuildingDetailContainer = props => {
   const onSuccess = () => dispatch(buildingsFetchDetailFloors(props.match.params.id))
 
   const createModal = useCreateModal(buildingsFloorsUpdateParams(onSuccess))
-  const deleteModal = useModal(getFloorsDeleteParams(onSuccess))
+  const deleteModal = useDelete(getFloorsDeleteParams(onSuccess))
   const initialValues = {}
 
   return (

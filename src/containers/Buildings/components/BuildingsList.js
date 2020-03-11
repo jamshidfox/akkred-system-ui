@@ -31,6 +31,7 @@ const BuildingsList = props => {
   const [deleteItem, setDeleteItem] = useState({})
   const [updateItem, setUpdateItem] = useState({})
   const data = prop('results', list)
+  const initialValues = { floors: [{}] }
 
   const deleteItemModal = (id, name) => {
     setDeleteItem({ id: id, name: name })
@@ -66,13 +67,13 @@ const BuildingsList = props => {
             <TableCol span={5} />
             <TableCol span={2} style={linkListStyle}>
               <span style={linkStyle} onClick={() => updateItemModal(building)}><img src={Edit} alt="Edit" /></span>
-              <span style={linkStyle} onClick={() => deleteItemModal(building.id, building.name)}><img
+              <span style={linkStyle} onClick={() => deleteModal.onSubmit(building.id)}><img
                 src={Trash} alt="Delete" /></span>
             </TableCol>
           </TableRow>
         ))}
       </Table>
-      <BuildingsCreateModal {...createModal} />
+      <BuildingsCreateModal {...createModal} initialValues={initialValues} />
       <BuildingsUpdateModal {...editModal} updateItem={updateItem} />
       <BuildingsDeleteModal {...deleteModal} deleteItem={deleteItem} deleteBuilding={deleteBuilding} />
     </BoxUI>

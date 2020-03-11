@@ -22,7 +22,7 @@ export const buildingCreateAction = data => {
 export const buildingUpdateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .put(API.BUILDING_UPDATE, data)
+      .put(sprintf(API.BUILDING_UPDATE, data.id), data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
     return dispatch({
