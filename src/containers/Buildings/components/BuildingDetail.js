@@ -7,6 +7,7 @@ import Trash from 'images/trash-2.svg'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
+import FloorsUpdateModal from './FloorsUpdateModal'
 import FloorsCreateModal from './FloorsCreateModal'
 
 const BoxUI = styled(Box)`
@@ -23,19 +24,19 @@ const linkListStyle = {
 }
 
 const BuildingDetail = props => {
-  const { list, floorsList, createModal, deleteModal, roomsList } = props
+  const { list, floorsList, updateModal, createModal, deleteModal, roomsList } = props
   const [modalFloor, setModalFloor] = useState({})
   const floors = prop('results', floorsList)
   const data = prop('data', list)
   const modalOpen = (id, name, rooms) => {
     setModalFloor({ id: id, name: name, rooms: rooms })
-    createModal.onOpen()
+    updateModal.onOpen()
   }
 
   return (
     <BoxUI>
       <PageTitle name={`Корпусы / ${data && data.name}`}>
-        <MediumButton>добавить</MediumButton>
+        <MediumButton onClick={() => createModal.onOpen()}>добавить</MediumButton>
       </PageTitle>
       <Table isEmpty={isEmpty(data)}>
         <TableRow header={true} >
@@ -66,6 +67,9 @@ const BuildingDetail = props => {
       </Table>
       <FloorsCreateModal
         {...createModal}
+        roomsList={roomsList} />
+      <FloorsUpdateModal
+        {...updateModal}
         modalFloor={modalFloor}
         roomsList={roomsList} />
     </BoxUI>
@@ -74,9 +78,10 @@ const BuildingDetail = props => {
 
 BuildingDetail.propTypes = {
   list: PropTypes.object,
-  createModal: PropTypes.object,
+  updateModal: PropTypes.object,
   deleteModal: PropTypes.object,
   floorsList: PropTypes.object,
+  createModal: PropTypes.object,
   deleteBuilding: PropTypes.object,
   roomsList: PropTypes.object
 }

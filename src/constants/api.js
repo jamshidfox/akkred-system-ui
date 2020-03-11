@@ -30,6 +30,7 @@ export const BUILDING_UPDATE = '/hotels/buildings/%d/'
 export const BUILDING_DELETE = '/hotels/buildings/%d/'
 export const BUILDING_DETAIL = '/hotels/buildings/%d/'
 export const BUILDING_FLOORS_DETAIL = '/hotels/floors/?building=%d'
+export const BUILDING_FLOORS_CREATE = '/hotels/floors/'
 export const BUILDING_FLOORS_UPDATE = '/hotels/floors/%d/'
 export const BUILDING_FLOORS_DELETE = '/hotels/floors/%d/'
 

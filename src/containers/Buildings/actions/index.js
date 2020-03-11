@@ -109,6 +109,19 @@ export const buildingFloorsUpdate = ([id, data]) => {
   }
 }
 
+export const buildingFloorsCreate = (data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(API.BUILDING_FLOORS_CREATE, data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.BUILDING_FLOORS_CREATE
+    })
+  }
+}
+
 export const floorDeleteAction = id => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })

@@ -9,9 +9,10 @@ import {
   buildingsFetchDetailFloors,
   buildingFloorsUpdate,
   roomFetchList,
+  buildingFloorsCreate,
   floorDeleteAction
 } from './actions'
-import { BuildingDetail, floorFields } from './components'
+import { BuildingDetail, floorFields, floorCreateFields } from './components'
 
 const getBuildingDetailParams = (id) => ({
   mapper: () => (id),
@@ -34,9 +35,16 @@ const updateSerializer = (values) => {
   return [id, data]
 }
 const buildingsFloorsUpdateParams = (onSuccess) => ({
+  key: 'updateModal',
   stateName: STATE.BUILDING_FLOORS_UPDATE,
   action: buildingFloorsUpdate,
   serializer: updateSerializer,
+  onSuccess
+})
+const buildingsFloorsCreateParams = (onSuccess) => ({
+  stateName: STATE.BUILDING_FLOORS_CREATE,
+  action: buildingFloorsCreate,
+  serializer: getSerializedData(floorCreateFields),
   onSuccess
 })
 
@@ -53,7 +61,8 @@ const BuildingDetailContainer = props => {
   const roomsList = useFetchList(getRoomListParams())
   const onSuccess = () => dispatch(buildingsFetchDetailFloors(props.match.params.id))
 
-  const createModal = useCreateModal(buildingsFloorsUpdateParams(onSuccess))
+  const updateModal = useCreateModal(buildingsFloorsUpdateParams(onSuccess))
+  const createModal = useCreateModal(buildingsFloorsCreateParams(onSuccess))
   const deleteModal = useDelete(getFloorsDeleteParams(onSuccess))
   const initialValues = {}
 
@@ -61,6 +70,7 @@ const BuildingDetailContainer = props => {
     <BuildingDetail
       list={list}
       floorsList={floorsList}
+      updateModal={updateModal}
       createModal={createModal}
       deleteModal={deleteModal}
       initialValues={initialValues}

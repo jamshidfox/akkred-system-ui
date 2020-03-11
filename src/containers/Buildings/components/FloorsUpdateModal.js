@@ -10,14 +10,23 @@ import { InputField, CheckboxGroupField } from '../../../components/FormField'
 const FieldWrapper = styled.div`
 margin-bottom: 20px;
 `
-export const floorCreateFields = [
+export const floorFields = [
   'name',
-  'rooms'
+  'rooms',
+  'id'
 ]
-const FloorsCreateModal = props => {
-  const { open, onClose, onSubmit, roomsList } = props
+const FloorsUpdateModal = props => {
+  const { open, onClose, onSubmit, modalFloor, roomsList } = props
   const data = prop('results', roomsList)
-  const initialValues = {}
+  let result
+  if (modalFloor.rooms) {
+    result = Array.from(modalFloor.rooms, room => room.id)
+  }
+  const initialValues = {
+    id: prop('id', modalFloor),
+    name: prop('name', modalFloor),
+    rooms: result
+  }
 
   return (
     <Modal
@@ -47,7 +56,15 @@ const FloorsCreateModal = props => {
                   component={CheckboxGroupField}
                 />
               </FieldWrapper>
-              <MediumButton type={'submit'}>Добавить</MediumButton>
+              <FieldWrapper>
+                <Field
+                  name="id"
+                  component={InputField}
+                  defaultValue={modalFloor.id}
+                  type="hidden"
+                />
+              </FieldWrapper>
+              <MediumButton type={'submit'}>Изменить</MediumButton>
             </form>
           )
         }}
@@ -57,11 +74,12 @@ const FloorsCreateModal = props => {
   )
 }
 
-FloorsCreateModal.propTypes = {
+FloorsUpdateModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
+  modalFloor: PropTypes.object,
   roomsList: PropTypes.object,
   onSubmit: PropTypes.func
 }
 
-export default FloorsCreateModal
+export default FloorsUpdateModal
