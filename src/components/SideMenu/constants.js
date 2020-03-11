@@ -82,7 +82,7 @@ export default [
       },
       {
         name: 'Корпусы',
-        url: ROUTES.SETTING_BUILDINGS,
+        url: ROUTES.SETTING_BUILDINGS_LIST_PATH,
       },
       {
         name: 'Номерной фонд',

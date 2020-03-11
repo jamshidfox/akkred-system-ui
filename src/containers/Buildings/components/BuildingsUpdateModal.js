@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
-import { FieldArray } from 'react-final-form-arrays'
 import arrayMutators from 'final-form-arrays'
 import styled from 'styled-components'
 import { Modal, MediumButton } from '../../../components/UI'
 import { InputField } from '../../../components/FormField'
-import { InputFieldArray } from '../../../components/FormField/FieldArray'
 
 const FieldWrapper = styled.div`
 margin-bottom: 20px;
@@ -16,11 +14,12 @@ export const fields = [
   'floors'
 ]
 const BuildingsCreateModal = props => {
-  const { open, onClose, onSubmit, initialValues } = props
+  const { open, onClose, onSubmit, updateItem } = props
+  const initialValues = { ...updateItem }
   return (
     <Modal
       width="644px"
-      title="Добавить корпус"
+      title={'Изменить корпус'}
       open={open}
       onClose={onClose}>
       <Form
@@ -37,13 +36,14 @@ const BuildingsCreateModal = props => {
                   component={InputField}
                 />
               </FieldWrapper>
-              Этажи
               <FieldWrapper>
-                <FieldArray
-                  name="floors"
-                  component={InputFieldArray} />
+                <Field
+                  name="id"
+                  type="hidden"
+                  component={InputField}
+                />
               </FieldWrapper>
-              <MediumButton type={'submit'}>добавить</MediumButton>
+              <MediumButton type={'submit'}>Изменить</MediumButton>
             </form>
           )
         }}
@@ -56,7 +56,7 @@ const BuildingsCreateModal = props => {
 BuildingsCreateModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
-  initialValues: PropTypes.object,
+  updateItem: PropTypes.object,
   onSubmit: PropTypes.func
 }
 

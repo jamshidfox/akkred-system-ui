@@ -1,26 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { prop } from 'ramda'
 import { Form, Field } from 'react-final-form'
-import { FieldArray } from 'react-final-form-arrays'
 import arrayMutators from 'final-form-arrays'
 import styled from 'styled-components'
 import { Modal, MediumButton } from '../../../components/UI'
-import { InputField } from '../../../components/FormField'
-import { InputFieldArray } from '../../../components/FormField/FieldArray'
+import { InputField, CheckboxGroupField } from '../../../components/FormField'
 
 const FieldWrapper = styled.div`
 margin-bottom: 20px;
 `
-export const fields = [
+export const floorCreateFields = [
   'name',
-  'floors'
+  'rooms'
 ]
-const BuildingsCreateModal = props => {
-  const { open, onClose, onSubmit, initialValues } = props
+const FloorsCreateModal = props => {
+  const { open, onClose, onSubmit, roomsList } = props
+  const data = prop('results', roomsList)
+  const initialValues = {}
+
   return (
     <Modal
       width="644px"
-      title="Добавить корпус"
       open={open}
       onClose={onClose}>
       <Form
@@ -33,17 +34,20 @@ const BuildingsCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="name"
-                  label="Название корпуса"
+                  label="Название этажа"
                   component={InputField}
                 />
               </FieldWrapper>
-              Этажи
               <FieldWrapper>
-                <FieldArray
-                  name="floors"
-                  component={InputFieldArray} />
+                <Field
+                  name={'rooms'}
+                  items={data}
+                  label="Номера"
+                  width={'40%'}
+                  component={CheckboxGroupField}
+                />
               </FieldWrapper>
-              <MediumButton type={'submit'}>добавить</MediumButton>
+              <MediumButton type={'submit'}>Добавить</MediumButton>
             </form>
           )
         }}
@@ -53,11 +57,11 @@ const BuildingsCreateModal = props => {
   )
 }
 
-BuildingsCreateModal.propTypes = {
+FloorsCreateModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
-  initialValues: PropTypes.object,
+  roomsList: PropTypes.object,
   onSubmit: PropTypes.func
 }
 
-export default BuildingsCreateModal
+export default FloorsCreateModal

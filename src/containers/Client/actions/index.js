@@ -47,6 +47,19 @@ export const clientUpdateAction = (id, data) => {
     })
   }
 }
+export const clientDeleteAction = (id) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.CLIENT_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.CLIENT_DELETE
+    })
+  }
+}
 
 export const clientFetchList = params => {
   return (dispatch, getState) => {

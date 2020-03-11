@@ -2,21 +2,22 @@ import React, { useState } from 'react'
 import { prop, isEmpty } from 'ramda'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Edit from 'images/edit.svg'
 import Trash from 'images/trash-2.svg'
+import { SETTING_BUILDINGS_ITEM_URL } from '../../../constants/routes'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import BuildingsCreateModal from './BuildingsCreateModal'
-import BuildingsDeleteModal from './BuildingsDeleteModal'
+import BuildingsUpdateModal from './BuildingsUpdateModal'
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
 
 const linkStyle = {
-  color: '#FFF',
   textDecoration: 'none'
 }
 const linkListStyle = {
@@ -25,18 +26,19 @@ const linkListStyle = {
 }
 
 const BuildingsList = props => {
-  const { list, createModal, initialValues, deleteModal, deleteBuilding } = props
-  const [deleteItem, setDeleteItem] = useState({})
+  const { list, createModal, deleteModal, editModal } = props
+  const [updateItem, setUpdateItem] = useState({})
   const data = prop('results', list)
+  const initialValues = { floors: [{}] }
 
-  const deleteItemModal = (id, name) => {
-    setDeleteItem({ id: id, name: name })
-    deleteModal.onOpen()
+  const updateItemModal = (item) => {
+    setUpdateItem(item)
+    editModal.onOpen()
   }
 
   return (
     <BoxUI>
-      <PageTitle name="Корпуса">
+      <PageTitle name="Корпусы">
         <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
       </PageTitle>
       <Table isEmpty={isEmpty(data)}>
@@ -48,20 +50,24 @@ const BuildingsList = props => {
         </TableRow>
         {data.map((building, index) => (
           <TableRow key={index}>
-            <TableCol span={6}>{building.name}</TableCol>
+            <TableCol span={6}>
+              <Link style={linkStyle} to={sprintf(SETTING_BUILDINGS_ITEM_URL, building.id)}>
+                {building.name}
+              </Link>
+            </TableCol>
             <TableCol span={6}>{building.floors.length}</TableCol>
             <TableCol span={5}>{building.count}</TableCol>
             <TableCol span={5} />
             <TableCol span={2} style={linkListStyle}>
-              <Link style={linkStyle} to={''}><img src={Edit} alt="Edit" /></Link>
-              <span style={linkStyle} onClick={() => deleteItemModal(building.id, building.name)}><img
+              <span style={linkStyle} onClick={() => updateItemModal(building)}><img src={Edit} alt="Edit" /></span>
+              <span style={linkStyle} onClick={() => deleteModal.onSubmit(building.id)}><img
                 src={Trash} alt="Delete" /></span>
             </TableCol>
           </TableRow>
         ))}
       </Table>
       <BuildingsCreateModal {...createModal} initialValues={initialValues} />
-      <BuildingsDeleteModal {...deleteModal} deleteItem={deleteItem} deleteBuilding={deleteBuilding} />
+      <BuildingsUpdateModal {...editModal} updateItem={updateItem} />
     </BoxUI>
   )
 }
@@ -70,7 +76,8 @@ BuildingsList.propTypes = {
   list: PropTypes.object,
   createModal: PropTypes.object,
   deleteModal: PropTypes.object,
-  deleteBuilding: PropTypes.object,
+  deleteBuilding: PropTypes.func,
+  editModal: PropTypes.object,
   initialValues: PropTypes.object
 }
 
