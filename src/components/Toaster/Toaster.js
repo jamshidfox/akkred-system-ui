@@ -10,7 +10,7 @@ const getIconBackground = props => {
   switch (props.type) {
   case toasterTypes.SUCCESS: return props.theme.color.primary.default
   case toasterTypes.WARNING: return props.theme.color.warning.default
-  case toasterTypes.ERROR: return props.theme.color.default.danger.default
+  case toasterTypes.ERROR: return props.theme.color.danger.default
   default: return 'none'
   }
 }
