@@ -3,6 +3,8 @@ import { compose, forEach, toPairs } from 'ramda'
 import * as actionTypes from '../constants/actionTypes'
 import * as STATE from '../constants/stateNames'
 import createThunkReducer from '../utils/createThunkReducer'
+import confirmDialogReducer from '../components/ConfirmDialog/reducer'
+
 /*
 import confirmDialogReducer, {
   CONFIRM_DIALOG_STATE
@@ -11,6 +13,7 @@ import confirmDialogReducer, {
 
 export const makeRootReducer = asyncReducers => {
   return combineReducers({
+    confirmDialog: confirmDialogReducer,
     login: createThunkReducer(actionTypes.LOGIN),
     [STATE.HOTEL_LIST]: createThunkReducer(actionTypes.HOTEL_LIST),
     [STATE.HOTEL_CREATE]: createThunkReducer(actionTypes.HOTEL_CREATE),
@@ -30,6 +33,7 @@ export const makeRootReducer = asyncReducers => {
     [STATE.CLIENT_CREATE]: createThunkReducer(actionTypes.CLIENT_CREATE),
     [STATE.CLIENT_UPDATE]: createThunkReducer(actionTypes.CLIENT_UPDATE),
     [STATE.CLIENT_ITEM]: createThunkReducer(actionTypes.CLIENT_ITEM),
+    [STATE.CLIENT_DELETE]: createThunkReducer(actionTypes.CLIENT_DELETE),
     [STATE.RATES_LIST]: createThunkReducer(actionTypes.RATES_LIST),
     [STATE.RATES_CREATE]: createThunkReducer(actionTypes.RATES_CREATE),
     [STATE.RATES_UPDATE]: createThunkReducer(actionTypes.RATES_UPDATE),

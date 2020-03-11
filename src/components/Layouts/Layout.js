@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import SideMenu from '../SideMenu'
 import { DisplayFlex } from '../StyledElems'
+import Toast from '~/components/Toast'
+import ConfirmDialog from '~/components/ConfirmDialog'
 
 const Container = styled.div`
   padding: 24px;
@@ -14,6 +16,8 @@ const Content = styled.div`
 const Layout = props => {
   return (
     <Container>
+      <Toast />
+      <ConfirmDialog />
       <DisplayFlex>
         <SideMenu />
         <Content>

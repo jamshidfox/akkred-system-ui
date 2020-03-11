@@ -75,6 +75,7 @@ export const buildingsFetchDetailFloors = id => {
       .get(sprintf(API.BUILDING_DETAIL_FLOORS, id))
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
+
     return dispatch({
       payload,
       type: actionTypes.BUILDING_DETAIL_FLOORS

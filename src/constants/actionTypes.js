@@ -39,6 +39,7 @@ export const CLIENT_LIST = 'CLIENT_LIST'
 export const CLIENT_ITEM = 'CLIENT_ITEM'
 export const CLIENT_CREATE = 'CLIENT_CREATE'
 export const CLIENT_UPDATE = 'CLIENT_UPDATE'
+export const CLIENT_DELETE = 'CLIENT_DELETE'
 
 export const RATES_LIST = 'RATES_LIST'
 export const RATES_ITEM = 'RATES_ITEM'

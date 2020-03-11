@@ -28,6 +28,7 @@ const updateSerializer = (values) => {
   return [id, data]
 }
 const buildingsFloorsUpdateParams = (onSuccess) => ({
+  key: 'rafael',
   stateName: STATE.BUILDING_FLOORS_UPDATE,
   action: buildingFloorsUpdate,
   serializer: updateSerializer,
