@@ -12,13 +12,13 @@ import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import BuildingsCreateModal from './BuildingsCreateModal'
 import BuildingsDeleteModal from './BuildingsDeleteModal'
+import BuildingsUpdateModal from './BuildingsUpdateModal'
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
 
 const linkStyle = {
-  color: '#FFF',
   textDecoration: 'none'
 }
 const linkListStyle = {
@@ -27,13 +27,19 @@ const linkListStyle = {
 }
 
 const BuildingsList = props => {
-  const { list, createModal, deleteModal, deleteBuilding } = props
+  const { list, createModal, deleteModal, editModal, deleteBuilding } = props
   const [deleteItem, setDeleteItem] = useState({})
+  const [updateItem, setUpdateItem] = useState({})
   const data = prop('results', list)
 
   const deleteItemModal = (id, name) => {
     setDeleteItem({ id: id, name: name })
     deleteModal.onOpen()
+  }
+
+  const updateItemModal = (item) => {
+    setUpdateItem(item)
+    editModal.onOpen()
   }
 
   return (
@@ -49,13 +55,17 @@ const BuildingsList = props => {
           <TableCol span={7} />
         </TableRow>
         {data.map((building, index) => (
-          <TableRow to={sprintf(SETTING_BUILDINGS_ITEM_URL, building.id)} key={index}>
-            <TableCol span={6}>{building.name}</TableCol>
+          <TableRow key={index}>
+            <TableCol span={6}>
+              <Link style={linkStyle} to={sprintf(SETTING_BUILDINGS_ITEM_URL, building.id)}>
+                {building.name}
+              </Link>
+            </TableCol>
             <TableCol span={6}>{building.floors.length}</TableCol>
             <TableCol span={5}>{building.count}</TableCol>
             <TableCol span={5} />
             <TableCol span={2} style={linkListStyle}>
-              <Link style={linkStyle} to={''}><img src={Edit} alt="Edit" /></Link>
+              <span style={linkStyle} onClick={() => updateItemModal(building)}><img src={Edit} alt="Edit" /></span>
               <span style={linkStyle} onClick={() => deleteItemModal(building.id, building.name)}><img
                 src={Trash} alt="Delete" /></span>
             </TableCol>
@@ -63,6 +73,7 @@ const BuildingsList = props => {
         ))}
       </Table>
       <BuildingsCreateModal {...createModal} />
+      <BuildingsUpdateModal {...editModal} updateItem={updateItem} />
       <BuildingsDeleteModal {...deleteModal} deleteItem={deleteItem} deleteBuilding={deleteBuilding} />
     </BoxUI>
   )

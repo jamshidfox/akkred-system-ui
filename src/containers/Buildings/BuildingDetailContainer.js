@@ -2,9 +2,15 @@ import * as STATE from 'constants/stateNames'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
-import { useFetchList, useCreateModal } from '../../hooks'
+import { useFetchList, useCreateModal, useModal } from '../../hooks'
 import { getSerializedData } from '../../utils/get'
-import { buildingsFetchDetail, buildingsFetchDetailFloors, buildingFloorsUpdate, roomFetchList } from './actions'
+import {
+  buildingsFetchDetail,
+  buildingsFetchDetailFloors,
+  buildingFloorsUpdate,
+  roomFetchList,
+  floorDeleteAction
+} from './actions'
 import { BuildingDetail, floorFields } from './components'
 
 const getBuildingDetailParams = (id) => ({
@@ -15,7 +21,7 @@ const getBuildingDetailParams = (id) => ({
 const getBuildingDetailFloorsParams = (id) => ({
   mapper: () => (id),
   action: buildingsFetchDetailFloors,
-  stateName: STATE.BUILDING_DETAIL_FLOORS,
+  stateName: STATE.BUILDING_FLOORS_DETAIL,
 })
 const getRoomListParams = () => ({
   action: roomFetchList,
@@ -34,14 +40,22 @@ const buildingsFloorsUpdateParams = (onSuccess) => ({
   onSuccess
 })
 
+const getFloorsDeleteParams = (id, onSuccess) => ({
+  mapper: () => (id),
+  stateName: STATE.BUILDING_DELETE,
+  action: floorDeleteAction,
+  onSuccess
+})
+
 const BuildingDetailContainer = props => {
   const dispatch = useDispatch()
   const list = useFetchList(getBuildingDetailParams(props.match.params.id))
   const floorsList = useFetchList(getBuildingDetailFloorsParams(props.match.params.id))
   const roomsList = useFetchList(getRoomListParams())
-  const onSuccess = () => dispatch(getBuildingDetailFloorsParams())
+  const onSuccess = () => dispatch(buildingsFetchDetailFloors(props.match.params.id))
 
   const createModal = useCreateModal(buildingsFloorsUpdateParams(onSuccess))
+  const deleteModal = useModal(getFloorsDeleteParams(onSuccess))
   const initialValues = {}
 
   return (
@@ -49,6 +63,7 @@ const BuildingDetailContainer = props => {
       list={list}
       floorsList={floorsList}
       createModal={createModal}
+      deleteModal={deleteModal}
       initialValues={initialValues}
       roomsList={roomsList}
     />

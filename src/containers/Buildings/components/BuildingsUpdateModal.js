@@ -16,12 +16,13 @@ export const fields = [
   'floors'
 ]
 const BuildingsCreateModal = props => {
-  const { open, onClose, onSubmit } = props
-  const initialValues = { floors: [] }
+  const { open, onClose, onSubmit, updateItem } = props
+  const initialValues = { ...updateItem }
+  console.log(updateItem)
   return (
     <Modal
       width="644px"
-      title="Добавить корпус"
+      title={'Изменить корпус'}
       open={open}
       onClose={onClose}>
       <Form
@@ -39,9 +40,11 @@ const BuildingsCreateModal = props => {
                 />
               </FieldWrapper>
               <FieldWrapper>
-                <FieldArray
-                  name="floors"
-                  component={InputFieldArray} />
+                <Field
+                  name="id"
+                  type="hidden"
+                  component={InputField}
+                />
               </FieldWrapper>
               <MediumButton type={'submit'}>добавить</MediumButton>
             </form>

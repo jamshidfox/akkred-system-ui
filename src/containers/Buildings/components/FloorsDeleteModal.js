@@ -9,12 +9,13 @@ const FooterModal = styled.div`
   justify-content: space-around;
 `
 
-const BuildingsDeleteModal = props => {
+const FloorsDeleteModal = props => {
   const { open, onClose, deleteItem, onSubmit } = props
   const deleteFunc = (id) => {
     onSubmit(id)
     onClose()
   }
+  console.log(props)
 
   return (
     <Modal
@@ -35,11 +36,10 @@ const BuildingsDeleteModal = props => {
   )
 }
 
-BuildingsDeleteModal.propTypes = {
+FloorsDeleteModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
   deleteItem: PropTypes.object,
-  deleteBuilding: PropTypes.func
 }
 
-export default BuildingsDeleteModal
+export default FloorsDeleteModal

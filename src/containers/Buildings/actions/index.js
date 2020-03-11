@@ -19,6 +19,19 @@ export const buildingCreateAction = data => {
   }
 }
 
+export const buildingUpdateAction = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .put(API.BUILDING_UPDATE, data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.BUILDING_UPDATE
+    })
+  }
+}
+
 export const buildingDeleteAction = id => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
@@ -72,12 +85,12 @@ export const roomFetchList = () => {
 export const buildingsFetchDetailFloors = id => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(sprintf(API.BUILDING_DETAIL_FLOORS, id))
+      .get(sprintf(API.BUILDING_FLOORS_DETAIL, id))
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
     return dispatch({
       payload,
-      type: actionTypes.BUILDING_DETAIL_FLOORS
+      type: actionTypes.BUILDING_FLOORS_DETAIL
     })
   }
 }
@@ -91,6 +104,19 @@ export const buildingFloorsUpdate = ([id, data]) => {
     return dispatch({
       payload,
       type: actionTypes.BUILDING_FLOORS_UPDATE
+    })
+  }
+}
+
+export const floorDeleteAction = id => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.BUILDING_FLOORS_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.BUILDING_FLOORS_DELETE
     })
   }
 }
