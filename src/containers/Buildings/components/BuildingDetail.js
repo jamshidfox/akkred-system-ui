@@ -8,7 +8,6 @@ import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import FloorsCreateModal from './FloorsCreateModal'
-import FloorsDeleteModal from './FloorsDeleteModal'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -26,17 +25,8 @@ const linkListStyle = {
 const BuildingDetail = props => {
   const { list, floorsList, createModal, deleteModal, roomsList } = props
   const [modalFloor, setModalFloor] = useState({})
-  const [deleteItem, setDeleteItem] = useState({})
   const floors = prop('results', floorsList)
   const data = prop('data', list)
-
-  console.log(deleteModal)
-
-  const deleteItemModal = (id, name) => {
-    setDeleteItem({ id: id, name: name })
-    deleteModal.onOpen()
-  }
-
   const modalOpen = (id, name, rooms) => {
     setModalFloor({ id: id, name: name, rooms: rooms })
     createModal.onOpen()
@@ -67,7 +57,7 @@ const BuildingDetail = props => {
               </span>
               <span
                 style={linkStyle}
-                onClick={() => deleteItemModal(floor.id, floor.name)}>
+                onClick={() => deleteModal.onSubmit(floor.id)}>
                 <img src={Trash} alt="Delete" />
               </span>
             </TableCol>
@@ -78,9 +68,6 @@ const BuildingDetail = props => {
         {...createModal}
         modalFloor={modalFloor}
         roomsList={roomsList} />
-      <FloorsDeleteModal
-        {...deleteModal}
-        deleteItem={deleteItem} />
     </BoxUI>
   )
 }

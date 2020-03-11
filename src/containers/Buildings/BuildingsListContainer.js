@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useFetchList, useCreateModal, useDelete } from '../../hooks'
 import { getSerializedData } from '../../utils/get'
-import { 
+import {
   buildingCreateAction,
   buildingsFetchList,
   buildingDeleteAction,
@@ -47,7 +47,6 @@ const BuildingsListContainer = props => {
     return dispatch(buildingDeleteAction(id))
       .then(onSuccess)
   }
-  console.log(deleteModal)
 
   return (
     <BuildingsList

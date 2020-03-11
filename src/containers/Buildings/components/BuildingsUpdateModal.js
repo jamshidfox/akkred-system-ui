@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
-import { FieldArray } from 'react-final-form-arrays'
 import arrayMutators from 'final-form-arrays'
 import styled from 'styled-components'
 import { Modal, MediumButton } from '../../../components/UI'
@@ -57,6 +56,7 @@ const BuildingsCreateModal = props => {
 BuildingsCreateModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
+  updateItem: PropTypes.object,
   onSubmit: PropTypes.func
 }
 

@@ -11,7 +11,6 @@ import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import BuildingsCreateModal from './BuildingsCreateModal'
-import BuildingsDeleteModal from './BuildingsDeleteModal'
 import BuildingsUpdateModal from './BuildingsUpdateModal'
 
 const BoxUI = styled(Box)`
@@ -27,16 +26,10 @@ const linkListStyle = {
 }
 
 const BuildingsList = props => {
-  const { list, createModal, deleteModal, editModal, deleteBuilding } = props
-  const [deleteItem, setDeleteItem] = useState({})
+  const { list, createModal, deleteModal, editModal } = props
   const [updateItem, setUpdateItem] = useState({})
   const data = prop('results', list)
   const initialValues = { floors: [{}] }
-
-  const deleteItemModal = (id, name) => {
-    setDeleteItem({ id: id, name: name })
-    deleteModal.onOpen()
-  }
 
   const updateItemModal = (item) => {
     setUpdateItem(item)
@@ -75,7 +68,6 @@ const BuildingsList = props => {
       </Table>
       <BuildingsCreateModal {...createModal} initialValues={initialValues} />
       <BuildingsUpdateModal {...editModal} updateItem={updateItem} />
-      <BuildingsDeleteModal {...deleteModal} deleteItem={deleteItem} deleteBuilding={deleteBuilding} />
     </BoxUI>
   )
 }
@@ -85,6 +77,7 @@ BuildingsList.propTypes = {
   createModal: PropTypes.object,
   deleteModal: PropTypes.object,
   deleteBuilding: PropTypes.func,
+  editModal: PropTypes.object,
   initialValues: PropTypes.object
 }
 
