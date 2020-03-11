@@ -88,6 +88,7 @@ export const buildingsFetchDetailFloors = id => {
       .get(sprintf(API.BUILDING_FLOORS_DETAIL, id))
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
+
     return dispatch({
       payload,
       type: actionTypes.BUILDING_FLOORS_DETAIL
