@@ -29,7 +29,10 @@ export const SETTING_RULE_PRICE_UPDATE_PATH = `/${SETTINGS}/${SETTING_RULE_PRICE
 
 export const SETTING_REQUISITES = `/${SETTINGS}/requisites`
 
-export const SETTING_BUILDINGS = `/${SETTINGS}/buildings`
+export const SETTING_BUILDINGS = `${SETTINGS}/buildings`
+export const SETTING_BUILDINGS_LIST_PATH = `/${SETTING_BUILDINGS}/`
+export const SETTING_BUILDINGS_ITEM_PATH = `/${SETTING_BUILDINGS}/${ID}`
+export const SETTING_BUILDINGS_ITEM_URL = `/${SETTING_BUILDINGS}/%d`
 
 export const EMPLOYEES = 'employees'
 export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`

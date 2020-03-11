@@ -21,7 +21,7 @@ const BoxUI = styled(Box)`
 `
 
 const ClientList = props => {
-  const { list, filterActions } = props
+  const { list, filterActions, onDelete } = props
   const tableActions = (
     <TableActions
       filterForm={<CommentListFilterForm />}
@@ -46,7 +46,7 @@ const ClientList = props => {
 
         </TableRow>
         {data.map(client => (
-          <TableRow>
+          <TableRow key={client.id}>
             <TableCol span={8}>{client.name} {client.surname} {client.fatherName}</TableCol>
             <TableCol span={6}>АА 3545332</TableCol>
             <TableCol span={4}>{client.birthDate}</TableCol>
@@ -55,8 +55,9 @@ const ClientList = props => {
               <Link style={style} to={sprintf(CLIENT_UPDATE_URL, client.id)}><img src={Edit} alt="Edit" /></Link>
             </TableCol>
             <TableCol span={1}>
-              <Link style={style} to={sprintf(CLIENT_UPDATE_URL, client.id)}><img src={Trash} alt="Edit" /></Link>
+              <span style={style} onClick={() => onDelete(client.id)}><img src={Trash} alt="Edit" /></span>
             </TableCol>
+
           </TableRow>
         ))}
 

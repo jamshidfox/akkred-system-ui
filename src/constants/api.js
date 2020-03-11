@@ -26,7 +26,13 @@ export const REQUISITES_UPDATE = `/${HOTEL}`
 
 export const BUILDING_CREATE = '/hotels/buildings/'
 export const BUILDING_LIST = '/hotels/buildings/'
+export const BUILDING_UPDATE = '/hotels/buildings/%d/'
 export const BUILDING_DELETE = '/hotels/buildings/%d/'
+export const BUILDING_DETAIL = '/hotels/buildings/%d/'
+export const BUILDING_FLOORS_DETAIL = '/hotels/floors/?building=%d'
+export const BUILDING_FLOORS_CREATE = '/hotels/floors/'
+export const BUILDING_FLOORS_UPDATE = '/hotels/floors/%d/'
+export const BUILDING_FLOORS_DELETE = '/hotels/floors/%d/'
 
 export const ROOM = 'hotels/rooms'
 export const ROOM_LIST = `/${ROOM}/`
@@ -76,6 +82,7 @@ export const CLIENT = 'clients/client'
 export const CLIENT_LIST = `/${CLIENT}/`
 export const CLIENT_CREATE = `/${CLIENT}/`
 export const CLIENT_UPDATE = `/${CLIENT}/%d/`
+export const CLIENT_DELETE = `/${CLIENT}/%d/`
 export const CLIENT_ITEM = `/${CLIENT}/%d/`
 export const CLIENT_ITEM_DOCS = `/${CLIENT}/%d/docs/`
 

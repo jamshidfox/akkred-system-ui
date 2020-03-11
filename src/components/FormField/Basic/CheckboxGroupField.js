@@ -1,7 +1,7 @@
 import React from 'react'
-import { CheckboxGroup, default as Checkbox } from '~/components/UI/Checkbox'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { CheckboxGroup, default as Checkbox } from '~/components/UI/Checkbox'
 
 const StyledCheckbox = styled(Checkbox)`
   width: ${props => props.width};
@@ -31,7 +31,7 @@ const CheckboxGroupField = props => {
           onChange={() => null}
           key={checkbox.id}
           value={checkbox.id}
-          label={checkbox.name}
+          label={checkbox.id}
           checked={value.includes(checkbox.id)}
         />
       ))}

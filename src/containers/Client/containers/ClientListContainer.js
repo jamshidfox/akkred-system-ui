@@ -1,9 +1,9 @@
 import React from 'react'
 import * as STATE from '../../../constants/stateNames'
-import { useFetchList, useFilterActions } from '../../../hooks'
+import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
 import ClientList from '../components/ClientList'
 import { fields } from '../components/CommentListFilterForm'
-import { clientFetchList } from '../actions'
+import { clientFetchList, clientDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 
 const getRoomListParams = () => ({
@@ -14,12 +14,18 @@ const getRoomListParams = () => ({
 
 const ClientListContainer = props => {
   const list = useFetchList(getRoomListParams())
+  const deleteAction = useDelete({
+    action: clientDeleteAction,
+    stateName: STATE.CLIENT_DELETE,
+    successAction: clientFetchList
+  })
 
   const filterActions = useFilterActions({ fields })
   return (
     <ClientList
       list={list}
       filterActions={filterActions}
+      onDelete={deleteAction.onSubmit}
     />
   )
 }
