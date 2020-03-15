@@ -7,10 +7,10 @@ export const LOGIN = `${MAIN}/login/`
 export const LOGOUT = `${MAIN}/logout/`
 export const FILE_UPLOAD = '/main/file/'
 
-export const EMPLOYEES_LIST = `${MAIN}/`
-export const EMPLOYEES_CREATE = `${MAIN}`
-export const EMPLOYEES_UPDATE = `/${MAIN}/%d/`
-export const EMPLOYEES_ITEM = `/${MAIN}/%d/`
+export const EMPLOYEES_LIST = `hotels/hotel_staff/`
+export const EMPLOYEES_CREATE = `hotels/hotel_staff/`
+export const EMPLOYEES_UPDATE = `/hotels/hotel_staff/%d/`
+export const EMPLOYEES_ITEM = `/hotels/hotel_staff/%d/`
 
 export const AUTH = 'auth'
 export const AUTH_ACCESS_TOKEN = `/${AUTH}/access-token/`

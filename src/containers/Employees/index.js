@@ -16,5 +16,11 @@ export default () => [
     path: ROUTES.EMPLOYEES_LIST_URL,
     layout: Layouts,
     component: EmployeesListContainer
+  },
+  {
+    exact: true,
+    path: ROUTES.EMPLOYEES_LIST_PATH,
+    layout: Layouts,
+    component: EmployeesUpdateContainer
   }
 ]

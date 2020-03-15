@@ -39,6 +39,7 @@ export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`
 export const EMPLOYEES_LIST_URL = `/${SETTINGS}/${EMPLOYEES}/`
 export const EMPLOYEES_CREATE_URL = `/${SETTINGS}/${EMPLOYEES}/create`
 export const EMPLOYEES_LIST_PATH = `/${SETTINGS}/${EMPLOYEES}/${ID}`
+export const EMPLOYEES_UPDATE_URL = `/${SETTINGS}/${EMPLOYEES}/%d`
 
 export const PARTNERS = 'partners'
 export const PARTNERS_TYPE_LIST = `/${SETTINGS}/${PARTNERS}/`
