@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
+import arrayMutators from 'final-form-arrays'
 import { Modal, MediumButton } from '../../../components/UI'
 import { InputField, UniversalSearchField, UniversalStaticSelectField } from '../../../components/FormField'
 import { PARTNERS_TYPES } from '../../../constants/backend'
@@ -34,16 +35,19 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 
-const RoomCreateModal = props => {
-  const { open, onClose, onSubmit } = props
+const PArtnerUpdateeModal = props => {
+  const { open, onClose, onSubmit, updateItem } = props
+  const initialValues = { ...updateItem }
   return (
     <Modal
       width="800px"
-      title="Добавить партнера"
+      title="Изменить партнера"
       open={open}
       onClose={onClose} >
       <Form
+        initialValues={initialValues}
         onSubmit={onSubmit}
+        mutators={arrayMutators}
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
@@ -67,7 +71,7 @@ const RoomCreateModal = props => {
               <Row gutter={24}>
 
                 <Col span={24}>
-                  <Field name="legal_name" label="Юридческое название компании" component={InputField} />
+                  <Field name="legalName" label="Юридческое название компании" component={InputField} />
                 </Col>
 
               </Row>
@@ -84,7 +88,7 @@ const RoomCreateModal = props => {
               <Row gutter={24}>
                 <Col span={12}>
                   <Field
-                    name="phone_number"
+                    name="phoneNumber"
                     label="Номер телефона"
                     component={InputField}
                   />
@@ -120,7 +124,7 @@ const RoomCreateModal = props => {
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>Сохранить</MediumButton>
+                <MediumButton type={'submit'}>Изменить</MediumButton>
               </div>
             </form>
           )
@@ -131,10 +135,10 @@ const RoomCreateModal = props => {
   )
 }
 
-RoomCreateModal.propTypes = {
+PArtnerUpdateeModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
   onSubmit: PropTypes.func
 }
 
-export default RoomCreateModal
+export default PArtnerUpdateeModal

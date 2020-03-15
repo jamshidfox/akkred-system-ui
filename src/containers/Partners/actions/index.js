@@ -34,13 +34,12 @@ export const partnerCreateAction = data => {
   }
 }
 
-export const partnerUpdateAction = (id, data) => {
+export const partnerUpdateAction = (data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .put(sprintf(API.PARTNER_UPDATE, id), data)
+      .put(sprintf(API.PARTNER_UPDATE, data.id), data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
-
     return dispatch({
       payload,
       type: actionTypes.PARTNER_UPDATE

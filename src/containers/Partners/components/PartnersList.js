@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { prop, isEmpty } from 'ramda'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -10,15 +10,25 @@ import { PARTNERS_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
 import TransactionCreateModal from './PartnersCreateModal'
+import PartnersUpdateModal from './PartnersUpdateModal'
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
-
+const linkStyle = {
+  textDecoration: 'none'
+}
 const PartnersList = props => {
-  const { list, createModal } = props
+  const { list, createModal, editModal } = props
+  const [updateItem, setUpdateItem] = useState({})
 
   const data = prop('results', list)
+
+  const updateItemModal = (item) => {
+    setUpdateItem(item)
+    editModal.onOpen()
+  }
+
   return (
     <>
       <BoxUI>
@@ -31,29 +41,22 @@ const PartnersList = props => {
             <TableCol span={6}>Тип партнера</TableCol>
             <TableCol span={12}>внутреннее название компании</TableCol>
             <TableCol span={4}>статус</TableCol>
-            <TableCol span={1} />
+            <TableCol span={2} />
             <TableCol span={1} />
           </TableRow>
-          {data.map(transaction => {
-            const id = prop('id', transaction)
-            const title = prop('title', transaction)
+          {data.map(partners => {
+            const id = prop('id', partners)
+            const title = prop('title', partners)
 
             return (
               <TableRow key={id}>
                 <TableCol span={6}>Туристическая компания</TableCol>
                 <TableCol span={12}>{title}</TableCol>
                 <TableCol span={4}>Активный</TableCol>
-                <TableCol span={1}> <Link style={{
-                  color: '#FFF',
-                  textDecoration: 'none'
-                }} to={sprintf(PARTNERS_UPDATE_URL, id)} ><img src={Edit} alt="Edit" /></Link>
+                <TableCol span={2}>
+                  <span style={linkStyle} onClick={() => updateItemModal(partners)}><img src={Edit} alt="Edit" /></span>
                 </TableCol>
 
-                <TableCol span={1}> <Link style={{
-                  color: '#FFF',
-                  textDecoration: 'none'
-                }} to={sprintf(PARTNERS_UPDATE_URL, id)} ><img src={Trash} alt="Edit" /></Link>
-                </TableCol>
               </TableRow>
             )
           })}
@@ -61,6 +64,7 @@ const PartnersList = props => {
         </Table>
       </BoxUI>
       <TransactionCreateModal {...createModal} />
+      <PartnersUpdateModal {...editModal} updateItem={updateItem} />
 
     </>
   )

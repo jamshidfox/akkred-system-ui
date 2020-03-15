@@ -67,7 +67,7 @@ const RoomCreateModal = props => {
               <Row gutter={24}>
 
                 <Col span={24}>
-                  <Field name="legal_name" label="Юридческое название компании" component={InputField} />
+                  <Field name="legalName" label="Юридческое название компании" component={InputField} />
                 </Col>
 
               </Row>
@@ -84,7 +84,7 @@ const RoomCreateModal = props => {
               <Row gutter={24}>
                 <Col span={12}>
                   <Field
-                    name="phone_number"
+                    name="phoneNumber"
                     label="Номер телефона"
                     component={InputField}
                   />
