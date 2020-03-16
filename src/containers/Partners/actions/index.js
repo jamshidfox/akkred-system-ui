@@ -1,4 +1,5 @@
 import { sprintf } from 'sprintf-js'
+import { prop, path } from 'ramda'
 import * as actionTypes from '../../../constants/actionTypes'
 import * as API from '../../../constants/api'
 import axios, {
@@ -34,10 +35,20 @@ export const partnerCreateAction = data => {
   }
 }
 
-export const partnerUpdateAction = (data) => {
+export const partnerUpdateAction = data => {
+  const params = {
+    type: prop('type', data),
+    title: prop('title', data),
+    legal_name: prop('legal_name', data),
+    phone_number: prop('phone_number', data),
+    email: prop('email', data),
+    fax: prop('fax', data),
+    contract: prop('contract', data),
+    country: path(['country', 'id'], data),
+  }
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .put(sprintf(API.PARTNER_UPDATE, data.id), data)
+      .put(sprintf(API.PARTNER_UPDATE, data.id), params)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
     return dispatch({

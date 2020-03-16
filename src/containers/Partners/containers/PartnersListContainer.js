@@ -24,7 +24,6 @@ const getPartnersUpdateParams = (onSuccess) => ({
   key: 'updatePartner',
   stateName: STATE.PARTNER_UPDATE,
   action: partnerUpdateAction,
-  serializer: getSerializedData(fields),
   onSuccess
 })
 
