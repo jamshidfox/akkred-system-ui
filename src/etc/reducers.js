@@ -74,6 +74,11 @@ export const makeRootReducer = asyncReducers => {
     [STATE.PARTNER_CREATE]: createThunkReducer(actionTypes.PARTNER_CREATE),
     [STATE.PARTNER_UPDATE]: createThunkReducer(actionTypes.PARTNER_UPDATE),
     [STATE.PARTNER_ITEM]: createThunkReducer(actionTypes.PARTNER_ITEM),
+    [STATE.ROLE_LIST]: createThunkReducer(actionTypes.ROLE_LIST),
+    [STATE.ROLE_CREATE]: createThunkReducer(actionTypes.ROLE_CREATE),
+    [STATE.ROLE_UPDATE]: createThunkReducer(actionTypes.ROLE_UPDATE),
+    [STATE.ROLE_ITEM]: createThunkReducer(actionTypes.ROLE_ITEM),
+    [STATE.GROUP_LIST]: createThunkReducer(actionTypes.GROUP_LIST),
     ...asyncReducers
   })
 }

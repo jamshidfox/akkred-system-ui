@@ -53,6 +53,7 @@ const FloorsUpdateModal = props => {
                   items={data}
                   label="Номера"
                   width={'40%'}
+                  labelPath={['id']}
                   component={CheckboxGroupField}
                 />
               </FieldWrapper>

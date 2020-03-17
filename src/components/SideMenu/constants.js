@@ -97,6 +97,10 @@ export default [
         url: ROUTES.PARTNERS_LIST_URL,
       },
       {
+        name: 'Должности',
+        url: ROUTES.ROLE_LIST_URL,
+      },
+      {
         name: 'Ранний заезд / Поздний выезад ',
         url: ROUTES.SETTING_RULE_GROUP_LIST,
       }

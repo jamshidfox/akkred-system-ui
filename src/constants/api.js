@@ -48,6 +48,15 @@ export const PARTNER_CREATE = `/${PARTNER}/`
 export const PARTNER_UPDATE = `/${PARTNER}/%d/`
 export const PARTNER_ITEM = `/${PARTNER}/%d/`
 
+export const ROLE = 'hotels/role'
+export const ROLE_LIST = `/${ROLE}/`
+export const ROLE_CREATE = `/${ROLE}/`
+export const ROLE_UPDATE = `/${ROLE}/%d/`
+export const ROLE_ITEM = `/${ROLE}/%d/`
+
+export const GROUP = 'hotels/group'
+export const GROUP_LIST = `/${GROUP}/`
+
 export const ROOM_TYPE = 'hotels/rooms_category'
 export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
 

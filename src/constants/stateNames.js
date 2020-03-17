@@ -74,3 +74,11 @@ export const PARTNER_LIST = 'partnerList'
 export const PARTNER_ITEM = 'partnerItem'
 export const PARTNER_CREATE = 'partnerCreate'
 export const PARTNER_UPDATE = 'partnerUpdate'
+
+export const ROLE_LIST = 'roleList'
+export const ROLE_ITEM = 'roleItem'
+export const ROLE_CREATE = 'roleCreate'
+export const ROLE_UPDATE = 'roleUpdate'
+
+export const GROUP_LIST = 'groupList'
+export const GROUP_ITEM = 'groupItem'

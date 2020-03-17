@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { path } from 'ramda'
 import { CheckboxGroup, default as Checkbox } from '~/components/UI/Checkbox'
 
 const StyledCheckbox = styled(Checkbox)`
@@ -15,6 +16,7 @@ const CheckboxGroupField = props => {
     label,
     mode,
     width,
+    labelPath,
     input: { value, checked, ...input }
   } = props
 
@@ -31,7 +33,7 @@ const CheckboxGroupField = props => {
           onChange={() => null}
           key={checkbox.id}
           value={checkbox.id}
-          label={checkbox.id}
+          label={path(labelPath, checkbox)}
           checked={value.includes(checkbox.id)}
         />
       ))}
@@ -41,6 +43,7 @@ const CheckboxGroupField = props => {
 
 CheckboxGroupField.defaultProps = {
   items: [],
+  labelPath: ['name'],
   mode: 'inline',
   width: '100%'
 }

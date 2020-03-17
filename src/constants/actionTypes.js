@@ -91,3 +91,11 @@ export const PARTNER_LIST = 'PARTNER_LIST'
 export const PARTNER_ITEM = 'PARTNER_ITEM'
 export const PARTNER_CREATE = 'PARTNER_CREATE'
 export const PARTNER_UPDATE = 'PARTNER_UPDATE'
+
+export const ROLE_LIST = 'ROLE_LIST'
+export const ROLE_ITEM = 'ROLE_ITEM'
+export const ROLE_CREATE = 'ROLE_CREATE'
+export const ROLE_UPDATE = 'ROLE_UPDATE'
+
+export const GROUP_LIST = 'GROUP_LIST'
+export const GROUP_ITEM = 'GROUP_ITEM'
