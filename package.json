@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./scripts/start.js",
-    "build": "cross-env NODE_ENV=production  node ./scripts/build.js"
+    "build": "rm -rf dist && cross-env NODE_ENV=production  node ./scripts/build.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

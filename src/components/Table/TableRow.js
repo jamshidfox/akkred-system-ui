@@ -10,6 +10,9 @@ const Row = styled(RowUI)`
   border-bottom: 1px #efefef solid;
   cursor: ${props => props.header ? 'auto' : 'pointer'};
   transition: all 300ms;
+  :last-child {
+    border-bottom: none;
+  }
   :hover {
     background: ${props => props.header ? 'unset' : '#FAFAFB'}
   }

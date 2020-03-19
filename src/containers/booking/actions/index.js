@@ -6,11 +6,33 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-
-export const bookingFetchList = data => {
+export const roomFetchList = data => {
+  const params = {
+    ...data,
+    page_size: 1000
+  }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.BOOKING_LIST)
+      .get(API.ROOM_LIST, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.ROOM_LIST
+    })
+  }
+}
+
+export const bookingFetchList = data => {
+  const params = {
+    ...data,
+    page_size: 1000
+  }
+
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.BOOKING_LIST, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
@@ -20,8 +42,6 @@ export const bookingFetchList = data => {
     })
   }
 }
-
-
 
 export const bookingCreateAction = data => {
   return (dispatch, getState) => {
@@ -38,7 +58,6 @@ export const bookingCreateAction = data => {
 }
 
 export const bookingUpdateAction = ([id, data]) => {
-
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.BOOKING_UPDATE, id), data)

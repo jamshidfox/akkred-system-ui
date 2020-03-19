@@ -8,7 +8,7 @@ const BookingList = props => {
   const { list, createModal, bookingList, updateAction } = props
   return (
     <>
-      <Box padding={'25px'}>
+      <Box padding={'25px 25px 0'}>
         <PageTitle name={'Шахматка'}>
           <DisplayFlex align={'center'}>
             <LinkButton>Создать бронь</LinkButton>

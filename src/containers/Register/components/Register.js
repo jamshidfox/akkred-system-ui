@@ -216,12 +216,6 @@ const Register = props => {
                   />
                 </Col>
               </Row>
-              <Field
-                name={'sddsds'}
-                items={[{ id: 1, name: 'dasdas' }, { id: 2, name: 'ddddd' }]}
-                width={'40%'}
-                component={CheckboxGroupField}
-              />
               <div style={{ textAlign: 'right' }}>
                 {(!isCreated || isEdit) && <MediumButton type="submit">Сохранить</MediumButton>}
               </div>
