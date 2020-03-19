@@ -4,12 +4,14 @@ import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
+import * as API from '~/constants/api'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
   Form,
   Field,
   InputField,
+    UniversalSearchField
 } from '../../../components/FormField'
 
 export const fields = [
@@ -21,6 +23,7 @@ export const fields = [
   'lastName',
   'firstName',
   'middleName',
+    'role'
 ]
 
 const BoxUI = styled(Box)`
@@ -58,10 +61,16 @@ const ReservationCreate = props => {
               <Label>Основная информация</Label>
               <Row gutter={24}>
 
-                <Col span={12}>
+                <Col span={8}>
                   <Field name="username" label="Логин" component={InputField} />
                 </Col>
-                <Col span={12}>
+                <Col span={8}>
+                  <Field name="role" label="Должность"
+                    api={API.ROLE_LIST}
+                    component={UniversalSearchField}
+                  />
+                </Col>
+                <Col span={8}>
                   <Field name="password" label="Пароль" component={InputField} />
                 </Col>
               </Row>

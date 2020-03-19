@@ -8,22 +8,12 @@ import { Modal, MediumButton } from '../../../components/UI'
 import {
   CheckboxGroupField,
   InputField,
-  UniversalSearchField,
-  UniversalStaticSelectField
 } from '../../../components/FormField'
-import { PARTNERS_TYPES } from '../../../constants/backend'
 import { Row as RowUI, Col } from '../../../components/Grid'
-import * as ROUTES from '../../../constants/api'
 
-export const fields = [
-  'type',
-  'title',
-  'legalName',
-  'phoneNumber',
-  'email',
-  'fax',
-  'contract',
-  'country',
+export const rolefields = [
+  'name',
+  'groups'
 ]
 
 const Label = styled.div`
@@ -43,8 +33,18 @@ const Row = styled(RowUI)`
 
 const PArtnerUpdateeModal = props => {
   const { open, onClose, onSubmit, updateItem, groupList } = props
-  const initialValues = { ...updateItem }
   const data = prop('results', groupList)
+  let result
+  if (updateItem.groups) {
+    result = Array.from(updateItem.groups, group => group.id)
+  }
+
+  const initialValues = {
+    id: prop('id', updateItem),
+    name: prop('name', updateItem),
+    groups: result
+  }
+
   return (
     <Modal
       width="800px"

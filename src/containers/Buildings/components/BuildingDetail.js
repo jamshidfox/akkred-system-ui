@@ -51,7 +51,7 @@ const BuildingDetail = props => {
             <TableCol span={8} />
             <TableCol span={1} style={linkListStyle}>
               <span
-                style={linkStyle} 
+                style={linkStyle}
                 onClick={() => modalOpen(floor.id, floor.name, floor.rooms)}
               >
                 <img src={Edit} alt="Edit" />

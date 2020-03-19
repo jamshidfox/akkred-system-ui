@@ -1,5 +1,5 @@
 import React from 'react'
-import { prop } from 'ramda'
+import { prop, path } from 'ramda'
 import * as STATE from '../../../constants/stateNames'
 import { useUpdate, useFetchItem } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
@@ -14,7 +14,8 @@ const getEmployerItemParams = () => ({
 const getInitialValues = (data) => {
   return ({
     username: prop('username', data),
-    fullName: prop('fullName', data),
+    fullName: path('fullName', data),
+    role: prop(['role', 'id'], data),
     mail: prop('mail', data),
     phoneNumber: prop('phoneNumber', data),
     lastName: prop('lastName', data),
