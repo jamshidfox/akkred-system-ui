@@ -23,6 +23,7 @@ const Container = styled('div')`
   overflow: hidden;
   margin-top: 24px;
   user-select: none;
+  min-height: 300px;
 `
 
 const LeftSide = styled('div')`
@@ -100,7 +101,10 @@ const Scheduler = props => {
 
   return (
     <SchedulerContext.Provider value={tableOptions}>
-      <Form onSubmit={updateAction.id ? updateAction.onSubmit : createModal.onSubmit}
+      <Form
+        keepDirtyOnReinitialize={true}
+        initialValues={{ roomCategory: { id: 2 } }}
+        onSubmit={updateAction.id ? updateAction.onSubmit : createModal.onSubmit}
         render={formProps => {
           const { form, values } = formProps
           const onChange = (values, bookId) => {
@@ -123,7 +127,7 @@ const Scheduler = props => {
             <>
               <Container>
                 <LeftSide>
-                  <SchedulerFilter />
+                  <SchedulerFilter history={history} />
                   <RoomBlock>
                     {roomListGrouped.map(item => {
                       const [roomCategory, roomsList] = item

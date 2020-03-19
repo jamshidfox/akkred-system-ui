@@ -7,22 +7,26 @@ import { useFetchList, useCreateModal, useCreate } from '../../../hooks'
 import {
   bookingFetchList,
   bookingCreateAction,
-  bookingUpdateAction
+  bookingUpdateAction,
+  roomFetchList
 } from '../actions'
-import { roomFetchList } from '../../Rooms/actions'
 import BookingList from '../components/BookingList'
 import { getParamFromHistory, getSerializedData } from '../../../utils/get'
 import { replaceParamsRoute } from '../../../utils/route'
 import toSnakeCase from '../../../utils/toSnakeCase'
+import { DEFAULT_PICK_PARAMS } from '~/utils/isEquals'
 
 const getListParams = () => ({
   stateName: STATE.ROOM_LIST,
-  action: roomFetchList
+  action: roomFetchList,
+  pickParams: [...DEFAULT_PICK_PARAMS, 'roomCategory']
+
 })
 
 const getBookingListParams = () => ({
   stateName: STATE.BOOKING_LIST,
-  action: bookingFetchList
+  action: bookingFetchList,
+  pickParams: [...DEFAULT_PICK_PARAMS, 'roomCategory']
 })
 
 const createSerializer = values => {
