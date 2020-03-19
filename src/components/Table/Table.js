@@ -8,21 +8,18 @@ const Wrapper = styled.div`
 `
 const Table = props => {
   const { isEmpty, loading, emptyText, filterForm } = props
-  if (loading) {
-    return <div style={{ textAling: 'center' }}>Loading... </div>
-  }
-  if (isEmpty) {
+  if (isEmpty || loading) {
     return (
       <>
         {filterForm}
-        <EmptyQuery text={emptyText} />
+        {loading && <div style={{ textAling: 'center' }}>Loading... </div>}
+        {!loading && <EmptyQuery text={emptyText} />}
       </>
     )
   }
   return (
     <Wrapper>
       {filterForm}
-
       {props.children}
     </Wrapper>
   )
