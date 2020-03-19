@@ -12,11 +12,17 @@ const Table = props => {
     return <div style={{ textAling: 'center' }}>Loading... </div>
   }
   if (isEmpty) {
-    return <EmptyQuery text={emptyText} />
+    return (
+      <>
+        {filterForm}
+        <EmptyQuery text={emptyText} />
+      </>
+    )
   }
   return (
     <Wrapper>
       {filterForm}
+
       {props.children}
     </Wrapper>
   )
