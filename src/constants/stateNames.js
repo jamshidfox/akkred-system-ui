@@ -69,3 +69,16 @@ export const RULE_PRICE_LIST = 'rulePriceList'
 export const RULE_PRICE_ITEM = 'rulePriceUpdate'
 export const RULE_PRICE_CREATE = 'rulePriceCreate'
 export const RULE_PRICE_UPDATE = 'rulePriceItem'
+
+export const PARTNER_LIST = 'partnerList'
+export const PARTNER_ITEM = 'partnerItem'
+export const PARTNER_CREATE = 'partnerCreate'
+export const PARTNER_UPDATE = 'partnerUpdate'
+
+export const ROLE_LIST = 'roleList'
+export const ROLE_ITEM = 'roleItem'
+export const ROLE_CREATE = 'roleCreate'
+export const ROLE_UPDATE = 'roleUpdate'
+
+export const GROUP_LIST = 'groupList'
+export const GROUP_ITEM = 'groupItem'

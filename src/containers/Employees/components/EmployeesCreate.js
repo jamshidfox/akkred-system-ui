@@ -4,20 +4,23 @@ import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
-import { USER_TYPES } from '../../../constants/backend'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
   Form,
   Field,
-  InputField, UniversalStaticSelectField,
+  InputField,
 } from '../../../components/FormField'
 
 export const fields = [
   'username',
-  'userType',
   'password',
-  'fullName'
+  'fullName',
+  'mail',
+  'phoneNumber',
+  'lastName',
+  'firstName',
+  'middleName',
 ]
 
 const BoxUI = styled(Box)`
@@ -47,29 +50,39 @@ const ReservationCreate = props => {
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
-        // initialValues={initialValues}
+        initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
               <Label>Основная информация</Label>
               <Row gutter={24}>
+
+                <Col span={12}>
+                  <Field name="username" label="Логин" component={InputField} />
+                </Col>
+                <Col span={12}>
+                  <Field name="password" label="Пароль" component={InputField} />
+                </Col>
+              </Row>
+              <Row gutter={24}>
                 <Col span={4}>
                   <Field name="fullName" label="Ф.И.O" component={InputField} />
                 </Col>
                 <Col span={4}>
-                  <Field name="username" label="Логин" component={InputField} />
+                  <Field name="mail" label="mail" component={InputField} />
                 </Col>
                 <Col span={4}>
-                  <Field
-                    name="userType"
-                    label="должность"
-                    list={USER_TYPES}
-                    component={UniversalStaticSelectField}
-                  />
+                  <Field name="phoneNumber" label="phoneNumber" component={InputField} />
                 </Col>
                 <Col span={4}>
-                  <Field name="password" label="Пароль" component={InputField} />
+                  <Field name="lastName" label="lastName" component={InputField} />
+                </Col>
+                <Col span={4}>
+                  <Field name="firstName" label="firstName" component={InputField} />
+                </Col>
+                <Col span={4}>
+                  <Field name="middleName" label="middleName" component={InputField} />
                 </Col>
               </Row>
 

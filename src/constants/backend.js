@@ -45,6 +45,13 @@ export const TRANSACTION_TYPES = [
   { id: 'income', name: 'Доход' },
   { id: 'outcome', name: 'Расход' },
 ]
+
+export const PARTNERS_TYPES = [
+  { id: 'tour', name: 'Тур.фирма' },
+  { id: 'company', name: 'Компания' },
+  { id: 'agent', name: 'Агент' },
+]
+
 export const RULE_TYPES = [
   { id: 'entrance', name: 'Заезд' },
   { id: 'leave', name: 'Выезд' },

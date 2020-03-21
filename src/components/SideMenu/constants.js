@@ -37,21 +37,21 @@ export default [
   //   url: '/',
   //   icon: List,
   // },
-  {
-    name: 'Тарифы и цены',
-    url: ROUTES.RATES_LIST_URL,
-    icon: CreditCard,
-    children: [
-      {
-        name: 'Тарифы и цены номерного фонда',
-        url: ROUTES.RATES_LIST_URL,
-      },
-      {
-        name: 'Тарифы и цены сервисов',
-        url: ROUTES.SERVICES_PRICE_LIST_URL,
-      }
-    ]
-  },
+  // {
+  //   name: 'Тарифы и цены',
+  //   url: ROUTES.RATES_LIST_URL,
+  //   icon: CreditCard,
+  //   children: [
+  //     {
+  //       name: 'Тарифы и цены номерного фонда',
+  //       url: ROUTES.RATES_LIST_URL,
+  //     },
+  //     {
+  //       name: 'Тарифы и цены сервисов',
+  //       url: ROUTES.SERVICES_PRICE_LIST_URL,
+  //     }
+  //   ]
+  // },
   {
     name: 'Клиенты',
     url: ROUTES.CLIENT_LIST_URL,
@@ -91,6 +91,14 @@ export default [
       {
         name: 'Сотрудники',
         url: ROUTES.EMPLOYEES_LIST_URL,
+      },
+      {
+        name: 'Партнеры',
+        url: ROUTES.PARTNERS_LIST_URL,
+      },
+      {
+        name: 'Должности',
+        url: ROUTES.ROLE_LIST_URL,
       },
       {
         name: 'Ранний заезд / Поздний выезад ',

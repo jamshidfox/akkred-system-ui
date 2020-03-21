@@ -16,6 +16,8 @@ import booking from './booking'
 import Buildings from './Buildings'
 import transaction from './Transaction'
 import roomsRules from './RoomsRules'
+import partners from './Partners'
+import roles from './Role'
 
 const tester = store => [
   ...reservation(),
@@ -28,6 +30,8 @@ const tester = store => [
   ...booking(),
   ...transaction(),
   ...roomsRules(),
+  ...partners(),
+  ...roles(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,

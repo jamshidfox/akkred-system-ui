@@ -6,58 +6,57 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const employeesCreateAction = data => {
-  return (dispatch, getState) => {
-    const payload = axios({ dispatch, getState })
-      .post(API.EMPLOYEES_CREATE, data)
-      .then(getPayloadFromSuccess)
-      .catch(getPayloadFromError)
-
-    return dispatch({
-      payload,
-      type: actionTypes.EMPLOYEES_CREATE
-    })
-  }
-}
-
-export const employeesUpdateAction = (id, data) => {
-  return (dispatch, getState) => {
-    const payload = axios({ dispatch, getState })
-      .put(sprintf(API.EMPLOYEES_UPDATE, id), data)
-      .then(getPayloadFromSuccess)
-      .catch(getPayloadFromError)
-
-    return dispatch({
-      payload,
-      type: actionTypes.EMPLOYEES_UPDATE
-    })
-  }
-}
-
-export const employeesFetchList = data => {
+export const roleFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.EMPLOYEES_LIST)
+      .get(API.ROLE_LIST)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.EMPLOYEES_LIST
+      type: actionTypes.ROLE_LIST
     })
   }
 }
 
-export const employeesFetchItem = id => {
+export const roleCreateAction = data => {
   return (dispatch, getState) => {
-    const payload = axios({ getState, dispatch })
-      .get(sprintf(API.EMPLOYEES_ITEM, id))
+    const payload = axios({ dispatch, getState })
+      .post(API.ROLE_CREATE, data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.EMPLOYEES_ITEM
+      type: actionTypes.ROLE_CREATE
+    })
+  }
+}
+
+export const roleUpdateAction = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .put(sprintf(API.ROLE_UPDATE, data.id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.ROLE_UPDATE
+    })
+  }
+}
+
+export const groupFetchList = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.GROUP_LIST)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.GROUP_LIST
     })
   }
 }

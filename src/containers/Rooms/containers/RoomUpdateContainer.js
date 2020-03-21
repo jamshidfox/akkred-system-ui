@@ -1,5 +1,5 @@
 import React from 'react'
-import { flatten, fromPairs, map, pipe, prop, toPairs, union, values } from 'ramda'
+import { flatten, fromPairs, map, path, pipe, prop, toPairs, union, values } from 'ramda'
 import * as STATE from '../../../constants/stateNames'
 import * as ROUTES from '../../../constants/routes'
 import { useFetchList, useUpdate, useFetchItem, useModal } from '../../../hooks'
@@ -34,7 +34,7 @@ const getInitialValues = (data) => {
   const facilities = pipe(prop('facilities'), toPairs, map(mapIndexKey), fromPairs)(data)
 
   return ({
-    roomCategory: prop('roomCategory', data),
+    roomCategory: path(['roomCategory', 'id'], data),
     detail: prop('detail', data),
     floor: prop('floor', data),
     area: prop('area', data),

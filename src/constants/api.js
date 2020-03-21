@@ -7,10 +7,10 @@ export const LOGIN = `${MAIN}/login/`
 export const LOGOUT = `${MAIN}/logout/`
 export const FILE_UPLOAD = '/main/file/'
 
-export const EMPLOYEES_LIST = `${MAIN}/`
-export const EMPLOYEES_CREATE = `${MAIN}`
-export const EMPLOYEES_UPDATE = `/${MAIN}/%d/`
-export const EMPLOYEES_ITEM = `/${MAIN}/%d/`
+export const EMPLOYEES_LIST = `hotels/hotel_staff/`
+export const EMPLOYEES_CREATE = `hotels/hotel_staff/`
+export const EMPLOYEES_UPDATE = `/hotels/hotel_staff/%d/`
+export const EMPLOYEES_ITEM = `/hotels/hotel_staff/%d/`
 
 export const AUTH = 'auth'
 export const AUTH_ACCESS_TOKEN = `/${AUTH}/access-token/`
@@ -41,6 +41,21 @@ export const ROOM_UPDATE = `/${ROOM}/%d/`
 export const ROOM_ITEM = `/${ROOM}/%d/`
 
 export const ROOM_CREATE_BULK = `/${ROOM}/bulk_create/`
+
+export const PARTNER = 'hotels/partner'
+export const PARTNER_LIST = `/${PARTNER}/`
+export const PARTNER_CREATE = `/${PARTNER}/`
+export const PARTNER_UPDATE = `/${PARTNER}/%d/`
+export const PARTNER_ITEM = `/${PARTNER}/%d/`
+
+export const ROLE = 'hotels/role'
+export const ROLE_LIST = `/${ROLE}/`
+export const ROLE_CREATE = `/${ROLE}/`
+export const ROLE_UPDATE = `/${ROLE}/%d/`
+export const ROLE_ITEM = `/${ROLE}/%d/`
+
+export const GROUP = 'hotels/group'
+export const GROUP_LIST = `/${GROUP}/`
 
 export const ROOM_TYPE = 'hotels/rooms_category'
 export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`

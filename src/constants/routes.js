@@ -39,6 +39,15 @@ export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`
 export const EMPLOYEES_LIST_URL = `/${SETTINGS}/${EMPLOYEES}/`
 export const EMPLOYEES_CREATE_URL = `/${SETTINGS}/${EMPLOYEES}/create`
 export const EMPLOYEES_LIST_PATH = `/${SETTINGS}/${EMPLOYEES}/${ID}`
+export const EMPLOYEES_UPDATE_URL = `/${SETTINGS}/${EMPLOYEES}/%d`
+
+export const PARTNERS = 'partners'
+export const PARTNERS_LIST_URL = `/${SETTINGS}/${PARTNERS}/`
+export const PARTNERS_UPDATE_URL = `/${SETTINGS}/${PARTNERS}/%d`
+
+export const ROLE = 'roles'
+export const ROLE_LIST_URL = `/${SETTINGS}/${ROLE}/`
+export const ROLE_UPDATE_URL = `/${SETTINGS}/${ROLE}/%d`
 
 const RESERVATION = 'reservation'
 export const RESERVATION_LIST_URL = `/${RESERVATION}/`

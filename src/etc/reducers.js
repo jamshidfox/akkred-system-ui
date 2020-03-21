@@ -70,6 +70,15 @@ export const makeRootReducer = asyncReducers => {
     [STATE.RULE_PRICE_CREATE]: createThunkReducer(actionTypes.RULE_PRICE_CREATE),
     [STATE.RULE_PRICE_UPDATE]: createThunkReducer(actionTypes.RULE_PRICE_UPDATE),
     [STATE.RULE_PRICE_ITEM]: createThunkReducer(actionTypes.RULE_PRICE_ITEM),
+    [STATE.PARTNER_LIST]: createThunkReducer(actionTypes.PARTNER_LIST),
+    [STATE.PARTNER_CREATE]: createThunkReducer(actionTypes.PARTNER_CREATE),
+    [STATE.PARTNER_UPDATE]: createThunkReducer(actionTypes.PARTNER_UPDATE),
+    [STATE.PARTNER_ITEM]: createThunkReducer(actionTypes.PARTNER_ITEM),
+    [STATE.ROLE_LIST]: createThunkReducer(actionTypes.ROLE_LIST),
+    [STATE.ROLE_CREATE]: createThunkReducer(actionTypes.ROLE_CREATE),
+    [STATE.ROLE_UPDATE]: createThunkReducer(actionTypes.ROLE_UPDATE),
+    [STATE.ROLE_ITEM]: createThunkReducer(actionTypes.ROLE_ITEM),
+    [STATE.GROUP_LIST]: createThunkReducer(actionTypes.GROUP_LIST),
     ...asyncReducers
   })
 }

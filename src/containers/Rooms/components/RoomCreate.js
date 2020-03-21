@@ -7,7 +7,8 @@ import { Row as RowUI, Col } from '../../../components/Grid'
 import {
   Form,
   Field,
-  InputField
+  InputField,
+  NoopFields
 } from '../../../components/FormField'
 import { GENDER_LIST } from '../../../constants/backend'
 import { Box } from '../../../components/StyledElems'
@@ -20,7 +21,8 @@ export const fields = [
   'capacity',
   'additionalCapacity',
   'roomNumber',
-  'facilities'
+  'facilities',
+  'roomCategory'
 ]
 
 const Row = styled(RowUI)`
@@ -50,6 +52,7 @@ const RoomCreate = props => {
             <form onSubmit={handleSubmit}>
 
               <Row gutter={24}>
+
                 <Col span={8}>
                   <Field name="detail" label="Описание" component={InputField} />
                 </Col>
@@ -72,14 +75,18 @@ const RoomCreate = props => {
                   <Field name="roomNumber"
                     label="Номер" component={InputField} />
                 </Col>
+
               </Row>
 
               <Row gutter={24}>
-                <Col span={24}>
+                <Col span={16}>
                   <FacilitiesDialog
                     serviceTypes={values.facilities}
                     onServiceCancel={onServiceCancel}
                     {...serviceModal} />
+                </Col>
+                <Col span={8}>
+                  <NoopFields names={['roomCategory']} label="Описание" />
                 </Col>
 
               </Row>
