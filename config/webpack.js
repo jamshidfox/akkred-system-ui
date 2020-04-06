@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const project = require('./project')
 
@@ -12,6 +12,7 @@ const inProjectSrc = file => inProject(project.srcDir, file)
 const __DEV__ = project.env === 'development'
 const __TEST__ = project.env === 'test'
 const __PROD__ = project.env === 'production'
+const __ANALYZE__ = project.env === 'development'
 
 const config = {
   mode: __PROD__ ? 'production' : 'development',
@@ -145,6 +146,11 @@ if (__DEV__) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
   )
+}
+if (__ANALYZE__) {
+/*  config.plugins.push(
+    new BundleAnalyzerPlugin()
+  )*/
 }
 
 // Bundle Splitting

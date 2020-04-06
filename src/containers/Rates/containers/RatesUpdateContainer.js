@@ -1,63 +1,113 @@
 import React from 'react'
-import { path, prop } from 'ramda'
+import {
+  flatten,
+  path,
+  pipe,
+  prop,
+  map,
+  propOr,
+  range,
+  find,
+  curry,
+  equals
+} from 'ramda'
+import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
-import * as ROUTES from '../../../constants/routes'
-import { useUpdate, useFetchItem } from '../../../hooks'
-import { getSerializedData } from '../../../utils/get'
-import { RatesCreate, fields } from '../components'
 
-import { ratesUpdateAction, ratesFetchItem } from '../actions'
+import { useUpdate, useFetchItem, useFetchList } from '../../../hooks'
 
+import { RatesCreate } from '../components'
+import { ratesUpdateAction, ratesFetchItem, roomCategoryCapacityList } from '../actions'
+import toSnakeCase from '~/utils/toSnakeCase'
+import { ratesPartnerCreateAction } from '~/containers/Rates/actions'
+import { getSerializedData } from '~/utils/get'
+
+const ONE = 1
 const getRatestItemParams = () => ({
   action: ratesFetchItem,
   stateName: STATE.RATES_ITEM,
 })
 
 const serializer = (val) => {
-  const fromTime = prop('fromTime', val)
-  const fromDate = prop('fromDate', val)
-  const fromDateTime = ''.concat(fromDate, ' ', fromTime)
-
-  const toTime = prop('toTime', val)
-  const toDate = prop('toDate', val)
-  const toDateTime = ''.concat(toDate, ' ', toTime)
+  const rates = pipe(prop('rates'), flatten, map(toSnakeCase))(val)
   return {
-    ...getSerializedData(fields, val),
-    from_date:fromDateTime,
-    to_date:toDateTime
+    ...toSnakeCase(val),
+    rates
   }
 }
 
-const getInitialValues = (data) => {
-  return ({
-    name: prop('name', data),
-    fromDate: prop('fromDate', data),
-    toDate: prop('toDate', data),
-    foreignerYoung: prop('foreignerYoung', data),
-    foreignerGrown: prop('foreignerGrown', data),
-    localYoung: prop('localYoung', data),
-    localGrown: prop('localGrown', data),
-    roomCategory: path(['roomCategory', 'id'], data),
-    category: path(['roomCategory', 'parent', 'id'], data),
-  })
+const partnerSerializer = (values) => {
+  const touristTax = prop('touristTax', values)
+  const nds = prop('nds', values)
+  console.warn(values)
+  const data = pipe(prop('priceList'), map(price => (toSnakeCase({
+    ...getSerializedData(['discountType', 'partners', 'discountPrice', 'rates', 'partnerType'], price),
+    touristTax,
+    nds
+
+  }))))(values)
+
+  return data
 }
 
-const getRatesCreateParams = () => ({
-  stateName: STATE.RATES_CREATE,
-  action: ratesUpdateAction,
-  serializer: serializer,
-  redirectUrl: ROUTES.RATES_LIST_URL
+const capCatergoryEq = curry((data, item) => {
+  const capacity = item.capacity
+  const hotelRoomCategory = path(['hotelRoomCategory', 'id'], item)
+  return equals(data, { capacity, hotelRoomCategory })
 })
-
 const RatesUpdateContainer = props => {
+  const { id } = useParams()
+  const dispatch = useDispatch()
   const { data } = useFetchItem(getRatestItemParams())
 
-  const initialValues = getInitialValues(data)
-  const updateData = useUpdate(getRatesCreateParams())
+  const categoryData = useFetchList({
+    action: roomCategoryCapacityList,
+    stateName: STATE.ROOM_CATEGORY_CAPACITY_LIST
+  })
+
+  const list = prop('results', categoryData)
+  const rates = propOr([], 'rates', data)
+
+  const initialRates = list.map(category => {
+    const capacity = path(['capacity'], category)
+    const id = path(['id'], category)
+    const TO = capacity + ONE
+
+    return range(ONE, TO).map(cap => {
+      const rateFeatures = { capacity: cap, hotelRoomCategory: id }
+      const rate = find(capCatergoryEq(rateFeatures))(rates)
+
+      return {
+        ...rate,
+        id: undefined,
+        capacity: cap,
+        hotelRoomCategory: id,
+
+      }
+    })
+  })
+  const initialValues = { ...data, rates: initialRates }
+  const updateData = useUpdate({
+    stateName: STATE.RATES_UPDATE,
+    action: ratesUpdateAction,
+    serializer: serializer,
+    onSuccess: () => dispatch(ratesFetchItem(id))
+  })
+
+  const companyCreateData = useUpdate({
+    stateName: STATE.RATES_PARTNER_CREATE,
+    action: ratesPartnerCreateAction,
+    serializer: partnerSerializer,
+    onSuccess: () => dispatch(ratesFetchItem(id))
+  })
+
   return (
     <RatesCreate
+      categoryData={categoryData}
       {...updateData}
       initialValues={initialValues}
+      companyCreateData={companyCreateData}
     />
   )
 }

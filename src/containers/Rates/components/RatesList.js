@@ -41,7 +41,7 @@ const RatesList = props => {
         {data.map(rates => (
           <TableRow>
             <TableCol span={6}>{rates.name}</TableCol>
-            <TableCol span={6}>{rates.roomCategory.name}</TableCol>
+            <TableCol span={6}>{rates.roomCategory && rates.roomCategory.name}</TableCol>
             <TableCol span={5} >{dateFormat(rates.fromDate)}</TableCol>
             <TableCol span={5} >{dateFormat(rates.toDate)}</TableCol>
             <TableCol span={1}>

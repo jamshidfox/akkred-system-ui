@@ -104,3 +104,9 @@ export const TRANSACTION_LIST_URL = `/${TRANSACTION}/`
 export const TRANSACTION_ITEM_URL = `/${TRANSACTION}/%d`
 export const TRANSACTION_UPDATE_URL = `/${TRANSACTION}/%d/update`
 export const TRANSACTION_UPDATE_PATH = `/${TRANSACTION}/${ID}/update`
+
+const TARIFF = 'tariff'
+export const TARIFF_LIST_URL = `/${TARIFF}/`
+export const TARIFF_ITEM_URL = `/${TARIFF}/%d`
+export const TARIFF_UPDATE_URL = `/${TARIFF}/%d/update`
+export const TARIFF_UPDATE_PATH = `/${TARIFF}/${ID}/update`

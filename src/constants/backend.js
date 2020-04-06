@@ -5,6 +5,29 @@ export const arrayObjToObj = pipe(
   fromPairs
 )
 
+
+export const PERCENTAGE = 'percentage'
+export const FIXED = 'fixed'
+export const INDIVIDUAL = 'individual'
+
+
+export const CALCULATION_TYPE_LIST = [
+  {
+    id: FIXED,
+    name: 'Фикс. стоимость'
+  },
+  {
+    id: PERCENTAGE,
+    name: 'В процентах'
+  },
+  {
+    id: INDIVIDUAL,
+    name: 'Индивидуальные цены'
+  },
+]
+
+export const CALCULATION_TYPE = arrayObjToObj(CALCULATION_TYPE_LIST)
+
 export const GENDER_LIST = [
   { id: 'male', name: 'мужчина' },
   { id: 'female', name: 'женщина' }
