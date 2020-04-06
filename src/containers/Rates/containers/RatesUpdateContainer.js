@@ -38,16 +38,18 @@ const serializer = (val) => {
 }
 
 const partnerSerializer = (values) => {
+  console.warn('Val: ', values)
   const touristTax = prop('touristTax', values)
   const nds = prop('nds', values)
-  console.warn(values)
   const data = pipe(prop('priceList'), map(price => (toSnakeCase({
     ...getSerializedData(['discountType', 'partners', 'discountPrice', 'rates', 'partnerType'], price),
     touristTax,
-    nds
+    nds,
+    individualRates: pipe(prop('individualRates'), flatten, map(toSnakeCase))(price)
 
   }))))(values)
 
+  console.warn(data)
   return data
 }
 

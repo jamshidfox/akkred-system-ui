@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { FieldArray } from 'react-final-form-arrays'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
@@ -14,13 +14,14 @@ import * as API from '~/constants/api'
 import * as CONST from '~/constants/backend'
 import { LargeButton } from '~/components/UI'
 import { FIXED, INDIVIDUAL } from '~/constants/backend'
+import PriceTableList from "~/containers/Rates/components/PriceTableList";
 
 const RowUI = styled(Row)`
   margin-bottom: 20px;
 `
 
 const PriceFiels = props => {
-  const { partnerType } = props
+  const { partnerType, categoryData } = props
   return (
     <>
       <RowUI align="center" gutter={10}>
@@ -67,57 +68,63 @@ const PriceFiels = props => {
                 const isFixed = discountType === FIXED
                 const isIndi = discountType === INDIVIDUAL
                 return (
-                  <RowUI gutter={30} align="center">
-                    <Col span={8}>
-                      <Field
-                        name={`${field}.partners`}
-                        itemText={['title']}
-                        component={UniversalMultiSelectField}
-                        params={{ type: partnerType }}
-                        api={API.PARTNER_LIST}
-                      />
-                      <Field
-                        name={`${field}.partnerType`}
-                        component={'input'}
-                        type="hidden"
-                        defaultValue={partnerType}
-                        value={partnerType}
-                      />
-                    </Col>
-                    {isIndi
-                      ? (
-                        <Col span={16}>
-                          <Field
-                            name={`${field}.discountType`}
-                            component={UniversalStaticSelectField}
-                            list={CONST.CALCULATION_TYPE_LIST}
-                          />
-                        </Col>
-                      )
-                      : (
-                        <>
-                          <Col span={8}>
+                  <Fragment key={fields}>
+                    <RowUI gutter={30} align="center">
+                      <Col span={8}>
+                        <Field
+                          name={`${field}.partners`}
+                          itemText={['title']}
+                          component={UniversalMultiSelectField}
+                          params={{ type: partnerType }}
+                          api={API.PARTNER_LIST}
+                        />
+                        <Field
+                          name={`${field}.partnerType`}
+                          component={'input'}
+                          type="hidden"
+                          defaultValue={partnerType}
+                          value={partnerType}
+                        />
+                      </Col>
+                      {isIndi
+                        ? (
+                          <Col span={16}>
                             <Field
                               name={`${field}.discountType`}
                               component={UniversalStaticSelectField}
                               list={CONST.CALCULATION_TYPE_LIST}
                             />
                           </Col>
-                          <Col span={8}>
-                            <Field
-                              name={`${field}.discountPrice`}
-                              component={InputField}
-                              disabled={!discountType}
-                              placeholder={isFixed ? 'Количество (в UZS)' : 'Количество (в процентах)'}
-                            />
-                          </Col>
-                        </>
-                      )
-                    }
-                    <Col span={2}>
-                      <LargeButton onClick={() => onClick(index)}>{index === LAST_INDEX ? '+' : '-'}</LargeButton>
-                    </Col>
-                  </RowUI>
+                        )
+                        : (
+                          <>
+                            <Col span={8}>
+                              <Field
+                                name={`${field}.discountType`}
+                                component={UniversalStaticSelectField}
+                                list={CONST.CALCULATION_TYPE_LIST}
+                              />
+                            </Col>
+                            <Col span={8}>
+                              <Field
+                                name={`${field}.discountPrice`}
+                                component={InputField}
+                                disabled={!discountType}
+                                placeholder={isFixed ? 'Количество (в UZS)' : 'Количество (в процентах)'}
+                              />
+                            </Col>
+                          </>
+                        )
+                      }
+                      <Col span={2}>
+                        <LargeButton onClick={() => onClick(index)}>{index === LAST_INDEX ? '+' : '-'}</LargeButton>
+                      </Col>
+                    </RowUI>
+                    {isIndi && (
+                      <PriceTableList fieldName={`${field}.individualRates`} categoryData={categoryData} />
+
+                    )}
+                  </Fragment>
                 )
               })}
             </>

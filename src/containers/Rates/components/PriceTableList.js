@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { prop, path, range } from 'ramda'
 import styled from 'styled-components'
 import { Field } from 'react-final-form'
+import PropTypes from 'prop-types'
 import { TableRow, TableCol, TableColRight } from '~/components/Table'
 import { InputField } from '~/components/FormField'
 import Chev from '~/icons/Chev'
@@ -20,7 +21,7 @@ const ExtraRow = styled(TableRowHeader)`
 `
 const ONE = 1
 const PriceTableList = props => {
-  const { categoryData } = props
+  const { categoryData, fieldName } = props
 
   const [selected, setSelected] = useState(0)
   const onSelect = id => {
@@ -53,7 +54,7 @@ const PriceTableList = props => {
             <TableCol span={1}><Chev /></TableCol>
           </TableRowHeader>
           {isSelected && range(ONE, TO).map((cap, index) => {
-            const prefix = `rates[${parentIndex}][${index}]`
+            const prefix = `${fieldName}[${parentIndex}][${index}]`
             return (
               <TableRow key={cap} gutter={30} align="center">
                 <TableCol span={12}>
@@ -109,4 +110,11 @@ const PriceTableList = props => {
   </>
 }
 
+PriceTableList.defaultProps = {
+  fieldName: 'rates'
+}
+PriceTableList.propTypes = {
+  fieldName: PropTypes.string,
+  categoryData: PropTypes.object
+}
 export default PriceTableList
