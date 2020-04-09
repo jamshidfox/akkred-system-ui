@@ -107,6 +107,13 @@ export const RATES_LIST = `/${RATES}/`
 export const RATES_ITEM = `/${RATES}/%d`
 export const RATES_CREATE = `/${RATES}/`
 export const RATES_UPDATE = `/${RATES}/%d/`
+export const RATES_PARTNER_CREATE = `/${RATES}/%d/partner_rate/`
+
+const ROOM_CATEGORY_CAPACITY = 'hotels/hotel_room_category'
+export const ROOM_CATEGORY_CAPACITY_LIST = `/${ROOM_CATEGORY_CAPACITY}/`
+export const ROOM_CATEGORY_CAPACITY_ITEM = `/${ROOM_CATEGORY_CAPACITY}/%d`
+export const ROOM_CATEGORY_CAPACITY_CREATE = `/${ROOM_CATEGORY_CAPACITY}/`
+export const ROOM_CATEGORY_CAPACITY_UPDATE = `/${ROOM_CATEGORY_CAPACITY}/%d/`
 
 const SERVICES_PRICE = `${FINANCE}/service_price`
 export const SERVICES_PRICE_LIST = `/${SERVICES_PRICE}/`

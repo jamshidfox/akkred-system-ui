@@ -1,143 +1,168 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { path } from 'ramda'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
-import { PageTitle, MediumButton } from '../../../components/UI'
-import * as ROUTES from '../../../constants/api'
-import { Box } from '../../../components/StyledElems'
-
-import { Row as RowUI, Col } from '../../../components/Grid'
 import {
-  Form,
-  Field,
-  InputField,
-  UniversalSearchField,
-  DateField,
+  Form
 } from '../../../components/FormField'
+import PriceTableList from './PriceTableList'
+import PriceFields from './PriceFields'
+import { PageTitle, MediumButton } from '~/components/UI'
+import { Box, ButtonAlign } from '~/components/StyledElems'
+import { TableRow, TableCol } from '~/components/Table'
+import Chev from '~/icons/Chev'
 
+const TableHeader = styled(TableRow)`
+    svg {
+    transition: all 300ms;
+   transform: ${props => props.active ? 'rotate(180deg)' : 'rotate(0)'};
+  }
+`
 export const fields = [
   'name',
   'foreignerYoung',
   'foreignerGrown',
   'localYoung',
   'localGrown',
-  'roomCategory',
+  'roomCategory'
 ]
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
+
+const FormWrapper = styled.form`
+  margin-top: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px #efefef solid;
+
 `
 
-const Row = styled(RowUI)`
-  margin-bottom: 40px;
-`
+const RECEP = 'recep'
+const TOUR = 'tour'
+const PARTNERS = 'partners'
+const AGENTS = 'agent'
 const ReservationCreate = props => {
-  const { onSubmit, initialValues } = props
+  const { onSubmit: onUpdate, initialValues, categoryData, loading, companyCreateData } = props
+
+  const [tab, setTab] = useState(RECEP)
+
+  const onChangeTab = (val) => {
+    if (val === tab) {
+      return setTab('')
+    }
+
+    return setTab(val)
+  }
 
   return (
     <BoxUI>
       <PageTitle name="Тарифы и цены номерного фонда" />
-      <Form
-        keepDirtyOnReinitialize={true}
-        mutators={arrayMutators}
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        render={({ handleSubmit, values, ...formikProps }) => {
-          const parent = path(['category', 'id'], values)
-          return (
-            <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
-              <Row gutter={24}>
-                <Col span={8}>
-                  <Field name="name" label="Название тарифа" component={InputField} />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="category"
-                    label="тип номера"
-                    params={{ children_only: false }}
-                    component={UniversalSearchField}
-                    api={ROUTES.ROOM_TYPE_LIST}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="roomCategory"
-                    label="Подкатегория"
-                    params={{ parent }}
-                    disabled={!parent}
-                    api={ROUTES.ROOM_TYPE_LIST}
-                    component={UniversalSearchField} />
-                </Col>
-              </Row>
-              <Label>Цена Иностранцам</Label>
-              <Row gutter={24}>
-                <Col span={12}>
-                  <Field name="foreignerYoung" label="детям" component={InputField} />
-                </Col>
-                <Col span={12}>
-                  <Field name="foreignerGrown" label="взрослым" component={InputField} />
-                </Col>
-              </Row>
-              <Label>Цена Местным</Label>
-              <Row gutter={24}>
-                <Col span={12}>
-                  <Field name="localYoung" label="детям" component={InputField} />
-                </Col>
-                <Col span={12}>
-                  <Field name="localGrown" label="взрослым" component={InputField} />
-                </Col>
+      <TableRow header={true}>
+        <TableCol span={6}>Название</TableCol>
+        <TableCol span={18}>Заполнен</TableCol>
+      </TableRow>
+      <TableHeader onClick={() => onChangeTab(RECEP)} active={tab === RECEP}>
+        <TableCol span={6}>Со стойки</TableCol>
+        <TableCol span={17}>Da</TableCol>
+        <TableCol span={1}><Chev fill="black" /></TableCol>
+      </TableHeader>
+      {tab === RECEP && (
+        <Form
+          onSubmit={onUpdate}
+          initialValues={initialValues}
+          render={formikProps => {
+            return (
+              <FormWrapper onSubmit={formikProps.handleSubmit}>
+                <PriceTableList categoryData={categoryData} />
+                <ButtonAlign>
+                  <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>
+                </ButtonAlign>
+              </FormWrapper>
+            )
+          }}
+        />
+      )}
 
-              </Row>
-              <Label>Период</Label>
-              <Row gutter={24}>
-                <Col span={12}>
-                  <Field name="fromDate" label="Дата начало" component={DateField} />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    label={'вРЕМЯ'}
-                    name={'fromTime'}
-                    placeholder={'Например: 08:00'}
-                    component={InputField} />
-                </Col>
+      <TableHeader onClick={() => onChangeTab(PARTNERS)} active={tab === PARTNERS}>
+        <TableCol span={6}>Для компании</TableCol>
+        <TableCol span={17}>Da</TableCol>
+        <TableCol span={1}><Chev fill="black" /></TableCol>
 
-                <Col span={12}>
-                  <Field name="toDate" label="Дата окончание" component={DateField} />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    label={'Время'}
-                    placeholder={'Например: 18:00'}
-                    name={'toTime'}
-                    component={InputField} />
-                </Col>
-              </Row>
-              <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>Сохранить</MediumButton>
-              </div>
+      </TableHeader>
+      {tab === PARTNERS && (
+        <Form
+          mutators={{ ...arrayMutators }}
+          onSubmit={companyCreateData.onSubmit}
+          keepDirtyOnReinitialize={true}
+          initialValues={{ priceList: [{}] }}
+          render={formikProps => {
+            return (
+              <FormWrapper onSubmit={formikProps.handleSubmit}>
+                <PriceFields partnerType="company" categoryData={categoryData} />
+                <ButtonAlign>
+                  <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>
+                </ButtonAlign>
+              </FormWrapper>
+            )
+          }}
+        />
+      )}
+      <TableHeader onClick={() => onChangeTab(TOUR)} active={tab === TOUR}>
+        <TableCol span={6}>Для tur</TableCol>
+        <TableCol span={17}>Da</TableCol>
+        <TableCol span={1}><Chev fill="black" /></TableCol>
+      </TableHeader>
+      {tab === TOUR && (
+        <Form
+          mutators={{ ...arrayMutators }}
+          onSubmit={companyCreateData.onSubmit}
+          keepDirtyOnReinitialize={true}
+          initialValues={{ priceList: [{}] }}
+          render={formikProps => {
+            return (
+              <FormWrapper onSubmit={formikProps.handleSubmit}>
+                <PriceFields partnerType="tour" categoryData={categoryData} />
+                <ButtonAlign>
+                  <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>
+                </ButtonAlign>
+              </FormWrapper>
+            )
+          }}
+        />
+      )}
+      <TableHeader onClick={() => onChangeTab(AGENTS)} active={tab === AGENTS}>
+        <TableCol span={6}>Для агентов</TableCol>
+        <TableCol span={17}>Da</TableCol>
+        <TableCol span={1}><Chev fill="black" /></TableCol>
 
-            </form>
-          )
-        }}
-      />
+      </TableHeader>
+      {tab === AGENTS && (
+        <Form
+          mutators={{ ...arrayMutators }}
+          onSubmit={companyCreateData.onSubmit}
+          keepDirtyOnReinitialize={true}
+          initialValues={{ priceList: [{}] }}
+          render={formikProps => {
+            return (
+              <FormWrapper onSubmit={formikProps.handleSubmit}>
+                <PriceFields partnerType="agent" categoryData={categoryData} />
+                <ButtonAlign>
+                  <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>
+                </ButtonAlign>
+              </FormWrapper>
+            )
+          }}
+        />
+      )}
     </BoxUI>
   )
 }
 ReservationCreate.propTypes = {
   onSubmit: PropTypes.func,
   initialValues: PropTypes.object,
+  partnerCreateData: PropTypes.object
 }
 
 export default ReservationCreate

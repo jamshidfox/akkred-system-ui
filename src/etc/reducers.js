@@ -39,6 +39,13 @@ export const makeRootReducer = asyncReducers => {
     [STATE.RATES_CREATE]: createThunkReducer(actionTypes.RATES_CREATE),
     [STATE.RATES_UPDATE]: createThunkReducer(actionTypes.RATES_UPDATE),
     [STATE.RATES_ITEM]: createThunkReducer(actionTypes.RATES_ITEM),
+    [STATE.RATES_PARTNER_CREATE]: createThunkReducer(actionTypes.RATES_PARTNER_CREATE),
+
+    [STATE.ROOM_CATEGORY_CAPACITY_LIST]: createThunkReducer(actionTypes.ROOM_CATEGORY_CAPACITY_LIST),
+    [STATE.ROOM_CATEGORY_CAPACITY_CREATE]: createThunkReducer(actionTypes.ROOM_CATEGORY_CAPACITY_CREATE),
+    [STATE.ROOM_CATEGORY_CAPACITY_UPDATE]: createThunkReducer(actionTypes.ROOM_CATEGORY_CAPACITY_UPDATE),
+    [STATE.ROOM_CATEGORY_CAPACITY_ITEM]: createThunkReducer(actionTypes.ROOM_CATEGORY_CAPACITY_ITEM),
+
     [STATE.SERVICES_PRICE_LIST]: createThunkReducer(actionTypes.SERVICES_PRICE_LIST),
     [STATE.SERVICES_PRICE_CREATE]: createThunkReducer(actionTypes.SERVICES_PRICE_CREATE),
     [STATE.SERVICES_PRICE_UPDATE]: createThunkReducer(actionTypes.SERVICES_PRICE_UPDATE),

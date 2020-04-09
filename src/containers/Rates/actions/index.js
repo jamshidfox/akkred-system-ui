@@ -33,6 +33,19 @@ export const ratesUpdateAction = (id, data) => {
     })
   }
 }
+export const ratesPartnerCreateAction = (id, data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(sprintf(API.RATES_PARTNER_CREATE, id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.RATES_PARTNER_CREATE
+    })
+  }
+}
 
 export const ratesFetchList = data => {
   return (dispatch, getState) => {
@@ -44,6 +57,19 @@ export const ratesFetchList = data => {
     return dispatch({
       payload,
       type: actionTypes.RATES_LIST
+    })
+  }
+}
+export const roomCategoryCapacityList = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.ROOM_CATEGORY_CAPACITY_LIST)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.ROOM_CATEGORY_CAPACITY_LIST
     })
   }
 }

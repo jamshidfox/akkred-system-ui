@@ -29,8 +29,14 @@ export const CLIENT_DELETE = 'clientDelete'
 
 export const RATES_LIST = 'ratesList'
 export const RATES_UPDATE = 'ratesUpdate'
+export const RATES_PARTNER_CREATE = 'ratesPartnerCreate'
 export const RATES_CREATE = 'ratesCreate'
 export const RATES_ITEM = 'ratesItem'
+
+export const ROOM_CATEGORY_CAPACITY_LIST = 'roomCategoryCapacityList'
+export const ROOM_CATEGORY_CAPACITY_UPDATE = 'roomCategoryCapacityUpdate'
+export const ROOM_CATEGORY_CAPACITY_CREATE = 'roomCategoryCapacityCreate'
+export const ROOM_CATEGORY_CAPACITY_ITEM = 'roomCategoryCapacityItem'
 
 export const SERVICES_PRICE_LIST = 'servicesList'
 export const SERVICES_PRICE_UPDATE = 'servicesUpdate'

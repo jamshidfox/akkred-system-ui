@@ -62,6 +62,11 @@ export default [
     url: ROUTES.TRANSACTION_LIST_URL,
     icon: BarChart,
   },
+  {
+    name: 'Тарифы',
+    url: ROUTES.RATES_LIST_URL,
+    icon: CreditCard,
+  },
   // {
   //   name: 'Финансовая аналитика',
   //   url: '/',
