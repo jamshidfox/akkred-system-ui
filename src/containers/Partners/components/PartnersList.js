@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import { prop, isEmpty } from 'ramda'
+import { prop, isEmpty, path } from 'ramda'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { sprintf } from 'sprintf-js'
-import { TableCol, Table, TableRow } from '../../../components/Table'
+import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import { PARTNERS_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
+import Pagination from '../../../components/Pagination/Pagination'
 import TransactionCreateModal from './PartnersCreateModal'
 import PartnersUpdateModal from './PartnersUpdateModal'
+import PartnersListFilterForm from './PartnersListFilterForm'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -19,15 +21,24 @@ const linkStyle = {
   textDecoration: 'none'
 }
 const PartnersList = props => {
-  const { list, createModal, editModal } = props
+  const { list, createModal, editModal, filterActions } = props
   const [updateItem, setUpdateItem] = useState({})
 
   const data = prop('results', list)
+  const count = path(['data', 'count'], list)
+  const loading = prop('loading', list)
 
   const updateItemModal = (item) => {
     setUpdateItem(item)
     editModal.onOpen()
   }
+
+  const tableActions = (
+    <TableActions
+      filterForm={<PartnersListFilterForm />}
+      filterActions={filterActions}
+    />
+  )
 
   return (
     <>
@@ -36,7 +47,7 @@ const PartnersList = props => {
           <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
         </PageTitle>
 
-        <Table isEmpty={isEmpty(data)}>
+        <Table isEmpty={isEmpty(data)} filterForm={tableActions} loading={loading}>
           <TableRow header={true} >
             <TableCol span={6}>Тип партнера</TableCol>
             <TableCol span={12}>внутреннее название компании</TableCol>
@@ -63,6 +74,7 @@ const PartnersList = props => {
 
         </Table>
       </BoxUI>
+      <Pagination count={count} />
       <TransactionCreateModal {...createModal} />
       <PartnersUpdateModal {...editModal} updateItem={updateItem} />
 

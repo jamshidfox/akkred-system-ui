@@ -51,7 +51,7 @@ export const roomUpdateAction = (id, data) => {
 export const roomFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.ROOM_LIST, {params: {room_category: data.id}})
+      .get(API.ROOM_LIST, { params: { room_category: data.id } })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

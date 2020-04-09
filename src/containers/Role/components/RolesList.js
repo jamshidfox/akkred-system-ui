@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { prop, isEmpty } from 'ramda'
+import {prop, isEmpty, path} from 'ramda'
 import styled from 'styled-components'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
@@ -7,6 +7,7 @@ import { Box } from '../../../components/StyledElems'
 import Edit from '../../../images/edit.svg'
 import RolesCreateModal from './RolesCreateModal'
 import RolesUpdateModal from './RolesUpdateModal'
+import Pagination from "../../../components/Pagination/Pagination";
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -18,6 +19,7 @@ const RolesList = props => {
   const { list, createModal, editModal, groupList } = props
   const [updateItem, setUpdateItem] = useState({})
   const data = prop('results', list)
+  const count = path(['data', 'count'], list)
   const updateItemModal = (item) => {
     setUpdateItem(item)
     editModal.onOpen()
@@ -52,6 +54,7 @@ const RolesList = props => {
 
         </Table>
       </BoxUI>
+      <Pagination count={count} />
       <RolesCreateModal {...createModal} groupList={groupList} />
       <RolesUpdateModal {...editModal} updateItem={updateItem} groupList={groupList} />
 
