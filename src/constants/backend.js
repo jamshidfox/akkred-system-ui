@@ -79,3 +79,9 @@ export const RULE_TYPES = [
   { id: 'entrance', name: 'Заезд' },
   { id: 'leave', name: 'Выезд' },
 ]
+
+export const RULE_AMOUNT_TYPES = [
+  { id: 'percentage', name: 'Процент' },
+  { id: 'fixed', name: 'Фиксириванный' },
+  { id: 'free', name: 'Бесплатно' },
+]
