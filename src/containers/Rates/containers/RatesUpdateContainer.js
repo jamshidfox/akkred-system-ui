@@ -1,15 +1,11 @@
 import React from 'react'
 import {
-  flatten,
   path,
-  pipe,
   prop,
-  map,
   propOr,
   range,
   find,
-  curry,
-  equals
+
 } from 'ramda'
 import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -19,45 +15,22 @@ import { useUpdate, useFetchItem, useFetchList } from '../../../hooks'
 
 import { RatesCreate } from '../components'
 import { ratesUpdateAction, ratesFetchItem, roomCategoryCapacityList } from '../actions'
-import toSnakeCase from '~/utils/toSnakeCase'
+import {
+  serializer,
+  partnerSerializer,
+  capCatergoryEq,
+  getFirstProp,
+  isEmptyAddObject
+} from './serializer'
 import { ratesPartnerCreateAction } from '~/containers/Rates/actions'
-import { getSerializedData } from '~/utils/get'
 
 const ONE = 1
+
 const getRatestItemParams = () => ({
   action: ratesFetchItem,
   stateName: STATE.RATES_ITEM,
 })
 
-const serializer = (val) => {
-  const rates = pipe(prop('rates'), flatten, map(toSnakeCase))(val)
-  return {
-    ...toSnakeCase(val),
-    rates
-  }
-}
-
-const partnerSerializer = (values) => {
-  console.warn('Val: ', values)
-  const touristTax = prop('touristTax', values)
-  const nds = prop('nds', values)
-  const data = pipe(prop('priceList'), map(price => (toSnakeCase({
-    ...getSerializedData(['discountType', 'partners', 'discountPrice', 'rates', 'partnerType'], price),
-    touristTax,
-    nds,
-    individualRates: pipe(prop('individualRates'), flatten, map(toSnakeCase))(price)
-
-  }))))(values)
-
-  console.warn(data)
-  return data
-}
-
-const capCatergoryEq = curry((data, item) => {
-  const capacity = item.capacity
-  const hotelRoomCategory = path(['hotelRoomCategory', 'id'], item)
-  return equals(data, { capacity, hotelRoomCategory })
-})
 const RatesUpdateContainer = props => {
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -79,7 +52,6 @@ const RatesUpdateContainer = props => {
     return range(ONE, TO).map(cap => {
       const rateFeatures = { capacity: cap, hotelRoomCategory: id }
       const rate = find(capCatergoryEq(rateFeatures))(rates)
-
       return {
         ...rate,
         id: undefined,
@@ -89,7 +61,7 @@ const RatesUpdateContainer = props => {
       }
     })
   })
-  const initialValues = { ...data, rates: initialRates }
+
   const updateData = useUpdate({
     stateName: STATE.RATES_UPDATE,
     action: ratesUpdateAction,
@@ -104,12 +76,37 @@ const RatesUpdateContainer = props => {
     onSuccess: () => dispatch(ratesFetchItem(id))
   })
 
+  const initialValues = { ...data, rates: initialRates }
+
+  const agentInit = isEmptyAddObject(path(['agent'], data))
+  const tourInit = isEmptyAddObject(path(['tour'], data))
+  const companyInit = isEmptyAddObject(path(['company'], data))
+
+  const totalInits = {
+    agent: {
+      nds: getFirstProp('nds', agentInit),
+      touristTax: getFirstProp('touristTax', agentInit),
+      partnerRates: agentInit
+    },
+    tour: {
+      nds: getFirstProp('nds', tourInit),
+      touristTax: getFirstProp('touristTax', tourInit),
+      partnerRates: tourInit
+    },
+    company: {
+      nds: getFirstProp('nds', companyInit),
+      touristTax: getFirstProp('touristTax', companyInit),
+      partnerRates: companyInit
+    }
+  }
+
   return (
     <RatesCreate
       categoryData={categoryData}
       {...updateData}
       initialValues={initialValues}
       companyCreateData={companyCreateData}
+      totalInits={totalInits}
     />
   )
 }

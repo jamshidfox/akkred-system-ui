@@ -28,7 +28,7 @@ const RatesList = props => {
         <Link style={style} to={`/finance/rates/create`} ><MediumButton >добавить</MediumButton></Link>
       </PageTitle>
 
-      <Table isEmpty={isEmpty(data)}>
+      <Table isEmpty={isEmpty(data)} loading={list.loading}>
         <TableRow header={true} >
           <TableCol span={6}>НАЗВАНИЕ ТАРИФА</TableCol>
           <TableCol span={6}>ПОДКАТЕГОРИЯ</TableCol>

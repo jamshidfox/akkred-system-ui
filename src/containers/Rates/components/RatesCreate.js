@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { path } from 'ramda'
+import {isEmpty, isNil, path} from 'ramda'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
@@ -8,7 +8,7 @@ import {
 } from '../../../components/FormField'
 import PriceTableList from './PriceTableList'
 import PriceFields from './PriceFields'
-import { PageTitle, MediumButton } from '~/components/UI'
+import {PageTitle, MediumButton, InputError} from '~/components/UI'
 import { Box, ButtonAlign } from '~/components/StyledElems'
 import { TableRow, TableCol } from '~/components/Table'
 import Chev from '~/icons/Chev'
@@ -39,12 +39,26 @@ const FormWrapper = styled.form`
 
 `
 
+const Error = styled(InputError)`
+  margin-bottom: 15px;
+ 
+`
+
 const RECEP = 'recep'
 const TOUR = 'tour'
 const PARTNERS = 'partners'
 const AGENTS = 'agent'
+
+const isEmptyNil = item => isEmpty(item) || isNil(item)
 const ReservationCreate = props => {
-  const { onSubmit: onUpdate, initialValues, categoryData, loading, companyCreateData } = props
+  const {
+    onSubmit: onUpdate,
+    initialValues,
+    categoryData,
+    loading,
+    companyCreateData,
+    totalInits
+  } = props
 
   const [tab, setTab] = useState(RECEP)
 
@@ -96,10 +110,14 @@ const ReservationCreate = props => {
           mutators={{ ...arrayMutators }}
           onSubmit={companyCreateData.onSubmit}
           keepDirtyOnReinitialize={true}
-          initialValues={{ priceList: [{}] }}
+          initialValues={totalInits.company}
           render={formikProps => {
+            const errors = path(['submitErrors', 'partnerRates'], formikProps)
+
             return (
               <FormWrapper onSubmit={formikProps.handleSubmit}>
+                {!isEmptyNil(errors) && <Error>Пожалуйста заполните все поля</Error>}
+
                 <PriceFields partnerType="company" categoryData={categoryData} />
                 <ButtonAlign>
                   <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>
@@ -119,10 +137,13 @@ const ReservationCreate = props => {
           mutators={{ ...arrayMutators }}
           onSubmit={companyCreateData.onSubmit}
           keepDirtyOnReinitialize={true}
-          initialValues={{ priceList: [{}] }}
+          initialValues={totalInits.tour}
           render={formikProps => {
+            const errors = path(['submitErrors', 'partnerRates'], formikProps)
+
             return (
               <FormWrapper onSubmit={formikProps.handleSubmit}>
+                {!isEmptyNil(errors) && <Error>Пожалуйста заполните все поля</Error>}
                 <PriceFields partnerType="tour" categoryData={categoryData} />
                 <ButtonAlign>
                   <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>
@@ -143,10 +164,12 @@ const ReservationCreate = props => {
           mutators={{ ...arrayMutators }}
           onSubmit={companyCreateData.onSubmit}
           keepDirtyOnReinitialize={true}
-          initialValues={{ priceList: [{}] }}
+          initialValues={totalInits.agent}
           render={formikProps => {
+            const errors = path(['submitErrors', 'partnerRates'], formikProps)
             return (
               <FormWrapper onSubmit={formikProps.handleSubmit}>
+                {!isEmptyNil(errors) && <Error>Пожалуйста заполните все поля</Error>}
                 <PriceFields partnerType="agent" categoryData={categoryData} />
                 <ButtonAlign>
                   <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>

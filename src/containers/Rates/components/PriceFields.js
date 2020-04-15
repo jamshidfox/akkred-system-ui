@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { FieldArray } from 'react-final-form-arrays'
 import { Field } from 'react-final-form'
 import styled from 'styled-components'
-import { path } from 'ramda'
+import { path, pathOr } from 'ramda'
 import PropTypes from 'prop-types'
 import {
   InputField,
@@ -14,7 +14,7 @@ import * as API from '~/constants/api'
 import * as CONST from '~/constants/backend'
 import { LargeButton } from '~/components/UI'
 import { FIXED, INDIVIDUAL } from '~/constants/backend'
-import PriceTableList from "~/containers/Rates/components/PriceTableList";
+import PriceTableList from '~/containers/Rates/components/PriceTableList'
 
 const RowUI = styled(Row)`
   margin-bottom: 20px;
@@ -50,7 +50,7 @@ const PriceFiels = props => {
         <Col span={6} />
       </RowUI>
       <FieldArray
-        name="priceList"
+        name="partnerRates"
         render={({ fields }) => {
           const LAST_INDEX = fields.length - 1
           const onAdd = () => fields.push({})
@@ -64,11 +64,12 @@ const PriceFiels = props => {
           return (
             <>
               {fields.map((field, index) => {
-                const discountType = path(['value', index, 'discountType', 'id'], fields)
+                const discountApi = path(['value', index, 'discountType'], fields)
+                const discountType = pathOr(discountApi, ['value', index, 'discountType', 'id'], fields)
                 const isFixed = discountType === FIXED
                 const isIndi = discountType === INDIVIDUAL
                 return (
-                  <Fragment key={fields}>
+                  <Fragment key={index}>
                     <RowUI gutter={30} align="center">
                       <Col span={8}>
                         <Field

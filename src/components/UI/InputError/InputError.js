@@ -15,8 +15,9 @@ const Error = styled.div`
 `
 
 const InputError = props => {
+  const { children, ...rest } = props
   return (
-    <Error dangerouslySetInnerHTML={{ __html: props.children }} />
+    <Error {...rest} dangerouslySetInnerHTML={{ __html: children }} />
   )
 }
 
