@@ -39,9 +39,12 @@ export const formulateRates = (categoryList, rates) => categoryList.map(category
     }
   })
 })
-
+const EMPTY_ARR = []
 export const formulatePartnerRates = (partnerList, categoryList) =>
-  partnerList.map(item => ({ ...item, individualRates: formulateRates(categoryList, item.individualRates) }))
+  partnerList.map(item => ({
+    ...item,
+    individualRates: formulateRates(categoryList, propOr(EMPTY_ARR, 'individualRates', item))
+  }))
 
 // const a = (b) => {console.warn(b); return b}
 const getRates = (name, values) => pipe(

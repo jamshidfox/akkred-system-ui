@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   path,
+  pathOr,
   prop,
   propOr
 } from 'ramda'
@@ -22,6 +23,7 @@ import {
 } from './serializer'
 import { ratesPartnerCreateAction } from '~/containers/Rates/actions'
 
+const EMPTY_ARR = []
 const RatesUpdateContainer = props => {
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -50,14 +52,14 @@ const RatesUpdateContainer = props => {
     onSuccess: () => dispatch(ratesFetchItem(id))
   })
 
-  const list = prop('results', categoryData)
-  const rates = propOr([], 'rates', data)
+  const list = propOr(EMPTY_ARR, 'results', categoryData)
+  const rates = propOr(EMPTY_ARR, 'rates', data)
 
   const initialValues = { ...data, rates: formulateRates(list, rates) }
 
-  const agentInit = isEmptyAddObject(path(['agent'], data))
-  const tourInit = isEmptyAddObject(path(['tour'], data))
-  const companyInit = isEmptyAddObject(path(['company'], data))
+  const agentInit = isEmptyAddObject(pathOr(EMPTY_ARR, ['agent'], data))
+  const tourInit = isEmptyAddObject(pathOr(EMPTY_ARR, ['tour'], data))
+  const companyInit = isEmptyAddObject(pathOr(EMPTY_ARR, ['company'], data))
 
   const totalInits = {
     agent: {
