@@ -9,27 +9,16 @@ import axios, {
 export const pricesCreateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .post(API.SERVICES_PRICE_CREATE, data)
+      .post(API.SERVICES_PRICE_CREATE, {
+        ...data,
+        is_active: true
+      })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
       type: actionTypes.SERVICES_PRICE_CREATE
-    })
-  }
-}
-
-export const ratesUpdateAction = (id, data) => {
-  return (dispatch, getState) => {
-    const payload = axios({ dispatch, getState })
-      .put(sprintf(API.SERVICES_PRICE_UPDATE, id), data)
-      .then(getPayloadFromSuccess)
-      .catch(getPayloadFromError)
-
-    return dispatch({
-      payload,
-      type: actionTypes.SERVICES_PRICE_UPDATE
     })
   }
 }
