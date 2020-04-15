@@ -19,7 +19,7 @@ export const serializer = (val) => {
   }
 }
 
-const PARTNER_FIELDS = ['discountType', 'partners', 'discountPrice', 'rates', 'partnerType']
+const PARTNER_FIELDS = ['discountType', 'partners', 'discountPrice', 'rates', 'partnerType', 'id']
 export const partnerSerializer = (values) => {
   const touristTax = prop('touristTax', values)
   const nds = prop('nds', values)
