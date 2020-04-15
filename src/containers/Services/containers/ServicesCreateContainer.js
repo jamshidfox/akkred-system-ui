@@ -4,11 +4,11 @@ import { useCreate } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
 
 import { ServicesCreate, fields } from '../components'
-import { pricesCreateAction } from '../actions'
+import { serviceCreateAction } from '../actions'
 
 const getRatesCreateParams = () => ({
   stateName: STATE.SERVICES_PRICE_CREATE,
-  action: pricesCreateAction,
+  action: serviceCreateAction,
   serializer: getSerializedData(fields)
 })
 const ServicesCreateContainer = props => {

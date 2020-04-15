@@ -3,6 +3,7 @@ import Layouts from '../../components/Layouts/Layout'
 
 import ServicesContainer from './containers/ServicesCreateContainer'
 import ServicesListContainer from './containers/ServicesListContainer'
+import ServicesUpdateContainer from "./containers/ServicesUpdateContainer";
 
 export default () => [
   {
@@ -15,5 +16,10 @@ export default () => [
     path: ROUTES.SERVICES_PRICE_LIST_URL,
     layout: Layouts,
     component: ServicesListContainer
-  }
+  },
+  {
+    path: ROUTES.SERVICES_PRICE_UPDATE_PATH,
+    layout: Layouts,
+    component: ServicesUpdateContainer,
+  },
 ]

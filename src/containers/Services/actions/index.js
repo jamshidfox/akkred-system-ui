@@ -6,7 +6,7 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const pricesCreateAction = data => {
+export const serviceCreateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .post(API.SERVICES_PRICE_CREATE, {
@@ -37,7 +37,7 @@ export const servicesFetchList = data => {
   }
 }
 
-export const ratesFetchItem = id => {
+export const serviceFetchItem = id => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(sprintf(API.SERVICES_PRICE_ITEM, id))

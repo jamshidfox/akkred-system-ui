@@ -2,11 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { prop, isEmpty } from 'ramda'
 import styled from 'styled-components'
+import { sprintf } from 'sprintf-js'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
 import { Box } from '../../../components/StyledElems'
+import { SERVICES_PRICE_UPDATE_URL } from '../../../constants/routes'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -39,8 +41,8 @@ const ServicesList = props => {
             <TableCol span={6}>{services.service.name}</TableCol>
             <TableCol span={6}>{services.price}</TableCol>
             <TableCol span={5} >{services.vipPrice}</TableCol>
-            <TableCol span={1}>
-              <img src={Edit} alt="Edit" />
+            <TableCol span={2}><Link style={style} to={sprintf(SERVICES_PRICE_UPDATE_URL, services.id)}><img
+              src={Edit} alt="Edit" /></Link>
             </TableCol>
             <TableCol span={1}>
               <img src={Trash} alt="Edit" />

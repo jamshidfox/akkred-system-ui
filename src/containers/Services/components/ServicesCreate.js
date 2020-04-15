@@ -44,7 +44,7 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ReservationCreate = props => {
-  const { onSubmit } = props
+  const { onSubmit, initialValues } = props
 
   return (
     <BoxUI>
@@ -52,6 +52,7 @@ const ReservationCreate = props => {
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
+        initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit, values, ...formikProps }) => {
           const parent = path(['category', 'id'], values)
