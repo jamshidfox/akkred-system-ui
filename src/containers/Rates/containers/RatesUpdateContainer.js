@@ -2,10 +2,7 @@ import React from 'react'
 import {
   path,
   prop,
-  propOr,
-  range,
-  find,
-
+  propOr
 } from 'ramda'
 import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -18,48 +15,25 @@ import { ratesUpdateAction, ratesFetchItem, roomCategoryCapacityList } from '../
 import {
   serializer,
   partnerSerializer,
-  capCatergoryEq,
   getFirstProp,
-  isEmptyAddObject
+  isEmptyAddObject,
+  formulateRates,
+  formulatePartnerRates
 } from './serializer'
 import { ratesPartnerCreateAction } from '~/containers/Rates/actions'
-
-const ONE = 1
-
-const getRatestItemParams = () => ({
-  action: ratesFetchItem,
-  stateName: STATE.RATES_ITEM,
-})
 
 const RatesUpdateContainer = props => {
   const { id } = useParams()
   const dispatch = useDispatch()
-  const { data } = useFetchItem(getRatestItemParams())
+
+  const { data } = useFetchItem({
+    action: ratesFetchItem,
+    stateName: STATE.RATES_ITEM,
+  })
 
   const categoryData = useFetchList({
     action: roomCategoryCapacityList,
     stateName: STATE.ROOM_CATEGORY_CAPACITY_LIST
-  })
-
-  const list = prop('results', categoryData)
-  const rates = propOr([], 'rates', data)
-
-  const initialRates = list.map(category => {
-    const capacity = path(['capacity'], category)
-    const id = path(['id'], category)
-    const TO = capacity + ONE
-
-    return range(ONE, TO).map(cap => {
-      const rateFeatures = { capacity: cap, hotelRoomCategory: id }
-      const rate = find(capCatergoryEq(rateFeatures))(rates)
-      return {
-        ...rate,
-        id: undefined,
-        capacity: cap,
-        hotelRoomCategory: id,
-
-      }
-    })
   })
 
   const updateData = useUpdate({
@@ -76,7 +50,10 @@ const RatesUpdateContainer = props => {
     onSuccess: () => dispatch(ratesFetchItem(id))
   })
 
-  const initialValues = { ...data, rates: initialRates }
+  const list = prop('results', categoryData)
+  const rates = propOr([], 'rates', data)
+
+  const initialValues = { ...data, rates: formulateRates(list, rates) }
 
   const agentInit = isEmptyAddObject(path(['agent'], data))
   const tourInit = isEmptyAddObject(path(['tour'], data))
@@ -86,17 +63,17 @@ const RatesUpdateContainer = props => {
     agent: {
       nds: getFirstProp('nds', agentInit),
       touristTax: getFirstProp('touristTax', agentInit),
-      partnerRates: agentInit
+      partnerRates: formulatePartnerRates(agentInit, list)
     },
     tour: {
       nds: getFirstProp('nds', tourInit),
       touristTax: getFirstProp('touristTax', tourInit),
-      partnerRates: tourInit
+      partnerRates: formulatePartnerRates(tourInit, list)
     },
     company: {
       nds: getFirstProp('nds', companyInit),
       touristTax: getFirstProp('touristTax', companyInit),
-      partnerRates: companyInit
+      partnerRates: formulatePartnerRates(companyInit, list)
     }
   }
 
