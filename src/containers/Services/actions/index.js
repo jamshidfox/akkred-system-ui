@@ -23,10 +23,10 @@ export const serviceCreateAction = data => {
   }
 }
 
-export const servicesFetchList = data => {
+export const servicesFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.SERVICES_PRICE_LIST)
+      .get(API.SERVICES_PRICE_LIST,{params})
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

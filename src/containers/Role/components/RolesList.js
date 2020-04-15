@@ -8,6 +8,7 @@ import Edit from '../../../images/edit.svg'
 import RolesCreateModal from './RolesCreateModal'
 import RolesUpdateModal from './RolesUpdateModal'
 import Pagination from "../../../components/Pagination/Pagination";
+import Trash from 'images/trash-2.svg'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -34,8 +35,9 @@ const RolesList = props => {
 
         <Table isEmpty={isEmpty(data)}>
           <TableRow header={true} >
-            <TableCol span={12}> название </TableCol>
-            <TableCol span={2} />
+            <TableCol span={22}> название </TableCol>
+            <TableCol span={1} />
+            <TableCol span={1} />
           </TableRow>
           {data.map(role => {
             const id = prop('id', role)
@@ -43,9 +45,12 @@ const RolesList = props => {
 
             return (
               <TableRow key={id}>
-                <TableCol span={12}>{name}</TableCol>
-                <TableCol span={2}>
+                <TableCol span={22}>{name}</TableCol>
+                <TableCol span={1}>
                   <span style={linkStyle} onClick={() => updateItemModal(role)}><img src={Edit} alt="Edit" /></span>
+                </TableCol>
+                <TableCol span={1}>
+                  <span style={linkStyle} onClick={() => updateItemModal(role)}><img src={Trash} alt="Delete" /></span>
                 </TableCol>
 
               </TableRow>
