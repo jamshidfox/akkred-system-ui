@@ -11,7 +11,7 @@ import * as ROUTES from '../../../constants/api'
 
 export const fields = [
   'type',
-  'title',
+  'name',
   'legalName',
   'phoneNumber',
   'email',
@@ -64,7 +64,7 @@ const PArtnerUpdateeModal = props => {
                 </Col>
 
                 <Col span={12}>
-                  <Field name="title" label="Название компании" component={InputField} />
+                  <Field name="name" label="Название компании" component={InputField} />
                 </Col>
 
               </Row>
