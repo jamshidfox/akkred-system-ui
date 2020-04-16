@@ -3,15 +3,20 @@ import { useDispatch } from 'react-redux'
 
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useCreateModal } from '../../../hooks'
-import { roleFetchList, roleCreateAction, roleUpdateAction ,groupFetchList} from '../actions'
+import { roleFetchList, roleCreateAction, roleUpdateAction, groupFetchList } from '../actions'
 import RolesList from '../components/RolesList'
 import { getSerializedData } from '../../../utils/get'
-import { fields } from '../components'
+import { fields, rolefields } from '../components'
 
 const getRolesListParams = () => ({
   action: roleFetchList,
   stateName: STATE.ROLE_LIST,
 })
+
+// const updateSerializer = (values) => {
+//   const { id, ...data } = getSerializedData(rolefields, values)
+//   return [id, data]
+// }
 
 const getGroupListParams = () => ({
   action: groupFetchList,
@@ -29,6 +34,7 @@ const getRoleUpdateParams = (onSuccess) => ({
   key: 'updateRole',
   stateName: STATE.ROLE_UPDATE,
   action: roleUpdateAction,
+  // serializer:updateSerializer,
   onSuccess
 })
 

@@ -5,10 +5,10 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const transactionFetchList = data => {
+export const transactionFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.TRANSACTION_LIST)
+      .get(API.TRANSACTION_LIST, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

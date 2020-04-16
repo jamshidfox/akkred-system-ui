@@ -67,6 +67,11 @@ export default [
     url: ROUTES.RATES_LIST_URL,
     icon: CreditCard,
   },
+  {
+    name: 'Тарифы Услуги',
+    url: ROUTES.SERVICES_PRICE_LIST_URL,
+    icon: CreditCard,
+  },
   // {
   //   name: 'Финансовая аналитика',
   //   url: '/',

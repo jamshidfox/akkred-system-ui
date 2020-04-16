@@ -11,13 +11,18 @@ import {
   Field,
   InputField,
   UniversalSearchField,
+  UniversalStaticSelectField
 } from '../../../components/FormField'
 import { Box } from '../../../components/StyledElems'
+import { TYPE_SERVICES } from '../../../constants/backend'
+import { UniversalMultiSelectField } from '~/components/FormField'
 
 export const fields = [
   'service',
   'price',
-  'vipPrice',
+  'roomCategories',
+  'servicePayment',
+  'isActive'
 ]
 
 const BoxUI = styled(Box)`
@@ -39,7 +44,7 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ReservationCreate = props => {
-  const { onSubmit } = props
+  const { onSubmit, initialValues } = props
 
   return (
     <BoxUI>
@@ -47,14 +52,17 @@ const ReservationCreate = props => {
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
+        initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit, values, ...formikProps }) => {
+          const parent = path(['category', 'id'], values)
           const type = path(['type', 'id'], values)
+
           return (
             <form onSubmit={handleSubmit}>
               <Label>Основная информация</Label>
               <Row gutter={24}>
-                <Col span={6}>
+                <Col span={8}>
                   <Field
                     name="type"
                     label="тип сервиса"
@@ -62,7 +70,7 @@ const ReservationCreate = props => {
                     api={ROUTES.SERVICES_TYPE_LIST}
                   />
                 </Col>
-                <Col span={6}>
+                <Col span={8}>
                   <Field
                     name="service"
                     label="сервис"
@@ -72,11 +80,40 @@ const ReservationCreate = props => {
                     api={ROUTES.SERVICES}
                     component={UniversalSearchField} />
                 </Col>
-                <Col span={6}>
-                  <Field name="price" label="цена за день" component={InputField} />
+
+                <Col span={8}>
+                  <Field name="servicePayment" label="единица измерения "
+                    component={UniversalStaticSelectField}
+                    list={TYPE_SERVICES}
+                  />
                 </Col>
-                <Col span={6}>
-                  <Field name="vipPrice" label="Вип цена " component={InputField} />
+              </Row>
+
+              <Row gutter={24}>
+                <Col span={8}>
+                  <Field
+                    name="category"
+                    label="тип номера"
+                    params={{ children_only: false }}
+                    component={UniversalSearchField}
+                    api={ROUTES.ROOM_TYPE_LIST}
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field
+                    name="roomCategories"
+                    label="Подкатегория"
+                    params={{ parent }}
+                    parent={parent}
+                    disabled={!parent}
+                    api={ROUTES.ROOM_TYPE_LIST}
+                    component={UniversalMultiSelectField}
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field name="price" label="цена за день" component={InputField} />
                 </Col>
               </Row>
 

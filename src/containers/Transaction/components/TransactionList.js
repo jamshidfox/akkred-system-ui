@@ -1,12 +1,14 @@
 import React from 'react'
-import { prop, isEmpty } from 'ramda'
+import { prop, isEmpty, path } from 'ramda'
 import styled from 'styled-components'
-import { TableCol, Table, TableRow } from '../../../components/Table'
+import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import numberFormat from '../../../utils/numberFormat'
 import dateFormat from '../../../utils/dateFormat'
 import TransactionCreateModal from './TransactionCreateModal'
+import TransactionListFilterForm from './TransactionListFilterForm'
+import Pagination from "../../../components/Pagination/Pagination";
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -84,9 +86,19 @@ const Outcome = styled('div')`
                     margin-top:-3px;
 `
 const TransactionList = props => {
-  const { list, createModal } = props
+  const { list, createModal, filterActions } = props
 
   const data = prop('results', list)
+  const loading = prop('loading', list)
+  const count = path(['data', 'count'], list)
+
+  const tableActions = (
+    <TableActions
+      filterForm={<TransactionListFilterForm />}
+      filterActions={filterActions}
+    />
+  )
+
   return (
     <>
       <BoxUI>
@@ -94,7 +106,7 @@ const TransactionList = props => {
           <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
         </PageTitle>
 
-        <Table isEmpty={isEmpty(data)}>
+        <Table isEmpty={isEmpty(data)} filterForm={tableActions} loading={loading}>
           <TableRow header={true} >
             <TableCol span={3} />
             <TableCol span={4}>сумма</TableCol>
@@ -137,6 +149,7 @@ const TransactionList = props => {
 
         </Table>
       </BoxUI>
+        <Pagination count={count} />
       <Result>
         <Sum>
           <SumLett>

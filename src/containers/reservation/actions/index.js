@@ -47,10 +47,10 @@ export const placingItemFetch = (id, data) => {
     })
   }
 }
-export const placingFetchList = data => {
+export const placingFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.PLACING_LIST)
+      .get(API.PLACING_LIST, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

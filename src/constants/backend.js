@@ -5,11 +5,9 @@ export const arrayObjToObj = pipe(
   fromPairs
 )
 
-
 export const PERCENTAGE = 'percentage'
 export const FIXED = 'fixed'
 export const INDIVIDUAL = 'individual'
-
 
 export const CALCULATION_TYPE_LIST = [
   {
@@ -78,4 +76,16 @@ export const PARTNERS_TYPES = [
 export const RULE_TYPES = [
   { id: 'entrance', name: 'Заезд' },
   { id: 'leave', name: 'Выезд' },
+]
+
+export const RULE_AMOUNT_TYPES = [
+  { id: 'percentage', name: 'Процент' },
+  { id: 'fixed', name: 'Фиксириванный' },
+  { id: 'free', name: 'Бесплатно' },
+]
+
+export const TYPE_SERVICES = [
+  { id: 'daily', name: 'За день' },
+  { id: 'per_set', name: 'За комплект' },
+  { id: 'full_period', name: 'За всё время проживания' },
 ]

@@ -34,10 +34,10 @@ export const employeesUpdateAction = (id, data) => {
   }
 }
 
-export const employeesFetchList = data => {
+export const employeesFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.EMPLOYEES_LIST)
+      .get(API.EMPLOYEES_LIST, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

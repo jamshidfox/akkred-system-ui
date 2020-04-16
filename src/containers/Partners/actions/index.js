@@ -7,10 +7,10 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const partnerFetchList = data => {
+export const partnerFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.PARTNER_LIST)
+      .get(API.PARTNER_LIST, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

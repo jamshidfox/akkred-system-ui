@@ -6,10 +6,13 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const pricesCreateAction = data => {
+export const serviceCreateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .post(API.SERVICES_PRICE_CREATE, data)
+      .post(API.SERVICES_PRICE_CREATE, {
+        ...data,
+        is_active: true
+      })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
@@ -20,24 +23,10 @@ export const pricesCreateAction = data => {
   }
 }
 
-export const ratesUpdateAction = (id, data) => {
-  return (dispatch, getState) => {
-    const payload = axios({ dispatch, getState })
-      .put(sprintf(API.SERVICES_PRICE_UPDATE, id), data)
-      .then(getPayloadFromSuccess)
-      .catch(getPayloadFromError)
-
-    return dispatch({
-      payload,
-      type: actionTypes.SERVICES_PRICE_UPDATE
-    })
-  }
-}
-
-export const servicesFetchList = data => {
+export const servicesFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.SERVICES_PRICE_LIST)
+      .get(API.SERVICES_PRICE_LIST,{params})
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
@@ -48,7 +37,7 @@ export const servicesFetchList = data => {
   }
 }
 
-export const ratesFetchItem = id => {
+export const serviceFetchItem = id => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(sprintf(API.SERVICES_PRICE_ITEM, id))
