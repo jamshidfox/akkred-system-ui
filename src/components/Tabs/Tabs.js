@@ -68,8 +68,7 @@ const Tabs = props => {
             }
 
             return (
-              child &&
-            React.cloneElement(child, tabProps)
+              child && React.cloneElement(child, tabProps)
             )
           })}
         </Container>

@@ -15,13 +15,13 @@ const StyledTab = styled('div')`
   &:not(:last-child) {
     margin-right: 24px;
   }
-  ${props =>
-  props.isActive &&
-  css`
-      background-color: ${props => props.theme.color.primary.default };
+  ${props => props.isActive && (
+    css`
+      background-color: ${props => props.theme.color.primary.default};
       color: #fff;
       position: relative;
-    `}
+    `
+  )}
 `
 
 const Tab = ({ label, ...props }) => {

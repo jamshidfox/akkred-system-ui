@@ -1,2 +1,1 @@
 export { fields } from './TransactionCreateModal'
-

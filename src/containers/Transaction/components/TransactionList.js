@@ -1,178 +1,118 @@
 import React from 'react'
-import { prop, isEmpty, path } from 'ramda'
+import PropTypes from 'prop-types'
+import { prop, path } from 'ramda'
 import styled from 'styled-components'
-import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
-import { MediumButton, PageTitle } from '../../../components/UI'
-import { Box } from '../../../components/StyledElems'
-import numberFormat from '../../../utils/numberFormat'
-import dateFormat from '../../../utils/dateFormat'
+import TransactionTable from './TransactionTable'
 import TransactionCreateModal from './TransactionCreateModal'
-import TransactionListFilterForm from './TransactionListFilterForm'
-import Pagination from "../../../components/Pagination/Pagination";
+import { MediumButton, PageTitle } from '~/components/UI'
+import { Box } from '~/components/StyledElems'
+import Pagination from '~/components/Pagination/Pagination'
+import { Tabs, Tab } from '~/components/Tabs'
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
-const style = {
-  color: '#FFF',
-  textDecoration: 'none'
-}
 
 const Result = styled('div')`
-    background: #FFFFFF;
-    
-    border: 1px solid #EDF1F7;
-    box-sizing: border-box;
-    border-radius: 4px;
-    margin-top: 24px
+  background: #FFFFFF;
+  border: 1px solid #EDF1F7;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-top: 24px
 `
+
 const Sum = styled('div')`
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
 `
+
 const SumLett = styled('div')`
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 0.25px;
-    color: #8F9BB3;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  color: #8F9BB3;
 `
 
 const SumLettSec = styled('div')`
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 0.25px;
-    color: #3366FF;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.25px;
+  color: #3366FF;
 `
 
 const SumNum = styled('div')`
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    text-align: right;
-    letter-spacing: 0.25px;
-    color: #222B45;
-`
-const Income = styled('div')`
-                    background: #00E096;
-                    border-radius: 12px;
-                    text-align: center;
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 12px;
-                    line-height: 16px;
-                    color: #FFF;
-                    padding: 6px 12px 5px;
-                    margin-right:30px;
-                    margin-top:-3px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: 0.25px;
+  color: #222B45;
 `
 
-const Outcome = styled('div')`
-                    background: #FF3D71;
-                    border-radius: 12px;
-                    text-align: center;
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 12px;
-                    line-height: 16px;
-                    color: #FFF;
-                    padding: 6px 12px 5px;
-                    margin-right:30px;
-                    margin-top:-3px;
-`
 const TransactionList = props => {
-  const { list, createModal, filterActions } = props
+  const { list, createModal, filterActions, tabData } = props
 
   const data = prop('results', list)
   const loading = prop('loading', list)
   const count = path(['data', 'count'], list)
 
-  const tableActions = (
-    <TableActions
-      filterForm={<TransactionListFilterForm />}
-      filterActions={filterActions}
-    />
-  )
+  const tableParams = {
+    data,
+    loading,
+    filterActions
+  }
 
   return (
     <>
       <BoxUI>
-        <PageTitle name="Расчеты" >
-          <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
+        <PageTitle name="Расчеты">
+          <MediumButton onClick={createModal.onOpen}>
+            Добавить
+          </MediumButton>
         </PageTitle>
 
-        <Table isEmpty={isEmpty(data)} filterForm={tableActions} loading={loading}>
-          <TableRow header={true} >
-            <TableCol span={3} />
-            <TableCol span={4}>сумма</TableCol>
-            <TableCol span={4}>дата и время</TableCol>
-            <TableCol span={4}>платешьщик</TableCol>
-            <TableCol span={4}>Комментария</TableCol>
-            <TableCol span={5}>имя, фамилия</TableCol>
-          </TableRow>
-          {data.map(transaction => {
-            const id = prop('id', transaction)
-
-            const totalPrice = numberFormat(prop('totalPrice', transaction))
-            const createdDate = dateFormat(prop('createdDate', transaction))
-            const type = prop('type', transaction)
-            return (
-              <TableRow key={id}>
-                <TableCol span={3}>
-
-                  {type === 'outcome' &&
-                (
-                  <Outcome>Расход
-                  </Outcome>
-                )
-                  }
-                  {type === 'income' &&
-                (
-                  <Income>Приход
-                  </Income>
-                )
-                  }
-                </TableCol>
-                <TableCol span={4}>{totalPrice}</TableCol>
-                <TableCol span={4}>{createdDate}</TableCol>
-                <TableCol span={4}>Гость</TableCol>
-                <TableCol span={4}>{transaction.comment}</TableCol>
-                <TableCol span={5}>Анатолий Токов</TableCol>
-              </TableRow>
-            )
-          })}
-
-        </Table>
+        <Tabs initialValue={tabData.active} onChange={tabData.onChange}>
+          <Tab value={'all'} label={'Все'}>
+            <TransactionTable isAll={true} {...tableParams} />
+          </Tab>
+          <Tab value={'income'} label={'Приход'}>
+            <TransactionTable {...tableParams} />
+          </Tab>
+          <Tab value={'outcome'} label={'Расход'}>
+            <TransactionTable {...tableParams} />
+          </Tab>
+        </Tabs>
       </BoxUI>
-        <Pagination count={count} />
+
+      <Pagination count={count} />
+
       <Result>
         <Sum>
-          <SumLett>
-                        Общий прибыль за месяц:
-
-          </SumLett>
-          <SumNum>
-                        4 500 000 UZS
-          </SumNum>
+          <SumLett>Общий прибыль за месяц:</SumLett>
+          <SumNum>4 500 000 UZS</SumNum>
         </Sum>
         <Sum>
-          <SumLettSec>
-                 Общий прибыль за весь период:
-          </SumLettSec>
-          <SumNum>
-                  44 500 000 UZS
-          </SumNum>
+          <SumLettSec>Общий прибыль за весь период:</SumLettSec>
+          <SumNum>44 500 000 UZS</SumNum>
         </Sum>
       </Result>
-      <TransactionCreateModal {...createModal} />
 
+      <TransactionCreateModal {...createModal} />
     </>
   )
+}
+
+TransactionList.propTypes = {
+  list: PropTypes.object.isRequired,
+  createModal: PropTypes.object.isRequired,
+  filterActions: PropTypes.object.isRequired,
+  tabData: PropTypes.object.isRequired,
 }
 
 export default TransactionList

@@ -16,6 +16,7 @@ const Display = styled(DisplayFlex)`
 `
 const PageTitle = props => {
   const { name, children } = props
+
   return (
     <Display align={'center'} justify={'space-between'}>
       <Title>{name}</Title>

@@ -7,13 +7,14 @@ import { InputField, UniversalStaticSelectField } from '../../../components/Form
 import { TRANSACTION_TYPES } from '../../../constants/backend'
 
 const FieldWrapper = styled.div`
-margin-bottom: 20px;
+  margin-bottom: 20px;
 `
+
 export const fields = [
   'totalPrice',
-  'comment',
-  'type'
+  'comment'
 ]
+
 const RoomCreateModal = props => {
   const { open, onClose, onSubmit } = props
   return (

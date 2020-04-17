@@ -1,11 +1,16 @@
-import * as actionTypes from '../../../constants/actionTypes'
-import * as API from '../../../constants/api'
+import * as actionTypes from '~/constants/actionTypes'
+import * as API from '~/constants/api'
 import axios, {
   getPayloadFromError,
   getPayloadFromSuccess
-} from '../../../utils/axios'
+} from '~/utils/axios'
 
-export const transactionFetchList = params => {
+export const transactionFetchList = defaultParams => {
+  const { type } = defaultParams
+  const formedType = type === 'all' ? undefined : type
+
+  const params = { ...defaultParams, type: formedType }
+
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.TRANSACTION_LIST, { params })

@@ -23,9 +23,14 @@ const TableRow = props => {
   const history = useHistory()
   const onRoute = () => to && history.push(to)
 
-  return <Row header={header} onClick={onRoute} {...rest} >
-    {React.Children.map(children, (child) => React.cloneElement(child, { header, align }))}
-  </Row>
+  return (
+    <Row header={header} onClick={onRoute} {...rest} >
+      {React.Children.map(children, (child) => {
+        if (!child) return null
+        return React.cloneElement(child, { header, align })
+      })}
+    </Row>
+  )
 }
 
 TableRow.propTypes = {
