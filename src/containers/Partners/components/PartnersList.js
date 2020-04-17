@@ -52,20 +52,23 @@ const PartnersList = props => {
             <TableCol span={6}>Тип партнера</TableCol>
             <TableCol span={12}>внутреннее название компании</TableCol>
             <TableCol span={4}>статус</TableCol>
-            <TableCol span={2} />
+            <TableCol span={1} />
             <TableCol span={1} />
           </TableRow>
           {data.map(partners => {
             const id = prop('id', partners)
-            const title = prop('title', partners)
+            const name = prop('name', partners)
 
             return (
               <TableRow key={id}>
                 <TableCol span={6}>Туристическая компания</TableCol>
-                <TableCol span={12}>{title}</TableCol>
+                <TableCol span={12}>{name}</TableCol>
                 <TableCol span={4}>Активный</TableCol>
-                <TableCol span={2}>
+                <TableCol span={1}>
                   <span style={linkStyle} onClick={() => updateItemModal(partners)}><img src={Edit} alt="Edit" /></span>
+                </TableCol>
+                <TableCol span={1}>
+                  <span style={linkStyle} onClick={() => updateItemModal(partners)}><img src={Trash} alt="Trash" /></span>
                 </TableCol>
 
               </TableRow>

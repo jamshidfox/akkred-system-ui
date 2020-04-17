@@ -89,7 +89,7 @@ const ReservationCreate = props => {
           render={formikProps => {
             return (
               <FormWrapper onSubmit={formikProps.handleSubmit}>
-                <PriceTableList categoryData={categoryData} />
+                <PriceTableList categoryData={categoryData} fieldName="rates"/>
                 <ButtonAlign>
                   <MediumButton disabled={loading} type="submit">Сохранить</MediumButton>
                 </ButtonAlign>

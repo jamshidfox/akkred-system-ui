@@ -32,10 +32,10 @@ const RuleGroupList = props => {
       <Table isEmpty={isEmpty(data)}>
         <TableRow header={true}>
           <TableCol span={8}>сумма</TableCol>
-          <TableCol span={6}>дата начало</TableCol>
-          <TableCol span={6}>дата окончание</TableCol>
-          <TableCol span={2} />
-          <TableCol span={2} />
+          <TableCol span={7}>дата начало</TableCol>
+          <TableCol span={7}>дата окончание</TableCol>
+          <TableCol span={1} />
+          <TableCol span={1} />
         </TableRow>
         {data.map(group => {
           const id = prop('id', group)
@@ -46,12 +46,12 @@ const RuleGroupList = props => {
           return (
             <TableRow key={id}>
               <TableCol span={8}>{name}</TableCol>
-              <TableCol span={6}>{fromDate}</TableCol>
-              <TableCol span={6}>{toDate}</TableCol>
-              <TableCol span={2}><Link style={style} to={sprintf(SETTING_RULE_GROUP_UPDATE_URL, id)}><img
+              <TableCol span={7}>{fromDate}</TableCol>
+              <TableCol span={7}>{toDate}</TableCol>
+              <TableCol span={1}><Link style={style} to={sprintf(SETTING_RULE_GROUP_UPDATE_URL, id)}><img
                 src={Edit} alt="Edit" /></Link>
               </TableCol>
-              <TableCol span={2}>
+              <TableCol span={1}>
                 <Link style={style} to={''}><img src={Trash} alt="Edit" /></Link>
               </TableCol>
             </TableRow>
