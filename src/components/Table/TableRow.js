@@ -8,7 +8,7 @@ const Row = styled(RowUI)`
   padding: 15px 10px;
   margin: 0 -10px;
   border-bottom: 1px #efefef solid;
-  cursor: ${props => props.header ? 'auto' : 'pointer'};
+  cursor: ${props => props.header ? 'auto' : props.to ? 'pointer' : 'unset'};
   transition: all 300ms;
   :last-child {
     border-bottom: none;

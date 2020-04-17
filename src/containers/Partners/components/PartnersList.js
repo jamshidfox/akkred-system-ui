@@ -1,25 +1,21 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { prop, isEmpty, path } from 'ramda'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { sprintf } from 'sprintf-js'
-import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
-import { MediumButton, PageTitle } from '../../../components/UI'
-import { Box } from '../../../components/StyledElems'
-import { PARTNERS_UPDATE_URL } from '../../../constants/routes'
-import Edit from '../../../images/edit.svg'
-import Trash from '../../../images/trash-2.svg'
-import Pagination from '../../../components/Pagination/Pagination'
 import TransactionCreateModal from './PartnersCreateModal'
 import PartnersUpdateModal from './PartnersUpdateModal'
 import PartnersListFilterForm from './PartnersListFilterForm'
+import {
+  Table,
+  TableCol,
+  TableRow,
+  TableActions,
+  EditDeleteButtons
+} from '~/components/Table'
+import { MediumButton, PageTitle } from '~/components/UI'
+import { Box } from '~/components/StyledElems'
+import Pagination from '~/components/Pagination/Pagination'
+import Toggle from '~/components/UI/Toggle'
 
-const BoxUI = styled(Box)`
-  padding: 25px;
-`
-const linkStyle = {
-  textDecoration: 'none'
-}
 const PartnersList = props => {
   const { list, createModal, editModal, filterActions } = props
   const [updateItem, setUpdateItem] = useState({})
@@ -42,47 +38,59 @@ const PartnersList = props => {
 
   return (
     <>
-      <BoxUI>
+      <Box padding={'25px'}>
         <PageTitle name="Партнеры" >
-          <MediumButton onClick={createModal.onOpen}>добавить</MediumButton>
+          <MediumButton onClick={createModal.onOpen}>
+            Добавить
+          </MediumButton>
         </PageTitle>
 
-        <Table isEmpty={isEmpty(data)} filterForm={tableActions} loading={loading}>
-          <TableRow header={true} >
+        <Table
+          isEmpty={isEmpty(data)}
+          filterForm={tableActions}
+          loading={loading}>
+          <TableRow header={true}>
             <TableCol span={6}>Тип партнера</TableCol>
-            <TableCol span={12}>внутреннее название компании</TableCol>
-            <TableCol span={4}>статус</TableCol>
-            <TableCol span={1} />
-            <TableCol span={1} />
+            <TableCol span={12}>Внутреннее название компании</TableCol>
+            <TableCol span={4}>Статус</TableCol>
+            <TableCol span={2} />
           </TableRow>
           {data.map(partners => {
             const id = prop('id', partners)
             const name = prop('name', partners)
+            const status = prop('status', partners)
 
             return (
-              <TableRow key={id}>
+              <TableRow key={id} align={'center'}>
                 <TableCol span={6}>Туристическая компания</TableCol>
                 <TableCol span={12}>{name}</TableCol>
-                <TableCol span={4}>Активный</TableCol>
-                <TableCol span={1}>
-                  <span style={linkStyle} onClick={() => updateItemModal(partners)}><img src={Edit} alt="Edit" /></span>
+                <TableCol span={4}>
+                  <Toggle checked={status} disabled={true} />
                 </TableCol>
-                <TableCol span={1}>
-                  <span style={linkStyle} onClick={() => updateItemModal(partners)}><img src={Trash} alt="Trash" /></span>
+                <TableCol span={2}>
+                  <EditDeleteButtons
+                    onEdit={() => updateItemModal(partners)}
+                    onDelete={() => null}
+                  />
                 </TableCol>
-
               </TableRow>
             )
           })}
 
         </Table>
-      </BoxUI>
+      </Box>
       <Pagination count={count} />
       <TransactionCreateModal {...createModal} />
       <PartnersUpdateModal {...editModal} updateItem={updateItem} />
-
     </>
   )
+}
+
+PartnersList.propTypes = {
+  list: PropTypes.object.isRequired,
+  createModal: PropTypes.object.isRequired,
+  editModal: PropTypes.object.isRequired,
+  filterActions: PropTypes.object.isRequired
 }
 
 export default PartnersList
