@@ -97,7 +97,9 @@ const ReservationUpdateContainer = props => {
       clientServices,
       ...values,
       reserve_type: 'placement',
-      room: path(['room', 'id'], values)
+      room: path(['room', 'id'], values),
+      partner: path(['partner', 'id'], values)
+
     })
     dispatch(reservationUpdateAction(params.id, data))
       .then(() => props.history.push(ROUTES.PLACING_LIST_URL))

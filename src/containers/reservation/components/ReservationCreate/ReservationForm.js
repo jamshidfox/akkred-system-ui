@@ -1,12 +1,14 @@
+import { PARTNERS_TYPES } from 'constants/backend'
 import React from 'react'
 import styled from 'styled-components'
-import { path } from 'ramda'
+import { path, prop } from 'ramda'
 import PropTypes from 'prop-types'
 import {
   DateField,
   Field,
   DurationField,
   UniversalSearchField,
+  UniversalStaticSelectField,
   DateTimeField
 } from '../../../../components/FormField'
 import * as API from '../../../../constants/api'
@@ -21,6 +23,7 @@ const ReservationForm = props => {
 
   const parent = path(['parentCategory', 'id'], values)
   const roomCategory = path(['roomCategory', 'id'], values)
+  const type = path(['type', 'id'], values)
   return (
     <div>
       <Row gutter={20} align={'flex-end'}>
@@ -61,6 +64,26 @@ const ReservationForm = props => {
             itemText={['roomNumber']}
             params={{ roomCategory, numberActive: true }}
             parent={roomCategory}
+            component={UniversalSearchField}
+          />
+        </Col>
+
+        <Col span={8}>
+          <Field
+            name="type"
+            list={PARTNERS_TYPES}
+            label={'Тип Партнер'}
+            component={UniversalStaticSelectField}
+          />
+        </Col>
+
+        <Col span={8}>
+          <Field
+            name="partner"
+            api={API.PARTNER_LIST}
+            disabled={!type}
+            params={{ type: type }}
+            label={'Партнер'}
             component={UniversalSearchField}
           />
         </Col>

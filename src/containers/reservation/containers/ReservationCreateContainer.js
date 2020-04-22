@@ -69,13 +69,13 @@ const ReservationCreateContainer = props => {
       clientServices,
       ...values,
       reserve_type: 'placement',
-      room: path(['room', 'id'], values)
+      room: path(['room', 'id'], values),
+      partner: path(['partner', 'id'], values)
     })
     dispatch(reservationCreateAction(data))
       .then(() => props.history.push(ROUTES.PLACING_LIST_URL))
       .catch(mapResponseToFormError)
   }
-
 
   return (
     <ReservationCreate
