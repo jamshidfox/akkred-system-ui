@@ -4,7 +4,12 @@ import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import { Modal, MediumButton } from '../../../components/UI'
-import { InputField, UniversalSearchField, UniversalStaticSelectField } from '../../../components/FormField'
+import {
+  InputField,
+  UniversalSearchField,
+  UniversalStaticSelectField,
+  CheckboxField
+} from '../../../components/FormField'
 import { PARTNERS_TYPES } from '../../../constants/backend'
 import { Row as RowUI, Col } from '../../../components/Grid'
 import * as ROUTES from '../../../constants/api'
@@ -38,6 +43,7 @@ const Row = styled(RowUI)`
 const PArtnerUpdateeModal = props => {
   const { open, onClose, onSubmit, updateItem } = props
   const initialValues = { ...updateItem }
+
   return (
     <Modal
       width="800px"
@@ -123,6 +129,17 @@ const PArtnerUpdateeModal = props => {
 
               </Row>
 
+              <Row gutter={24}>
+                <Col span={24}>
+                  <Field
+                    name="status"
+                    label="Статус"
+                    defaultValue={initialValues.status}
+                    component={CheckboxField}
+                  />
+                </Col>
+              </Row>
+
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Изменить</MediumButton>
               </div>
@@ -138,6 +155,7 @@ const PArtnerUpdateeModal = props => {
 PArtnerUpdateeModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
+  updateItem: PropTypes.object,
   onSubmit: PropTypes.func
 }
 

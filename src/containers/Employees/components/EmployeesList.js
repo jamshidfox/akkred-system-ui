@@ -1,11 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { prop, isEmpty, path } from 'ramda'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
+import { ItemControlButton } from 'components/UI'
 import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
-import { EMPLOYEES_UPDATE_URL, EMPLOYEES_LIST_PATH } from '../../../constants/routes'
+import { EMPLOYEES_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
 import { Box } from '../../../components/StyledElems'
@@ -19,8 +21,9 @@ const style = {
   color: '#FFF',
   textDecoration: 'none'
 }
+
 const EmployeesList = props => {
-  const { list, filterActions } = props
+  const { list, filterActions, deleteModal } = props
 
   const data = prop('results', list)
   const loading = prop('loading', list)
@@ -46,14 +49,16 @@ const EmployeesList = props => {
             <TableCol span={1} />
 
           </TableRow>
-          {data.map(rates => (
-            <TableRow>
+          {data.map((rates, i) => (
+            <TableRow key={i}>
               <TableCol span={22}>{rates.username}</TableCol>
               <TableCol span={1}>
                 <Link style={style} to={sprintf(EMPLOYEES_UPDATE_URL, rates.id)} ><img src={Edit} alt="Edit" /></Link>
               </TableCol>
               <TableCol span={1}>
-                <Link style={style} to={''} ><img src={Trash} alt="Edit" /></Link>
+                <ItemControlButton onClick={() => deleteModal.onSubmit(rates.id)}>
+                  <img src={Trash} alt="Delete" />
+                </ItemControlButton>
               </TableCol>
             </TableRow>
           ))}
@@ -65,6 +70,12 @@ const EmployeesList = props => {
     </>
 
   )
+}
+
+EmployeesList.propTypes = {
+  list: PropTypes.object,
+  filterActions: PropTypes.object,
+  deleteModal: PropTypes.object
 }
 
 export default EmployeesList

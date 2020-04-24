@@ -1,23 +1,22 @@
 import React, { useState } from 'react'
-import {prop, isEmpty, path} from 'ramda'
+import PropTypes from 'prop-types'
+import { prop, isEmpty, path } from 'ramda'
 import styled from 'styled-components'
+import Trash from 'images/trash-2.svg'
+import { ItemControlButton } from 'components/UI'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { MediumButton, PageTitle } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 import Edit from '../../../images/edit.svg'
+import Pagination from '../../../components/Pagination/Pagination'
 import RolesCreateModal from './RolesCreateModal'
 import RolesUpdateModal from './RolesUpdateModal'
-import Pagination from "../../../components/Pagination/Pagination";
-import Trash from 'images/trash-2.svg'
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
-const linkStyle = {
-  textDecoration: 'none'
-}
 const RolesList = props => {
-  const { list, createModal, editModal, groupList } = props
+  const { list, createModal, editModal, groupList, deleteModal } = props
   const [updateItem, setUpdateItem] = useState({})
   const data = prop('results', list)
   const count = path(['data', 'count'], list)
@@ -47,12 +46,15 @@ const RolesList = props => {
               <TableRow key={id}>
                 <TableCol span={22}>{name}</TableCol>
                 <TableCol span={1}>
-                  <span style={linkStyle} onClick={() => updateItemModal(role)}><img src={Edit} alt="Edit" /></span>
+                  <ItemControlButton onClick={() => updateItemModal(role)}>
+                    <img src={Edit} alt="Edit" />
+                  </ItemControlButton>
                 </TableCol>
                 <TableCol span={1}>
-                  <span style={linkStyle} onClick={() => updateItemModal(role)}><img src={Trash} alt="Delete" /></span>
+                  <ItemControlButton onClick={() => deleteModal.onSubmit(id)}>
+                    <img src={Trash} alt="Delete" />
+                  </ItemControlButton>
                 </TableCol>
-
               </TableRow>
             )
           })}
@@ -65,6 +67,15 @@ const RolesList = props => {
 
     </>
   )
+}
+
+RolesList.propTypes = {
+  list: PropTypes.object,
+  filterActions: PropTypes.object,
+  editModal: PropTypes.object,
+  groupList: PropTypes.object,
+  deleteModal: PropTypes.object,
+  createModal: PropTypes.object
 }
 
 export default RolesList

@@ -34,6 +34,19 @@ export const employeesUpdateAction = (id, data) => {
   }
 }
 
+export const employeesDeleteAction = id => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.EMPLOYEES_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.EMPLOYEES_DELETE
+    })
+  }
+}
+
 export const employeesFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

@@ -6,6 +6,7 @@ import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Edit from 'images/edit.svg'
 import Trash from 'images/trash-2.svg'
+import { ItemControlButton } from 'components/UI'
 import { SETTING_BUILDINGS_ITEM_URL } from '../../../constants/routes'
 import { TableCol, Table, TableRow } from '../../../components/Table'
 import { PageTitle, MediumButton } from '../../../components/UI'
@@ -59,9 +60,12 @@ const BuildingsList = props => {
             <TableCol span={5}>{building.count}</TableCol>
             <TableCol span={5} />
             <TableCol span={2} style={linkListStyle}>
-              <span style={linkStyle} onClick={() => updateItemModal(building)}><img src={Edit} alt="Edit" /></span>
-              <span style={linkStyle} onClick={() => deleteModal.onSubmit(building.id)}><img
-                src={Trash} alt="Delete" /></span>
+              <ItemControlButton onClick={() => updateItemModal(building)}>
+                <img src={Edit} alt="Edit" />
+              </ItemControlButton>
+              <ItemControlButton onClick={() => deleteModal.onSubmit(building.id)}>
+                <img src={Trash} alt="Delete" />
+              </ItemControlButton>
             </TableCol>
           </TableRow>
         ))}

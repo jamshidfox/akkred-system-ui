@@ -47,6 +47,19 @@ export const roleUpdateAction = data => {
   }
 }
 
+export const roleDeleteAction = id => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.ROLE_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.ROLE_DELETE
+    })
+  }
+}
+
 export const groupFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

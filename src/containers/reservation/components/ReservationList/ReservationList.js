@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { isEmpty, propOr, length, prop, path } from 'ramda'
 import { sprintf } from 'sprintf-js'
-
+import { ItemControlButton } from 'components/UI'
 import { TableCol, Table, TableRow, TableActions } from '../../../../components/Table'
 import { MediumButton, PageTitle } from '../../../../components/UI'
 import { PLACING_UPDATE_URL, RESERVATION_CREATE_URL } from '../../../../constants/routes'
@@ -21,7 +21,7 @@ const style = {
 
 const EMP_ARR = []
 const PlacingList = props => {
-  const { data: list, filterActions } = props
+  const { data: list, filterActions, deleteModal } = props
 
   const data = propOr(EMP_ARR, 'results', list)
 
@@ -80,9 +80,9 @@ const PlacingList = props => {
                     alt="Edit" /></Link>
                 </TableCol>
                 <TableCol span={1}>
-                  <Link style={style} to={sprintf(PLACING_UPDATE_URL, placing.id)}><img src={Trash}
-                    alt="Edit" /></Link>
-
+                  <ItemControlButton onClick={() => deleteModal.onSubmit(placing.id)}>
+                    <img src={Trash} alt="Delete" />
+                  </ItemControlButton>
                 </TableCol>
               </TableRow>
             )
@@ -97,6 +97,8 @@ const PlacingList = props => {
 }
 
 PlacingList.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  deleteModal: PropTypes.object,
+  filterActions: PropTypes.object
 }
 export default PlacingList

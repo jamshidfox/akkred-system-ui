@@ -2,11 +2,11 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import * as STATE from '../../../constants/stateNames'
-import { useFetchList, useCreateModal } from '../../../hooks'
-import { roleFetchList, roleCreateAction, roleUpdateAction, groupFetchList } from '../actions'
+import { useFetchList, useCreateModal, useDelete } from '../../../hooks'
+import { roleFetchList, roleCreateAction, roleUpdateAction, groupFetchList, roleDeleteAction } from '../actions'
 import RolesList from '../components/RolesList'
 import { getSerializedData } from '../../../utils/get'
-import { fields, rolefields } from '../components'
+import { fields } from '../components'
 
 const getRolesListParams = () => ({
   action: roleFetchList,
@@ -38,6 +38,12 @@ const getRoleUpdateParams = (onSuccess) => ({
   onSuccess
 })
 
+const getRoomDeleteParams = (onSuccess) => ({
+  stateName: STATE.ROOM_DELETE,
+  action: roleDeleteAction,
+  onSuccess
+})
+
 const RolesListContainer = props => {
   const dispatch = useDispatch()
   const onSuccess = () => dispatch(roleFetchList())
@@ -45,13 +51,14 @@ const RolesListContainer = props => {
   const groupList = useFetchList(getGroupListParams())
   const editModal = useCreateModal(getRoleUpdateParams(onSuccess))
   const createModal = useCreateModal(getRoleCreateParams(onSuccess))
+  const deleteModal = useDelete(getRoomDeleteParams(onSuccess))
   return (
     <RolesList
       list={list}
       createModal={createModal}
       editModal={editModal}
       groupList={groupList}
-
+      deleteModal={deleteModal}
     />
   )
 }

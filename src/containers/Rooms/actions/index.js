@@ -48,6 +48,19 @@ export const roomUpdateAction = (id, data) => {
   }
 }
 
+export const roomDeleteAction = id => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.ROOM_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.ROOM_DELETE
+    })
+  }
+}
+
 export const roomFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { prop, isEmpty, path } from 'ramda'
 import { sprintf } from 'sprintf-js'
@@ -14,7 +15,8 @@ import CommentListFilterForm from './CommentListFilterForm'
 
 const style = {
   color: '#ffffff',
-  textDecoration: 'none'
+  textDecoration: 'none',
+  cursor: 'pointer'
 }
 
 const BoxUI = styled(Box)`
@@ -71,6 +73,12 @@ const ClientList = props => {
       <Pagination count={count} />
     </>
   )
+}
+
+ClientList.propTypes = {
+  list: PropTypes.object,
+  filterActions: PropTypes.object,
+  onDelete: PropTypes.func
 }
 
 export default ClientList

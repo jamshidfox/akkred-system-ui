@@ -60,3 +60,16 @@ export const placingFetchList = params => {
     })
   }
 }
+
+export const placingDeleteAction = id => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.PLACING_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+    return dispatch({
+      payload,
+      type: actionTypes.PLACING_DELETE
+    })
+  }
+}

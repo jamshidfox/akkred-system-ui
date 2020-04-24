@@ -10,6 +10,7 @@ const Box = styled(BoxUI)`
   width: 296px;
   border: ${props => props.theme.border};
   height: fit-content;
+  padding-bottom: 30px;
 `
 
 const MenuWrapper = styled.div`
@@ -23,7 +24,7 @@ const Title = styled.span`
 `
 const SideMenu = props => {
   return (
-    <Box >
+    <Box>
       <MenuWrapper>
         <div>
           <MenuIcon style={{ verticalAlign: 'text-bottom' }} /> <Title>Hotelier</Title>

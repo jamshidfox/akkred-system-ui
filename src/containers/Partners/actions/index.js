@@ -42,6 +42,7 @@ export const partnerUpdateAction = data => {
     legal_name: prop('legal_name', data),
     phone_number: prop('phone_number', data),
     email: prop('email', data),
+    status: prop('status', data),
     fax: prop('fax', data),
     contract: prop('contract', data),
     country: path(['country', 'id'], data),

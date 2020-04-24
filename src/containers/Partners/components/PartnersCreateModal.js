@@ -2,8 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
-import { Modal, MediumButton } from '../../../components/UI'
-import { InputField, UniversalSearchField, UniversalStaticSelectField } from '../../../components/FormField'
+import { Modal, MediumButton } from 'components/UI'
+import {
+  InputField,
+  UniversalSearchField,
+  UniversalStaticSelectField,
+  CheckboxField
+} from '../../../components/FormField'
 import { PARTNERS_TYPES } from '../../../constants/backend'
 import { Row as RowUI, Col } from '../../../components/Grid'
 import * as ROUTES from '../../../constants/api'
@@ -14,6 +19,7 @@ export const fields = [
   'legalName',
   'phoneNumber',
   'email',
+  'status',
   'fax',
   'contract',
   'country',
@@ -117,6 +123,16 @@ const RoomCreateModal = props => {
                   <Field name="contract" label="договор №" component={InputField} />
                 </Col>
 
+              </Row>
+
+              <Row gutter={24}>
+                <Col span={24}>
+                  <Field
+                    name="status"
+                    label="Статус"
+                    component={CheckboxField}
+                  />
+                </Col>
               </Row>
 
               <div style={{ textAlign: 'right' }}>

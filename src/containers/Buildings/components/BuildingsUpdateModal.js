@@ -7,8 +7,12 @@ import { Modal, MediumButton } from '../../../components/UI'
 import { InputField } from '../../../components/FormField'
 
 const FieldWrapper = styled.div`
-margin-bottom: 20px;
+  margin-bottom: 20px;
 `
+const FloorItem = styled.div`
+  padding-bottom: 15px;
+`
+
 export const fields = [
   'name',
   'floors'
@@ -16,6 +20,7 @@ export const fields = [
 const BuildingsCreateModal = props => {
   const { open, onClose, onSubmit, updateItem } = props
   const initialValues = { ...updateItem }
+
   return (
     <Modal
       width="644px"
@@ -43,6 +48,16 @@ const BuildingsCreateModal = props => {
                   component={InputField}
                 />
               </FieldWrapper>
+              {initialValues.floors &&
+                <FloorItem>
+                  <b>Этажи</b>
+                </FloorItem>
+              }
+              {initialValues.floors && initialValues.floors.map((floor, i) => (
+                <FloorItem key={i}>
+                  {floor.name}
+                </FloorItem>
+              ))}
               <MediumButton type={'submit'}>Изменить</MediumButton>
             </form>
           )
