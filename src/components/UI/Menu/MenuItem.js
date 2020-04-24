@@ -8,9 +8,11 @@ const Text = styled.span`
   font-size: 14px;
   line-height: 24px;
   padding-left: 16px;
+ 
 `
 
 const Item = styled(Link)`
+ 
   display: block;
   border-bottom: ${props => props.theme.border};
   cursor: pointer;
@@ -33,9 +35,9 @@ const Item = styled(Link)`
     color: inherit;
   }
   
-  /* ${props => props.isActive && css`
-    background: ${props => !props.isSub && hexToRgb(props.theme.color.primary.default, '0.08')}!important;
-    ${Text} {
+  ${props => props.isActive && css`
+      background: ${props => !props.isSub && hexToRgb(props.theme.color.primary.default, '0.08')}!important;
+      ${Text} {
       color: ${props => props.theme.color.primary.default};
       }
       svg {
@@ -53,15 +55,14 @@ const Item = styled(Link)`
               background: ${props => props.theme.color.primary.default};
         `}
     }
-  `}  */
+  `} 
 `
 const MenuItem = props => {
-  const { name, icon, url, pathname, children } = props
+  const { name, icon, url, pathname } = props
   const Icon = icon
   return (
     <Item to={url} isActive={url === pathname} isSub={!icon}>
       {icon && <Icon />}<Text>{name}</Text>
-      {children}
     </Item>
   )
 }

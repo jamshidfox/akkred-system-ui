@@ -24,7 +24,7 @@ const Menu = props => {
   const { list } = props
   const [childrenActive, setChildrenActive] = useState('menuItemChildrenHidden')
   const toggleMenu = () => {
-    if(childrenActive === 'menuItemChildrenHidden') {
+    if (childrenActive === 'menuItemChildrenHidden') {
       setChildrenActive('')
     } else {
       setChildrenActive('menuItemChildrenHidden')
