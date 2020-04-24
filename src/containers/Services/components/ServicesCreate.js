@@ -55,9 +55,7 @@ const ReservationCreate = props => {
         initialValues={initialValues}
         onSubmit={onSubmit}
         render={({ handleSubmit, values, ...formikProps }) => {
-          const parent = path(['category', 'id'], values)
           const type = path(['type', 'id'], values)
-
           return (
             <form onSubmit={handleSubmit}>
               <Label>Основная информация</Label>
@@ -92,21 +90,10 @@ const ReservationCreate = props => {
               <Row gutter={24}>
                 <Col span={8}>
                   <Field
-                    name="category"
-                    label="тип номера"
-                    params={{ children_only: false }}
-                    component={UniversalSearchField}
-                    api={ROUTES.ROOM_TYPE_LIST}
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Field
                     name="roomCategories"
                     label="Подкатегория"
-                    params={{ parent }}
                     parent={parent}
-                    disabled={!parent}
+                    params={{ children_only: false }}
                     api={ROUTES.ROOM_TYPE_LIST}
                     component={UniversalMultiSelectField}
                   />

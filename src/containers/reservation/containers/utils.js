@@ -33,7 +33,7 @@ export const clientExistingSerializer = (val) => {
 }
 
 export const mapServices = (item) => toSnakeCase({
-  servicedClientsCount: prop('servicedClientsCount', item),
+  setCount: prop('setCount', item),
   serviceType: path(['serviceType', 'id'], item),
   type: path(['type', 'id'], item)
 })

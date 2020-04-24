@@ -19,7 +19,7 @@ const getServiceItemParams = () => ({
 })
 const getInitialValues = (data) => {
   return ({
-    // type: path(['service', 'type', 'id'], data),
+    type: path(['service', 'type', 'id'], data),
     service: path(['service', 'id'], data),
     price: prop('price', data),
     servicePayment: prop('servicePayment', data),

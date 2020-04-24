@@ -49,17 +49,10 @@ const ClientCreateDialog = props => {
                   component={UniversalSearchField}
                 />
               </FieldWrapper>
-              {/*<FieldWrapper>*/}
-              {/*  <Field*/}
-              {/*    name="type"*/}
-              {/*    label="темп начисления"*/}
-              {/*    list={SERVICE_FREQ}*/}
-              {/*    component={UniversalStaticSelectField} />*/}
-              {/*</FieldWrapper>*/}
               <FieldWrapper>
                 <Field
                   name="setCount"
-                  label="кол-во гостей"
+                  label="кол-во"
                   component={InputField}
                 />
               </FieldWrapper>

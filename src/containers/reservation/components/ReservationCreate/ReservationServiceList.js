@@ -36,7 +36,7 @@ const ReservationClientList = props => {
       </Table>
       <Table isEmpty={emptyService} loading={false} emptyText={emptyText}>
         {services.map(service => {
-          const serviceClientsCount = prop('servicedClientsCount', service)
+          const serviceClientsCount = prop('setCount', service)
           const name = path(['serviceType', 'name'], service)
           const type = path(['type', 'name'], service)
           return (
