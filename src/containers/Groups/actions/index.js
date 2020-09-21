@@ -9,13 +9,13 @@ import axios, {
 export const roleFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.ROLE_LIST)
+      .get(API.GROUP_LIST)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.ROLE_LIST
+      type: actionTypes.GROUP_LIST
     })
   }
 }
@@ -23,13 +23,13 @@ export const roleFetchList = data => {
 export const roleCreateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .post(API.ROLE_CREATE, data)
+      .post(API.GROUP_CREATE, data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.ROLE_CREATE
+      type: actionTypes.GROUP_CREATE
     })
   }
 }
@@ -37,12 +37,12 @@ export const roleCreateAction = data => {
 export const roleUpdateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .put(sprintf(API.ROLE_UPDATE, data.id), data)
+      .put(sprintf(API.GROUP_UPDATE, data.id), data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
     return dispatch({
       payload,
-      type: actionTypes.ROLE_UPDATE
+      type: actionTypes.GROUP_UPDATE
     })
   }
 }
@@ -50,12 +50,12 @@ export const roleUpdateAction = data => {
 export const roleDeleteAction = id => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .delete(sprintf(API.ROLE_DELETE, id))
+      .delete(sprintf(API.GROUP_DELETE, id))
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
     return dispatch({
       payload,
-      type: actionTypes.ROLE_DELETE
+      type: actionTypes.GROUP_DELETE
     })
   }
 }
@@ -63,13 +63,13 @@ export const roleDeleteAction = id => {
 export const groupFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.GROUP_LIST,{ params: { page_size: 1000 } })
+      .get(API.PERMISSION_LIST,{ params: { page_size: 1000 } })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.GROUP_LIST
+      type: actionTypes.PERMISSION_LIST
     })
   }
 }

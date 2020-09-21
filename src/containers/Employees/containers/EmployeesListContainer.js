@@ -5,7 +5,7 @@ import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
 import { employeesFetchList, employeesDeleteAction } from '../actions'
 import EmployeesList from '../components/EmployeesList'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
-import { fields } from '../../Partners/components/PartnersListFilterForm'
+import { fields } from '../../Employees/components/EmployeesListFilterForm'
 
 const getRoomListParams = () => ({
   action: employeesFetchList,
@@ -13,23 +13,23 @@ const getRoomListParams = () => ({
   pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
 })
 
-const getBuildingDeleteParams = (onSuccess) => ({
-  stateName: STATE.BUILDING_DELETE,
-  action: employeesDeleteAction,
-  onSuccess
-})
+// const getBuildingDeleteParams = (onSuccess) => ({
+//   stateName: STATE.BUILDING_DELETE,
+//   action: employeesDeleteAction,
+//   onSuccess
+// })
 
 const EmployeesListContainer = props => {
   const dispatch = useDispatch()
   const list = useFetchList(getRoomListParams())
   const filterActions = useFilterActions({ fields })
   const onSuccess = () => dispatch(employeesFetchList())
-  const deleteModal = useDelete(getBuildingDeleteParams(onSuccess))
+  // const deleteModal = useDelete(getBuildingDeleteParams(onSuccess))
   return (
     <EmployeesList
       list={list}
       filterActions={filterActions}
-      deleteModal={deleteModal}
+      // deleteModal={deleteModal}
     />
   )
 }

@@ -1,4 +1,5 @@
-export const DOMAIN_URL = 'http://142.93.232.44'
+// export const DOMAIN_URL = 'http://142.93.232.44'
+export const DOMAIN_URL = 'http://localhost:8000'
 export const API_URL = `${DOMAIN_URL}`
 
 const MAIN = 'main'
@@ -7,11 +8,11 @@ export const LOGIN = `${MAIN}/login/`
 export const LOGOUT = `${MAIN}/logout/`
 export const FILE_UPLOAD = '/main/file/'
 
-export const EMPLOYEES_LIST = `hotels/hotel_staff/`
-export const EMPLOYEES_CREATE = `hotels/hotel_staff/`
-export const EMPLOYEES_UPDATE = `/hotels/hotel_staff/%d/`
-export const EMPLOYEES_ITEM = `/hotels/hotel_staff/%d/`
-export const EMPLOYEES_DELETE = '/hotels/hotel_staff/%d/'
+export const EMPLOYEES_LIST = `${MAIN}/users/`
+export const EMPLOYEES_CREATE = `${EMPLOYEES_LIST}`
+export const EMPLOYEES_UPDATE = `${EMPLOYEES_LIST}%d/`
+export const EMPLOYEES_ITEM = `${EMPLOYEES_LIST}%d/`
+export const EMPLOYEES_DELETE = `${EMPLOYEES_LIST}%d/`
 
 export const AUTH = 'auth'
 export const AUTH_ACCESS_TOKEN = `/${AUTH}/access-token/`
@@ -23,82 +24,39 @@ export const HOTEL_LIST = `/${HOTEL}/`
 export const HOTEL_CREATE = `/${HOTEL}/`
 export const HOTEL_UPDATE = `/${HOTEL}/%d/`
 
-export const REQUISITES_UPDATE = `/${HOTEL}`
+export const CLIENT_INFO = 'main/clients'
+export const CLIENT_INFO_LIST = `/${CLIENT_INFO}/`
+export const CLIENT_INFO_CREATE = `/${CLIENT_INFO}/`
+export const CLIENT_INFO_UPDATE = `/${CLIENT_INFO}/%d/`
 
-export const BUILDING_CREATE = '/hotels/buildings/'
-export const BUILDING_LIST = '/hotels/buildings/'
-export const BUILDING_UPDATE = '/hotels/buildings/%d/'
-export const BUILDING_DELETE = '/hotels/buildings/%d/'
-export const BUILDING_DETAIL = '/hotels/buildings/%d/'
-export const BUILDING_FLOORS_DETAIL = '/hotels/floors/?building=%d'
-export const BUILDING_FLOORS_CREATE = '/hotels/floors/'
-export const BUILDING_FLOORS_UPDATE = '/hotels/floors/%d/'
-export const BUILDING_FLOORS_DELETE = '/hotels/floors/%d/'
-
-export const ROOM = 'hotels/rooms'
-export const ROOM_LIST = `/${ROOM}/`
-export const ROOM_CREATE = `/${ROOM}/`
-export const ROOM_UPDATE = `/${ROOM}/%d/`
-export const ROOM_ITEM = `/${ROOM}/%d/`
-
-export const ROOM_CREATE_BULK = `/${ROOM}/bulk_create/`
-
-export const PARTNER = 'hotels/partner'
-export const PARTNER_LIST = `/${PARTNER}/`
-export const PARTNER_CREATE = `/${PARTNER}/`
-export const PARTNER_UPDATE = `/${PARTNER}/%d/`
-export const PARTNER_ITEM = `/${PARTNER}/%d/`
-
-export const ROLE = 'hotels/role'
+export const ROLE = `${MAIN}/role`
 export const ROLE_LIST = `/${ROLE}/`
 export const ROLE_CREATE = `/${ROLE}/`
 export const ROLE_UPDATE = `/${ROLE}/%d/`
 export const ROLE_ITEM = `/${ROLE}/%d/`
 export const ROLE_DELETE = `/${ROLE}/%d/`
 
-export const GROUP = 'hotels/group'
+export const GROUP = `${MAIN}/group`
 export const GROUP_LIST = `/${GROUP}/`
+export const GROUP_CREATE = `/${GROUP}/`
+export const GROUP_UPDATE = `/${GROUP}/%d/`
+export const GROUP_ITEM = `/${GROUP}/%d/`
+export const GROUP_DELETE = `/${GROUP}/%d/`
+
+export const PERMISSION = `${MAIN}/permission`
+export const PERMISSION_LIST = `/${PERMISSION}/`
 
 export const ROOM_TYPE = 'hotels/rooms_category'
 export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
 
 export const ROOM_DELETE = 'hotels/rooms_category/%d/'
 
-export const SERVICES_TYPE = 'hotels/hotel_services_type'
-export const SERVICES_TYPE_LIST = `/${SERVICES_TYPE}/`
-
-export const SERVICES = 'hotels/hotel_services'
-export const SERVICES_LIST = `/${SERVICES}/`
-
-export const ROOM_FACILITY_TYPE = 'hotels/room_facility_type'
-export const ROOM_FACILITY_TYPE_LIST = `/${ROOM_FACILITY_TYPE}/`
-
-export const COUNTRY_LIST = 'hotels/country/'
-export const FACILITIES = 'hotels/facilities'
-export const FACILITIES_LIST = `/${FACILITIES}/`
-
-export const HOTEL_TYPE = 'hotels/hotel_type'
-export const HOTEL_TYPE_LIST = `/${HOTEL_TYPE}/`
-
-export const HOTEL_SERVICE_TYPE = 'hotels/hotel_services_type'
-export const HOTEL_SERVICE_TYPE_LIST = `/${HOTEL_SERVICE_TYPE}/`
-
-export const HOTEL_SERVICE = 'hotels/hotel_services'
-export const HOTEL_SERVICE_LIST = `/${HOTEL_SERVICE}/`
-
 export const HOTEL_ATTRACTION_TYPE = `hotels/attractions_type`
 export const HOTEL_ATTRACTION_TYPE_LIST = `/${HOTEL_ATTRACTION_TYPE}/`
 
 const CLIENTS = 'clients'
 
-export const RESERVATION = `${CLIENTS}/reservation`
-export const RESERVATION_CREATE = `/${RESERVATION}/`
-export const PLACING_LIST = `/${RESERVATION}/`
-export const PLACING_ITEM = `/${RESERVATION}/%d/`
-export const PLACING_UPDATE = `/${RESERVATION}/%d/`
-export const PLACING_DELETE = `/${RESERVATION}/%d/`
-
-export const CLIENT = 'clients/client'
+export const CLIENT = `${MAIN}/clients`
 export const CLIENT_LIST = `/${CLIENT}/`
 export const CLIENT_CREATE = `/${CLIENT}/`
 export const CLIENT_UPDATE = `/${CLIENT}/%d/`
@@ -106,46 +64,16 @@ export const CLIENT_DELETE = `/${CLIENT}/%d/`
 export const CLIENT_ITEM = `/${CLIENT}/%d/`
 export const CLIENT_ITEM_DOCS = `/${CLIENT}/%d/docs/`
 
-const FINANCE = 'finance'
-const RATES = `${FINANCE}/rates`
-export const RATES_LIST = `/${RATES}/`
-export const RATES_ITEM = `/${RATES}/%d`
-export const RATES_CREATE = `/${RATES}/`
-export const RATES_UPDATE = `/${RATES}/%d/`
-export const RATES_PARTNER_CREATE = `/${RATES}/%d/partner_rate/`
-
-const ROOM_CATEGORY_CAPACITY = 'hotels/hotel_room_category'
-export const ROOM_CATEGORY_CAPACITY_LIST = `/${ROOM_CATEGORY_CAPACITY}/`
-export const ROOM_CATEGORY_CAPACITY_ITEM = `/${ROOM_CATEGORY_CAPACITY}/%d`
-export const ROOM_CATEGORY_CAPACITY_CREATE = `/${ROOM_CATEGORY_CAPACITY}/`
-export const ROOM_CATEGORY_CAPACITY_UPDATE = `/${ROOM_CATEGORY_CAPACITY}/%d/`
-
-const SERVICES_PRICE = `${FINANCE}/service_price`
-export const SERVICES_PRICE_LIST = `/${SERVICES_PRICE}/`
-export const SERVICES_PRICE_ITEM = `/${SERVICES_PRICE}/%d`
-export const SERVICES_PRICE_CREATE = `/${SERVICES_PRICE}/`
-export const SERVICES_PRICE_UPDATE = `/${SERVICES_PRICE}/%d`
+export const APPLICATION = 'main/applications'
+export const APPLICATION_LIST = `/${APPLICATION}/`
+export const APPLICATION_CREATE = `/${APPLICATION}/`
+export const APPLICATION_UPDATE = `/${APPLICATION}/%d/`
+export const APPLICATION_DELETE = `/${APPLICATION}/%d/`
+export const APPLICATION_ITEM = `/${APPLICATION}/%d/`
+export const APPLICATION_ITEM_DOCS = `/${APPLICATION}/%d/docs/`
 
 const BOOKING = `${CLIENTS}/booking`
 export const BOOKING_LIST = `/${BOOKING}/`
 export const BOOKING_ITEM = `/${BOOKING}/%d`
 export const BOOKING_CREATE = `/${BOOKING}/`
 export const BOOKING_UPDATE = `/${BOOKING}/%d/`
-
-const TRANSACTION = `${FINANCE}/transaction`
-export const TRANSACTION_LIST = `/${TRANSACTION}/`
-export const TRANSACTION_ITEM = `/${TRANSACTION}/%d`
-export const TRANSACTION_CREATE = `/${TRANSACTION}/`
-export const TRANSACTION_UPDATE = `/${TRANSACTION}/%d/`
-
-const RULE_GROUP = `${FINANCE}/hotel_rule_group`
-export const RULE_GROUP_LIST = `/${RULE_GROUP}/`
-export const RULE_GROUP_ITEM = `/${RULE_GROUP}/%d`
-export const RULE_GROUP_CREATE = `/${RULE_GROUP}/`
-export const RULE_GROUP_UPDATE = `/${RULE_GROUP}/%d/`
-
-const RULE_PRICE = `${FINANCE}/hotel_rule_price`
-export const RULE_PRICE_LIST = `/${RULE_PRICE}/`
-export const RULE_PRICE_ITEM = `/${RULE_PRICE}/%d`
-export const RULE_PRICE_CREATE = `/${RULE_PRICE}/`
-export const RULE_PRICE_UPDATE = `/${RULE_PRICE}/%d/`

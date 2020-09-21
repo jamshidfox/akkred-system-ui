@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const Text = styled.span`
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 24px;
   padding-left: 16px;
  

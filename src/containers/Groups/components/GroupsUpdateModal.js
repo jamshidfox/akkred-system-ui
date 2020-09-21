@@ -13,7 +13,7 @@ import { Row as RowUI, Col } from '../../../components/Grid'
 
 export const rolefields = [
   'name',
-  'groups'
+  'permissions'
 ]
 
 const Label = styled.div`
@@ -35,16 +35,14 @@ const PArtnerUpdateeModal = props => {
   const { open, onClose, onSubmit, updateItem, groupList } = props
   const data = prop('results', groupList)
   let result
-  if (updateItem.groups) {
-    result = Array.from(updateItem.groups, group => group.id)
+  if (updateItem.permissions) {
+    result = Array.from(updateItem.permissions, group => group.id)
   }
-
-
 
   const initialValues = {
     id: prop('id', updateItem),
     name: prop('name', updateItem),
-    groups: result
+    permissions: result
   }
 
   return (
@@ -73,7 +71,7 @@ const PArtnerUpdateeModal = props => {
 
                 <Col span={24}>
                   <Field
-                    name={'groups'}
+                    name={'permissions'}
                     items={data}
                     label="Группы"
                     width={'40%'}

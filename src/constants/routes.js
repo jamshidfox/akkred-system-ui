@@ -5,34 +5,9 @@ const ID = ':id(\\d+)'
 const SETTINGS = 'settings'
 
 export const HOTEL = 'hotel'
+export const SETTINGS_CLIENT_INFO = 'client_info'
 export const SETTINGS_HOTEL_URL = `/${SETTINGS}/${HOTEL}/`
-
-export const SETTING_PRICE_LIST = 'price-list'
-export const SETTING_PRICE_LIST_URL = `/${SETTINGS}/${SETTING_PRICE_LIST}/`
-
-export const SETTING_ROOMS = 'rooms'
-export const SETTING_ROOMS_TYPE_LIST = `/${SETTINGS}/${SETTING_ROOMS}/`
-export const SETTING_ROOMS_LIST_URL = `/${SETTINGS}/${SETTING_ROOMS}/%d`
-export const SETTING_ROOMS_LIST_PATH = `/${SETTINGS}/${SETTING_ROOMS}/${ID}`
-
-export const SETTING_RULE_GROUP = 'rule-group'
-export const SETTING_RULE_GROUP_LIST = `/${SETTINGS}/${SETTING_RULE_GROUP}/`
-export const SETTING_RULE_GROUP_CREATE_URL = `/${SETTINGS}/${SETTING_RULE_GROUP}/create`
-export const SETTING_RULE_GROUP_UPDATE_URL = `/${SETTINGS}/${SETTING_RULE_GROUP}/%d`
-
-export const SETTING_RULE_GROUP_UPDATE_PATH = `/${SETTINGS}/${SETTING_RULE_GROUP}/${ID}/`
-
-export const SETTING_RULE_PRICE = 'rule-price'
-export const SETTING_RULE_PRICE_LIST = `/${SETTINGS}/${SETTING_RULE_PRICE}/`
-export const SETTING_RULE_PRICE_CREATE_URL = `/${SETTINGS}/${SETTING_RULE_PRICE}/create`
-export const SETTING_RULE_PRICE_UPDATE_PATH = `/${SETTINGS}/${SETTING_RULE_PRICE}/${ID}/`
-
-export const SETTING_REQUISITES = `/${SETTINGS}/requisites`
-
-export const SETTING_BUILDINGS = `${SETTINGS}/buildings`
-export const SETTING_BUILDINGS_LIST_PATH = `/${SETTING_BUILDINGS}/`
-export const SETTING_BUILDINGS_ITEM_PATH = `/${SETTING_BUILDINGS}/${ID}`
-export const SETTING_BUILDINGS_ITEM_URL = `/${SETTING_BUILDINGS}/%d`
+export const SETTINGS_CLIENT_INFO_URL = `/${SETTINGS}/${SETTINGS_CLIENT_INFO}/`
 
 export const EMPLOYEES = 'employees'
 export const EMPLOYEES_TYPE_LIST = `/${SETTINGS}/${EMPLOYEES}/`
@@ -46,23 +21,12 @@ export const PARTNERS_LIST_URL = `/${SETTINGS}/${PARTNERS}/`
 export const PARTNERS_UPDATE_URL = `/${SETTINGS}/${PARTNERS}/%d`
 
 export const ROLE = 'roles'
-export const ROLE_LIST_URL = `/${SETTINGS}/${ROLE}/`
-export const ROLE_UPDATE_URL = `/${SETTINGS}/${ROLE}/%d`
+export const ROLE_LIST_URL = `/${ROLE}/`
+export const ROLE_UPDATE_URL = `/${ROLE}/%d`
 
-const RESERVATION = 'reservation'
-export const RESERVATION_LIST_URL = `/${RESERVATION}/`
-export const RESERVATION_ITEM_URL = `/${RESERVATION}/%d`
-export const RESERVATION_ITEM_PATH = `/${RESERVATION}/${ID}/`
-export const RESERVATION_CREATE_URL = `/${RESERVATION}/create`
-export const RESERVATION_UPDATE_URL = `/${RESERVATION}/`
-
-const ROOM = 'rooms'
-export const ROOM_LIST_URL = `/${ROOM}/`
-export const ROOM_ITEM_URL = `/${ROOM}/%d`
-export const ROOM_ITEM_PATH = `/${ROOM}/${ID}/`
-export const ROOM_CREATE_URL = `/${ROOM}/create/${ID}`
-export const ROOM_UPDATE_URL = `/${ROOM}/%d`
-export const ROOM_UPDATE_PATH = `/${ROOM}/${ID}/`
+export const GROUP = 'group'
+export const GROUP_LIST_URL = `/${SETTINGS}/${GROUP}/`
+export const GROUP_UPDATE_URL = `/${SETTINGS}/${GROUP}/%d`
 
 const CLIENT = 'client'
 export const CLIENT_LIST_URL = `/${CLIENT}/`
@@ -72,41 +36,18 @@ export const CLIENT_CREATE_URL = `/${CLIENT}/create`
 export const CLIENT_UPDATE_URL = `/${CLIENT}/%d`
 export const CLIENT_UPDATE_PATH = `/${CLIENT}/${ID}/`
 
-const FINANCE = 'finance'
-const RATES = `${FINANCE}/rates`
-export const RATES_LIST_URL = `/${RATES}/`
-export const RATES_ITEM_URL = `/${RATES}/%d`
-export const RATES_ITEM_PATH = `/${RATES}/${ID}/`
-export const RATES_CREATE_URL = `/${RATES}/create`
-export const RATES_UPDATE_URL = `/${RATES}/%d`
-export const RATES_UPDATE_PATH = `/${RATES}/${ID}/`
+const APPLICATION = 'application'
+export const APPLICATION_LIST_URL = `/${APPLICATION}/`
+export const APPLICATION_ITEM_URL = `/${APPLICATION}/%d`
+export const APPLICATION_ITEM_PATH = `/${APPLICATION}/${ID}/`
+export const APPLICATION_CREATE_URL = `/${APPLICATION}/create`
+export const APPLICATION_UPDATE_URL = `/${APPLICATION}/%d`
+export const APPLICATION_UPDATE_PATH = `/${APPLICATION}/${ID}/`
 
-const SERVICES_PRICE = `${FINANCE}/price`
-export const SERVICES_PRICE_LIST_URL = `/${SERVICES_PRICE}/`
-export const SERVICES_PRICE_ITEM_URL = `/${SERVICES_PRICE}/%d`
-export const SERVICES_PRICE_ITEM_PATH = `/${SERVICES_PRICE}/${ID}/`
-export const SERVICES_PRICE_CREATE_URL = `/${SERVICES_PRICE}/create`
-export const SERVICES_PRICE_UPDATE_URL = `/${SERVICES_PRICE}/%d`
-export const SERVICES_PRICE_UPDATE_PATH = `/${SERVICES_PRICE}/${ID}/`
-
-const PLACING = 'placing'
-export const PLACING_LIST_URL = `/${PLACING}/`
-export const PLACING_ITEM_URL = `/${PLACING}/%d`
-export const PLACING_UPDATE_URL = `/${PLACING}/%d/update`
-export const PLACING_UPDATE_PATH = `/${PLACING}/${ID}/update`
-
-const BOOKING = 'booking'
-export const BOOKING_LIST_PATH = `/${BOOKING}/`
-export const BOOKING_CREATE_PATH = `/${BOOKING}/create/`
-
-const TRANSACTION = 'transaction'
-export const TRANSACTION_LIST_URL = `/${TRANSACTION}/`
-export const TRANSACTION_ITEM_URL = `/${TRANSACTION}/%d`
-export const TRANSACTION_UPDATE_URL = `/${TRANSACTION}/%d/update`
-export const TRANSACTION_UPDATE_PATH = `/${TRANSACTION}/${ID}/update`
-
-const TARIFF = 'tariff'
-export const TARIFF_LIST_URL = `/${TARIFF}/`
-export const TARIFF_ITEM_URL = `/${TARIFF}/%d`
-export const TARIFF_UPDATE_URL = `/${TARIFF}/%d/update`
-export const TARIFF_UPDATE_PATH = `/${TARIFF}/${ID}/update`
+const CLIENT_INFO = 'client_info'
+export const CLIENT_INFO_LIST_URL = `/${CLIENT_INFO}/`
+export const CLIENT_INFO_ITEM_URL = `/${CLIENT_INFO}/%d`
+export const CLIENT_INFO_ITEM_PATH = `/${CLIENT_INFO}/${ID}/`
+export const CLIENT_INFO_CREATE_URL = `/${CLIENT_INFO}/create`
+export const CLIENT_INFO_UPDATE_URL = `/${CLIENT_INFO}/%d`
+export const CLIENT_INFO_UPDATE_PATH = `/${CLIENT_INFO}/${ID}/`

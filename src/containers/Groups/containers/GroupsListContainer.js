@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useCreateModal, useDelete } from '../../../hooks'
 import { roleFetchList, roleCreateAction, roleUpdateAction, groupFetchList, roleDeleteAction } from '../actions'
-import RolesList from '../components/RolesList'
+import GroupsList from '../components/GroupsList'
 import { getSerializedData } from '../../../utils/get'
 import { fields } from '../components'
 
 const getRolesListParams = () => ({
   action: roleFetchList,
-  stateName: STATE.ROLE_LIST,
+  stateName: STATE.GROUP_LIST,
 })
 
 // const updateSerializer = (values) => {
@@ -20,19 +20,19 @@ const getRolesListParams = () => ({
 
 const getGroupListParams = () => ({
   action: groupFetchList,
-  stateName: STATE.GROUP_LIST,
+  stateName: STATE.PERMISSION_LIST,
 })
 
 const getRoleCreateParams = (onSuccess) => ({
-  stateName: STATE.ROLE_CREATE,
+  stateName: STATE.GROUP_CREATE,
   action: roleCreateAction,
   serializer: getSerializedData(fields),
   onSuccess
 })
 
 const getRoleUpdateParams = (onSuccess) => ({
-  key: 'roleUpdate',
-  stateName: STATE.ROLE_UPDATE,
+  key: 'groupUpdate',
+  stateName: STATE.GROUP_UPDATE,
   action: roleUpdateAction,
   // serializer:updateSerializer,
   onSuccess
@@ -44,7 +44,7 @@ const getRoomDeleteParams = (onSuccess) => ({
   onSuccess
 })
 
-const RolesListContainer = props => {
+const GroupsListContainer = props => {
   const dispatch = useDispatch()
   const onSuccess = () => dispatch(roleFetchList())
   const list = useFetchList(getRolesListParams())
@@ -53,7 +53,7 @@ const RolesListContainer = props => {
   const createModal = useCreateModal(getRoleCreateParams(onSuccess))
   const deleteModal = useDelete(getRoomDeleteParams(onSuccess))
   return (
-    <RolesList
+    <GroupsList
       list={list}
       createModal={createModal}
       editModal={editModal}
@@ -63,4 +63,4 @@ const RolesListContainer = props => {
   )
 }
 
-export default RolesListContainer
+export default GroupsListContainer

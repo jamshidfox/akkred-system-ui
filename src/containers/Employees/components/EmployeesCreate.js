@@ -4,26 +4,25 @@ import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
-import * as API from '~/constants/api'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
   Form,
   Field,
   InputField,
-    UniversalSearchField
+  UniversalSearchField
 } from '../../../components/FormField'
+import * as API from '~/constants/api'
 
 export const fields = [
   'username',
   'password',
   'fullName',
-  'mail',
+  'email',
   'phoneNumber',
   'lastName',
   'firstName',
-  'middleName',
-    'role'
+  'role'
 ]
 
 const BoxUI = styled(Box)`
@@ -79,7 +78,7 @@ const ReservationCreate = props => {
                   <Field name="fullName" label="Ф.И.O" component={InputField} />
                 </Col>
                 <Col span={4}>
-                  <Field name="mail" label="mail" component={InputField} />
+                  <Field name="email" label="mail" component={InputField} />
                 </Col>
                 <Col span={4}>
                   <Field name="phoneNumber" label="phoneNumber" component={InputField} />

@@ -27,7 +27,7 @@ const SideMenu = props => {
     <Box>
       <MenuWrapper>
         <div>
-          <MenuIcon style={{ verticalAlign: 'text-bottom' }} /> <Title>Hotelier</Title>
+          <MenuIcon style={{ verticalAlign: 'text-bottom' }} /> <Title>Akkred</Title>
         </div>
         <Notify />
       </MenuWrapper>

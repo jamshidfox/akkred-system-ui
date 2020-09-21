@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'react-final-form'
 import styled from 'styled-components'
-import arrayMutators from 'final-form-arrays'
 import { prop } from 'ramda'
 import { Modal, MediumButton } from '../../../components/UI'
 import {
@@ -11,9 +10,9 @@ import {
 } from '../../../components/FormField'
 import { Row as RowUI, Col } from '../../../components/Grid'
 
-export const rolefields = [
+export const fields = [
   'name',
-  'groups'
+  'permissions',
 ]
 
 const Label = styled.div`
@@ -31,32 +30,17 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 
-const PArtnerUpdateeModal = props => {
-  const { open, onClose, onSubmit, updateItem, groupList } = props
+const RoomCreateModal = props => {
+  const { open, onClose, onSubmit, groupList } = props
   const data = prop('results', groupList)
-  let result
-  if (updateItem.groups) {
-    result = Array.from(updateItem.groups, group => group.id)
-  }
-
-
-
-  const initialValues = {
-    id: prop('id', updateItem),
-    name: prop('name', updateItem),
-    groups: result
-  }
-
   return (
     <Modal
       width="800px"
-      title="Изменить должность"
+      title="Добавить должность"
       open={open}
       onClose={onClose} >
       <Form
-        initialValues={initialValues}
         onSubmit={onSubmit}
-        mutators={arrayMutators}
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
@@ -73,7 +57,7 @@ const PArtnerUpdateeModal = props => {
 
                 <Col span={24}>
                   <Field
-                    name={'groups'}
+                    name={'permissions'}
                     items={data}
                     label="Группы"
                     width={'40%'}
@@ -96,10 +80,10 @@ const PArtnerUpdateeModal = props => {
   )
 }
 
-PArtnerUpdateeModal.propTypes = {
+RoomCreateModal.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
   onSubmit: PropTypes.func
 }
 
-export default PArtnerUpdateeModal
+export default RoomCreateModal

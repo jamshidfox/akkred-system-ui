@@ -10,68 +10,134 @@ import Settings from '../../icons/Settings'
 import * as ROUTES from '../../constants/routes'
 
 export default [
+
   {
-    name: 'Шахматка',
-    url: ROUTES.BOOKING_LIST_PATH,
-    icon: Chess
+    name: 'Заявки',
+    url: ROUTES.APPLICATION_LIST_URL,
+    icon: People,
+    // children: [
+    //   {
+    //     name: 'YANGILAR',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'RAHBARIYAT KO’RIB CHIQISHIDA',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'QABUL QILINGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'SHARTNOMA RASMIYLASHTIRILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'TO’LOV JARAYONIDA',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'EKSPERTIZA',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'AUDIT UCHUN SHARTNOMA RASMIYLASHTIRILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'AUDIT UCHUN TO’LOV JARAYONIDA',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'REJA VA BUYRUQ RASMIYLASHTIRILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'NOMUVOFIQLIKLARNI BARTARAF ETISH UCHUN\n' +
+    //       'MUDDAT BERILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
+    //       'BARTARAF ETISH BUYICHA REJA TAQDIM ETILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
+    //       'BARTARAF ETILGANLIGI TO’G’RISIDA XISOBOT TAQDIM\n' +
+    //       'ETILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF\n' +
+    //       'ETILGANLIGINI O’RGANISH',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'DAVLAT REESTRIGA KIRITILGAN VA GUVOHNOMA\n' +
+    //       'RASMIYLASHTIRILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'POST AKKREDITATSIAION HUJJATLAR\n' +
+    //       'RASMIYLASHTIRILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'QO’SHIMCHA MUDDAT BERILGAN',
+    //     url:'/',
+    //   },
+    //   {
+    //     name: 'RAD ETILGAN',
+    //     url:'/',
+    //   },
+    //
+    // ]
+  },
+
+  {
+    name: 'Сотрудники',
+    url: ROUTES.EMPLOYEES_LIST_URL,
+    icon: Chess,
   },
   {
-    name: 'Создать бронь',
-    url: ROUTES.RESERVATION_CREATE_URL,
-    icon: Plus,
-    isActive: true
+    name: 'Должности',
+    url: ROUTES.ROLE_LIST_URL,
+    icon: Welcome,
   },
-  {
-    name: 'Служба приема',
-    url: ROUTES.PLACING_LIST_URL,
-    icon: Plus,
-    isActive: true
-  },
-  // {
-  //   name: 'Прием и размещение',
-  //   url: '/',
-  //   icon: Welcome,
-  // },
-  // {
-  //   name: 'Список броней',
-  //   url: '/',
-  //   icon: List,
-  // },
-  // {
-  //   name: 'Тарифы и цены',
-  //   url: ROUTES.RATES_LIST_URL,
-  //   icon: CreditCard,
-  //   children: [
-  //     {
-  //       name: 'Тарифы и цены номерного фонда',
-  //       url: ROUTES.RATES_LIST_URL,
-  //     },
-  //     {
-  //       name: 'Тарифы и цены сервисов',
-  //       url: ROUTES.SERVICES_PRICE_LIST_URL,
-  //     }
-  //   ]
-  // },
+
   {
     name: 'Клиенты',
     url: ROUTES.CLIENT_LIST_URL,
     icon: People,
   },
-  {
-    name: 'Расчеты',
-    url: ROUTES.TRANSACTION_LIST_URL,
-    icon: BarChart,
-  },
-  {
-    name: 'Тарифы',
-    url: ROUTES.RATES_LIST_URL,
-    icon: CreditCard,
-  },
-  {
-    name: 'Тарифы Услуги',
-    url: ROUTES.SERVICES_PRICE_LIST_URL,
-    icon: CreditCard,
-  },
+
+  // {
+  //   name: 'Договоры',
+  //   url: '/',
+  //   icon: List,
+  // },
+  //
+  // {
+  //   name: 'Учет аккред. органов',
+  //   url: '/',
+  //   icon: TrendingUp,
+  // },
+  // {
+  //   name: 'Документы',
+  //   url: '/',
+  //   icon: CreditCard,
+  // },
+  //
+  // {
+  //   name: 'Учет экспертов-аудиторов',
+  //   url: '/',
+  //   icon: CreditCard,
+  // },
   // {
   //   name: 'Финансовая аналитика',
   //   url: '/',
@@ -79,40 +145,21 @@ export default [
   // },
   {
     name: 'Настройка',
-    url: ROUTES.SETTINGS_HOTEL_URL,
+    url: ROUTES.SETTINGS_CLIENT_INFO_URL,
     icon: Settings,
     children: [
       {
-        name: 'Ваш объект',
-        url: ROUTES.SETTINGS_HOTEL_URL,
+        name: 'Вид органов',
+        url: '/',
       },
       {
-        name: 'Реквизиты',
-        url: ROUTES.SETTING_REQUISITES,
+        name: 'Регион',
+        url:'/',
       },
+
       {
-        name: 'Корпусы',
-        url: ROUTES.SETTING_BUILDINGS_LIST_PATH,
-      },
-      {
-        name: 'Номерной фонд',
-        url: ROUTES.SETTING_ROOMS_TYPE_LIST,
-      },
-      {
-        name: 'Сотрудники',
-        url: ROUTES.EMPLOYEES_LIST_URL,
-      },
-      {
-        name: 'Партнеры',
-        url: ROUTES.PARTNERS_LIST_URL,
-      },
-      {
-        name: 'Должности',
-        url: ROUTES.ROLE_LIST_URL,
-      },
-      {
-        name: 'Ранний заезд / Поздний выезад ',
-        url: ROUTES.SETTING_RULE_GROUP_LIST,
+        name: 'Роли',
+        url: ROUTES.GROUP_LIST_URL,
       }
     ]
   }

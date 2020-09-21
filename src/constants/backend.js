@@ -26,6 +26,38 @@ export const CALCULATION_TYPE_LIST = [
 
 export const CALCULATION_TYPE = arrayObjToObj(CALCULATION_TYPE_LIST)
 
+export const ANSWER_MONTH_LIST = [
+  { id: 'LESS_THREE', name: 'LESS_THREE' },
+  { id: 'LESS_SIX', name: 'LESS_SIX' },
+  { id: 'MORE_SIX', name: 'MORE_SIX' },
+]
+
+export const ANSWER_LIST = [
+  { id: 'yes', name: 'да' },
+  { id: 'no', name: 'нет' }
+]
+
+export const APPLICATION_LIST = [
+  { id: 'accreditation', name: 'Аккредитация' },
+  { id: 'actualization', name: 'Актуализация' },
+  { id: 'reaccreditation', name: 'Переаккредитация' },
+  { id: 'renewal', name: 'Переоформления' },
+  { id: 'termination', name: 'Прекращение' },
+  { id: 'suspension', name: 'Приостановление' },
+  { id: 'abbreviations', name: 'Сокращения' },
+]
+
+export const STANDART_LIST = [
+  { id: '17065', name: '17065' },
+  { id: '17025', name: '17025' },
+  { id: '3444', name: '3444' },
+  { id: '17021', name: '17021' },
+  { id: '17020', name: '17020' },
+  { id: '17024', name: '17024' },
+  { id: '17043', name: '17043' },
+  { id: '15189', name: '15189' },
+]
+
 export const GENDER_LIST = [
   { id: 'male', name: 'мужчина' },
   { id: 'female', name: 'женщина' }
@@ -73,19 +105,3 @@ export const PARTNERS_TYPES = [
   { id: 'agent', name: 'Агент' },
 ]
 
-export const RULE_TYPES = [
-  { id: 'entrance', name: 'Заезд' },
-  { id: 'leave', name: 'Выезд' },
-]
-
-export const RULE_AMOUNT_TYPES = [
-  { id: 'percentage', name: 'Процент' },
-  { id: 'fixed', name: 'Фиксириванный' },
-  { id: 'free', name: 'Бесплатно' },
-]
-
-export const TYPE_SERVICES = [
-  { id: 'daily', name: 'За день' },
-  { id: 'per_set', name: 'За комплект' },
-  { id: 'full_period', name: 'За всё время проживания' },
-]

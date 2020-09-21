@@ -98,7 +98,6 @@ const Filter = props => {
     initialValues
   } = props
 
-
   const hasCount = Boolean(count)
   const filterCount = hasCount && `: ${count}`
 

@@ -6,70 +6,85 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const roleFetchList = data => {
+export const clientCreateAction = data => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(API.APPLICATION_CREATE, data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_CREATE
+    })
+  }
+}
+
+export const clientExistingAction = ({ id, ...data }) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(sprintf(API.CLIENT_ITEM_DOCS, id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.CLIENT_CREATE
+    })
+  }
+}
+
+export const clientUpdateAction = (id, data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .put(sprintf(API.APPLICATION_UPDATE, id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_UPDATE
+    })
+  }
+}
+export const clientDeleteAction = (id) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .delete(sprintf(API.APPLICATION_DELETE, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_DELETE
+    })
+  }
+}
+
+export const clientFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.ROLE_LIST)
+      .get(API.APPLICATION_LIST, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.ROLE_LIST
+      type: actionTypes.APPLICATION_LIST
     })
   }
 }
 
-export const roleCreateAction = data => {
-  return (dispatch, getState) => {
-    const payload = axios({ dispatch, getState })
-      .post(API.ROLE_CREATE, data)
-      .then(getPayloadFromSuccess)
-      .catch(getPayloadFromError)
-
-    return dispatch({
-      payload,
-      type: actionTypes.ROLE_CREATE
-    })
-  }
-}
-
-export const roleUpdateAction = data => {
-  return (dispatch, getState) => {
-    const payload = axios({ dispatch, getState })
-      .put(sprintf(API.ROLE_UPDATE, data.id), data)
-      .then(getPayloadFromSuccess)
-      .catch(getPayloadFromError)
-    return dispatch({
-      payload,
-      type: actionTypes.ROLE_UPDATE
-    })
-  }
-}
-
-export const roleDeleteAction = id => {
-  return (dispatch, getState) => {
-    const payload = axios({ dispatch, getState })
-      .delete(sprintf(API.ROLE_DELETE, id))
-      .then(getPayloadFromSuccess)
-      .catch(getPayloadFromError)
-    return dispatch({
-      payload,
-      type: actionTypes.ROLE_DELETE
-    })
-  }
-}
-
-export const groupFetchList = data => {
+export const clientFetchItem = id => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.GROUP_LIST,{ params: { page_size: 1000 } })
+      .get(sprintf(API.APPLICATION_ITEM, id))
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 
     return dispatch({
       payload,
-      type: actionTypes.GROUP_LIST
+      type: actionTypes.APPLICATION_ITEM
     })
   }
 }

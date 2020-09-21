@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import Filter from '../Filter'
+import { MediumButton } from '../UI/Buttons'
 import SearchField from './SearchField'
 
 const Container = styled('div')`
@@ -16,14 +18,21 @@ const Actions = styled('div')`
   margin-left: auto;
 `
 
+const style = {
+  color: '#ffffff',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  marginRight: '20px'
+}
+
 const TableActions = props => {
   const {
     filterForm,
     filterActions,
     extraButtons,
-    searchKey
+    searchKey,
+    linkAction
   } = props
-
 
   return (
     <Container>
@@ -35,6 +44,7 @@ const TableActions = props => {
 
       <Actions>
         {extraButtons}
+        <Link style={style} to={`${linkAction}`}><MediumButton>добавить</MediumButton></Link>
         <SearchField key={searchKey} />
       </Actions>
     </Container>
@@ -46,6 +56,7 @@ TableActions.propTypes = {
   filterActions: PropTypes.object,
   selectActions: PropTypes.object,
   searchKey: PropTypes.string,
+  linkAction: PropTypes.string,
   extraButtons: PropTypes.node
 }
 

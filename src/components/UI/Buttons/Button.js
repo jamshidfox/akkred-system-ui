@@ -56,9 +56,10 @@ export const LargeButton = styled(BaseButton)`
 
 export const MediumButton = styled(BaseButton)`
   padding: 0 20px;
-  height: 40px;
-  font-size: ${props => props.theme.fontSize.medium};
+  height: 36px;
+  font-size: 14px;
   line-height: ${props => props.theme.lineHeight.medium};
+  border-radius: 6px;
 `
 
 export const SmallButton = styled(BaseButton)`

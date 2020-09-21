@@ -5,44 +5,36 @@ import UIs from './UIs'
 import Example from './example'
 import Login from './Login'
 import Register from './Register'
-import Requisites from './Requisites'
-import rooms from './Rooms'
-import reservation from './reservation'
+import ClientInfo from './ClientInfo'
 import client from './Client'
-import rates from './Rates'
-import services from './Services'
 import employees from './Employees'
-import booking from './booking'
-import Buildings from './Buildings'
-import transaction from './Transaction'
-import roomsRules from './RoomsRules'
-import partners from './Partners'
 import roles from './Role'
+import groups from './Groups'
+import applications from './Application'
 
 const tester = store => [
-  ...reservation(),
-  ...rooms(),
-  ...Buildings(),
   ...client(),
-  ...rates(),
-  ...services(),
   ...employees(),
-  ...booking(),
-  ...transaction(),
-  ...roomsRules(),
-  ...partners(),
   ...roles(),
+  ...applications(),
+  ...groups(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,
     layout: Layouts,
     component: Register
   },
+  // {
+  //   exact: true,
+  //   path: ROUTES.SETTING_REQUISITES,
+  //   layout: Layouts,
+  //   component: Requisites
+  // },
   {
     exact: true,
-    path: ROUTES.SETTING_REQUISITES,
+    path: ROUTES.SETTINGS_CLIENT_INFO_URL,
     layout: Layouts,
-    component: Requisites
+    component: ClientInfo
   },
   {
     exact: true,

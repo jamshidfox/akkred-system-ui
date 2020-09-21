@@ -35,8 +35,8 @@ const Login = props => {
   return (
     <Wrapper>
       <LogoWrap>
-        <Logo>Hotelier</Logo>
-        <Intro>Property management system</Intro>
+        <Logo>E-Accred</Logo>
+        <Intro>Application management system</Intro>
       </LogoWrap>
 
       <FinalForm onSubmit={onLogin}>

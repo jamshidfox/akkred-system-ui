@@ -1,2 +1,0 @@
-export { fields } from './PartnersCreateModal'
-
