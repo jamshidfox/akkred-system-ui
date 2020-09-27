@@ -7,7 +7,7 @@ const StyledTab = styled('div')`
   padding: 10px 13px;
   font-size: 14px;
   line-height: 16px;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.borderRadius.primary};
   text-transform: uppercase;
   font-weight: bold;
   outline: none;

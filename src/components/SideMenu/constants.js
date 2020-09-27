@@ -1,20 +1,14 @@
-import Plus from '../../icons/Plus'
-import Chess from '../../icons/Chess'
-import BarChart from '../../icons/BarChart'
-import CreditCard from '../../icons/CreditCard'
-import List from '../../icons/List'
-import People from '../../icons/People'
-import TrendingUp from '../../icons/TrendingUp'
-import Welcome from '../../icons/Welcome'
-import Settings from '../../icons/Settings'
 import * as ROUTES from '../../constants/routes'
+import People from '../../icons/People'
+import Settings from '../../icons/Settings'
+import Document from '../../icons/Document'
 
 export default [
 
   {
     name: 'Заявки',
     url: ROUTES.APPLICATION_LIST_URL,
-    icon: People,
+    icon: Document,
     // children: [
     //   {
     //     name: 'YANGILAR',
@@ -102,20 +96,18 @@ export default [
   {
     name: 'Сотрудники',
     url: ROUTES.EMPLOYEES_LIST_URL,
-    icon: Chess,
+    icon: People,
   },
   {
     name: 'Должности',
     url: ROUTES.ROLE_LIST_URL,
-    icon: Welcome,
+    icon: People,
   },
-
   {
     name: 'Клиенты',
     url: ROUTES.CLIENT_LIST_URL,
     icon: People,
   },
-
   // {
   //   name: 'Договоры',
   //   url: '/',
@@ -150,16 +142,13 @@ export default [
     children: [
       {
         name: 'Вид органов',
-        url: '/',
+        url: ROUTES.GROUP_LIST_URL,
+        icon: People,
       },
       {
         name: 'Регион',
-        url:'/',
-      },
-
-      {
-        name: 'Роли',
-        url: ROUTES.GROUP_LIST_URL,
+        url: '/',
+        icon: People,
       }
     ]
   }

@@ -1,5 +1,12 @@
 export default {
-  transition: 'all 300ms',
+  palette: {
+    primary: '#2f80ed',
+    secondary: '#eaf2fd',
+    orange: '#f96526'
+  },
+  transition: {
+    primary: 'all .2s ease-in-out'
+  },
   color: {
     disabled: '#8F9BB3',
     secondary: {
@@ -51,10 +58,23 @@ export default {
     labelColor: '#8992A3',
     border: '1px solid #E4E9F2',
     borderColor: '#E4E9F2',
-    background: '#FAFAFB'
+    background: '#fff'
 
   },
   border: '1px solid #E4E9F2',
   borderColor: '#E4E9F2',
-  borderRadius: '4px',
+  borderRadius: {
+    primary: '6px',
+    button: '6px'
+  },
+  boxShadow: {
+    primary: '0 2px 15px rgba(211, 216, 224, 0.5)'
+  },
+  text: {
+    primary: '#2c3a50',
+    secondary: '#7d8893'
+  },
+  background: {
+    linkHover: '#eaf2fd'
+  }
 }

@@ -2,51 +2,87 @@ import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
+import { find } from 'ramda'
 import MenuItem from './MenuItem'
-import MenuItemParent from './MenuItemParent'
 
-const MenuItemChildren = styled.div`
-  transition: 0.3s;
+const SubMenus = styled('div')`
+  max-height: ${({ open }) => open ? '50vh' : '0'};
   overflow: hidden;
-  margin-top: 20px;
-  border-top: 1px solid #E4E9F2;
-  min-height: 520px;
-  &.menuItemChildrenHidden{
-    height: 0px;
-    min-height: 0px;
-    border-top: none;
-    margin-top: 0px;
+  transition: ${({ theme }) => theme.transition.primary};
+  margin-bottom: 20px;
+  & > a:last-child{
+    margin-bottom: 0;
   }
 `
 
 const Menu = props => {
-  const { pathname } = useLocation()
   const { list } = props
-  const [childrenActive, setChildrenActive] = useState('menuItemChildrenHidden')
-  const toggleMenu = () => {
-    if (childrenActive === 'menuItemChildrenHidden') {
-      setChildrenActive('')
-    } else {
-      setChildrenActive('menuItemChildrenHidden')
-    }
-  }
-  return list.map(({ children, ...item }, index) => {
+
+  // States
+  const [openSubmenus, setOpenSubmenus] = useState('')
+
+  // Location
+  const { pathname } = useLocation()
+
+  // Render
+  return list.map((item, index) => {
+    const {
+      children,
+      url,
+      ...rest
+    } = item
+
+    // Const
+    const isActive = pathname === url
+    const isSubActive = children && find(({ url }) => url === pathname)(children)
+    const isOpen = (`${openSubmenus}` === `${index}`) || isActive || isSubActive
+
+    // Handlers
+    const handleOpenSubMenus = () => !isActive && setOpenSubmenus(`${index}`)
+
+    // MenuItemWithChildren
+    const menuItemWithChildren =
+      <>
+        <MenuItem
+          pathname={pathname}
+          withChildren={true}
+          url={url}
+          onMouseEnter={handleOpenSubMenus}
+          // isActive={isSubActive}
+          {...rest}
+        />
+        <SubMenus
+          open={isOpen}
+          onMouseEnter={handleOpenSubMenus}
+        >
+          {children && children.map(({ ...rest }) => (
+            <MenuItem
+              pathname={pathname}
+              isSub={true}
+              url={url}
+              {...rest}
+            />
+          ))}
+        </SubMenus>
+      </>
+
+    // MenuItem
+    const menuItem =
+      <MenuItem
+        pathname={pathname}
+        key={index}
+        url={url}
+        {...rest}
+      />
+
+    // Render
     return (
-      <Fragment key={index}>
+      <Fragment
+        key={index}
+      >
         {children
-          ? <MenuItemParent
-            {...item}
-            key={index}
-            pathname={pathname}
-            onClick={() => toggleMenu()}
-          >
-            <MenuItemChildren className={childrenActive}>
-              {children && children.map(({ ...item }, index) => (
-                <MenuItem {...item} key={index} pathname={pathname} />
-              ))}
-            </MenuItemChildren>
-          </MenuItemParent>
-          : <MenuItem {...item} key={index} pathname={pathname} />
+          ? menuItemWithChildren
+          : menuItem
         }
       </Fragment>
     )

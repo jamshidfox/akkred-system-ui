@@ -1,31 +1,42 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import SideMenu from '../SideMenu'
-import { DisplayFlex } from '../StyledElems'
 import Toast from '~/components/Toast'
 import ConfirmDialog from '~/components/ConfirmDialog'
 
-const Container = styled.div`
-  padding: 24px;
+const Container = styled('div')`
+  display: flex;
+  flex-flow: row nowrap;
+  max-width: 100%;
+  padding: 20px;
 `
-const Content = styled.div`
-  width: calc(100% - 298px);
-  padding-left: 24px;
+const Content = styled('div')`
+  flex-grow: 1;
+  background: #fff;
+  margin-left: 20px;
+  box-shadow: ${({ theme }) => theme.boxShadow.primary};
+  border-radius: ${({ theme }) => theme.borderRadius.primary};
+  transition: ${({ theme }) => theme.transition.primary};
 `
 
-const Layout = props => {
+const Layout = ({ children }) => {
   return (
-    <Container>
-      <Toast />
-      <ConfirmDialog />
-      <DisplayFlex>
+    <>
+      <Container>
         <SideMenu />
         <Content>
-          {props.children}
+          {children}
         </Content>
-      </DisplayFlex>
-    </Container>
+      </Container>
+      <Toast />
+      <ConfirmDialog />
+    </>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.any
 }
 
 export default Layout

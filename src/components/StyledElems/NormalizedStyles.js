@@ -37,9 +37,9 @@ export default createGlobalStyle`
   body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    color: #222B45;
+    color: #2c3a50;
     letter-spacing: 0.15px;
-    background: #FAFAFB;
+    background: #fff;
   }
 
   /**
@@ -58,6 +58,9 @@ export default createGlobalStyle`
   h1 {
     font-size: 2em;
     margin: 0.67em 0;
+  }
+  h1, h2, h3, h4, h5, h6{
+    margin: 0;
   }
   
   /* Grouping content
@@ -93,6 +96,7 @@ export default createGlobalStyle`
   
   a {
     background-color: transparent;
+    text-decoration: none;
   }
   
   /**
@@ -103,7 +107,6 @@ export default createGlobalStyle`
   abbr[title] {
     border-bottom: none; /* 1 */
     text-decoration: underline; /* 2 */
-    text-decoration: underline dotted; /* 2 */
   }
   
   /**
@@ -184,7 +187,12 @@ export default createGlobalStyle`
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
-}
+},
+button{
+  border: none;
+  background: transparent;
+  outline: none;
+},
 
   /**
    * Show the overflow in IE.
