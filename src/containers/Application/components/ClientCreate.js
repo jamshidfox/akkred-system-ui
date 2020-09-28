@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import { PageTitle, MediumButton } from '../../../components/UI'
-
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
   Form,
   Field,
   InputField,
   UniversalStaticSelectField,
+  UniversalSearchField,
   DateField,
   NoopFields
 } from '../../../components/FormField'
 import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../constants/backend'
 import { Box } from '../../../components/StyledElems'
+import * as API from '../../../constants/api'
+import { BranchCreateModal, BranchList } from './Branch'
 
 export const fields = [
   'address',
@@ -60,7 +62,13 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ReservationCreate = props => {
-  const { onSubmit, initialValues } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList } = props
+  const [serviceModalItem, setServiceModalItem] = useState(false)
+  console.warn(onCreateApplication, 'onCreateApplication')
+  const editModalOpen = (data) => {
+    setServiceModalItem(data)
+    serviceModal.onOpen()
+  }
 
   return (
     <BoxUI>
@@ -69,7 +77,7 @@ const ReservationCreate = props => {
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
         initialValues={initialValues}
-        onSubmit={onSubmit}
+        onSubmit={onCreateApplication}
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
@@ -77,6 +85,14 @@ const ReservationCreate = props => {
               <Label>Основная информация</Label>
 
               <Row gutter={24}>
+                <Col span={6}>
+                  <Field
+                    name="client"
+                    label="client"
+                    component={UniversalSearchField}
+                    api={API.CLIENT_LIST}
+                  />
+                </Col>
 
                 <Col span={12}>
                   <Field
@@ -276,6 +292,8 @@ const ReservationCreate = props => {
                 </Col>
 
               </Row>
+              <BranchList branches={serviceList} serviceModal={serviceModal} />
+              <BranchCreateModal {...serviceModal} />
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Сохранить</MediumButton>
