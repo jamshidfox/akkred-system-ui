@@ -2,7 +2,7 @@ import * as STATES from 'constants/stateNames'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
-import { prop, propOr } from 'ramda'
+import { isNil, prop, propOr } from 'ramda'
 import Menu from '../UI/Menu'
 import MenuIcon from '../../icons/Menu'
 import Notify from '../../icons/Notify'
@@ -17,9 +17,9 @@ const Box = styled('div')`
   width: ${({ open }) => open ? '296px' : '60px'};
   padding: 15px 8px;
   background: #ffffff;
+  overflow: hidden;
   border-radius: ${({ theme }) => theme.borderRadius.primary};
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
-  overflow: hidden;
   transition: ${({ theme }) => theme.transition.primary};
 `
 const TopSide = styled('div')``
@@ -84,8 +84,13 @@ const Title = styled('div')`
   align-items: flex-start;
   letter-spacing: 0.5px;
   margin-right: 5px;
-  word-break: break-word;
   user-select: none;
+  & > *{
+    width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   h2{
     font-size: ${({ withSubtitle }) => withSubtitle ? '14px' : '18px'};
     line-height: ${({ withSubtitle }) => withSubtitle ? '16px' : '20px'};
@@ -133,8 +138,12 @@ const LogOutBtn = styled('button')`
 `
 
 const SideMenu = () => {
+  // Storage
+  const isOpenMenuStorage = storageData('isOpenMenu').getValue()
+  const isOpenMenuInitial = isOpenMenuStorage === null || isOpenMenuStorage === true
+
   // States
-  const [isOpenMenu, setIsOpenMenu] = useState(true)
+  const [isOpenMenu, setIsOpenMenu] = useState(isOpenMenuInitial)
 
   // Data
   const userInfo = useSelector(prop(STATES.USER_INFO))
@@ -145,7 +154,12 @@ const SideMenu = () => {
   const email = propOr('Email не указан', 'email', userInfoData)
 
   // Handlers
-  const handleToggleMenu = () => setIsOpenMenu(!isOpenMenu)
+  const handleToggleMenu = () => {
+    const value = !isOpenMenu
+
+    setIsOpenMenu(value)
+    storageData('isOpenMenu').setValue(value)
+  }
 
   // Render
   return (
@@ -174,7 +188,10 @@ const SideMenu = () => {
             />
           </NotifyButton>
         </MenuWrapper>
-        <Menu list={constants} />
+        <Menu
+          list={constants}
+          isOpenMenu={isOpenMenu}
+        />
       </TopSide>
       <LogOut>
         <LogOutBtn>

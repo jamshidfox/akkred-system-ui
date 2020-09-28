@@ -12,10 +12,12 @@ const Item = styled(Link)`
   position: relative;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-start;
+  justify-content: ${({ smart }) => smart ? 'center' : 'flex-start'};
   align-items: center;
-  padding: ${({ icon }) => !icon ? '10px 14px' : '10px 14px 10px 52px'};
-  margin: ${({ isSub, withChildren }) => `20px 0 ${withChildren ? '0' : '20px'} ${isSub ? '17px' : '0'}`};
+  padding: ${({ icon, smart }) => smart ? 0 : !icon ? '10px 14px' : '10px 14px 10px 52px'};
+  margin: ${({ isSub, withChildren, smart }) => smart
+    ? '20px 0'
+    : `20px 0 ${withChildren ? '0' : '20px'} ${isSub ? '17px' : '0'}`};
   user-select: none;
   cursor: pointer;
   background: ${({ theme, isActive }) => isActive && theme.palette.secondary};
@@ -23,9 +25,9 @@ const Item = styled(Link)`
   min-height: 40px;
   transition: ${({ theme }) => theme.transition.primary};
   & svg{
-    position: absolute;
+    position: ${({ smart }) => !smart && 'absolute'};
     top: 50%;
-    transform: translateY(-50%);
+    transform: ${({ smart }) => !smart && 'translateY(-50%)'};
     width: 22px;
     height: 22px;
     &:first-child{
@@ -35,6 +37,7 @@ const Item = styled(Link)`
       }
     }
     &:last-child{
+      display: ${({ smart }) => smart && 'none'};
       right: 9px;
       stroke-width: 2px;
       stroke: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
@@ -42,7 +45,11 @@ const Item = styled(Link)`
     }
   }
   & span{
+    display: ${({ smart }) => smart ? 'none' : 'block'};
     color: ${({ theme, isActive }) => isActive && theme.palette.primary};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: ${({ theme }) => theme.transition.primary};
   }
   &:hover {
@@ -76,6 +83,7 @@ const MenuItem = props => {
     withChildren,
     isSub,
     isActive,
+    smart,
     ...rest
   } = props
 
@@ -90,6 +98,7 @@ const MenuItem = props => {
       isSub={isSub}
       withChildren={withChildren}
       icon={icon}
+      smart={smart}
       {...rest}
     >
       {icon && <Icon />}

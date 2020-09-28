@@ -16,7 +16,10 @@ const SubMenus = styled('div')`
 `
 
 const Menu = props => {
-  const { list } = props
+  const {
+    list,
+    isOpenMenu
+  } = props
 
   // States
   const [openSubmenus, setOpenSubmenus] = useState('')
@@ -48,7 +51,7 @@ const Menu = props => {
           withChildren={true}
           url={url}
           onMouseEnter={handleOpenSubMenus}
-          // isActive={isSubActive}
+          smart={!isOpenMenu}
           {...rest}
         />
         <SubMenus
@@ -58,6 +61,7 @@ const Menu = props => {
           {children && children.map(({ ...rest }) => (
             <MenuItem
               pathname={pathname}
+              smart={!isOpenMenu}
               isSub={true}
               url={url}
               {...rest}
@@ -70,6 +74,7 @@ const Menu = props => {
     const menuItem =
       <MenuItem
         pathname={pathname}
+        smart={!isOpenMenu}
         key={index}
         url={url}
         {...rest}
