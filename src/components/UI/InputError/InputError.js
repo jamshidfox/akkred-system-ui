@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Error = styled.div`
   background-color: #ffe2e9;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.borderRadius.primary};
   color: ${props => props.theme.color.danger.default};
   font-size: 13px;
   margin-top: 8px;

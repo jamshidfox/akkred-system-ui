@@ -4,7 +4,7 @@ export const SecondaryBaseButton = styled.button.attrs(props => ({
   type: props.type || 'button',
 }))`
 cursor: pointer;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.borderRadius.primary};
   text-transform: uppercase;
   font-weight: bold;
   color: ${props => props.theme.color.primary.default};

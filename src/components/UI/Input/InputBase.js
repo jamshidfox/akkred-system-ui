@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Input = styled.input`
   background: ${props => props.theme.input.background};
   border: ${props => props.theme.input.border};
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.borderRadius.primary};
   color: inherit;
   font-size: 14px;
   font-weight: 400;

@@ -14,7 +14,7 @@ const Row = styled(RowUI)`
     border-bottom: none;
   }
   :hover {
-    background: ${props => props.header ? 'unset' : '#FAFAFB'}
+    background: ${props => props.header ? 'unset' : '#fff'}
   }
 `
 const TableRow = props => {

@@ -6,7 +6,7 @@ export const BaseButton = styled.button.attrs(props => ({
 }))`
   cursor: pointer;
   border: none;
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.borderRadius.primary};
   background: ${({ status = 'primary', theme }) => theme.color[status].default};
   text-transform: uppercase;
   font-weight: bold;

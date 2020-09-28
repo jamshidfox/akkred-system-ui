@@ -79,7 +79,7 @@ export default (theme, params) => ({
     color: 'inherit',
     cursor: 'pointer',
     padding: '12px',
-    transition: theme.transition,
+    transition: theme.transition.primary,
     '&:active': {
       background: '#F5F6FD'
     }
@@ -123,7 +123,7 @@ export default (theme, params) => ({
       border: '1px solid transparent',
       borderColor: theme.color.basic.default,
       borderRadius: theme.borderRadius,
-      transition: theme.transition,
+      transition: theme.transition.primary,
       margin: '4px',
       '&:hover': {
         borderColor: theme.input.borderColor
@@ -147,7 +147,7 @@ export default (theme, params) => ({
     paddingLeft: '0',
     paddingRight: '0',
     marginRight: '12px',
-    transition: theme.transition,
+    transition: theme.transition.primary,
     height: '20px',
     width: '20px',
     '&:hover': {

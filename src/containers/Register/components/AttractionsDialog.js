@@ -14,7 +14,7 @@ const Selected = styled.button`
   width: 100%;
   text-align: left;
   border: ${props => props.theme.border};
-  border-radius: ${props => props.theme.borderRadius};
+  border-radius: ${props => props.theme.borderRadius.primary};
   color: ${props => props.theme.input.placeholderColor};
   background: ${props => props.theme.input.background};
   padding: 14px 16px;
