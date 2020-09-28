@@ -62,9 +62,8 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ReservationCreate = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch } = props
   const [serviceModalItem, setServiceModalItem] = useState(false)
-  console.warn(onCreateApplication, 'onCreateApplication')
   const editModalOpen = (data) => {
     setServiceModalItem(data)
     serviceModal.onOpen()
@@ -112,136 +111,7 @@ const ReservationCreate = props => {
                 </Col>
               </Row>
 
-              <Row gutter={24}>
-
-                <Col span={6}>
-                  <Field
-                    name="title"
-                    label="Полное название юридического лица"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field name="titleObject" label="Полное название объекта аккредитации" component={InputField} />
-                </Col>
-                <Col span={6}>
-                  <Field
-                    name="documentDate"
-                    label="Докумен.дата"
-                    component={DateField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field
-                    name="address"
-                    label="Юридический адрес"
-                    component={InputField}
-                  />
-                </Col>
-              </Row>
-              <Row gutter={24}>
-                <Col span={6}>
-                  <Field
-                    name="fax"
-                    label="fax"
-                    component={InputField}
-                  />
-                </Col>
-
-                <Col span={6}>
-                  <Field
-                    name="site"
-                    label="Веб-сайт организации"
-                    component={InputField}
-                  />
-                </Col>
-
-                <Col span={6}>
-                  <Field
-                    name="legalName"
-                    label="legal_name"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field name="email" label="Почта" component={InputField} />
-                </Col>
-              </Row>
-              <Row gutter={24}>
-                <Col span={6}>
-                  <Field
-                    name="paymentAccount"
-                    label="Банковские реквизиты "
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field
-                    name="mfo"
-                    label="MФО"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field
-                    name="inn"
-                    label="ИНН"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field
-                    name="oked"
-                    label="oked"
-                    component={InputField}
-                  />
-                </Col>
-              </Row>
-
-              <Row gutter={24}>
-                <Col span={6}>
-                  <Field
-                    name="ndsRegId"
-                    label="КОД ПЛАТЕЛЬЩИКА НДС "
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field
-                    name="swift"
-                    label="SWIFT"
-                    component={InputField}
-                  />
-                </Col>
-
-                <Col span={6}>
-                  <Field
-                    name="fullNameOrgan"
-                    label="Ф.И.О. руководителя лаборатории "
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={6}>
-                  <Field
-                    name="phoneNumber"
-                    label="Номер телефона"
-                    component={InputField}
-                  />
-                </Col>
-              </Row>
-
               <Label>Информация о документа</Label>
-
-              <Row gutter={24}>
-                <Col span={24}>
-                  <Field
-                    name="fullName"
-                    label="Ф.И.О. руководителя юридического лица.  "
-                    component={InputField}
-                  />
-                </Col>
-
-              </Row>
 
               <Row gutter={24}>
                 <Col span={24}>
@@ -292,8 +162,8 @@ const ReservationCreate = props => {
                 </Col>
 
               </Row>
-              <BranchList branches={serviceList} serviceModal={serviceModal} />
-              <BranchCreateModal {...serviceModal} />
+              <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
+              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Сохранить</MediumButton>

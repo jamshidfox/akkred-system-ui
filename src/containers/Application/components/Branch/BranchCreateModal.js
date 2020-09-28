@@ -14,14 +14,14 @@ const BrancCreateModal = props => {
     onClose,
     open,
     initialValues,
-    onUpdateService,
+    onUpdateBranch,
     onSubmit
   } = props
 
   return (
     <Modal onClose={onClose} open={open} width={'400px'}>
       <Form
-        onSubmit={initialValues ? onUpdateService : onSubmit}
+        onSubmit={initialValues ? onUpdateBranch : onSubmit}
         initialValues={initialValues}
         render={({ handleSubmit }) => {
           return (
@@ -35,14 +35,14 @@ const BrancCreateModal = props => {
               </FieldWrapper>
               <FieldWrapper>
                 <Field
-                  name="phone_number"
+                  name="phoneNumber"
                   label="phoneNumber"
                   component={InputField}
                 />
               </FieldWrapper>
               <FieldWrapper>
                 <Field
-                  name="full_name"
+                  name="fullName"
                   label="fullName"
                   component={InputField}
                 />

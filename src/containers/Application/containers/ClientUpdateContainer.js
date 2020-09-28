@@ -30,10 +30,12 @@ import {
   clientUpdateAction
 } from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
+import { mapBranches } from './utils'
 
-const getClientItemParams = () => ({
+const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
-  stateName: STATE.APPLICATION_ITEM
+  stateName: STATE.APPLICATION_ITEM,
+  onComplete:onComplete
 })
 
 const serializer = val => {
@@ -45,29 +47,13 @@ const EMPTY_ARR = []
 
 const getInitialValues = data => {
   return {
-    client: path(['client', 'id'], data),
-    address: prop('address', data),
-    documentDate: prop('documentDate', data),
-    email: prop('email', data),
-    fax: prop('fax', data),
-    fullName: prop('fullName', data),
-    fullNameOrgan: prop('fullNameOrgan', data),
+    // client: path(['client', 'id'], data),
+    client: prop('client', data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
-    inn: prop('inn', data),
     internalAudit: prop('internalAudit', data),
-    legalName: prop('legalName', data),
     managementAnalysis: prop('managementAnalysis', data),
     managementSystem: prop('managementSystem', data),
-    mfo: prop('mfo', data),
-    ndsRegId: prop('ndsRegId', data),
-    oked: prop('oked', data),
-    paymentAccount: prop('paymentAccount', data),
-    phoneNumber: prop('phoneNumber', data),
     proficiencyTestingProvider: prop('proficiencyTestingProvider', data),
-    site: prop('site', data),
-    swift: prop('swift', data),
-    title: prop('title', data),
-    titleObject: prop('titleObject', data),
     typeApplication: prop('typeApplication', data),
     typeStandard: prop('typeStandard', data)
   }
@@ -83,7 +69,12 @@ const ClientUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
-  const { data } = useFetchItem(getClientItemParams())
+
+  const onComplete = ({ value }) => {
+    const branch = prop('branchs', value)
+    setServiceList([...branch])
+  }
+  const { data } = useFetchItem(getClientItemParams(onComplete))
   const onAddService = service => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()
@@ -91,10 +82,19 @@ const ClientUpdateContainer = props => {
   const params = useParams()
   const initialValues = getInitialValues(data)
 
+  const onUpdateBranch = (branch) => {
+    serviceList.forEach((element, index) => {
+      if (element.id === branch.id) {
+        serviceList.splice(index, 1, branch)
+      }
+    })
+    serviceModal.onClose()
+  }
   const onCreateApplication = values => {
     const client = path(['client', 'id'], values)
+    const serviceListMap = map(mapBranches, serviceList)
     const data = toSnakeCase({
-      branchs: serviceList,
+      branchs: serviceListMap,
       ...values,
       client:client
     })
@@ -110,6 +110,7 @@ const ClientUpdateContainer = props => {
       serviceList={serviceList}
       serviceModal={{ ...serviceModal, onSubmit: onAddService }}
       onCreateApplication={onCreateApplication}
+      onUpdateBranch={onUpdateBranch}
     />
   )
 }

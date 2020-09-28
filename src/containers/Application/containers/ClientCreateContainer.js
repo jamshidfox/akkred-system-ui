@@ -34,7 +34,14 @@ const ClientCreateContainer = props => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()
   }
-  const create = useCreate(getRoomCreateParams())
+  const onUpdateBranch = (branch) => {
+    serviceList.forEach((element, index) => {
+      if (element.id === branch.id) {
+        serviceList.splice(index, 1, branch)
+      }
+    })
+    serviceModal.onClose()
+  }
   const onCreateApplication = (values) => {
     const data = toSnakeCase({
       serviceList,
@@ -50,6 +57,7 @@ const ClientCreateContainer = props => {
       serviceList={serviceList}
       onCreateApplication={onCreateApplication}
       serviceModal={{ ...serviceModal, onSubmit: onAddService }}
+      onUpdateBranch={onUpdateBranch}
     />
   )
 }
