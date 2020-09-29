@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Row as RowUI, Col } from '../../../components/Grid'
-import { Tabs, Tab } from '../../../components/Tabs'
+import { Tabs, Tab } from '../../../components/TabsDetail'
 import {
   Form,
   Field,
