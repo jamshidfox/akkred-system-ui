@@ -35,7 +35,7 @@ const BoxUI = styled(Box)`
   padding: 25px;
 `
 
-const ClientList = props => {
+const ApplicationList = props => {
   const { list, filterActions, onDelete } = props
 
   const linkAction = '/application/create'
@@ -89,10 +89,10 @@ const ClientList = props => {
   )
 }
 
-ClientList.propTypes = {
+ApplicationList.propTypes = {
   list: PropTypes.object,
   filterActions: PropTypes.object,
   onDelete: PropTypes.func
 }
 
-export default ClientList
+export default ApplicationList

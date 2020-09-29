@@ -16,7 +16,6 @@ const BranchList = props => {
   const emptyText = 'Пожалуйста, добавьте услугу для дальнейших дейсвий в системе'
   const emptyService = isEmpty(branches)
   const onDeleteService = (evalue) => {
-    console.warn(evalue)
   }
   return (
     <>

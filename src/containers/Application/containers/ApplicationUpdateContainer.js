@@ -23,11 +23,11 @@ import {
   useModal
 } from '../../../hooks'
 import { getSerializedData, getIdForInitValues } from '../../../utils/get'
-import RoomCreate, { fields } from '../components/ClientCreate'
+import ApplicationCreate, { fields } from '../components/ApplicationCreate'
 import {
-  clientFetchList,
+  applicationFetchList,
   clientFetchItem,
-  clientUpdateAction
+  applicationUpdateAction
 } from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
 import { mapBranches } from './utils'
@@ -61,11 +61,11 @@ const getInitialValues = data => {
 
 const getClientUpdateParams = () => ({
   stateName: STATE.APPLICATION_UPDATE,
-  action: clientUpdateAction,
+  action: applicationUpdateAction,
   serializer: serializer,
   redirectUrl: ROUTES.APPLICATION_LIST_URL
 })
-const ClientUpdateContainer = props => {
+const ApplicationUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
@@ -98,13 +98,13 @@ const ClientUpdateContainer = props => {
       ...values,
       client:client
     })
-    dispatch(clientUpdateAction(params.id, data))
+    dispatch(applicationUpdateAction(params.id, data))
       .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
       .catch(mapResponseToFormError)
   }
 
   return (
-    <RoomCreate
+    <ApplicationCreate
       onSubmit={() => null}
       initialValues={initialValues}
       serviceList={serviceList}
@@ -115,4 +115,4 @@ const ClientUpdateContainer = props => {
   )
 }
 
-export default ClientUpdateContainer
+export default ApplicationUpdateContainer

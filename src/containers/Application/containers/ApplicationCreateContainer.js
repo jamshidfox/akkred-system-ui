@@ -7,10 +7,11 @@ import { useCreate, useModal } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
 
 import { ClientCreate, fields } from '../components'
-import { clientCreateAction } from '../actions'
+import { applicationCreateAction } from '../actions'
 import * as ROUTES from '../../../constants/routes'
 import { mapResponseToFormError } from '../../../utils/form'
-import RoomCreate from '../components/ClientCreate'
+import ApplicationCreate from '../components/ApplicationCreate'
+import ApplciationTabs from '../components/ApplciationTabs'
 
 export const serializer = (val) => {
   return {
@@ -21,13 +22,14 @@ const EMPTY_ARR = []
 
 export const getRoomCreateParams = () => ({
   stateName: STATE.APPLICATION_CREATE,
-  action: clientCreateAction,
+  action: applicationCreateAction,
   serializer: serializer,
   redirectUrl: ROUTES.APPLICATION_LIST_URL
 })
 
-const ClientCreateContainer = props => {
+const ApplicationCreateContainer = props => {
   const dispatch = useDispatch()
+  const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
   const serviceModal = useModal({ key: 'serviceModal' })
   const onAddService = (service) => {
@@ -47,22 +49,26 @@ const ClientCreateContainer = props => {
       serviceList,
       ...values,
     })
-    dispatch(clientCreateAction(data))
+    dispatch(applicationCreateAction(data))
       .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
       .catch(mapResponseToFormError)
   }
+  const onTabChange = (val) => {
+    setTab(val)
+  }
   return (
-    <ClientCreate
+    <ApplciationTabs
       onSubmit={() => null}
       serviceList={serviceList}
       onCreateApplication={onCreateApplication}
       serviceModal={{ ...serviceModal, onSubmit: onAddService }}
       onUpdateBranch={onUpdateBranch}
+      tabData={{ tab, onTabChange }}
     />
   )
 }
-ClientCreateContainer.propTypes = {
+ApplicationCreateContainer.propTypes = {
   history: PropTypes
 }
 
-export default ClientCreateContainer
+export default ApplicationCreateContainer

@@ -1,26 +1,26 @@
 import * as ROUTES from '../../constants/routes'
 import Layouts from '../../components/Layouts/Layout'
 
-import ClientCreateContainer from './containers/ClientCreateContainer'
-import ClientListContainer from './containers/ClientListContainer'
-import ClientUpdateContainer from './containers/ClientUpdateContainer'
+import ApplicationCreateContainer from './containers/ApplicationCreateContainer'
+import ApplicationListContainer from './containers/ApplicationListContainer'
+import ApplicationUpdateContainer from './containers/ApplicationUpdateContainer'
 
 export default () => [
   {
     path: ROUTES.APPLICATION_UPDATE_PATH,
     layout: Layouts,
-    component: ClientUpdateContainer,
+    component: ApplicationUpdateContainer,
   },
   {
     exact: true,
     path: ROUTES.APPLICATION_CREATE_URL,
     layout: Layouts,
-    component: ClientCreateContainer
+    component: ApplicationCreateContainer
   },
   {
     exact: true,
     path: ROUTES.APPLICATION_LIST_URL,
     layout: Layouts,
-    component: ClientListContainer
+    component: ApplicationListContainer
   }
 ]

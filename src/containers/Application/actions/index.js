@@ -6,7 +6,7 @@ import axios, {
   getPayloadFromSuccess
 } from '../../../utils/axios'
 
-export const clientCreateAction = data => {
+export const applicationCreateAction = data => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .post(API.APPLICATION_CREATE, data)
@@ -34,7 +34,7 @@ export const clientExistingAction = ({ id, ...data }) => {
   }
 }
 
-export const clientUpdateAction = (id, data) => {
+export const applicationUpdateAction = (id, data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.APPLICATION_UPDATE, id), data)
@@ -47,7 +47,7 @@ export const clientUpdateAction = (id, data) => {
     })
   }
 }
-export const clientDeleteAction = (id) => {
+export const applicationDeleteAction = (id) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .delete(sprintf(API.APPLICATION_DELETE, id))
@@ -61,7 +61,7 @@ export const clientDeleteAction = (id) => {
   }
 }
 
-export const clientFetchList = params => {
+export const applicationFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.APPLICATION_LIST, { params })

@@ -61,7 +61,7 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ReservationCreate = props => {
+const ApplicationCreate = props => {
   const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch } = props
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
@@ -176,4 +176,4 @@ const ReservationCreate = props => {
   )
 }
 
-export default ReservationCreate
+export default ApplicationCreate
