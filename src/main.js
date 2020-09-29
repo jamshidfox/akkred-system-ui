@@ -16,14 +16,13 @@ setObservableConfig({
 const initialState = window.__INITIAL_STATE__
 const store = createStore(initialState)
 
-
 const MOUNT_NODE = document.getElementById('app')
 
 const render = () => {
   const App = require('./App').default
   const routes = require('./containers').default
   ReactDOM.render(
-    <App store={store} routes={routes(store)}/>,
+    <App store={store} routes={routes(store)} />,
     MOUNT_NODE
   )
 }

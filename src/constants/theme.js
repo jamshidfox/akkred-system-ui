@@ -5,8 +5,7 @@ export default {
     orange: '#f96526'
   },
   transition: {
-    primary: 'all .2s ease-in-out',
-    primaryWithDelay: '.2s all .2s ease-in-out'
+    primary: 'all .2s ease-in-out'
   },
   color: {
     disabled: '#8F9BB3',

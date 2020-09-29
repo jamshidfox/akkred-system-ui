@@ -2,13 +2,13 @@ import * as STATES from 'constants/stateNames'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
-import { isNil, prop, propOr } from 'ramda'
+import { prop, propOr } from 'ramda'
 import Menu from '../UI/Menu'
 import MenuIcon from '../../icons/Menu'
 import Notify from '../../icons/Notify'
 import Exit from '../../icons/Exit'
-import constants from './constants'
 import { storageData } from '../../utils/storage'
+import constants from './constants'
 
 const Box = styled('div')`
   display: flex;
@@ -47,8 +47,8 @@ const IconButton = styled('div')`
   }
 `
 const MenuButton = styled(IconButton)`
-  padding: 7px 16px;
-  margin-right: 3px;
+  padding: ${({ smart }) => smart ? '7px 4px' : '7px 16px'};
+  margin-right: ${({ smart }) => !smart && '3px'};
   & > svg{
     width: 35px;
     height: 35px;
@@ -104,14 +104,13 @@ const Title = styled('div')`
     color: ${({ theme }) => theme.text.secondary};
   }
 `
-const LogOut = styled('div')``
-const LogOutBtn = styled('button')`
+const LogOut = styled('button')`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   padding: 8px 10px;
   margin-top: 20px;
-  min-width: 140px;
   font-size: 14px;
   font-weight: 500;
   line-height: 15px;
@@ -125,15 +124,22 @@ const LogOutBtn = styled('button')`
   outline: none;
   transition: ${({ theme }) => theme.transition.primary};
   user-select: none;
-  &:active{
-    opacity: 0.9;
-    transition: ${({ theme }) => theme.transition.primary};
-  }
   svg{
-    margin-right: 6px;
     width: 16px;
+    min-width: 16px;
     height: 16px;
     stroke: transparent;
+    margin: 0 6px;
+    transition: ${({ theme }) => theme.transition.primary};
+  }
+  span{
+    opacity: ${({ smart }) => smart && '0'};
+    overflow: hidden;
+    transition: ${({ theme }) => theme.transition.primary};
+  }
+  &:active{
+    opacity: 0.7;
+    transition: ${({ theme }) => theme.transition.primary};
   }
 `
 
@@ -171,33 +177,36 @@ const SideMenu = () => {
           <MenuMainSide>
             <MenuButton
               onClick={handleToggleMenu}
+              smart={!isOpenMenu}
             >
               <MenuIcon style={{ verticalAlign: 'text-bottom' }} />
             </MenuButton>
+            {isOpenMenu &&
             <Title
               withSubtitle={!!email}
             >
               <h2>{fullName}</h2>
               {email && <h3>{email}</h3>}
-            </Title>
+            </Title>}
           </MenuMainSide>
+          {isOpenMenu &&
           <NotifyButton>
             <Notify />
             <Circle
               open={true}
             />
-          </NotifyButton>
+          </NotifyButton>}
         </MenuWrapper>
         <Menu
           list={constants}
           isOpenMenu={isOpenMenu}
         />
       </TopSide>
-      <LogOut>
-        <LogOutBtn>
-          <Exit />
-          Выйти
-        </LogOutBtn>
+      <LogOut
+        smart={!isOpenMenu}
+      >
+        <Exit />
+        <span>Выйти</span>
       </LogOut>
     </Box>
   )

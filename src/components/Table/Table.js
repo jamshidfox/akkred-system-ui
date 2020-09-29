@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import EmptyQuery from '../EmptyQuery'
 
 const Wrapper = styled.div`
-  
+  ${({ styles }) => styles};
 `
 const Table = props => {
-  const { isEmpty, loading, emptyText, filterForm } = props
+  const { isEmpty, loading, emptyText, filterForm, styles } = props
   if (isEmpty || loading) {
     return (
       <>
@@ -18,7 +18,9 @@ const Table = props => {
     )
   }
   return (
-    <Wrapper>
+    <Wrapper
+      styles={styles}
+    >
       {filterForm}
       {props.children}
     </Wrapper>

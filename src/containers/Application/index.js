@@ -22,5 +22,17 @@ export default () => [
     path: ROUTES.APPLICATION_LIST_URL,
     layout: Layouts,
     component: ClientListContainer
+  },
+  {
+    exact: true,
+    path: ROUTES.APPLICATION_TABS_URL,
+    layout: Layouts,
+    component: ClientListContainer
   }
+  // {
+  //   exact: true,
+  //   path: ROUTES.APPLICATION_TABS_URL,
+  //   layout: Layouts,
+  //   component: ClientListContainer
+  // }
 ]
