@@ -4,93 +4,126 @@ import Settings from '../../icons/Settings'
 import Document from '../../icons/Document'
 
 export default [
-
   {
     name: 'Заявки',
-    url: ROUTES.APPLICATION_LIST_URL,
     icon: Document,
-    // children: [
-    //   {
-    //     name: 'YANGILAR',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'RAHBARIYAT KO’RIB CHIQISHIDA',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'QABUL QILINGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'SHARTNOMA RASMIYLASHTIRILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'TO’LOV JARAYONIDA',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'EKSPERTIZA',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'AUDIT UCHUN SHARTNOMA RASMIYLASHTIRILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'AUDIT UCHUN TO’LOV JARAYONIDA',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'REJA VA BUYRUQ RASMIYLASHTIRILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'NOMUVOFIQLIKLARNI BARTARAF ETISH UCHUN\n' +
-    //       'MUDDAT BERILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
-    //       'BARTARAF ETISH BUYICHA REJA TAQDIM ETILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
-    //       'BARTARAF ETILGANLIGI TO’G’RISIDA XISOBOT TAQDIM\n' +
-    //       'ETILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF\n' +
-    //       'ETILGANLIGINI O’RGANISH',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'DAVLAT REESTRIGA KIRITILGAN VA GUVOHNOMA\n' +
-    //       'RASMIYLASHTIRILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'POST AKKREDITATSIAION HUJJATLAR\n' +
-    //       'RASMIYLASHTIRILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'QO’SHIMCHA MUDDAT BERILGAN',
-    //     url:'/',
-    //   },
-    //   {
-    //     name: 'RAD ETILGAN',
-    //     url:'/',
-    //   },
-    //
-    // ]
+    children: [
+      {
+        name: 'Список',
+        url: ROUTES.MY_ORDERS_URL,
+        tabs: [
+          {
+            name: 'Мои заявки',
+            url: ROUTES.MY_ORDERS_URL
+          },
+          {
+            name: 'Табуляция',
+            url: ROUTES.APPLICATION_LIST_URL
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Заявки OLD',
+    url: '#',
+    icon: Document,
+    children: [
+      {
+        name: 'Все',
+        url: ROUTES.APPLICATION_LIST_URL,
+        icon: Document,
+        tabs: [
+          {
+            name: 'Мои заявки',
+            url: ROUTES.APPLICATION_TABS_URL
+          },
+          {
+            name: 'Табуляция',
+            url: ROUTES.APPLICATION_LIST_URL
+          }
+        ],
+      },
+      {
+        name: 'YANGILAR',
+        url:'/',
+      },
+      {
+        name: 'RAHBARIYAT KO’RIB CHIQISHIDA',
+        url:'/',
+      },
+      // {
+      //   name: 'QABUL QILINGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'SHARTNOMA RASMIYLASHTIRILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'TO’LOV JARAYONIDA',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'EKSPERTIZA',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'AUDIT UCHUN SHARTNOMA RASMIYLASHTIRILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'AUDIT UCHUN TO’LOV JARAYONIDA',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'REJA VA BUYRUQ RASMIYLASHTIRILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'NOMUVOFIQLIKLARNI BARTARAF ETISH UCHUN\n' +
+      //     'MUDDAT BERILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
+      //     'BARTARAF ETISH BUYICHA REJA TAQDIM ETILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
+      //     'BARTARAF ETILGANLIGI TO’G’RISIDA XISOBOT TAQDIM\n' +
+      //     'ETILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF\n' +
+      //     'ETILGANLIGINI O’RGANISH',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'DAVLAT REESTRIGA KIRITILGAN VA GUVOHNOMA\n' +
+      //     'RASMIYLASHTIRILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'POST AKKREDITATSIAION HUJJATLAR\n' +
+      //     'RASMIYLASHTIRILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'QO’SHIMCHA MUDDAT BERILGAN',
+      //   url:'/',
+      // },
+      // {
+      //   name: 'RAD ETILGAN',
+      //   url:'/',
+      // },
+    ]
   },
 
   {
@@ -137,7 +170,7 @@ export default [
   // },
   {
     name: 'Настройка',
-    url: ROUTES.SETTINGS_CLIENT_INFO_URL,
+    url: '#',
     icon: Settings,
     children: [
       {

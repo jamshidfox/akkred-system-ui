@@ -1,5 +1,6 @@
 import {
   curry,
+  find,
   compose,
   prop,
   defaultTo,
@@ -22,6 +23,7 @@ import {
   isNil
 } from 'ramda'
 import moment from 'moment'
+import constants from '../components/SideMenu/constants'
 import { getSearchParam, parseParams } from './urls'
 import { mapParamsToRequest, mapStrToBoolean, decodeURLParams } from './mapper'
 import toSnakeCase from './toSnakeCase'
@@ -200,4 +202,21 @@ export const getItemFromTree = (arr, target) => {
     }
   }
   return null
+}
+
+export const getTabsFromRoute = () => {
+  const pathname = window.location.pathname
+  const activeRoute = constants && find(({ url }) => url === pathname)(constants)
+  const activeRouteTabs = propOr([], 'tabs', activeRoute)
+
+  const activeChildren = constants && pipe(
+    find(prop('children')),
+    propOr([], 'children'),
+    find(({ tabs = [] }) => (
+      tabs && find(({ url }) => url === pathname)
+    ))
+  )(constants)
+  const activeChildrenTabs = propOr([], 'tabs', activeChildren)
+
+  return !isEmpty(activeRouteTabs) ? activeRouteTabs : !isEmpty(activeChildrenTabs) ? activeChildrenTabs : []
 }
