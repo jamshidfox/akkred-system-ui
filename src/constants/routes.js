@@ -54,6 +54,11 @@ export const CLIENT_INFO_UPDATE_URL = `/${CLIENT_INFO}/%d`
 export const CLIENT_INFO_UPDATE_PATH = `/${CLIENT_INFO}/${ID}/`
 
 // MyOrders
+const ORDERS = 'orders'
+export const ORDERS_PATH = `/${ORDERS}/`
+export const ORDERS_URL = `/${ORDERS}/`
+
+// MyOrders
 const MY_ORDERS = 'my-orders'
 export const MY_ORDERS_PATH = `/${MY_ORDERS}/`
 export const MY_ORDERS_URL = `/${MY_ORDERS}/`

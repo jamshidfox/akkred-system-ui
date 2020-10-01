@@ -52,7 +52,7 @@ const Menu = props => {
       <>
         <MenuItem
           pathname={pathname}
-          isActive={isOpen}
+          // isActive={isOpen}
           withChildren={true}
           url={url}
           smart={!isOpenMenu}
