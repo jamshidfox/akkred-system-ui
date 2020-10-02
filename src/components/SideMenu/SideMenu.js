@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { prop, propOr } from 'ramda'
 import Menu from '../UI/Menu'
 import MenuIcon from '../../icons/Menu'
-import Notify from '../../icons/Notify'
 import Exit from '../../icons/Exit'
 import { storageData } from '../../utils/storage'
 import constants from './constants'
@@ -15,6 +14,7 @@ const Box = styled('div')`
   flex-flow: column nowrap;
   justify-content: space-between;
   width: ${({ open }) => open ? '296px' : '60px'};
+  min-width: ${({ open }) => open ? '296px' : '60px'};
   padding: 15px 8px;
   background: #ffffff;
   overflow: hidden;
@@ -22,18 +22,12 @@ const Box = styled('div')`
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
   transition: ${({ theme }) => theme.transition.primary};
 `
-const TopSide = styled('div')``
 const MenuWrapper = styled('div')`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: stretch;
-  margin-bottom: 38px;
-`
-const MenuMainSide = styled('div')`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: stretch;
+  margin-bottom: 38px;
 `
 const IconButton = styled('div')`
   display: flex;
@@ -53,29 +47,6 @@ const MenuButton = styled(IconButton)`
     width: 35px;
     height: 35px;
   }
-`
-const NotifyButton = styled(IconButton)`
-  position: relative;
-  padding: 5px 7px;
-  margin-left: auto;
-  & > svg{
-    width: 26px;
-    height: 26px;
-    stroke: #2c3a50;
-  }
-`
-const Circle = styled('span')`
-  display: ${({ open }) => open ? 'block' : 'none'};
-  width: 14px;
-  height: 14px;
-  background: ${({ theme }) => theme.palette.orange};
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-17px);
-  right: 5px;
-  border: 2px solid #fff;
-  border-radius: 100%;
 `
 const Title = styled('div')`
   display: flex;
@@ -110,7 +81,7 @@ const LogOut = styled('button')`
   align-items: center;
   overflow: hidden;
   padding: 8px 10px;
-  margin-top: 20px;
+  margin: 25px auto 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 15px;
@@ -118,7 +89,7 @@ const LogOut = styled('button')`
   background: #f1f3f5;
   border: none;
   min-height: 36px;
-  width: 100%;
+  width: ${({ smart }) => smart ? '44px' : '140px'};
   border-radius: ${({ theme }) => theme.borderRadius.button};
   cursor: pointer;
   outline: none;
@@ -128,8 +99,8 @@ const LogOut = styled('button')`
     width: 16px;
     min-width: 16px;
     height: 16px;
-    stroke: transparent;
     margin: 0 6px;
+    stroke-width: 3px;
     transition: ${({ theme }) => theme.transition.primary};
   }
   span{
@@ -172,36 +143,27 @@ const SideMenu = () => {
     <Box
       open={isOpenMenu}
     >
-      <TopSide>
+      <div>
         <MenuWrapper>
-          <MenuMainSide>
-            <MenuButton
-              onClick={handleToggleMenu}
-              smart={!isOpenMenu}
-            >
-              <MenuIcon style={{ verticalAlign: 'text-bottom' }} />
-            </MenuButton>
-            {isOpenMenu &&
-            <Title
-              withSubtitle={!!email}
-            >
-              <h2>{fullName}</h2>
-              {email && <h3>{email}</h3>}
-            </Title>}
-          </MenuMainSide>
+          <MenuButton
+            onClick={handleToggleMenu}
+            smart={!isOpenMenu}
+          >
+            <MenuIcon style={{ verticalAlign: 'text-bottom' }} />
+          </MenuButton>
           {isOpenMenu &&
-          <NotifyButton>
-            <Notify />
-            <Circle
-              open={true}
-            />
-          </NotifyButton>}
+          <Title
+            withSubtitle={!!email}
+          >
+            <h2>{fullName}</h2>
+            {email && <h3>{email}</h3>}
+          </Title>}
         </MenuWrapper>
         <Menu
           list={constants}
           isOpenMenu={isOpenMenu}
         />
-      </TopSide>
+      </div>
       <LogOut
         smart={!isOpenMenu}
       >

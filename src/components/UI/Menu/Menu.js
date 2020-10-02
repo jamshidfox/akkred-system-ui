@@ -6,10 +6,9 @@ import { find } from 'ramda'
 import MenuItem from './MenuItem'
 
 const SubMenus = styled('div')`
-  max-height: ${({ open }) => open ? '50vh' : '0'};
+  max-height: ${({ open }) => open ? '100vh' : '0'};
   overflow: hidden;
   transition: ${({ theme }) => theme.transition.primary};
-  margin-bottom: 20px;
   & > a:last-child{
     margin-bottom: 0;
   }
@@ -36,37 +35,48 @@ const Menu = props => {
     } = item
 
     // Const
+    const withCurrentTab = children && !!find(({ tabs = [] }) => {
+      return tabs && find(({ url }) => url === pathname)(tabs)
+    })(children)
     const isActive = pathname === url
-    const isSubActive = children && find(({ url }) => url === pathname)(children)
-    const isOpen = (`${openSubmenus}` === `${index}`) || isActive || isSubActive
+    const isSubActive = (children && find(({ url }) => url === pathname)(children))
+    const isOpen = (`${openSubmenus}` === `${index}`) || isActive || isSubActive || withCurrentTab
 
     // Handlers
-    const handleOpenSubMenus = () => !isActive && setOpenSubmenus(`${index}`)
+    const handleToggleSubMenus = () => !isOpen
+      ? setOpenSubmenus(`${index}`)
+      : (`${openSubmenus}` === `${index}`) && setOpenSubmenus('')
 
     // MenuItemWithChildren
     const menuItemWithChildren =
       <>
         <MenuItem
           pathname={pathname}
+          // isActive={isOpen}
           withChildren={true}
           url={url}
-          onMouseEnter={handleOpenSubMenus}
           smart={!isOpenMenu}
+          disabled={isSubActive}
+          onClick={handleToggleSubMenus}
           {...rest}
         />
         <SubMenus
           open={isOpen}
-          onMouseEnter={handleOpenSubMenus}
         >
-          {children && children.map(({ ...rest }) => (
-            <MenuItem
-              pathname={pathname}
-              smart={!isOpenMenu}
-              isSub={true}
-              url={url}
-              {...rest}
-            />
-          ))}
+          {children && children.map(({ tabs, ...rest }) => {
+            const isActiveChild = tabs && find(({ url }) => url === pathname)(tabs)
+
+            return (
+              <MenuItem
+                pathname={pathname}
+                smart={!isOpenMenu}
+                isSub={true}
+                isActive={isActiveChild}
+                url={url}
+                {...rest}
+              />
+            )
+          })}
         </SubMenus>
       </>
 

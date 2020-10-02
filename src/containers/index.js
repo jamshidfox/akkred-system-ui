@@ -11,8 +11,10 @@ import employees from './Employees'
 import roles from './Role'
 import groups from './Groups'
 import applications from './Application'
+import orders from './Orders'
 
 const tester = store => [
+  ...orders,
   ...client(),
   ...employees(),
   ...roles(),

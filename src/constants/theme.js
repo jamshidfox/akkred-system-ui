@@ -59,7 +59,6 @@ export default {
     border: '1px solid #E4E9F2',
     borderColor: '#E4E9F2',
     background: '#fff'
-
   },
   border: '1px solid #E4E9F2',
   borderColor: '#E4E9F2',
@@ -75,6 +74,7 @@ export default {
     secondary: '#7d8893'
   },
   background: {
-    linkHover: '#eaf2fd'
+    linkHover: '#eaf2fd',
+    buttonSecondary: '#fbfbfc'
   }
 }

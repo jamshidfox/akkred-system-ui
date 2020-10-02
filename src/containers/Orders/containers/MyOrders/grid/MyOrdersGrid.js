@@ -1,19 +1,17 @@
-import * as ROUTES from 'constants/routes'
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { prop, isEmpty, path, propOr } from 'ramda'
-import { sprintf } from 'sprintf-js'
+import Pagination from '../../../../../components/Pagination/Pagination'
 import styled from 'styled-components'
-import Pagination from 'components/Pagination'
-import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
-import { APPLICATION_UPDATE_URL } from '../../../constants/routes'
-import Edit from '../../../images/edit.svg'
-import Trash from '../../../images/trash-2.svg'
-import { Box } from '../../../components/StyledElems'
-import Tabs from '../../../components/Tabs'
-import { getTabsFromRoute } from '../../../utils/get'
-import CommentListFilterForm from './CommentListFilterForm'
+import { Box } from '../../../../../components/StyledElems'
+import { getTabsFromRoute } from '../../../../../utils/get'
+import Tabs from '../../../../../components/Tabs'
+import { Table, TableActions, TableCol, TableRow } from '../../../../../components/Table'
+import CommentListFilterForm from '../../../../Application/components/CommentListFilterForm'
+import { Link } from 'react-router-dom'
+import { sprintf } from 'sprintf-js'
+import { APPLICATION_UPDATE_URL } from '../../../../../constants/routes'
+import Edit from '../../../../../images/edit.svg'
+import Trash from '../../../../../images/trash-2.svg'
+import { isEmpty, path, prop, propOr } from 'ramda'
 
 const BoxUI = styled(Box)`
   display: flex;
@@ -30,18 +28,31 @@ const Row = styled(TableRow)`
   }
 `
 const style = {
-  color: '#ffffff',
+  color: '#fff',
   textDecoration: 'none',
   cursor: 'pointer'
 }
 
-const ApplicationList = props => {
-  const { list, filterActions, onDelete } = props
+const MyOrdersGrid = props => {
+  const {
+    list,
+    filterActions,
+    onDelete
+  } = props
 
   // Data
   const data = propOr([], 'results', list)
   const count = path(['data', 'count'], list)
   const loading = prop('loading', list)
+
+  // TabsList
+  const tabsList = getTabsFromRoute()
+
+  // Tabs
+  const tabs =
+    <Tabs
+      list={tabsList}
+    />
 
   // Actions
   const linkAction = '/application/create'
@@ -52,15 +63,6 @@ const ApplicationList = props => {
       linkAction={linkAction}
     />
   )
-
-  // TabsList
-  const tabsList = getTabsFromRoute()
-
-  // Tabs
-  const tabs =
-    <Tabs
-      list={tabsList}
-    />
 
   // TableHead
   const tableHead =
@@ -114,10 +116,4 @@ const ApplicationList = props => {
   )
 }
 
-ApplicationList.propTypes = {
-  list: PropTypes.object,
-  filterActions: PropTypes.object,
-  onDelete: PropTypes.func
-}
-
-export default ApplicationList
+export default MyOrdersGrid
