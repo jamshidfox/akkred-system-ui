@@ -36,8 +36,8 @@ const style = {
 const MyOrdersGrid = props => {
   const {
     list,
-    filterActions,
-    onDelete
+    onDelete,
+    filterActions
   } = props
 
   // Data
@@ -56,13 +56,12 @@ const MyOrdersGrid = props => {
 
   // Actions
   const linkAction = '/application/create'
-  const tableActions = (
+  const tableActions =
     <TableActions
       filterForm={<CommentListFilterForm />}
       filterActions={filterActions}
       linkAction={linkAction}
     />
-  )
 
   // TableHead
   const tableHead =

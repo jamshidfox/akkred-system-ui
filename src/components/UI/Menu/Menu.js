@@ -57,6 +57,7 @@ const Menu = props => {
           url={url}
           smart={!isOpenMenu}
           disabled={isSubActive}
+          isOpen={isOpen}
           onClick={handleToggleSubMenus}
           {...rest}
         />

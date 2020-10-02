@@ -13,7 +13,7 @@ const Selected = styled.button`
   display: block;
   width: 100%;
   text-align: left;
-  border: ${props => props.theme.border};
+  border: ${props => props.theme.border.primary};
   border-radius: ${props => props.theme.borderRadius.primary};
   color: ${props => props.theme.input.placeholderColor};
   background: ${props => props.theme.input.background};

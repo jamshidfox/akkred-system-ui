@@ -9,23 +9,24 @@ import {
 } from '../../../components/FormField'
 
 export const fields = ['client', 'clientType']
-const ClientListFilterForm = props => {
+
+const ClientListFilterForm = () => {
   return (
     <Row gutter={20}>
       <Col span={6}>
         <Field
           component={UniversalSearchField}
           api={API.CLIENT_LIST}
-          name="client"
-          label="Клиент"
+          name={'client'}
+          label={'Клиент'}
         />
       </Col>
       <Col span={6}>
         <Field
           component={UniversalStaticSelectField}
           list={CONST.CLIENT_LIST}
-          name="clientType"
-          label="Client Type"
+          name={'clientType'}
+          label={'Тип клиента'}
         />
       </Col>
     </Row>
