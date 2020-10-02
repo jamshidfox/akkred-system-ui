@@ -4,16 +4,18 @@ import styled, { css } from 'styled-components'
 
 const StyledTab = styled('div')`
   cursor: pointer;
-  padding: 10px 13px;
-  font-size: 14px;
+  padding: 18px  5px 10px 5px;
+  font-size: 12px;
   line-height: 16px;
+  margin: -20px;
+  text-align: center;
   border-radius: ${props => props.theme.borderRadius.primary};
-  text-transform: uppercase;
+  //text-transform: uppercase;
   font-weight: bold;
   outline: none;
   transition: background-color 200ms;
   &:not(:last-child) {
-    margin-right: 24px;
+    margin-right: 30px;
   }
   ${props => props.isActive && (
     css`

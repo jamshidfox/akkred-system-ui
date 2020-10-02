@@ -30,6 +30,7 @@ import {
   applicationUpdateAction
 } from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
+import ApplciationTabs from '../components/ApplciationTabs'
 import { mapBranches } from './utils'
 
 const getClientItemParams = (onComplete) => ({
@@ -47,8 +48,8 @@ const EMPTY_ARR = []
 
 const getInitialValues = data => {
   return {
-    // client: path(['client', 'id'], data),
-    client: prop('client', data),
+    clientInfo: prop('client', data),
+    client: path(['client', 'id'], data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     internalAudit: prop('internalAudit', data),
     managementAnalysis: prop('managementAnalysis', data),
@@ -68,6 +69,7 @@ const getClientUpdateParams = () => ({
 const ApplicationUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
+  const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
 
   const onComplete = ({ value }) => {
@@ -102,15 +104,20 @@ const ApplicationUpdateContainer = props => {
       .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
       .catch(mapResponseToFormError)
   }
+  const onTabChange = (val) => {
+    setTab(val)
+  }
 
   return (
-    <ApplicationCreate
+
+    <ApplciationTabs
       onSubmit={() => null}
       initialValues={initialValues}
       serviceList={serviceList}
       serviceModal={{ ...serviceModal, onSubmit: onAddService }}
       onCreateApplication={onCreateApplication}
       onUpdateBranch={onUpdateBranch}
+      tabData={{ tab, onTabChange }}
     />
   )
 }

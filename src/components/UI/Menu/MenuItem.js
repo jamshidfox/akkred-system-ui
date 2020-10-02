@@ -7,6 +7,14 @@ const Text = styled('span')`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.1;
+  width: ${({ smart }) => smart && '0'};
+  opacity: ${({ smart }) => smart && '0'};
+  padding-left: ${({ smart }) => smart && '25px'};
+  color: ${({ theme, isActive }) => isActive && theme.palette.primary};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: ${({ theme }) => theme.transition.primary};
 `
 const Item = styled(Link)`
   position: relative;
@@ -15,23 +23,23 @@ const Item = styled(Link)`
   justify-content: ${({ smart }) => smart ? 'center' : 'flex-start'};
   align-items: center;
   padding: ${({ icon, smart }) => smart ? 0 : !icon ? '10px 14px' : '10px 14px 10px 52px'};
-  margin: ${({ isSub, withChildren, smart }) => smart
-    ? '20px 0'
-    : `20px 0 ${withChildren ? '0' : '20px'} ${isSub ? '17px' : '0'}`};
+  margin: ${({ isSub, withChildren, smart }) => `20px 0 ${withChildren ? '0' : '20px'} ${(isSub && !smart) ? '17px' : '0'}`};
   user-select: none;
   cursor: pointer;
   background: ${({ theme, isActive }) => isActive && theme.palette.secondary};
   border-radius: 8px;
   min-height: 40px;
+  height: 40px;
   transition: ${({ theme }) => theme.transition.primary};
   & svg{
-    position: ${({ smart }) => !smart && 'absolute'};
+    position: absolute;
     top: 50%;
-    transform: ${({ smart }) => !smart && 'translateY(-50%)'};
+    transform: translateY(-50%);
     width: 22px;
     height: 22px;
+    transition: ${({ theme }) => theme.transition.primary};
     &:first-child{
-      left: 18px;
+      left: ${({ smart }) => smart ? '10px' : '18px'};
       & * {
         fill: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
       }
@@ -43,14 +51,6 @@ const Item = styled(Link)`
       stroke: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
       transform: ${({ isActive }) => isActive && 'translateY(-50%) rotate(-180deg)'};
     }
-  }
-  & span{
-    display: ${({ smart }) => smart ? 'none' : 'block'};
-    color: ${({ theme, isActive }) => isActive && theme.palette.primary};
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: ${({ theme }) => theme.transition.primary};
   }
   &:hover {
     background: ${({ theme, isActive }) => !isActive && theme.background.linkHover};
@@ -102,8 +102,13 @@ const MenuItem = props => {
       {...rest}
     >
       {icon && <Icon />}
-      <Text>{name}</Text>
-      {withChildren && <ArrowDown />}
+      <Text
+        smart={smart}
+      >
+        {name}
+      </Text>
+      {withChildren && !smart &&
+      <ArrowDown />}
     </Item>
   )
 }

@@ -38,6 +38,7 @@ export const CLIENT_UPDATE_PATH = `/${CLIENT}/${ID}/`
 
 const APPLICATION = 'application'
 export const APPLICATION_LIST_URL = `/${APPLICATION}/`
+export const APPLICATION_TABS_URL = `/${APPLICATION}/tabs`
 export const APPLICATION_ITEM_URL = `/${APPLICATION}/%d`
 export const APPLICATION_ITEM_PATH = `/${APPLICATION}/${ID}/`
 export const APPLICATION_CREATE_URL = `/${APPLICATION}/create`

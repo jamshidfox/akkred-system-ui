@@ -35,7 +35,7 @@
     "react/jsx-boolean-value": [2, "always"],
     "key-spacing": "off",
     "jsx-quotes": [2, "prefer-double"],
-    "max-len": [2, 120, 2],
+    "max-len": [2, 150, 2],
     "object-curly-spacing": [2, "always"],
     "indent": [2, 2],
     "comma-dangle": "off",

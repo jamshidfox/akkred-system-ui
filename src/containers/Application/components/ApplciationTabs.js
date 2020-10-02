@@ -1,23 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import arrayMutators from 'final-form-arrays'
-import { PageTitle, MediumButton } from '../../../components/UI'
-import { Row as RowUI, Col } from '../../../components/Grid'
+import { prop } from 'ramda'
+import { Row as RowUI } from '../../../components/Grid'
 import { Tabs, Tab } from '../../../components/TabsDetail'
-import {
-  Form,
-  Field,
-  InputField,
-  UniversalStaticSelectField,
-  UniversalSearchField,
-  DateField,
-  NoopFields
-} from '../../../components/FormField'
-import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../constants/backend'
 import { Box } from '../../../components/StyledElems'
-import * as API from '../../../constants/api'
-import { BranchCreateModal, BranchList } from './Branch'
 import ApplicationCreate from './ApplicationCreate'
+import ApplicationUserInfo from './ApplicationUserInfo'
 
 export const fields = [
   'address',
@@ -68,11 +56,16 @@ export const SERVICE = 'service'
 export const PAYMENT = 'payment'
 const ApplicationTabs = props => {
   const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData } = props
+  const clientInfo = prop('clientInfo', initialValues)
 
   return (
     <BoxUI>
       <Tabs initialValue={'guest'} value={tabData.tab} onChange={tabData.onTabChange}>
-        <Tab title="Разместить гостя" value={'guest'} label={'гости'}>
+        <Tab value={'service'} label={'Ariza'}>
+          <ApplicationUserInfo clientInfo={clientInfo} />
+        </Tab>
+
+        <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationCreate
             onSubmit={onSubmit}
             initialValues={initialValues}
@@ -83,13 +76,32 @@ const ApplicationTabs = props => {
             onTabChange={() => tabData.onTabChange(SERVICE)}
           />
         </Tab>
-        <Tab title="Услуги в номере" value={'service'} label={'Услуги в номере'}>
-          s
-        </Tab>
 
-        <Tab title="ПАРАМЕТРЫ" value={'others'} label={'ДОПОЛЬНИТЕЛЬНЫЕ ПАРАМЕТРЫ'}>
+        <Tab value={'a'} label={'Rahbariyat rezolyutsiyasi'}>
+          a
+        </Tab>
+        <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
+          b
+        </Tab>
+        <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
+          c
+        </Tab>
+        <Tab value={'d'} label={'EKSPERTIZA natijalari'}>
           d
         </Tab>
+        <Tab value={'s'} label={'Arizachiga jo’natilgan hujjatlar'}>
+          d
+        </Tab>
+        <Tab value={'s'} label={'Arizachidan kelgan qo’shimcha hujjatlar'}>
+          d
+        </Tab>
+        <Tab value={'s'} label={'Markazga tegishli hujjatlar'}>
+          d
+        </Tab>
+        <Tab value={'s'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>
+          d
+        </Tab>
+
       </Tabs>
 
     </BoxUI>

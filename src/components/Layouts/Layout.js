@@ -12,6 +12,8 @@ const Container = styled('div')`
   padding: 20px;
 `
 const Content = styled('div')`
+  display: flex;
+  flex-flow: column nowrap;
   flex-grow: 1;
   background: #fff;
   margin-left: 20px;

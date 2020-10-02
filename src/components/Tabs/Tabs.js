@@ -1,92 +1,59 @@
-import React, { useState } from 'react'
-import { pipe, path, prop, pathEq, find } from 'ramda'
-import PropTypes from 'prop-types'
+import React from 'react'
 import styled from 'styled-components'
-import { DisplayFlex } from '../../components/StyledElems'
+import { Link } from 'react-router-dom'
 
-const Wrapper = styled('div')``
-
-const Container = styled('div')`
-  display: inline-flex;
-  position: relative
+const Wrap = styled('div')`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  & > *:not(:last-child){
+    margin-right: 16px;
+  }
+  ${({ styles }) => styles};
 `
-
-const TabContent = styled('div')`
-  padding: 26px 0;
+const TabItem = styled(Link)`
+  text-transform: uppercase;
+  color: ${({ theme, active }) => active ? theme.palette.primary : '#7d8893'};
+  border-bottom: ${({ theme, active }) => active ? `1px solid ${theme.palette.primary}` : '1px solid transparent'};
+  font-size: 12px;
+  line-height: 12px;
+  padding-bottom: 4px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  user-select: none;
 `
-
-const Title = styled.div`
-font-weight: bold;
-font-size: 18px;
-line-height: 28px;
-letter-spacing: 0.5px;
-color: ${props => props.theme.color.basic.default};
-`
-
-const getCurrentTab = (tabs, activeTab) =>
-  pipe(
-    find(pathEq(['props', 'value'], activeTab)),
-    path(['props', 'children'])
-  )(tabs)
-
-const getCurrentTabTitle = (tabs, activeTab) =>
-  pipe(
-    find(pathEq(['props', 'value'], activeTab)),
-    path(['props', 'title'])
-  )(tabs)
 
 const Tabs = props => {
-  const { children, initialValue, onChange, value } = props
+  const {
+    list,
+    styles
+  } = props
 
-  const [activeTab, setActiveTab] = useState(initialValue)
-  const active = value || activeTab
-
-  const currActiveTab = getCurrentTab(children, active)
-
-  const onChangeTab = (event, val) => {
-    setActiveTab(val)
-
-    if (typeof onChange === 'function') {
-      onChange(val)
-    }
-  }
-
-  const title = getCurrentTabTitle(children, active)
+  // Render
   return (
-    <Wrapper>
-      <DisplayFlex justify={'space-between'} align="center">
-        <Title>{title}</Title>
-        <Container>
-          {React.Children.map(children, (child, index) => {
-            const defaultProps = prop('props', child)
-            const tabValue = prop('value', defaultProps)
-            const tabProps = {
-              ...defaultProps,
-              key: index,
-              isActive: active === tabValue,
-              onClick: event => onChangeTab(event, tabValue)
-            }
-
-            return (
-              child && React.cloneElement(child, tabProps)
-            )
-          })}
-        </Container>
-      </DisplayFlex>
-      <TabContent>{currActiveTab}</TabContent>
-    </Wrapper>
+    <Wrap
+      styles={styles}
+    >
+      {list.map((item, index) => {
+        const {
+          url,
+          name
+        } = item
+        return (
+          <TabItem
+            key={index}
+            active={index === 0}
+            to={{
+              pathname: url
+            }}
+          >
+            {name}
+          </TabItem>
+        )
+      })}
+    </Wrap>
   )
-}
-
-Tabs.propTypes = {
-  children: PropTypes.node.isRequired,
-  initialValue: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  onChange: PropTypes.func
-}
-
-Tabs.defaultProps = {
-  value: null
 }
 
 export default Tabs

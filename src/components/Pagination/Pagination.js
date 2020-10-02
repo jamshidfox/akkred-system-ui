@@ -15,11 +15,10 @@ const Box = styled(BoxCUI)`
   display: flex;
   font-size: 15px;
   justify-content: flex-end;
-  margin-top: 10px;
-  padding: 12px 25px;
+  padding: 0;
   text-align: right;
+  ${({ styles }) => styles};
 `
-
 const Page = styled.span`
   align-items: center;
   color: #848e97;
@@ -40,13 +39,11 @@ const Page = styled.span`
       color: ${props => props.theme.color.basic.default};
     `}
 `
-
 const CurrentPages = styled.span`
   color: #a0a8af;
   font-weight: 500;
   margin-right: 60px;
 `
-
 const NavButton = styled.button`
   align-items: center;
   background-color: transparent;
@@ -66,8 +63,9 @@ const NavButton = styled.button`
     font-size: 14px;
   }
 `
+
 const Pagination = props => {
-  const { count, history, key } = props
+  const { count, history, key, styles } = props
 
   if (!count) {
     return null
@@ -127,7 +125,9 @@ const Pagination = props => {
     )
 
   return (
-    <Box>
+    <Box
+      styles={styles}
+    >
       <CurrentPages>{text}</CurrentPages>
       <NavButton position="left" disabled={prevDisabled} onClick={onPrev}>
         <ChevLeft />
