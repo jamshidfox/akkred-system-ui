@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const Block = styled.div`
   &:not(:last-child) {
-    border-bottom: ${props => props.theme.border};
+    border-bottom: ${props => props.theme.border.primary};
     padding-bottom: 30px;
     margin-bottom: 30px;
   }

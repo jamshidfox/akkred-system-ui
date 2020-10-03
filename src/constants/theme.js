@@ -2,12 +2,14 @@ export default {
   palette: {
     primary: '#2f80ed',
     secondary: '#eaf2fd',
-    orange: '#f96526'
+    orange: '#f96526',
+    white: '#fff'
   },
   transition: {
     primary: 'all .2s ease-in-out'
   },
   color: {
+    title: '#36434e',
     disabled: '#8F9BB3',
     secondary: {
       default: '#2E3A59',
@@ -60,11 +62,14 @@ export default {
     borderColor: '#E4E9F2',
     background: '#fff'
   },
-  border: '1px solid #E4E9F2',
+  border: {
+    primary: '1px solid #e4e9f2',
+    button: '1px solid #ced0dd'
+  },
   borderColor: '#E4E9F2',
   borderRadius: {
     primary: '6px',
-    button: '6px'
+    button: '10px'
   },
   boxShadow: {
     primary: '0 2px 15px rgba(211, 216, 224, 0.5)'

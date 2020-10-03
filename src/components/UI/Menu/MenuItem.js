@@ -49,15 +49,18 @@ const Item = styled(Link)`
       color: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
     }
     &:last-child{
-      width: ${({ smart }) => smart && '12px'};
-      height: ${({ smart }) => smart && '12px'};
-      right: ${({ smart }) => smart ? '3px' : '9px'};
-      top: ${({ smart }) => smart && 'unset'}
-      bottom: ${({ smart }) => smart && '3px'}
-      stroke-width: ${({ smart }) => smart ? '4px' : '2px'};
+      //width: {({ smart }) => smart && '12px'};
+      //height: {({ smart }) => smart && '12px'};
+      // right: {({ smart }) => smart ? '3px' : '9px'};
+      right: 9px;
+      //top: {({ smart }) => smart && 'unset'}
+      //bottom: {({ smart }) => smart && '3px'}
+      //stroke-width: {({ smart }) => smart ? '4px' : '2px'};
+      stroke-width: 2px;
       color: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
-      transform: ${({ isActive, smart }) => (smart && isActive) ? 'rotate(-180deg)' : (smart && !isActive) ? 'rotate(0)' : isActive &&
-      'translateY(-50%) rotate(-180deg)'};
+      // transform: {({ isActive, smart }) => (smart && isActive) ? 'rotate(-180deg)' : (smart && !isActive) ? 'rotate(0)' : isActive &&
+      // 'translateY(-50%) rotate(-180deg)'};
+      transform: ${({ isOpen }) => isOpen ? 'translateY(-50%) rotate(-180deg)' : 'translateY(-50%) rotate(0)'};
     }
   }
   &:hover {
@@ -93,6 +96,7 @@ const MenuItem = props => {
     isActive,
     smart,
     onClick,
+    isOpen,
     disabled,
     ...rest
   } = props
@@ -106,6 +110,7 @@ const MenuItem = props => {
       isSub={isSub}
       withChildren={withChildren}
       disabled={disabled}
+      isOpen={isOpen}
       smart={smart}
       {...rest}
     >
@@ -115,7 +120,7 @@ const MenuItem = props => {
       >
         {name}
       </Text>
-      {withChildren &&
+      {withChildren && !smart &&
       <ArrowDown />}
     </Item>
   )

@@ -4,7 +4,7 @@ import BoxUI from '../StyledElems/Box'
 
 const Box = styled(BoxUI)`
   height: 72px;
-  border: ${props => props.theme.border};
+  border: ${props => props.theme.border.primary};
   margin-bottom: 24px;
 `
 const Header = props => {

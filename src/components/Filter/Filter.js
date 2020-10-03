@@ -1,83 +1,59 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
 import FilterIcon from '../../icons/Filter'
-import { MediumButton, SecondaryMediumButton } from '../UI/Buttons'
-
-const boxShadow = '0 4px 15px rgba(211, 216, 224, 0.5)'
+import Button from '../Button/Button'
 
 const ButtonWrap = styled('div')`
   display: flex;
-  align-items: center;
-`
-const FilterButton = styled('button')`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${({ theme }) => theme.background.buttonSecondary};
-  border-radius: 10px;
-  border: 1px solid #ced0dd;
-  height: 36px;
-  padding: 9px 16px;
-  z-index: 3;
-  font-size: 14px;
-  line-height: 14px;
-  outline: none;
-  cursor: pointer;
-  & svg {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    color: #9aa4af;
-  }
-  b{
-    color: ${({ theme }) => theme.palette.primary};
-    margin-left: 3px;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  & > button:not(:last-child){
+    margin-right: 5px;
   }
 `
-const ClearButton = styled('span')`
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 14px;
-  color: ${props => props.theme.color.primary.default};
-  margin-left: 15px;
+const Count = styled('b')`
+  color: ${({ theme }) => theme.palette.primary};
+  font-size: 15px;
+  margin: 1px 0 0 4px;
+  font-weight: 700;
 `
-const FilterMask = styled.div`
-  background-color: rgba(246, 246, 246, 0.5);
+const FilterMask = styled('div')`
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  background: #f6f6f6d4;
   height: 100%;
-  z-index: 2;
+  z-index: 10;
 `
-const Popup = styled.div`
-  background: #ffffff;
-  border: 1px solid #e4e5eb;
-  box-sizing: border-box;
-  box-shadow: ${boxShadow};
+const Popup = styled('div')`
+  background: #fff;
+  box-shadow: ${({ theme }) => theme.boxShadow.primary};
   border-radius: 8px;
-  padding: 30px;
+  padding: 25px;
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 100;
 `
-const Title = styled.div`
+const Title = styled('div')`
+  color: ${({ theme }) => theme.color.title};
   font-size: 20px;
-  color: #2c3a50;
   font-weight: 500;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `
-const Actions = styled.div`
-  text-align: right;
-  margin-top: 40px;
-  & button:first-child {
-    margin-right: 15px;
+const Actions = styled('div')`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  margin-top: 30px;
+  & > button:not(:last-child){
+    margin-right: 10px;
   }
 `
 
@@ -90,6 +66,7 @@ const Filter = props => {
     onClear,
     children,
     onSubmit,
+    theme,
     initialValues
   } = props
 
@@ -97,13 +74,34 @@ const Filter = props => {
   const hasCount = Boolean(count)
   const filterCount = hasCount &&
     <>
-      :<b>{`${count}`}</b>
+      :<Count>{`${count}`}</Count>
     </>
+
+  // Handlers
+  const handleToggle = open ? onClose : onOpen
+
+  // FormFields
+  const formFields =
+    <Actions>
+      <Button
+        text={'Отменить'}
+        themeType={'secondary'}
+        type={'button'}
+        onClick={onClose}
+        width={'135px'}
+      />
+      <Button
+        text={'Применить'}
+        themeType={'primary'}
+        type={'submit'}
+        width={'135px'}
+      />
+    </Actions>
 
   // Popup
   const popup =
     <>
-      <FilterMask />
+      <FilterMask onClick={onClose} />
       <Popup>
         <Title>Фильтр</Title>
         <Form
@@ -112,12 +110,7 @@ const Filter = props => {
           render={({ handleSubmit, ...formikProps }) => (
             <form onSubmit={handleSubmit}>
               {React.cloneElement(children, formikProps)}
-              <Actions>
-                <SecondaryMediumButton type="button" onClick={onClose}>
-                  Отменить
-                </SecondaryMediumButton>
-                <MediumButton type="submit">Применить</MediumButton>
-              </Actions>
+              {formFields}
             </form>
           )}
         />
@@ -128,19 +121,29 @@ const Filter = props => {
   return (
     <>
       <ButtonWrap>
-        <FilterButton
-          onClick={open ? onClose : onOpen}
-        >
-          <FilterIcon />
-          <span>Фильтр</span>
-          {filterCount}
-        </FilterButton>
+        <Button
+          text={(
+            <>
+              <FilterIcon />
+              <span>Фильтр</span>
+              {filterCount}
+            </>
+          )}
+          onClick={handleToggle}
+          themeType={'secondary'}
+          styles={open && {
+            boxShadow: theme.boxShadow.primary,
+            border: '1px solid transparent'
+          }}
+          zIndex={100}
+        />
         {hasCount &&
-        <ClearButton
+        <Button
+          text={'Очистить'}
           onClick={onClear}
-        >
-          Очистить
-        </ClearButton>}
+          themeType={'minor'}
+          zIndex={100}
+        />}
       </ButtonWrap>
       {open && popup}
     </>
@@ -155,12 +158,11 @@ Filter.propTypes = {
   onSubmit: PropTypes.func,
   onClear: PropTypes.func,
   children: PropTypes.node,
-  initialValues: PropTypes.object,
-  selected: PropTypes.bool
+  initialValues: PropTypes.object
 }
 
 Filter.defaultProps = {
   open: false
 }
 
-export default Filter
+export default withTheme(Filter)

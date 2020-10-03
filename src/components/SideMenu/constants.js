@@ -5,11 +5,11 @@ import Document from '../../icons/Document'
 
 export default [
   {
-    name: 'Заявки',
+    name: 'Заказы',
     icon: Document,
     children: [
       {
-        name: 'Список',
+        name: 'Заявки',
         url: ROUTES.MY_ORDERS_URL,
         tabs: [
           {

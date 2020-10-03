@@ -13,7 +13,7 @@ const Text = styled.span`
 
 const Item = styled.div`
   display: block;
-  border-bottom: ${props => props.theme.border};
+  border-bottom: ${props => props.theme.border.primary};
   cursor: pointer;
   padding: 20px 18px;
   position:relative;

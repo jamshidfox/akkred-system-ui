@@ -1,5 +1,4 @@
 import React from 'react'
-import ClientList from '../../../Application/components/ClientList'
 import { useDelete, useFetchList, useFilterActions } from '../../../../hooks'
 import { clientDeleteAction, clientFetchList } from '../../../Application/actions'
 import * as STATE from '../../../../constants/stateNames'
