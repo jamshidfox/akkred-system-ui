@@ -10,15 +10,15 @@ export default [
     children: [
       {
         name: 'Заявки',
-        url: ROUTES.MY_ORDERS_URL,
+        url: ROUTES.APPLICATION_LIST_URL,
         tabs: [
           {
             name: 'Мои заявки',
-            url: ROUTES.MY_ORDERS_URL
+            url: ROUTES.APPLICATION_LIST_URL
           },
           {
             name: 'Все заявки',
-            url: ROUTES.ORDERS_URL
+            url: '/'
           }
         ]
       }
