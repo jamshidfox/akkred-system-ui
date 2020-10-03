@@ -1,15 +1,33 @@
+// Const
+const primaryColor = '#2f80ed'
+
+// Theme
 export default {
   palette: {
-    primary: '#2f80ed',
+    primary: primaryColor,
     secondary: '#eaf2fd',
     orange: '#f96526',
     white: '#fff'
+  },
+  text: {
+    primary: '#2c3a50',
+    secondary: '#7d8893',
+    title: '#36434e',
+    tableHead: '#bdbdbd'
+  },
+  background: {
+    linkHover: '#eaf2fd',
+    buttonSecondary: '#fbfbfc',
+    input: '#fbfbfc',
+    inputHover: '#edf1f7',
+    tableHead: '#fbfbfd',
+    tableOdd: '#f1f3f5',
+    tableHover: '#edf1f7'
   },
   transition: {
     primary: 'all .2s ease-in-out'
   },
   color: {
-    title: '#36434e',
     disabled: '#8F9BB3',
     secondary: {
       default: '#2E3A59',
@@ -64,22 +82,18 @@ export default {
   },
   border: {
     primary: '1px solid #e4e9f2',
+    input: '1px solid #e4e5eb',
+    inputFocus: `1px solid ${primaryColor}`,
     button: '1px solid #ced0dd'
   },
   borderColor: '#E4E9F2',
   borderRadius: {
     primary: '6px',
+    table: '8px',
+    input: '6px',
     button: '10px'
   },
   boxShadow: {
     primary: '0 2px 15px rgba(211, 216, 224, 0.5)'
-  },
-  text: {
-    primary: '#2c3a50',
-    secondary: '#7d8893'
-  },
-  background: {
-    linkHover: '#eaf2fd',
-    buttonSecondary: '#fbfbfc'
   }
 }

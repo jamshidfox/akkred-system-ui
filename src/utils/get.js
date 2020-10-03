@@ -205,10 +205,20 @@ export const getItemFromTree = (arr, target) => {
 }
 
 export const getTabsFromRoute = () => {
+  // Const
   const pathname = window.location.pathname
   const activeRoute = constants && find(({ url }) => url === pathname)(constants)
   const activeRouteTabs = propOr([], 'tabs', activeRoute)
 
+  // Active
+  const active = constants && pipe(
+    find(({ tabs = [] }) => (
+      tabs && find(({ url }) => url === pathname)
+    ))
+  )(constants)
+  const activeTabs = propOr([], 'tabs', active)
+
+  // ActiveChildren
   const activeChildren = constants && pipe(
     find(prop('children')),
     propOr([], 'children'),
@@ -218,5 +228,11 @@ export const getTabsFromRoute = () => {
   )(constants)
   const activeChildrenTabs = propOr([], 'tabs', activeChildren)
 
-  return !isEmpty(activeRouteTabs) ? activeRouteTabs : !isEmpty(activeChildrenTabs) ? activeChildrenTabs : []
+  return !isEmpty(activeRouteTabs)
+    ? activeRouteTabs
+    : !isEmpty(activeChildrenTabs)
+      ? activeChildrenTabs
+      : !isEmpty(activeTabs)
+        ? activeTabs
+        : []
 }

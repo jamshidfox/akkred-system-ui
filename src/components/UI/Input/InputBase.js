@@ -2,43 +2,39 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Input = styled.input`
-  background: ${props => props.theme.input.background};
-  border: ${props => props.theme.input.border};
-  border-radius: ${props => props.theme.borderRadius.primary};
+const Input = styled('input')`
+  background: ${({ theme }) => theme.input.background};
+  border: ${({ theme }) => theme.input.border};
+  border-radius: ${({ theme }) => theme.borderRadius.primary};
   color: inherit;
   font-size: 14px;
   font-weight: 400;
   font-family: inherit;
   outline: none;
+  width: 100%;
   height: 48px;
   line-height: 24px;
   padding: 0 16px;
-  transition: all 300ms;
-  width: 100%;
-  
-  :disabled {
-    background-color: #fafbfc;
+  transition: ${({ theme }) => theme.transition.primary};
+  &:disabled {
+    background: #fafbfc;
     pointer-events: none;
-    color: ${props => props.theme.color.disabled};
+    color: ${({ theme }) => theme.color.disabled};
+    transition: ${({ theme }) => theme.transition.primary};
   }
-
-  ::placeholder {
-    color: ${props => props.theme.input.placeholderColor};
+  &::placeholder {
+    color: ${({ theme }) => theme.input.placeholderColor};
     font-weight: 400;
+    transition: ${({ theme }) => theme.transition.primary};
   }
-  ::-ms-input-placeholder {
-    color: ${props => props.theme.input.placeholderColor};
-    font-weight: 400;
+  &:hover {
+    background: ${({ theme }) => theme.background.inputHover};
+    transition: ${({ theme }) => theme.transition.primary};
   }
-
-  :hover {
-    background: ${props => props.theme.input.backgroundColorHover};
-  }
-
-  :focus {
-    background: white;
-    border-color: ${props => props.theme.color.primary.default};
+  &:focus {
+    background: ${({ theme }) => theme.palette.white};
+    border-color: ${({ theme }) => theme.palette.primary};
+    transition: ${({ theme }) => theme.transition.primary};
   }
 `
 

@@ -25,6 +25,20 @@ export default [
     ]
   },
   // {
+  //   name: 'Заявки',
+  //   url: ROUTES.MY_ORDERS_URL,
+  //   tabs: [
+  //     {
+  //       name: 'Мои заявки',
+  //       url: ROUTES.MY_ORDERS_URL
+  //     },
+  //     {
+  //       name: 'Все заявки',
+  //       url: ROUTES.ORDERS_URL
+  //     }
+  //   ]
+  // },
+  // {
   //   name: 'Заявки OLD',
   //   url: '#',
   //   icon: Document,

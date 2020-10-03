@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
-import { find } from 'ramda'
+import { find, propOr } from 'ramda'
 import MenuItem from './MenuItem'
 
 const SubMenus = styled('div')`
@@ -21,7 +21,7 @@ const Menu = props => {
   } = props
 
   // States
-  const [openSubmenus, setOpenSubmenus] = useState('')
+  const [openSubmenus, setOpenSubmenus] = useState(null)
 
   // Location
   const { pathname } = useLocation()
@@ -31,32 +31,47 @@ const Menu = props => {
     const {
       children,
       url,
+      tabs = [],
       ...rest
     } = item
 
     // Const
-    const withCurrentTab = children && !!find(({ tabs = [] }) => {
+    const withCurrentTab = children && find(({ tabs = [] }) => {
       return tabs && find(({ url }) => url === pathname)(tabs)
     })(children)
-    const isActive = pathname === url
+    const subTabs = propOr([], 'tabs', withCurrentTab)
     const isSubActive = (children && find(({ url }) => url === pathname)(children))
-    const isOpen = (`${openSubmenus}` === `${index}`) || isActive || isSubActive || withCurrentTab
+    const isSubActiveTab = subTabs.find(({ url }) => url === pathname)
+    const isActiveTab = tabs.find(({ url }) => url === pathname)
+    const isOpen = `${openSubmenus}` === `${index}`
+
+    if ((isSubActiveTab || isSubActive) && openSubmenus === null) {
+      setOpenSubmenus(`${index}`)
+    }
 
     // Handlers
     const handleToggleSubMenus = () => !isOpen
       ? setOpenSubmenus(`${index}`)
       : (`${openSubmenus}` === `${index}`) && setOpenSubmenus('')
 
+    // MenuItem
+    const menuItem =
+      <MenuItem
+        pathname={pathname}
+        smart={!isOpenMenu}
+        isActive={isActiveTab}
+        url={url}
+        {...rest}
+      />
+
     // MenuItemWithChildren
     const menuItemWithChildren =
       <>
         <MenuItem
           pathname={pathname}
-          // isActive={isOpen}
           withChildren={true}
           url={url}
           smart={!isOpenMenu}
-          disabled={isSubActive}
           isOpen={isOpen}
           onClick={handleToggleSubMenus}
           {...rest}
@@ -64,9 +79,8 @@ const Menu = props => {
         <SubMenus
           open={isOpen}
         >
-          {children && children.map(({ tabs, ...rest }) => {
+          {children && children.map(({ tabs, ...rest }, subIndex) => {
             const isActiveChild = tabs && find(({ url }) => url === pathname)(tabs)
-
             return (
               <MenuItem
                 pathname={pathname}
@@ -74,22 +88,13 @@ const Menu = props => {
                 isSub={true}
                 isActive={isActiveChild}
                 url={url}
+                key={subIndex}
                 {...rest}
               />
             )
           })}
         </SubMenus>
       </>
-
-    // MenuItem
-    const menuItem =
-      <MenuItem
-        pathname={pathname}
-        smart={!isOpenMenu}
-        key={index}
-        url={url}
-        {...rest}
-      />
 
     // Render
     return (

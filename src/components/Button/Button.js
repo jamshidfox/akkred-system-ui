@@ -35,6 +35,17 @@ const Wrap = styled('button')`
     transition: ${({ theme }) => theme.transition.medium};
   }
 `
+const Prefix = styled('span')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & svg {
+    width: ${({ svgSize }) => svgSize};
+    height: ${({ svgSize }) => svgSize};
+    color: ${({ svgColor }) => svgColor};
+    margin-right: 8px;
+  }
+`
 
 const Button = props => {
   const {
@@ -50,6 +61,7 @@ const Button = props => {
     svgColor = '#9aa4af',
     onClick,
     zIndex,
+    prefix,
     fontSize = '14px',
     styles
   } = props
@@ -92,6 +104,8 @@ const Button = props => {
       svgColor={svgColor}
       width={width}
     >
+      {prefix &&
+      <Prefix>{prefix}</Prefix>}
       {text}
     </Wrap>
   )
@@ -108,6 +122,7 @@ Button.propTypes = {
   fontWeight: PropTypes.number,
   uppercase: PropTypes.bool,
   onClick: PropTypes.func,
+  prefix: PropTypes.any,
   fontSize: PropTypes.string
 }
 

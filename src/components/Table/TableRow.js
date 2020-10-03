@@ -5,26 +5,45 @@ import styled from 'styled-components'
 import { Row as RowUI } from '../Grid'
 
 const Row = styled(RowUI)`
-  padding: 15px 10px;
-  margin: 0 -10px;
-  border-bottom: 1px #efefef solid;
-  cursor: ${props => props.header ? 'auto' : props.to ? 'pointer' : 'unset'};
-  transition: all 300ms;
-  :last-child {
-    border-bottom: none;
+  cursor: ${({ header, to }) => header ? 'auto' : to ? 'pointer' : 'unset'};
+  transition: ${({ theme }) => theme.transition.primary};
+  font-size: ${({ head }) => head ? '14px' : '12px'};
+  line-height: 1.2;
+  border: ${({ header }) => header ? '1px solid #f6f6f6' : '1px solid transparent'};
+  color: ${({ theme, header }) => header ? theme.text.tableHead : theme.text.primary};
+  background: ${({ theme, header }) => header ? theme.background.tableHead : 'transparent'};
+  border-radius: ${({ theme }) => theme.borderRadius.table};
+  &:not(:last-child){
+    margin-bottom: 3px;
   }
-  :hover {
-    background: ${props => props.header ? 'unset' : '#fff'}
+  &:nth-child(even){
+    background: ${({ theme, header }) => !header && theme.background.tableOdd};
+  }
+  &:hover {
+    background: ${({ theme, header, to }) => header ? 'unset' : to && theme.background.tableHover}
+    transition: ${({ theme }) => theme.transition.primary};
   }
 `
+
 const TableRow = props => {
-  const { children, header, to, align, ...rest } = props
+  const {
+    children,
+    header,
+    to,
+    align,
+    ...rest
+  } = props
 
   const history = useHistory()
   const onRoute = () => to && history.push(to)
 
   return (
-    <Row header={header} onClick={onRoute} {...rest} >
+    <Row
+      header={header}
+      onClick={onRoute}
+      to={to}
+      {...rest}
+    >
       {React.Children.map(children, (child) => {
         if (!child) return null
         return React.cloneElement(child, { header, align })

@@ -9,31 +9,28 @@ import InputWrapper from './InputWrapper'
 const StyledWrapper = styled(InputWrapper)`
   position: unset;
 `
-
 const InputIcon = icon => styled(icon)`
-  font-size: 24px;
   position: absolute;
+  left: 15px;
   top: 50%;
-  right: 12px;
-  transition: all 300ms;
   transform: translateY(-50%);
-  pointer-events: none;
+  color: #b2b7bf;
 `
-
 const StyledInput = styled(InputBase)`
-  + svg {
-    color: ${props => props.theme.color.basic.default};
+  & + svg{
+    transition: ${({ theme }) => theme.transition.primary};
   }
-
-  :focus + svg {
-    color: ${props => props.error
-    ? props.theme.color.danger.default
-    : props.theme.color.primary.default};
+  &:focus + svg{
+    color: ${({ theme }) => theme.palette.primary};
+    transition: ${({ theme }) => theme.transition.primary};
   }
 `
 
-const IconInput = ({ icon, label, ...props }) => {
-  const Icon = InputIcon(icon)
+const IconInput = ({ prefix, label, ...props }) => {
+  // Icon
+  const Icon = InputIcon(prefix)
+
+  // Render
   return (
     <StyledWrapper error={props.error}>
       <InputLabel>{label}</InputLabel>
@@ -47,7 +44,7 @@ const IconInput = ({ icon, label, ...props }) => {
 }
 
 IconInput.propTypes = {
-  icon: PropTypes.func.isRequired,
+  prefix: PropTypes.func,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   error: PropTypes.string,

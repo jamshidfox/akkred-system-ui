@@ -67,27 +67,27 @@ const MyOrdersGrid = props => {
   const tableHead =
     <TableRow header={true}>
       <TableCol span={8}>Полное название юридического лица</TableCol>
-      <TableCol span={6}>НОМЕР ПАСПОРТА</TableCol>
+      <TableCol span={6}>Номер паспорта</TableCol>
       <TableCol span={3}>Адрес</TableCol>
-      <TableCol span={4}>дата рождения</TableCol>
+      <TableCol span={4}>Дата рождения</TableCol>
       <TableCol span={1} />
       <TableCol span={1} />
     </TableRow>
 
   // TableList
   const tableList = data.map(client => (
-    <Row key={client.id}>
-      <TableCol span={8}>{client.title}</TableCol>
+    <TableRow key={client.id}>
+      <TableCol span={8}>{client.title || 'Title'}</TableCol>
       <TableCol span={6}>АА 3545332</TableCol>
-      <TableCol span={3}>{client.address}</TableCol>
-      <TableCol span={4} />
+      <TableCol span={3}>{client.address || 'Address'}</TableCol>
+      <TableCol span={4}>BDay</TableCol>
       <TableCol span={1}>
         <Link style={style} to={sprintf(APPLICATION_UPDATE_URL, client.id)}><img src={Edit} alt="Edit" /></Link>
       </TableCol>
       <TableCol span={1}>
         <span style={style} onClick={() => onDelete(client.id)}><img src={Trash} alt="Edit" /></span>
       </TableCol>
-    </Row>
+    </TableRow>
   ))
 
   // Table
@@ -102,15 +102,18 @@ const MyOrdersGrid = props => {
       {tableList}
     </Table>
 
+  // Pagination
+  const pagination =
+    <Pagination
+      count={count}
+    />
+
   // Render
   return (
     <BoxUI>
       {tabs}
       {table}
-      <Pagination
-        count={count}
-        styles={{ marginTop: 'auto' }}
-      />
+      {pagination}
     </BoxUI>
   )
 }

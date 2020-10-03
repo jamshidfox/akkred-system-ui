@@ -1,20 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
 import { Col } from '../Grid'
-import Label from './Label'
+
+const TD = styled(Col)`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 55px;
+  padding: 14px;
+  font-weight: 400;
+  text-transform: none;
+`
 
 const TableCol = props => {
   const { span, children, to, header, ...rest } = props
   const history = useHistory()
   const onRoute = () => to && history.push(to)
 
-  if (header) {
-    return (
-      <Col span={span} onClick={onRoute} {...rest}><Label>{children}</Label></Col>
-    )
-  }
-  return <Col span={span} onClick={onRoute} {...rest}>{children}</Col>
+  return <TD span={span} onClick={onRoute} {...rest}>{children}</TD>
 }
 
 TableCol.propTypes = {

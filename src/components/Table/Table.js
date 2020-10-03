@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import EmptyQuery from '../EmptyQuery'
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   ${({ styles }) => styles};
 `
 const Table = props => {
