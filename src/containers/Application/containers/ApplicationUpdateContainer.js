@@ -69,6 +69,7 @@ const getClientUpdateParams = () => ({
 const ApplicationUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
+  const confirmModal = useModal({ key: 'confirmModal' })
   const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
 
@@ -108,6 +109,10 @@ const ApplicationUpdateContainer = props => {
     setTab(val)
   }
 
+  const confirmSubmit = (event) => {
+    confirmModal.onClose()
+  }
+
   return (
 
     <ApplciationTabs
@@ -115,6 +120,7 @@ const ApplicationUpdateContainer = props => {
       initialValues={initialValues}
       serviceList={serviceList}
       serviceModal={{ ...serviceModal, onSubmit: onAddService }}
+      confirmModal={{ ...confirmModal, onSubmit: confirmSubmit }}
       onCreateApplication={onCreateApplication}
       onUpdateBranch={onUpdateBranch}
       tabData={{ tab, onTabChange }}

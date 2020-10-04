@@ -16,6 +16,7 @@ import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../constants
 import { Box } from '../../../components/StyledElems'
 import * as API from '../../../constants/api'
 import { BranchCreateModal, BranchList } from './Branch'
+import ConfirmDialog from './ConfirmModal'
 
 export const fields = [
   'address',
@@ -62,11 +63,15 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ApplicationCreate = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, confirmModal } = props
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
     serviceModal.onOpen()
+  }
+  const confirmModalOpen = () => {
+    console.warn('confirmModalOpen')
+    confirmModal.onOpen()
   }
 
   return (
@@ -164,9 +169,13 @@ const ApplicationCreate = props => {
               </Row>
               <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
+              <ConfirmDialog  {...confirmModal} />
 
+              {/* <div style={{ textAlign: 'right' }}> */}
+              {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
+              {/* </div> */}
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>Сохранить</MediumButton>
+                <MediumButton onClick={confirmModalOpen}>Confirm</MediumButton>
               </div>
             </form>
           )

@@ -55,7 +55,7 @@ export const GUEST = 'guest'
 export const SERVICE = 'service'
 export const PAYMENT = 'payment'
 const ApplicationTabs = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData, confirmModal } = props
   const clientInfo = prop('clientInfo', initialValues)
 
   return (
@@ -70,6 +70,7 @@ const ApplicationTabs = props => {
             onSubmit={onSubmit}
             initialValues={initialValues}
             serviceModal={serviceModal}
+            confirmModal={confirmModal}
             onCreateApplication={onCreateApplication}
             onUpdateBranch={onUpdateBranch}
             serviceList={serviceList}
