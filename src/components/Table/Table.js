@@ -3,27 +3,42 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import EmptyQuery from '../EmptyQuery'
 
-const Wrapper = styled('div')`
+const Wrapper = styled('table')`
+  border-collapse: separate;
+  border-spacing: 0 5px;
   ${({ styles }) => styles};
 `
 const Table = props => {
-  const { isEmpty, loading, emptyText, filterForm, styles } = props
+  const {
+    isEmpty,
+    loading,
+    emptyText,
+    filterForm,
+    styles,
+    children
+  } = props
+
+  // Render
   if (isEmpty || loading) {
     return (
       <>
         {filterForm}
-        {loading && <div style={{ textAling: 'center' }}>Loading... </div>}
+        {loading && <div style={{ textAlign: 'center', marginTop: '30px' }}>Loading... </div>}
         {!loading && <EmptyQuery text={emptyText} />}
       </>
     )
   }
   return (
-    <Wrapper
-      styles={styles}
-    >
+    <>
       {filterForm}
-      {props.children}
-    </Wrapper>
+      <Wrapper
+        styles={styles}
+      >
+        <tbody>
+          {children}
+        </tbody>
+      </Wrapper>
+    </>
   )
 }
 

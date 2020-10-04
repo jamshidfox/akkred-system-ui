@@ -11,7 +11,7 @@ const AuthLayout = props => {
       token && await dispatch(userInfoFetch(token))
     }
     getData()
-  }, [])
+  }, [dispatch])
   return props.children
 }
 

@@ -39,8 +39,6 @@ const PArtnerUpdateeModal = props => {
     result = Array.from(updateItem.groups, group => group.id)
   }
 
-
-
   const initialValues = {
     id: prop('id', updateItem),
     name: prop('name', updateItem),

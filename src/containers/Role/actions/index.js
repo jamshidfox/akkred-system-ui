@@ -63,7 +63,7 @@ export const roleDeleteAction = id => {
 export const groupFetchList = data => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.GROUP_LIST,{ params: { page_size: 1000 } })
+      .get(API.GROUP_LIST, { params: { page_size: 1000 } })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

@@ -9,7 +9,7 @@ import InputWrapper from './InputWrapper'
 const StyledWrapper = styled(InputWrapper)`
   position: unset;
 `
-const InputIcon = icon => styled(icon)`
+const InputIcon = prefix => styled(prefix)`
   position: absolute;
   left: 15px;
   top: 50%;
@@ -28,7 +28,7 @@ const StyledInput = styled(InputBase)`
 
 const IconInput = ({ prefix, label, ...props }) => {
   // Icon
-  const Icon = InputIcon(prefix)
+  const Icon = prefix ? InputIcon(prefix) : null
 
   // Render
   return (

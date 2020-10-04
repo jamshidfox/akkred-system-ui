@@ -1,1 +1,1 @@
-export {default} from './EmptyQuery'
+export { default } from './EmptyQuery'

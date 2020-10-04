@@ -13,8 +13,8 @@ import {
   test,
 } from 'ramda'
 import { pure } from 'react-fc'
-import { getFieldError } from '~/utils/form'
 import { Input } from '../../UI'
+import { getFieldError } from '~/utils/form'
 
 const getPure = pipe(
   pathOr('', ['target', 'value']),

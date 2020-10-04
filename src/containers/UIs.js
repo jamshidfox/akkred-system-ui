@@ -71,7 +71,7 @@ const UIs = props => {
         <Input placeholder={'placeholder'} label={'Hello'} />
       </Block>
       <Block>
-        <IconInput placeholder={'placeholder'} label={'Hello'} icon={Close} />
+        <IconInput placeholder={'placeholder'} label={'Hello'} prefix={Close} />
       </Block>
       <Block>
         <Checkbox label={'Checkbox'} indeterminate={true} />

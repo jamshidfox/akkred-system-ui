@@ -1,6 +1,6 @@
-//import renderMonthElement from './renderMonthElement'
-//import renderCalendarDay from './renderCalendarDay'
-//import { navNext, navPrev } from './navigations'
+// import renderMonthElement from './renderMonthElement'
+// import renderCalendarDay from './renderCalendarDay'
+// import { navNext, navPrev } from './navigations'
 import { customInputIcon, customCloseIcon } from './customIcons'
 import displayFormat from './displayFormat'
 
@@ -10,16 +10,16 @@ export default {
   block: true,
   noBorder: true,
   customInputIcon,
-//  customCloseIcon,
+  //  customCloseIcon,
   // calendar presentation and interaction related props
   daySize: 36,
-//  renderMonthElement,
+  //  renderMonthElement,
   hideKeyboardShortcutsPanel: true,
   // day presentation and interaction related props
-//  renderCalendarDay,
+  //  renderCalendarDay,
   // navigation related props
-//  navPrev,
-//  navNext,
+  //  navPrev,
+  //  navNext,
 
   // internationalization props
   displayFormat,

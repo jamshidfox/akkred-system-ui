@@ -35,7 +35,7 @@ export default Component => {
         }
         formData.append('file', file)
         dispatch({ loading: true })
-/*        return axios(store)
+        /*        return axios(store)
           .post(API.FILE_UPLOAD, formData)
           .then(response => {
             dispatch({ loading: false, error: null })
@@ -45,7 +45,7 @@ export default Component => {
           .catch(newError => {
             const errorData = path(['response', 'data'], newError)
             dispatch({ loading: false, error: errorData })
-          })*/
+          }) */
       }
     })
   )(Component)

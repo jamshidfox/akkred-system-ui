@@ -2,21 +2,48 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import { Row as RowUI } from '../Grid'
 
-const Row = styled(RowUI)`
+const Row = styled('tr')`
   cursor: ${({ header, to }) => header ? 'auto' : to ? 'pointer' : 'unset'};
   transition: ${({ theme }) => theme.transition.primary};
-  font-size: ${({ head }) => head ? '14px' : '12px'};
   line-height: 1.2;
-  border: ${({ header }) => header ? '1px solid #f6f6f6' : '1px solid transparent'};
-  color: ${({ theme, header }) => header ? theme.text.tableHead : theme.text.primary};
-  background: ${({ theme, header }) => header ? theme.background.tableHead : 'transparent'};
-  border-radius: ${({ theme }) => theme.borderRadius.table};
-  &:not(:last-child){
-    margin-bottom: 3px;
+  text-align: ${({ align }) => align};
+  text-transform: none;
+  & th{
+    color: ${({ theme }) => theme.text.tableHead};
+    font-size: 15px;
+    padding: 14px;
+    min-height: 55px;
+    font-weight: 500;
+    background: ${({ theme }) => theme.background.tableHead};
   }
-  &:nth-child(even){
+  & td {
+    color: ${({ theme }) => theme.text.primary};
+    font-size: 14px;
+    min-height: 55px;
+    padding: 14px;
+    font-weight: 400;
+    background: transparent;
+  }
+  & th{
+    border-top: 1px solid #f6f6f6;
+    border-bottom: 1px solid #f6f6f6;
+    &:first-child{
+      border-left: 1px solid #f6f6f6;
+    }
+    &:last-child{
+      border-right: 1px solid #f6f6f6;
+    }
+  }
+  & th, td{
+    &:first-child{
+      border-radius: ${({ theme }) => `${theme.borderRadius.table} 0 0 ${theme.borderRadius.table}`};
+    }
+    &:last-child{
+      border-radius: ${({ theme }) => `0 ${theme.borderRadius.table} ${theme.borderRadius.table} 0`};
+    }
+  }
+  &:nth-child(odd){
     background: ${({ theme, header }) => !header && theme.background.tableOdd};
   }
   &:hover {
@@ -30,7 +57,7 @@ const TableRow = props => {
     children,
     header,
     to,
-    align,
+    align = 'left',
     ...rest
   } = props
 
@@ -42,6 +69,7 @@ const TableRow = props => {
       header={header}
       onClick={onRoute}
       to={to}
+      align={align}
       {...rest}
     >
       {React.Children.map(children, (child) => {

@@ -7,7 +7,7 @@ const useClearStore = (type) => {
     dispatch({
       type: `${type}_CLEAR`
     })
-  }, [])
+  }, [dispatch, type])
 }
 
 export default useClearStore

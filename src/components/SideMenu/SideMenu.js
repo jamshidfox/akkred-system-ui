@@ -81,7 +81,7 @@ const LogOut = styled('button')`
   align-items: center;
   overflow: hidden;
   padding: 8px 10px;
-  margin: 25px auto 0;
+  margin: 35px auto 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 15px;

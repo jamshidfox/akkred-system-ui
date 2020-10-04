@@ -6,7 +6,7 @@ const Example = props => {
   const hotelData = useFetchList({ props, action: hotelListFetch, stateName: 'hotelList' })
   return (
     <div>
-    dsds
+      dsds
     </div>
   )
 }
