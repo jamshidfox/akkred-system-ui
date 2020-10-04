@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+// import { useHistory } from 'react-router-dom'
 
 const Row = styled('tr')`
-  cursor: ${({ header, to }) => header ? 'auto' : to ? 'pointer' : 'unset'};
+  cursor: ${({ header, onClick }) => header ? 'auto' : onClick ? 'pointer' : 'unset'};
   transition: ${({ theme }) => theme.transition.primary};
   line-height: 1.2;
   text-align: ${({ align }) => align};
@@ -47,7 +47,7 @@ const Row = styled('tr')`
     background: ${({ theme, header }) => !header && theme.background.tableOdd};
   }
   &:hover {
-    background: ${({ theme, header, to }) => header ? 'unset' : to && theme.background.tableHover}
+    background: ${({ theme, header, onClick }) => header ? 'unset' : onClick && theme.background.tableHover}
     transition: ${({ theme }) => theme.transition.primary};
   }
 `
@@ -56,18 +56,19 @@ const TableRow = props => {
   const {
     children,
     header,
+    onClick,
     to,
     align = 'left',
     ...rest
   } = props
 
-  const history = useHistory()
-  const onRoute = () => to && history.push(to)
+  // const history = useHistory()
+  // const onRoute = () => to && history.push(to)
 
   return (
     <Row
       header={header}
-      onClick={onRoute}
+      onClick={onClick}
       to={to}
       align={align}
       {...rest}

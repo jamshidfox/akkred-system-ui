@@ -1,24 +1,24 @@
 import React from 'react'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
-import ClientList from '../components/ClientList'
+import ApplicationList from '../components/ApplicationList'
 import { fields } from '../components/CommentListFilterForm'
-import { clientFetchList, clientDeleteAction } from '../actions'
+import { applicationFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 
-const ClientListContainer = () => {
+const ApplicationListContainer = () => {
   // FetchList
   const list = useFetchList({
-    action: clientFetchList,
+    action: applicationFetchList,
     stateName: STATE.APPLICATION_LIST,
     pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
   })
 
   // Handlers
   const deleteAction = useDelete({
-    action: clientDeleteAction,
+    action: applicationDeleteAction,
     stateName: STATE.APPLICATION_DELETE,
-    successAction: clientFetchList
+    successAction: applicationFetchList
   })
 
   // FilterActions
@@ -26,7 +26,7 @@ const ClientListContainer = () => {
 
   // Render
   return (
-    <ClientList
+    <ApplicationList
       list={list}
       filterActions={filterActions}
       onDelete={deleteAction.onSubmit}
@@ -34,4 +34,4 @@ const ClientListContainer = () => {
   )
 }
 
-export default ClientListContainer
+export default ApplicationListContainer

@@ -44,6 +44,10 @@ export const APPLICATION_ITEM_PATH = `/${APPLICATION}/${ID}/`
 export const APPLICATION_CREATE_URL = `/${APPLICATION}/create`
 export const APPLICATION_UPDATE_URL = `/${APPLICATION}/%d`
 export const APPLICATION_UPDATE_PATH = `/${APPLICATION}/${ID}/`
+export const APPLICATION_MY_ORDERS_PATH = `/${APPLICATION}/my-orders`
+export const APPLICATION_MY_ORDERS_URL = `/${APPLICATION}/my-orders`
+export const APPLICATION_ORDERS_PATH = `/${APPLICATION}/orders`
+export const APPLICATION_ORDERS_URL = `/${APPLICATION}/orders`
 
 const CLIENT_INFO = 'client_info'
 export const CLIENT_INFO_LIST_URL = `/${CLIENT_INFO}/`
