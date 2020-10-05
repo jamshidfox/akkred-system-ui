@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
@@ -8,43 +8,56 @@ import { replaceParamsRoute } from '../../utils/route'
 import { getParamFromHistory } from '../../utils/get'
 
 const Input = styled(IconInput)`
-  align-self: center;
-  background-color: #fbfbfc;
-  border: 1px solid #e4e5eb;
-  border-radius: 6px;
-  padding-right: 44px;
+  background: ${({ theme }) => theme.background.input};
+  border: ${({ theme }) => theme.border.input};
+  border-radius: ${({ theme }) => theme.borderRadius.input};
+  padding: 10px 17px 10px 45px;
   height: 36px;
-  width: 300px;
-  ::placeholder {
+  width: 280px;
+  &::placeholder {
     color: #b2b7bf;
     font-size: 14px;
+  }
+  svg{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    color: #b2b7bf;
   }
 `
 
 const SearchField = props => {
-  const { key } = props
+  const {
+    key
+  } = props
+
+  // Location
   const history = useHistory()
-  const [val, setVal] = React.useState(getParamFromHistory(key, history))
+
+  // useState
+  const [val, setVal] = useState(getParamFromHistory(key, history))
+
   const decodedValue = val ? decodeURIComponent(val) : ''
 
+  // Handlers
   const onEnter = (ev, search) => {
     const historyValue = getParamFromHistory(key, history)
     if (historyValue !== search) {
       replaceParamsRoute({ [key]: search, page: 1 }, history)
     }
   }
-
   const onChange = ev => setVal(ev.target.value)
 
+  // Render
   return (
     <Input
-      {...props}
-      data-cy="table-search"
-      value={decodedValue}
+      prefix={Search}
       onChange={onChange}
       onEnter={onEnter}
-      icon={Search}
-      placeholder="Поиск..."
+      data-cy={'table-search'}
+      value={decodedValue}
+      placeholder={'Поиск...'}
+      {...props}
     />
   )
 }

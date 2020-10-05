@@ -17,7 +17,7 @@ const useFetchItem = params => {
       dispatch(action(id))
         .then(onComplete)
     },
-    [id, dispatch, action],
+    [id, dispatch, action, onComplete],
   )
 
   return state

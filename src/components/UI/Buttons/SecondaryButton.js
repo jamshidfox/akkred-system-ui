@@ -35,7 +35,6 @@ export const SecondaryGiantButton = styled(SecondaryBaseButton)`
   line-height: ${props => props.theme.lineHeight.giant};
 `
 
-
 export const SecondaryLargeButton = styled(SecondaryBaseButton)`
   padding: 0 20px;
   height: 48px;

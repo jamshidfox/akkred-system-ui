@@ -1,12 +1,11 @@
-import * as ROUTES from 'constants/routes'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { prop, isEmpty, path, propOr } from 'ramda'
+import { prop, isEmpty, path, propOr, add } from 'ramda'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Pagination from 'components/Pagination'
-import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
+import { Table, TableRow, TableActions } from '../../../components/Table'
 import { APPLICATION_UPDATE_URL } from '../../../constants/routes'
 import Edit from '../../../images/edit.svg'
 import Trash from '../../../images/trash-2.svg'
@@ -21,37 +20,23 @@ const BoxUI = styled(Box)`
   flex-grow: 1;
   padding: 20px 25px 25px;
 `
-const Row = styled(TableRow)`
-  padding: 10px 12px 10px 10px ;
-  border-radius: 8px;
-  height: 55px;
-  &:nth-child(odd) {
-    background-color: #F1F3F5;
-  }
-`
 const style = {
-  color: '#ffffff',
+  color: '#fff',
   textDecoration: 'none',
   cursor: 'pointer'
 }
 
 const ApplicationList = props => {
-  const { list, filterActions, onDelete } = props
+  const {
+    list,
+    filterActions,
+    onDelete
+  } = props
 
   // Data
   const data = propOr([], 'results', list)
   const count = path(['data', 'count'], list)
   const loading = prop('loading', list)
-
-  // Actions
-  const linkAction = '/application/create'
-  const tableActions = (
-    <TableActions
-      filterForm={<CommentListFilterForm />}
-      filterActions={filterActions}
-      linkAction={linkAction}
-    />
-  )
 
   // TabsList
   const tabsList = getTabsFromRoute()
@@ -62,32 +47,64 @@ const ApplicationList = props => {
       list={tabsList}
     />
 
+  // Actions
+  const linkAction = '/application/create'
+  const tableActions =
+    <TableActions
+      filterForm={<CommentListFilterForm />}
+      filterActions={filterActions}
+      linkAction={linkAction}
+    />
+
   // TableHead
   const tableHead =
     <TableRow header={true}>
-      <TableCol span={8}>Полное название юридического лица</TableCol>
-      <TableCol span={6}>НОМЕР ПАСПОРТА</TableCol>
-      <TableCol span={3}>Адрес</TableCol>
-      <TableCol span={4}>дата рождения</TableCol>
-      <TableCol span={1} />
-      <TableCol span={1} />
+      <th colSpan={8}>Полное название юридического лица</th>
+      <th colSpan={6}>Номер паспорта</th>
+      <th colSpan={3}>Адрес</th>
+      <th colSpan={4}>Дата рождения</th>
+      <th colSpan={1} />
+      <th colSpan={1} />
     </TableRow>
 
   // TableList
-  const tableList = data.map(client => (
-    <Row key={client.id}>
-      <TableCol span={8}>{client.title}</TableCol>
-      <TableCol span={6}>АА 3545332</TableCol>
-      <TableCol span={3}>{client.address}</TableCol>
-      <TableCol span={4} />
-      <TableCol span={1}>
-        <Link style={style} to={sprintf(APPLICATION_UPDATE_URL, client.id)}><img src={Edit} alt="Edit" /></Link>
-      </TableCol>
-      <TableCol span={1}>
-        <span style={style} onClick={() => onDelete(client.id)}><img src={Trash} alt="Edit" /></span>
-      </TableCol>
-    </Row>
-  ))
+  const tableList = data.map(client => {
+    const {
+      title = 'Title',
+      id,
+      address = 'Address'
+    } = client
+
+    // Handlers
+    const handleRedirect = () => alert('Hello')
+
+    // Render
+    return (
+      <TableRow
+        key={id}
+        onClick={handleRedirect}
+      >
+        <td colSpan={8}>{title}</td>
+        <td colSpan={6}>АА 3545332</td>
+        <td colSpan={3}>{address}</td>
+        <td colSpan={4}>BDay</td>
+        <td colSpan={1}>
+          <Link
+            style={style}
+            to={sprintf(APPLICATION_UPDATE_URL, id)}>
+            <img src={Edit} alt="Edit" />
+          </Link>
+        </td>
+        <td colSpan={1}>
+          <span
+            style={style}
+            onClick={() => onDelete(id)}>
+            <img src={Trash} alt="Edit" />
+          </span>
+        </td>
+      </TableRow>
+    )
+  })
 
   // Table
   const table =
@@ -101,15 +118,18 @@ const ApplicationList = props => {
       {tableList}
     </Table>
 
+  // Pagination
+  const pagination =
+    <Pagination
+      count={count}
+    />
+
   // Render
   return (
     <BoxUI>
       {tabs}
       {table}
-      <Pagination
-        count={count}
-        styles={{ marginTop: 'auto' }}
-      />
+      {pagination}
     </BoxUI>
   )
 }

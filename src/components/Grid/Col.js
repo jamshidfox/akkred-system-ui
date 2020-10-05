@@ -5,14 +5,16 @@ const MAX_COL_SIZE = 24
 
 const Col = styled.div`
   flex-grow: 1;
-  align-self: ${props => props.align};
-  ${props =>
-    props.span &&
+  align-self: ${({ align }) => align};
+  ${({ span }) =>
+    span &&
     css`
-      flex-basis: ${(props.span / MAX_COL_SIZE) * 100}%;
+      flex-basis: ${(span / MAX_COL_SIZE) * 100}%;
     `}
 `
+
 Col.propTypes = {
   span: PropTypes.number
 }
+
 export default Col

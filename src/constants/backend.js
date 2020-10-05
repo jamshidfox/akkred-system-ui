@@ -104,4 +104,3 @@ export const PARTNERS_TYPES = [
   { id: 'company', name: 'Компания' },
   { id: 'agent', name: 'Агент' },
 ]
-

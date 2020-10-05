@@ -13,9 +13,9 @@ import {
   test, split, defaultTo, head,
 } from 'ramda'
 import { pure } from 'react-fc'
-import { getFieldError } from '~/utils/form'
-import { Input } from '../../UI'
 import styled from 'styled-components'
+import { Input } from '../../UI'
+import { getFieldError } from '~/utils/form'
 
 const TimeInput = styled(Input)`
   margin-left: 10px;
@@ -46,7 +46,6 @@ const onType = curry((onChange, value, ev) => {
   const date = getDate(value)
   const pureValue = getPure(ev)
   if (notNumber(pureValue) || overflow(pureValue)) return
-
 
   const time = pipe(
     splitEvery(2),

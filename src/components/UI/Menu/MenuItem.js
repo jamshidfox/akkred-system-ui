@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ArrowDown from '../../../icons/ArrowDown'
 import Grid from '../../../icons/Grid'
 
@@ -124,6 +125,10 @@ const MenuItem = props => {
       <ArrowDown />}
     </Item>
   )
+}
+
+MenuItem.propTypes = {
+  isActive: PropTypes.bool
 }
 
 export default MenuItem

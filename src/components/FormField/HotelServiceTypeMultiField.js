@@ -3,14 +3,12 @@ import PropTypes from 'prop-types'
 import { compose, pure } from 'react-fc'
 import { pathOr } from 'ramda'
 import { useStore } from 'react-redux'
+import axios, { getPayloadFromSuccess } from '../../utils/axios'
+import toSnakeCase from '../../utils/toSnakeCase'
 import SearchField, {
   defaultGetText,
   defaultGetValue
 } from './Basic/MultiSearchField'
-import axios, { getPayloadFromSuccess } from '../../utils/axios'
-import toSnakeCase from '../../utils/toSnakeCase'
-
-
 
 const getOptions = (store, { api, search, params, pageSize }) => {
   const defaultParams = toSnakeCase({ pageSize, search, ...params })

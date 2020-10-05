@@ -75,7 +75,6 @@ const DateTimeField = props => {
   const value = getFormattedDate(input)
   const error = getFieldError(meta)
 
-
   return (
     <FieldContainer error={error}>
       <InputLabel>{label}</InputLabel>

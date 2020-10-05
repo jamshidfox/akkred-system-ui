@@ -4,8 +4,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Filter from '../Filter'
 import { MediumButton } from '../UI/Buttons'
-import SearchField from './SearchField'
 import Button from '../Button/Button'
+import Plus from '../../icons/Plus'
+import SearchField from './SearchField'
 
 const Container = styled('div')`
   display:flex;
@@ -48,6 +49,7 @@ const TableActions = props => {
         <Link style={style} to={`${linkAction}`}>
           <Button
             text={'Добавить'}
+            prefix={<Plus />}
           />
         </Link>
         <SearchField key={searchKey} />

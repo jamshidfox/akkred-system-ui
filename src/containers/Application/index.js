@@ -25,6 +25,18 @@ export default () => [
   },
   {
     exact: true,
+    path: ROUTES.APPLICATION_ORDERS_PATH,
+    layout: Layouts,
+    component: ApplicationListContainer
+  },
+  {
+    exact: true,
+    path: ROUTES.APPLICATION_MY_ORDERS_PATH,
+    layout: Layouts,
+    component: ApplicationListContainer
+  },
+  {
+    exact: true,
     path: ROUTES.APPLICATION_TABS_URL,
     layout: Layouts,
     component: ApplicationListContainer

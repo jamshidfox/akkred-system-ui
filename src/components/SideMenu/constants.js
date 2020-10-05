@@ -10,20 +10,34 @@ export default [
     children: [
       {
         name: 'Заявки',
-        url: ROUTES.APPLICATION_LIST_URL,
+        url: ROUTES.APPLICATION_MY_ORDERS_URL,
         tabs: [
           {
             name: 'Мои заявки',
-            url: ROUTES.APPLICATION_LIST_URL
+            url: ROUTES.APPLICATION_MY_ORDERS_URL
           },
           {
             name: 'Все заявки',
-            url: '/'
+            url: ROUTES.APPLICATION_ORDERS_URL
           }
         ]
       }
     ]
   },
+  // {
+  //   name: 'Заявки',
+  //   url: ROUTES.MY_ORDERS_URL,
+  //   tabs: [
+  //     {
+  //       name: 'Мои заявки',
+  //       url: ROUTES.MY_ORDERS_URL
+  //     },
+  //     {
+  //       name: 'Все заявки',
+  //       url: ROUTES.ORDERS_URL
+  //     }
+  //   ]
+  // },
   // {
   //   name: 'Заявки OLD',
   //   url: '#',
@@ -52,80 +66,8 @@ export default [
   //       name: 'RAHBARIYAT KO’RIB CHIQISHIDA',
   //       url:'/',
   //     },
-  // {
-  //   name: 'QABUL QILINGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'SHARTNOMA RASMIYLASHTIRILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'TO’LOV JARAYONIDA',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'EKSPERTIZA',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'AUDIT UCHUN SHARTNOMA RASMIYLASHTIRILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'AUDIT UCHUN TO’LOV JARAYONIDA',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'REJA VA BUYRUQ RASMIYLASHTIRILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'NOMUVOFIQLIKLARNI BARTARAF ETISH UCHUN\n' +
-  //     'MUDDAT BERILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
-  //     'BARTARAF ETISH BUYICHA REJA TAQDIM ETILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA\n' +
-  //     'BARTARAF ETILGANLIGI TO’G’RISIDA XISOBOT TAQDIM\n' +
-  //     'ETILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF\n' +
-  //     'ETILGANLIGINI O’RGANISH',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'DAVLAT REESTRIGA KIRITILGAN VA GUVOHNOMA\n' +
-  //     'RASMIYLASHTIRILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'POST AKKREDITATSIAION HUJJATLAR\n' +
-  //     'RASMIYLASHTIRILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'QO’SHIMCHA MUDDAT BERILGAN',
-  //   url:'/',
-  // },
-  // {
-  //   name: 'RAD ETILGAN',
-  //   url:'/',
-  // },
-  //   ]
-  // },
-
+  //  ]
+  // }
   {
     name: 'Сотрудники',
     url: ROUTES.EMPLOYEES_LIST_URL,

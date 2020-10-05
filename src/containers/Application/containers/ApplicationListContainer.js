@@ -6,21 +6,25 @@ import { fields } from '../components/CommentListFilterForm'
 import { applicationFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 
-const getRoomListParams = () => ({
-  action: applicationFetchList,
-  stateName: STATE.APPLICATION_LIST,
-  pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
-})
+const ApplicationListContainer = () => {
+  // FetchList
+  const list = useFetchList({
+    action: applicationFetchList,
+    stateName: STATE.APPLICATION_LIST,
+    pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
+  })
 
-const ApplicationListContainer = props => {
-  const list = useFetchList(getRoomListParams())
+  // Handlers
   const deleteAction = useDelete({
     action: applicationDeleteAction,
     stateName: STATE.APPLICATION_DELETE,
     successAction: applicationFetchList
   })
 
+  // FilterActions
   const filterActions = useFilterActions({ fields })
+
+  // Render
   return (
     <ApplicationList
       list={list}

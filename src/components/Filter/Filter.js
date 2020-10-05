@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
 import FilterIcon from '../../icons/Filter'
 import Button from '../Button/Button'
+import Title from '../Title'
 
 const ButtonWrap = styled('div')`
   display: flex;
@@ -16,8 +17,8 @@ const ButtonWrap = styled('div')`
 `
 const Count = styled('b')`
   color: ${({ theme }) => theme.palette.primary};
-  font-size: 15px;
-  margin: 1px 0 0 4px;
+  font-size: 14px;
+  margin: 0 0 0 4px;
   font-weight: 700;
 `
 const FilterMask = styled('div')`
@@ -40,12 +41,6 @@ const Popup = styled('div')`
   left: 0;
   right: 0;
   z-index: 100;
-`
-const Title = styled('div')`
-  color: ${({ theme }) => theme.color.title};
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 20px;
 `
 const Actions = styled('div')`
   display: flex;
@@ -72,10 +67,6 @@ const Filter = props => {
 
   // Const
   const hasCount = Boolean(count)
-  const filterCount = hasCount &&
-    <>
-      :<Count>{`${count}`}</Count>
-    </>
 
   // Handlers
   const handleToggle = open ? onClose : onOpen
@@ -122,13 +113,14 @@ const Filter = props => {
     <>
       <ButtonWrap>
         <Button
-          text={(
-            <>
-              <FilterIcon />
-              <span>Фильтр</span>
-              {filterCount}
-            </>
-          )}
+          text={
+            <span>
+              {hasCount ? 'Фильтр:' : 'Фильтр'}
+              {hasCount &&
+              <Count>{count}</Count>}
+            </span>
+          }
+          prefix={<FilterIcon />}
           onClick={handleToggle}
           themeType={'secondary'}
           styles={open && {
