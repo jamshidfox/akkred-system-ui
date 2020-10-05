@@ -52,6 +52,7 @@ const getInitialValues = data => {
     client: path(['client', 'id'], data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     internalAudit: prop('internalAudit', data),
+    stage: prop('stage', data),
     managementAnalysis: prop('managementAnalysis', data),
     managementSystem: prop('managementSystem', data),
     proficiencyTestingProvider: prop('proficiencyTestingProvider', data),

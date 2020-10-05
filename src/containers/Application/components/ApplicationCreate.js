@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
+import { prop, } from 'ramda'
 import { PageTitle, MediumButton } from '../../../components/UI'
 import { Row as RowUI, Col } from '../../../components/Grid'
 import {
@@ -16,7 +17,7 @@ import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../constants
 import { Box } from '../../../components/StyledElems'
 import * as API from '../../../constants/api'
 import { BranchCreateModal, BranchList } from './Branch'
-import ConfirmDialog from './ConfirmModal'
+import ConfirmDialog from './Confirm/ConfirmModal'
 
 export const fields = [
   'address',
@@ -69,8 +70,9 @@ const ApplicationCreate = props => {
     setServiceModalItem(data)
     serviceModal.onOpen()
   }
+  const stage = prop('stage', initialValues)
+  console.warn(stage,'stage')
   const confirmModalOpen = () => {
-    console.warn('confirmModalOpen')
     confirmModal.onOpen()
   }
 
@@ -169,7 +171,7 @@ const ApplicationCreate = props => {
               </Row>
               <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
-              <ConfirmDialog  {...confirmModal} />
+              <ConfirmDialog {...confirmModal} stage={stage} />
 
               {/* <div style={{ textAlign: 'right' }}> */}
               {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
