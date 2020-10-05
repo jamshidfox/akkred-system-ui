@@ -11,14 +11,14 @@ const Input = styled(IconInput)`
   background: ${({ theme }) => theme.background.input};
   border: ${({ theme }) => theme.border.input};
   border-radius: ${({ theme }) => theme.borderRadius.input};
-  padding: 10px 17px 10px 45px;
+  padding: 0 16px 0 45px;
   height: 36px;
   width: 280px;
   &::placeholder {
     color: #b2b7bf;
     font-size: 14px;
   }
-  svg{
+  & svg{
     width: 20px;
     height: 20px;
     margin-right: 10px;

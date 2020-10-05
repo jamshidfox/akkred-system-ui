@@ -14,7 +14,7 @@ const Input = styled('input')`
   width: 100%;
   height: 48px;
   line-height: 24px;
-  padding: 0 16px;
+  padding: ${({ prefix }) => `0 17px 0 ${prefix ? '45px' : '17px'}`};
   transition: ${({ theme }) => theme.transition.primary};
   &:disabled {
     background: #fafbfc;
