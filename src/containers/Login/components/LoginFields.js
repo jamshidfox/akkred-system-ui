@@ -12,36 +12,30 @@ const Box = styled(BoxUI)`
   width: 430px;
   padding: 56px;
 `
-
 const Fields = styled('div')`
   position:relative;
 `
-
 const InputWrap = styled('div')`
   &:not(:first-child) {
     margin-top: 40px;
   }
 `
-
 const Actions = styled('div')`
   align-items: center;
   display:flex;
   justify-content: space-between;
   margin-top: 40px;
 `
-
-const Forgot = styled.div`
+const Forgot = styled('div')`
   color: ${props => props.theme.color.basic.default};
   cursor:pointer;
   font-weight: normal;
   font-size: 12px;
   line-height: 16px;
 `
-
 const SubmitButton = styled(MediumButton)`
   width: 120px;
 `
-
 const SubmitError = styled('div')`
   color: ${props => props.theme.color.danger.default};
   font-size: 12px;
@@ -52,6 +46,7 @@ const SubmitError = styled('div')`
 const LoginFields = props => {
   const { submitError } = props
 
+  // Render
   return (
     <Box>
       <Fields>

@@ -17,7 +17,10 @@ const Form = props => {
       keepDirtyOnReinitialize={keepDirtyOnReinitialize}
       onSubmit={onSubmit}
       initialValues={initialValues}
-      render={({ handleSubmit, ...formProps }) => (
+      render={({
+        handleSubmit,
+        ...formProps
+      }) => (
         <form onSubmit={handleSubmit}>
           {React.cloneElement(children, formProps)}
         </form>

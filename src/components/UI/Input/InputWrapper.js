@@ -3,12 +3,12 @@ import InputLabel from '../InputLabel'
 
 export default styled('div')`
   position: relative;
-  width: ${props => props.width};
+  width: ${({ width }) => width};
   ${props =>
     props.error &&
     css`
       & ${InputLabel} {
-        color: ${props => props.theme.color.danger.default + '!important'};
+        color: ${({ theme }) => theme.color.danger.default + '!important'};
       }
     `}
 `

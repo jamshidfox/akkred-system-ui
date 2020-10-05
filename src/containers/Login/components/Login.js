@@ -4,22 +4,17 @@ import PropTypes from 'prop-types'
 import LoginFields from './LoginFields'
 import { FinalForm } from '~/components/FormField'
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   font-family: "Open Sans", sans-serif;
   text-align: center;
 `
-
-const LogoWrap = styled.div`
-  
-`
-
-const Logo = styled.div`
+const LogoWrap = styled('div')``
+const Logo = styled('div')`
   color: #fff;
   font-size: 84px;
   font-family: "Aleo", sans-serif;
 `
-
-const Intro = styled.div`
+const Intro = styled('div')`
   font-size: 10px;
   text-align: center;
   letter-spacing: 1.5px;
@@ -38,7 +33,6 @@ const Login = props => {
         <Logo>E-Accred</Logo>
         <Intro>Application management system</Intro>
       </LogoWrap>
-
       <FinalForm onSubmit={onLogin}>
         <LoginFields />
       </FinalForm>

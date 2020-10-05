@@ -9,7 +9,10 @@ import InputWrapper from './InputWrapper'
 const StyledWrapper = styled(InputWrapper)`
   position: unset;
 `
-const InputIcon = prefix => styled(prefix)`
+const IconWrap = styled('span')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 15px;
   top: 50%;
@@ -17,26 +20,24 @@ const InputIcon = prefix => styled(prefix)`
   color: #b2b7bf;
 `
 const StyledInput = styled(InputBase)`
-  & + svg{
+  & + span > svg{
     transition: ${({ theme }) => theme.transition.primary};
   }
-  &:focus + svg{
+  &:focus + span > svg{
     color: ${({ theme }) => theme.palette.primary};
     transition: ${({ theme }) => theme.transition.primary};
   }
 `
 
 const IconInput = ({ prefix, label, ...props }) => {
-  // Icon
-  const Icon = prefix ? InputIcon(prefix) : null
-
   // Render
   return (
     <StyledWrapper error={props.error}>
       <InputLabel>{label}</InputLabel>
-      <InputWrapper>
+      <InputWrapper prefix={prefix} >
         <StyledInput {...props} />
-        <Icon />
+        {prefix &&
+        <IconWrap>{prefix()}</IconWrap>}
       </InputWrapper>
       <InputError>{props.error}</InputError>
     </StyledWrapper>
