@@ -62,9 +62,6 @@ const TableRow = props => {
     ...rest
   } = props
 
-  // const history = useHistory()
-  // const onRoute = () => to && history.push(to)
-
   return (
     <Row
       header={header}

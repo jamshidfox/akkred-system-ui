@@ -1,42 +1,46 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import { prop, isEmpty, path, propOr, add } from 'ramda'
+// import { Link } from 'react-router-dom'
+import { prop, isEmpty, path, propOr } from 'ramda'
 import { sprintf } from 'sprintf-js'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import Pagination from 'components/Pagination'
+// import { useHistory } from 'react-router'
 import { Table, TableRow, TableActions } from '../../../components/Table'
-import { APPLICATION_UPDATE_URL } from '../../../constants/routes'
-import Edit from '../../../images/edit.svg'
-import Trash from '../../../images/trash-2.svg'
-import { Box } from '../../../components/StyledElems'
+// import { APPLICATION_UPDATE_URL } from '../../../constants/routes'
+// import Edit from '../../../images/edit.svg'
+// import Trash from '../../../images/trash-2.svg'
+// import { Box } from '../../../components/StyledElems'
 import Tabs from '../../../components/Tabs'
 import { getTabsFromRoute } from '../../../utils/get'
+import * as ROUTES from '../../../constants/routes'
+import Container from '../../../components/StyledElems/Container'
 import CommentListFilterForm from './CommentListFilterForm'
 
-const BoxUI = styled(Box)`
-  display: flex;
-  flex-flow: column nowrap;
-  flex-grow: 1;
-  padding: 20px 25px 25px;
-`
-const style = {
-  color: '#fff',
-  textDecoration: 'none',
-  cursor: 'pointer'
-}
+// const BoxUI = styled(Box)`
+//   display: flex;
+//   flex-flow: column nowrap;
+//   flex-grow: 1;
+//   padding: 20px 25px 25px;
+// `
+// const style = {
+//   color: '#fff',
+//   textDecoration: 'none',
+//   cursor: 'pointer'
+// }
 
 const ApplicationList = props => {
   const {
     list,
-    filterActions,
-    onDelete
+    history,
+    filterActions
+    // onDelete
   } = props
 
   // Data
-  const data = propOr([], 'results', list)
-  const count = path(['data', 'count'], list)
-  const loading = prop('loading', list)
+  const listData = propOr([], 'results', list)
+  const listCount = path(['data', 'count'], list)
+  const listLoading = prop('loading', list)
 
   // TabsList
   const tabsList = getTabsFromRoute()
@@ -63,12 +67,12 @@ const ApplicationList = props => {
       <th colSpan={6}>Номер паспорта</th>
       <th colSpan={3}>Адрес</th>
       <th colSpan={4}>Дата рождения</th>
-      <th colSpan={1} />
-      <th colSpan={1} />
+      {/* <th colSpan={1} /> */}
+      {/* <th colSpan={1} /> */}
     </TableRow>
 
   // TableList
-  const tableList = data.map(client => {
+  const tableList = listData.map(client => {
     const {
       title = 'Title',
       id,
@@ -76,7 +80,11 @@ const ApplicationList = props => {
     } = client
 
     // Handlers
-    const handleRedirect = () => alert('Hello')
+    const handleRedirect = () => {
+      history.push({
+        pathname: sprintf(ROUTES.APPLICATION_ORDERS_DETAIL_URL, id)
+      })
+    }
 
     // Render
     return (
@@ -88,20 +96,20 @@ const ApplicationList = props => {
         <td colSpan={6}>АА 3545332</td>
         <td colSpan={3}>{address}</td>
         <td colSpan={4}>BDay</td>
-        <td colSpan={1}>
-          <Link
-            style={style}
-            to={sprintf(APPLICATION_UPDATE_URL, id)}>
-            <img src={Edit} alt="Edit" />
-          </Link>
-        </td>
-        <td colSpan={1}>
-          <span
-            style={style}
-            onClick={() => onDelete(id)}>
-            <img src={Trash} alt="Edit" />
-          </span>
-        </td>
+        {/* <td colSpan={1}> */}
+        {/*  <Link */}
+        {/*    style={style} */}
+        {/*    to={sprintf(APPLICATION_UPDATE_URL, id)}> */}
+        {/*    <img src={Edit} alt="Edit" /> */}
+        {/*  </Link> */}
+        {/* </td> */}
+        {/* <td colSpan={1}> */}
+        {/*  <span */}
+        {/*    style={style} */}
+        {/*    onClick={() => onDelete(id)}> */}
+        {/*    <img src={Trash} alt="Edit" /> */}
+        {/*  </span> */}
+        {/* </td> */}
       </TableRow>
     )
   })
@@ -109,9 +117,9 @@ const ApplicationList = props => {
   // Table
   const table =
     <Table
-      isEmpty={isEmpty(data)}
+      isEmpty={isEmpty(listData)}
       filterForm={tableActions}
-      loading={loading}
+      loading={listLoading}
       styles={{ marginBottom: '47px' }}
     >
       {tableHead}
@@ -121,16 +129,16 @@ const ApplicationList = props => {
   // Pagination
   const pagination =
     <Pagination
-      count={count}
+      count={listCount}
     />
 
   // Render
   return (
-    <BoxUI>
+    <Container>
       {tabs}
       {table}
       {pagination}
-    </BoxUI>
+    </Container>
   )
 }
 

@@ -4,6 +4,7 @@ import Layouts from '../../components/Layouts/Layout'
 import ApplicationCreateContainer from './containers/ApplicationCreateContainer'
 import ApplicationListContainer from './containers/ApplicationListContainer'
 import ApplicationUpdateContainer from './containers/ApplicationUpdateContainer'
+import ApplicationItemContainer from './containers/ApplicationItemContainer'
 
 export default () => [
   {
@@ -37,14 +38,8 @@ export default () => [
   },
   {
     exact: true,
-    path: ROUTES.APPLICATION_TABS_URL,
+    path: ROUTES.APPLICATION_ORDERS_DETAIL_PATH,
     layout: Layouts,
-    component: ApplicationListContainer
+    component: ApplicationItemContainer
   }
-  // {
-  //   exact: true,
-  //   path: ROUTES.APPLICATION_TABS_URL,
-  //   layout: Layouts,
-  //   component: ClientListContainer
-  // }
 ]
