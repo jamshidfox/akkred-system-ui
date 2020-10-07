@@ -24,50 +24,6 @@ export default [
       }
     ]
   },
-  // {
-  //   name: 'Заявки',
-  //   url: ROUTES.MY_ORDERS_URL,
-  //   tabs: [
-  //     {
-  //       name: 'Мои заявки',
-  //       url: ROUTES.MY_ORDERS_URL
-  //     },
-  //     {
-  //       name: 'Все заявки',
-  //       url: ROUTES.ORDERS_URL
-  //     }
-  //   ]
-  // },
-  // {
-  //   name: 'Заявки OLD',
-  //   url: '#',
-  //   icon: Document,
-  //   children: [
-  //     {
-  //       name: 'Все',
-  //       url: ROUTES.APPLICATION_LIST_URL,
-  //       icon: Document,
-  //       tabs: [
-  //         {
-  //           name: 'Мои заявки',
-  //           url: ROUTES.APPLICATION_TABS_URL
-  //         },
-  //         {
-  //           name: 'Табуляция',
-  //           url: ROUTES.APPLICATION_LIST_URL
-  //         }
-  //       ],
-  //     },
-  //     {
-  //       name: 'YANGILAR',
-  //       url:'/',
-  //     },
-  //     {
-  //       name: 'RAHBARIYAT KO’RIB CHIQISHIDA',
-  //       url:'/',
-  //     },
-  //  ]
-  // }
   {
     name: 'Сотрудники',
     url: ROUTES.EMPLOYEES_LIST_URL,
@@ -85,30 +41,25 @@ export default [
   },
   // {
   //   name: 'Договоры',
-  //   url: '/',
-  //   icon: List,
+  //   url: '/'
   // },
   //
   // {
   //   name: 'Учет аккред. органов',
-  //   url: '/',
-  //   icon: TrendingUp,
+  //   url: '/'
   // },
   // {
   //   name: 'Документы',
-  //   url: '/',
-  //   icon: CreditCard,
+  //   url: '/'
   // },
   //
   // {
   //   name: 'Учет экспертов-аудиторов',
-  //   url: '/',
-  //   icon: CreditCard,
+  //   url: '/'
   // },
   // {
   //   name: 'Финансовая аналитика',
-  //   url: '/',
-  //   icon: TrendingUp,
+  //   url: '/'
   // },
   {
     name: 'Настройка',

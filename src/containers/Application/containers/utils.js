@@ -1,4 +1,4 @@
-import { path, prop } from 'ramda'
+import { prop } from 'ramda'
 import toSnakeCase from '../../../utils/toSnakeCase'
 
 export const mapBranches = (item) => toSnakeCase({

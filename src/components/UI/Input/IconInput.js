@@ -37,7 +37,7 @@ const IconInput = ({ prefix, label, ...props }) => {
       <InputWrapper prefix={prefix} >
         <StyledInput {...props} />
         {prefix &&
-        <IconWrap>{prefix()}</IconWrap>}
+        <IconWrap>{prefix}</IconWrap>}
       </InputWrapper>
       <InputError>{props.error}</InputError>
     </StyledWrapper>
@@ -45,7 +45,7 @@ const IconInput = ({ prefix, label, ...props }) => {
 }
 
 IconInput.propTypes = {
-  prefix: PropTypes.func,
+  prefix: PropTypes.any,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   error: PropTypes.string,

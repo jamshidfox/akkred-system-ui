@@ -1,4 +1,6 @@
 import React from 'react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
 import ApplicationList from '../components/ApplicationList'
@@ -6,7 +8,11 @@ import { fields } from '../components/CommentListFilterForm'
 import { applicationFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 
-const ApplicationListContainer = () => {
+// Enhance
+const enhance = compose(connect())
+
+// Component
+const ApplicationListContainer = props => {
   // FetchList
   const list = useFetchList({
     action: applicationFetchList,
@@ -30,8 +36,9 @@ const ApplicationListContainer = () => {
       list={list}
       filterActions={filterActions}
       onDelete={deleteAction.onSubmit}
+      {...props}
     />
   )
 }
 
-export default ApplicationListContainer
+export default enhance(ApplicationListContainer)

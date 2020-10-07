@@ -1,14 +1,8 @@
 import React, { useState } from 'react'
 import {
-  flatten,
-  fromPairs,
   map,
   path,
-  pipe,
-  prop,
-  toPairs,
-  union,
-  values
+  prop
 } from 'ramda'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -17,15 +11,12 @@ import toSnakeCase from '../../../utils/toSnakeCase'
 import * as STATE from '../../../constants/stateNames'
 import * as ROUTES from '../../../constants/routes'
 import {
-  useFetchList,
-  useUpdate,
   useFetchItem,
   useModal
 } from '../../../hooks'
-import { getSerializedData, getIdForInitValues } from '../../../utils/get'
-import ApplicationCreate, { fields } from '../components/ApplicationCreate'
+import { getSerializedData } from '../../../utils/get'
+import { fields } from '../components/ApplicationCreate'
 import {
-  applicationFetchList,
   clientFetchItem,
   applicationUpdateAction
 } from '../actions'
@@ -109,7 +100,6 @@ const ApplicationUpdateContainer = props => {
   }
 
   return (
-
     <ApplciationTabs
       onSubmit={() => null}
       initialValues={initialValues}

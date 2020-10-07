@@ -51,7 +51,7 @@ const SearchField = props => {
   // Render
   return (
     <Input
-      prefix={Search}
+      prefix={<Search />}
       onChange={onChange}
       onEnter={onEnter}
       data-cy={'table-search'}

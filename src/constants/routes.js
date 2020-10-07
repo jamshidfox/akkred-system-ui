@@ -38,7 +38,6 @@ export const CLIENT_UPDATE_PATH = `/${CLIENT}/${ID}/`
 
 const APPLICATION = 'application'
 export const APPLICATION_LIST_URL = `/${APPLICATION}/`
-export const APPLICATION_TABS_URL = `/${APPLICATION}/tabs`
 export const APPLICATION_ITEM_URL = `/${APPLICATION}/%d`
 export const APPLICATION_ITEM_PATH = `/${APPLICATION}/${ID}/`
 export const APPLICATION_CREATE_URL = `/${APPLICATION}/create`
@@ -48,6 +47,8 @@ export const APPLICATION_MY_ORDERS_PATH = `/${APPLICATION}/my-orders`
 export const APPLICATION_MY_ORDERS_URL = `/${APPLICATION}/my-orders`
 export const APPLICATION_ORDERS_PATH = `/${APPLICATION}/orders`
 export const APPLICATION_ORDERS_URL = `/${APPLICATION}/orders`
+export const APPLICATION_ORDERS_DETAIL_PATH = `/${APPLICATION}/orders/${ID}`
+export const APPLICATION_ORDERS_DETAIL_URL = `/${APPLICATION}/orders/%d`
 
 const CLIENT_INFO = 'client_info'
 export const CLIENT_INFO_LIST_URL = `/${CLIENT_INFO}/`
@@ -56,13 +57,3 @@ export const CLIENT_INFO_ITEM_PATH = `/${CLIENT_INFO}/${ID}/`
 export const CLIENT_INFO_CREATE_URL = `/${CLIENT_INFO}/create`
 export const CLIENT_INFO_UPDATE_URL = `/${CLIENT_INFO}/%d`
 export const CLIENT_INFO_UPDATE_PATH = `/${CLIENT_INFO}/${ID}/`
-
-// MyOrders
-const ORDERS = 'orders'
-export const ORDERS_PATH = `/${ORDERS}/`
-export const ORDERS_URL = `/${ORDERS}/`
-
-// MyOrders
-const MY_ORDERS = 'my-orders'
-export const MY_ORDERS_PATH = `/${MY_ORDERS}/`
-export const MY_ORDERS_URL = `/${MY_ORDERS}/`
