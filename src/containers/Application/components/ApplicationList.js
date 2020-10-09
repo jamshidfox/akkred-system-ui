@@ -82,7 +82,7 @@ const ApplicationList = props => {
     // Handlers
     const handleRedirect = () => {
       history.push({
-        pathname: sprintf(ROUTES.APPLICATION_ORDERS_DETAIL_URL, id)
+        pathname: sprintf(ROUTES.APPLICATION_UPDATE_URL, id)
       })
     }
 
