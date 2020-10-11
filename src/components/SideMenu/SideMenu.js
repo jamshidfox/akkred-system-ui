@@ -3,18 +3,20 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { prop, propOr } from 'ramda'
+import PropTypes from 'prop-types'
 import Menu from '../UI/Menu'
 import MenuIcon from '../../icons/Menu'
 import Exit from '../../icons/Exit'
 import { storageData } from '../../utils/storage'
 import constants from './constants'
 
+// Styles
 const Box = styled('div')`
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  width: ${({ open }) => open ? '296px' : '60px'};
-  min-width: ${({ open }) => open ? '296px' : '60px'};
+  width: ${({ theme, open }) => open ? theme.width.mainMenu.open : theme.width.mainMenu.close};
+  min-width: ${({ theme, open }) => open ? theme.width.mainMenu.open : theme.width.mainMenu.close};
   padding: 15px 8px;
   background: #ffffff;
   overflow: hidden;
@@ -114,13 +116,11 @@ const LogOut = styled('button')`
   }
 `
 
-const SideMenu = () => {
-  // Storage
-  const isOpenMenuStorage = storageData('isOpenMenu').getValue()
-  const isOpenMenuInitial = isOpenMenuStorage === null || isOpenMenuStorage === true
-
-  // States
-  const [isOpenMenu, setIsOpenMenu] = useState(isOpenMenuInitial)
+const SideMenu = props => {
+  const {
+    open,
+    setOpen
+  } = props
 
   // Data
   const userInfo = useSelector(prop(STATES.USER_INFO))
@@ -132,26 +132,26 @@ const SideMenu = () => {
 
   // Handlers
   const handleToggleMenu = () => {
-    const value = !isOpenMenu
+    const value = !open
 
-    setIsOpenMenu(value)
+    setOpen(value)
     storageData('isOpenMenu').setValue(value)
   }
 
   // Render
   return (
     <Box
-      open={isOpenMenu}
+      open={open}
     >
       <div>
         <MenuWrapper>
           <MenuButton
             onClick={handleToggleMenu}
-            smart={!isOpenMenu}
+            smart={!open}
           >
             <MenuIcon style={{ verticalAlign: 'text-bottom' }} />
           </MenuButton>
-          {isOpenMenu &&
+          {open &&
           <Title
             withSubtitle={!!email}
           >
@@ -161,17 +161,22 @@ const SideMenu = () => {
         </MenuWrapper>
         <Menu
           list={constants}
-          isOpenMenu={isOpenMenu}
+          open={open}
         />
       </div>
       <LogOut
-        smart={!isOpenMenu}
+        smart={!open}
       >
         <Exit />
         <span>Выйти</span>
       </LogOut>
     </Box>
   )
+}
+
+SideMenu.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired
 }
 
 export default SideMenu

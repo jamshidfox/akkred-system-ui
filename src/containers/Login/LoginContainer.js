@@ -12,7 +12,7 @@ const LoginContainer = props => {
   const onLogin = values => {
     return dispatch(loginAction(values))
       .then(({ value }) => dispatch(userInfoFetch(value.token)))
-      .then(() => props.history.push(ROUTES.SETTINGS_CLIENT_INFO_URL))
+      .then(() => props.history.push(ROUTES.APPLICATION_MY_ORDERS_URL))
       .then(() => dispatch(hotelFetchList()))
       .catch(mapResponseToFormError)
   }

@@ -22,7 +22,8 @@ export default {
     inputHover: '#edf1f7',
     tableHead: '#fbfbfd',
     tableOdd: '#f1f3f5',
-    tableHover: '#edf1f7'
+    tableHover: '#edf1f7',
+    thumb: '#ccc'
   },
   transition: {
     primary: 'all .2s ease-in-out'
@@ -95,5 +96,15 @@ export default {
   },
   boxShadow: {
     primary: '0 2px 15px rgba(211, 216, 224, 0.5)'
+  },
+  width: {
+    thumb: '3px',
+    mainMenu: {
+      open: '296px',
+      close: '60px'
+    },
+  },
+  height: {
+    thumb: '3px'
   }
 }

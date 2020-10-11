@@ -64,7 +64,6 @@ const ApplicationTabs = props => {
         <Tab value={'service'} label={'Ariza'}>
           <ApplicationUserInfo clientInfo={clientInfo} />
         </Tab>
-
         <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationCreate
             onSubmit={onSubmit}

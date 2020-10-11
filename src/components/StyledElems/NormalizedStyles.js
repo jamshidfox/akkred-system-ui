@@ -1,20 +1,17 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
-  /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
-  /* Document
-     ========================================================================== */
-  
-  /**
-   * 1. Correct the line height in all browsers.
-   * 2. Prevent adjustments of font size after orientation changes in iOS.
-   */
-   
   * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    ::-webkit-scrollbar{
+      width: ${({ theme }) => theme.width.thumb};
+      height: ${({ theme }) => theme.height.thumb};
+    }
+    ::-webkit-scrollbar-thumb{
+      background: ${({ theme }) => theme.background.thumb};
+    }
   }
   
   html {
@@ -40,6 +37,8 @@ export default createGlobalStyle`
     color: #2c3a50;
     letter-spacing: 0.15px;
     background: #fff;
+    //max-width: 100vw;
+    //overflow-x: hidden;
   }
 
   /**

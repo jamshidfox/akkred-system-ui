@@ -17,7 +17,7 @@ const SubMenus = styled('div')`
 const Menu = props => {
   const {
     list,
-    isOpenMenu
+    open
   } = props
 
   // States
@@ -58,7 +58,7 @@ const Menu = props => {
     const menuItem =
       <MenuItem
         pathname={pathname}
-        smart={!isOpenMenu}
+        smart={!open}
         isActive={isActiveTab}
         url={url}
         {...rest}
@@ -71,7 +71,7 @@ const Menu = props => {
           pathname={pathname}
           withChildren={true}
           url={url}
-          smart={!isOpenMenu}
+          smart={!open}
           isOpen={isOpen}
           onClick={handleToggleSubMenus}
           {...rest}
@@ -84,7 +84,7 @@ const Menu = props => {
             return (
               <MenuItem
                 pathname={pathname}
-                smart={!isOpenMenu}
+                smart={!open}
                 isSub={true}
                 isActive={isActiveChild}
                 url={url}

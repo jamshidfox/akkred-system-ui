@@ -71,7 +71,7 @@ const ApplicationCreate = props => {
     serviceModal.onOpen()
   }
   const stage = prop('stage', initialValues)
-  console.warn(stage,'stage')
+  console.warn(stage, 'stage')
   const confirmModalOpen = () => {
     confirmModal.onOpen()
   }
