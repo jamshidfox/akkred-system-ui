@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { prop } from 'ramda'
-import { Row as RowUI } from '../../../components/Grid'
 import { Tabs, Tab } from '../../../components/TabsDetail'
 import { Box } from '../../../components/StyledElems'
 import ApplicationCreate from './ApplicationCreate'
@@ -37,30 +36,22 @@ export const fields = [
 const BoxUI = styled(Box)`
   padding: 25px;
 `
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
-`
 
-const Row = styled(RowUI)`
-  margin-bottom: 40px;
-`
 export const GUEST = 'guest'
 export const SERVICE = 'service'
 export const PAYMENT = 'payment'
+
 const ApplicationTabs = props => {
   const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData, confirmModal } = props
   const clientInfo = prop('clientInfo', initialValues)
 
   return (
     <BoxUI>
-      <Tabs initialValue={'guest'} value={tabData.tab} onChange={tabData.onTabChange}>
+      <Tabs
+        initialValue={'guest'}
+        // value={tabData.tab}
+        // onChange={tabData.onTabChange}
+      >
         <Tab value={'service'} label={'Ariza'}>
           <ApplicationUserInfo clientInfo={clientInfo} />
         </Tab>
@@ -76,7 +67,6 @@ const ApplicationTabs = props => {
             onTabChange={() => tabData.onTabChange(SERVICE)}
           />
         </Tab>
-
         <Tab value={'a'} label={'Rahbariyat rezolyutsiyasi'}>
           a
         </Tab>
@@ -92,18 +82,16 @@ const ApplicationTabs = props => {
         <Tab value={'s'} label={'Arizachiga jo’natilgan hujjatlar'}>
           d
         </Tab>
-        <Tab value={'s'} label={'Arizachidan kelgan qo’shimcha hujjatlar'}>
+        <Tab value={'s1'} label={'Arizachidan kelgan qo’shimcha hujjatlar'}>
           d
         </Tab>
-        <Tab value={'s'} label={'Markazga tegishli hujjatlar'}>
+        <Tab value={'s2'} label={'Markazga tegishli hujjatlar'}>
           d
         </Tab>
-        <Tab value={'s'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>
+        <Tab value={'s3'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>
           d
         </Tab>
-
       </Tabs>
-
     </BoxUI>
   )
 }

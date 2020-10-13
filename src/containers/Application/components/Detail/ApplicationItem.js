@@ -4,14 +4,7 @@ import Tabs from '../../../../components/TabsDetail/Tabs'
 import Tab from '../../../../components/TabsDetail/Tab'
 
 // Component
-const ApplicationItem = props => {
-  // const {
-  // applicationItem
-  // } = props
-
-  // Data
-  // const applicationItemData = prop('data', applicationItem)
-
+const ApplicationItem = () => {
   // Tabs
   const tabs =
     <Tabs
@@ -46,9 +39,6 @@ const ApplicationItem = props => {
       </Tab>
       <Tab value={'ten'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>
         Tab 10
-      </Tab>
-      <Tab value={'eleven'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>
-        Tab 11
       </Tab>
     </Tabs>
 
