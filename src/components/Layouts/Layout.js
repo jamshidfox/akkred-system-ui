@@ -10,15 +10,17 @@ const Container = styled('div')`
   display: flex;
   flex-flow: row nowrap;
   max-width: 100%;
-  padding: 20px;
+  min-height: 100vh;
+  padding: 20px 20px 20px calc(${({ theme, open }) => open ? theme.width.mainMenu.open : theme.width.mainMenu.close} + 20px);
+  transition: ${({ theme }) => theme.transition.primary};
 `
 const Content = styled('div')`
   display: flex;
   flex-flow: column nowrap;
   flex-grow: 1;
-  max-width: ${({ theme, open }) => `calc(100% - 20px - ${open ? theme.width.mainMenu.open : theme.width.mainMenu.close})`};
-  background: #fff;
+  max-width: calc(100vw - (${({ theme, open }) => open ? theme.width.mainMenu.open : theme.width.mainMenu.close} + 64px));
   margin-left: 20px;
+  background: #fff;
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
   border-radius: ${({ theme }) => theme.borderRadius.primary};
   transition: ${({ theme }) => theme.transition.primary};
@@ -35,7 +37,9 @@ const Layout = ({ children }) => {
   // Render
   return (
     <>
-      <Container>
+      <Container
+        open={isOpenMenu}
+      >
         <SideMenu
           open={isOpenMenu}
           setOpen={setIsOpenMenu}

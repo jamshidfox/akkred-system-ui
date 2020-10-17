@@ -1,5 +1,5 @@
 import * as STATES from 'constants/stateNames'
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { prop, propOr } from 'ramda'
@@ -12,17 +12,36 @@ import constants from './constants'
 
 // Styles
 const Box = styled('div')`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  height: calc(100vh - 40px);
+  max-height: calc(100vh - 40px);
   width: ${({ theme, open }) => open ? theme.width.mainMenu.open : theme.width.mainMenu.close};
   min-width: ${({ theme, open }) => open ? theme.width.mainMenu.open : theme.width.mainMenu.close};
-  padding: 15px 8px;
+  padding: 15px 0;
   background: #ffffff;
   overflow: hidden;
   border-radius: ${({ theme }) => theme.borderRadius.primary};
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
   transition: ${({ theme }) => theme.transition.primary};
+`
+const MenuList = styled('div')`
+  max-height: calc(100vh - 40px - 30px - 79px - 82px);
+  overflow-y: hidden;
+  transition: ${({ theme }) => theme.transition.primary};
+  &:hover{
+    overflow-y: auto;
+    transition: ${({ theme }) => theme.transition.primary};
+  }
+  ::-webkit-scrollbar{
+    width: 2px;
+    height: 2px;
+  }
 `
 const MenuWrapper = styled('div')`
   display: flex;
@@ -44,6 +63,7 @@ const IconButton = styled('div')`
 `
 const MenuButton = styled(IconButton)`
   padding: ${({ smart }) => smart ? '7px 4px' : '7px 16px'};
+  margin-left: ${({ smart }) => smart && '8px'};
   margin-right: ${({ smart }) => !smart && '3px'};
   & > svg{
     width: 35px;
@@ -159,10 +179,12 @@ const SideMenu = props => {
             {email && <h3>{email}</h3>}
           </Title>}
         </MenuWrapper>
-        <Menu
-          list={constants}
-          open={open}
-        />
+        <MenuList>
+          <Menu
+            list={constants}
+            open={open}
+          />
+        </MenuList>
       </div>
       <LogOut
         smart={!open}

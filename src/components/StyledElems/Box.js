@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const Box = styled.div`
+const Box = styled('div')`
   background: #ffffff;
   border-radius: ${props => props.theme.borderRadius.primary};
   padding: ${props => props.padding};

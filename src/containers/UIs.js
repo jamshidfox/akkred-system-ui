@@ -8,11 +8,11 @@ import Close from '../icons/Close'
 import Select from '../components/UI/Select'
 import MultiSelect from '../components/UI/MultiSelect'
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   padding: 20px;
 `
 
-const Block = styled.div`
+const Block = styled('div')`
   &:not(:last-child) {
     border-bottom: ${props => props.theme.border.primary};
     padding-bottom: 30px;
@@ -47,11 +47,7 @@ const nestedOptions = [
   }
 ]
 
-const numbers = [
-  { id: 1, name: 'One' }
-]
-
-const UIs = props => {
+const UIs = () => {
   return (
     <Wrapper>
       <Block>

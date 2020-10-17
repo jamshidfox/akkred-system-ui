@@ -11,7 +11,52 @@ const ApplicationItem = () => {
       initialValue={'one'}
     >
       <Tab value={'one'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
-        Tab 1
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
+        <p>Tab 1</p>
       </Tab>
       <Tab value={'two'} label={'Rahbariyat rezolyutsiyasi'}>
         Tab 2

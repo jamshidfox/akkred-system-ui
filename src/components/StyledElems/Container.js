@@ -6,6 +6,9 @@ const Container = styled(Box)`
   flex-flow: column nowrap;
   flex-grow: 1;
   padding: 25px;
+  //max-height: 100%;
+  //overflow-x: hidden;
+  //overflow-y: auto;
 `
 
 export default Container

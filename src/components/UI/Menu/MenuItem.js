@@ -26,7 +26,7 @@ const Item = styled(Link)`
   align-items: center;
   padding: ${({ smart }) => smart ? 0 : '10px 14px 10px 52px'};
   margin: ${({ isSub, withChildren, smart }) =>
-    `${isSub ? '10px' : '20px'} 0 ${withChildren ? '0' : isSub ? '10px' : '20px'} ${(isSub && !smart) ? '17px' : '0'}`};
+    `${isSub ? '10px' : '20px'} 8px ${withChildren ? '0' : isSub ? '10px' : '20px'} ${(isSub && !smart) ? '17px' : '8px'}`};
   user-select: none;
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
   background: ${({ theme, isActive }) => isActive && theme.palette.secondary};
@@ -50,17 +50,9 @@ const Item = styled(Link)`
       color: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
     }
     &:last-child{
-      //width: {({ smart }) => smart && '12px'};
-      //height: {({ smart }) => smart && '12px'};
-      // right: {({ smart }) => smart ? '3px' : '9px'};
       right: 9px;
-      //top: {({ smart }) => smart && 'unset'}
-      //bottom: {({ smart }) => smart && '3px'}
-      //stroke-width: {({ smart }) => smart ? '4px' : '2px'};
       stroke-width: 2px;
       color: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
-      // transform: {({ isActive, smart }) => (smart && isActive) ? 'rotate(-180deg)' : (smart && !isActive) ? 'rotate(0)' : isActive &&
-      // 'translateY(-50%) rotate(-180deg)'};
       transform: ${({ isOpen }) => isOpen ? 'translateY(-50%) rotate(-180deg)' : 'translateY(-50%) rotate(0)'};
     }
   }
