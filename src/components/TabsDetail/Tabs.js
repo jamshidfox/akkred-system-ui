@@ -6,7 +6,11 @@ import ChevronLeft from '../../icons/ChevronLeft'
 import ChevronRight from '../../icons/ChevronRight'
 
 // Styles
-const Wrapper = styled('div')``
+const Wrapper = styled('div')`
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+`
 const TabsItems = styled('div')`
   position: relative;
   width: 100%;
@@ -56,7 +60,9 @@ const TabButton = styled('button')`
     transition: ${({ theme }) => theme.transition.primary};
   }
 `
-const TabContent = styled('div')``
+const TabContent = styled('div')`
+  flex-grow: 1;
+`
 const Title = styled('div')`
   font-weight: bold;
   font-size: 18px;
