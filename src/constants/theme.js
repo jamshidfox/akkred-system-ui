@@ -7,7 +7,10 @@ export default {
     primary: primaryColor,
     secondary: '#eaf2fd',
     orange: '#f96526',
-    white: '#fff'
+    black: '#000',
+    white: '#fff',
+    red: '#eb5757',
+    green: '#219653'
   },
   text: {
     primary: '#2c3a50',

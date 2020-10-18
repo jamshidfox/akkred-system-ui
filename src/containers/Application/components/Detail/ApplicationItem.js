@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '../../../../components/StyledElems/Container'
 import Tabs from '../../../../components/TabsDetail/Tabs'
 import Tab from '../../../../components/TabsDetail/Tab'
+import ApplicationItemTabOne from './Tabs/ApplicationItemTabOne'
 
 // Component
 const ApplicationItem = () => {
@@ -10,53 +11,8 @@ const ApplicationItem = () => {
     <Tabs
       initialValue={'one'}
     >
-      <Tab value={'one'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
-        <p>Tab 1</p>
+      <Tab value={'one'} label={'Rahbariyat rezolyutsiyasi'}>
+        <ApplicationItemTabOne />
       </Tab>
       <Tab value={'two'} label={'Rahbariyat rezolyutsiyasi'}>
         Tab 2

@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import EmptyQuery from '../EmptyQuery'
+import Loader from '../Loader'
 
 const Wrapper = styled('table')`
   border-collapse: separate;
   border-spacing: 0 5px;
+  width: 100%;
   ${({ styles }) => styles};
 `
 const Table = props => {
@@ -23,7 +25,7 @@ const Table = props => {
     return (
       <>
         {filterForm}
-        {loading && <div style={{ textAlign: 'center', marginTop: '30px' }}>Loading... </div>}
+        {loading && <div style={{ textAlign: 'center', marginTop: '30px' }}><Loader size={1.2} /></div>}
         {!loading && <EmptyQuery text={emptyText} />}
       </>
     )
