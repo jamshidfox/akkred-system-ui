@@ -24,10 +24,10 @@ import { mapResponseToFormError } from '../../../utils/form'
 import ApplciationTabs from '../components/ApplciationTabs'
 import { mapBranches } from './utils'
 
-const getClientItemParams = (onComplete) => ({
+const getClientItemParams = () => ({
   action: clientFetchItem,
   stateName: STATE.APPLICATION_ITEM,
-  onComplete:onComplete
+  // onComplete:onComplete
 })
 
 const serializer = val => {
@@ -69,7 +69,7 @@ const ApplicationUpdateContainer = props => {
     const branch = prop('branchs', value)
     setServiceList([...branch])
   }
-  const { data } = useFetchItem(getClientItemParams(onComplete))
+  const { data } = useFetchItem(getClientItemParams())
   const onAddService = service => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()

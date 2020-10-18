@@ -107,7 +107,9 @@ const MenuItem = props => {
       smart={smart}
       {...rest}
     >
-      {icon ? icon() : <Grid />}
+      {/* {icon ? icon() : <Grid />} */}
+
+      {icon && icon()}
       <Text
         smart={smart}
       >

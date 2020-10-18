@@ -11,15 +11,15 @@ const ConfirmDialog = ({ onClose, open, onSubmit, stage }) => {
   }
 
   switch (stage) {
+  // case 'stage_1':
+  //   return (
+  //     <Modal onClose={onClose} open={open} width={'400px'}>
+  //       <div style={{ textAlign: 'right' }}>
+  //         <MediumButton onClick={onSubmit}>Confirm stage_1</MediumButton>
+  //       </div>
+  //     </Modal>
+  //   )
   case 'stage_1':
-    return (
-      <Modal onClose={onClose} open={open} width={'400px'}>
-        <div style={{ textAlign: 'right' }}>
-          <MediumButton onClick={onSubmit}>Confirm stage_1</MediumButton>
-        </div>
-      </Modal>
-    )
-  case 'stage_2':
     return (
       <Modal onClose={onClose} open={open} width={'400px'}>
         <Form

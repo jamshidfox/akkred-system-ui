@@ -3,19 +3,20 @@ import PropTypes from 'prop-types'
 // import { Link } from 'react-router-dom'
 import { prop, isEmpty, path, propOr } from 'ramda'
 import { sprintf } from 'sprintf-js'
-// import styled from 'styled-components'
+import styled from 'styled-components'
 import Pagination from 'components/Pagination'
 // import { useHistory } from 'react-router'
 import { Table, TableRow, TableActions } from '../../../components/Table'
-// import { APPLICATION_UPDATE_URL } from '../../../constants/routes'
-// import Edit from '../../../images/edit.svg'
-// import Trash from '../../../images/trash-2.svg'
-// import { Box } from '../../../components/StyledElems'
+import { APPLICATION_UPDATE_URL } from '../../../constants/routes'
+import Edit from '../../../images/edit.svg'
+import Trash from '../../../images/trash-2.svg'
+import { Box } from '../../../components/StyledElems'
 import Tabs from '../../../components/Tabs'
 import { getTabsFromRoute } from '../../../utils/get'
 import * as ROUTES from '../../../constants/routes'
 import Container from '../../../components/StyledElems/Container'
 import CommentListFilterForm from './CommentListFilterForm'
+import { Link } from 'react-router-dom'
 
 // const BoxUI = styled(Box)`
 //   display: flex;
@@ -23,11 +24,11 @@ import CommentListFilterForm from './CommentListFilterForm'
 //   flex-grow: 1;
 //   padding: 20px 25px 25px;
 // `
-// const style = {
-//   color: '#fff',
-//   textDecoration: 'none',
-//   cursor: 'pointer'
-// }
+const style = {
+  color: '#fff',
+  textDecoration: 'none',
+  cursor: 'pointer'
+}
 
 const ApplicationList = props => {
   const {
@@ -90,19 +91,19 @@ const ApplicationList = props => {
     return (
       <TableRow
         key={id}
-        onClick={handleRedirect}
+        // onClick={handleRedirect}
       >
         <td colSpan={8}>{title}</td>
         <td colSpan={6}>АА 3545332</td>
         <td colSpan={3}>{address}</td>
         <td colSpan={4}>BDay</td>
-        {/* <td colSpan={1}> */}
-        {/*  <Link */}
-        {/*    style={style} */}
-        {/*    to={sprintf(APPLICATION_UPDATE_URL, id)}> */}
-        {/*    <img src={Edit} alt="Edit" /> */}
-        {/*  </Link> */}
-        {/* </td> */}
+        <td colSpan={1}>
+          <Link
+            // style={style}
+            to={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>
+            <img src={Edit} alt="Edit" />
+          </Link>
+        </td>
         {/* <td colSpan={1}> */}
         {/*  <span */}
         {/*    style={style} */}
