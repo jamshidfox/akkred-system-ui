@@ -70,6 +70,8 @@ export const APPLICATION_LIST = `/${APPLICATION}/`
 export const APPLICATION_CREATE = `/${APPLICATION}/`
 export const APPLICATION_UPDATE = `/${APPLICATION}/%d/`
 export const APPLICATION_DELETE = `/${APPLICATION}/%d/`
+export const APPLICATION_CONFIRM = `/${APPLICATION}/%d/confirm/`
+export const APPLICATION_REJECT = `/${APPLICATION}/%d/reject/`
 export const APPLICATION_ITEM = `/${APPLICATION}/%d/`
 export const APPLICATION_ITEM_DOCS = `/${APPLICATION}/%d/docs/`
 

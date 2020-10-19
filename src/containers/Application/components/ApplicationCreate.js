@@ -18,6 +18,7 @@ import { Box } from '../../../components/StyledElems'
 import * as API from '../../../constants/api'
 import { BranchCreateModal, BranchList } from './Branch'
 import ConfirmDialog from './Confirm/ConfirmModal'
+import RejectDialog from './Reject/RejectModal'
 
 export const fields = [
   'address',
@@ -64,14 +65,16 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ApplicationCreate = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, confirmModal } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, confirmModal, rejectModal } = props
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
     serviceModal.onOpen()
   }
   const stage = prop('stage', initialValues)
-  console.warn(stage, 'stage')
+  const rejectModalOpen = () => {
+    rejectModal.onOpen()
+  }
   const confirmModalOpen = () => {
     confirmModal.onOpen()
   }
@@ -169,16 +172,32 @@ const ApplicationCreate = props => {
                 </Col>
 
               </Row>
-              <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
-              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
+              {/*<BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />*/}
+              {/*<BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />*/}
               <ConfirmDialog {...confirmModal} stage={stage} />
+              <RejectDialog {...rejectModal} />
 
               {/* <div style={{ textAlign: 'right' }}> */}
               {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
               {/* </div> */}
-              <div style={{ textAlign: 'right' }}>
-                <MediumButton onClick={confirmModalOpen}>Confirm</MediumButton>
+              <div style={{
+                display: 'flex'
+
+              }}>
+                <div style={{
+                  paddingRight: '20px'
+
+                }} >
+                  <MediumButton onClick={confirmModalOpen}>Confirm</MediumButton>
+                </div>
+                <div >
+                  <MediumButton style={{
+                    background: '#ff3454'
+                  }} onClick={rejectModalOpen}>Reject</MediumButton>
+                </div>
+
               </div>
+
             </form>
           )
         }}

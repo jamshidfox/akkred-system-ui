@@ -61,6 +61,34 @@ export const applicationDeleteAction = (id) => {
   }
 }
 
+export const applicationConfirmAction = (id) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(sprintf(API.APPLICATION_CONFIRM, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_CONFIRM
+    })
+  }
+}
+
+export const applicationRejectAction = (id) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(sprintf(API.APPLICATION_REJECT, id))
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_REJECT
+    })
+  }
+}
+
 export const applicationFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
