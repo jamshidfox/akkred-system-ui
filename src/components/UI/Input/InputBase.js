@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Input = styled('input')`
-  background: ${({ theme }) => theme.input.background};
-  border: ${({ theme }) => theme.input.border};
+  background: ${({ theme }) => theme.background.input};
+  border: ${({ theme }) => theme.border.input};
   border-radius: ${({ theme }) => theme.borderRadius.primary};
   color: inherit;
   font-size: 14px;
@@ -23,7 +23,7 @@ const Input = styled('input')`
     transition: ${({ theme }) => theme.transition.primary};
   }
   &::placeholder {
-    color: ${({ theme }) => theme.input.placeholderColor};
+    color: ${({ theme }) => theme.text.placeholder};
     font-weight: 400;
     transition: ${({ theme }) => theme.transition.primary};
   }

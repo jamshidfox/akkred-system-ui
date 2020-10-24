@@ -15,6 +15,6 @@ export const Text = styled('span')`
               ? theme.palette.primary
               : (color || 'inherit')
 };
-  font-weight: ${({ fontWeight }) => fontWeight};
+  font-weight: ${({ fontWeight, bold }) => bold ? 500 : fontWeight};
   ${({ styles }) => styles}
 `

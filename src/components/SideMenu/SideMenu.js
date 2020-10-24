@@ -48,7 +48,7 @@ const MenuWrapper = styled('div')`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: stretch;
-  margin-bottom: 38px;
+  margin-bottom: 5px;
 `
 const IconButton = styled('div')`
   display: flex;

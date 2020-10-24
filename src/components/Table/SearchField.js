@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { replaceParamsRoute } from 'utils/route'
+import { getParamFromHistory } from 'utils/get'
 import Search from '../../icons/Search'
 import { IconInput } from '../UI'
-import { replaceParamsRoute } from '../../utils/route'
-import { getParamFromHistory } from '../../utils/get'
 
 const Input = styled(IconInput)`
   background: ${({ theme }) => theme.background.input};
@@ -15,7 +15,7 @@ const Input = styled(IconInput)`
   height: 36px;
   width: 280px;
   &::placeholder {
-    color: #b2b7bf;
+    color: ${({ theme }) => theme.text.placeholder};
     font-size: 14px;
   }
   & svg{

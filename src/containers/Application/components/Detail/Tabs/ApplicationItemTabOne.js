@@ -4,6 +4,8 @@ import DocumentImg from 'images/document-image.jpg'
 import Loader from 'components/Loader'
 import TaskItem from 'containers/Application/components/Items/TaskItem'
 import { Text } from 'components/Text/Text'
+import { TextStatus } from 'components/Text/TextStatus'
+import Perms from 'components/Perms'
 
 // Styles
 const Wrap = styled('div')`
@@ -83,7 +85,7 @@ const ApplicationItemTabOne = () => {
         />
         <TaskItem
           it={'Статус'}
-          // is={'Soon...'}
+          is={<TextStatus bold={true} status={'active'}>Действующий</TextStatus>}
         />
         <TaskItem
           it={'Дата аккредитации '}

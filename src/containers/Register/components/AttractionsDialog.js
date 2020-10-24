@@ -15,18 +15,18 @@ const Selected = styled.button`
   text-align: left;
   border: ${props => props.theme.border.primary};
   border-radius: ${props => props.theme.borderRadius.primary};
-  color: ${props => props.theme.input.placeholderColor};
-  background: ${props => props.theme.input.background};
+  color: ${({ theme }) => theme.text.placeholder};
+  background: ${({ theme }) => theme.background.input};
   padding: 14px 16px;
   font-size: 14px;
   line-height: 24px;
   cursor: pointer;
   transition: 200ms;
     :hover:not(:disabled) {
-      background: ${props => props.theme.input.backgroundColorHover};
+      background: ${({ theme }) => theme.background.inputHover};
   }
   :disabled {
-    background: ${props => props.theme.input.background};
+    background: ${({ theme }) => theme.background.input};
     cursor: unset;
   }
 `

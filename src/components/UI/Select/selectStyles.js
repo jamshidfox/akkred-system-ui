@@ -1,22 +1,25 @@
 export default (theme, params) => ({
   control: (provided, state) => ({
     ...provided,
-    backgroundColor: state.isFocused ? 'white' : theme.input.background,
+    cursor: 'pointer',
+    backgroundColor: state.isFocused ? theme.palette.white : theme.background.input,
     boxShadow: null,
-    borderRadius: theme.borderRadius,
+    borderRadius: theme.borderRadius.input,
     borderColor: state.isFocused
       ? params.error
         ? `${theme.color.danger.default} !important`
-        : theme.color.primary.default
-      : theme.input.borderColor,
-    transition: 'color 300ms, transform 150ms',
+        : theme.borderColor.inputFocus
+      : theme.borderColor.input,
+    transition: theme.transition.primary,
     height: params.height,
     minHeight: params.height ? 'unset' : '48px',
     '&:hover': {
       backgroundColor: state.isFocused
-        ? 'white'
-        : theme.input.backgroundColorHover,
-      borderColor: state.isFocused ? theme.color.primary.default : theme.input.backgroundColorHover
+        ? theme.palette.white
+        : theme.background.inputHover
+      // borderColor: state.isFocused
+      //   ? 'red'
+      //   : 'transparent'
     }
   }),
   indicatorSeparator: () => ({}),
@@ -24,15 +27,15 @@ export default (theme, params) => ({
     ...provided,
     '& span': {
       background: state.isFocused
-        ? theme.input.labelColor
-        : theme.input.placeholderColor
+        ? theme.text.label
+        : theme.text.placeholder
     }
   }),
   clearIndicator: provided => ({
     ...provided,
-    color: theme.input.placeholderColor,
+    color: theme.text.placeholder,
     '&:hover': {
-      color: theme.input.labelColor
+      color: theme.text.label
     }
   }),
   dropdownIndicator: (provided, state) => ({
@@ -42,12 +45,12 @@ export default (theme, params) => ({
       ? params.error
         ? `${theme.color.danger.default} !important`
         : theme.color.primary.default
-      : theme.input.placeholderColor,
+      : theme.text.placeholder,
     padding: '0 12px',
     transition: 'color 300ms, transform 150ms',
     transform: params.menuIsOpen ? 'rotate(180deg)' : 'rotate(0)',
     '&:hover': {
-      color: theme.input.labelColor
+      color: theme.text.label
     }
   }),
   menuPortal: provided => ({
@@ -58,7 +61,7 @@ export default (theme, params) => ({
     ...provided,
     border: '1px solid',
     boxShadow: 'none',
-    borderColor: theme.input.borderColor,
+    borderColor: theme.borderColor.input,
     borderRadius: theme.borderRadius,
     margin: '0',
     top: 'calc(100% + 4px)'
@@ -98,18 +101,18 @@ export default (theme, params) => ({
   }),
   placeholder: provided => ({
     ...provided,
-    color: theme.input.placeholderColor,
+    color: theme.text.placeholder,
     fontSize: '14px',
     margin: '0'
   }),
   noOptionsMessage: provided => ({
     ...provided,
     fontSize: '14px',
-    color: theme.input.placeholderColor
+    color: theme.text.placeholder
   }),
   loadingMessage: provided => ({
     ...provided,
-    color: theme.input.placeholderColor
+    color: theme.text.placeholder
   }),
 
   multiValue: (provided, state) => {
@@ -126,7 +129,7 @@ export default (theme, params) => ({
       transition: theme.transition.primary,
       margin: '4px',
       '&:hover': {
-        borderColor: theme.input.borderColor
+        borderColor: theme.borderColor.input
       }
     }
   },
@@ -141,7 +144,7 @@ export default (theme, params) => ({
     ...provided,
     alignSelf: 'center',
     borderRadius: '50%',
-    color: theme.input.placeholderColor,
+    color: theme.text.placeholder,
     cursor: 'pointer',
     justifyContent: 'center',
     paddingLeft: '0',

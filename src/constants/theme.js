@@ -1,36 +1,75 @@
 // Const
 const primaryColor = '#2f80ed'
+const orangeColor = '#f96526'
+const redColor = '#eb5757'
+const primaryBorderColor = '#e4e9f2'
+const inputBorderColor = '#e4e5eb'
+const buttonBorderColor = '#ced0dd'
 
 // Theme
 export default {
   palette: {
     primary: primaryColor,
     secondary: '#eaf2fd',
-    orange: '#f96526',
+    orange: orangeColor,
     black: '#000',
     white: '#fff',
-    red: '#eb5757',
+    red: redColor,
     green: '#219653'
   },
   text: {
     primary: '#2c3a50',
     secondary: '#7d8893',
     title: '#36434e',
-    tableHead: '#bdbdbd'
+    label: '#8f9bb0',
+    tableHead: '#bdbdbd',
+    placeholder: '#b2b7bf'
   },
   background: {
     linkHover: '#eaf2fd',
     buttonSecondary: '#fbfbfc',
-    input: '#fbfbfc',
+    input: '#f1f3f5',
     inputHover: '#edf1f7',
     tableHead: '#fbfbfd',
     tableOdd: '#f1f3f5',
     tableHover: '#edf1f7',
     thumb: '#ccc'
   },
+  border: {
+    primary: `1px solid ${primaryBorderColor}`,
+    input: `1px solid ${inputBorderColor}`,
+    inputFocus: `1px solid ${primaryColor}`,
+    button: `1px solid ${buttonBorderColor}`
+  },
+  borderColor: {
+    primary: primaryBorderColor,
+    input: inputBorderColor,
+    inputFocus: primaryColor,
+    button: buttonBorderColor
+  },
+  borderRadius: {
+    primary: '6px',
+    table: '8px',
+    input: '6px',
+    button: '10px'
+  },
+  boxShadow: {
+    primary: '0 2px 15px rgba(211, 216, 224, 0.5)'
+  },
+  width: {
+    thumb: '3px',
+    mainMenu: {
+      open: '296px',
+      close: '60px'
+    },
+  },
+  height: {
+    thumb: '3px'
+  },
   transition: {
     primary: 'all .2s ease-in-out'
   },
+  // Legacy styles
   color: {
     disabled: '#8F9BB3',
     secondary: {
@@ -58,9 +97,9 @@ export default {
       default: 'transparent',
       hover: '#efefef'
     },
-    info: { default: '#0095FF' },
-    warning: { default: '#FFAA00' },
-    danger: { default: '#FF3D71' }
+    info: { default: primaryColor },
+    warning: { default: orangeColor },
+    danger: { default: redColor }
   },
   fontSize: {
     giant: '18px',
@@ -75,39 +114,5 @@ export default {
     medium: '14px',
     small: '14px',
     tiny: '10px'
-  },
-  input: {
-    placeholderColor: '#8F9BB3',
-    backgroundColorHover: '#EDF1F7',
-    labelColor: '#8992A3',
-    border: '1px solid #E4E9F2',
-    borderColor: '#E4E9F2',
-    background: '#fff'
-  },
-  border: {
-    primary: '1px solid #e4e9f2',
-    input: '1px solid #e4e5eb',
-    inputFocus: `1px solid ${primaryColor}`,
-    button: '1px solid #ced0dd'
-  },
-  borderColor: '#E4E9F2',
-  borderRadius: {
-    primary: '6px',
-    table: '8px',
-    input: '6px',
-    button: '10px'
-  },
-  boxShadow: {
-    primary: '0 2px 15px rgba(211, 216, 224, 0.5)'
-  },
-  width: {
-    thumb: '3px',
-    mainMenu: {
-      open: '296px',
-      close: '60px'
-    },
-  },
-  height: {
-    thumb: '3px'
   }
 }

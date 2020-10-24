@@ -66,7 +66,7 @@ const Title = styled('div')`
 `
 
 const Message = styled('div')`
-  color: ${props => props.theme.input.labelColor};
+  color: ${({ theme }) => theme.text.label};
   font-size: 13px;
   font-weight: normal;
   line-height: 16px;

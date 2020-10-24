@@ -7,7 +7,7 @@ import Trigger from './Trigger'
 
 const MenuList = styled('div')`
   background: #fff;
-  border: 1px solid ${props => props.theme.input.borderColor};
+  border: 1px solid ${({ theme }) => theme.borderColor.input};
   border-radius: ${props => props.theme.input.borderRadius};
   box-shadow: ${props => props.theme.cube.boxShadow};
   padding: 7px;

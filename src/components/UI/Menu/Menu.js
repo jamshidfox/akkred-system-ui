@@ -2,7 +2,8 @@ import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
-import { find, propOr } from 'ramda'
+import { find, isEmpty, propOr } from 'ramda'
+import Perms from 'components/Perms'
 import MenuItem from './MenuItem'
 
 const SubMenus = styled('div')`
@@ -31,6 +32,7 @@ const Menu = props => {
     const {
       children,
       url,
+      perms = [],
       tabs = [],
       ...rest
     } = item
@@ -44,6 +46,7 @@ const Menu = props => {
     const isSubActiveTab = subTabs.find(({ url }) => url === pathname)
     const isActiveTab = tabs.find(({ url }) => url === pathname)
     const isOpen = `${openSubmenus}` === `${index}`
+    const hasPerms = !isEmpty(perms)
 
     if ((isSubActiveTab || isSubActive) && openSubmenus === null) {
       setOpenSubmenus(`${index}`)
@@ -79,9 +82,17 @@ const Menu = props => {
         <SubMenus
           open={isOpen}
         >
-          {children && children.map(({ tabs, ...rest }, subIndex) => {
+          {children && children.map((subItem, subIndex) => {
+            const {
+              tabs,
+              ...rest
+            } = subItem
+
+            const subPerms = propOr([], 'perms', subItem)
             const isActiveChild = tabs && find(({ url }) => url === pathname)(tabs)
-            return (
+            const hasSubPerms = !isEmpty(subPerms)
+
+            const subItemContent =
               <MenuItem
                 pathname={pathname}
                 smart={!open}
@@ -91,13 +102,24 @@ const Menu = props => {
                 key={subIndex}
                 {...rest}
               />
-            )
+
+            // Render
+            if (hasSubPerms) {
+              return (
+                <Perms
+                  perms={subPerms}
+                >
+                  {subItemContent}
+                </Perms>
+              )
+            } else {
+              return subItemContent
+            }
           })}
         </SubMenus>
       </>
 
-    // Render
-    return (
+    const renderContent =
       <Fragment
         key={index}
       >
@@ -106,7 +128,19 @@ const Menu = props => {
           : menuItem
         }
       </Fragment>
-    )
+
+    // Render
+    if (hasPerms) {
+      return (
+        <Perms
+          perms={perms}
+        >
+          {renderContent}
+        </Perms>
+      )
+    } else {
+      return renderContent
+    }
   })
 }
 

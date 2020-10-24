@@ -28,6 +28,7 @@ export default [
     name: 'Сотрудники',
     url: ROUTES.EMPLOYEES_LIST_URL,
     icon: People,
+    perms: ['some_perms'],
   },
   {
     name: 'Должности',
