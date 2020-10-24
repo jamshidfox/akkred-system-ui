@@ -61,10 +61,10 @@ export const applicationDeleteAction = (id) => {
   }
 }
 
-export const applicationConfirmAction = (id) => {
+export const applicationConfirmAction = (id,data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .post(sprintf(API.APPLICATION_CONFIRM, id))
+      .post(sprintf(API.APPLICATION_CONFIRM, id), data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

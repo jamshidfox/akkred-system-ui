@@ -77,7 +77,8 @@ const ApplicationList = props => {
     const {
       title = 'Title',
       id,
-      address = 'Address'
+      address = 'Address',
+      stage
     } = client
 
     // Handlers
@@ -93,7 +94,7 @@ const ApplicationList = props => {
         key={id}
         // onClick={handleRedirect}
       >
-        <td colSpan={8}>{title}</td>
+        <td colSpan={8}>{stage}</td>
         <td colSpan={6}>АА 3545332</td>
         <td colSpan={3}>{address}</td>
         <td colSpan={4}>BDay</td>

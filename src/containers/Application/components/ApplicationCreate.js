@@ -172,8 +172,8 @@ const ApplicationCreate = props => {
                 </Col>
 
               </Row>
-              {/*<BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />*/}
-              {/*<BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />*/}
+              <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
+              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
               <ConfirmDialog {...confirmModal} stage={stage} />
               <RejectDialog {...rejectModal} />
 
@@ -188,12 +188,12 @@ const ApplicationCreate = props => {
                   paddingRight: '20px'
 
                 }} >
-                  <MediumButton onClick={confirmModalOpen}>Confirm</MediumButton>
+                  <MediumButton onClick={confirmModalOpen}>Подтвердить</MediumButton>
                 </div>
                 <div >
                   <MediumButton style={{
                     background: '#ff3454'
-                  }} onClick={rejectModalOpen}>Reject</MediumButton>
+                  }} onClick={rejectModalOpen}>Отклонить</MediumButton>
                 </div>
 
               </div>

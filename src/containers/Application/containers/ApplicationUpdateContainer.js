@@ -94,7 +94,7 @@ const ApplicationUpdateContainer = props => {
     const data = toSnakeCase({
       branchs: serviceListMap,
       ...values,
-      client:client
+      client: client
     })
     dispatch(applicationUpdateAction(params.id, data))
       .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
@@ -104,7 +104,13 @@ const ApplicationUpdateContainer = props => {
     setTab(val)
   }
 
-  const confirmSubmit = (event) => {
+  const confirmSubmit = values => {
+    const executor = path(['executor', 'id'], values)
+    const executors = prop('executors', values)
+    const newDAta = getSerializedData(['executors', 'executor'], values)
+    const data = {
+      ...newDAta
+    }
     confirmModal.onClose()
     dispatch(applicationConfirmAction(params.id, data))
       .catch(mapResponseToFormError)

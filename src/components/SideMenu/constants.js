@@ -116,6 +116,11 @@ export default [
     url: ROUTES.CLIENT_LIST_URL,
     icon: People,
   },
+  {
+    name: 'Группы',
+    url: ROUTES.GROUP_LIST_URL,
+    icon: People,
+  },
   // {
   //   name: 'Договоры',
   //   url: '/'
@@ -143,11 +148,7 @@ export default [
     url: '#',
     icon: Settings,
     children: [
-      {
-        name: 'Вид органов',
-        url: ROUTES.GROUP_LIST_URL,
-        icon: People,
-      },
+
       {
         name: 'Регион',
         url: '/',

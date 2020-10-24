@@ -6,7 +6,7 @@ const RejectDialog = ({ onClose, open, onSubmit }) => {
 
     <Modal onClose={onClose} open={open} width={'400px'}>
       <div style={{ textAlign: 'right' }}>
-        <MediumButton onClick={onSubmit}>Reject</MediumButton>
+        <MediumButton onClick={onSubmit}>Bugalterga junatish</MediumButton>
       </div>
     </Modal>
   )
