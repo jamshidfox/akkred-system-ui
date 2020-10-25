@@ -32,6 +32,12 @@ export default () => [
   },
   {
     exact: true,
+    path: ROUTES.APPLICATION_TESTS_PATH,
+    layout: Layouts,
+    component: ApplicationListContainer
+  },
+  {
+    exact: true,
     path: ROUTES.APPLICATION_MY_ORDERS_PATH,
     layout: Layouts,
     component: ApplicationListContainer

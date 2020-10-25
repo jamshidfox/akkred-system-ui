@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { prop, propOr } from 'ramda'
 import PropTypes from 'prop-types'
+import { storageData } from 'utils/storage'
 import Menu from '../UI/Menu'
 import MenuIcon from '../../icons/Menu'
 import Exit from '../../icons/Exit'
-import { storageData } from '../../utils/storage'
 import constants from './constants'
 
 // Styles
@@ -31,16 +31,21 @@ const Box = styled('div')`
   transition: ${({ theme }) => theme.transition.primary};
 `
 const MenuList = styled('div')`
-  max-height: calc(100vh - 40px - 30px - 79px - 82px);
-  overflow-y: hidden;
+  max-height: calc(100vh - 30px - 79px - 82px);
+  overflow-y: scroll;
   transition: ${({ theme }) => theme.transition.primary};
-  &:hover{
-    overflow-y: auto;
-    transition: ${({ theme }) => theme.transition.primary};
+  ::-webkit-scrollbar-thumb{
+    background: transparent;
   }
   ::-webkit-scrollbar{
     width: 2px;
     height: 2px;
+  }
+  &:hover{
+    transition: ${({ theme }) => theme.transition.primary};
+    ::-webkit-scrollbar-thumb{
+      background: ${({ theme }) => theme.background.thumb};
+    }
   }
 `
 const MenuWrapper = styled('div')`
@@ -103,7 +108,7 @@ const LogOut = styled('button')`
   align-items: center;
   overflow: hidden;
   padding: 8px 10px;
-  margin: 35px auto 0;
+  margin: 20px auto 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 15px;

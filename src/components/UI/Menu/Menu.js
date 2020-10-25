@@ -7,7 +7,7 @@ import Perms from 'components/Perms'
 import MenuItem from './MenuItem'
 
 const SubMenus = styled('div')`
-  max-height: ${({ open }) => open ? '100vh' : '0'};
+  max-height: ${({ open }) => open ? '500vh' : '0'};
   overflow: hidden;
   transition: ${({ theme }) => theme.transition.primary};
   & > a:last-child{

@@ -47,6 +47,8 @@ export const APPLICATION_MY_ORDERS_PATH = `/${APPLICATION}/my-orders`
 export const APPLICATION_MY_ORDERS_URL = `/${APPLICATION}/my-orders`
 export const APPLICATION_ORDERS_PATH = `/${APPLICATION}/orders`
 export const APPLICATION_ORDERS_URL = `/${APPLICATION}/orders`
+export const APPLICATION_TESTS_PATH = `/${APPLICATION}/test`
+export const APPLICATION_TESTS_URL = `/${APPLICATION}/test`
 export const APPLICATION_ORDERS_DETAIL_PATH = `/${APPLICATION}/orders/${ID}`
 export const APPLICATION_ORDERS_DETAIL_URL = `/${APPLICATION}/orders/%d`
 
