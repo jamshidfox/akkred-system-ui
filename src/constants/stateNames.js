@@ -14,6 +14,8 @@ export const APPLICATION_UPDATE = 'applicationUpdate'
 export const APPLICATION_CREATE = 'applicationCreate'
 export const APPLICATION_ITEM = 'applicationItem'
 export const APPLICATION_DELETE = 'applicationDelete'
+export const APPLICATION_CONFIRM = 'applicationConfirm'
+export const APPLICATION_REJECT = 'applicationReject'
 
 export const CLIENT_INFO_LIST = 'clientInfoList'
 export const CLIENT_INFO_UPDATE = 'clientInfoUpdate'

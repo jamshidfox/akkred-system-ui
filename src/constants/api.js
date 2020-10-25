@@ -1,6 +1,6 @@
 // export const DOMAIN_URL = 'http://142.93.232.44'
-// export const DOMAIN_URL = 'http://localhost:8000'
-export const DOMAIN_URL = 'http://akkred.uz:8080'
+export const DOMAIN_URL = 'http://localhost:8000'
+// export const DOMAIN_URL = 'http://akkred.uz:8080'
 export const API_URL = `${DOMAIN_URL}`
 
 const MAIN = 'main'
@@ -70,6 +70,8 @@ export const APPLICATION_LIST = `/${APPLICATION}/`
 export const APPLICATION_CREATE = `/${APPLICATION}/`
 export const APPLICATION_UPDATE = `/${APPLICATION}/%d/`
 export const APPLICATION_DELETE = `/${APPLICATION}/%d/`
+export const APPLICATION_CONFIRM = `/${APPLICATION}/%d/confirm/`
+export const APPLICATION_REJECT = `/${APPLICATION}/%d/reject/`
 export const APPLICATION_ITEM = `/${APPLICATION}/%d/`
 export const APPLICATION_ITEM_DOCS = `/${APPLICATION}/%d/docs/`
 

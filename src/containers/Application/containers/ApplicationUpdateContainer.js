@@ -18,16 +18,18 @@ import { getSerializedData } from '../../../utils/get'
 import { fields } from '../components/ApplicationCreate'
 import {
   clientFetchItem,
-  applicationUpdateAction
+  applicationUpdateAction,
+  applicationConfirmAction,
+  applicationRejectAction
 } from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
 import ApplciationTabs from '../components/ApplciationTabs'
 import { mapBranches } from './utils'
 
-const getClientItemParams = (onComplete) => ({
+const getClientItemParams = () => ({
   action: clientFetchItem,
   stateName: STATE.APPLICATION_ITEM,
-  onComplete:onComplete
+  // onComplete:onComplete
 })
 
 const serializer = val => {
@@ -62,6 +64,7 @@ const ApplicationUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
   const confirmModal = useModal({ key: 'confirmModal' })
+  const rejectModal = useModal({ key: 'rejectModal' })
   const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
 
@@ -69,7 +72,7 @@ const ApplicationUpdateContainer = props => {
     const branch = prop('branchs', value)
     setServiceList([...branch])
   }
-  const { data } = useFetchItem(getClientItemParams(onComplete))
+  const { data } = useFetchItem(getClientItemParams())
   const onAddService = service => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()
@@ -103,6 +106,14 @@ const ApplicationUpdateContainer = props => {
 
   const confirmSubmit = (event) => {
     confirmModal.onClose()
+    dispatch(applicationConfirmAction(params.id, data))
+      .catch(mapResponseToFormError)
+  }
+
+  const onRejectSubmit = (event) => {
+    confirmModal.onClose()
+    dispatch(applicationRejectAction(params.id, data))
+      .catch(mapResponseToFormError)
   }
 
   return (
@@ -112,7 +123,9 @@ const ApplicationUpdateContainer = props => {
       serviceList={serviceList}
       serviceModal={{ ...serviceModal, onSubmit: onAddService }}
       confirmModal={{ ...confirmModal, onSubmit: confirmSubmit }}
+      rejectModal={{ ...rejectModal, onSubmit: onRejectSubmit }}
       onCreateApplication={onCreateApplication}
+      onRejectSubmit={onRejectSubmit}
       onUpdateBranch={onUpdateBranch}
       tabData={{ tab, onTabChange }}
     />

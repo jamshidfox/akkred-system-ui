@@ -9,7 +9,7 @@ export default [
     icon: Document,
     children: [
       {
-        name: 'Заявки',
+        name: 'YANGILAR',
         url: ROUTES.APPLICATION_MY_ORDERS_URL,
         tabs: [
           {
@@ -21,7 +21,84 @@ export default [
             url: ROUTES.APPLICATION_ORDERS_URL
           }
         ]
-      }
+      },
+      {
+        name: 'RAHBARIYAT KO’RIB CHIQISHIDA',
+        url: '',
+      },
+      {
+        name: 'QABUL QILINGAN',
+        url: '',
+      },
+      {
+        name: 'SHARTNOMA RASMIYLASHTIRILGAN',
+        url: '',
+      },
+      {
+        name: 'TO’LOV JARAYONIDA',
+        url: '',
+      },
+      {
+        name: 'EKSPERTIZA',
+        url: '',
+      },
+      {
+        name: 'AUDIT UCHUN SHARTNOMA RASMIYLASHTIRILGAN',
+        url: '',
+      },
+      {
+        name: 'AUDIT UCHUN TO’LOV JARAYONIDA',
+        url: '',
+      },
+      {
+        name: 'REJA VA BUYRUQ RASMIYLASHTIRILGAN',
+        url: '',
+      },
+      {
+        name: 'JOYIDA BAHOLASH',
+        url: '',
+      },
+      {
+        name: 'NOMUVOFIQLIKLARNI BARTARAF ETISH UCHUN MUDDAT BERILGAN',
+        url: '',
+      },
+      {
+        name: '\n' +
+          'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA BARTARAF ETISH BUYICHA REJA TAQDIM ETILGAN',
+        url: '',
+      },
+      {
+        name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA BARTARAF ETILGANLIGI TO’G’RISIDA XISOBOT TAQDIM ETILGAN',
+        url: '',
+      },
+      {
+        name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF ETILGANLIGINI O’RGANISH UCHUN BUYRUQ RASMIYLASHTIRILGAN',
+        url: '',
+      },
+      {
+        name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF ETILGANLIGINI O’RGANISH',
+        url: '',
+      },
+      {
+        name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
+        url: '',
+      },
+      {
+        name: 'DAVLAT REESTRIGA KIRITILGAN VA GUVOHNOMA RASMIYLASHTIRILGAN',
+        url: '',
+      },
+      {
+        name: 'POST AKKREDITATSIAION HUJJATLAR RASMIYLASHTIRILGAN',
+        url: '',
+      },
+      {
+        name: 'QO’SHIMCHA MUDDAT BERILGAN',
+        url: '',
+      },
+      {
+        name: 'RAD ETILGAN',
+        url: '',
+      },
     ]
   },
   {

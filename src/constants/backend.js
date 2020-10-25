@@ -37,6 +37,14 @@ export const ANSWER_LIST = [
   { id: 'no', name: 'нет' }
 ]
 
+
+
+export const RESULT_LIST = [
+  { id: 'good', name: 'да' },
+  { id: 'bad', name: 'нет' },
+  { id: 'norm', name: 'норм' }
+]
+
 export const APPLICATION_LIST = [
   { id: 'accreditation', name: 'Аккредитация' },
   { id: 'actualization', name: 'Актуализация' },

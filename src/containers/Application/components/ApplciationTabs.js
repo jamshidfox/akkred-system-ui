@@ -5,6 +5,7 @@ import { Tabs, Tab } from '../../../components/TabsDetail'
 import { Box } from '../../../components/StyledElems'
 import ApplicationCreate from './ApplicationCreate'
 import ApplicationUserInfo from './ApplicationUserInfo'
+import ApplicationItemTabOne from './Detail/Tabs/ApplicationItemTabOne'
 
 export const fields = [
   'address',
@@ -42,7 +43,7 @@ export const SERVICE = 'service'
 export const PAYMENT = 'payment'
 
 const ApplicationTabs = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData, confirmModal } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData, confirmModal,rejectModal } = props
   const clientInfo = prop('clientInfo', initialValues)
 
   return (
@@ -52,15 +53,16 @@ const ApplicationTabs = props => {
         // value={tabData.tab}
         // onChange={tabData.onTabChange}
       >
-        <Tab value={'service'} label={'Ariza'}>
+        <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationUserInfo clientInfo={clientInfo} />
         </Tab>
-        <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
+        <Tab value={'service'} label={'Ariza '}>
           <ApplicationCreate
             onSubmit={onSubmit}
             initialValues={initialValues}
             serviceModal={serviceModal}
             confirmModal={confirmModal}
+            rejectModal={rejectModal}
             onCreateApplication={onCreateApplication}
             onUpdateBranch={onUpdateBranch}
             serviceList={serviceList}
@@ -68,7 +70,7 @@ const ApplicationTabs = props => {
           />
         </Tab>
         <Tab value={'a'} label={'Rahbariyat rezolyutsiyasi'}>
-          a
+          <ApplicationItemTabOne />
         </Tab>
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
           b
