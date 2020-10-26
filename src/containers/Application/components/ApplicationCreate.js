@@ -72,6 +72,10 @@ const ApplicationCreate = props => {
     serviceModal.onOpen()
   }
   const stage = prop('stage', initialValues)
+
+  const waitModalOpen = () => {
+  }
+
   const rejectModalOpen = () => {
     rejectModal.onOpen()
   }
@@ -180,23 +184,32 @@ const ApplicationCreate = props => {
               {/* <div style={{ textAlign: 'right' }}> */}
               {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
               {/* </div> */}
-              <div style={{
-                display: 'flex'
 
-              }}>
-                <div style={{
-                  paddingRight: '20px'
-
-                }} >
-                  <MediumButton onClick={confirmModalOpen}>Подтвердить</MediumButton>
-                </div>
-                <div >
+              {stage === 'stage_9'
+                ? (<div >
                   <MediumButton style={{
-                    background: '#ff3454'
-                  }} onClick={rejectModalOpen}>Отклонить</MediumButton>
-                </div>
+                    background: '#2541ff'
+                  }} onClick={waitModalOpen()}>Wait</MediumButton>
+                </div>)
+                : (<div style={{
+                  display: 'flex'
 
-              </div>
+                }}>
+
+                  <div style={{
+                    paddingRight: '20px'
+
+                  }} >
+                    <MediumButton onClick={confirmModalOpen}>Подтвердить</MediumButton>
+                  </div>
+                  <div >
+                    <MediumButton style={{
+                      background: '#ff3454'
+                    }} onClick={rejectModalOpen}>Отклонить</MediumButton>
+                  </div>
+
+                </div>)
+              }
 
             </form>
           )

@@ -42,6 +42,7 @@ const EMPTY_ARR = []
 const getInitialValues = data => {
   return {
     clientInfo: prop('client', data),
+    executor: prop('executor', data),
     client: path(['client', 'id'], data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     internalAudit: prop('internalAudit', data),
@@ -105,9 +106,7 @@ const ApplicationUpdateContainer = props => {
   }
 
   const confirmSubmit = values => {
-    const executor = path(['executor', 'id'], values)
-    const executors = prop('executors', values)
-    const newDAta = getSerializedData(['executors', 'executor'], values)
+    const newDAta = getSerializedData(['executors', 'executor', 'experts'], values)
     const data = {
       ...newDAta
     }

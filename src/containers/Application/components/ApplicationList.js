@@ -95,7 +95,7 @@ const ApplicationList = props => {
         // onClick={handleRedirect}
       >
         <td colSpan={8}>{stage}</td>
-        <td colSpan={6}>АА 3545332</td>
+        <td colSpan={6}>АА {id}</td>
         <td colSpan={3}>{address}</td>
         <td colSpan={4}>BDay</td>
         <td colSpan={1}>

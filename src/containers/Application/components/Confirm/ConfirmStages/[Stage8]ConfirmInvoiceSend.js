@@ -28,7 +28,7 @@ const Label = styled.div`
   letter-spacing: 0.25px;
   color: ${props => props.theme.color.basic.default};
 `
-const ConfirmStageExecutor = ({ onClose, onSubmit, open }) => {
+const ConfirmStageSendClientInvoice = ({ onClose, onSubmit, open }) => {
   return (
 
     <Modal onClose={onClose} open={open} width={'1000px'}>
@@ -38,35 +38,9 @@ const ConfirmStageExecutor = ({ onClose, onSubmit, open }) => {
           return (
             <form onSubmit={handleSubmit}>
               <Label>Основная информация</Label>
-              <Row gutter={24}>
-
-                <Col span={8}>
-                  <Field
-                    name="Shartnoma maqsadi"
-                    label="Shartnoma maqsadi"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="Dannie"
-                    label="Dannie"
-                    component={InputField}
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Field
-                    name="To’lov olchami (xodim/kun)"
-                    label="To’lov olchami (xodim/kun)"
-                    component={InputField}
-                  />
-                </Col>
-
-              </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Shartnoma rasmiylashtirish</MediumButton>
+                <MediumButton type="submit">Send to client</MediumButton>
               </div>
             </form>
           )
@@ -77,4 +51,4 @@ const ConfirmStageExecutor = ({ onClose, onSubmit, open }) => {
   )
 }
 
-export default ConfirmStageExecutor
+export default ConfirmStageSendClientInvoice

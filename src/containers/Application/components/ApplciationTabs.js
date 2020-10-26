@@ -5,6 +5,7 @@ import { Tabs, Tab } from '../../../components/TabsDetail'
 import { Box } from '../../../components/StyledElems'
 import ApplicationCreate from './ApplicationCreate'
 import ApplicationUserInfo from './ApplicationUserInfo'
+import ApplicationAddInfo from './ApplicationAddInfo'
 import ApplicationItemTabOne from './Detail/Tabs/ApplicationItemTabOne'
 
 export const fields = [
@@ -43,8 +44,10 @@ export const SERVICE = 'service'
 export const PAYMENT = 'payment'
 
 const ApplicationTabs = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData, confirmModal,rejectModal } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData, confirmModal, rejectModal } = props
   const clientInfo = prop('clientInfo', initialValues)
+  const executor = prop('executor', initialValues)
+  const executors = prop('executors', initialValues)
 
   return (
     <BoxUI>
@@ -73,7 +76,7 @@ const ApplicationTabs = props => {
           <ApplicationItemTabOne />
         </Tab>
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
-          b
+          <ApplicationAddInfo executor={executor} executors={executors} />
         </Tab>
         <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
           c
