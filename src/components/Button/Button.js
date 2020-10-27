@@ -12,7 +12,7 @@ const Wrap = styled('button')`
   height: ${({ height }) => height};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
-  transition: ${({ theme }) => theme.transition.medium};
+  transition: ${({ theme }) => theme.transition.primary};
   text-transform: ${({ uppercase }) => uppercase && 'uppercase'};
   user-select: none;
   cursor: pointer;
@@ -32,7 +32,7 @@ const Wrap = styled('button')`
   ${({ styles }) => styles};
   &:active{
     opacity: 0.7;
-    transition: ${({ theme }) => theme.transition.medium};
+    transition: ${({ theme }) => theme.transition.primary};
   }
 `
 const Prefix = styled('span')`

@@ -2,16 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Text } from 'components/Text/Text'
+import { TaskCard } from 'containers/Application/components/Items/TaskCard'
 
 // Styles
-const Item = styled('div')`
-  min-height: 42px;
-  font-size: 13px;
-  line-height: 1.7;
-  &:nth-child(odd){
-    background: #f7f7f7
-  }
-`
 const Main = styled('div')`
   display: flex;
   flex-flow: row nowrap;
@@ -43,7 +36,7 @@ const TaskItem = props => {
 
   // Render
   return (
-    <Item>
+    <TaskCard>
       <Main>
         <LeftSide>
           {it}
@@ -56,7 +49,7 @@ const TaskItem = props => {
       <Description>
         {description}
       </Description>}
-    </Item>
+    </TaskCard>
   )
 }
 

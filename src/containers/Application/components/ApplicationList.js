@@ -1,40 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { Link } from 'react-router-dom'
 import { prop, isEmpty, path, propOr } from 'ramda'
-import { sprintf } from 'sprintf-js'
-import styled from 'styled-components'
 import Pagination from 'components/Pagination'
-// import { useHistory } from 'react-router'
-import { Table, TableRow, TableActions } from '../../../components/Table'
-import { APPLICATION_UPDATE_URL } from '../../../constants/routes'
-import Edit from '../../../images/edit.svg'
-import Trash from '../../../images/trash-2.svg'
-import { Box } from '../../../components/StyledElems'
+import { Table, TableRow, TableActions } from 'components/Table'
+import { getTabsFromRoute } from 'utils/get'
+import Container from 'components/StyledElems/Container'
+import DropdownMore from 'components/Dropdown/more'
 import Tabs from '../../../components/Tabs'
-import { getTabsFromRoute } from '../../../utils/get'
-import * as ROUTES from '../../../constants/routes'
-import Container from '../../../components/StyledElems/Container'
 import CommentListFilterForm from './CommentListFilterForm'
-import { Link } from 'react-router-dom'
-
-// const BoxUI = styled(Box)`
-//   display: flex;
-//   flex-flow: column nowrap;
-//   flex-grow: 1;
-//   padding: 20px 25px 25px;
-// `
-const style = {
-  color: '#fff',
-  textDecoration: 'none',
-  cursor: 'pointer'
-}
 
 const ApplicationList = props => {
   const {
     list,
-    history,
-    filterActions
+    filterActions,
+    // history
     // onDelete
   } = props
 
@@ -68,8 +47,7 @@ const ApplicationList = props => {
       <th colSpan={6}>Номер паспорта</th>
       <th colSpan={3}>Адрес</th>
       <th colSpan={4}>Дата рождения</th>
-      {/* <th colSpan={1} /> */}
-      {/* <th colSpan={1} /> */}
+      <th />
     </TableRow>
 
   // TableList
@@ -82,11 +60,39 @@ const ApplicationList = props => {
     } = client
 
     // Handlers
-    const handleRedirect = () => {
-      history.push({
-        pathname: sprintf(ROUTES.APPLICATION_ORDERS_DETAIL_URL, id)
-      })
-    }
+    // const handleRedirect = () => {
+    //   history.push({
+    //     pathname: sprintf(ROUTES.APPLICATION_ORDERS_DETAIL_URL, id)
+    //   })
+    // }
+
+    // More more more
+    // {/* <td colSpan={1}> */}
+    // {/*  <Link */}
+    // {/*    // style={style} */}
+    // {/*    to={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}> */}
+    // {/*    <img src={Edit} alt="Edit" /> */}
+    // {/*  </Link> */}
+    // {/* </td> */}
+    // {/* <td colSpan={1}> */}
+    // {/*  <span */}
+    // {/*    style={style} */}
+    // {/*    onClick={() => onDelete(id)}> */}
+    // {/*    <img src={Trash} alt="Edit" /> */}
+    // {/*  </span> */}
+    // {/* </td> */}
+
+    // MoreList
+    const moreList = [
+      {
+        name: 'Изменить',
+        onClick: () => alert('Handle EDIT')
+      },
+      {
+        name: 'Удалить',
+        onClick: () => alert('Handle DELETE')
+      }
+    ]
 
     // Render
     return (
@@ -98,20 +104,9 @@ const ApplicationList = props => {
         <td colSpan={6}>АА {id}</td>
         <td colSpan={3}>{address}</td>
         <td colSpan={4}>BDay</td>
-        <td colSpan={1}>
-          <Link
-            // style={style}
-            to={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>
-            <img src={Edit} alt="Edit" />
-          </Link>
-        </td>
-        {/* <td colSpan={1}> */}
-        {/*  <span */}
-        {/*    style={style} */}
-        {/*    onClick={() => onDelete(id)}> */}
-        {/*    <img src={Trash} alt="Edit" /> */}
-        {/*  </span> */}
-        {/* </td> */}
+        <DropdownMore
+          moreList={moreList}
+        />
       </TableRow>
     )
   })
@@ -146,8 +141,8 @@ const ApplicationList = props => {
 
 ApplicationList.propTypes = {
   list: PropTypes.object,
-  filterActions: PropTypes.object,
-  onDelete: PropTypes.func
+  filterActions: PropTypes.object
+  // onDelete: PropTypes.func
 }
 
 export default ApplicationList

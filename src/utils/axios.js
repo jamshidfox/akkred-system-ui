@@ -1,7 +1,7 @@
+import { API_URL } from 'constants/api'
 import axios from 'axios'
 import { path, equals, curry, prop, compose, isNil } from 'ramda'
 import * as actionTypes from '../constants/actionTypes'
-import { API_URL } from '../constants/api'
 import responseToCamelCase from './responseToCamelCase'
 import expireDocumentCookie from './expireDocumentCookie'
 import { getCookie } from './cookie'
@@ -20,7 +20,6 @@ const errorInterceptors = curry((dispatch, error) => {
   const status = path(['response', 'status'], error)
 
   if (equals(UNAUTHORIZED, status) && history && dispatch) {
-    console.warn('AXIOS ERROR CLEAR')
     dispatch({ type: `${actionTypes.LOGIN}_CLEAR` })
     dispatch({ type: `${actionTypes.USER_INFO}_CLEAR` })
     window.location.pathname = 'login'

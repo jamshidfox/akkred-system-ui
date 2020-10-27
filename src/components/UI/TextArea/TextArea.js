@@ -16,7 +16,7 @@ const Container = styled('div')`
 `
 
 const TextArea = styled('textarea')`
-  background: ${props => props.theme.input.backgroundColor};
+  background: ${({ theme }) => theme.input.backgroundColor};
   border-radius: ${props => props.theme.input.borderRadius};
   border: 1px solid transparent;
   color: inherit;
@@ -31,11 +31,11 @@ const TextArea = styled('textarea')`
   width: 100%;
 
   ::placeholder {
-    color: ${props => props.theme.input.placeholderColor};
+    color: ${({ theme }) => theme.text.placeholder};
   }
 
   :hover {
-    background: ${props => props.theme.input.backgroundColorHover};
+    background: ${({ theme }) => theme.background.inputHover};
   }
 
   :focus {

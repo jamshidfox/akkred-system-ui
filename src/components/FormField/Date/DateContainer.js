@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 export default styled('div')`  
   & .DateInput_input {
-    background-color: ${props => props.theme.input.background};
+    background-color: ${({ theme }) => theme.background.input};
     border-radius: ${props => props.theme.borderRadius.primary};
-    border: ${props => props.theme.input.border}
+    border: ${({ theme }) => theme.border.input}
     font-family: inherit;
     font-size: 15px;
     font-weight: 400;
@@ -14,11 +14,11 @@ export default styled('div')`
   }
   
   & .DateInput_input::placeholder {
-    color: ${props => props.theme.input.placeholderColor};
+    color: ${({ theme }) => theme.text.placeholder};
   }
 
   & .DateInput_input:hover {
-    background-color: ${props => props.theme.input.backgroundColorHover};
+    background-color: ${({ theme }) => theme.background.inputHover};
   }
   
   & .SingleDatePickerInput__showClearDate {
@@ -30,7 +30,7 @@ export default styled('div')`
     margin-left: 5px;
 
     :hover{
-    background: ${props => props.theme.input.backgroundColorHover};    
+    background: ${({ theme }) => theme.background.inputHover};    
     }
     border-radius: 50%;
   }
@@ -42,7 +42,7 @@ export default styled('div')`
     transform: translateY(-50%);
     right: 0;
     :hover {
-    background: ${props => props.theme.input.backgroundColorHover};
+    background: ${({ theme }) => theme.background.inputHover};
     border-radius: 50%;
     }
   }

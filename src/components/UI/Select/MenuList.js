@@ -15,7 +15,7 @@ const CreateButton = styled('div')`
   text-align: center;
   transition: ${props => props.theme.cube.transition};
   &:hover {
-    background-color: ${props => props.theme.input.backgroundColor};
+    background-color: ${({ theme }) => theme.input.backgroundColor};
   }
 `
 

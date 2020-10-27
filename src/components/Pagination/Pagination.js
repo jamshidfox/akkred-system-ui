@@ -53,7 +53,7 @@ const Pagination = props => {
     styles
   } = props
 
-  if (!count) {
+  if (!count || count <= 10) {
     return null
   }
 

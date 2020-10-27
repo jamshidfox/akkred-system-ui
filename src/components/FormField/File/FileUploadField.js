@@ -47,7 +47,7 @@ const UploadButton = styled('div')`
 `
 
 const PlaceholderText = styled('div')`
-  color: ${props => props.theme.input.placeholderColor};
+  color: ${({ theme }) => theme.text.placeholder};
   font-size: 15px;
 `
 
@@ -66,7 +66,7 @@ const ActionIcons = styled('div')`
 `
 
 const DeleteIcon = styled(Trash2)`
-  color: ${props => props.theme.input.labelColor};
+  color: ${({ theme }) => theme.text.label};
   cursor:pointer;
   display:block;
 `
