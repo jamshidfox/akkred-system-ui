@@ -28,7 +28,7 @@ const Label = styled.div`
   letter-spacing: 0.25px;
   color: ${props => props.theme.color.basic.default};
 `
-const ConfirmStageChoiceExpertsDocuments = ({ onClose, onSubmit, open }) => {
+const ConfirmStageChoiceExpertsDocument = ({ onClose, onSubmit, open }) => {
   return (
 
     <Modal onClose={onClose} open={open} width={'1000px'}>
@@ -46,41 +46,12 @@ const ConfirmStageChoiceExpertsDocuments = ({ onClose, onSubmit, open }) => {
                     component={ImageUploadField}
                   />
                 </Col>
-                <Col span={8}>
-                  <Field
-                    name="document for 2 experts"
-                    label="documentTwo"
-                    component={ImageUploadField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="document for 3 experts"
-                    label="documentThree"
-                    component={ImageUploadField}
-                  />
-                </Col>
 
-                <Col span={8}>
-                  <Field
-                    name="Date"
-                    label="Yopilgan kun olingan kun"
-                    component={DateField}
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Field
-                    name="Stranisa "
-                    label="Stranisa"
-                    component={InputField}
-                  />
-                </Col>
 
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Umumlashtirish</MediumButton>
               </div>
             </form>
           )
@@ -91,4 +62,4 @@ const ConfirmStageChoiceExpertsDocuments = ({ onClose, onSubmit, open }) => {
   )
 }
 
-export default ConfirmStageChoiceExpertsDocuments
+export default ConfirmStageChoiceExpertsDocument

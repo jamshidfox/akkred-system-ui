@@ -8,6 +8,7 @@ import ConfirmStageAccountingConfirm from './ConfirmStages/[Stage8]ConfirmStageA
 import ConfirmStageSendClientInvoice from './ConfirmStages/[Stage8]ConfirmInvoiceSend.js'
 import ConfirmStageChoiceExperts from './ConfirmStages/[Stage10]ConfirmStageExperts'
 import ConfirmStageChoiceExpertsDocuments from './ConfirmStages/[Stage12]ConfirmStageExpertsDocuments'
+import ConfirmStageChoiceExpertsDocument from './ConfirmStages/[Stage17]ConfirmStageExpertsDocuments'
 
 const ConfirmDialog = ({ onClose, open, onSubmit, stage }) => {
   switch (stage) {
@@ -43,9 +44,13 @@ const ConfirmDialog = ({ onClose, open, onSubmit, stage }) => {
     return (
       <ConfirmStageChoiceExperts onClose={onClose} onSubmit={onSubmit} open={open} />
     )
-  case 'stage_12':
+  case 'stage_16':
     return (
       <ConfirmStageChoiceExpertsDocuments onClose={onClose} onSubmit={onSubmit} open={open} />
+    )
+  case 'stage_17':
+    return (
+      <ConfirmStageChoiceExpertsDocument onClose={onClose} onSubmit={onSubmit} open={open} />
     )
 
   default:

@@ -28,6 +28,19 @@ const Label = styled.div`
   letter-spacing: 0.25px;
   color: ${props => props.theme.color.basic.default};
 `
+
+const listDocument = [
+
+  {
+    id:'one',
+    name:'100',
+  },
+  {
+    id:'two',
+    name:'15/85',
+  }
+
+]
 const ConfirmStageExecutor = ({ onClose, onSubmit, open }) => {
   return (
 
@@ -60,6 +73,15 @@ const ConfirmStageExecutor = ({ onClose, onSubmit, open }) => {
                     name="To’lov olchami (xodim/kun)"
                     label="To’lov olchami (xodim/kun)"
                     component={InputField}
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field
+                    name="To’lov turi"
+                    label="To’lov turi"
+                    component={UniversalStaticSelectField}
+                    list={listDocument}
                   />
                 </Col>
 
