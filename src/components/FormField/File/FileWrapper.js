@@ -21,14 +21,14 @@ export default Component => {
 
         const file = path(['target', 'files', '0'], ev)
         const formData = new FormData()
-        const types = formats || ['image/png', 'image/jpeg', 'image/gif']
+        const types = formats || ['image/png', 'image/jpeg', 'image/gif','image/pdf']
 
-        if (types.every(type => file.type !== type)) {
-          const allowedFormats = join(', ', types)
-          return dispatch({
-            error: `Формат не поддерживается. Доступные форматы: ${allowedFormats}`
-          })
-        }
+        // if (types.every(type => file.type !== type)) {
+        //   const allowedFormats = join(', ', types)
+        //   return dispatch({
+        //     error: `Формат не поддерживается. Доступные форматы: ${allowedFormats}`
+        //   })
+        // }
 
         if (file.size > IMAGE_MAX_SIZE) {
           dispatch({ error: 'Too large' })

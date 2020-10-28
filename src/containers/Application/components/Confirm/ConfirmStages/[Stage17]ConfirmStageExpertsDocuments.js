@@ -9,11 +9,13 @@ import {
   UniversalSearchField,
   UniversalStaticSelectField,
   ImageUploadField,
+
 } from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
 import { RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
+import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
 
 const Row = styled(RowUI)`
   margin-bottom: 40px;
@@ -43,7 +45,7 @@ const ConfirmStageChoiceExpertsDocument = ({ onClose, onSubmit, open }) => {
                   <Field
                     name="document for 1 experts"
                     label="documentOne"
-                    component={ImageUploadField}
+                    component={FileUploadField}
                   />
                 </Col>
 

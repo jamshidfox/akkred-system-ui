@@ -25,7 +25,6 @@ const FileInput = styled('input')`
 const InputContainer = styled('div')`
   align-items: center;
   background-color: #fbfbfc;
-  border-radius: ${props => props.theme.input.borderRadius};
   display:flex;
   justify-content: space-between;
   height: 52px;
@@ -34,7 +33,6 @@ const InputContainer = styled('div')`
 
 const UploadButton = styled('div')`
   align-items: center;
-  color: ${props => props.theme.cube.primaryColor};
   cursor:pointer;
   display:flex;
   font-weight: 500;
@@ -56,7 +54,6 @@ const FileName = styled('div')`
   display:flex;
   font-size: 15px;
   & > svg {
-    color: ${props => props.theme.cube.primaryColor};
     margin-right: 5px;
   }
 `

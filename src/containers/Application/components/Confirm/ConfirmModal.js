@@ -48,7 +48,7 @@ const ConfirmDialog = ({ onClose, open, onSubmit, stage }) => {
     return (
       <ConfirmStageChoiceExpertsDocuments onClose={onClose} onSubmit={onSubmit} open={open} />
     )
-  case 'stage_17':
+  case 'stage_18':
     return (
       <ConfirmStageChoiceExpertsDocument onClose={onClose} onSubmit={onSubmit} open={open} />
     )
