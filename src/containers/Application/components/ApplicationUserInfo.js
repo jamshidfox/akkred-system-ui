@@ -1,14 +1,12 @@
 import React from 'react'
-import { prop } from 'ramda'
 import arrayMutators from 'final-form-arrays'
 import styled from 'styled-components'
+import FileUploadField from 'components/FormField/File/FileUploadField'
 import {
-  Field, Form,
+  Field,
+  Form,
   InputField,
-  DateField,
-  NoopFields,
-  UniversalSearchField,
-  UniversalStaticSelectField
+  DateField
 } from '../../../components/FormField'
 import { Col, Row as RowUI } from '../../../components/Grid'
 import { Box } from '../../../components/StyledElems'
@@ -99,7 +97,6 @@ const ApplicationUserInfo = props => {
                     component={InputField}
                   />
                 </Col>
-
               </Row>
 
               <Row gutter={24}>
@@ -117,7 +114,6 @@ const ApplicationUserInfo = props => {
                     component={InputField}
                   />
                 </Col>
-
               </Row>
 
               <Row gutter={24}>
@@ -135,7 +131,6 @@ const ApplicationUserInfo = props => {
                     component={InputField}
                   />
                 </Col>
-
               </Row>
 
               <Row gutter={24}>
@@ -153,7 +148,6 @@ const ApplicationUserInfo = props => {
                     component={InputField}
                   />
                 </Col>
-
               </Row>
 
               <Row gutter={24}>
@@ -171,7 +165,6 @@ const ApplicationUserInfo = props => {
                     component={DateField}
                   />
                 </Col>
-
               </Row>
 
               <Row gutter={24}>
@@ -189,7 +182,6 @@ const ApplicationUserInfo = props => {
                     component={InputField}
                   />
                 </Col>
-
               </Row>
 
             </form>

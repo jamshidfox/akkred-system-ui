@@ -1,4 +1,4 @@
-import { path, join } from 'ramda'
+import { join, path } from 'ramda'
 import { compose, withHandlers, withReducer } from 'react-fc'
 import * as API from '../../../constants/api'
 import axios from '~/utils/axios'
@@ -15,7 +15,6 @@ export default Component => {
     ),
     withHandlers({
       onInputChange: props => ev => {
-        /* eslint-disable no-undef */
         const { store, dispatch, input, formats } = props
         const IMAGE_MAX_SIZE = 1500000
 
@@ -34,8 +33,10 @@ export default Component => {
           dispatch({ error: 'Too large' })
         }
         formData.append('file', file)
+
         dispatch({ loading: true })
-        /*        return axios(store)
+
+        return axios({ dispatch })
           .post(API.FILE_UPLOAD, formData)
           .then(response => {
             dispatch({ loading: false, error: null })
@@ -45,7 +46,7 @@ export default Component => {
           .catch(newError => {
             const errorData = path(['response', 'data'], newError)
             dispatch({ loading: false, error: errorData })
-          }) */
+          })
       }
     })
   )(Component)

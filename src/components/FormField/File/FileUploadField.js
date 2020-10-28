@@ -10,7 +10,6 @@ import Loader from '~/components/Loader'
 const Container = styled('div')`
   position:relative;
 `
-
 const FileInput = styled('input')`
   width: 1px;
   height: 1px;
@@ -21,56 +20,62 @@ const FileInput = styled('input')`
   left: -9999px;
   z-index: -1;
 `
-
 const InputContainer = styled('div')`
+  position: relative;
   align-items: center;
-  background-color: #fbfbfc;
-  border-radius: ${props => props.theme.input.borderRadius};
-  display:flex;
+  background: ${({ theme }) => theme.background.input};
+  border: ${({ theme }) => theme.border.input};
+  border-radius: ${({ theme }) => theme.borderRadius.input};
+  display: flex;
   justify-content: space-between;
   height: 52px;
   padding: 0 20px;
 `
-
 const UploadButton = styled('div')`
   align-items: center;
-  color: ${props => props.theme.cube.primaryColor};
-  cursor:pointer;
-  display:flex;
+  color: ${({ theme }) => theme.palette.primary};
+  cursor: pointer;
+  display: flex;
   font-weight: 500;
-  position:absolute;
-  top: 0;
+  font-size: 14px;
+  line-height: 1;
+  position: absolute;
+  bottom: 0;
+  height: 52px;
   right: 0;
+  user-select: none;
+  padding: 0 20px;
   & > svg {
-    margin-right: 5px;
+    margin-right: 8px;
+  }
+  & > span{
+    margin-top: 2px;
   }
 `
-
 const PlaceholderText = styled('div')`
   color: ${({ theme }) => theme.text.placeholder};
   font-size: 15px;
 `
-
 const FileName = styled('div')`
   align-items: center;
   display:flex;
   font-size: 15px;
   & > svg {
-    color: ${props => props.theme.cube.primaryColor};
-    margin-right: 5px;
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    color: ${({ theme }) => theme.palette.primary};
+    margin-right: 15px;
   }
 `
-
-const ActionIcons = styled('div')`
-
-`
-
+const ActionIcons = styled('div')``
 const DeleteIcon = styled(Trash2)`
   color: ${({ theme }) => theme.text.label};
   cursor:pointer;
   display:block;
 `
 
+// Component
 const FileUploadField = props => {
   const {
     input,
@@ -96,14 +101,6 @@ const FileUploadField = props => {
       <InputLabel>{label}</InputLabel>
 
       <FileInput onChange={onInputChange} type={'file'} id={fieldName} />
-      {!loading && (
-        <label htmlFor={fieldName}>
-          <UploadButton>
-            <UploadCloud size={16} />
-            Загрузить файл
-          </UploadButton>
-        </label>
-      )}
 
       <InputContainer>
         {fieldValue
@@ -115,14 +112,23 @@ const FileUploadField = props => {
           )
           : (
             <PlaceholderText>
-              {placeholder}
+              {loading ? 'Загружается . . .' : placeholder}
             </PlaceholderText>
           )}
 
         <ActionIcons>
-          {loading && <Loader size={24} />}
+          {loading && <Loader size={0.7} />}
           {fieldValue && <DeleteIcon size={22} onClick={onRemoveFile} />}
         </ActionIcons>
+
+        {!loading && !fieldValue && (
+          <label htmlFor={fieldName}>
+            <UploadButton>
+              <UploadCloud size={18} />
+              <span>Выбрать</span>
+            </UploadButton>
+          </label>
+        )}
       </InputContainer>
 
       <InputError>{error}</InputError>
