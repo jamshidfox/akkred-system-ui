@@ -204,9 +204,6 @@ const ApplicationCreate = props => {
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Сохранить</MediumButton>
               </div>
-              <div style={{
-                display: 'flex'
-              }}
 
               {stage === 'stage_9'
                 ? (<div >
@@ -233,7 +230,6 @@ const ApplicationCreate = props => {
 
                 </div>)
               }
-                </div>
 
             </form>
           )
