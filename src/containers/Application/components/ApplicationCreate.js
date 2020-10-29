@@ -19,6 +19,7 @@ import * as API from '../../../constants/api'
 import { BranchCreateModal, BranchList } from './Branch'
 import ConfirmDialog from './Confirm/ConfirmModal'
 import RejectDialog from './Reject/RejectModal'
+import FileUploadField from 'components/FormField/File/FileUploadField'
 
 export const fields = [
   'address',
@@ -176,14 +177,36 @@ const ApplicationCreate = props => {
                 </Col>
 
               </Row>
+              {/* <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} /> */}
+              {/* <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} /> */}
               <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
               <ConfirmDialog {...confirmModal} stage={stage} />
               <RejectDialog {...rejectModal} />
 
-              {/* <div style={{ textAlign: 'right' }}> */}
-              {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
-              {/* </div> */}
+              <Row gutter={24}>
+                <Col span={8}>
+                  <Field
+                    component={FileUploadField}
+                    name={'file'}
+                    label={'File 1'}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Field
+                    component={FileUploadField}
+                    name={'no-file'}
+                    label={'File 2'}
+                  />
+                </Col>
+              </Row>
+
+              <div style={{ textAlign: 'right' }}>
+                <MediumButton type={'submit'}>Сохранить</MediumButton>
+              </div>
+              <div style={{
+                display: 'flex'
+              }}
 
               {stage === 'stage_9'
                 ? (<div >
@@ -210,6 +233,7 @@ const ApplicationCreate = props => {
 
                 </div>)
               }
+                </div>
 
             </form>
           )

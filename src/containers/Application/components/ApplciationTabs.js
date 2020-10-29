@@ -52,7 +52,7 @@ const ApplicationTabs = props => {
   return (
     <BoxUI>
       <Tabs
-        initialValue={'guest'}
+        initialValue={'service'}
         // value={tabData.tab}
         // onChange={tabData.onTabChange}
       >
