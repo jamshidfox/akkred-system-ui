@@ -42,6 +42,7 @@ const EMPTY_ARR = []
 const getInitialValues = data => {
   return {
     clientInfo: prop('client', data),
+    executor: prop('executor', data),
     client: path(['client', 'id'], data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     internalAudit: prop('internalAudit', data),
@@ -94,7 +95,7 @@ const ApplicationUpdateContainer = props => {
     const data = toSnakeCase({
       branchs: serviceListMap,
       ...values,
-      client:client
+      client: client
     })
     dispatch(applicationUpdateAction(params.id, data))
       .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
@@ -104,7 +105,11 @@ const ApplicationUpdateContainer = props => {
     setTab(val)
   }
 
-  const confirmSubmit = (event) => {
+  const confirmSubmit = values => {
+    const newDAta = getSerializedData(['executors', 'executor', 'experts'], values)
+    const data = {
+      ...newDAta
+    }
     confirmModal.onClose()
     dispatch(applicationConfirmAction(params.id, data))
       .catch(mapResponseToFormError)

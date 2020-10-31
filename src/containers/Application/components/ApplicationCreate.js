@@ -73,6 +73,10 @@ const ApplicationCreate = props => {
     serviceModal.onOpen()
   }
   const stage = prop('stage', initialValues)
+
+  const waitModalOpen = () => {
+  }
+
   const rejectModalOpen = () => {
     rejectModal.onOpen()
   }
@@ -173,48 +177,68 @@ const ApplicationCreate = props => {
                 </Col>
 
               </Row>
-              {/* <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} /> */}
-              {/* <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} /> */}
+{/*              /!* <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} /> *!/*/}
+{/*              /!* <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} /> *!/*/}
+{/*              <ConfirmDialog {...confirmModal} stage={stage} />*/}
+{/*              <RejectDialog {...rejectModal} />*/}
+
+{/*              <Row gutter={24}>*/}
+{/*                <Col span={8}>*/}
+{/*                  <Field*/}
+{/*                    component={FileUploadField}*/}
+{/*                    name={'file'}*/}
+{/*                    label={'File 1'}*/}
+{/*                  />*/}
+{/*                </Col>*/}
+{/*                <Col span={8}>*/}
+{/*                  <Field*/}
+{/*                    component={FileUploadField}*/}
+{/*                    name={'no-file'}*/}
+{/*                    label={'File 2'}*/}
+{/*                  />*/}
+{/*                </Col>*/}
+{/*              </Row>*/}
+
+{/*              <div style={{ textAlign: 'right' }}>*/}
+{/*                <MediumButton type={'submit'}>Сохранить</MediumButton>*/}
+{/*              </div>*/}
+{/*              <div style={{*/}
+{/*                display: 'flex'*/}
+{/*=======*/}
+              <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
+              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
               <ConfirmDialog {...confirmModal} stage={stage} />
               <RejectDialog {...rejectModal} />
 
-              <Row gutter={24}>
-                <Col span={8}>
-                  <Field
-                    component={FileUploadField}
-                    name={'file'}
-                    label={'File 1'}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    component={FileUploadField}
-                    name={'no-file'}
-                    label={'File 2'}
-                  />
-                </Col>
-              </Row>
+              {/* <div style={{ textAlign: 'right' }}> */}
+              {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
+              {/* </div> */}
 
-              <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>Сохранить</MediumButton>
-              </div>
-              <div style={{
-                display: 'flex'
-
-              }}>
-                <div style={{
-                  paddingRight: '20px'
-
-                }} >
-                  <MediumButton onClick={confirmModalOpen}>Confirm</MediumButton>
-                </div>
-                <div >
+              {stage === 'stage_9'
+                ? (<div >
                   <MediumButton style={{
-                    background: '#ff3454'
-                  }} onClick={rejectModalOpen}>Reject</MediumButton>
-                </div>
+                    background: '#2541ff'
+                  }} onClick={waitModalOpen()}>Wait</MediumButton>
+                </div>)
+                : (<div style={{
+                  display: 'flex'
 
-              </div>
+                }}>
+
+                  <div style={{
+                    paddingRight: '20px'
+
+                  }} >
+                    <MediumButton onClick={confirmModalOpen}>Подтвердить</MediumButton>
+                  </div>
+                  <div >
+                    <MediumButton style={{
+                      background: '#ff3454'
+                    }} onClick={rejectModalOpen}>Отклонить</MediumButton>
+                  </div>
+
+                </div>)
+              }
 
             </form>
           )

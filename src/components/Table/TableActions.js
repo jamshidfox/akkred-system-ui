@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Filter from '../Filter'
-import { MediumButton } from '../UI/Buttons'
 import Button from '../Button/Button'
 import Plus from '../../icons/Plus'
 import SearchField from './SearchField'
@@ -33,8 +32,55 @@ const TableActions = props => {
     filterActions,
     extraButtons,
     searchKey,
-    linkAction
+    linkAction,
+    createModal,
   } = props
+
+  const addButton = createModal
+    ? (
+      <div style={style}
+
+      >
+        <Button
+          onClick={createModal.onOpen}
+          text={'Добавить'}
+          prefix={<Plus />}
+        />
+      </div>
+    )
+    : (
+      <Link
+        to={`${linkAction}`}
+        style={style}
+      >
+        <Button
+          text={'Добавить'}
+          prefix={<Plus />}
+        />
+      </Link>
+    )
+  // let buttonType
+  // if (createModal) {
+  //   buttonType =
+  //     <div style={style}
+  //
+  //     >
+  //       <Button
+  //         onClick={createModal.onOpen}
+  //         text={'Добавить'}
+  //         prefix={<Plus />}
+  //       />
+  //     </div>
+  // } else {
+  //   buttonType = <Link style={style}
+  //     to={`${linkAction}`}
+  //   >
+  //     <Button
+  //       text={'Добавить'}
+  //       prefix={<Plus />}
+  //     />
+  //   </Link>
+  // }
 
   return (
     <Container>
@@ -46,12 +92,7 @@ const TableActions = props => {
 
       <Actions>
         {extraButtons}
-        <Link style={style} to={`${linkAction}`}>
-          <Button
-            text={'Добавить'}
-            prefix={<Plus />}
-          />
-        </Link>
+        {addButton}
         <SearchField key={searchKey} />
       </Actions>
     </Container>
@@ -64,10 +105,13 @@ TableActions.propTypes = {
   selectActions: PropTypes.object,
   searchKey: PropTypes.string,
   linkAction: PropTypes.string,
-  extraButtons: PropTypes.node
+  type: PropTypes.string,
+  extraButtons: PropTypes.node,
+  createModal: PropTypes.func
 }
 
 TableActions.defaultProps = {
+  createModal: NaN
 }
 
 export default TableActions
