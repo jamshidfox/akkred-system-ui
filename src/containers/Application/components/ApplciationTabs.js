@@ -44,10 +44,12 @@ export const SERVICE = 'service'
 export const PAYMENT = 'payment'
 
 const ApplicationTabs = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData, confirmModal, rejectModal } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData } = props
   const clientInfo = prop('clientInfo', initialValues)
   const executor = prop('executor', initialValues)
   const executors = prop('executors', initialValues)
+  const expertise = prop('expertise', initialValues)
+  const assignments = prop('assignments', initialValues)
 
   return (
     <BoxUI>
@@ -64,8 +66,6 @@ const ApplicationTabs = props => {
             onSubmit={onSubmit}
             initialValues={initialValues}
             serviceModal={serviceModal}
-            confirmModal={confirmModal}
-            rejectModal={rejectModal}
             onCreateApplication={onCreateApplication}
             onUpdateBranch={onUpdateBranch}
             serviceList={serviceList}
@@ -76,7 +76,7 @@ const ApplicationTabs = props => {
           <ApplicationItemTabOne />
         </Tab>
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
-          <ApplicationAddInfo executor={executor} executors={executors} />
+          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} assignments={assignments} />
         </Tab>
         <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
           c

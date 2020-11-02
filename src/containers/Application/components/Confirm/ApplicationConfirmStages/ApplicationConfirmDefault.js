@@ -1,52 +1,20 @@
+
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
-import { prop, } from 'ramda'
-import { sprintf } from 'sprintf-js'
-import FileUploadField from 'components/FormField/File/FileUploadField'
-import { Link } from 'react-router-dom'
-import { PageTitle, MediumButton } from '../../../components/UI'
-import { Row as RowUI, Col } from '../../../components/Grid'
+import { Box } from '../../../../../components/StyledElems'
 import {
-  Form,
-  Field,
+  Field, Form,
   InputField,
-  UniversalStaticSelectField,
+  NoopFields,
   UniversalSearchField,
-  NoopFields
-} from '../../../components/FormField'
-import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../constants/backend'
-import { Box } from '../../../components/StyledElems'
-import * as API from '../../../constants/api'
-import * as ROUTES from '../../../constants/routes'
-import { BranchCreateModal, BranchList } from './Branch'
-
-export const fields = [
-  'address',
-  'documentDate',
-  'email',
-  'fax',
-  'fullName',
-  'fullNameOrgan',
-  'hasPartAnotherOrgan',
-  'inn',
-  'internalAudit',
-  'legalName',
-  'managementAnalysis',
-  'managementSystem',
-  'mfo',
-  'ndsRegId',
-  'oked',
-  'paymentAccount',
-  'phoneNumber',
-  'proficiencyTestingProvider',
-  'site',
-  'swift',
-  'title',
-  'titleObject',
-  'typeApplication',
-  'typeStandard',
-]
+  UniversalStaticSelectField
+} from '../../../../../components/FormField'
+import { Col, Row as RowUI } from '../../../../../components/Grid'
+import * as API from '../../../../../constants/api'
+import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../../../constants/backend'
+import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
+import { MediumButton } from '../../../../../components/UI/Buttons'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -65,27 +33,14 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ApplicationCreate = props => {
-  const { initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch } = props
-  const [serviceModalItem, setServiceModalItem] = useState(false)
-  const editModalOpen = (data) => {
-    setServiceModalItem(data)
-    serviceModal.onOpen()
-  }
-  const stage = prop('stage', initialValues)
-  const id = prop('id', initialValues)
-
-  const waitModalOpen = () => {
-  }
-
+const ApplicationConfirmDefault = props => {
+  const { onSubmit } = props
   return (
     <BoxUI>
-      <PageTitle name="Заявка" />
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
-        initialValues={initialValues}
-        onSubmit={onCreateApplication}
+        onSubmit={onSubmit}
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
@@ -171,10 +126,6 @@ const ApplicationCreate = props => {
                 </Col>
 
               </Row>
-              {/* <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} /> */}
-              {/* <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} /> */}
-              <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
-              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
 
               <Row gutter={24}>
                 <Col span={8}>
@@ -197,40 +148,6 @@ const ApplicationCreate = props => {
                 <MediumButton type={'submit'}>Сохранить</MediumButton>
               </div>
 
-              {stage === 'stage_9'
-                ? (<div >
-                  <MediumButton style={{
-                    background: '#2541ff'
-                  }} onClick={waitModalOpen()}>Wait</MediumButton>
-                </div>)
-                : (<div style={{
-                  display: 'flex'
-
-                }}>
-
-                  {id && (
-                    <Link
-
-                      to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-                      <div style={{
-                        paddingRight: '20px'
-
-                      }} >
-                        <MediumButton >Подтвердить</MediumButton>
-                      </div>
-                    </Link>
-
-                  )}
-
-                  <div >
-                    <MediumButton style={{
-                      background: '#ff3454'
-                    }} >Отклонить</MediumButton>
-                  </div>
-
-                </div>)
-              }
-
             </form>
           )
         }}
@@ -239,4 +156,4 @@ const ApplicationCreate = props => {
   )
 }
 
-export default ApplicationCreate
+export default ApplicationConfirmDefault

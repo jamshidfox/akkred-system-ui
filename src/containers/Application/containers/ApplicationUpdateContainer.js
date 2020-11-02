@@ -26,10 +26,10 @@ import { mapResponseToFormError } from '../../../utils/form'
 import ApplciationTabs from '../components/ApplciationTabs'
 import { mapBranches } from './utils'
 
-const getClientItemParams = () => ({
+const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
   stateName: STATE.APPLICATION_ITEM,
-  // onComplete:onComplete
+  onComplete:onComplete
 })
 
 const serializer = val => {
@@ -41,17 +41,24 @@ const EMPTY_ARR = []
 
 const getInitialValues = data => {
   return {
+    id: prop('id', data),
     clientInfo: prop('client', data),
     executor: prop('executor', data),
     client: path(['client', 'id'], data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     internalAudit: prop('internalAudit', data),
     stage: prop('stage', data),
+    file: prop('file', data),
+    branchs: prop('branchs', data),
     managementAnalysis: prop('managementAnalysis', data),
     managementSystem: prop('managementSystem', data),
     proficiencyTestingProvider: prop('proficiencyTestingProvider', data),
     typeApplication: prop('typeApplication', data),
-    typeStandard: prop('typeStandard', data)
+    typeStandard: prop('typeStandard', data),
+    executors: prop('executors', data),
+    expertise: prop('expertsExpertize', data),
+    assignments: prop('expertsAssignment', data),
+
   }
 }
 
@@ -64,8 +71,6 @@ const getClientUpdateParams = () => ({
 const ApplicationUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
-  const confirmModal = useModal({ key: 'confirmModal' })
-  const rejectModal = useModal({ key: 'rejectModal' })
   const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
 
@@ -73,7 +78,7 @@ const ApplicationUpdateContainer = props => {
     const branch = prop('branchs', value)
     setServiceList([...branch])
   }
-  const { data } = useFetchItem(getClientItemParams())
+  const { data } = useFetchItem(getClientItemParams(onComplete))
   const onAddService = service => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()
@@ -91,11 +96,15 @@ const ApplicationUpdateContainer = props => {
   }
   const onCreateApplication = values => {
     const client = path(['client', 'id'], values)
-    const serviceListMap = map(mapBranches, serviceList)
+    const executor = path(['executor', 'id'], values)
+    const file = path(['file', 'id'], values)
+    const branchs = map(mapBranches, serviceList)
     const data = toSnakeCase({
-      branchs: serviceListMap,
+      branchs,
       ...values,
-      client: client
+      client,
+      executor,
+      file
     })
     dispatch(applicationUpdateAction(params.id, data))
       .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
@@ -105,32 +114,13 @@ const ApplicationUpdateContainer = props => {
     setTab(val)
   }
 
-  const confirmSubmit = values => {
-    const newDAta = getSerializedData(['executors', 'executor', 'experts'], values)
-    const data = {
-      ...newDAta
-    }
-    confirmModal.onClose()
-    dispatch(applicationConfirmAction(params.id, data))
-      .catch(mapResponseToFormError)
-  }
-
-  const onRejectSubmit = (event) => {
-    confirmModal.onClose()
-    dispatch(applicationRejectAction(params.id, data))
-      .catch(mapResponseToFormError)
-  }
-
   return (
     <ApplciationTabs
       onSubmit={() => null}
       initialValues={initialValues}
       serviceList={serviceList}
       serviceModal={{ ...serviceModal, onSubmit: onAddService }}
-      confirmModal={{ ...confirmModal, onSubmit: confirmSubmit }}
-      rejectModal={{ ...rejectModal, onSubmit: onRejectSubmit }}
       onCreateApplication={onCreateApplication}
-      onRejectSubmit={onRejectSubmit}
       onUpdateBranch={onUpdateBranch}
       tabData={{ tab, onTabChange }}
     />

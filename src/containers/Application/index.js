@@ -5,6 +5,7 @@ import ApplicationCreateContainer from './containers/ApplicationCreateContainer'
 import ApplicationListContainer from './containers/ApplicationListContainer'
 import ApplicationUpdateContainer from './containers/ApplicationUpdateContainer'
 import ApplicationItemContainer from './containers/ApplicationItemContainer'
+import ApplicationConfirmContainer from './containers/ApplicationConfirmContainer'
 
 export default () => [
   {
@@ -47,5 +48,11 @@ export default () => [
     path: ROUTES.APPLICATION_ORDERS_DETAIL_PATH,
     layout: Layouts,
     component: ApplicationItemContainer
+  },
+  {
+    exact: true,
+    path: ROUTES.APPLICATION_CONFIRM_URL,
+    layout: Layouts,
+    component: ApplicationConfirmContainer
   }
 ]

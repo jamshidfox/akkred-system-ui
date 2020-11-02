@@ -14,9 +14,10 @@ import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
 import { RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
+import { Box } from '../../../../../components/StyledElems'
 
-const Row = styled(RowUI)`
-  margin-bottom: 40px;
+const BoxUI = styled(Box)`
+  padding: 25px;
 `
 const Label = styled.div`
   margin-bottom: 16px;
@@ -28,10 +29,14 @@ const Label = styled.div`
   letter-spacing: 0.25px;
   color: ${props => props.theme.color.basic.default};
 `
-const ConfirmStageChoiceExpertsDocuments = ({ onClose, onSubmit, open }) => {
+
+const Row = styled(RowUI)`
+  margin-bottom: 40px;
+`
+const ConfirmStageChoiceExperts = ({ onSubmit }) => {
   return (
 
-    <Modal onClose={onClose} open={open} width={'1000px'}>
+    <BoxUI>
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => {
@@ -41,39 +46,12 @@ const ConfirmStageChoiceExpertsDocuments = ({ onClose, onSubmit, open }) => {
               <Row gutter={24}>
                 <Col span={8}>
                   <Field
-                    name="document for 1 experts"
-                    label="documentOne"
-                    component={ImageUploadField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="document for 2 experts"
-                    label="documentTwo"
-                    component={ImageUploadField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="document for 3 experts"
-                    label="documentThree"
-                    component={ImageUploadField}
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Field
-                    name="Date"
-                    label="Yopilgan kun olingan kun"
-                    component={DateField}
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Field
-                    name="Stranisa "
-                    label="Stranisa"
-                    component={InputField}
+                    name="experts"
+                    label="experts"
+                    parent={parent}
+                    // params={{ children_only: false }}
+                    api={API.EMPLOYEES_LIST}
+                    component={UniversalMultiSelectField}
                   />
                 </Col>
 
@@ -86,9 +64,9 @@ const ConfirmStageChoiceExpertsDocuments = ({ onClose, onSubmit, open }) => {
           )
         }}
       />
-    </Modal>
+    </BoxUI>
 
   )
 }
 
-export default ConfirmStageChoiceExpertsDocuments
+export default ConfirmStageChoiceExperts

@@ -14,9 +14,10 @@ import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
 import { RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
+import { Box } from '../../../../../components/StyledElems'
 
-const Row = styled(RowUI)`
-  margin-bottom: 40px;
+const BoxUI = styled(Box)`
+  padding: 25px;
 `
 const Label = styled.div`
   margin-bottom: 16px;
@@ -28,49 +29,31 @@ const Label = styled.div`
   letter-spacing: 0.25px;
   color: ${props => props.theme.color.basic.default};
 `
-const ConfirmStageTwoChoiceExecutors = ({ onClose, onSubmit, open }) => {
+
+const Row = styled(RowUI)`
+  margin-bottom: 40px;
+`
+const ConfirmStageSendClientContract = ({ onSubmit }) => {
   return (
 
-    <Modal onClose={onClose} open={open} width={'1000px'}>
+    <BoxUI>
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
               <Label>Основная информация</Label>
-              <Row gutter={24}>
-
-                <Col span={8}>
-                  <Field
-                    name="executor"
-                    label="Ijrochi 1"
-                    component={UniversalSearchField}
-                    api={API.EMPLOYEES_LIST}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="executors"
-                    label="Ijrochilar"
-                    parent={parent}
-                    // params={{ children_only: false }}
-                    api={API.EMPLOYEES_LIST}
-                    component={UniversalMultiSelectField}
-                  />
-                </Col>
-
-              </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Send to client</MediumButton>
               </div>
             </form>
           )
         }}
       />
-    </Modal>
+    </BoxUI>
 
   )
 }
 
-export default ConfirmStageTwoChoiceExecutors
+export default ConfirmStageSendClientContract
