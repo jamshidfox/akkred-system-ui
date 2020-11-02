@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Filter from '../Filter'
-import { MediumButton } from '../UI/Buttons'
 import Button from '../Button/Button'
 import Plus from '../../icons/Plus'
 import SearchField from './SearchField'
@@ -36,9 +35,9 @@ const TableActions = props => {
     linkAction,
     createModal,
   } = props
-  let buttonType
-  if (createModal) {
-    buttonType =
+
+  const addButton = createModal
+    ? (
       <div style={style}
 
       >
@@ -48,16 +47,40 @@ const TableActions = props => {
           prefix={<Plus />}
         />
       </div>
-  } else {
-    buttonType = <Link style={style}
-                       to={`/${linkAction}`}
-    >
-      <Button
-        text={'Добавить'}
-        prefix={<Plus />}
-      />
-    </Link>
-  }
+    )
+    : (
+      <Link
+        to={`${linkAction}`}
+        style={style}
+      >
+        <Button
+          text={'Добавить'}
+          prefix={<Plus />}
+        />
+      </Link>
+    )
+  // let buttonType
+  // if (createModal) {
+  //   buttonType =
+  //     <div style={style}
+  //
+  //     >
+  //       <Button
+  //         onClick={createModal.onOpen}
+  //         text={'Добавить'}
+  //         prefix={<Plus />}
+  //       />
+  //     </div>
+  // } else {
+  //   buttonType = <Link style={style}
+  //     to={`${linkAction}`}
+  //   >
+  //     <Button
+  //       text={'Добавить'}
+  //       prefix={<Plus />}
+  //     />
+  //   </Link>
+  // }
 
   return (
     <Container>
@@ -69,7 +92,7 @@ const TableActions = props => {
 
       <Actions>
         {extraButtons}
-        {buttonType}
+        {addButton}
         <SearchField key={searchKey} />
       </Actions>
     </Container>

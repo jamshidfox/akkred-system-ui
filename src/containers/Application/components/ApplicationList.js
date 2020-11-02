@@ -1,3 +1,4 @@
+import * as ROUTES from 'constants/routes'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { prop, isEmpty, path, propOr } from 'ramda'
@@ -6,6 +7,7 @@ import { Table, TableRow, TableActions } from 'components/Table'
 import { getTabsFromRoute } from 'utils/get'
 import Container from 'components/StyledElems/Container'
 import DropdownMore from 'components/Dropdown/more'
+import { sprintf } from 'sprintf-js'
 import Tabs from '../../../components/Tabs'
 import CommentListFilterForm from './CommentListFilterForm'
 
@@ -13,8 +15,8 @@ const ApplicationList = props => {
   const {
     list,
     filterActions,
-    // history
-    // onDelete
+    history,
+    onDelete
   } = props
 
   // Data
@@ -86,11 +88,15 @@ const ApplicationList = props => {
     const moreList = [
       {
         name: 'Изменить',
-        onClick: () => alert('Handle EDIT')
+        onClick: () => {
+          history.push({
+            pathname: sprintf(ROUTES.APPLICATION_UPDATE_URL, id)
+          })
+        }
       },
       {
         name: 'Удалить',
-        onClick: () => alert('Handle DELETE')
+        onClick: () => onDelete(id)
       }
     ]
 
