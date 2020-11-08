@@ -54,23 +54,30 @@ const ConfirmStageContract = ({ onSubmit }) => {
 
                 <Col span={8}>
                   <Field
-                    name="Shartnoma maqsadi"
-                    label="Shartnoma maqsadi"
+                    name="rate"
+                    label="rate"
                     component={InputField}
                   />
                 </Col>
                 <Col span={8}>
                   <Field
-                    name="Dannie"
-                    label="Dannie"
+                    name="price"
+                    label="price"
                     component={InputField}
                   />
                 </Col>
 
                 <Col span={8}>
                   <Field
-                    name="To’lov olchami (xodim/kun)"
-                    label="To’lov olchami (xodim/kun)"
+                    name="count"
+                    label="count"
+                    component={InputField}
+                  />
+                </Col>
+                <Col span={8}>
+                  <Field
+                    name="total_amount"
+                    label="total_amount"
                     component={InputField}
                   />
                 </Col>

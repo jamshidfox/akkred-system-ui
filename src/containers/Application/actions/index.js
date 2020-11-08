@@ -35,6 +35,7 @@ export const clientExistingAction = ({ id, ...data }) => {
 }
 
 export const applicationUpdateAction = (id, data) => {
+  console.warn(data,'data')
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.APPLICATION_UPDATE, id), data)

@@ -6,6 +6,7 @@ import { Box } from '../../../components/StyledElems'
 import ApplicationCreate from './ApplicationCreate'
 import ApplicationUserInfo from './ApplicationUserInfo'
 import ApplicationAddInfo from './ApplicationAddInfo'
+import ApplicationContractInvoiceInfo from './ApplicationContractInvoiceInfo'
 import ApplicationItemTabOne from './Detail/Tabs/ApplicationItemTabOne'
 
 export const fields = [
@@ -44,12 +45,15 @@ export const SERVICE = 'service'
 export const PAYMENT = 'payment'
 
 const ApplicationTabs = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch, tabData } = props
+  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, tabData, documentModal, documentList } = props
+  const id = prop('id', initialValues)
   const clientInfo = prop('clientInfo', initialValues)
   const executor = prop('executor', initialValues)
   const executors = prop('executors', initialValues)
+  const experts = prop('experts', initialValues)
   const expertise = prop('expertise', initialValues)
   const assignments = prop('assignments', initialValues)
+  const contracts = prop('contracts', initialValues)
 
   return (
     <BoxUI>
@@ -66,8 +70,9 @@ const ApplicationTabs = props => {
             onSubmit={onSubmit}
             initialValues={initialValues}
             serviceModal={serviceModal}
+            documentModal={documentModal}
+            documentList={documentList}
             onCreateApplication={onCreateApplication}
-            onUpdateBranch={onUpdateBranch}
             serviceList={serviceList}
             onTabChange={() => tabData.onTabChange(SERVICE)}
           />
@@ -76,10 +81,10 @@ const ApplicationTabs = props => {
           <ApplicationItemTabOne />
         </Tab>
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
-          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} assignments={assignments} />
+          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} experts={experts} assignments={assignments} />
         </Tab>
         <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
-          c
+          <ApplicationContractInvoiceInfo contracts={contracts} application={id} />
         </Tab>
         <Tab value={'d'} label={'EKSPERTIZA natijalari'}>
           d

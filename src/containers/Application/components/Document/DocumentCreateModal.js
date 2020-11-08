@@ -2,49 +2,61 @@ import React from 'react'
 import {
   Field,
   Form,
-  InputField,
-  UniversalSearchField,
+  UniversalStaticSelectField
 } from '../../../../components/FormField'
 import { Modal } from '../../../../components/UI'
 import { MediumButton } from '../../../../components/UI/Buttons'
 import { FieldWrapper } from '../../../../components/StyledElems'
+import FileUploadField from '../../../../components/FormField/File/FileUploadField'
 
-const BrancCreateModal = props => {
+const typeList = [
+  {
+    id:'type_one',
+    name:'type_one',
+  },
+  {
+    id:'type_two',
+    name:'type_two',
+  },
+  {
+    id:'type_three',
+    name:'type_three',
+  },
+  {
+    id:'type_four',
+    name:'type_four',
+  }
+]
+const DocumentCreateModal = props => {
   const {
     onClose,
     open,
     initialValues,
-    onUpdateService,
+    onUpdateDocument,
     onSubmit
   } = props
 
   return (
     <Modal onClose={onClose} open={open} width={'400px'}>
       <Form
-        onSubmit={initialValues ? onUpdateService : onSubmit}
+        onSubmit={initialValues ? onUpdateDocument : onSubmit}
         initialValues={initialValues}
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
               <FieldWrapper>
                 <Field
-                  name="address"
-                  label="address"
-                  component={InputField}
+                  component={FileUploadField}
+                  name={'file'}
+                  label={'File 1'}
                 />
               </FieldWrapper>
               <FieldWrapper>
                 <Field
-                  name="phoneNumber"
-                  label="phoneNumber"
-                  component={InputField}
-                />
-              </FieldWrapper>
-              <FieldWrapper>
-                <Field
-                  name="fullName"
-                  label="fullName"
-                  component={InputField}
+                  name="type"
+                  label="type"
+                  component={UniversalStaticSelectField}
+                  list={typeList}
                 />
               </FieldWrapper>
               <div style={{ textAlign: 'right' }}>
@@ -58,4 +70,4 @@ const BrancCreateModal = props => {
   )
 }
 
-export default BrancCreateModal
+export default DocumentCreateModal

@@ -3,15 +3,14 @@ import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import toSnakeCase from '../../../utils/toSnakeCase'
 import * as STATE from '../../../constants/stateNames'
-import { useCreate, useModal } from '../../../hooks'
+import { useModal } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
 
-import { ClientCreate, fields } from '../components'
+import { fields } from '../components'
 import { applicationCreateAction } from '../actions'
 import * as ROUTES from '../../../constants/routes'
 import { mapResponseToFormError } from '../../../utils/form'
-import ApplicationCreate from '../components/ApplicationCreate'
-import ApplciationTabs from '../components/ApplciationTabs'
+import ApplicationTabs from '../components/ApplciationTabs'
 
 export const serializer = (val) => {
   return {
@@ -31,12 +30,14 @@ const ApplicationCreateContainer = props => {
   const dispatch = useDispatch()
   const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
+  const [documentList, setDocumentList] = useState(EMPTY_ARR)
   const serviceModal = useModal({ key: 'serviceModal' })
+  const documentModal = useModal({ key: 'documentModal' })
   const onAddService = (service) => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()
   }
-  const onUpdateBranch = (branch) => {
+  const onUpdateService = (branch) => {
     serviceList.forEach((element, index) => {
       if (element.id === branch.id) {
         serviceList.splice(index, 1, branch)
@@ -44,6 +45,20 @@ const ApplicationCreateContainer = props => {
     })
     serviceModal.onClose()
   }
+
+  const onAddSDocument = document => {
+    setDocumentList([...documentList, document])
+    documentModal.onClose()
+  }
+  const onUpdateDocument = (document) => {
+    documentList.forEach((element, index) => {
+      if (element.id === document.id) {
+        documentList.splice(index, 1, document)
+      }
+    })
+    serviceModal.onClose()
+  }
+
   const onCreateApplication = (values) => {
     const data = toSnakeCase({
       serviceList,
@@ -57,12 +72,13 @@ const ApplicationCreateContainer = props => {
     setTab(val)
   }
   return (
-    <ApplciationTabs
+    <ApplicationTabs
       onSubmit={() => null}
       serviceList={serviceList}
+      documentList={documentList}
       onCreateApplication={onCreateApplication}
-      serviceModal={{ ...serviceModal, onSubmit: onAddService }}
-      onUpdateBranch={onUpdateBranch}
+      serviceModal={{ ...serviceModal, onSubmit: onAddService, onUpdateService:onUpdateService }}
+      documentModal={{ ...documentModal, onSubmit: onAddSDocument, onUpdateService:onUpdateDocument }}
       tabData={{ tab, onTabChange }}
     />
   )

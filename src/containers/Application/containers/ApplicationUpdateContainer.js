@@ -19,12 +19,10 @@ import { fields } from '../components/ApplicationCreate'
 import {
   clientFetchItem,
   applicationUpdateAction,
-  applicationConfirmAction,
-  applicationRejectAction
 } from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
 import ApplciationTabs from '../components/ApplciationTabs'
-import { mapBranches } from './utils'
+import { mapBranches, mapDocument } from './utils'
 
 const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
@@ -56,6 +54,8 @@ const getInitialValues = data => {
     typeApplication: prop('typeApplication', data),
     typeStandard: prop('typeStandard', data),
     executors: prop('executors', data),
+    experts: prop('experts', data),
+    contracts: prop('contracts', data),
     expertise: prop('expertsExpertize', data),
     assignments: prop('expertsAssignment', data),
 
@@ -71,22 +71,40 @@ const getClientUpdateParams = () => ({
 const ApplicationUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
+  const documentModal = useModal({ key: 'documentModal' })
   const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
+  const [documentList, setDocumentList] = useState(EMPTY_ARR)
 
   const onComplete = ({ value }) => {
     const branch = prop('branchs', value)
+    const documents = prop('documents', value)
     setServiceList([...branch])
+    setDocumentList([...documents])
   }
   const { data } = useFetchItem(getClientItemParams(onComplete))
   const onAddService = service => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()
   }
+
+  const onAddDocument = document => {
+    setDocumentList([...documentList, document])
+    documentModal.onClose()
+  }
+  const onUpdateDocument = (document) => {
+    documentList.forEach((element, index) => {
+      if (element.id === document.id) {
+        documentList.splice(index, 1, document)
+      }
+    })
+    serviceModal.onClose()
+  }
+
   const params = useParams()
   const initialValues = getInitialValues(data)
 
-  const onUpdateBranch = (branch) => {
+  const onUpdateService = (branch) => {
     serviceList.forEach((element, index) => {
       if (element.id === branch.id) {
         serviceList.splice(index, 1, branch)
@@ -98,15 +116,15 @@ const ApplicationUpdateContainer = props => {
     const client = path(['client', 'id'], values)
     const executor = path(['executor', 'id'], values)
     const file = path(['file', 'id'], values)
-    const branchs = map(mapBranches, serviceList)
+    const branches = map(mapBranches, serviceList)
+    const documents = map(mapDocument, documentList)
     const data = toSnakeCase({
-      branchs,
       ...values,
       client,
       executor,
       file
     })
-    dispatch(applicationUpdateAction(params.id, data))
+    dispatch(applicationUpdateAction(params.id, { ...data, branchs:branches, documents }))
       .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
       .catch(mapResponseToFormError)
   }
@@ -119,9 +137,10 @@ const ApplicationUpdateContainer = props => {
       onSubmit={() => null}
       initialValues={initialValues}
       serviceList={serviceList}
-      serviceModal={{ ...serviceModal, onSubmit: onAddService }}
+      documentList={documentList}
+      serviceModal={{ ...serviceModal, onSubmit: onAddService, onUpdateService:onUpdateService }}
+      documentModal={{ ...documentModal, onSubmit: onAddDocument, onUpdateDocument:onUpdateDocument }}
       onCreateApplication={onCreateApplication}
-      onUpdateBranch={onUpdateBranch}
       tabData={{ tab, onTabChange }}
     />
   )

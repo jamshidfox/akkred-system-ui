@@ -8,8 +8,7 @@ import ConfirmStageSendClientContract from './ApplicationConfirmStages/[Stage8]C
 import ConfirmStageChoiceExperts from './ApplicationConfirmStages/[Stage10]Experts'
 
 const ApplicationConfirm = props => {
-  const { onSubmit } = props
-  const stage = '1'
+  const { onSubmit, stage } = props
   switch (stage) {
   case 'stage_2':
     return (

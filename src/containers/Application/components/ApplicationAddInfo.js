@@ -21,7 +21,7 @@ const PageTitleNew = styled(PageTitle)`
 `
 
 const ApplicationAddInfo = props => {
-  const { executor, executors, assignments, expertise } = props
+  const { executor, executors, assignments, expertise, experts } = props
 
   const username = prop('username', executor)
   const tableList = executors.map(client => {
@@ -63,18 +63,16 @@ const ApplicationAddInfo = props => {
 
   const tableHeadExpertise =
     <TableRow header={true}>
-      <th colSpan={8} >Ф.И.О </th>
-      <th colSpan={4} >Должность </th>
-      <th colSpan={4} >Обязанности </th>
-      <th colSpan={4} >Задание </th>
-      <th colSpan={4} >Основание </th>
+      <th colSpan={10} >Ф.И.О </th>
+      <th colSpan={6} >Телефон </th>
+      <th colSpan={6} >Должность </th>
     </TableRow>
-  const tableListExpertise = expertise.map(client => {
+  const tableListExpertise = experts.map(client => {
     const {
       id,
-      expert,
-      cases,
-      assignment,
+      fullName,
+      phoneNumber,
+      role,
     } = client
 
     // Render
@@ -82,11 +80,10 @@ const ApplicationAddInfo = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={8}>{expert.fullName}</td>
-        <td colSpan={4}>{expert.role.name}</td>
-        <td colSpan={4}>{cases}</td>
-        <td colSpan={4}>test</td>
-        <td colSpan={4}>{assignment}</td>
+
+        <td colSpan={10}>{fullName}</td>
+        <td colSpan={6}>{phoneNumber}</td>
+        <td colSpan={6}>{role && role.name}</td>
 
       </TableRow>
     )

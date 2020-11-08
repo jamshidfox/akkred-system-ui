@@ -28,7 +28,7 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageTwoChoiceExecutor = ({  onSubmit }) => {
+const ConfirmStageTwoChoiceExecutor = ({ onSubmit }) => {
   return (
 
     <BoxUI >

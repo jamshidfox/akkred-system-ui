@@ -15,11 +15,12 @@ import {
   UniversalSearchField,
   NoopFields
 } from '../../../components/FormField'
-import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../constants/backend'
+import { ANSWER_LIST, ANSWER_MONTH_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../constants/backend'
 import { Box } from '../../../components/StyledElems'
 import * as API from '../../../constants/api'
 import * as ROUTES from '../../../constants/routes'
 import { BranchCreateModal, BranchList } from './Branch'
+import { DocumentCreateModal, DocumentList } from './Document'
 
 export const fields = [
   'address',
@@ -66,11 +67,17 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ApplicationCreate = props => {
-  const { initialValues, serviceModal, onCreateApplication, serviceList, onUpdateBranch } = props
+  const { initialValues, serviceModal, onCreateApplication, serviceList, documentModal,documentList } = props
   const [serviceModalItem, setServiceModalItem] = useState(false)
+  const [documentModalItem, setDocumentModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
     serviceModal.onOpen()
+  }
+
+  const editDocumentModalOpen = (data) => {
+    setDocumentModalItem(data)
+    documentModal.onOpen()
   }
   const stage = prop('stage', initialValues)
   const id = prop('id', initialValues)
@@ -147,7 +154,7 @@ const ApplicationCreate = props => {
                     name="managementSystem"
                     label="Как давно в лаборатории внедрена система менеджмента?"
                     component={UniversalStaticSelectField}
-                    list={ANSWER_LIST}
+                    list={ANSWER_MONTH_LIST}
                   />
                 </Col>
 
@@ -171,24 +178,18 @@ const ApplicationCreate = props => {
                 </Col>
 
               </Row>
-              {/* <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} /> */}
-              {/* <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} /> */}
               <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
-              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} onUpdateBranch={onUpdateBranch} />
+              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} />
+
+              <DocumentList document={documentList} serviceModal={documentModal} editModalOpen={editDocumentModalOpen} />
+              <DocumentCreateModal {...documentModal} initialValues={documentModalItem} />
 
               <Row gutter={24}>
-                <Col span={8}>
+                <Col span={24}>
                   <Field
                     component={FileUploadField}
                     name={'file'}
                     label={'File 1'}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    component={FileUploadField}
-                    name={'no-file'}
-                    label={'File 2'}
                   />
                 </Col>
               </Row>

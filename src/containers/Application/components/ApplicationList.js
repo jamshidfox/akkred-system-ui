@@ -55,34 +55,10 @@ const ApplicationList = props => {
   // TableList
   const tableList = listData.map(client => {
     const {
-      title = 'Title',
       id,
-      address = 'Address',
+      address,
       stage
     } = client
-
-    // Handlers
-    // const handleRedirect = () => {
-    //   history.push({
-    //     pathname: sprintf(ROUTES.APPLICATION_ORDERS_DETAIL_URL, id)
-    //   })
-    // }
-
-    // More more more
-    // {/* <td colSpan={1}> */}
-    // {/*  <Link */}
-    // {/*    // style={style} */}
-    // {/*    to={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}> */}
-    // {/*    <img src={Edit} alt="Edit" /> */}
-    // {/*  </Link> */}
-    // {/* </td> */}
-    // {/* <td colSpan={1}> */}
-    // {/*  <span */}
-    // {/*    style={style} */}
-    // {/*    onClick={() => onDelete(id)}> */}
-    // {/*    <img src={Trash} alt="Edit" /> */}
-    // {/*  </span> */}
-    // {/* </td> */}
 
     // MoreList
     const moreList = [
@@ -104,7 +80,6 @@ const ApplicationList = props => {
     return (
       <TableRow
         key={id}
-        // onClick={handleRedirect}
       >
         <td colSpan={8}>{stage}</td>
         <td colSpan={6}>АА {id}</td>

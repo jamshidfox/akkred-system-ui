@@ -4,12 +4,12 @@ import {
   Form,
   InputField,
   UniversalSearchField,
-} from '../../../../components/FormField'
-import { Modal } from '../../../../components/UI'
-import { MediumButton } from '../../../../components/UI/Buttons'
-import { FieldWrapper } from '../../../../components/StyledElems'
+} from '../../../../../components/FormField'
+import { Modal } from '../../../../../components/UI'
+import { MediumButton } from '../../../../../components/UI/Buttons'
+import { FieldWrapper } from '../../../../../components/StyledElems'
 
-const BrancCreateModal = props => {
+const ExpertsCreateModal = props => {
   const {
     onClose,
     open,
@@ -58,4 +58,4 @@ const BrancCreateModal = props => {
   )
 }
 
-export default BrancCreateModal
+export default ExpertsCreateModal
