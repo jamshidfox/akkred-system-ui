@@ -56,8 +56,14 @@ const getInitialValues = data => {
     executors: prop('executors', data),
     experts: prop('experts', data),
     contracts: prop('contracts', data),
+    contractPlace: prop('contractPlace', data),
+    plan: prop('plan', data),
+    notice: prop('notice', data),
+    command: prop('command', data),
     expertise: prop('expertsExpertize', data),
+    expertsPlace: prop('expertsPlace', data),
     assignments: prop('expertsAssignment', data),
+    results: prop('results', data),
 
   }
 }
@@ -74,13 +80,19 @@ const ApplicationUpdateContainer = props => {
   const documentModal = useModal({ key: 'documentModal' })
   const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
+  const [officeList, setOfficeList] = useState(EMPTY_ARR)
+  const [staffList, setStaffList] = useState(EMPTY_ARR)
   const [documentList, setDocumentList] = useState(EMPTY_ARR)
 
   const onComplete = ({ value }) => {
     const branch = prop('branchs', value)
     const documents = prop('documents', value)
+    const staffs = prop('staffs', value)
+    const offices = prop('offices', value)
     setServiceList([...branch])
     setDocumentList([...documents])
+    setOfficeList([...offices])
+    setStaffList([...staffs])
   }
   const { data } = useFetchItem(getClientItemParams(onComplete))
   const onAddService = service => {
@@ -137,7 +149,9 @@ const ApplicationUpdateContainer = props => {
       onSubmit={() => null}
       initialValues={initialValues}
       serviceList={serviceList}
+      staffList={staffList}
       documentList={documentList}
+      officeList={officeList}
       serviceModal={{ ...serviceModal, onSubmit: onAddService, onUpdateService:onUpdateService }}
       documentModal={{ ...documentModal, onSubmit: onAddDocument, onUpdateDocument:onUpdateDocument }}
       onCreateApplication={onCreateApplication}

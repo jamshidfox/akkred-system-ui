@@ -21,6 +21,8 @@ import * as API from '../../../constants/api'
 import * as ROUTES from '../../../constants/routes'
 import { BranchCreateModal, BranchList } from './Branch'
 import { DocumentCreateModal, DocumentList } from './Document'
+import { StaffCreateModal, StaffList } from './Staff'
+import { OfficeCreateModal, OfficeList } from './Office'
 
 export const fields = [
   'address',
@@ -67,7 +69,14 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ApplicationCreate = props => {
-  const { initialValues, serviceModal, onCreateApplication, serviceList, documentModal,documentList } = props
+  const { initialValues,
+    serviceModal,
+    onCreateApplication,
+    serviceList,
+    documentModal,
+    staffList,
+    officeList,
+    documentList } = props
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const [documentModalItem, setDocumentModalItem] = useState(false)
   const editModalOpen = (data) => {
@@ -179,26 +188,34 @@ const ApplicationCreate = props => {
 
               </Row>
               <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
-              <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} />
+              {/*<BranchCreateModal {...serviceModal} initialValues={serviceModalItem} />*/}
 
               <DocumentList document={documentList} serviceModal={documentModal} editModalOpen={editDocumentModalOpen} />
-              <DocumentCreateModal {...documentModal} initialValues={documentModalItem} />
+              {/*<DocumentCreateModal {...documentModal} initialValues={documentModalItem} />*/}
+              <StaffList branches={staffList} serviceModal={documentModal} editModalOpen={editDocumentModalOpen} />
+              <OfficeList branches={officeList} serviceModal={serviceModal} editModalOpen={editDocumentModalOpen} />
 
-              <Row gutter={24}>
-                <Col span={24}>
-                  <Field
-                    component={FileUploadField}
-                    name={'file'}
-                    label={'File 1'}
-                  />
-                </Col>
-              </Row>
+              {/*<Row gutter={24}>*/}
+              {/*  <Col span={24}>*/}
+              {/*    <Field*/}
+              {/*      component={FileUploadField}*/}
+              {/*      name={'file'}*/}
+              {/*      label={'File 1'}*/}
+              {/*    />*/}
+              {/*  </Col>*/}
+              {/*</Row>*/}
 
-              <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>Сохранить</MediumButton>
-              </div>
+              {/* <div style={{ textAlign: 'right' }}> */}
+              {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
+              {/* </div> */}
 
-              {stage === 'stage_9'
+              {/*{stage && (*/}
+              {/*  <div>stage={stage}</div>*/}
+              {/*)*/}
+
+              {/*}*/}
+
+              {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_26'
                 ? (<div >
                   <MediumButton style={{
                     background: '#2541ff'

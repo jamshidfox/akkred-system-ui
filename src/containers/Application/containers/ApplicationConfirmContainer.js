@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { sprintf } from 'sprintf-js'
-import { prop } from 'ramda'
+import { map, prop, path } from 'ramda'
 import {
   useFetchItem,
   useModal
@@ -15,16 +15,48 @@ import { mapResponseToFormError } from '../../../utils/form'
 import ApplicationConfirm from '../components/Confirm/ApplicationConfirm'
 import * as ROUTES from '../../../constants/routes'
 import * as STATE from '../../../constants/stateNames'
+import { mapBranches, mapExperts,mapExpertsPlace } from './utils'
 
 const getClientItemParams = () => ({
   action: clientFetchItem,
   stateName: STATE.APPLICATION_ITEM,
 })
 
+const EMPTY_ARR = []
+
 const ApplicationConfirmContainer = props => {
   const dispatch = useDispatch()
-  const confirmModal = useModal({ key: 'confirmModal' })
+  const serviceModal = useModal({ key: 'serviceModal' })
+  const placeModal = useModal({ key: 'placeModal' })
+  const [placeList, setPlaceList] = useState(EMPTY_ARR)
 
+  const [serviceList, setServiceList] = useState(EMPTY_ARR)
+  const confirmModal = useModal({ key: 'confirmModal' })
+  const onAddService = service => {
+    setServiceList([...serviceList, service])
+    serviceModal.onClose()
+  }
+  const onUpdateService = (branch) => {
+    serviceList.forEach((element, index) => {
+      if (element.id === branch.id) {
+        serviceList.splice(index, 1, branch)
+      }
+    })
+    serviceModal.onClose()
+  }
+
+  const onAddPlace = place => {
+    setPlaceList([...placeList, place])
+    placeModal.onClose()
+  }
+  const onUpdatePlace = (branch) => {
+    placeList.forEach((element, index) => {
+      if (element.id === branch.id) {
+        placeList.splice(index, 1, branch)
+      }
+    })
+    placeModal.onClose()
+  }
   const params = useParams()
 
   const { data } = useFetchItem(getClientItemParams())
@@ -32,6 +64,9 @@ const ApplicationConfirmContainer = props => {
   const stage = prop('stage', data)
 
   const confirmSubmit = values => {
+    const experts = map(mapExperts, serviceList)
+    const expertsPlace = map(mapExpertsPlace, placeList)
+    const file = path(['file', 'id'], values)
     const newDAta = getSerializedData([
       'executors',
       'executor',
@@ -39,10 +74,15 @@ const ApplicationConfirmContainer = props => {
       'price',
       'rate',
       'count',
-      'total_amount'
+      'total_amount',
+      'from_date',
+      'to_date',
     ], values)
     const data = {
-      ...newDAta
+      ...newDAta,
+      experts,
+      experts_place:expertsPlace,
+      file,
     }
     confirmModal.onClose()
     dispatch(applicationConfirmAction(params.id, data))
@@ -53,6 +93,10 @@ const ApplicationConfirmContainer = props => {
   return (
     <ApplicationConfirm
       onSubmit={confirmSubmit}
+      serviceList={serviceList}
+      placeList={placeList}
+      serviceModal={{ ...serviceModal, onSubmit: onAddService, onUpdateService:onUpdateService }}
+      placeModal={{ ...placeModal, onSubmit: onAddPlace, onUpdateService:onUpdatePlace }}
       stage={stage}
     />
   )

@@ -38,6 +38,7 @@ export const CLIENT_UPDATE_PATH = `/${CLIENT}/${ID}/`
 
 const APPLICATION = 'application'
 export const APPLICATION_LIST_URL = `/${APPLICATION}/`
+export const APPLICATION_LIST_EXPERT_URL = `/${APPLICATION}/expert`
 export const APPLICATION_ITEM_PATH = `/${APPLICATION}/${ID}/`
 export const APPLICATION_ITEM_URL = `/${APPLICATION}/%d`
 export const APPLICATION_CREATE_URL = `/${APPLICATION}/create`
@@ -53,6 +54,16 @@ export const APPLICATION_TESTS_PATH = `/${APPLICATION}/test`
 export const APPLICATION_TESTS_URL = `/${APPLICATION}/test`
 export const APPLICATION_ORDERS_DETAIL_PATH = `/${APPLICATION}/orders/${ID}`
 export const APPLICATION_ORDERS_DETAIL_URL = `/${APPLICATION}/orders/%d`
+
+const EXPERT_EXPERTISE = 'expert_expertise'
+export const EXPERT_EXPERTISE_LIST_URL = `/${EXPERT_EXPERTISE}/`
+export const EXPERT_EXPERTISE_ITEM_PATH = `/${EXPERT_EXPERTISE}/${ID}/`
+export const EXPERT_EXPERTISE_ITEM_URL = `/${EXPERT_EXPERTISE}/%d`
+export const EXPERT_EXPERTISE_CREATE_URL = `/${EXPERT_EXPERTISE}/create`
+export const EXPERT_EXPERTISE_UPDATE_URL = `/${EXPERT_EXPERTISE}/%d`
+export const EXPERT_EXPERTISE_UPDATE_PATH = `/${EXPERT_EXPERTISE}/${ID}/`
+export const EXPERT_EXPERTISE_CONFIRM_URL = `/${EXPERT_EXPERTISE}/confirm/${ID}`
+export const EXPERT_EXPERTISE_CONFIRM_PATH = `/${EXPERT_EXPERTISE}/confirm/%d`
 
 const CLIENT_INFO = 'client_info'
 export const CLIENT_INFO_LIST_URL = `/${CLIENT_INFO}/`

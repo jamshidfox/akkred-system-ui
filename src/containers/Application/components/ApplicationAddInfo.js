@@ -21,7 +21,7 @@ const PageTitleNew = styled(PageTitle)`
 `
 
 const ApplicationAddInfo = props => {
-  const { executor, executors, assignments, expertise, experts } = props
+  const { executor, executors, assignments, expertise, experts, expertsPlace } = props
 
   const username = prop('username', executor)
   const tableList = executors.map(client => {
@@ -70,9 +70,8 @@ const ApplicationAddInfo = props => {
   const tableListExpertise = experts.map(client => {
     const {
       id,
-      fullName,
-      phoneNumber,
-      role,
+      expert,
+
     } = client
 
     // Render
@@ -81,9 +80,9 @@ const ApplicationAddInfo = props => {
         key={id}
       >
 
-        <td colSpan={10}>{fullName}</td>
-        <td colSpan={6}>{phoneNumber}</td>
-        <td colSpan={6}>{role && role.name}</td>
+        <td colSpan={10}>{expert.fullName}</td>
+        <td colSpan={6}>{expert.phoneNumber}</td>
+        <td colSpan={6}>{expert.role && expert.role.name}</td>
 
       </TableRow>
     )
@@ -97,19 +96,52 @@ const ApplicationAddInfo = props => {
       {tableListExpertise}
     </Table>
 
-  const tableAssignment =
+  /// -------------EXPERTIZA PLACE-------------------------
+
+  const tableHeadExpertisePlace =
+    <TableRow header={true}>
+      <th colSpan={6} >Ф.И.О </th>
+      <th colSpan={6} >Телефон </th>
+      <th colSpan={6} >Должность </th>
+      <th colSpan={6} >Статус </th>
+    </TableRow>
+  const tableListExpertisePlace = expertsPlace.map(client => {
+    const {
+      id,
+      expert,
+      status
+
+    } = client
+
+    // Render
+    return (
+      <TableRow
+        key={id}
+      >
+
+        <td colSpan={6}>{expert.fullName}</td>
+        <td colSpan={6}>{expert.phoneNumber}</td>
+        <td colSpan={6}>{expert.role && expert.role.name}</td>
+        <td colSpan={6}>{status}</td>
+
+      </TableRow>
+    )
+  })
+  const tableExpertisePlace =
     <Table
-      isEmpty={isEmpty(executors)}
+      isEmpty={isEmpty(expertsPlace)}
     >
       <PageTitle name="Baholash uchun ekspertlar guruhi" />
-      {tableHeadExpertise}
-      {tableListExpertise}
+      {tableHeadExpertisePlace}
+      {tableListExpertisePlace}
     </Table>
+
   return (
     <>
       {table}
       {tableExpertise}
-      {tableAssignment}
+      {tableExpertisePlace}
+
       {/* {table3} */}
       {/* {table4} */}
     </>

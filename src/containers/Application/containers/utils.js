@@ -13,3 +13,19 @@ export const mapDocument = (item) => toSnakeCase({
   file:path(['file', 'id'], item),
   id: prop('id', item),
 })
+
+export const mapExperts = (item) => toSnakeCase({
+  case: prop('cases', item),
+  expert:path(['expert', 'id'], item),
+  assignment:path(['assignment', 'id'], item),
+})
+
+export const mapExpertsPlace = (item) => toSnakeCase({
+  case: prop('cases', item),
+  // type: prop('type', item),
+  // address_type: prop('address_type', item),
+  expert:path(['expert', 'id'], item),
+  assignment:path(['assignment', 'id'], item),
+  type:path(['type', 'id'], item),
+  address_type:path(['address', 'id'], item),
+})

@@ -22,10 +22,6 @@ export default [
           }
         ]
       },
-      {
-        name: 'Тестовые',
-        url: ROUTES.APPLICATION_TESTS_URL,
-      }
       // {
       //   name: 'QABUL QILINGAN',
       //   url: ROUTES.APPLICATION_TESTS_URL,
@@ -100,6 +96,21 @@ export default [
       //   url: ROUTES.APPLICATION_TESTS_URL,
       // },
     ]
+    // a.mamanazarov@tace.uz
+  },
+  {
+    name: 'Эксперты',
+    children: [
+      {
+        name: 'Оценка',
+        url: ROUTES.APPLICATION_MY_ORDERS_URL,
+      },
+      {
+        name: ' Экспертиза',
+        url: ROUTES.EXPERT_EXPERTISE_LIST_URL,
+      }
+    ],
+    icon: People,
   },
   {
     name: 'Сотрудники',
@@ -122,6 +133,7 @@ export default [
     url: ROUTES.GROUP_LIST_URL,
     icon: People,
   },
+
   // {
   //   name: 'Договоры',
   //   url: '/'

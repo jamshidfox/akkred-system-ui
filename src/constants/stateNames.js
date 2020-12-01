@@ -41,4 +41,10 @@ export const GROUP_CREATE = 'groupCreate'
 export const GROUP_UPDATE = 'groupUpdate'
 export const GROUP_DELETE = 'groupDelete'
 
+export const EXPERT_EXPERTISE_LIST = 'expertExpertiseList'
+export const EXPERT_EXPERTISE_ITEM = 'expertExpertiseItem'
+export const EXPERT_EXPERTISE_CREATE = 'expertExpertiseCreate'
+export const EXPERT_EXPERTISE_UPDATE = 'expertExpertiseUpdate'
+export const EXPERT_EXPERTISE_DELETE = 'expertExpertiseDelete'
+
 export const PERMISSION_LIST = 'permissionList'

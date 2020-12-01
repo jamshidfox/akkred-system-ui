@@ -7,6 +7,7 @@ import ApplicationCreate from './ApplicationCreate'
 import ApplicationUserInfo from './ApplicationUserInfo'
 import ApplicationAddInfo from './ApplicationAddInfo'
 import ApplicationContractInvoiceInfo from './ApplicationContractInvoiceInfo'
+import ApplicationExpertResult from './ApplicationExpertResult'
 import ApplicationItemTabOne from './Detail/Tabs/ApplicationItemTabOne'
 
 export const fields = [
@@ -45,15 +46,30 @@ export const SERVICE = 'service'
 export const PAYMENT = 'payment'
 
 const ApplicationTabs = props => {
-  const { onSubmit, initialValues, serviceModal, onCreateApplication, serviceList, tabData, documentModal, documentList } = props
+  const { onSubmit,
+    initialValues,
+    serviceModal,
+    onCreateApplication,
+    staffList,
+    officeList,
+    serviceList,
+    tabData,
+    documentModal,
+    documentList } = props
   const id = prop('id', initialValues)
   const clientInfo = prop('clientInfo', initialValues)
   const executor = prop('executor', initialValues)
   const executors = prop('executors', initialValues)
   const experts = prop('experts', initialValues)
   const expertise = prop('expertise', initialValues)
+  const expertsPlace = prop('expertsPlace', initialValues)
   const assignments = prop('assignments', initialValues)
   const contracts = prop('contracts', initialValues)
+  const contractPlace = prop('contractPlace', initialValues)
+  const plan = prop('plan', initialValues)
+  const notice = prop('notice', initialValues)
+  const command = prop('command', initialValues)
+  const results = prop('results', initialValues)
 
   return (
     <BoxUI>
@@ -74,33 +90,35 @@ const ApplicationTabs = props => {
             documentList={documentList}
             onCreateApplication={onCreateApplication}
             serviceList={serviceList}
+            staffList={staffList}
+            officeList={officeList}
             onTabChange={() => tabData.onTabChange(SERVICE)}
           />
         </Tab>
-        <Tab value={'a'} label={'Rahbariyat rezolyutsiyasi'}>
-          <ApplicationItemTabOne />
-        </Tab>
+        {/*<Tab value={'a'} label={'Rahbariyat rezolyutsiyasi'}>*/}
+        {/*  <ApplicationItemTabOne />*/}
+        {/*</Tab>*/}
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
-          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} experts={experts} assignments={assignments} />
+          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} experts={experts} assignments={assignments} expertsPlace={expertsPlace} />
         </Tab>
         <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
-          <ApplicationContractInvoiceInfo contracts={contracts} application={id} />
+          <ApplicationContractInvoiceInfo contracts={contracts} application={id} contractPlace={contractPlace} plan={plan} notice={notice} command={command} />
         </Tab>
         <Tab value={'d'} label={'EKSPERTIZA natijalari'}>
-          d
+          <ApplicationExpertResult results={results} application={id} />
         </Tab>
-        <Tab value={'s'} label={'Arizachiga jo’natilgan hujjatlar'}>
-          d
-        </Tab>
-        <Tab value={'s1'} label={'Arizachidan kelgan qo’shimcha hujjatlar'}>
-          d
-        </Tab>
-        <Tab value={'s2'} label={'Markazga tegishli hujjatlar'}>
-          d
-        </Tab>
-        <Tab value={'s3'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>
-          d
-        </Tab>
+        {/*<Tab value={'s'} label={'Arizachiga jo’natilgan hujjatlar'}>*/}
+        {/*  d*/}
+        {/*</Tab>*/}
+        {/*<Tab value={'s1'} label={'Arizachidan kelgan qo’shimcha hujjatlar'}>*/}
+        {/*  d*/}
+        {/*</Tab>*/}
+        {/*<Tab value={'s2'} label={'Markazga tegishli hujjatlar'}>*/}
+        {/*  d*/}
+        {/*</Tab>*/}
+        {/*<Tab value={'s3'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>*/}
+        {/*  d*/}
+        {/*</Tab>*/}
       </Tabs>
     </BoxUI>
   )

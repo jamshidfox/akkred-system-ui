@@ -15,7 +15,7 @@ import * as API from '../../../../../constants/api'
 import { RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
 import { Box } from '../../../../../components/StyledElems'
-import { ExpertsCreateModal, ExpertsList } from '../Experts'
+import { ExpertsCreateModal, ExpertsList } from '../ExpertsPlace'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -34,7 +34,7 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal }) => {
+const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal }) => {
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
@@ -48,7 +48,26 @@ const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
+              {/*<Label>Основная информация</Label>*/}
+              <Label>Joyiga chiqib o’rganish muddati</Label>
+
+              <Row gutter={24}>
+
+                <Col span={12}>
+                  <Field
+                    name="from_date"
+                    label="dan"
+                    component={DateField}
+                  />
+                </Col>
+                <Col span={12}>
+                  <Field
+                    name="to_date"
+                    label="gacha"
+                    component={DateField}
+                  />
+                </Col>
+              </Row>
               <ExpertsList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} />
 
@@ -64,4 +83,4 @@ const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal }) => {
   )
 }
 
-export default ConfirmStageChoiceExperts
+export default ConfirmStageChoiceExpertsPlace

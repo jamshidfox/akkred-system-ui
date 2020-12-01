@@ -37,7 +37,17 @@ export const ANSWER_LIST = [
   { id: 'no', name: 'нет' }
 ]
 
+export const TYPE_EXPERTS = [
+  { id: 'lead', name: 'Guruh rahbari' },
+  { id: 'member', name: 'Guruh a’zosi' },
+  { id: 'ekspert', name: 'Texnik ekspert' },
+  { id: 'watcher', name: 'Kuzatuvchi' },
+]
 
+export const ADDRESS_TYPE = [
+  { id: 'fact_address', name: 'MBO faktik mazili' },
+  { id: 'address', name: 'Markaz' },
+]
 
 export const RESULT_LIST = [
   { id: 'good', name: 'да' },

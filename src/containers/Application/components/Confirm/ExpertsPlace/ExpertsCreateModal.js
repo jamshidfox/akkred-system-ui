@@ -11,7 +11,7 @@ import { FieldWrapper } from '../../../../../components/StyledElems'
 import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
 import { Col } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
-import { ANSWER_LIST } from '../../../../../constants/backend'
+import { TYPE_EXPERTS, ADDRESS_TYPE } from '../../../../../constants/backend'
 
 const ExpertsCreateModal = props => {
   const {
@@ -26,7 +26,6 @@ const ExpertsCreateModal = props => {
     <Modal onClose={onClose} open={open} width={'400px'}>
       <Form
         onSubmit={initialValues ? onUpdateService : onSubmit}
-        initialValues={initialValues}
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
@@ -37,24 +36,33 @@ const ExpertsCreateModal = props => {
                   component={InputField}
                 />
               </FieldWrapper>
-              <FieldWrapper>
-                <Field
-                  component={UniversalSearchField}
+              {/*<FieldWrapper>*/}
+              {/*  <Field*/}
+              {/*    component={UniversalSearchField}*/}
 
-                  name="assignment"
-                  label="assignment"
-                  api={API.DOC_LIST}
+              {/*    name="assignment"*/}
+              {/*    label="assignment"*/}
+              {/*    api={API.DOC_LIST}*/}
+              {/*  />*/}
+              {/*</FieldWrapper>*/}
+
+              <FieldWrapper >
+                <Field
+                  name="type"
+                  label="Роль эксперта "
+                  component={UniversalStaticSelectField}
+                  list={TYPE_EXPERTS}
                 />
               </FieldWrapper>
 
-              {/*<FieldWrapper >*/}
-              {/*  <Field*/}
-              {/*    name="managementAnalysis"*/}
-              {/*    label="Был ли проведен анализ со стороны руководства? "*/}
-              {/*    component={UniversalStaticSelectField}*/}
-              {/*    list={ANSWER_LIST}*/}
-              {/*  />*/}
-              {/*</FieldWrapper>*/}
+              <FieldWrapper >
+                <Field
+                  name="address"
+                  label="Аддресс"
+                  component={UniversalStaticSelectField}
+                  list={ADDRESS_TYPE}
+                />
+              </FieldWrapper>
               <FieldWrapper>
                 <Field
                   component={UniversalSearchField}

@@ -18,7 +18,7 @@ const PageTitleNew = styled(PageTitle)`
  color: #2C3A50;
 
 `
-const BranchList = props => {
+const StaffList = props => {
   const { serviceModal, branches, editModalOpen } = props
   // TableList
   const tableList = branches.map(client => {
@@ -44,7 +44,7 @@ const BranchList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6} >fullNamev </th>
+      <th colSpan={6} >fullName </th>
       <th colSpan={6} >address </th>
       <th colSpan={6} >phoneNumber </th>
     </TableRow>
@@ -57,10 +57,10 @@ const BranchList = props => {
     </Table>
   return (
     <>
-      <PageTitleNew name="ФИЛИАЛЫ ЛАБОРАТОРИИ" />
+      <PageTitleNew name="УДАЛЕННЫЙ ПЕРСОНАЛ" />
       {table}
 
     </>
   )
 }
-export default BranchList
+export default StaffList

@@ -64,6 +64,8 @@ export const CLIENT_DELETE = `/${CLIENT}/%d/`
 export const CLIENT_ITEM = `/${CLIENT}/%d/`
 export const CLIENT_ITEM_DOCS = `/${CLIENT}/%d/docs/`
 
+export const DOC_LIST = `/${MAIN}/documents`
+
 export const APPLICATION = 'main/applications'
 export const APPLICATION_LIST = `/${APPLICATION}/`
 export const APPLICATION_CREATE = `/${APPLICATION}/`
@@ -74,8 +76,11 @@ export const APPLICATION_REJECT = `/${APPLICATION}/%d/reject/`
 export const APPLICATION_ITEM = `/${APPLICATION}/%d/`
 export const APPLICATION_ITEM_DOCS = `/${APPLICATION}/%d/docs/`
 
-const BOOKING = `${CLIENTS}/booking`
-export const BOOKING_LIST = `/${BOOKING}/`
-export const BOOKING_ITEM = `/${BOOKING}/%d`
-export const BOOKING_CREATE = `/${BOOKING}/`
-export const BOOKING_UPDATE = `/${BOOKING}/%d/`
+export const EXPERT_EXPERTISE = 'main/expert_expertise'
+export const EXPERT_EXPERTISE_LIST = `/${EXPERT_EXPERTISE}/`
+export const EXPERT_EXPERTISE_CREATE = `/${EXPERT_EXPERTISE}/`
+export const EXPERT_EXPERTISE_UPDATE = `/${EXPERT_EXPERTISE}/%d/`
+export const EXPERT_EXPERTISE_DELETE = `/${EXPERT_EXPERTISE}/%d/`
+export const EXPERT_EXPERTISE_CONFIRM = `/${EXPERT_EXPERTISE}/%d/confirm/`
+export const EXPERT_EXPERTISE_REJECT = `/${EXPERT_EXPERTISE}/%d/reject/`
+export const EXPERT_EXPERTISE_ITEM = `/${EXPERT_EXPERTISE}/%d/`

@@ -34,7 +34,7 @@ const ApplicationList = props => {
     />
 
   // Actions
-  const linkAction = '#'
+  const linkAction = '/application/create'
   const tableActions =
     <TableActions
       filterForm={<CommentListFilterForm />}
@@ -56,8 +56,8 @@ const ApplicationList = props => {
   const tableList = listData.map(client => {
     const {
       id,
-      address,
-      stage
+      // address,
+      // stage
     } = client
 
     // MoreList
@@ -66,7 +66,7 @@ const ApplicationList = props => {
         name: 'Изменить',
         onClick: () => {
           history.push({
-            pathname: sprintf(ROUTES.APPLICATION_UPDATE_URL, id)
+            pathname: sprintf(ROUTES.EXPERT_EXPERTISE_UPDATE_URL, id)
           })
         }
       },
@@ -81,9 +81,9 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={8}>{stage}</td>
+        <td colSpan={8}>stage</td>
         <td colSpan={6}>АА {id}</td>
-        <td colSpan={3}>{address}</td>
+        <td colSpan={3}>BDay</td>
         <td colSpan={4}>BDay</td>
         <DropdownMore
           moreList={moreList}
@@ -113,7 +113,7 @@ const ApplicationList = props => {
   // Render
   return (
     <Container>
-      {tabs}
+      {/*{tabs}*/}
       {table}
       {pagination}
     </Container>
