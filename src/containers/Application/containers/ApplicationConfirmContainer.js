@@ -94,6 +94,7 @@ const ApplicationConfirmContainer = props => {
     <ApplicationConfirm
       onSubmit={confirmSubmit}
       serviceList={serviceList}
+      application={params.id}
       placeList={placeList}
       serviceModal={{ ...serviceModal, onSubmit: onAddService, onUpdateService:onUpdateService }}
       placeModal={{ ...placeModal, onSubmit: onAddPlace, onUpdateService:onUpdatePlace }}

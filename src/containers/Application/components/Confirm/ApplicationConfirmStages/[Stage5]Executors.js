@@ -41,15 +41,15 @@ const ConfirmStageTwoChoiceExecutors = ({ onSubmit }) => {
               <Label>Основная информация</Label>
               <Row gutter={24}>
 
-                <Col span={8}>
-                  <Field
-                    name="executor"
-                    label="Ijrochi 1"
-                    component={UniversalSearchField}
-                    api={API.EMPLOYEES_LIST}
-                  />
-                </Col>
-                <Col span={8}>
+                {/*<Col span={8}>*/}
+                {/*  <Field*/}
+                {/*    name="executor"*/}
+                {/*    label="Ijrochi 1"*/}
+                {/*    component={UniversalSearchField}*/}
+                {/*    api={API.EMPLOYEES_LIST}*/}
+                {/*  />*/}
+                {/*</Col>*/}
+                <Col span={24}>
                   <Field
                     name="executors"
                     label="Ijrochilar"

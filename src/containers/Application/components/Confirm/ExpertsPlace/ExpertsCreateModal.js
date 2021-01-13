@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  DateField,
   Field,
   Form,
   InputField,
@@ -36,15 +37,13 @@ const ExpertsCreateModal = props => {
                   component={InputField}
                 />
               </FieldWrapper>
-              {/*<FieldWrapper>*/}
-              {/*  <Field*/}
-              {/*    component={UniversalSearchField}*/}
-
-              {/*    name="assignment"*/}
-              {/*    label="assignment"*/}
-              {/*    api={API.DOC_LIST}*/}
-              {/*  />*/}
-              {/*</FieldWrapper>*/}
+              <FieldWrapper>
+                <Field
+                  name="date"
+                  label="date"
+                  component={DateField}
+                />
+              </FieldWrapper>
 
               <FieldWrapper >
                 <Field

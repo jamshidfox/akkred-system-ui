@@ -34,7 +34,7 @@ const ApplicationList = props => {
     />
 
   // Actions
-  const linkAction = '#'
+  const linkAction = '/application/create'
   const tableActions =
     <TableActions
       filterForm={<CommentListFilterForm />}
@@ -46,19 +46,18 @@ const ApplicationList = props => {
   const tableHead =
     <TableRow header={true}>
       <th colSpan={8}>Полное название юридического лица</th>
-      <th colSpan={6}>Номер паспорта</th>
-      <th colSpan={3}>Адрес</th>
-      <th colSpan={4}>Дата рождения</th>
+      <th colSpan={3}>Номер паспорта</th>
+      <th colSpan={6}>Адрес</th>
+      <th colSpan={4}>Майл</th>
       <th />
     </TableRow>
 
   // TableList
-  const tableList = listData.map(client => {
+  const tableList = listData.map(application => {
     const {
       id,
-      address,
-      stage
-    } = client
+      client,
+    } = application
 
     // MoreList
     const moreList = [
@@ -81,10 +80,10 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={8}>{stage}</td>
-        <td colSpan={6}>АА {id}</td>
-        <td colSpan={3}>{address}</td>
-        <td colSpan={4}>BDay</td>
+        <td colSpan={8}>{client.fullNameOrgan}</td>
+        <td colSpan={3}>АА {id}</td>
+        <td colSpan={6}>{client.address}</td>
+        <td colSpan={4}>{client.email}</td>
         <DropdownMore
           moreList={moreList}
         />

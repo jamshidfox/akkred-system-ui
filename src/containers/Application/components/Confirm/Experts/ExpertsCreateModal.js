@@ -19,7 +19,8 @@ const ExpertsCreateModal = props => {
     open,
     initialValues,
     onUpdateService,
-    onSubmit
+    onSubmit,
+    application
   } = props
 
   return (
@@ -44,6 +45,7 @@ const ExpertsCreateModal = props => {
                   name="assignment"
                   label="assignment"
                   api={API.DOC_LIST}
+                  params={{ application: application }}
                 />
               </FieldWrapper>
 

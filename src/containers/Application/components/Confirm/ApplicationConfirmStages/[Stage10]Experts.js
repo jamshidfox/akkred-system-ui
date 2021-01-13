@@ -34,7 +34,7 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal }) => {
+const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal , application}) => {
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
@@ -50,7 +50,7 @@ const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal }) => {
             <form onSubmit={handleSubmit}>
               <Label>Основная информация</Label>
               <ExpertsList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
-              <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} />
+              <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} application={application} />
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Сохранить</MediumButton>

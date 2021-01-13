@@ -19,7 +19,6 @@ import ExpertsResultModal from './ExpertsResultModal'
 import * as API from '~/constants/api'
 
 const AddBtn = styled(SecondarySmallButton)`
-  padding-left: 0;
 `
 // export const fields = [
 //   'username',

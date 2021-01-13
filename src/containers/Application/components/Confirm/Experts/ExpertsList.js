@@ -12,7 +12,6 @@ import { MediumButton, SecondarySmallButton } from '../../../../../components/UI
 import * as ROUTES from '../../../../../constants/routes'
 
 const AddBtn = styled(SecondarySmallButton)`
-  padding-left: 0;
 `
 
 const ExpertsList = props => {
@@ -54,7 +53,7 @@ const ExpertsList = props => {
     </Table>
   return (
     <>
-      <AddBtn onClick={() => serviceModal.onOpen()}>добавить услугу </AddBtn>
+      <AddBtn onClick={() => serviceModal.onOpen()}>добавить эксперта из базы </AddBtn>
       {table}
 
     </>

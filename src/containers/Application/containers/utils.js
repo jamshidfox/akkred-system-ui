@@ -22,6 +22,7 @@ export const mapExperts = (item) => toSnakeCase({
 
 export const mapExpertsPlace = (item) => toSnakeCase({
   case: prop('cases', item),
+  date: prop('date', item),
   // type: prop('type', item),
   // address_type: prop('address_type', item),
   expert:path(['expert', 'id'], item),
