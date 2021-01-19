@@ -147,5 +147,13 @@ const ApplicationAddInfo = props => {
     </>
   )
 }
+ApplicationAddInfo.defaultProps = {
+  executor:[],
+  executors:[],
+  assignments:[],
+  expertise:[],
+  experts:[],
+  expertsPlace:[],
+}
 
 export default ApplicationAddInfo

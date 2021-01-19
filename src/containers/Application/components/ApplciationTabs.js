@@ -95,9 +95,6 @@ const ApplicationTabs = props => {
             onTabChange={() => tabData.onTabChange(SERVICE)}
           />
         </Tab>
-        {/*<Tab value={'a'} label={'Rahbariyat rezolyutsiyasi'}>*/}
-        {/*  <ApplicationItemTabOne />*/}
-        {/*</Tab>*/}
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
           <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} experts={experts} assignments={assignments} expertsPlace={expertsPlace} />
         </Tab>

@@ -23,6 +23,7 @@ import { BranchCreateModal, BranchList } from './Branch'
 import { DocumentCreateModal, DocumentList } from './Document'
 import { StaffCreateModal, StaffList } from './Staff'
 import { OfficeCreateModal, OfficeList } from './Office'
+import PermissionButton from './PermissionButton'
 
 export const fields = [
   'address',
@@ -195,15 +196,7 @@ const ApplicationCreate = props => {
               <StaffList branches={staffList} serviceModal={documentModal} editModalOpen={editDocumentModalOpen} />
               <OfficeList branches={officeList} serviceModal={serviceModal} editModalOpen={editDocumentModalOpen} />
 
-              {/*<Row gutter={24}>*/}
-              {/*  <Col span={24}>*/}
-              {/*    <Field*/}
-              {/*      component={FileUploadField}*/}
-              {/*      name={'file'}*/}
-              {/*      label={'File 1'}*/}
-              {/*    />*/}
-              {/*  </Col>*/}
-              {/*</Row>*/}
+
 
               {/* <div style={{ textAlign: 'right' }}> */}
               {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
@@ -215,39 +208,40 @@ const ApplicationCreate = props => {
 
               {/*}*/}
 
-              {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_26'
-                ? (<div >
-                  <MediumButton style={{
-                    background: '#2541ff'
-                  }} onClick={waitModalOpen()}>Wait</MediumButton>
-                </div>)
-                : (<div style={{
-                  display: 'flex'
+              {/*{stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_26'*/}
+              {/*  ? (<div >*/}
+              {/*    <MediumButton style={{*/}
+              {/*      background: '#2541ff'*/}
+              {/*    }} onClick={waitModalOpen()}>Wait</MediumButton>*/}
+              {/*  </div>)*/}
+              {/*  : (<div style={{*/}
+              {/*    display: 'flex'*/}
 
-                }}>
+              {/*  }}>*/}
 
-                  {id && (
-                    <Link
+              {/*    {id && (*/}
+              {/*      <Link*/}
 
-                      to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-                      <div style={{
-                        paddingRight: '20px'
+              {/*        to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>*/}
+              {/*        <div style={{*/}
+              {/*          paddingRight: '20px'*/}
 
-                      }} >
-                        <MediumButton >Подтвердить</MediumButton>
-                      </div>
-                    </Link>
+              {/*        }} >*/}
+              {/*          <MediumButton >Подтвердить</MediumButton>*/}
+              {/*        </div>*/}
+              {/*      </Link>*/}
 
-                  )}
+              {/*    )}*/}
 
-                  <div >
-                    <MediumButton style={{
-                      background: '#ff3454'
-                    }} >Отклонить</MediumButton>
-                  </div>
+              {/*    <div >*/}
+              {/*      <MediumButton style={{*/}
+              {/*        background: '#ff3454'*/}
+              {/*      }} >Отклонить</MediumButton>*/}
+              {/*    </div>*/}
 
-                </div>)
-              }
+              {/*  </div>)*/}
+              {/*}*/}
+              <PermissionButton id={id} stage={stage} />
 
             </form>
           )

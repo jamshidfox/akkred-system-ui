@@ -5,7 +5,7 @@ import Document from '../../icons/Document'
 
 export default [
   {
-    name: 'Заказы',
+    name: 'Заявки',
     icon: Document,
     children: [
       {
