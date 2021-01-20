@@ -10,7 +10,7 @@ import ConfirmStageContractPlace from './ApplicationConfirmStages/[Stage14]Contr
 import ConfirmStageChoiceExpertsPlace from './ApplicationConfirmStages/[Stage14]ExpertsPlace'
 
 const ApplicationConfirm = props => {
-  const { onSubmit, stage, serviceList, serviceModal, placeModal, placeList,application } = props
+  const { onSubmit, stage, serviceList, serviceModal, placeModal, placeList, application } = props
   switch (stage) {
   case 'stage_2':
     return (

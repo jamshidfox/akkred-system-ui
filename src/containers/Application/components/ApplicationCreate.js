@@ -19,6 +19,7 @@ import { ANSWER_LIST, ANSWER_MONTH_LIST, APPLICATION_LIST, STANDART_LIST } from 
 import { Box } from '../../../components/StyledElems'
 import * as API from '../../../constants/api'
 import * as ROUTES from '../../../constants/routes'
+import Perms from '../../../components/Perms/Perms'
 import { BranchCreateModal, BranchList } from './Branch'
 import { DocumentCreateModal, DocumentList } from './Document'
 import { StaffCreateModal, StaffList } from './Staff'
@@ -189,59 +190,55 @@ const ApplicationCreate = props => {
 
               </Row>
               <BranchList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
-              {/*<BranchCreateModal {...serviceModal} initialValues={serviceModalItem} />*/}
+              {/* <BranchCreateModal {...serviceModal} initialValues={serviceModalItem} /> */}
 
               <DocumentList document={documentList} serviceModal={documentModal} editModalOpen={editDocumentModalOpen} />
-              {/*<DocumentCreateModal {...documentModal} initialValues={documentModalItem} />*/}
+              {/* <DocumentCreateModal {...documentModal} initialValues={documentModalItem} /> */}
               <StaffList branches={staffList} serviceModal={documentModal} editModalOpen={editDocumentModalOpen} />
               <OfficeList branches={officeList} serviceModal={serviceModal} editModalOpen={editDocumentModalOpen} />
-
-
 
               {/* <div style={{ textAlign: 'right' }}> */}
               {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
               {/* </div> */}
 
-              {/*{stage && (*/}
-              {/*  <div>stage={stage}</div>*/}
-              {/*)*/}
+              {/* {stage && ( */}
+              {/*  <div>stage={stage}</div> */}
+              {/* ) */}
 
-              {/*}*/}
+              {/* } */}
 
-              {/*{stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_26'*/}
-              {/*  ? (<div >*/}
-              {/*    <MediumButton style={{*/}
-              {/*      background: '#2541ff'*/}
-              {/*    }} onClick={waitModalOpen()}>Wait</MediumButton>*/}
-              {/*  </div>)*/}
-              {/*  : (<div style={{*/}
-              {/*    display: 'flex'*/}
+              <div>
 
-              {/*  }}>*/}
+                {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_26'
+                  ? (<div >
+                    <MediumButton style={{
+                      background: '#2541ff'
+                    }} onClick={waitModalOpen()}>Wait</MediumButton>
+                  </div>)
+                  : (<div style={{
+                    display: 'flex'
 
-              {/*    {id && (*/}
-              {/*      <Link*/}
+                  }}>
 
-              {/*        to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>*/}
-              {/*        <div style={{*/}
-              {/*          paddingRight: '20px'*/}
+                    {id && (
 
-              {/*        }} >*/}
-              {/*          <MediumButton >Подтвердить</MediumButton>*/}
-              {/*        </div>*/}
-              {/*      </Link>*/}
+                      <div>
 
-              {/*    )}*/}
+                        <PermissionButton stage={stage} id={id} />
 
-              {/*    <div >*/}
-              {/*      <MediumButton style={{*/}
-              {/*        background: '#ff3454'*/}
-              {/*      }} >Отклонить</MediumButton>*/}
-              {/*    </div>*/}
+                      </div>
 
-              {/*  </div>)*/}
-              {/*}*/}
-              <PermissionButton id={id} stage={stage} />
+                    )}
+
+                    <div >
+                      <MediumButton style={{
+                        background: '#ff3454'
+                      }} >Отклонить</MediumButton>
+                    </div>
+
+                  </div>)
+                }
+              </div>
 
             </form>
           )
