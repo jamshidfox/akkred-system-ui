@@ -209,7 +209,7 @@ const ApplicationCreate = props => {
 
               <div>
 
-                {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_26'
+                {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_25'
                   ? (<div >
                     <MediumButton style={{
                       background: '#2541ff'

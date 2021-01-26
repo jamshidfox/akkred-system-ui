@@ -37,6 +37,13 @@ export const ANSWER_LIST = [
   { id: 'no', name: 'нет' }
 ]
 
+
+
+export const ANSWER_TYPE_LIST = [
+  { id: 'approved', name: 'Согласен' },
+  { id: 'reject', name: 'Несогласен' }
+]
+
 export const TYPE_EXPERTS = [
   { id: 'lead', name: 'Guruh rahbari' },
   { id: 'member', name: 'Guruh a’zosi' },

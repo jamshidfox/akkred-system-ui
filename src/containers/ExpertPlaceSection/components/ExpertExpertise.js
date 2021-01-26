@@ -55,6 +55,7 @@ const ExpertExpertiseCreate = props => {
   }
   const file = prop('file', initialValues)
   const status = prop('status', initialValues)
+  const statusAssignment = prop('statusAssignment', initialValues)
 
   return (
     <BoxUI>
@@ -95,10 +96,10 @@ const ExpertExpertiseCreate = props => {
                 </Col>
               </Row>
 
-              {/*{status === 'given' && (*/}
+              {statusAssignment === 'given' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
 
-              {/*)}*/}
+              )}
 
               <ExpertsResultModal {...serviceModal} onSubmit={onSubmit} />
 

@@ -6,6 +6,7 @@ import {
 } from 'ramda'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { sprintf } from 'sprintf-js'
 import toSnakeCase from '../../../utils/toSnakeCase'
 
 import * as STATE from '../../../constants/stateNames'
@@ -18,11 +19,11 @@ import { getSerializedData } from '../../../utils/get'
 import { fields } from '../components/ApplicationCreate'
 import {
   clientFetchItem,
-  applicationUpdateAction,
+  applicationUpdateAction, applicationConfirmAction, applicationConfirmRejectAction,
 } from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
 import ApplciationTabs from '../components/ApplciationTabs'
-import { mapBranches, mapDocument } from './utils'
+import { mapBranches, mapDocument, mapExperts, mapExpertsPlace } from './utils'
 
 const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
@@ -64,6 +65,8 @@ const getInitialValues = data => {
     expertsPlace: prop('expertsPlace', data),
     assignments: prop('expertsAssignment', data),
     results: prop('results', data),
+    resultsPlace: prop('resultsPlace', data),
+    commissions: prop('commissions', data),
 
   }
 }
@@ -78,6 +81,7 @@ const ApplicationUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
   const documentModal = useModal({ key: 'documentModal' })
+  const expertRejectModal = useModal({ key: 'expertRejectModal' })
   const [tab, setTab] = useState('guest')
   const [serviceList, setServiceList] = useState(EMPTY_ARR)
   const [officeList, setOfficeList] = useState(EMPTY_ARR)
@@ -95,6 +99,13 @@ const ApplicationUpdateContainer = props => {
     setStaffList([...staffs])
   }
   const { data } = useFetchItem(getClientItemParams(onComplete))
+
+  const onSubmitExpertRejectModal = values => {
+    expertRejectModal.onClose()
+    dispatch(applicationConfirmRejectAction(params.id, values))
+      .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
+      .catch(mapResponseToFormError)
+  }
   const onAddService = service => {
     setServiceList([...serviceList, service])
     serviceModal.onClose()
@@ -152,6 +163,7 @@ const ApplicationUpdateContainer = props => {
       staffList={staffList}
       documentList={documentList}
       officeList={officeList}
+      expertRejectModal={{ ...expertRejectModal, onSubmit: onSubmitExpertRejectModal }}
       serviceModal={{ ...serviceModal, onSubmit: onAddService, onUpdateService:onUpdateService }}
       documentModal={{ ...documentModal, onSubmit: onAddDocument, onUpdateDocument:onUpdateDocument }}
       onCreateApplication={onCreateApplication}

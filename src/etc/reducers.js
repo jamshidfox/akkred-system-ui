@@ -60,6 +60,16 @@ export const makeRootReducer = asyncReducers => {
     [STATE.EXPERT_EXPERTISE_CREATE]: createThunkReducer(actionTypes.EXPERT_EXPERTISE_CREATE),
     [STATE.EXPERT_EXPERTISE_UPDATE]: createThunkReducer(actionTypes.EXPERT_EXPERTISE_UPDATE),
     [STATE.EXPERT_EXPERTISE_ITEM]: createThunkReducer(actionTypes.EXPERT_EXPERTISE_ITEM),
+
+    [STATE.EXPERT_PLACE_LIST]: createThunkReducer(actionTypes.EXPERT_PLACE_LIST),
+    [STATE.EXPERT_PLACE_CREATE]: createThunkReducer(actionTypes.EXPERT_PLACE_CREATE),
+    [STATE.EXPERT_PLACE_UPDATE]: createThunkReducer(actionTypes.EXPERT_PLACE_UPDATE),
+    [STATE.EXPERT_PLACE_ITEM]: createThunkReducer(actionTypes.EXPERT_PLACE_ITEM),
+
+    [STATE.COMMISSION_LIST]: createThunkReducer(actionTypes.COMMISSION_LIST),
+    [STATE.COMMISSION_CREATE]: createThunkReducer(actionTypes.COMMISSION_CREATE),
+    [STATE.COMMISSION_UPDATE]: createThunkReducer(actionTypes.COMMISSION_UPDATE),
+    [STATE.COMMISSION_ITEM]: createThunkReducer(actionTypes.COMMISSION_ITEM),
     ...asyncReducers
   })
 }

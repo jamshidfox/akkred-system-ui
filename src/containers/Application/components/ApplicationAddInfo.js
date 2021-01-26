@@ -10,6 +10,7 @@ import { sprintf } from 'sprintf-js'
 import { Table, TableCol, TableRow, TableColRight } from '../../../components/Table'
 import { MediumButton, SecondarySmallButton } from '../../../components/UI'
 import * as ROUTES from '../../../constants/routes'
+import ExpertReject from './ExpertReject/ExpertRejectModal'
 
 const AddBtn = styled(SecondarySmallButton)`
   padding-left: 0;
@@ -21,7 +22,11 @@ const PageTitleNew = styled(PageTitle)`
 `
 
 const ApplicationAddInfo = props => {
-  const { executor, executors, assignments, expertise, experts, expertsPlace } = props
+  const { executor, executors, experts, expertsPlace, expertRejectModal } = props
+
+  const expertRejectModalOpen = () => {
+    expertRejectModal.onOpen()
+  }
 
   const username = prop('username', executor)
   const tableList = executors.map(client => {
@@ -63,14 +68,16 @@ const ApplicationAddInfo = props => {
 
   const tableHeadExpertise =
     <TableRow header={true}>
-      <th colSpan={10} >Ф.И.О </th>
-      <th colSpan={6} >Телефон </th>
+      <th colSpan={6} >Ф.И.О </th>
       <th colSpan={6} >Должность </th>
+      <th colSpan={6} >Статус </th>
+      <th colSpan={6} > </th>
     </TableRow>
   const tableListExpertise = experts.map(client => {
     const {
       id,
       expert,
+      status,
 
     } = client
 
@@ -80,16 +87,19 @@ const ApplicationAddInfo = props => {
         key={id}
       >
 
-        <td colSpan={10}>{expert.fullName}</td>
-        <td colSpan={6}>{expert.phoneNumber}</td>
+        <td colSpan={6}>{expert.fullName}</td>
         <td colSpan={6}>{expert.role && expert.role.name}</td>
+
+        <td colSpan={6}>{status}</td>
+        <td colSpan={6}> <div onClick={expertRejectModalOpen}>Net</div></td>
+        <ExpertReject initialValues={{ expert:expert.id }} {...expertRejectModal} />
 
       </TableRow>
     )
   })
   const tableExpertise =
     <Table
-      isEmpty={isEmpty(executors)}
+      isEmpty={isEmpty(experts)}
     >
       <PageTitle name="Ekspertiza uchun ekspertlar guruhi" />
       {tableHeadExpertise}
@@ -138,7 +148,7 @@ const ApplicationAddInfo = props => {
 
   return (
     <>
-      {table}
+      {/*{table}*/}
       {tableExpertise}
       {tableExpertisePlace}
 

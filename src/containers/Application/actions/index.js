@@ -35,7 +35,7 @@ export const clientExistingAction = ({ id, ...data }) => {
 }
 
 export const applicationUpdateAction = (id, data) => {
-  console.warn(data,'data')
+  console.warn(data, 'data')
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.APPLICATION_UPDATE, id), data)
@@ -48,6 +48,21 @@ export const applicationUpdateAction = (id, data) => {
     })
   }
 }
+
+export const applicationConfirmRejectAction = (id, data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(sprintf(API.APPLICATION_REJECT_EXPERT, id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_REJECT_EXPERT
+    })
+  }
+}
+
 export const applicationDeleteAction = (id) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
@@ -62,7 +77,7 @@ export const applicationDeleteAction = (id) => {
   }
 }
 
-export const applicationConfirmAction = (id,data) => {
+export const applicationConfirmAction = (id, data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .post(sprintf(API.APPLICATION_CONFIRM, id), data)

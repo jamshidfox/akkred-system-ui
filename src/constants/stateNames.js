@@ -47,4 +47,16 @@ export const EXPERT_EXPERTISE_CREATE = 'expertExpertiseCreate'
 export const EXPERT_EXPERTISE_UPDATE = 'expertExpertiseUpdate'
 export const EXPERT_EXPERTISE_DELETE = 'expertExpertiseDelete'
 
+export const EXPERT_PLACE_LIST = 'expertPlaceList'
+export const EXPERT_PLACE_ITEM = 'expertPlaceItem'
+export const EXPERT_PLACE_CREATE = 'expertPlaceCreate'
+export const EXPERT_PLACE_UPDATE = 'expertPlaceUpdate'
+export const EXPERT_PLACE_DELETE = 'expertPlaceDelete'
+
+export const COMMISSION_LIST = 'expertCommissionList'
+export const COMMISSION_ITEM = 'expertCommissionItem'
+export const COMMISSION_CREATE = 'expertCommissionCreate'
+export const COMMISSION_UPDATE = 'expertCommissionUpdate'
+export const COMMISSION_DELETE = 'expertCommissionDelete'
+
 export const PERMISSION_LIST = 'permissionList'

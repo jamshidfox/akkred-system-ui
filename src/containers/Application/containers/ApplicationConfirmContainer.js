@@ -67,6 +67,7 @@ const ApplicationConfirmContainer = props => {
     const experts = map(mapExperts, serviceList)
     const expertsPlace = map(mapExpertsPlace, placeList)
     const file = path(['file', 'id'], values)
+    const command = path(['command', 'id'], values)
     const newDAta = getSerializedData([
       'executors',
       'executor',
@@ -83,6 +84,7 @@ const ApplicationConfirmContainer = props => {
       experts,
       experts_place:expertsPlace,
       file,
+      command,
     }
     confirmModal.onClose()
     dispatch(applicationConfirmAction(params.id, data))

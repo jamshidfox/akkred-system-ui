@@ -14,8 +14,9 @@ import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
 import { RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
-import { Box } from '../../../../../components/StyledElems'
+import { Box, FieldWrapper } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsList } from '../ExpertsPlace'
+import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -48,7 +49,34 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal })
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              {/*<Label>Основная информация</Label>*/}
+              <Label>Xabarnoma</Label>
+              <FieldWrapper>
+                <Field
+                  component={FileUploadField}
+                  name={'file'}
+                  label={'Xabarnoma '}
+                />
+              </FieldWrapper>
+              <Label>Reja</Label>
+
+              <Row gutter={24}>
+
+                <Col span={12}>
+                  <Field
+                    name="plan"
+                    label="Reja"
+                    component={FileUploadField}
+                  />
+                </Col>
+                <Col span={12}>
+                  <Field
+                    name="notice"
+                    label="Xabarnoma"
+                    component={FileUploadField}
+                  />
+                </Col>
+              </Row>
+
               <Label>Joyiga chiqib o’rganish muddati</Label>
 
               <Row gutter={24}>

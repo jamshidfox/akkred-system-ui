@@ -17,7 +17,7 @@ export const mapDocument = (item) => toSnakeCase({
 export const mapExperts = (item) => toSnakeCase({
   case: prop('cases', item),
   expert:path(['expert', 'id'], item),
-  assignment:path(['assignment', 'id'], item),
+  assignment:path(['file', 'id'], item),
 })
 
 export const mapExpertsPlace = (item) => toSnakeCase({

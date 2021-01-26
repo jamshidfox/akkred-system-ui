@@ -12,6 +12,8 @@ import roles from './Role'
 import groups from './Groups'
 import applications from './Application'
 import expertSection from './ExpertSection'
+import ExpertPlaceSection from './ExpertPlaceSection'
+import Commission from './Commission'
 
 const tester = () => [
   ...client(),
@@ -20,6 +22,8 @@ const tester = () => [
   ...applications(),
   ...groups(),
   ...expertSection(),
+  ...ExpertPlaceSection(),
+  ...Commission(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,

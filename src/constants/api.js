@@ -73,6 +73,7 @@ export const APPLICATION_UPDATE = `/${APPLICATION}/%d/`
 export const APPLICATION_DELETE = `/${APPLICATION}/%d/`
 export const APPLICATION_CONFIRM = `/${APPLICATION}/%d/confirm/`
 export const APPLICATION_REJECT = `/${APPLICATION}/%d/reject/`
+export const APPLICATION_REJECT_EXPERT = `/${APPLICATION}/%d/rejected_expert/`
 export const APPLICATION_ITEM = `/${APPLICATION}/%d/`
 export const APPLICATION_ITEM_DOCS = `/${APPLICATION}/%d/docs/`
 
@@ -84,3 +85,21 @@ export const EXPERT_EXPERTISE_DELETE = `/${EXPERT_EXPERTISE}/%d/`
 export const EXPERT_EXPERTISE_CONFIRM = `/${EXPERT_EXPERTISE}/%d/confirm/`
 export const EXPERT_EXPERTISE_REJECT = `/${EXPERT_EXPERTISE}/%d/reject/`
 export const EXPERT_EXPERTISE_ITEM = `/${EXPERT_EXPERTISE}/%d/`
+
+export const EXPERT_PLACE = 'main/expert_place'
+export const EXPERT_PLACE_LIST = `/${EXPERT_PLACE}/`
+export const EXPERT_PLACE_CREATE = `/${EXPERT_PLACE}/`
+export const EXPERT_PLACE_UPDATE = `/${EXPERT_PLACE}/%d/`
+export const EXPERT_PLACE_DELETE = `/${EXPERT_PLACE}/%d/`
+export const EXPERT_PLACE_CONFIRM = `/${EXPERT_PLACE}/%d/confirm/`
+export const EXPERT_PLACE_REJECT = `/${EXPERT_PLACE}/%d/reject/`
+export const EXPERT_PLACE_ITEM = `/${EXPERT_PLACE}/%d/`
+
+export const COMMISSION = 'main/commissions'
+export const COMMISSION_LIST = `/${COMMISSION}/`
+export const COMMISSION_CREATE = `/${COMMISSION}/`
+export const COMMISSION_UPDATE = `/${COMMISSION}/%d/`
+export const COMMISSION_DELETE = `/${COMMISSION}/%d/`
+export const COMMISSION_CONFIRM = `/${COMMISSION}/%d/confirm/`
+export const COMMISSION_REJECT = `/${COMMISSION}/%d/reject/`
+export const COMMISSION_ITEM = `/${COMMISSION}/%d/`

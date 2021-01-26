@@ -33,7 +33,7 @@ const ExpertsCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="cases"
-                  label="case"
+                  label="izoh"
                   component={InputField}
                 />
               </FieldWrapper>
@@ -69,6 +69,14 @@ const ExpertsCreateModal = props => {
                   name={'expert'}
                   label={'Expert'}
                   api={API.EMPLOYEES_LIST}
+                />
+              </FieldWrapper>
+
+              <FieldWrapper>
+                <Field
+                  component={FileUploadField}
+                  name={'file'}
+                  label={'file '}
                 />
               </FieldWrapper>
 

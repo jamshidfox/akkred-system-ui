@@ -53,8 +53,7 @@ const ExpertExpertiseCreate = props => {
   const { onSubmit, initialValues, serviceModal } = props
   const onSubmitFalse = () => {
   }
-  const file = prop('file', initialValues)
-  const status = prop('status', initialValues)
+  const answerType = prop('answerType', initialValues)
 
   return (
     <BoxUI>
@@ -71,40 +70,21 @@ const ExpertExpertiseCreate = props => {
               <Row gutter={24}>
 
                 <Col span={8}>
-                  <Field name="status" label="status" component={InputField} />
-                </Col>
-                <Col span={8}>
                   <Field name="application" label="application"
                     api={API.APPLICATION_LIST}
                     component={UniversalSearchField}
                   />
                 </Col>
-                <Col span={8}>
-                  <Field name="case" label="case" component={InputField} />
-                </Col>
-              </Row>
-              <Row gutter={24}>
-                {/* <Col span={4}> */}
-                {/*  <Field name="comments" label="comments" component={InputField} /> */}
-                {/* </Col> */}
-                {/* <Col span={4}> */}
-                {/*  <Field name="closedDate" label="closedDate" component={InputField} /> */}
-                {/* </Col> */}
-                <Col span={4}>
-                  <a href={`http://127.0.0.1:8000/media/${file}`}>Документ для экспертизы </a>
-                </Col>
+
               </Row>
 
-              {/*{status === 'given' && (*/}
+
+              {answerType === 'wait' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
 
-              {/*)}*/}
+              )}
 
               <ExpertsResultModal {...serviceModal} onSubmit={onSubmit} />
-
-              {/* <div style={{ textAlign: 'right' }}> */}
-              {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
-              {/* </div> */}
 
             </form>
           )

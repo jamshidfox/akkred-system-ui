@@ -44,58 +44,24 @@ const ApplicationConfirm = props => {
     return (
       <ConfirmStageContractPlace onSubmit={onSubmit} />
     )
-  case 'stage_15':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Bo’lim boshlig’i  junatish'} />
-    )
-  case 'stage_16':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Hisobchi  junatish'} />
-    )
-  case 'stage_17':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Rahbariyatga  junatish'} />
-    )
-  case 'stage_18':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Buyurtmachiga  junatish'} />
-    )
+
   case 'stage_20':
     return (
       <ConfirmStageChoiceExpertsPlace onSubmit={onSubmit} serviceModal={placeModal} serviceList={placeList} />
     )
-  case 'stage_21':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Departament junatish'} />
-    )
-  case 'stage_22':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Bo’lim boshlig’i  junatish'} />
-    )
-  case 'stage_23':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Kadrlar bo’limi  junatish'} />
-    )
-  case 'stage_24':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Rahbariyat junatish'} />
-    )
-  case 'stage_25':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Buyurtmachiga junatish'} />
-    )
-  case 'stage_27':
+
+  case 'stage_26':
     return (
       <ConfirmStageAccounting onSubmit={onSubmit} text={'Baholash uchun buyruq loyihasi qilinadi'} />
     )
-  case 'stage_28':
-    return (
-      <ConfirmStageAccounting onSubmit={onSubmit} text={'Buyruq va reja imzolanadi '} />
-    )
-  case 'stage_29':
-    return (
-      <ConfirmStageChoiceExperts onSubmit={onSubmit} serviceModal={serviceModal} serviceList={serviceList} />
-    )
+  // case 'stage_28':
+  //   return (
+  //     <ConfirmStageAccounting onSubmit={onSubmit} text={'Buyruq va reja imzolanadi '} />
+  //   )
+  // case 'stage_29':
+  //   return (
+  //     <ConfirmStageChoiceExperts onSubmit={onSubmit} serviceModal={serviceModal} serviceList={serviceList} />
+  //   )
 
   default:
     return <ApplicationConfirmDefault onSubmit={onSubmit} />

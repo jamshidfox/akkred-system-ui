@@ -65,6 +65,26 @@ export const EXPERT_EXPERTISE_UPDATE_PATH = `/${EXPERT_EXPERTISE}/${ID}/`
 export const EXPERT_EXPERTISE_CONFIRM_URL = `/${EXPERT_EXPERTISE}/confirm/${ID}`
 export const EXPERT_EXPERTISE_CONFIRM_PATH = `/${EXPERT_EXPERTISE}/confirm/%d`
 
+const COMMISSION = 'commission'
+export const COMMISSION_LIST_URL = `/${COMMISSION}/`
+export const COMMISSION_ITEM_PATH = `/${COMMISSION}/${ID}/`
+export const COMMISSION_ITEM_URL = `/${COMMISSION}/%d`
+export const COMMISSION_CREATE_URL = `/${COMMISSION}/create`
+export const COMMISSION_UPDATE_URL = `/${COMMISSION}/%d`
+export const COMMISSION_UPDATE_PATH = `/${COMMISSION}/${ID}/`
+export const COMMISSION_CONFIRM_URL = `/${COMMISSION}/confirm/${ID}`
+export const COMMISSION_CONFIRM_PATH = `/${COMMISSION}/confirm/%d`
+
+const EXPERT_PLACE = 'expert_place'
+export const EXPERT_PLACE_LIST_URL = `/${EXPERT_PLACE}/`
+export const EXPERT_PLACE_ITEM_PATH = `/${EXPERT_PLACE}/${ID}/`
+export const EXPERT_PLACE_ITEM_URL = `/${EXPERT_PLACE}/%d`
+export const EXPERT_PLACE_CREATE_URL = `/${EXPERT_PLACE}/create`
+export const EXPERT_PLACE_UPDATE_URL = `/${EXPERT_PLACE}/%d`
+export const EXPERT_PLACE_UPDATE_PATH = `/${EXPERT_PLACE}/${ID}/`
+export const EXPERT_PLACE_CONFIRM_URL = `/${EXPERT_PLACE}/confirm/${ID}`
+export const EXPERT_PLACE_CONFIRM_PATH = `/${EXPERT_PLACE}/confirm/%d`
+
 const CLIENT_INFO = 'client_info'
 export const CLIENT_INFO_LIST_URL = `/${CLIENT_INFO}/`
 export const CLIENT_INFO_ITEM_URL = `/${CLIENT_INFO}/%d`

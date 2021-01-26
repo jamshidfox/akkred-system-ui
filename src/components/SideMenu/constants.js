@@ -101,16 +101,23 @@ export default [
   {
     name: 'Эксперты',
     children: [
-      {
-        name: 'Оценка',
-        url: ROUTES.APPLICATION_MY_ORDERS_URL,
-      },
+
       {
         name: ' Экспертиза',
         url: ROUTES.EXPERT_EXPERTISE_LIST_URL,
-      }
+      },
+      {
+        name: 'Оценка',
+        url: ROUTES.EXPERT_PLACE_LIST_URL,
+      },
     ],
     icon: People,
+  },
+  {
+    name: 'Akrreditatsiya komissiyasi ',
+    url: ROUTES.COMMISSION_LIST_URL,
+    icon: People,
+    perms: ['some_perms'],
   },
   {
     name: 'Сотрудники',

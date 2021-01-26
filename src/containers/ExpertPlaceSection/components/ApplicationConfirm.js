@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MediumButton } from '../../../../../components/UI'
+import { MediumButton } from '../../../components/UI'
 import {
-  Field,
   Form,
-} from '../../../../../components/FormField'
-import { Row as RowUI } from '../../../../../components/Grid'
-import { Box, FieldWrapper } from '../../../../../components/StyledElems'
-import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
+} from '../../../components/FormField'
+import { Row as RowUI } from '../../../components/Grid'
+import { Box } from '../../../components/StyledElems'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -26,7 +24,7 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageAccounting = ({ onSubmit, text }) => {
+const ConfirmStageAccounting = ({ onSubmit }) => {
   return (
 
     <BoxUI >
@@ -38,7 +36,7 @@ const ConfirmStageAccounting = ({ onSubmit, text }) => {
               <Label>Основная информация</Label>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">{text}</MediumButton>
+                <MediumButton type="submit">Bugalterga junatish</MediumButton>
               </div>
             </form>
           )

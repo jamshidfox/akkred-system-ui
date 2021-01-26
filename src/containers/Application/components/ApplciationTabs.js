@@ -9,6 +9,8 @@ import ApplicationAddInfo from './ApplicationAddInfo'
 import ApplicationContractInvoiceInfo from './ApplicationContractInvoiceInfo'
 import ApplicationExpertResult from './ApplicationExpertResult'
 import ApplicationItemTabOne from './Detail/Tabs/ApplicationItemTabOne'
+import ApplicationExpertPlaceResult from "./ApplicationExpertPlaceResult";
+import ApplicationCommissionResult from "./ApplicationCommissionResult";
 
 export const fields = [
   'address',
@@ -55,6 +57,7 @@ const ApplicationTabs = props => {
     serviceList,
     tabData,
     documentModal,
+    expertRejectModal,
     documentList } = props
   const id = prop('id', initialValues)
   const clientInfo = prop('clientInfo', initialValues)
@@ -70,6 +73,8 @@ const ApplicationTabs = props => {
   const notice = prop('notice', initialValues)
   const command = prop('command', initialValues)
   const results = prop('results', initialValues)
+  const resultsPlace = prop('resultsPlace', initialValues)
+  const commissions = prop('commissions', initialValues)
 
   return (
     <BoxUI>
@@ -96,26 +101,23 @@ const ApplicationTabs = props => {
           />
         </Tab>
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
-          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} experts={experts} assignments={assignments} expertsPlace={expertsPlace} />
+          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} expertRejectModal={expertRejectModal} experts={experts} assignments={assignments} expertsPlace={expertsPlace} />
         </Tab>
         <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
           <ApplicationContractInvoiceInfo contracts={contracts} application={id} contractPlace={contractPlace} plan={plan} notice={notice} command={command} />
         </Tab>
-        <Tab value={'d'} label={'EKSPERTIZA natijalari'}>
+        <Tab value={'expertiza'} label={'EKSPERTIZA natijalari'}>
           <ApplicationExpertResult results={results} application={id} />
         </Tab>
-        {/*<Tab value={'s'} label={'Arizachiga jo’natilgan hujjatlar'}>*/}
-        {/*  d*/}
-        {/*</Tab>*/}
-        {/*<Tab value={'s1'} label={'Arizachidan kelgan qo’shimcha hujjatlar'}>*/}
-        {/*  d*/}
-        {/*</Tab>*/}
-        {/*<Tab value={'s2'} label={'Markazga tegishli hujjatlar'}>*/}
-        {/*  d*/}
-        {/*</Tab>*/}
-        {/*<Tab value={'s3'} label={'Akrreditatsiyadan keyingi hujjatlar (guvohnoma, akkreditasiya doirasi)'}>*/}
-        {/*  d*/}
-        {/*</Tab>*/}
+
+        <Tab value={'place'} label={'Osenka natijalari'}>
+          <ApplicationExpertPlaceResult results={resultsPlace} application={id} />
+        </Tab>
+
+        <Tab value={'commissions'} label={'Akrreditatsiya komissiyasi '}>
+          <ApplicationCommissionResult results={commissions} application={id} />
+        </Tab>
+
       </Tabs>
     </BoxUI>
   )
