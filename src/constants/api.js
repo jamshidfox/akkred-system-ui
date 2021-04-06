@@ -103,3 +103,27 @@ export const COMMISSION_DELETE = `/${COMMISSION}/%d/`
 export const COMMISSION_CONFIRM = `/${COMMISSION}/%d/confirm/`
 export const COMMISSION_REJECT = `/${COMMISSION}/%d/reject/`
 export const COMMISSION_ITEM = `/${COMMISSION}/%d/`
+
+export const CONTRACT = 'main/contract'
+export const CONTRACT_LIST = `/${CONTRACT}/`
+export const CONTRACT_CREATE = `/${CONTRACT}/`
+export const CONTRACT_UPDATE = `/${CONTRACT}/%d/`
+export const CONTRACT_DELETE = `/${CONTRACT}/%d/`
+export const CONTRACT_CONFIRM = `/${CONTRACT}/%d/paid/`
+export const CONTRACT_ITEM = `/${CONTRACT}/%d/`
+
+export const CONTRACT_PLACE = 'main/contract_place'
+export const CONTRACT_PLACE_LIST = `/${CONTRACT_PLACE}/`
+export const CONTRACT_PLACE_CREATE = `/${CONTRACT_PLACE}/`
+export const CONTRACT_PLACE_UPDATE = `/${CONTRACT_PLACE}/%d/`
+export const CONTRACT_PLACE_DELETE = `/${CONTRACT_PLACE}/%d/`
+export const CONTRACT_PLACE_CONFIRM = `/${CONTRACT_PLACE}/%d/paid/`
+export const CONTRACT_PLACE_ITEM = `/${CONTRACT_PLACE}/%d/`
+
+export const REESTR = 'main/register'
+export const REESTR_LIST = `/${REESTR}/`
+export const REESTR_CREATE = `/${REESTR}/`
+export const REESTR_UPDATE = `/${REESTR}/%d/`
+export const REESTR_DELETE = `/${REESTR}/%d/`
+export const REESTR_CONFIRM = `/${REESTR}/%d/paid/`
+export const REESTR_ITEM = `/${REESTR}/%d/`

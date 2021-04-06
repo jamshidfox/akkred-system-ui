@@ -6,6 +6,7 @@ import * as ROUTES from '../../../constants/routes'
 import { MediumButton } from '../../../components/UI/Buttons'
 
 const executor = 'executor'
+const expertHead = 'expert_head'
 const headDepartment = 'head_department'
 const headHr = 'headHr'
 const accountant = 'accountant'
@@ -497,45 +498,10 @@ const PermissionButton = props => {
 
       </Perms>
     )
-
   case 'stage_30':
     return (
       <Perms
-        perms={[executor]}
-      >
-        <div>
-          <Link
-
-            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-            <div style={{
-              paddingRight: '20px',
-              paddingBottom: '20px',
-
-            }} >
-              <MediumButton>Akkreditatsiya komissiyasi rasmilashtiriladi</MediumButton>
-            </div>
-          </Link>
-
-          <Link
-
-            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-            <div style={{
-              paddingRight: '20px'
-
-            }} >
-              <MediumButton>Ekspertlar dalolatnomasini bolim boshlig'iga yuvorish</MediumButton>
-            </div>
-          </Link>
-
-        </div>
-
-      </Perms>
-    )
-
-  case 'stage_31':
-    return (
-      <Perms
-        perms={[headDepartment]}
+        perms={[expertHead]}
       >
         <Link
 
@@ -544,13 +510,30 @@ const PermissionButton = props => {
             paddingRight: '20px'
 
           }} >
-            <MediumButton>Ijobiy Ekspertlar dalolatnomasi </MediumButton>
+            <MediumButton>Audit boshlanishi tasdiqlash</MediumButton>
           </div>
         </Link>
 
       </Perms>
     )
+  case 'stage_31':
+    return (
+      <Perms
+        perms={[expertHead]}
+      >
+        <Link
 
+          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+          <div style={{
+            paddingRight: '20px'
+
+          }} >
+            <MediumButton>Autditni yakunlash</MediumButton>
+          </div>
+        </Link>
+
+      </Perms>
+    )
   case 'stage_32':
     return (
       <Perms
@@ -563,9 +546,173 @@ const PermissionButton = props => {
             paddingRight: '20px'
 
           }} >
-            <MediumButton>Ijobiy Akrreditatsiya komissiyasini resultati</MediumButton>
+            <MediumButton>Qabul qilish</MediumButton>
           </div>
         </Link>
+
+      </Perms>
+    )
+
+  case 'stage_33':
+    return (
+      <Perms
+        perms={[executor]}
+      >
+        <Link
+
+          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+          <div style={{
+            paddingRight: '20px',
+            paddingBottom: '20px',
+
+          }} >
+            <MediumButton>Akkreditatsiya komissiyasi rasmilashtiriladi</MediumButton>
+          </div>
+        </Link>
+
+      </Perms>
+    )
+
+    // case 'stage_31':
+    //   return (
+    //     <Perms
+    //       perms={[headDepartment]}
+    //     >
+    //       <Link
+    //
+    //         to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+    //         <div style={{
+    //           paddingRight: '20px'
+    //
+    //         }} >
+    //           <MediumButton>Ijobiy Ekspertlar dalolatnomasi </MediumButton>
+    //         </div>
+    //       </Link>
+    //
+    //     </Perms>
+    //   )
+    //
+  case 'stage_34':
+    return (
+      <Perms
+        perms={[executor]}
+      >
+        <div>
+
+          <Link
+
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <div style={{
+              paddingRight: '20px'
+
+            }} >
+              <MediumButton>Akrreditatsiya qilish </MediumButton>
+            </div>
+          </Link>
+
+        </div>
+
+      </Perms>
+    )
+
+  case 'stage_35':
+    return (
+      <Perms
+        perms={[director]}
+      >
+        <div>
+
+          <Link
+
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <div style={{
+              paddingRight: '20px'
+
+            }} >
+              <MediumButton>Maqulash</MediumButton>
+            </div>
+          </Link>
+
+        </div>
+
+      </Perms>
+    )
+
+  case 'stage_36':
+    return (
+      <Perms
+        perms={[executor]}
+      >
+        <div>
+
+          <Link
+
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <div style={{
+              paddingRight: '20px'
+
+            }} >
+              <MediumButton>Buyurtmachiga xabarnoma jo’natish</MediumButton>
+            </div>
+          </Link>
+
+        </div>
+
+      </Perms>
+    )
+
+  case 'stage_37':
+    return (
+      <Perms
+        perms={[executor]}
+      >
+        <div>
+
+          <Link
+
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <div style={{
+              paddingRight: '20px'
+
+            }} >
+              <MediumButton>Reesrda ro’yhatga olish</MediumButton>
+            </div>
+          </Link>
+
+        </div>
+
+      </Perms>
+    )
+
+  case 'stage_38':
+    return (
+      <Perms
+        perms={[executor]}
+      >
+        <div>
+
+          <Link
+
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <div style={{
+              paddingRight: '20px'
+
+            }} >
+              <MediumButton>Postakkreditatsion shartnoma rasmiylashtirish</MediumButton>
+            </div>
+          </Link>
+
+        </div>
+
+      </Perms>
+    )
+
+  case 'stage_39':
+    return (
+      <Perms
+        perms={[executor]}
+      >
+        <div />
 
       </Perms>
     )
@@ -574,19 +721,7 @@ const PermissionButton = props => {
     return (
       <Perms
         perms={['director']}
-      >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Default</MediumButton>
-          </div>
-        </Link>
-
-      </Perms>
+      />
     )
   }
 }

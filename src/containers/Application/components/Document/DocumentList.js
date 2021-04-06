@@ -1,10 +1,11 @@
 import React from 'react'
-import { isEmpty, path, prop } from 'ramda'
+import { fromPairs, map, pipe, values, isEmpty } from 'ramda'
+
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Edit from 'images/edit.svg'
 import Trash from 'images/trash-2.svg'
-import { ItemControlButton, PageTitle } from 'components/UI'
+import { ItemControlButton } from 'components/UI'
 import { Link } from 'react-router-dom'
 import { sprintf } from 'sprintf-js'
 import { Table, TableCol, TableRow, TableColRight } from '../../../../components/Table'
@@ -12,16 +13,41 @@ import { MediumButton, SecondarySmallButton } from '../../../../components/UI'
 import * as ROUTES from '../../../../constants/routes'
 
 const AddBtn = styled(SecondarySmallButton)`
-  padding-left: 0;
 `
 
-const PageTitleNew = styled(PageTitle)`
- color: #2C3A50;
-
+const TextDiv = styled('div')`
+margin-bottom: 10px;
 `
 
 const DocumentList = props => {
-  const { serviceModal, document, editModalOpen } = props
+  const { serviceModal, document, update, text, onDeleteDocument } = props
+
+  const arrayObjToObj = pipe(map(values), fromPairs)
+
+  const getFormattedListData = list => ({
+    list,
+    object: arrayObjToObj(list)
+  })
+
+  const typeList = getFormattedListData([
+    {
+      id:'ACCREDITATION_SCOPE_DRAFT',
+      name:' Проект области аккредитации ',
+    },
+    {
+      id:'APPLICANT_DETAILS',
+      name:'Сведения о заявителе/объекте аккредитации',
+    },
+    {
+      id:'QUALITY_MANAGEMENT_SYSTEM_DOCUMENTATION',
+      name:'Документация Системы Менеджмента Качества',
+    },
+    {
+      id:'QUALITY_QUIDE',
+      name:'Руководство по качеству',
+    }
+  ])
+
   // TableList
   const tableList = document.map(client => {
     const {
@@ -29,16 +55,24 @@ const DocumentList = props => {
       file,
       type,
       name,
+
     } = client
+
+    const typeText = typeList.object[type]
 
     // Render
     return (
       <TableRow
         key={id}
       >
+
         <td colSpan={8}>{name}</td>
-        <td colSpan={8}>{type}</td>
-        <td colSpan={8}><a href={`http://127.0.0.1:8000/media/${file}`}>документ</a></td>
+
+        <td colSpan={8}><a target={'_blank'} href={`${file.file}`}>{'ссылка'}</a></td>
+
+        <ItemControlButton onClick={() => onDeleteDocument(client)}>
+          <img src={Trash} alt="Trash" />
+        </ItemControlButton>
 
       </TableRow>
     )
@@ -46,9 +80,9 @@ const DocumentList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8} >Name </th>
-      <th colSpan={8} >type </th>
-      <th colSpan={8} >file </th>
+      <th colSpan={8} >Названые </th>
+      <th colSpan={8} >Документ </th>
+      <th colSpan={8} />
     </TableRow>
   const table =
     <Table
@@ -59,10 +93,23 @@ const DocumentList = props => {
     </Table>
   return (
     <>
-      <PageTitleNew name="ДОКУМЕНТЫ" />
+      {/* {!update && ( */}
+      {/*  <AddBtn onClick={() => serviceModal.onOpen()}>добавить документ </AddBtn> */}
+
+      {/* ) } */}
+      {/* {update && ( */}
+      {/*  <AddBtn > документ </AddBtn> */}
+
+      {/* ) } */}
+      <TextDiv>{text}</TextDiv>
+      <AddBtn onClick={() => serviceModal.onOpen()}> документы </AddBtn>
+
       {table}
 
     </>
   )
+}
+DocumentList.defaultProps = {
+  document:[],
 }
 export default DocumentList

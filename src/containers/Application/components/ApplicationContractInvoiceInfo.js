@@ -1,23 +1,30 @@
 import React from 'react'
-import { isEmpty, path, prop } from 'ramda'
-import PropTypes from 'prop-types'
+import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import Edit from 'images/edit.svg'
-import Trash from 'images/trash-2.svg'
-import { ItemControlButton, PageTitle } from 'components/UI'
-import { Link } from 'react-router-dom'
-import { sprintf } from 'sprintf-js'
-import { Table, TableCol, TableRow, TableColRight } from '../../../components/Table'
-import { MediumButton, SecondarySmallButton } from '../../../components/UI'
-import * as ROUTES from '../../../constants/routes'
-
-const AddBtn = styled(SecondarySmallButton)`
-  padding-left: 0;
-`
+import { MediumButton, PageTitle } from 'components/UI'
+import { Table, TableRow } from '../../../components/Table'
+import { API_URL } from '../../../constants/api'
+import { documentPlanOrderType } from '../../../constants/backend'
 
 const PageTitleNew = styled(PageTitle)`
  color: #2C3A50;
 
+`
+
+const statusColors = {
+  process: 'green',
+  confirm: 'green',
+  wait: 'green',
+  reject: 'red',
+}
+
+const Status = styled('div')`
+  border-radius: ${props => props.theme.borderRadius};
+  border: 1px solid;
+  color: ${props => props.color};
+  display: inline-block;
+  line-height: 16px;
+  padding: 3px 12px;
 `
 
 const ApplicationContractInvoiceInfo = props => {
@@ -26,22 +33,29 @@ const ApplicationContractInvoiceInfo = props => {
   const tableList = contracts.map(client => {
     const {
       id,
-      price,
-      rate,
+      name,
+      rateType,
       count,
       totalAmount,
+      status,
     } = client
+
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
 
     // Render
     return (
       <TableRow
         key={id}
       >
-        <td colSpan={6}>{price}</td>
-        <td colSpan={6}>{rate}</td>
-        <td colSpan={6}>{count}</td>
-        <td colSpan={6}>{totalAmount}</td>
-        <td colSpan={6} style={{
+        <td colSpan={4}>{name}</td>
+        <td colSpan={4}>{rateType}</td>
+        <td colSpan={4}>{count}</td>
+        <td colSpan={4}>{totalAmount}</td>
+        <td colSpan={4}><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
+        <td colSpan={4} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
@@ -52,11 +66,12 @@ const ApplicationContractInvoiceInfo = props => {
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6} >Цена </th>
-      <th colSpan={6} >Ставка </th>
-      <th colSpan={6} >Количество </th>
-      <th colSpan={6} >Общее </th>
-      <th colSpan={6} >Контракт </th>
+      <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
+      <th colSpan={4} >Миқдори </th>
+      <th colSpan={4} >Ставкаси </th>
+      <th colSpan={4} >Нархи</th>
+      <th colSpan={4} >Статус </th>
+      <th colSpan={4} >Контракт </th>
     </TableRow>
   const table =
     <Table
@@ -75,7 +90,11 @@ const ApplicationContractInvoiceInfo = props => {
       count,
       totalAmount,
       file,
+      status,
     } = client
+
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
 
     // Render
     return (
@@ -85,7 +104,10 @@ const ApplicationContractInvoiceInfo = props => {
         <td colSpan={5}>{price}</td>
         <td colSpan={5}>{rate}</td>
         <td colSpan={5}>{count}</td>
-        <td colSpan={5}>{totalAmount}</td>
+        <td colSpan={3}>{totalAmount}</td>
+        <td colSpan={2}><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
         <td colSpan={2} style={{
           color: '#0f22ff'
         }}><a style={{
@@ -95,7 +117,7 @@ const ApplicationContractInvoiceInfo = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/media/${file}`}>Акт</a></td>
+          }} href={`http://127.0.0.1:8000/media/${file && file.file}`}>Акт</a></td>
 
       </TableRow>
     )
@@ -122,40 +144,41 @@ const ApplicationContractInvoiceInfo = props => {
   const tableNoticeList = notice.map(client => {
     const {
       id,
+      status,
+      file,
 
     } = client
+
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
 
     // Render
     return (
       <TableRow
         key={id}
       >
-        <td colSpan={6}>price</td>
-        <td colSpan={6}>rate</td>
-        <td colSpan={6}>count</td>
-        <td colSpan={6}>totalAmount</td>
-        <td colSpan={6} style={{
+        <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Договор</a></td>
-
+          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+        <td colSpan={12} ><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
       </TableRow>
     )
   })
   const tableNoticeHead =
     <TableRow header={true}>
-      <th colSpan={6} >Цена </th>
-      <th colSpan={6} >Ставка </th>
-      <th colSpan={6} >Количество </th>
-      <th colSpan={6} >Общее </th>
-      <th colSpan={6} >Контракт </th>
+      <th colSpan={12} >Документ </th>
+      <th colSpan={12} >Статус </th>
+
     </TableRow>
   const tableNotice =
     <Table
       isEmpty={isEmpty(notice)}
     >
-      <PageTitleNew name="Договор на оповещение" />
+      <PageTitleNew name="оповещение" />
       {tableNoticeHead}
       {tableNoticeList}
     </Table>
@@ -164,34 +187,35 @@ const ApplicationContractInvoiceInfo = props => {
   const tablePlanList = plan.map(client => {
     const {
       id,
+      file,
+      status,
 
     } = client
+
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
 
     // Render
     return (
       <TableRow
         key={id}
       >
-        <td colSpan={6}>price</td>
-        <td colSpan={6}>rate</td>
-        <td colSpan={6}>count</td>
-        <td colSpan={6}>totalAmount</td>
-        <td colSpan={6} style={{
+        <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Договор</a></td>
-
+          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+        <td colSpan={12} ><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
       </TableRow>
     )
   })
   const tablePlanHead =
     <TableRow header={true}>
-      <th colSpan={6} >Цена </th>
-      <th colSpan={6} >Ставка </th>
-      <th colSpan={6} >Количество </th>
-      <th colSpan={6} >Общее </th>
-      <th colSpan={6} >Контракт </th>
+      <th colSpan={12} >Документ </th>
+      <th colSpan={12} >Статус </th>
+
     </TableRow>
   const tablePlan =
     <Table
@@ -206,34 +230,34 @@ const ApplicationContractInvoiceInfo = props => {
   const tableCommandList = command.map(client => {
     const {
       id,
+      file,
+      status,
 
     } = client
+
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
 
     // Render
     return (
       <TableRow
         key={id}
       >
-        <td colSpan={6}>price</td>
-        <td colSpan={6}>rate</td>
-        <td colSpan={6}>count</td>
-        <td colSpan={6}>totalAmount</td>
-        <td colSpan={6} style={{
+        <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Договор</a></td>
-
+          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+        <td colSpan={12} ><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
       </TableRow>
     )
   })
   const tableCommandHead =
     <TableRow header={true}>
-      <th colSpan={6} >Цена </th>
-      <th colSpan={6} >Ставка </th>
-      <th colSpan={6} >Количество </th>
-      <th colSpan={6} >Общее </th>
-      <th colSpan={6} >Контракт </th>
+      <th colSpan={12} >Документ </th>
+      <th colSpan={12} >Статус </th>
     </TableRow>
   const tableCommand =
     <Table
@@ -244,6 +268,83 @@ const ApplicationContractInvoiceInfo = props => {
       {tableCommandList}
     </Table>
 
+  // PostAccred
+  // const tablePostAccredList = postAccred.map(client => {
+  //   const {
+  //     id,
+  //     file,
+  //     status,
+  //
+  //   } = client
+  //
+  //   const statusText = documentPlanOrderType.object[status]
+  //   const statusColor = statusColors[status]
+  //
+  //   // Render
+  //   return (
+  //     <TableRow
+  //       key={id}
+  //     >
+  //       <td colSpan={12} style={{
+  //         color: '#0f22ff'
+  //       }}><a style={{
+  //           color: '#0f22ff'
+  //         }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+  //       <td colSpan={12} ><Status color={statusColor}>
+  //         {statusText}
+  //       </Status> </td>
+  //     </TableRow>
+  //   )
+  // })
+  // const tablePostAccredHead =
+  //   <TableRow header={true}>
+  //     <th colSpan={12} >Документ </th>
+  //     <th colSpan={12} >Статус </th>
+  //   </TableRow>
+  // const tablePostAccred =
+  //   <Table
+  //     isEmpty={isEmpty(postAccred)}
+  //   >
+  //     <PageTitleNew name="Postakkreditatsion shartnoma" />
+  //     {tablePostAccredHead}
+  //     {tablePostAccredList}
+  //   </Table>
+  //
+  // // NoticeFinal
+  // const tableNoticeFinalList = noticeFinal.map(client => {
+  //   const {
+  //     id,
+  //     file,
+  //
+  //   } = client
+  //
+  //   // Render
+  //   return (
+  //     <TableRow
+  //       key={id}
+  //     >
+  //       <td colSpan={24} style={{
+  //         color: '#0f22ff'
+  //       }}><a style={{
+  //           color: '#0f22ff'
+  //         }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+  //
+  //     </TableRow>
+  //   )
+  // })
+  // const tableNoticeFinalHead =
+  //   <TableRow header={true}>
+  //     <th colSpan={24} >Документ </th>
+  //   </TableRow>
+  // const tableNoticeFinal =
+  //   <Table
+  //     isEmpty={isEmpty(noticeFinal)}
+  //   >
+  //     <PageTitleNew name="Buyurtmachiga xabarnoma" />
+  //     {tableNoticeFinalHead}
+  //     {tableNoticeFinalList}
+  //   </Table>
+
   return (
     <>
       {table}
@@ -251,6 +352,8 @@ const ApplicationContractInvoiceInfo = props => {
       {tableNotice}
       {tablePlan}
       {tableCommand}
+      {/*{tableNoticeFinal}*/}
+      {/*{tablePostAccred}*/}
 
     </>
   )

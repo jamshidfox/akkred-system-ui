@@ -46,6 +46,7 @@ const EmployeesUpdateContainer = props => {
   const confirmSubmit = values => {
     const newDAta = getSerializedData([
       'file',
+      'act',
       'comments',
     ], values)
     const data = {

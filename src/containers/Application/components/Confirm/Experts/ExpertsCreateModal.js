@@ -52,7 +52,7 @@ const ExpertsCreateModal = props => {
               <FieldWrapper>
                 <Field
                   component={FileUploadField}
-                  name={'file'}
+                  name={'assignment'}
                   label={'assignment '}
                 />
               </FieldWrapper>

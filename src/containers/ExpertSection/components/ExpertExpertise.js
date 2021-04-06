@@ -54,7 +54,7 @@ const ExpertExpertiseCreate = props => {
   const onSubmitFalse = () => {
   }
   const file = prop('file', initialValues)
-  const status = prop('status', initialValues)
+  const statusAssignment = prop('statusAssignment', initialValues)
 
   return (
     <BoxUI>
@@ -71,16 +71,13 @@ const ExpertExpertiseCreate = props => {
               <Row gutter={24}>
 
                 <Col span={8}>
-                  <Field name="status" label="status" component={InputField} />
+                  <Field name="statusAssignment" label="status" component={InputField} />
                 </Col>
                 <Col span={8}>
                   <Field name="application" label="application"
                     api={API.APPLICATION_LIST}
                     component={UniversalSearchField}
                   />
-                </Col>
-                <Col span={8}>
-                  <Field name="case" label="case" component={InputField} />
                 </Col>
               </Row>
               <Row gutter={24}>
@@ -95,10 +92,10 @@ const ExpertExpertiseCreate = props => {
                 </Col>
               </Row>
 
-              {/*{status === 'given' && (*/}
+              {statusAssignment === 'given' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
 
-              {/*)}*/}
+              )}
 
               <ExpertsResultModal {...serviceModal} onSubmit={onSubmit} />
 

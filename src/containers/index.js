@@ -14,6 +14,9 @@ import applications from './Application'
 import expertSection from './ExpertSection'
 import ExpertPlaceSection from './ExpertPlaceSection'
 import Commission from './Commission'
+import AccountingContract from './AccountingContract'
+import AccountingContractPlace from './AccountingContractPlace'
+import Reestr from './Reestr'
 
 const tester = () => [
   ...client(),
@@ -24,6 +27,9 @@ const tester = () => [
   ...expertSection(),
   ...ExpertPlaceSection(),
   ...Commission(),
+  ...AccountingContract(),
+  ...AccountingContractPlace(),
+  ...Reestr(),
   {
     exact: true,
     path: ROUTES.SETTINGS_HOTEL_URL,

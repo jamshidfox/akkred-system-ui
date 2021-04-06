@@ -39,7 +39,7 @@ const getRoleUpdateParams = (onSuccess) => ({
 })
 
 const getRoomDeleteParams = (onSuccess) => ({
-  stateName: STATE.ROOM_DELETE,
+  stateName: STATE.GROUP_DELETE,
   action: roleDeleteAction,
   onSuccess
 })

@@ -50,138 +50,162 @@ const ApplicationUserInfo = props => {
               <Row gutter={24}>
                 <Col span={12}>
                   <Field
-                    name="fullName"
-                    label="fullName"
+                    label="Yuridik shaxsning to‘liq nomi"
+                    name={'legalEntityFullName'}
                     component={InputField}
                   />
                 </Col>
                 <Col span={12}>
                   <Field
-                    name="fullNameOrgan"
-                    label="fullNameOrgan"
-                    component={InputField}
-                  />
-                </Col>
-
-              </Row>
-              <Row gutter={24}>
-                <Col span={12}>
-                  <Field
-                    name="swift"
-                    label="swift"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={12}>
-                  <Field
-                    name="title"
-                    label="title"
-                    component={InputField}
-                  />
-                </Col>
-
-              </Row>
-
-              <Row gutter={24}>
-                <Col span={12}>
-                  <Field
-                    name="phoneNumber"
-                    label="phoneNumber"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={12}>
-                  <Field
-                    name="site"
-                    label="site"
+                    label="Akkreditatsiya obyektining to‘liq nomi"
+                    name={'objectFullName'}
                     component={InputField}
                   />
                 </Col>
               </Row>
 
               <Row gutter={24}>
+
                 <Col span={12}>
                   <Field
-                    name="oked"
-                    label="oked"
+                    label="Yuridik manzili"
+                    name={'objectLegalAddress'}
                     component={InputField}
                   />
                 </Col>
+
                 <Col span={12}>
                   <Field
-                    name="paymentAccount"
-                    label="paymentAccount"
+                    label="Fakt manzili"
+                    name={'objectFactAddress'}
+                    component={InputField}
+                  />
+                </Col>
+
+              </Row>
+
+              <Row gutter={24}>
+
+                <Col span={12}>
+                  <Field
+                    label={'Tashkilotning inn'}
+                    name={'objectInn'}
+                    component={InputField}
+                  />
+                </Col>
+
+                <Col span={12}>
+                  <Field
+                    name={'objectPhoneNumber'}
+                    label="Tashkilotning telefon raqami"
+                    component={InputField}
+                  />
+                </Col>
+
+              </Row>
+
+              <Row gutter={24}>
+                <Col span={12}>
+                  <Field
+                    name={'objectSite'}
+                    label="Tashkilotning veb-sayti"
+                    component={InputField}
+                  />
+                </Col>
+
+                <Col span={12}>
+                  <Field
+                    label={'Tashkilotning email'}
+                    name={'objectEmail'}
                     component={InputField}
                   />
                 </Col>
               </Row>
 
               <Row gutter={24}>
-                <Col span={12}>
+
+                <Col span={8}>
                   <Field
-                    name="mfo"
-                    label="mfo"
+                    label={'Rahbar yuridik shaxsining F.I.Sh.'}
+                    name={'legalEntityFullName'}
                     component={InputField}
                   />
                 </Col>
-                <Col span={12}>
+
+                <Col span={8}>
                   <Field
-                    name="ndsRegId"
-                    label="ndsRegId"
+                    label={'Rahbar yuridik shaxsining email'}
+                    name={'legalEntityEmail'}
                     component={InputField}
                   />
                 </Col>
+
+                <Col span={8}>
+                  <Field
+                    label={'Rahbar Telefon raqami'}
+                    name={'legalEntityPhoneNumber'}
+                    component={InputField}
+                  />
+                </Col>
+
+              </Row>
+
+              <Label>Банковские реквизиты</Label>
+
+              <Row gutter={24}>
+
+                <Col span={8}>
+                  <Field
+                    label={'Наименование банка'}
+                    name={'bankName'}
+                    component={InputField}
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field
+                    label={'Л/Р '}
+                    name={'paymentAccount'}
+                    component={InputField}
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field
+                    label={'ОКЕД'}
+                    name={'oked'}
+                    component={InputField}
+                  />
+                </Col>
+
               </Row>
 
               <Row gutter={24}>
-                <Col span={12}>
-                  <Field
-                    name="inn"
-                    label="inn"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={12}>
-                  <Field
-                    name="legalName"
-                    label="legalName"
-                    component={InputField}
-                  />
-                </Col>
-              </Row>
 
-              <Row gutter={24}>
-                <Col span={12}>
+                <Col span={8}>
                   <Field
-                    name="address"
-                    label="address"
+                    label={'Инн банка'}
+                    name={'bankInn'}
                     component={InputField}
                   />
                 </Col>
-                <Col span={12}>
-                  <Field
-                    name="documentDate"
-                    label="documentDate"
-                    component={DateField}
-                  />
-                </Col>
-              </Row>
 
-              <Row gutter={24}>
-                <Col span={12}>
+                <Col span={8}>
                   <Field
-                    name="email"
-                    label="email"
+                    label={'МФО банка'}
+                    name={'bankMfo'}
                     component={InputField}
                   />
                 </Col>
-                <Col span={12}>
+
+                <Col span={8}>
                   <Field
-                    name="fax"
-                    label="fax"
+                    label={'СОГУ'}
+                    name={'soogu'}
                     component={InputField}
                   />
                 </Col>
+
               </Row>
 
             </form>

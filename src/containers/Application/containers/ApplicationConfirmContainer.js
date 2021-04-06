@@ -15,34 +15,55 @@ import { mapResponseToFormError } from '../../../utils/form'
 import ApplicationConfirm from '../components/Confirm/ApplicationConfirm'
 import * as ROUTES from '../../../constants/routes'
 import * as STATE from '../../../constants/stateNames'
-import { mapBranches, mapExperts,mapExpertsPlace } from './utils'
+import ApplciationTabs from '../components/ApplciationTabs'
+import { mapBranches, mapExperts, mapExpertsPlace } from './utils'
 
-const getClientItemParams = () => ({
+const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
   stateName: STATE.APPLICATION_ITEM,
+  onComplete:onComplete
 })
+
+const getInitialValues = data => {
+  return {
+
+    contracts: prop('contracts', data),
+    contractPlace: prop('contractPlace', data),
+    commissions: prop('commissions', data),
+
+  }
+}
 
 const EMPTY_ARR = []
 
 const ApplicationConfirmContainer = props => {
   const dispatch = useDispatch()
-  const serviceModal = useModal({ key: 'serviceModal' })
+  const expertModal = useModal({ key: 'expertModal' })
   const placeModal = useModal({ key: 'placeModal' })
   const [placeList, setPlaceList] = useState(EMPTY_ARR)
 
-  const [serviceList, setServiceList] = useState(EMPTY_ARR)
+  const [expertList, setExpertList] = useState(EMPTY_ARR)
+  const [expertPlaceList, setExpertPlaceList] = useState(EMPTY_ARR)
   const confirmModal = useModal({ key: 'confirmModal' })
-  const onAddService = service => {
-    setServiceList([...serviceList, service])
-    serviceModal.onClose()
+
+  const onComplete = ({ value }) => {
+    const experts = prop('experts', value)
+    const expertsPlace = prop('expertsPlace', value)
+    setExpertList([...experts])
+    setExpertPlaceList([...expertsPlace])
   }
-  const onUpdateService = (branch) => {
-    serviceList.forEach((element, index) => {
+
+  const onAddExpert = expert => {
+    setExpertList([...expertList, expert])
+    expertModal.onClose()
+  }
+  const onUpdateExpert = (branch) => {
+    expertList.forEach((element, index) => {
       if (element.id === branch.id) {
-        serviceList.splice(index, 1, branch)
+        expertList.splice(index, 1, branch)
       }
     })
-    serviceModal.onClose()
+    expertModal.onClose()
   }
 
   const onAddPlace = place => {
@@ -59,47 +80,82 @@ const ApplicationConfirmContainer = props => {
   }
   const params = useParams()
 
-  const { data } = useFetchItem(getClientItemParams())
+  const { data } = useFetchItem(getClientItemParams(onComplete))
+  const initialValues = getInitialValues(data)
 
   const stage = prop('stage', data)
 
   const confirmSubmit = values => {
-    const experts = map(mapExperts, serviceList)
+    const experts = map(mapExperts, expertList)
     const expertsPlace = map(mapExpertsPlace, placeList)
     const file = path(['file', 'id'], values)
     const command = path(['command', 'id'], values)
+    const plan = path(['plan', 'id'], values)
+    const notice = path(['notice', 'id'], values)
+    const privacy = path(['privacy', 'id'], values)
+    const noticeFinal = path(['noticeFinal', 'id'], values)
+    const post_accred = path(['postaccred', 'id'], values)
+    const listAttendees = path(['listAttendees', 'id'], values)
+    const observationMap = path(['observationMap', 'id'], values)
+    const nonConformities = path(['nonConformities', 'id'], values)
+    const groupReport = path(['groupReport', 'id'], values)
+    const documentOne = path(['documentOne', 'id'], values)
+    const documentTwo = path(['documentTwo', 'id'], values)
+    const documentThree = path(['documentThree', 'id'], values)
     const newDAta = getSerializedData([
       'executors',
       'executor',
       'experts',
-      'price',
+      'name',
       'rate',
+      'price',
       'count',
-      'total_amount',
+      'paymentType',
       'from_date',
       'to_date',
+      'assessmentStartDate',
+      'assessmentEndDate',
+      'nameOne',
+      'nameTwo',
+      'nameThree',
+      'number',
+      'accreditationDate',
+      'statusDate',
     ], values)
     const data = {
       ...newDAta,
       experts,
       experts_place:expertsPlace,
+      notice_final:noticeFinal,
       file,
+      notice,
+      plan,
       command,
+      post_accred,
+      privacy:privacy,
+      list_attendees:listAttendees,
+      observation_map:observationMap,
+      non_conformities:nonConformities,
+      group_report:groupReport,
+      document_one:documentOne,
+      document_two:documentTwo,
+      document_three:documentThree,
     }
     confirmModal.onClose()
     dispatch(applicationConfirmAction(params.id, data))
       .then(() => props.history.push(sprintf(ROUTES.APPLICATION_UPDATE_URL, params.id)))
       .catch(mapResponseToFormError)
   }
-
   return (
     <ApplicationConfirm
       onSubmit={confirmSubmit}
-      serviceList={serviceList}
+      expertList={expertList}
+      expertPlaceList={expertPlaceList}
+      initialValues={initialValues}
       application={params.id}
-      placeList={placeList}
-      serviceModal={{ ...serviceModal, onSubmit: onAddService, onUpdateService:onUpdateService }}
-      placeModal={{ ...placeModal, onSubmit: onAddPlace, onUpdateService:onUpdatePlace }}
+      placeList={expertPlaceList}
+      expertModal={{ ...expertModal, onSubmit: onAddExpert, onUpdateExpert:onUpdateExpert }}
+      placeModal={{ ...placeModal, onSubmit: onAddPlace, onUpdateExpert:onUpdatePlace }}
       stage={stage}
     />
   )

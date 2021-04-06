@@ -213,7 +213,7 @@ const ApplicationCreate = props => {
                   ? (<div >
                     <MediumButton style={{
                       background: '#2541ff'
-                    }} onClick={waitModalOpen()}>Wait</MediumButton>
+                    }} onClick={waitModalOpen()}>Буйуртмачини жавобини кутиш</MediumButton>
                   </div>)
                   : (<div style={{
                     display: 'flex'

@@ -2,7 +2,8 @@ import React from 'react'
 import {
   Field,
   Form,
-  UniversalStaticSelectField
+  UniversalStaticSelectField,
+  InputField
 } from '../../../../components/FormField'
 import { Modal } from '../../../../components/UI'
 import { MediumButton } from '../../../../components/UI/Buttons'
@@ -11,36 +12,33 @@ import FileUploadField from '../../../../components/FormField/File/FileUploadFie
 
 const typeList = [
   {
-    id:'type_one',
-    name:'type_one',
+    id:'ACCREDITATION_SCOPE_DRAFT',
+    name:' Проект области аккредитации ',
   },
   {
-    id:'type_two',
-    name:'type_two',
+    id:'APPLICANT_DETAILS',
+    name:'Сведения о заявителе/объекте аккредитации',
   },
   {
-    id:'type_three',
-    name:'type_three',
+    id:'QUALITY_MANAGEMENT_SYSTEM_DOCUMENTATION',
+    name:'Документация Системы Менеджмента Качества',
   },
   {
-    id:'type_four',
-    name:'type_four',
+    id:'QUALITY_QUIDE',
+    name:'Руководство по качеству',
   }
 ]
 const DocumentCreateModal = props => {
   const {
     onClose,
     open,
-    initialValues,
-    onUpdateDocument,
     onSubmit
   } = props
 
   return (
     <Modal onClose={onClose} open={open} width={'400px'}>
       <Form
-        onSubmit={initialValues ? onUpdateDocument : onSubmit}
-        initialValues={initialValues}
+        onSubmit={onSubmit}
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
@@ -51,12 +49,12 @@ const DocumentCreateModal = props => {
                   label={'File 1'}
                 />
               </FieldWrapper>
+
               <FieldWrapper>
                 <Field
-                  name="type"
-                  label="type"
-                  component={UniversalStaticSelectField}
-                  list={typeList}
+                  name="name"
+                  label="name"
+                  component={InputField}
                 />
               </FieldWrapper>
               <div style={{ textAlign: 'right' }}>

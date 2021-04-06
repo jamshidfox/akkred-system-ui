@@ -113,6 +113,22 @@ export default [
     ],
     icon: People,
   },
+
+  {
+    name: 'Бухгалтерия',
+    children: [
+
+      {
+        name: 'Договор на экспертизу',
+        url: ROUTES.CONTRACT_LIST_URL,
+      },
+      {
+        name: 'Договор на оценку',
+        url: ROUTES.CONTRACT_PLACE_LIST_URL,
+      },
+    ],
+    icon: People,
+  },
   {
     name: 'Akrreditatsiya komissiyasi ',
     url: ROUTES.COMMISSION_LIST_URL,
@@ -120,26 +136,31 @@ export default [
     perms: ['some_perms'],
   },
   {
-    name: 'Сотрудники',
-    url: ROUTES.EMPLOYEES_LIST_URL,
-    icon: People,
+    name: 'Реестр ',
+    url: ROUTES.REESTR_LIST_URL,
     perms: ['some_perms'],
   },
-  {
-    name: 'Должности',
-    url: ROUTES.ROLE_LIST_URL,
-    icon: People,
-  },
-  {
-    name: 'Клиенты',
-    url: ROUTES.CLIENT_LIST_URL,
-    icon: People,
-  },
-  {
-    name: 'Группы',
-    url: ROUTES.GROUP_LIST_URL,
-    icon: People,
-  },
+  // {
+  //   name: 'Сотрудники',
+  //   url: ROUTES.EMPLOYEES_LIST_URL,
+  //   icon: People,
+  //   perms: ['some_perms'],
+  // },
+  // {
+  //   name: 'Должности',
+  //   url: ROUTES.ROLE_LIST_URL,
+  //   icon: People,
+  // },
+  // {
+  //   name: 'Клиенты',
+  //   url: ROUTES.CLIENT_LIST_URL,
+  //   icon: People,
+  // },
+  // {
+  //   name: 'Группы',
+  //   url: ROUTES.GROUP_LIST_URL,
+  //   icon: People,
+  // },
 
   // {
   //   name: 'Договоры',
@@ -163,17 +184,17 @@ export default [
   //   name: 'Финансовая аналитика',
   //   url: '/'
   // },
-  {
-    name: 'Настройка',
-    url: '#',
-    icon: Settings,
-    children: [
-
-      {
-        name: 'Регион',
-        url: '/',
-        icon: People,
-      }
-    ]
-  }
+  // {
+  //   name: 'Настройка',
+  //   url: '#',
+  //   icon: Settings,
+  //   children: [
+  //
+  //     {
+  //       name: 'Регион',
+  //       url: '/',
+  //       icon: People,
+  //     }
+  //   ]
+  // }
 ]

@@ -10,6 +10,7 @@ import {
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import { Box } from '../../../../../components/StyledElems'
 import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
+import { paymentTypes, rateTypes } from '../../../../../constants/backend'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -50,52 +51,65 @@ const ConfirmStageContractPlace = ({ onSubmit }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
+              <Label>Umumlashtirish</Label>
+
               <Row gutter={24}>
-                <Col span={8}>
+                <Col span={12}>
                   <Field
                     name="file"
                     label="Umumlashtirish"
                     component={FileUploadField}
                   />
                 </Col>
+              </Row>
+
+              <Label>Shartnoma</Label>
+
+              <Row gutter={24}>
 
                 <Col span={8}>
                   <Field
-                    name="rate"
-                    label="rate"
+                    name="name"
+                    label="Товар (иш, хизмат)лар номи"
                     component={InputField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="price"
-                    label="price"
-                    component={InputField}
+
                   />
                 </Col>
 
                 <Col span={8}>
                   <Field
                     name="count"
-                    label="count"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="total_amount"
-                    label="total_amount"
+                    label="Миқдори"
                     component={InputField}
                   />
                 </Col>
 
                 <Col span={8}>
                   <Field
-                    name="To’lov turi"
+                    name="price"
+                    label="Narhi"
+                    component={InputField}
+
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field
+                    name="rate"
+                    label="Ставкаси"
+                    component={UniversalStaticSelectField}
+                    list={rateTypes}
+
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field
+                    name="paymentType"
                     label="To’lov turi"
                     component={UniversalStaticSelectField}
-                    list={listDocument}
+                    list={paymentTypes}
+
                   />
                 </Col>
 

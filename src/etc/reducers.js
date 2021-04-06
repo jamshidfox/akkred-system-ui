@@ -70,6 +70,21 @@ export const makeRootReducer = asyncReducers => {
     [STATE.COMMISSION_CREATE]: createThunkReducer(actionTypes.COMMISSION_CREATE),
     [STATE.COMMISSION_UPDATE]: createThunkReducer(actionTypes.COMMISSION_UPDATE),
     [STATE.COMMISSION_ITEM]: createThunkReducer(actionTypes.COMMISSION_ITEM),
+
+    [STATE.CONTRACT_LIST]: createThunkReducer(actionTypes.CONTRACT_LIST),
+    [STATE.CONTRACT_CREATE]: createThunkReducer(actionTypes.CONTRACT_CREATE),
+    [STATE.CONTRACT_UPDATE]: createThunkReducer(actionTypes.CONTRACT_UPDATE),
+    [STATE.CONTRACT_ITEM]: createThunkReducer(actionTypes.CONTRACT_ITEM),
+
+    [STATE.CONTRACT_PLACE_LIST]: createThunkReducer(actionTypes.CONTRACT_PLACE_LIST),
+    [STATE.CONTRACT_PLACE_CREATE]: createThunkReducer(actionTypes.CONTRACT_PLACE_CREATE),
+    [STATE.CONTRACT_PLACE_UPDATE]: createThunkReducer(actionTypes.CONTRACT_PLACE_UPDATE),
+    [STATE.CONTRACT_PLACE_ITEM]: createThunkReducer(actionTypes.CONTRACT_PLACE_ITEM),
+
+    [STATE.REESTR_LIST]: createThunkReducer(actionTypes.REESTR_LIST),
+    [STATE.REESTR_CREATE]: createThunkReducer(actionTypes.REESTR_CREATE),
+    [STATE.REESTR_UPDATE]: createThunkReducer(actionTypes.REESTR_UPDATE),
+    [STATE.REESTR_ITEM]: createThunkReducer(actionTypes.REESTR_ITEM),
     ...asyncReducers
   })
 }

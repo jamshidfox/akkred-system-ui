@@ -92,3 +92,27 @@ export const CLIENT_INFO_ITEM_PATH = `/${CLIENT_INFO}/${ID}/`
 export const CLIENT_INFO_CREATE_URL = `/${CLIENT_INFO}/create`
 export const CLIENT_INFO_UPDATE_URL = `/${CLIENT_INFO}/%d`
 export const CLIENT_INFO_UPDATE_PATH = `/${CLIENT_INFO}/${ID}/`
+
+const CONTRACT = 'contract'
+export const CONTRACT_LIST_URL = `/${CONTRACT}/`
+export const CONTRACT_ITEM_URL = `/${CONTRACT}/%d`
+export const CONTRACT_ITEM_PATH = `/${CONTRACT}/${ID}/`
+export const CONTRACT_CREATE_URL = `/${CONTRACT}/create`
+export const CONTRACT_UPDATE_URL = `/${CONTRACT}/%d`
+export const CONTRACT_UPDATE_PATH = `/${CONTRACT}/${ID}/`
+
+const CONTRACT_PLACE = 'contract_place'
+export const CONTRACT_PLACE_LIST_URL = `/${CONTRACT_PLACE}/`
+export const CONTRACT_PLACE_ITEM_URL = `/${CONTRACT_PLACE}/%d`
+export const CONTRACT_PLACE_ITEM_PATH = `/${CONTRACT_PLACE}/${ID}/`
+export const CONTRACT_PLACE_CREATE_URL = `/${CONTRACT_PLACE}/create`
+export const CONTRACT_PLACE_UPDATE_URL = `/${CONTRACT_PLACE}/%d`
+export const CONTRACT_PLACE_UPDATE_PATH = `/${CONTRACT_PLACE}/${ID}/`
+
+const REESTR = 'reestr'
+export const REESTR_LIST_URL = `/${REESTR}/`
+export const REESTR_ITEM_URL = `/${REESTR}/%d`
+export const REESTR_ITEM_PATH = `/${REESTR}/${ID}/`
+export const REESTR_CREATE_URL = `/${REESTR}/create`
+export const REESTR_UPDATE_URL = `/${REESTR}/%d`
+export const REESTR_UPDATE_PATH = `/${REESTR}/${ID}/`

@@ -1,5 +1,5 @@
 import React from 'react'
-import { isEmpty, path, prop } from 'ramda'
+import { isEmpty, prop } from 'ramda'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Edit from 'images/edit.svg'
@@ -11,14 +11,29 @@ import { Table, TableCol, TableRow, TableColRight } from '../../../components/Ta
 import { MediumButton, SecondarySmallButton } from '../../../components/UI'
 import * as ROUTES from '../../../constants/routes'
 import ExpertReject from './ExpertReject/ExpertRejectModal'
+import {documentPlanOrderType} from "../../../constants/backend";
 
-const AddBtn = styled(SecondarySmallButton)`
-  padding-left: 0;
-`
 
 const PageTitleNew = styled(PageTitle)`
  color: #2C3A50;
 
+`
+
+
+const statusColors = {
+  process: 'green',
+  confirm: 'green',
+  wait: 'green',
+  reject: 'red',
+}
+
+const Status = styled('div')`
+  border-radius: ${props => props.theme.borderRadius};
+  border: 1px solid;
+  color: ${props => props.color};
+  display: inline-block;
+  line-height: 16px;
+  padding: 3px 12px;
 `
 
 const ApplicationAddInfo = props => {
@@ -36,6 +51,8 @@ const ApplicationAddInfo = props => {
       phoneNumber,
       role,
     } = client
+
+
 
     // Render
     return (
@@ -81,6 +98,9 @@ const ApplicationAddInfo = props => {
 
     } = client
 
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
+
     // Render
     return (
       <TableRow
@@ -90,7 +110,9 @@ const ApplicationAddInfo = props => {
         <td colSpan={6}>{expert.fullName}</td>
         <td colSpan={6}>{expert.role && expert.role.name}</td>
 
-        <td colSpan={6}>{status}</td>
+        <td colSpan={6}><Status color={statusColor}>
+          {statusText}
+        </Status></td>
         <td colSpan={6}> <div onClick={expertRejectModalOpen}>Net</div></td>
         <ExpertReject initialValues={{ expert:expert.id }} {...expertRejectModal} />
 
@@ -123,6 +145,10 @@ const ApplicationAddInfo = props => {
 
     } = client
 
+
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
+
     // Render
     return (
       <TableRow
@@ -132,7 +158,9 @@ const ApplicationAddInfo = props => {
         <td colSpan={6}>{expert.fullName}</td>
         <td colSpan={6}>{expert.phoneNumber}</td>
         <td colSpan={6}>{expert.role && expert.role.name}</td>
-        <td colSpan={6}>{status}</td>
+        <td colSpan={6}><Status color={statusColor}>
+          {statusText}
+        </Status></td>
 
       </TableRow>
     )
@@ -148,7 +176,7 @@ const ApplicationAddInfo = props => {
 
   return (
     <>
-      {/*{table}*/}
+      {table}
       {tableExpertise}
       {tableExpertisePlace}
 

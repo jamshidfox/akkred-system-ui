@@ -1,4 +1,5 @@
 import * as ROUTES from 'constants/routes'
+import { registryStatus } from 'constants/backend'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { prop, isEmpty, path, propOr } from 'ramda'
@@ -8,8 +9,26 @@ import { getTabsFromRoute } from 'utils/get'
 import Container from 'components/StyledElems/Container'
 import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
+import styled from 'styled-components'
 import Tabs from '../../../components/Tabs'
 import CommentListFilterForm from './CommentListFilterForm'
+
+const statusColors = {
+  draft: 'green',
+  active: 'green',
+  inactive: 'red',
+  paused: 'yellow',
+  extended: 'blue'
+}
+
+const Status = styled('div')`
+  border-radius: ${props => props.theme.borderRadius};
+  border: 1px solid;
+  color: ${props => props.color};
+  display: inline-block;
+  line-height: 16px;
+  padding: 3px 12px;
+`
 
 const ApplicationList = props => {
   const {
@@ -45,10 +64,11 @@ const ApplicationList = props => {
   // TableHead
   const tableHead =
     <TableRow header={true}>
+      <th colSpan={2}>Номер</th>
       <th colSpan={8}>Полное название юридического лица</th>
-      <th colSpan={3}>Номер паспорта</th>
       <th colSpan={6}>Адрес</th>
       <th colSpan={4}>Майл</th>
+      <th colSpan={4}>Статус</th>
       <th />
     </TableRow>
 
@@ -57,7 +77,12 @@ const ApplicationList = props => {
     const {
       id,
       client,
+      status,
+      registerDate,
     } = application
+
+    const statusText = registryStatus.object[status]
+    const statusColor = statusColors[status]
 
     // MoreList
     const moreList = [
@@ -80,10 +105,14 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
+        <td colSpan={2}>Завка №{id}/{registerDate}</td>
         <td colSpan={8}>{client.fullNameOrgan}</td>
-        <td colSpan={3}>АА {id}</td>
+
         <td colSpan={6}>{client.address}</td>
         <td colSpan={4}>{client.email}</td>
+        <td colSpan={4}><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
         <DropdownMore
           moreList={moreList}
         />

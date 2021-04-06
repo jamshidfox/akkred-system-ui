@@ -5,6 +5,10 @@ export const arrayObjToObj = pipe(
   fromPairs
 )
 
+const getFormattedListData = list => ({
+  list,
+  object: arrayObjToObj(list)
+})
 export const PERCENTAGE = 'percentage'
 export const FIXED = 'fixed'
 export const INDIVIDUAL = 'individual'
@@ -27,9 +31,9 @@ export const CALCULATION_TYPE_LIST = [
 export const CALCULATION_TYPE = arrayObjToObj(CALCULATION_TYPE_LIST)
 
 export const ANSWER_MONTH_LIST = [
-  { id: 'LESS_THREE', name: 'LESS_THREE' },
-  { id: 'LESS_SIX', name: 'LESS_SIX' },
-  { id: 'MORE_SIX', name: 'MORE_SIX' },
+  { id: 'LESS_THREE', name: 'меньше трех месяцев' },
+  { id: 'LESS_SIX', name: 'меньше шести месяцев' },
+  { id: 'MORE_SIX', name: 'больше шести месяцев' }
 ]
 
 export const ANSWER_LIST = [
@@ -37,11 +41,20 @@ export const ANSWER_LIST = [
   { id: 'no', name: 'нет' }
 ]
 
-
-
 export const ANSWER_TYPE_LIST = [
   { id: 'approved', name: 'Согласен' },
   { id: 'reject', name: 'Несогласен' }
+]
+
+export const STANDART_LIST = [
+  { id: '17065', name: '17065' },
+  { id: '17025', name: '17025' },
+  // { id: '3444', name: '3444' },
+  { id: '17021', name: '17021' },
+  { id: '17020', name: '17020' },
+  { id: '17024', name: '17024' },
+  { id: '17043', name: '17043' },
+  // { id: '15189', name: '15189' },
 ]
 
 export const TYPE_EXPERTS = [
@@ -70,17 +83,6 @@ export const APPLICATION_LIST = [
   { id: 'termination', name: 'Прекращение' },
   { id: 'suspension', name: 'Приостановление' },
   { id: 'abbreviations', name: 'Сокращения' },
-]
-
-export const STANDART_LIST = [
-  { id: '17065', name: '17065' },
-  { id: '17025', name: '17025' },
-  { id: '3444', name: '3444' },
-  { id: '17021', name: '17021' },
-  { id: '17020', name: '17020' },
-  { id: '17024', name: '17024' },
-  { id: '17043', name: '17043' },
-  { id: '15189', name: '15189' },
 ]
 
 export const GENDER_LIST = [
@@ -129,3 +131,150 @@ export const PARTNERS_TYPES = [
   { id: 'company', name: 'Компания' },
   { id: 'agent', name: 'Агент' },
 ]
+
+export const paymentTypes = [
+
+  {
+    id:'full',
+    name:'100',
+  },
+  {
+    id:'part',
+    name:'15/85',
+  }
+
+]
+
+export const rateTypes = [
+
+  {
+    id:'15',
+    name:'15%',
+  },
+  {
+    id:'0',
+    name:'-',
+  }
+
+]
+
+export const answerCommissionType = getFormattedListData([
+  {
+    id:'approved',
+    name:'согласен',
+  },
+  {
+    id:'reject',
+    name:'несогласен',
+  },
+  {
+    id:'wait',
+    name:'В процессе',
+  }
+
+])
+
+export const documentType = getFormattedListData([
+  {
+    id:'ACCREDITATION_SCOPE_DRAFT',
+    name:'Проект области аккредитации',
+  },
+  {
+    id:'QUALITY_QUIDE',
+    name:'Руководство по качеству',
+  },
+  {
+    id:'QUALITY_MANAGEMENT_SYSTEM_DOCUMENTATION',
+    name:'Документация Системы Менеджмента Качества',
+  },
+  {
+    id:'APPLICANT_DETAILS',
+    name:'Сведения о заявителе',
+  }
+
+])
+
+export const documentPlanOrderType = getFormattedListData([
+  {
+    id:'process',
+    name:'В процессе',
+  },
+  {
+    id:'confirm',
+    name:'Утвержден клиентом',
+  },
+  {
+    id:'wait',
+    name:'Утвержден центром',
+  },
+  {
+    id:'reject',
+    name:'не утвержден',
+  }
+
+])
+
+export const expertAnswerType = getFormattedListData([
+  {
+    id:'process',
+    name:'В процессе',
+  },
+  {
+    id:'confirm',
+    name:'Утвержден',
+  },
+  {
+    id:'wait',
+    name:'Ждет ',
+  },
+  {
+    id:'reject',
+    name:'не утвержден',
+  }
+
+])
+
+export const registryStatus = getFormattedListData([
+  { id: 'draft', title: 'qoralama' },
+  { id: 'active', title: 'faol' },
+  { id: 'archive', title: 'arxiv' },
+  { id: 'reject', title: 'rad etilgan' },
+  { id: 'leadership_review', title: 'rahbariyat ko’rib chiqishida' },
+  { id: 'received', title: 'qabul qilingan' },
+  { id: 'contract_formed', title: 'shartnoma rasmiylashtirilgan' },
+  { id: 'payment_process', title: 'to’lov jarayonida' },
+  { id: 'expertise', title: 'ekspertiza' },
+  { id: 'audit_contract_formed', title: 'audit uchun shartnoma rasmiylashtirilgan' },
+  { id: 'audit_payment_process', title: 'audit uchun to’lov jarayonida' },
+  { id: 'plan_order_formed', title: 'reja va buyruq rasmiylashtirilgan' },
+  { id: 'place_evaluation', title: 'joyida baholash' },
+  { id: 'accreditation_commission', title: 'akkreditatsiya komissiyasiga taqdim etilgan' },
+  { id: 'registry', title: 'davlat reestriga kiritilgan va guvohnoma rasmiylashtirilgan' },
+  { id: 'post_accreditation', title: 'post akkreditatsiaion hujjatlar rasmiyla shtirilgan' },
+  { id: 'paused', title: 'Пауза' },
+
+])
+
+export const statusPayments = getFormattedListData([
+  {
+    id:'paid',
+    name:'Оплачен',
+  },
+  {
+    id:'unpaid',
+    name:'Не оплачен',
+  },
+
+])
+
+export const statusAssignments = getFormattedListData([
+  {
+    id:'given',
+    name:'Открыто',
+  },
+  {
+    id:'done',
+    name:'Сделано',
+  },
+
+])

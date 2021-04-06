@@ -9,6 +9,7 @@ import {
 } from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import { Box } from '../../../../../components/StyledElems'
+import { paymentTypes, rateTypes } from '../../../../../constants/backend'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -40,6 +41,7 @@ const listDocument = [
   }
 
 ]
+
 const ConfirmStageContract = ({ onSubmit }) => {
   return (
 
@@ -54,40 +56,38 @@ const ConfirmStageContract = ({ onSubmit }) => {
 
                 <Col span={8}>
                   <Field
-                    name="rate"
-                    label="rate"
+                    name="name"
+                    label="Товар (иш, хизмат)лар номи"
                     component={InputField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="price"
-                    label="price"
-                    component={InputField}
+
                   />
                 </Col>
 
                 <Col span={8}>
                   <Field
                     name="count"
-                    label="count"
-                    component={InputField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="total_amount"
-                    label="total_amount"
+                    label="Миқдори"
                     component={InputField}
                   />
                 </Col>
 
                 <Col span={8}>
                   <Field
-                    name="To’lov turi"
+                    name="rate"
+                    label="Ставкаси"
+                    component={UniversalStaticSelectField}
+                    list={rateTypes}
+
+                  />
+                </Col>
+
+                <Col span={8}>
+                  <Field
+                    name="paymentType"
                     label="To’lov turi"
                     component={UniversalStaticSelectField}
-                    list={listDocument}
+                    list={paymentTypes}
+
                   />
                 </Col>
 

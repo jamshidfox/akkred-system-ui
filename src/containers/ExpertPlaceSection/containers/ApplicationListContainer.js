@@ -29,7 +29,6 @@ const ApplicationListContainer = props => {
 
   // FilterActions
   const filterActions = useFilterActions({ fields })
-  console.warn(list,'listPlace')
   // Render
   return (
     <ApplicationList

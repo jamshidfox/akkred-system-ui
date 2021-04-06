@@ -72,13 +72,13 @@ const ExpertsCreateModal = props => {
                 />
               </FieldWrapper>
 
-              <FieldWrapper>
-                <Field
-                  component={FileUploadField}
-                  name={'file'}
-                  label={'file '}
-                />
-              </FieldWrapper>
+              {/*<FieldWrapper>*/}
+              {/*  <Field*/}
+              {/*    component={FileUploadField}*/}
+              {/*    name={'file'}*/}
+              {/*    label={'file '}*/}
+              {/*  />*/}
+              {/*</FieldWrapper>*/}
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Сохранить</MediumButton>

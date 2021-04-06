@@ -23,6 +23,7 @@ const ExpertsList = props => {
       cases,
       assignment,
       expert,
+      status,
     } = client
 
     // Render
@@ -30,9 +31,9 @@ const ExpertsList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>asdasd</td>
-        <td colSpan={6}>asdasd</td>
-        <td colSpan={6}>asdasdasdasd</td>
+        <td colSpan={6}>{assignment && assignment.file}</td>
+        <td colSpan={6}>{expert && expert.full_name}</td>
+        <td colSpan={6}>{status && status}</td>
 
       </TableRow>
     )

@@ -8,8 +8,24 @@ import { getTabsFromRoute } from 'utils/get'
 import Container from 'components/StyledElems/Container'
 import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
+import styled from 'styled-components'
 import Tabs from '../../../components/Tabs'
+import { statusAssignments } from '../../../constants/backend'
 import CommentListFilterForm from './CommentListFilterForm'
+
+const statusColors = {
+  done: 'green',
+  given: 'red',
+}
+
+const Status = styled('div')`
+  border-radius: ${props => props.theme.borderRadius};
+  border: 1px solid;
+  color: ${props => props.color};
+  display: inline-block;
+  line-height: 16px;
+  padding: 3px 12px;
+`
 
 const ApplicationList = props => {
   const {
@@ -44,21 +60,26 @@ const ApplicationList = props => {
 
   // TableHead
   const tableHead =
-    <TableRow header={true}>
-      <th colSpan={8}>Полное название юридического лица</th>
-      <th colSpan={6}>Номер паспорта</th>
-      <th colSpan={3}>Адрес</th>
-      <th colSpan={4}>Дата рождения</th>
-      <th />
-    </TableRow>
+      <TableRow header={true}>
+        <th colSpan={6}>Номер заявки</th>
+        <th colSpan={6}>Номер Задание</th>
+        <th colSpan={6}>Статус</th>
+        <th colSpan={6}>Дата закрытие</th>
+        <th />
+      </TableRow>
 
   // TableList
   const tableList = listData.map(client => {
     const {
       id,
-      // address,
-      // stage
+      application,
+      openDate,
+      statusAssignment,
+      closedDate,
     } = client
+
+    const statusText = statusAssignments.object[statusAssignment]
+    const statusColor = statusColors[statusAssignment]
 
     // MoreList
     const moreList = [
@@ -81,10 +102,14 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={8}>stage</td>
-        <td colSpan={6}>АА {id}</td>
-        <td colSpan={3}>BDay</td>
-        <td colSpan={4}>BDay</td>
+        <td colSpan={6}><a style={{
+          color: 'blue'
+        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, application.id)}>Заявка №{application.id}/{application.registerDate}</a> </td>
+        <td colSpan={6}> №{id}/{openDate}</td>
+        <td colSpan={6}><Status color={statusColor}>
+          {statusText}
+        </Status></td>
+        <td colSpan={6}>{closedDate}</td>
         <DropdownMore
           moreList={moreList}
         />
@@ -113,7 +138,7 @@ const ApplicationList = props => {
   // Render
   return (
     <Container>
-      {/*{tabs}*/}
+      {/* {tabs} */}
       {table}
       {pagination}
     </Container>

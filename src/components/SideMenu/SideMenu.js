@@ -1,13 +1,16 @@
 import * as STATES from 'constants/stateNames'
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { prop, propOr } from 'ramda'
 import PropTypes from 'prop-types'
 import { storageData } from 'utils/storage'
+import { mapResponseToFormError } from '../../utils/form'
 import Menu from '../UI/Menu'
 import MenuIcon from '../../icons/Menu'
 import Exit from '../../icons/Exit'
+import { loginAction, userInfoFetch, logoutAction } from '../../containers/Login/actions'
 import constants from './constants'
 
 // Styles
@@ -146,7 +149,7 @@ const SideMenu = props => {
     open,
     setOpen
   } = props
-
+  const dispatch = useDispatch()
   // Data
   const userInfo = useSelector(prop(STATES.USER_INFO))
   const userInfoData = prop('data', userInfo)
@@ -161,6 +164,12 @@ const SideMenu = props => {
 
     setOpen(value)
     storageData('isOpenMenu').setValue(value)
+  }
+
+  const onLoginOut = () => {
+    return dispatch(logoutAction())
+      .then(() => history.push(''))
+      .catch(mapResponseToFormError)
   }
 
   // Render
@@ -195,7 +204,7 @@ const SideMenu = props => {
         smart={!open}
       >
         <Exit />
-        <span>Выйти</span>
+        <span onClick={() => onLoginOut()}>Выйти</span>
       </LogOut>
     </Box>
   )

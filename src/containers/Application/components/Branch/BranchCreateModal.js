@@ -42,8 +42,8 @@ const BrancCreateModal = props => {
               </FieldWrapper>
               <FieldWrapper>
                 <Field
-                  name="fullName"
-                  label="fullName"
+                  name="name"
+                  label="name"
                   component={InputField}
                 />
               </FieldWrapper>

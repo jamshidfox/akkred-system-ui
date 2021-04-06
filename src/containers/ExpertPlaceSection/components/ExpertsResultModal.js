@@ -42,7 +42,16 @@ const ExpertsResultModal = props => {
                   component={FileUploadField}
 
                   name="file"
-                  label="file"
+                  label="Задание"
+                />
+              </FieldWrapper>
+
+              <FieldWrapper>
+                <Field
+                  component={FileUploadField}
+
+                  name="act"
+                  label="Акт"
                 />
               </FieldWrapper>
 

@@ -1,30 +1,21 @@
 import React from 'react'
-import { isEmpty, path, prop } from 'ramda'
-import PropTypes from 'prop-types'
+import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import Edit from 'images/edit.svg'
-import Trash from 'images/trash-2.svg'
-import { ItemControlButton, PageTitle } from 'components/UI'
-import { Link } from 'react-router-dom'
-import { sprintf } from 'sprintf-js'
-import { Table, TableCol, TableRow, TableColRight } from '../../../../components/Table'
-import { MediumButton, SecondarySmallButton } from '../../../../components/UI'
-import * as ROUTES from '../../../../constants/routes'
+import { Table, TableRow } from '../../../../components/Table'
+import { PageTitle } from '../../../../components/UI'
 
-const AddBtn = styled(SecondarySmallButton)`
-  padding-left: 0;
-`
 const PageTitleNew = styled(PageTitle)`
- color: #2C3A50;
-
+  color: #2C3A50;
+  margin-bottom: 5px;
 `
+
 const BranchList = props => {
-  const { serviceModal, branches, editModalOpen } = props
+  const { branches } = props
   // TableList
   const tableList = branches.map(client => {
     const {
       id,
-      fullName,
+      name,
       address,
       phoneNumber,
     } = client
@@ -34,7 +25,7 @@ const BranchList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>{fullName}</td>
+        <td colSpan={6}>{name}</td>
         <td colSpan={6}>{address}</td>
         <td colSpan={6}>{phoneNumber}</td>
 
@@ -44,9 +35,9 @@ const BranchList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6} >fullNamev </th>
-      <th colSpan={6} >address </th>
-      <th colSpan={6} >phoneNumber </th>
+      <th colSpan={6} >наименование </th>
+      <th colSpan={6} >адрес </th>
+      <th colSpan={6} >телефон </th>
     </TableRow>
   const table =
     <Table
@@ -57,9 +48,8 @@ const BranchList = props => {
     </Table>
   return (
     <>
-      <PageTitleNew name="ФИЛИАЛЫ ЛАБОРАТОРИИ" />
+      <PageTitleNew name="лаборатории" />
       {table}
-
     </>
   )
 }

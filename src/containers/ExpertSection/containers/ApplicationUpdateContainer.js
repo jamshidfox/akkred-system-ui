@@ -20,6 +20,7 @@ const getEmployerItemParams = () => ({
 const getInitialValues = (data) => {
   return ({
     status: prop('status', data),
+    statusAssignment: prop('statusAssignment', data),
     application: path(['application', 'id'], data),
     file: path(['assignment', 'file'], data),
     case: prop('case', data),
@@ -45,6 +46,7 @@ const EmployeesUpdateContainer = props => {
   const confirmSubmit = values => {
     const newDAta = getSerializedData([
       'file',
+      'act',
       'comments',
     ], values)
     const data = {

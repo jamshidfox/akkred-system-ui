@@ -49,14 +49,7 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal })
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Xabarnoma</Label>
-              <FieldWrapper>
-                <Field
-                  component={FileUploadField}
-                  name={'file'}
-                  label={'Xabarnoma '}
-                />
-              </FieldWrapper>
+
               <Label>Reja</Label>
 
               <Row gutter={24}>

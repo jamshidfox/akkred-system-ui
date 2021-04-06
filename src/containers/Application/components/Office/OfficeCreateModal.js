@@ -9,7 +9,7 @@ import { Modal } from '../../../../components/UI'
 import { MediumButton } from '../../../../components/UI/Buttons'
 import { FieldWrapper } from '../../../../components/StyledElems'
 
-const BrancCreateModal = props => {
+const OfficeCreateModal = props => {
   const {
     onClose,
     open,
@@ -42,8 +42,8 @@ const BrancCreateModal = props => {
               </FieldWrapper>
               <FieldWrapper>
                 <Field
-                  name="fullName"
-                  label="fullName"
+                  name="name"
+                  label="name"
                   component={InputField}
                 />
               </FieldWrapper>
@@ -58,4 +58,4 @@ const BrancCreateModal = props => {
   )
 }
 
-export default BrancCreateModal
+export default OfficeCreateModal

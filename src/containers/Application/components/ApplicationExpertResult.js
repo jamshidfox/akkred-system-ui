@@ -1,24 +1,31 @@
 import React from 'react'
-import { isEmpty, path, prop } from 'ramda'
-import PropTypes from 'prop-types'
+import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import Edit from 'images/edit.svg'
-import Trash from 'images/trash-2.svg'
-import { ItemControlButton, PageTitle } from 'components/UI'
-import { Link } from 'react-router-dom'
-import { sprintf } from 'sprintf-js'
-import { Table, TableCol, TableRow, TableColRight } from '../../../components/Table'
-import { MediumButton, SecondarySmallButton } from '../../../components/UI'
-import * as ROUTES from '../../../constants/routes'
-
-const AddBtn = styled(SecondarySmallButton)`
-  padding-left: 0;
-`
+import { PageTitle } from 'components/UI'
+import { Table, TableRow } from '../../../components/Table'
+import { expertAnswerType } from '../../../constants/backend'
+import {API_URL} from "../../../constants/api";
 
 const PageTitleNew = styled(PageTitle)`
  color: #2C3A50;
 
 `
+
+const Status = styled('div')`
+  border-radius: ${props => props.theme.borderRadius};
+  border: 1px solid;
+  color: ${props => props.color};
+  display: inline-block;
+  line-height: 16px;
+  padding: 3px 12px;
+`
+
+const statusColors = {
+  process: 'green',
+  confirm: 'green',
+  wait: 'green',
+  reject: 'red',
+}
 
 const ApplicationExpertResult = props => {
   const { contracts, application, results } = props
@@ -31,11 +38,15 @@ const ApplicationExpertResult = props => {
       closedDate,
       status,
       file,
+      act,
       // price,
       // rate,
       // count,
       // totalAmount,
     } = client
+
+    const statusText = expertAnswerType.object[status]
+    const statusColor = statusColors[status]
 
     // Render
     return (
@@ -47,19 +58,21 @@ const ApplicationExpertResult = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/media/${assignment.file}`}>Задание</a></td>
+          }} href={`${API_URL}${assignment}`}>Задание</a></td>
         <td colSpan={4}>{closedDate}</td>
-        <td colSpan={5}>{status}</td>
+        <td colSpan={5}><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
         <td colSpan={3} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/media/${file}`}>результат</a></td>
+          }} href={`${API_URL}${file}`}>результат</a></td>
         <td colSpan={2} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/act`}>Акты</a></td>
+          }} href={`${API_URL}${act}`}>Акты</a></td>
 
       </TableRow>
     )
