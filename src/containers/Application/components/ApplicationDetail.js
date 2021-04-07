@@ -77,6 +77,14 @@ const Row = styled(RowUI)`
 `
 const FieldWrapper = styled.div`
 `
+const PageTitleNew = styled(PageTitle)`
+  color: #2C3A50;
+  margin-bottom: 5px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+`
 
 const getDisplayStyle = condition => ({
   display: condition ? 'block' : 'none'
@@ -101,7 +109,7 @@ const ApplicationDetail = props => {
 
   return (
     <BoxUI>
-      {/*<PageTitle name="Заявка" />*/}
+      {/* <PageTitle name="Заявка" /> */}
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
@@ -109,6 +117,8 @@ const ApplicationDetail = props => {
         onSubmit={onCreateApplication}
         render={({ handleSubmit, ...formikProps }) => {
           const show17024Fields = equals(typeStandard, '17024')
+
+          const show17065Fields = equals(typeStandard, '17065')
 
           const BranchOfficeDisplayList = ['17020', '17021', '17024', '17025']
           const showBranchOffice = includes(typeStandard, BranchOfficeDisplayList)
@@ -181,50 +191,21 @@ const ApplicationDetail = props => {
 
               </Row>
 
-              <Row gutter={24}>
-
-                <Col span={24}>
-                  <Field
-                    name="question"
-                    label="Принимала ли лаборатория участие в Проверке Квалификации/Межлабораторных сличительных испытаниях?"
-                    component={InputField}
-                  />
-                </Col>
-
-              </Row>
-
-              <FieldWrapper style={getDisplayStyle(show17024Fields)}>
+              <FieldWrapper style={getDisplayStyle(show17065Fields)}>
                 <Row gutter={24}>
-                  <Col span={6}>
+                  <Col span={12}>
                     <Field
-                      name="assessmentAgency"
-                      label="Где проводится ваша оценка? "
-                      component={InputField}
-                    />
-                  </Col>
-
-                  <Col span={6}>
-                    <Field
-                      name="certificateAgency"
-                      label="В органе по сертификации?"
+                      name="labaratoriya"
+                      label="Sertifikatlashtirish organi xususiy laboratoriyaga egami?"
                       component={UniversalStaticSelectField}
                       list={ANSWER_LIST}
                     />
                   </Col>
 
-                  <Col span={6}>
+                  <Col span={12}>
                     <Field
-                      name="educationalInstitution"
-                      label="В образовательном учреждении?"
-                      component={UniversalStaticSelectField}
-                      list={ANSWER_LIST}
-                    />
-                  </Col>
-
-                  <Col span={6}>
-                    <Field
-                      name="inManufacture"
-                      label="На производстве?"
+                      name="outsource"
+                      label="Sertifikatlashtirish organi jalb etilgan xodimlarga egami? "
                       component={UniversalStaticSelectField}
                       list={ANSWER_LIST}
                     />
@@ -233,39 +214,12 @@ const ApplicationDetail = props => {
                 </Row>
 
                 <Row gutter={24}>
-                  <Col span={6}>
-                    <Field
-                      name="anotherPlace"
-                      label="В других местах?"
-                      component={UniversalStaticSelectField}
-                      list={ANSWER_LIST}
-                    />
-                  </Col>
 
-                  <Col span={6}>
+                  <Col span={24}>
                     <Field
-                      name="howOftenExam"
-                      label="# Как часто проводится экзамен, если это применимо?"
-                      component={UniversalStaticSelectField}
-                      list={ANSWER_LIST}
-                    />
-                  </Col>
-
-                  <Col span={6}>
-                    <Field
-                      name="attractedPerson"
-                      label="# Имеет ли орган по сертификации привлеченный персонал?"
-                      component={UniversalStaticSelectField}
-                      list={ANSWER_LIST}
-                    />
-                  </Col>
-
-                  <Col span={6}>
-                    <Field
-                      name="accreditationCertificate"
-                      label="Имеет ли орган по сертификации другие сертификаты о признании?"
-                      component={UniversalStaticSelectField}
-                      list={ANSWER_LIST}
+                      name="isAkkred"
+                      label="Laboratoriya akkreditatsiyadan oʻtganmi? Agarda ha boʻlsa, akkreditatsiya toʻgʻrisidagi guvohnoma raqamini korsating "
+                      component={InputField}
                     />
                   </Col>
 
@@ -273,82 +227,199 @@ const ApplicationDetail = props => {
 
               </FieldWrapper>
 
-              {/*<FieldWrapper style={getDisplayStyle(showBranchOffice)}>*/}
+              {/* <Row gutter={24}> */}
 
-              {/*  {serviceList.length > 0 && (*/}
-              {/*    <BranchList branches={serviceList} />*/}
-              {/*  )}*/}
+              {/*  <Col span={24}> */}
+              {/*    <Field */}
+              {/*      name="question" */}
+              {/*      label="Принимала ли лаборатория участие в Проверке Квалификации/Межлабораторных сличительных испытаниях?" */}
+              {/*      component={InputField} */}
+              {/*    /> */}
+              {/*  </Col> */}
 
-              {/*  {officeList.length > 0 && (*/}
-              {/*    <OfficeList branches={officeList} />*/}
-              {/*  )}*/}
+              {/* </Row> */}
 
-              {/*</FieldWrapper>*/}
+              {/* <FieldWrapper style={getDisplayStyle(show17024Fields)}> */}
+              {/*  <Row gutter={24}> */}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="assessmentAgency" */}
+              {/*        label="Где проводится ваша оценка? " */}
+              {/*        component={InputField} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*<FieldWrapper style={getDisplayStyle(showMobileComplex)}>*/}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="certificateAgency" */}
+              {/*        label="В органе по сертификации?" */}
+              {/*        component={UniversalStaticSelectField} */}
+              {/*        list={ANSWER_LIST} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*  {mobileList.length > 0 && (*/}
-              {/*    <MobileComplexList branches={mobileList} />*/}
-              {/*  )}*/}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="educationalInstitution" */}
+              {/*        label="В образовательном учреждении?" */}
+              {/*        component={UniversalStaticSelectField} */}
+              {/*        list={ANSWER_LIST} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*</FieldWrapper>*/}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="inManufacture" */}
+              {/*        label="На производстве?" */}
+              {/*        component={UniversalStaticSelectField} */}
+              {/*        list={ANSWER_LIST} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*<FieldWrapper style={getDisplayStyle(showStaff)}>*/}
+              {/*  </Row> */}
 
-              {/*  {staffList.length > 0 && (*/}
-              {/*    <StaffList branches={staffList} />*/}
-              {/*  )}*/}
+              {/*  <Row gutter={24}> */}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="anotherPlace" */}
+              {/*        label="В других местах?" */}
+              {/*        component={UniversalStaticSelectField} */}
+              {/*        list={ANSWER_LIST} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*</FieldWrapper>*/}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="howOftenExam" */}
+              {/*        label="# Как часто проводится экзамен, если это применимо?" */}
+              {/*        component={UniversalStaticSelectField} */}
+              {/*        list={ANSWER_LIST} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*<FieldWrapper style={getDisplayStyle(showAccreditationByOther)}>*/}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="attractedPerson" */}
+              {/*        label="# Имеет ли орган по сертификации привлеченный персонал?" */}
+              {/*        component={UniversalStaticSelectField} */}
+              {/*        list={ANSWER_LIST} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*  {accreditationList.length > 0 && (*/}
-              {/*    <AccreditationList branches={accreditationList} />*/}
-              {/*  )}*/}
+              {/*    <Col span={6}> */}
+              {/*      <Field */}
+              {/*        name="accreditationCertificate" */}
+              {/*        label="Имеет ли орган по сертификации другие сертификаты о признании?" */}
+              {/*        component={UniversalStaticSelectField} */}
+              {/*        list={ANSWER_LIST} */}
+              {/*      /> */}
+              {/*    </Col> */}
 
-              {/*</FieldWrapper>*/}
+              {/*  </Row> */}
 
-              {/*<FieldWrapper style={getDisplayStyle(showActivityCertification)}>*/}
+              {/* </FieldWrapper> */}
 
-              {/*  {activityList.length > 0 && (*/}
-              {/*    <ActivityList branches={activityList} />*/}
-              {/*  )}*/}
+              {/* <FieldWrapper style={getDisplayStyle(showBranchOffice)}> */}
 
-              {/*</FieldWrapper>*/}
+              {/*  {serviceList.length > 0 && ( */}
+              {/*    <BranchList branches={serviceList} /> */}
+              {/*  )} */}
 
-              <div>
+              {/*  {officeList.length > 0 && ( */}
+              {/*    <OfficeList branches={officeList} /> */}
+              {/*  )} */}
 
-                {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_25'
-                  ? (<div >
-                    <MediumButton style={{
-                      background: '#2541ff'
-                    }} onClick={waitModalOpen()}>Буйуртмачини жавобини кутиш</MediumButton>
-                  </div>)
-                  : (<div style={{
-                    display: 'flex'
+              {/* </FieldWrapper> */}
 
-                  }}>
+              {/* <FieldWrapper style={getDisplayStyle(showMobileComplex)}> */}
 
-                    {id && (
+              {/*  {mobileList.length > 0 && ( */}
+              {/*    <MobileComplexList branches={mobileList} /> */}
+              {/*  )} */}
 
-                      <div>
+              {/* </FieldWrapper> */}
 
-                        <PermissionButton stage={stage} id={id} />
+              {/* <FieldWrapper style={getDisplayStyle(showStaff)}> */}
 
-                      </div>
+              {/*  {staffList.length > 0 && ( */}
+              {/*    <StaffList branches={staffList} /> */}
+              {/*  )} */}
 
-                    )}
+              {/* </FieldWrapper> */}
 
-                    <div >
-                      <MediumButton style={{
-                        background: '#ff3454'
-                      }} >Отклонить</MediumButton>
-                    </div>
+              {/* <FieldWrapper style={getDisplayStyle(showAccreditationByOther)}> */}
 
-                  </div>)
-                }
-              </div>
+              {/*  {accreditationList.length > 0 && ( */}
+              {/*    <AccreditationList branches={accreditationList} /> */}
+              {/*  )} */}
+
+              {/* </FieldWrapper> */}
+
+              {/* <FieldWrapper style={getDisplayStyle(showActivityCertification)}> */}
+
+              {/*  {activityList.length > 0 && ( */}
+              {/*    <ActivityList branches={activityList} /> */}
+              {/*  )} */}
+
+              {/* </FieldWrapper> */}
+
+              <FieldWrapper style={getDisplayStyle(showBranchOffice)}>
+                {serviceList.length > 0 && (
+
+                  <div>
+                    <PageTitleNew name="Filiallar" />
+                    <BranchList branches={serviceList} />
+                  </div>
+
+                )}
+
+                {officeList.length > 0 && (
+
+                  <div>
+                    <PageTitleNew name="Ofis/vakolatxonalar" />
+                    <OfficeList branches={officeList} />
+                  </div>
+
+                )}
+
+              </FieldWrapper>
+
+              <FieldWrapper style={getDisplayStyle(showStaff)}>
+                {staffList.length > 0 && (
+
+                  <div>
+                    <PageTitleNew name="Xodimlar" />
+                    <StaffList branches={staffList} />
+                  </div>
+
+                )}
+
+              </FieldWrapper>
+
+              <FieldWrapper style={getDisplayStyle(showAccreditationByOther)}>
+                {accreditationList.length > 0 && (
+
+                  <div>
+                    <PageTitleNew name="Sertifikatlashtirish organi boshqa akkreditatsiya organi, shu jumladan chet el akkreditatsiyadan oʻtkazish organlari tomonidan akkreditatsiyadan oʻtkazilganmi?" />
+                    <AccreditationList branches={accreditationList} />
+                  </div>
+
+                )}
+
+              </FieldWrapper>
+
+              <FieldWrapper style={getDisplayStyle(showActivityCertification)}>
+
+                {activityList.length > 0 && (
+
+                  <div>
+                    <PageTitleNew name="Sertifikatlashtirish ishlari" />
+                    <ActivityList branches={activityList} />
+                  </div>
+
+                )}
+
+              </FieldWrapper>
 
             </form>
           )

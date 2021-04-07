@@ -30,6 +30,8 @@ const getInitialValues = data => {
     contracts: prop('contracts', data),
     contractPlace: prop('contractPlace', data),
     commissions: prop('commissions', data),
+    experts: prop('experts', data),
+    expertsPlace: prop('expertsPlace', data),
 
   }
 }
@@ -40,17 +42,16 @@ const ApplicationConfirmContainer = props => {
   const dispatch = useDispatch()
   const expertModal = useModal({ key: 'expertModal' })
   const placeModal = useModal({ key: 'placeModal' })
-  const [placeList, setPlaceList] = useState(EMPTY_ARR)
 
   const [expertList, setExpertList] = useState(EMPTY_ARR)
   const [expertPlaceList, setExpertPlaceList] = useState(EMPTY_ARR)
   const confirmModal = useModal({ key: 'confirmModal' })
 
   const onComplete = ({ value }) => {
-    const experts = prop('experts', value)
-    const expertsPlace = prop('expertsPlace', value)
-    setExpertList([...experts])
-    setExpertPlaceList([...expertsPlace])
+    // const experts = prop('experts', value)
+    // const expertsPlace = prop('expertsPlace', value)
+    // setExpertList([...experts])
+    // setExpertPlaceList([...expertsPlace])
   }
 
   const onAddExpert = expert => {
@@ -67,13 +68,13 @@ const ApplicationConfirmContainer = props => {
   }
 
   const onAddPlace = place => {
-    setPlaceList([...placeList, place])
+    setExpertPlaceList([...expertPlaceList, place])
     placeModal.onClose()
   }
   const onUpdatePlace = (branch) => {
-    placeList.forEach((element, index) => {
+    expertPlaceList.forEach((element, index) => {
       if (element.id === branch.id) {
-        placeList.splice(index, 1, branch)
+        expertPlaceList.splice(index, 1, branch)
       }
     })
     placeModal.onClose()
@@ -87,7 +88,7 @@ const ApplicationConfirmContainer = props => {
 
   const confirmSubmit = values => {
     const experts = map(mapExperts, expertList)
-    const expertsPlace = map(mapExpertsPlace, placeList)
+    const expertsPlace = map(mapExpertsPlace, expertPlaceList)
     const file = path(['file', 'id'], values)
     const command = path(['command', 'id'], values)
     const plan = path(['plan', 'id'], values)

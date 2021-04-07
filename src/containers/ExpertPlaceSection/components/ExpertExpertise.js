@@ -81,7 +81,7 @@ const ExpertExpertiseCreate = props => {
               </Row>
 
               {statusAssignment === 'given' && (
-                <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
+                <AddBtn onClick={() => serviceModal.onOpen()}>Tasdiqlash</AddBtn>
 
               )}
 

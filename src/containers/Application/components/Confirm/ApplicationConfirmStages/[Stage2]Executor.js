@@ -51,7 +51,7 @@ const ConfirmStageTwoChoiceExecutor = ({ onSubmit }) => {
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Ijrochini Tanlash</MediumButton>
               </div>
             </form>
           )

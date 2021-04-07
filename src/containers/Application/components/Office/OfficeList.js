@@ -45,7 +45,6 @@ const OfficeList = props => {
   return (
     <>
 
-      <AddBtn> офисы </AddBtn>
 
       {table}
 

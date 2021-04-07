@@ -37,26 +37,26 @@ const ExpertsResultModal = props => {
                 />
               </FieldWrapper>
 
-              <FieldWrapper>
-                <Field
-                  component={FileUploadField}
+              {/*<FieldWrapper>*/}
+              {/*  <Field*/}
+              {/*    component={FileUploadField}*/}
 
-                  name="file"
-                  label="Задание"
-                />
-              </FieldWrapper>
+              {/*    name="file"*/}
+              {/*    label="Задание"*/}
+              {/*  />*/}
+              {/*</FieldWrapper>*/}
 
-              <FieldWrapper>
-                <Field
-                  component={FileUploadField}
+              {/*<FieldWrapper>*/}
+              {/*  <Field*/}
+              {/*    component={FileUploadField}*/}
 
-                  name="act"
-                  label="Акт"
-                />
-              </FieldWrapper>
+              {/*    name="act"*/}
+              {/*    label="Акт"*/}
+              {/*  />*/}
+              {/*</FieldWrapper>*/}
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

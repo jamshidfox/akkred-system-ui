@@ -49,7 +49,6 @@ const AccreditationList = props => {
   return (
     <>
 
-      <AddBtn >  Аккредитован другим органом  </AddBtn>
 
       {table}
 

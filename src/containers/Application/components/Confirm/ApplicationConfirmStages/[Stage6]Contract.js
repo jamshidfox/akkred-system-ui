@@ -51,7 +51,6 @@ const ConfirmStageContract = ({ onSubmit }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
               <Row gutter={24}>
 
                 <Col span={8}>

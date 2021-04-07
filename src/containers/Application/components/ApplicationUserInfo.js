@@ -45,8 +45,6 @@ const ApplicationUserInfo = props => {
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
-
               <Row gutter={24}>
                 <Col span={12}>
                   <Field

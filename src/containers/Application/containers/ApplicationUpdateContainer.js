@@ -36,6 +36,9 @@ const getInitialValues = data => {
     id: prop('id', data),
     internalAudit: prop('internalAudit', data),
     stage: prop('stage', data),
+    labaratoriya: prop('labaratoriya', data),
+    outsource: prop('outsource', data),
+    isAkkred: prop('isAkkred', data),
     managementAnalysis: prop('managementAnalysis', data),
     managementSystem: prop('managementSystem', data),
     typeApplication: prop('typeApplication', data),
@@ -93,11 +96,12 @@ const ApplicationUpdateContainer = props => {
   const [activityList, setActivityList] = useState(EMPTY_ARR)
   const [accreditationList, setAccreditationList] = useState(EMPTY_ARR)
   const [documentList, setDocumentList] = useState(EMPTY_ARR)
+  const [additionalActivityList, setAdditionalActivityList] = useState(EMPTY_ARR)
 
   const onComplete = ({ value }) => {
     const branches = prop('branches', value)
     const documents = prop('documents', value)
-
+    const additionalActivities = prop('additionalActivities', value)
     const accreditationOthers = prop('accreditationOthers', value)
     const mobileComplex = prop('mobileComplexes', value)
     const staffs = prop('staffs', value)
@@ -112,6 +116,7 @@ const ApplicationUpdateContainer = props => {
     setStaffList([...staffs])
     setActivityList([...activities])
     setAccreditationList([...accreditationOthers])
+    setAdditionalActivityList([...additionalActivities])
   }
   const { data } = useFetchItem(getClientItemParams(onComplete))
 
@@ -161,6 +166,7 @@ const ApplicationUpdateContainer = props => {
       staffList={staffList}
       mobileList={mobileList}
       officeList={officeList}
+      additionalActivityList={additionalActivityList}
 
     />
   )

@@ -47,7 +47,6 @@ const StaffList = props => {
     </Table>
   return (
     <>
-      <AddBtn > персоналы </AddBtn>
 
       {table}
 

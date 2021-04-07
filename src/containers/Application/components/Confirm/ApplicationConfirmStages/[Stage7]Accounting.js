@@ -3,26 +3,13 @@ import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
 import { MediumButton, PageTitle } from '../../../../../components/UI'
 import {
-  Field,
   Form,
 } from '../../../../../components/FormField'
-import { Row as RowUI } from '../../../../../components/Grid'
-import { Box, FieldWrapper } from '../../../../../components/StyledElems'
-import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
+import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
 
 const BoxUI = styled(Box)`
   padding: 25px;
-`
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
 `
 
 const PageTitleNew = styled(PageTitle)`
@@ -87,10 +74,9 @@ const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) 
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
               {table}
 
-              <div style={{ textAlign: 'right' }}>
+              <div style={{ textAlign: 'right', marginTop: '10px' }}>
                 <MediumButton type="submit">{text}</MediumButton>
               </div>
             </form>

@@ -47,7 +47,6 @@ const ActivityList = props => {
     </Table>
   return (
     <>
-      <PageTitleNew name=" Сертификация деятельности " />
       {table}
     </>
   )

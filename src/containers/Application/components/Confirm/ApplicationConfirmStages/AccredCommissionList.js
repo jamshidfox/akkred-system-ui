@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { ItemControlButton, PageTitle } from 'components/UI'
 import { Table, TableCol, TableRow } from '../../../../../components/Table'
 import { MediumButton, SecondarySmallButton } from '../../../../../components/UI'
+import {answerCommissionType} from "../../../../../constants/backend";
 
 const AddBtn = styled(SecondarySmallButton)`
   padding-left: 0;
@@ -12,6 +13,21 @@ const AddBtn = styled(SecondarySmallButton)`
 const PageTitleNew = styled(PageTitle)`
  color: #2C3A50;
 
+`
+
+const statusColors = {
+  approved: 'green',
+  reject: 'red',
+  wait: 'blue',
+}
+
+const Status = styled('div')`
+  border-radius: ${props => props.theme.borderRadius};
+  border: 1px solid;
+  color: ${props => props.color};
+  display: inline-block;
+  line-height: 16px;
+  padding: 3px 12px;
 `
 
 const ApplicationCommissionResultList = props => {
@@ -31,13 +47,18 @@ const ApplicationCommissionResultList = props => {
     } = client
 
     // Render
+
+    const statusText = answerCommissionType.object[answerType]
+    const statusColor = statusColors[answerType]
     return (
       <TableRow
         key={id}
       >
         <td colSpan={8}>{commission.username}</td>
 
-        <td colSpan={8}>{answerType}</td>
+        <td colSpan={8}><Status color={statusColor}>
+          {statusText}
+        </Status></td>
         <td colSpan={8}>{comments}</td>
 
       </TableRow>

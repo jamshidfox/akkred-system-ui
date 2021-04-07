@@ -16,6 +16,7 @@ import { RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
 import { Box } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsListConfirm } from '../Experts'
+import {prop} from "ramda";
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -34,7 +35,8 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageChoiceExpertsConfirm = ({ onSubmit, serviceList, serviceModal, application }) => {
+const ConfirmStageChoiceExpertsConfirm = ({ onSubmit, serviceList, serviceModal, initialValues }) => {
+    const expertsPlace = prop('expertsPlace', initialValues)
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
@@ -48,11 +50,11 @@ const ConfirmStageChoiceExpertsConfirm = ({ onSubmit, serviceList, serviceModal,
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
-              <ExpertsListConfirm branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
+              <Label>Ekspertlar</Label>
+              <ExpertsListConfirm branches={expertsPlace} serviceModal={serviceModal} editModalOpen={editModalOpen} />
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

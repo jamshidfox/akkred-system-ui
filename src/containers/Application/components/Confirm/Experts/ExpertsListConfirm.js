@@ -10,6 +10,7 @@ import { sprintf } from 'sprintf-js'
 import { Table, TableCol, TableRow, TableColRight } from '../../../../../components/Table'
 import { MediumButton, SecondarySmallButton } from '../../../../../components/UI'
 import * as ROUTES from '../../../../../constants/routes'
+import ApplicationClientDocument from "../../ApplicationClientDocuments";
 
 const AddBtn = styled(SecondarySmallButton)`
 `
@@ -57,5 +58,8 @@ const ExpertsList = props => {
 
     </>
   )
+}
+ExpertsList.defaultProps = {
+  branches: [],
 }
 export default ExpertsList

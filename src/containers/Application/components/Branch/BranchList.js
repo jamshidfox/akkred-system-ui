@@ -48,7 +48,6 @@ const BranchList = props => {
     </Table>
   return (
     <>
-      <PageTitleNew name="лаборатории" />
       {table}
     </>
   )

@@ -42,19 +42,22 @@ export const ANSWER_LIST = [
 ]
 
 export const ANSWER_TYPE_LIST = [
-  { id: 'approved', name: 'Согласен' },
-  { id: 'reject', name: 'Несогласен' }
+  { id: 'approved', name: 'Rozi ' },
+  { id: 'reject', name: 'Rozi emas' },
+  { id: 'partial_approved', name: 'Qisman rozi' },
 ]
 
 export const STANDART_LIST = [
-  { id: '17065', name: '17065' },
-  { id: '17025', name: '17025' },
-  // { id: '3444', name: '3444' },
-  { id: '17021', name: '17021' },
-  { id: '17020', name: '17020' },
-  { id: '17024', name: '17024' },
-  { id: '17043', name: '17043' },
+  // { id: '17065', name: '17065' },
+  // { id: '17025', name: '17025' },
+  // // { id: '3444', name: '3444' },
+  // { id: '17021', name: '17021' },
+  // { id: '17020', name: '17020' },
+  // { id: '17024', name: '17024' },
+  // { id: '17043', name: '17043' },
   // { id: '15189', name: '15189' },
+  { id: '17021', name: '(O‘z DSt ISO/IEC 17021:2015) Menejment tizimlarini sertifikatlashtirish organi' },
+  { id: '17065', name: '(O‘z DSt ISO/IEC 17065:2015 ) Mahsulot va xizmatlarni sertifikatlashtirish organi' },
 ]
 
 export const TYPE_EXPERTS = [
@@ -161,16 +164,18 @@ export const rateTypes = [
 export const answerCommissionType = getFormattedListData([
   {
     id:'approved',
-    name:'согласен',
+    name:'Rozi',
   },
   {
     id:'reject',
-    name:'несогласен',
+    name:'Rozi emas',
   },
   {
     id:'wait',
     name:'В процессе',
-  }
+  },
+
+  { id: 'partial_approved', name: 'Qisman rozi' },
 
 ])
 

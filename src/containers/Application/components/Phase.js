@@ -29,7 +29,7 @@ const Row = styled(RowUI)`
 `
 
 const Phase = props => {
-  const { id, stage } = props
+  const { id, stage, initialValues } = props
   const onCreateApplication = () => {
 
   }
@@ -47,7 +47,15 @@ const Phase = props => {
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
+
+              {stage === 'stage_39' && (
+
+                <div >
+                  <MediumButton style={{
+                    background: '#83bc15'
+                  }} >Ariza Yopildi</MediumButton>
+                </div>
+              )}
 
               <div>
                 {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_25'
@@ -58,17 +66,25 @@ const Phase = props => {
                   </div>)
                   : (<div style={{
                     display: 'flex'
+
                   }}>
+
                     {id && (
+
                       <div>
+
                         <PermissionButton stage={stage} id={id} />
+
                       </div>
+
                     )}
-                    <div >
-                      <MediumButton style={{
-                        background: '#ff3454'
-                      }} >Отклонить</MediumButton>
-                    </div>
+
+                    {/* <div > */}
+                    {/*  <MediumButton style={{ */}
+                    {/*    background: '#ff3454' */}
+                    {/*  }} >Отклонить</MediumButton> */}
+                    {/* </div> */}
+
                   </div>)
                 }
               </div>

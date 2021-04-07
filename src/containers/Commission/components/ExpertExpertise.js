@@ -80,7 +80,7 @@ const ExpertExpertiseCreate = props => {
 
 
               {answerType === 'wait' && (
-                <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
+                <AddBtn onClick={() => serviceModal.onOpen()}>Ovoz berish</AddBtn>
 
               )}
 

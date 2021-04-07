@@ -102,7 +102,7 @@ const ApplicationTabs = props => {
         // onChange={tabData.onTabChange}
       >
         <Tab value={'stage'} label={'Bosqich'}>
-          <Phase id={id} stage={stage}/>
+          <Phase id={id} stage={stage} initialValues={initialValues}/>
         </Tab>
         <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationUserInfo clientInfo={clientInfo} />
@@ -124,42 +124,7 @@ const ApplicationTabs = props => {
 
           />
         </Tab>
-        {/* <Tab value={'service'} label={'Ariza '}> */}
-        {/*  <ApplicationUpdate */}
-        {/*    onSubmit={onSubmit} */}
-        {/*    initialValues={initialValues} */}
-        {/*    serviceModal={serviceModal} */}
-        {/*    documentModal={documentModal} */}
-        {/*    documentList={documentList} */}
-        {/*    onCreateApplication={onCreateApplication} */}
-        {/*    serviceList={serviceList} */}
-        {/*    staffList={staffList} */}
-        {/*    officeList={officeList} */}
-        {/*    officeModal={officeModal} */}
-        {/*    staffModal={staffModal} */}
-        {/*    mobileModal={mobileModal} */}
-        {/*    mobileList={mobileList} */}
-        {/*    documentTwoList={documentTwoList} */}
-        {/*    documentTwoModal={documentTwoModal} */}
-        {/*    documentThreeList={documentThreeList} */}
-        {/*    documentThreeModal={documentThreeModal} */}
-        {/*    documentFourList={documentFourList} */}
-        {/*    documentFourModal={documentFourModal} */}
-        {/*    onDeleteDocument={onDeleteDocument} */}
-        {/*    onDeleteDocumentTwo={onDeleteDocumentTwo} */}
-        {/*    onDeleteDocumentThree={onDeleteDocumentThree} */}
-        {/*    onDeleteDocumentFour={onDeleteDocumentFour} */}
-        {/*    onDeleteOffice={onDeleteOffice} */}
-        {/*    accreditationList={accreditationList} */}
-        {/*    accreditationModal={accreditationModal} */}
-        {/*    onDeleteAccreditation={onDeleteAccreditation} */}
-        {/*    activityList={activityList} */}
-        {/*    activityModal={activityModal} */}
-        {/*    onDeleteActivity={onDeleteActivity} */}
-        {/*    update={update} */}
-        {/*    onTabChange={() => tabData.onTabChange(SERVICE)} */}
-        {/*  /> */}
-        {/* </Tab> */}
+
         <Tab value={'documents'} label={'Murojaatchiga tegishli hujjatlar '}>
           <ApplicationClientDocument docs={documents} />
         </Tab>

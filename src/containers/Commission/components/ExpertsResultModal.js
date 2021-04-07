@@ -48,7 +48,7 @@ const ExpertsResultModal = props => {
               </FieldWrapper>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Ovoz berish</MediumButton>
               </div>
             </form>
           )
