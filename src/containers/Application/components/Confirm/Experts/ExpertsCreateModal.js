@@ -34,26 +34,17 @@ const ExpertsCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="cases"
-                  label="case"
+                  label="izoh"
                   component={InputField}
                 />
               </FieldWrapper>
-              {/* <FieldWrapper> */}
-              {/*  <Field */}
-              {/*    component={UniversalSearchField} */}
 
-              {/*    name="assignment" */}
-              {/*    label="assignment" */}
-              {/*    api={API.DOC_LIST} */}
-              {/*    params={{ application: application }} */}
-              {/*  /> */}
-              {/* </FieldWrapper> */}
 
               <FieldWrapper>
                 <Field
                   component={FileUploadField}
                   name={'assignment'}
-                  label={'assignment '}
+                  label={'hujjat '}
                 />
               </FieldWrapper>
 

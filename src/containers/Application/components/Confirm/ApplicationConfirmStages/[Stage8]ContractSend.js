@@ -42,8 +42,6 @@ const ConfirmStageSendClientContract = ({ onSubmit }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
-
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Send to client</MediumButton>
               </div>

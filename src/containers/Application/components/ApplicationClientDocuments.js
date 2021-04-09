@@ -41,11 +41,11 @@ const ApplicationClientDocument = props => {
         <td colSpan={8}>{name}</td>
         <td colSpan={8}>{statusText}</td>
 
-        <td colSpan={8} style={{
+        <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}${file.file}`}>Документ</a></td>
+          color: '#0f22ff'
+        }} href={`${file.file}`}>Документ</a></td>
 
       </TableRow>
     )

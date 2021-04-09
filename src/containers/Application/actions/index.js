@@ -119,6 +119,20 @@ export const applicationFetchList = params => {
   }
 }
 
+export const applicationFetchListAll = params => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+        .get(API.APPLICATION_LIST_ALL, { params })
+        .then(getPayloadFromSuccess)
+        .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_LIST_ALL
+    })
+  }
+}
+
 export const clientFetchItem = id => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

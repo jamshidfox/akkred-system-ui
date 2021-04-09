@@ -14,11 +14,13 @@ import Tabs from '../../../components/Tabs'
 import CommentListFilterForm from './CommentListFilterForm'
 
 const statusColors = {
-  draft: 'green',
-  active: 'green',
-  inactive: 'red',
-  paused: 'yellow',
-  extended: 'blue'
+  // draft: 'green',
+  // active: 'green',
+  // inactive: 'red',
+  // paused: 'yellow',
+  // extended: 'blue'
+  my:'red',
+  all:'green'
 }
 
 const Status = styled('div')`
@@ -35,7 +37,8 @@ const ApplicationList = props => {
     list,
     filterActions,
     history,
-    onDelete
+    onDelete,
+      my
   } = props
 
   // Data
@@ -82,22 +85,22 @@ const ApplicationList = props => {
     } = application
 
     const statusText = registryStatus.object[status]
-    const statusColor = statusColors[status]
+    const statusColor = statusColors[my]
 
     // MoreList
     const moreList = [
       {
-        name: 'Изменить',
+        name: "Ko'rish",
         onClick: () => {
           history.push({
             pathname: sprintf(ROUTES.APPLICATION_UPDATE_URL, id)
           })
         }
       },
-      {
-        name: 'Удалить',
-        onClick: () => onDelete(id)
-      }
+      // {
+      //   name: 'Удалить',
+      //   onClick: () => onDelete(id)
+      // }
     ]
 
     // Render

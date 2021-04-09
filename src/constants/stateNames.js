@@ -10,6 +10,7 @@ export const CLIENT_ITEM = 'clientItem'
 export const CLIENT_DELETE = 'clientDelete'
 
 export const APPLICATION_LIST = 'applicationList'
+export const APPLICATION_LIST_ALL = 'applicationListAll'
 export const APPLICATION_UPDATE = 'applicationUpdate'
 export const APPLICATION_CREATE = 'applicationCreate'
 export const APPLICATION_ITEM = 'applicationItem'

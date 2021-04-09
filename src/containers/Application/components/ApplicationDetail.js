@@ -145,7 +145,7 @@ const ApplicationDetail = props => {
                 <Col span={12}>
                   <Field
                     name="typeApplication"
-                    label="Тип заявки"
+                    label="Ariza turi"
                     component={UniversalStaticSelectField}
                     list={APPLICATION_LIST}
                   />
@@ -154,7 +154,7 @@ const ApplicationDetail = props => {
                 <Col span={12}>
                   <Field
                     name="typeStandard"
-                    label="тип стандарта"
+                    label="Muvofiqlikni baholash organi turi"
                     component={UniversalStaticSelectField}
                     list={STANDART_LIST}
                   />
@@ -165,7 +165,7 @@ const ApplicationDetail = props => {
                 <Col span={8}>
                   <Field
                     name="managementAnalysis"
-                    label="Был ли проведен анализ со стороны руководства? "
+                    label="Rahbariyat tomonidan tahlil qilinganmi?"
                     component={UniversalStaticSelectField}
                     list={ANSWER_LIST}
                   />
@@ -174,7 +174,7 @@ const ApplicationDetail = props => {
                 <Col span={8}>
                   <Field
                     name="managementSystem"
-                    label="Как давно в лаборатории внедрена система менеджмента?"
+                    label="Menejment tizimi qancha muddat ilgari joriy etilgan?"
                     component={UniversalStaticSelectField}
                     list={ANSWER_MONTH_LIST}
                   />
@@ -183,7 +183,7 @@ const ApplicationDetail = props => {
                 <Col span={8}>
                   <Field
                     name="internalAudit"
-                    label="Был ли проведен внутренний аудит?"
+                    label="Ichki audit oʻtkazilganmi?"
                     component={UniversalStaticSelectField}
                     list={ANSWER_LIST}
                   />

@@ -16,13 +16,15 @@ const AddBtn = styled(SecondarySmallButton)`
 
 const ExpertsList = props => {
   const { serviceModal, branches, editModalOpen } = props
+  console.warn(branches,'branches')
   // TableList
   const tableList = branches.map(client => {
     const {
       id,
-      cases,
-      assignment,
+      type,
       expert,
+      date,
+      address,
     } = client
 
     // Render
@@ -30,9 +32,10 @@ const ExpertsList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>asdasd</td>
-        <td colSpan={6}>asdasd</td>
-        <td colSpan={6}>asdasdasdasd</td>
+        <td colSpan={6}>{expert.fullName}</td>
+        <td colSpan={6}>{type.name}</td>
+        <td colSpan={6}>{date}</td>
+        <td colSpan={6}>{address.name}</td>
 
       </TableRow>
     )
@@ -40,9 +43,10 @@ const ExpertsList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6} >cases </th>
-      <th colSpan={6} >assignment </th>
-      <th colSpan={6} >expert </th>
+      <th colSpan={6} >Expert</th>
+      <th colSpan={6} >Roli </th>
+      <th colSpan={6} >Data </th>
+      <th colSpan={6} >Manzil </th>
     </TableRow>
   const table =
     <Table
@@ -53,7 +57,7 @@ const ExpertsList = props => {
     </Table>
   return (
     <>
-      <AddBtn onClick={() => serviceModal.onOpen()}>добавить </AddBtn>
+      <AddBtn onClick={() => serviceModal.onOpen()}>Qo'shish</AddBtn>
       {table}
 
     </>

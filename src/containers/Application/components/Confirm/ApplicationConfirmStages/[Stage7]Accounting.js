@@ -61,7 +61,7 @@ const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) 
     <Table
       isEmpty={isEmpty(contracts)}
     >
-      <PageTitleNew name="Договор на экспертизу" />
+      <PageTitleNew name="Ekspertiza shartnomasi" />
       {tableHead}
       {tableList}
     </Table>

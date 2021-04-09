@@ -45,8 +45,6 @@ const ApplicationAssessmentStartDate = props => {
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Buyruq</Label>
-
               <Row gutter={24}>
                 <Col span={24}>
                   <Field

@@ -31,14 +31,14 @@ export const CALCULATION_TYPE_LIST = [
 export const CALCULATION_TYPE = arrayObjToObj(CALCULATION_TYPE_LIST)
 
 export const ANSWER_MONTH_LIST = [
-  { id: 'LESS_THREE', name: 'меньше трех месяцев' },
-  { id: 'LESS_SIX', name: 'меньше шести месяцев' },
-  { id: 'MORE_SIX', name: 'больше шести месяцев' }
+  { id: 'LESS_THREE', name: '0-3 oy' },
+  { id: 'LESS_SIX', name: '3-6 oy' },
+  { id: 'MORE_SIX', name: '6 oydan ortiq' }
 ]
 
 export const ANSWER_LIST = [
-  { id: 'yes', name: 'да' },
-  { id: 'no', name: 'нет' }
+  { id: 'yes', name: 'ha' },
+  { id: 'no', name: 'yoq' }
 ]
 
 export const ANSWER_TYPE_LIST = [
@@ -48,16 +48,14 @@ export const ANSWER_TYPE_LIST = [
 ]
 
 export const STANDART_LIST = [
-  // { id: '17065', name: '17065' },
-  // { id: '17025', name: '17025' },
-  // // { id: '3444', name: '3444' },
-  // { id: '17021', name: '17021' },
-  // { id: '17020', name: '17020' },
-  // { id: '17024', name: '17024' },
-  // { id: '17043', name: '17043' },
-  // { id: '15189', name: '15189' },
+
+  { id: '17020', name: '(O‘z DSt ISO/IEC 17020:2019) Inspeksiya organi' },
   { id: '17021', name: '(O‘z DSt ISO/IEC 17021:2015) Menejment tizimlarini sertifikatlashtirish organi' },
   { id: '17065', name: '(O‘z DSt ISO/IEC 17065:2015 ) Mahsulot va xizmatlarni sertifikatlashtirish organi' },
+  { id: '17024', name: '(O‘z DSt ISO/IEC 17024:2009) Xodimlarni sertifikatlashtirish organlari' },
+  { id: '17025', name: '(O‘z DSt ISO/IEC 17025:2019) Putur yetkazmasdan tekshirish laboratoriyasini' },
+  { id: '17043', name: '(O‘z DSt ISO/IEC 17043:2015) Malakani tekshirish provayderi' },
+  { id: '3444', name: '(O‘z DSt 3444:2020) Oʻlchash vositalarni qiyoslash metrologiya xizmati/laboratoriyasini' },
 ]
 
 export const TYPE_EXPERTS = [
@@ -79,7 +77,7 @@ export const RESULT_LIST = [
 ]
 
 export const APPLICATION_LIST = [
-  { id: 'accreditation', name: 'Аккредитация' },
+  { id: 'accreditation', name: 'Akkreditatsiya' },
   { id: 'actualization', name: 'Актуализация' },
   { id: 'reaccreditation', name: 'Переаккредитация' },
   { id: 'renewal', name: 'Переоформления' },

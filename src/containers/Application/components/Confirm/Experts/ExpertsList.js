@@ -15,15 +15,13 @@ const AddBtn = styled(SecondarySmallButton)`
 `
 
 const ExpertsList = props => {
-  const { serviceModal, branches, editModalOpen } = props
+  const { serviceModal, branches } = props
   // TableList
   const tableList = branches.map(client => {
     const {
       id,
-      cases,
       assignment,
       expert,
-      status,
     } = client
 
     // Render
@@ -31,9 +29,12 @@ const ExpertsList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>{assignment && assignment.file}</td>
-        <td colSpan={6}>{expert && expert.full_name}</td>
-        <td colSpan={6}>{status && status}</td>
+        <td colSpan={12}>{expert && expert.fullName}</td>
+        <td colSpan={12} style={{
+          color: '#0f22ff'
+        }}><a style={{
+          color: '#0f22ff'
+        }} href={`${assignment && assignment.file}`}>hujjat</a></td>
 
       </TableRow>
     )
@@ -41,9 +42,8 @@ const ExpertsList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6} >cases </th>
-      <th colSpan={6} >assignment </th>
-      <th colSpan={6} >expert </th>
+      <th colSpan={12} >Expert </th>
+      <th colSpan={12} >Hujjat </th>
     </TableRow>
   const table =
     <Table
@@ -54,7 +54,7 @@ const ExpertsList = props => {
     </Table>
   return (
     <>
-      <AddBtn onClick={() => serviceModal.onOpen()}>добавить эксперта из базы </AddBtn>
+      <AddBtn onClick={() => serviceModal.onOpen()}>Ma'lumotlar bazasidan mutaxassis qo'shing </AddBtn>
       {table}
 
     </>

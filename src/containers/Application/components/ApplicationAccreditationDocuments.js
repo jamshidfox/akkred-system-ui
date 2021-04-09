@@ -27,118 +27,8 @@ const Status = styled('div')`
   padding: 3px 12px;
 `
 
-const ApplicationContractInvoiceInfo = props => {
-  const { contracts, application, contractPlace, plan, notice, command, noticeFinal, postAccred } = props
-
-  const tableList = contracts.map(client => {
-    const {
-      id,
-      name,
-      rateType,
-      count,
-      totalAmount,
-      status,
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={4}>{name}</td>
-        <td colSpan={4}>{rateType}</td>
-        <td colSpan={4}>{count}</td>
-        <td colSpan={4}>{totalAmount}</td>
-        <td colSpan={4}><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-        <td colSpan={4} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Договор</a></td>
-
-      </TableRow>
-    )
-  })
-  const tableHead =
-    <TableRow header={true}>
-      <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={4} >Миқдори </th>
-      <th colSpan={4} >Ставкаси </th>
-      <th colSpan={4} >Нархи</th>
-      <th colSpan={4} >Статус </th>
-      <th colSpan={4} >Контракт </th>
-    </TableRow>
-  const table =
-    <Table
-      isEmpty={isEmpty(contracts)}
-    >
-      <PageTitleNew name="Ekspertiza shartnomasi" />
-      {tableHead}
-      {tableList}
-    </Table>
-
-  const tablePlaceList = contractPlace.map(client => {
-    const {
-      id,
-      price,
-      rate,
-      count,
-      totalAmount,
-      file,
-      status,
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={5}>{price}</td>
-        <td colSpan={5}>{rate}</td>
-        <td colSpan={5}>{count}</td>
-        <td colSpan={3}>{totalAmount}</td>
-        <td colSpan={2}><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-        <td colSpan={2} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Baholash shartnomasi</a></td>
-        <td colSpan={2} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/media/${file && file.file}`}>Акт</a></td>
-
-      </TableRow>
-    )
-  })
-  const tablePlaceHead =
-    <TableRow header={true}>
-      <th colSpan={5} >Цена </th>
-      <th colSpan={5} >Ставка </th>
-      <th colSpan={5} >Количество </th>
-      <th colSpan={5} >Общее </th>
-      <th colSpan={2} >Контракт </th>
-      <th colSpan={2} >Акт </th>
-    </TableRow>
-  const tablePlace =
-    <Table
-      isEmpty={isEmpty(contracts)}
-    >
-      <PageTitleNew name="Baholash shartnomasi" />
-      {tablePlaceHead}
-      {tablePlaceList}
-    </Table>
+const ApplicationAccreditationDocuments = props => {
+  const { plan, notice, command } = props
 
   // Notice
   const tableNoticeList = notice.map(client => {
@@ -347,20 +237,18 @@ const ApplicationContractInvoiceInfo = props => {
 
   return (
     <>
-      {table}
-      {tablePlace}
-      {/*{tableNotice}*/}
-      {/*{tablePlan}*/}
-      {/*{tableCommand}*/}
-      {/*{tableNoticeFinal}*/}
-      {/*{tablePostAccred}*/}
+      {tableNotice}
+      {tablePlan}
+      {tableCommand}
+      {/* {tableNoticeFinal} */}
+      {/* {tablePostAccred} */}
 
     </>
   )
 }
-ApplicationContractInvoiceInfo.defaultProps = {
+ApplicationAccreditationDocuments.defaultProps = {
   noticeFinal: [],
   postAccred: [],
 }
 
-export default ApplicationContractInvoiceInfo
+export default ApplicationAccreditationDocuments

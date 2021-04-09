@@ -16,6 +16,10 @@ import ApplicationCommissionResult from './ApplicationConfirmStages/[Stage34]App
 import ApplicationNoticeClient from './ApplicationConfirmStages/[Stage36]ApplicationNoticeClient'
 import ApplicationReestr from './ApplicationConfirmStages/[Stage37]ApplicationReestr'
 import ApplicationPostAccred from './ApplicationConfirmStages/[Stage38]ApplicationPostAccred'
+import ConfirmStageChoiceExpertsPlaceConfirm from './ApplicationConfirmStages/[Stage21]ExpertsPlaceConfirm'
+import ConfirmPlanNotice from './ApplicationConfirmStages/[Stage23]PlanNotice'
+import ConfirmCommand from './ApplicationConfirmStages/[Stage27]Command'
+import ConfirmAudit from "./ApplicationConfirmStages/[Stage32]ConfirmAudit";
 
 const ApplicationConfirm = props => {
   const { onSubmit, stage, expertList, expertModal, placeModal, placeList, application, initialValues, expertPlaceList } = props
@@ -57,11 +61,11 @@ const ApplicationConfirm = props => {
       <ConfirmStageChoiceExperts onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} />
     )
   case 'stage_11':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} />
+    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_12':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} />
+    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_13':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} />
+    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_14':
     return (
       <ConfirmStageContractPlace onSubmit={onSubmit} />
@@ -87,12 +91,24 @@ const ApplicationConfirm = props => {
       <ConfirmStageChoiceExpertsPlace onSubmit={onSubmit} serviceModal={placeModal} serviceList={expertPlaceList} />
     )
   case 'stage_21':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertPlaceList} application={application} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_22':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertPlaceList} application={application} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
+  case 'stage_23':
+    return <ConfirmPlanNotice onSubmit={onSubmit} text={'Tasdiqlash'} initialValues={initialValues} />
+  case 'stage_24':
+    return <ConfirmPlanNotice onSubmit={onSubmit} text={'Junatish'} initialValues={initialValues} />
   case 'stage_26':
     return (
       <ApplicationConfirmCommand onSubmit={onSubmit} text={'Baholash uchun buyruq loyihasi qilinadi'} />
+    )
+  case 'stage_27':
+    return (
+      <ConfirmCommand onSubmit={onSubmit} initialValues={initialValues} text={'Junatish'} />
+    )
+  case 'stage_28':
+    return (
+      <ConfirmCommand onSubmit={onSubmit} initialValues={initialValues} text={'Imzolash'} />
     )
   case 'stage_30':
     return (
@@ -101,6 +117,10 @@ const ApplicationConfirm = props => {
   case 'stage_31':
     return (
       <ApplicationAssessmentEnd onSubmit={onSubmit} text={'Autditni yakunlash'} />
+    )
+  case 'stage_32':
+    return (
+      <ConfirmAudit onSubmit={onSubmit} initialValues={initialValues} text={'Qabul qilish'} />
     )
   case 'stage_34':
     return (

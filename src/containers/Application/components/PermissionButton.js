@@ -5,9 +5,10 @@ import Perms from '../../../components/Perms/Perms'
 import * as ROUTES from '../../../constants/routes'
 import { MediumButton } from '../../../components/UI/Buttons'
 
+const caseManager = 'caseManager'
 const executor = 'executor'
-const expertHead = 'expert_head'
-const headDepartment = 'head_department'
+const expertHead = 'expertHead'
+const headDepartment = 'headDepartment'
 const headHr = 'headHr'
 const accountant = 'accountant'
 const director = 'director'
@@ -18,7 +19,7 @@ const PermissionButton = props => {
   case 'stage_1':
     return (
       <Perms
-        perms={['accept']}
+        perms={[caseManager]}
       >
         <Link
 
@@ -147,7 +148,7 @@ const PermissionButton = props => {
   case 'stage_8':
     return (
       <Perms
-        perms={[director]}
+        perms={[executor]}
       >
         <Link
 
@@ -279,7 +280,7 @@ const PermissionButton = props => {
   case 'stage_16':
     return (
       <Perms
-        perms={[headDepartment]}
+        perms={[accountant]}
       >
         <Link
 
@@ -317,7 +318,7 @@ const PermissionButton = props => {
   case 'stage_18':
     return (
       <Perms
-        perms={[director]}
+        perms={[executor]}
       >
         <Link
 

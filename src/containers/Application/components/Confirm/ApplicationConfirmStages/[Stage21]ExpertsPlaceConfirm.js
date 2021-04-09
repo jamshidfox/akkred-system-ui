@@ -17,6 +17,7 @@ import { RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
 import { Box } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsListConfirm } from '../Experts'
+import ExpertsPlaceListConfirm from '../ExpertsPlace/ExpertsPlaceListConfirm'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -32,8 +33,8 @@ const Label = styled.div`
   color: ${props => props.theme.color.basic.default};
 `
 
-const ConfirmStageChoiceExpertsConfirm = ({ onSubmit, serviceList, serviceModal, initialValues }) => {
-  const expertsPlace = prop('experts', initialValues)
+const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, serviceList, serviceModal, initialValues }) => {
+  const expertsPlace = prop('expertsPlace', initialValues)
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
@@ -48,7 +49,7 @@ const ConfirmStageChoiceExpertsConfirm = ({ onSubmit, serviceList, serviceModal,
           return (
             <form onSubmit={handleSubmit}>
               <Label>Ekspertlar</Label>
-              <ExpertsListConfirm branches={expertsPlace} serviceModal={serviceModal} editModalOpen={editModalOpen} />
+              <ExpertsPlaceListConfirm branches={expertsPlace} serviceModal={serviceModal} editModalOpen={editModalOpen} />
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
@@ -62,4 +63,4 @@ const ConfirmStageChoiceExpertsConfirm = ({ onSubmit, serviceList, serviceModal,
   )
 }
 
-export default ConfirmStageChoiceExpertsConfirm
+export default ConfirmStageChoiceExpertsPlaceConfirm

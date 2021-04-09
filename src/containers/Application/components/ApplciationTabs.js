@@ -15,6 +15,7 @@ import ApplicationCommissionResult from './ApplicationCommissionResult'
 import ApplicationClientDocument from './ApplicationClientDocuments'
 import ApplicationDetail from './ApplicationDetail'
 import Phase from './Phase'
+import ApplicationAccreditationDocuments from './ApplicationAccreditationDocuments'
 
 export const fields = [
   'address',
@@ -102,7 +103,7 @@ const ApplicationTabs = props => {
         // onChange={tabData.onTabChange}
       >
         <Tab value={'stage'} label={'Bosqich'}>
-          <Phase id={id} stage={stage} initialValues={initialValues}/>
+          <Phase id={id} stage={stage} initialValues={initialValues} />
         </Tab>
         <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationUserInfo clientInfo={clientInfo} />
@@ -132,7 +133,10 @@ const ApplicationTabs = props => {
           <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} expertRejectModal={expertRejectModal} experts={experts} assignments={assignments} expertsPlace={expertsPlace} />
         </Tab>
         <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
-          <ApplicationContractInvoiceInfo contracts={contracts} application={id} contractPlace={contractPlace} plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />
+          <ApplicationContractInvoiceInfo contracts={contracts} application={id && id} contractPlace={contractPlace} plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />
+        </Tab>
+        <Tab value={'documentsAccred'} label={'Akrreditatsiyaga tegishli hujjatlar '}>
+          <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />
         </Tab>
         <Tab value={'expertiza'} label={'EKSPERTIZA natijalari'}>
           <ApplicationExpertResult results={results} application={id} />
@@ -145,9 +149,6 @@ const ApplicationTabs = props => {
         <Tab value={'commissions'} label={'Akrreditatsiya komissiyasi '}>
           <ApplicationCommissionResult results={commissions} application={id} />
         </Tab>
-        {/*<Tab value={'documentsAccred'} label={'Akrreditatsiyaga tegishli hujjatlar '}>*/}
-        {/*  <div />*/}
-        {/*</Tab>*/}
 
       </Tabs>
     </BoxUI>

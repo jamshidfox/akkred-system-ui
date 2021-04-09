@@ -45,6 +45,7 @@ export const makeRootReducer = asyncReducers => {
     [STATE.PERMISSION_LIST]: createThunkReducer(actionTypes.PERMISSION_LIST),
 
     [STATE.APPLICATION_LIST]: createThunkReducer(actionTypes.APPLICATION_LIST),
+    [STATE.APPLICATION_LIST_ALL]: createThunkReducer(actionTypes.APPLICATION_LIST_ALL),
     [STATE.APPLICATION_CREATE]: createThunkReducer(actionTypes.APPLICATION_CREATE),
     [STATE.APPLICATION_UPDATE]: createThunkReducer(actionTypes.APPLICATION_UPDATE),
     [STATE.APPLICATION_ITEM]: createThunkReducer(actionTypes.APPLICATION_ITEM),

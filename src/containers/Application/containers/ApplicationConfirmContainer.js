@@ -32,6 +32,11 @@ const getInitialValues = data => {
     commissions: prop('commissions', data),
     experts: prop('experts', data),
     expertsPlace: prop('expertsPlace', data),
+    plan: prop('plan', data),
+    notice: prop('notice', data),
+    command: prop('command', data),
+    audits: prop('audits', data),
+    documentNews: prop('documentNews', data),
 
   }
 }

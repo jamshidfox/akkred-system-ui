@@ -1,5 +1,5 @@
 // export const DOMAIN_URL = 'http://localhost:8000'
-export const DOMAIN_URL = 'http://akkred.uz:8080'
+export const DOMAIN_URL = 'https://akkred.uz:8080'
 export const API_URL = `${DOMAIN_URL}`
 
 const MAIN = 'main'
@@ -68,6 +68,7 @@ export const DOC_LIST = `/${MAIN}/documents`
 
 export const APPLICATION = 'main/applications'
 export const APPLICATION_LIST = `/${APPLICATION}/`
+export const APPLICATION_LIST_ALL = `/${APPLICATION}/all`
 export const APPLICATION_CREATE = `/${APPLICATION}/`
 export const APPLICATION_UPDATE = `/${APPLICATION}/%d/`
 export const APPLICATION_DELETE = `/${APPLICATION}/%d/`

@@ -10,7 +10,7 @@ import { sprintf } from 'sprintf-js'
 import { Table, TableCol, TableRow, TableColRight } from '../../../../../components/Table'
 import { MediumButton, SecondarySmallButton } from '../../../../../components/UI'
 import * as ROUTES from '../../../../../constants/routes'
-import ApplicationClientDocument from "../../ApplicationClientDocuments";
+import ApplicationClientDocument from '../../ApplicationClientDocuments'
 
 const AddBtn = styled(SecondarySmallButton)`
 `
@@ -30,10 +30,12 @@ const ExpertsList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={12}> <a style={{
-          color: 'blue'
-        }} href={assignment && assignment.file}>Задача</a></td>
         <td colSpan={12}>{expert && expert.fullName}</td>
+        <td colSpan={12} style={{
+          color: '#0f22ff'
+        }}><a style={{
+            color: '#0f22ff'
+          }} href={`${assignment && assignment.file}`}>hujjat</a></td>
 
       </TableRow>
     )
@@ -41,8 +43,8 @@ const ExpertsList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={12} >assignment </th>
-      <th colSpan={12} >expert </th>
+      <th colSpan={12} >Expert </th>
+      <th colSpan={12} >Hujjat </th>
     </TableRow>
   const table =
     <Table

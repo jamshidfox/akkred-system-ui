@@ -9,8 +9,6 @@ import {
 import { Modal } from '../../../../../components/UI'
 import { MediumButton } from '../../../../../components/UI/Buttons'
 import { FieldWrapper } from '../../../../../components/StyledElems'
-import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
-import { Col } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
 import { TYPE_EXPERTS, ADDRESS_TYPE } from '../../../../../constants/backend'
 
@@ -40,7 +38,7 @@ const ExpertsCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="date"
-                  label="date"
+                  label="data"
                   component={DateField}
                 />
               </FieldWrapper>
@@ -48,7 +46,7 @@ const ExpertsCreateModal = props => {
               <FieldWrapper >
                 <Field
                   name="type"
-                  label="Роль эксперта "
+                  label="Ekspertning roli"
                   component={UniversalStaticSelectField}
                   list={TYPE_EXPERTS}
                 />
@@ -57,7 +55,7 @@ const ExpertsCreateModal = props => {
               <FieldWrapper >
                 <Field
                   name="address"
-                  label="Аддресс"
+                  label="Manzili"
                   component={UniversalStaticSelectField}
                   list={ADDRESS_TYPE}
                 />
@@ -72,16 +70,9 @@ const ExpertsCreateModal = props => {
                 />
               </FieldWrapper>
 
-              {/*<FieldWrapper>*/}
-              {/*  <Field*/}
-              {/*    component={FileUploadField}*/}
-              {/*    name={'file'}*/}
-              {/*    label={'file '}*/}
-              {/*  />*/}
-              {/*</FieldWrapper>*/}
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Tanlanash</MediumButton>
               </div>
             </form>
           )

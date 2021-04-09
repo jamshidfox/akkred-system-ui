@@ -62,7 +62,7 @@ const Phase = props => {
                   ? (<div >
                     <MediumButton style={{
                       background: '#2541ff'
-                    }} onClick={waitModalOpen()}>Буйуртмачини жавобини кутиш</MediumButton>
+                    }} onClick={waitModalOpen()}>Buyurtmachini javobini kutish</MediumButton>
                   </div>)
                   : (<div style={{
                     display: 'flex'

@@ -5,19 +5,19 @@ import Document from '../../icons/Document'
 
 export default [
   {
-    name: 'Заявки',
+    name: 'Arizalar',
     icon: Document,
     children: [
       {
-        name: 'Новые',
+        name: 'Yangilar',
         url: ROUTES.APPLICATION_MY_ORDERS_URL,
         tabs: [
           {
-            name: 'Мои заявки',
+            name: 'Mening arizalarim',
             url: ROUTES.APPLICATION_MY_ORDERS_URL
           },
           {
-            name: 'Все заявки',
+            name: 'Barcha arizalar',
             url: ROUTES.APPLICATION_ORDERS_URL
           }
         ]

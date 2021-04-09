@@ -31,6 +31,25 @@ const getClientItemParams = (onComplete) => ({
 const EMPTY_ARR = []
 
 const getInitialValues = data => {
+  const clientInfo = {
+    objectFullName: prop('objectFullName', data),
+    objectLegalAddress: prop('objectLegalAddress', data),
+    objectFactAddress: prop('objectFactAddress', data),
+    objectPhoneNumber: prop('objectPhoneNumber', data),
+    objectSite: prop('objectSite', data),
+    objectEmail: prop('objectEmail', data),
+    object_inn: prop('objectInn', data),
+    legalEntityFullName: prop('legalEntityFullName', data),
+    legalEntityPhoneNumber: prop('legalEntityPhoneNumber', data),
+    legalEntityEmail: prop('legalEntityEmail', data),
+    bankName: prop('bankName', data),
+    bankInn: prop('bankInn', data),
+    bankMfo: prop('bankMfo', data),
+    paymentAccount: prop('paymentAccount', data),
+    oked: prop('oked', data),
+    soogu: prop('soogu', data),
+  }
+
   return {
 
     id: prop('id', data),
@@ -59,9 +78,9 @@ const getInitialValues = data => {
     documentNews: prop('documentNews', data),
     documents: prop('documents', data),
 
-    clientInfo: prop('client', data),
+    clientInfo: clientInfo,
     executor: prop('executor', data),
-    client: path(['client', 'id'], data),
+    // client: path(['client', 'id'], data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     proficiencyTestingProvider: prop('proficiencyTestingProvider', data),
     executors: prop('executors', data),

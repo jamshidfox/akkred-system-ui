@@ -3,6 +3,8 @@ import Layouts from '../../components/Layouts/Layout'
 
 import ApplicationCreateContainer from './containers/ApplicationCreateContainer'
 import ApplicationListContainer from './containers/ApplicationListContainer'
+import ApplicationMyListContainer from './containers/ApplicationMyListContainer'
+
 import ApplicationUpdateContainer from './containers/ApplicationUpdateContainer'
 import ApplicationItemContainer from './containers/ApplicationItemContainer'
 import ApplicationConfirmContainer from './containers/ApplicationConfirmContainer'
@@ -41,7 +43,7 @@ export default () => [
     exact: true,
     path: ROUTES.APPLICATION_MY_ORDERS_PATH,
     layout: Layouts,
-    component: ApplicationListContainer
+    component: ApplicationMyListContainer
   },
   {
     exact: true,
