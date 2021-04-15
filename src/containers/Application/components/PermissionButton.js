@@ -346,7 +346,7 @@ const PermissionButton = props => {
             paddingRight: '20px'
 
           }} >
-            <MediumButton >Baholashda ishtirok etgan ekspertlar bazadan tanlanadi 30</MediumButton>
+            <MediumButton >Baholashda ishtirok etgan ekspertlar bazadan tanlanadi </MediumButton>
           </div>
         </Link>
 
@@ -400,7 +400,7 @@ const PermissionButton = props => {
             paddingRight: '20px'
 
           }} >
-            <MediumButton >    Reja va xabarnoma tasqidlanadi</MediumButton>
+            <MediumButton >Reja va xabarnoma tasqidlanadi</MediumButton>
           </div>
         </Link>
 
@@ -676,7 +676,7 @@ const PermissionButton = props => {
               paddingRight: '20px'
 
             }} >
-              <MediumButton>Reesrda ro’yhatga olish</MediumButton>
+              <MediumButton>Reestrda ro’yhatga olish</MediumButton>
             </div>
           </Link>
 

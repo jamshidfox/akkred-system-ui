@@ -106,6 +106,60 @@ export const applicationRejectAction = (id) => {
 }
 
 export const applicationFetchList = params => {
+  params = {
+    status_stage: '0'
+  }
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.APPLICATION_LIST, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_LIST
+    })
+  }
+}
+
+export const applicationExpertiseFetchList = params => {
+  params = {
+    status_stage: '1'
+  }
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.APPLICATION_LIST, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_LIST
+    })
+  }
+}
+
+export const applicationAuditFetchList = params => {
+  params = {
+    status_stage: '2'
+  }
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.APPLICATION_LIST, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_LIST
+    })
+  }
+}
+
+export const applicationComissionsFetchList = params => {
+  params = {
+    status_stage: '3'
+  }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.APPLICATION_LIST, { params })
@@ -122,9 +176,9 @@ export const applicationFetchList = params => {
 export const applicationFetchListAll = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-        .get(API.APPLICATION_LIST_ALL, { params })
-        .then(getPayloadFromSuccess)
-        .catch(getPayloadFromError)
+      .get(API.APPLICATION_LIST_ALL, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
 
     return dispatch({
       payload,

@@ -79,7 +79,9 @@ const ApplicationList = props => {
   const tableList = listData.map(application => {
     const {
       id,
-      client,
+      objectFullName,
+      objectFactAddress,
+      objectEmail,
       status,
       registerDate,
     } = application
@@ -109,10 +111,10 @@ const ApplicationList = props => {
         key={id}
       >
         <td colSpan={2}>Завка №{id}/{registerDate}</td>
-        <td colSpan={8}>{client.fullNameOrgan}</td>
+        <td colSpan={8}>{objectFullName}</td>
 
-        <td colSpan={6}>{client.address}</td>
-        <td colSpan={4}>{client.email}</td>
+        <td colSpan={6}>{objectFactAddress}</td>
+        <td colSpan={4}>{objectEmail}</td>
         <td colSpan={4}><Status color={statusColor}>
           {statusText}
         </Status> </td>

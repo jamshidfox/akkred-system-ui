@@ -109,7 +109,6 @@ const ApplicationDetail = props => {
 
   return (
     <BoxUI>
-      {/* <PageTitle name="Заявка" /> */}
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
@@ -138,7 +137,6 @@ const ApplicationDetail = props => {
           return (
             <form onSubmit={handleSubmit}>
               <NoopFields names={['docId', 'arrId']} />
-              <Label>Основная информация</Label>
 
               <Row gutter={24}>
 

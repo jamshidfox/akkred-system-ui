@@ -84,6 +84,8 @@ const getInitialValues = data => {
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     proficiencyTestingProvider: prop('proficiencyTestingProvider', data),
     executors: prop('executors', data),
+    history: prop('history', data),
+    historyPay: prop('historyPay', data),
     experts: prop('experts', data),
     contracts: prop('contracts', data),
     contractPlace: prop('contractPlace', data),

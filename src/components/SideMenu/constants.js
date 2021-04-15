@@ -22,123 +22,67 @@ export default [
           }
         ]
       },
-      // {
-      //   name: 'QABUL QILINGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'SHARTNOMA RASMIYLASHTIRILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'TO’LOV JARAYONIDA',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'EKSPERTIZA',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'AUDIT UCHUN SHARTNOMA RASMIYLASHTIRILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'AUDIT UCHUN TO’LOV JARAYONIDA',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'REJA VA BUYRUQ RASMIYLASHTIRILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'JOYIDA BAHOLASH',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'NOMUVOFIQLIKLARNI BARTARAF ETISH UCHUN MUDDAT BERILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: '\n' +
-      //     'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA BARTARAF ETISH BUYICHA REJA TAQDIM ETILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'ARIZACHI TOMINIDAN NOMUVOFIQLIKLARNI AMALDA BARTARAF ETILGANLIGI TO’G’RISIDA XISOBOT TAQDIM ETILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF ETILGANLIGINI O’RGANISH UCHUN BUYRUQ RASMIYLASHTIRILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'NOMUVOFIQLIKLARNI AMALDA BARTARAF ETILGANLIGINI O’RGANISH',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'DAVLAT REESTRIGA KIRITILGAN VA GUVOHNOMA RASMIYLASHTIRILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'POST AKKREDITATSIAION HUJJATLAR RASMIYLASHTIRILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'QO’SHIMCHA MUDDAT BERILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
-      // {
-      //   name: 'RAD ETILGAN',
-      //   url: ROUTES.APPLICATION_TESTS_URL,
-      // },
+
+      {
+        name: 'EKSPERTIZA',
+        url: ROUTES.APPLICATION_EXPERTISE_URL,
+      },
+
+      {
+        name: 'AUDIT',
+        url: ROUTES.APPLICATION_AUDIT_URL,
+      },
+
+      {
+        name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
+        url: ROUTES.APPLICATION_ACCRED_URL,
+      },
     ]
     // a.mamanazarov@tace.uz
   },
   {
-    name: 'Эксперты',
+    name: 'Mutaxassislar bo\'limi',
     children: [
 
       {
-        name: ' Экспертиза',
+        name: ' Ekspertiza',
         url: ROUTES.EXPERT_EXPERTISE_LIST_URL,
       },
       {
-        name: 'Оценка',
+        name: 'Baholash',
         url: ROUTES.EXPERT_PLACE_LIST_URL,
       },
     ],
+    perms: ['expert'],
     icon: People,
   },
 
   {
-    name: 'Бухгалтерия',
+    name: 'Buxgalteriya bo\'limi',
     children: [
 
       {
-        name: 'Договор на экспертизу',
+        name: 'Ekspertiza shartnomasi',
         url: ROUTES.CONTRACT_LIST_URL,
       },
       {
-        name: 'Договор на оценку',
+        name: 'Baholash shartnomasi',
         url: ROUTES.CONTRACT_PLACE_LIST_URL,
       },
     ],
+    perms: ['accountant'],
     icon: People,
   },
   {
-    name: 'Akrreditatsiya komissiyasi ',
+    name: 'Akrreditatsiya komissiyasi bo\'limi ',
     url: ROUTES.COMMISSION_LIST_URL,
     icon: People,
-    perms: ['some_perms'],
+    perms: ['director'],
   },
   {
-    name: 'Реестр ',
+    name: 'Reestr ',
     url: ROUTES.REESTR_LIST_URL,
-    perms: ['some_perms'],
+    perms: ['executor'],
   },
   // {
   //   name: 'Сотрудники',

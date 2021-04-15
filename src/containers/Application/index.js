@@ -3,6 +3,9 @@ import Layouts from '../../components/Layouts/Layout'
 
 import ApplicationCreateContainer from './containers/ApplicationCreateContainer'
 import ApplicationListContainer from './containers/ApplicationListContainer'
+import ApplicationExpertiseListContainer from './containers/ApplicationExpertiseListContainer'
+import ApplicationAuditListContainer from './containers/ApplicationAuditListContainer'
+import ApplicationAccredCommissionstListContainer from './containers/ApplicationAccredCommissionstListContainer'
 import ApplicationMyListContainer from './containers/ApplicationMyListContainer'
 
 import ApplicationUpdateContainer from './containers/ApplicationUpdateContainer'
@@ -56,5 +59,24 @@ export default () => [
     path: ROUTES.APPLICATION_CONFIRM_URL,
     layout: Layouts,
     component: ApplicationConfirmContainer
-  }
+  },
+  {
+    exact: true,
+    path: ROUTES.APPLICATION_EXPERTISE_URL,
+    layout: Layouts,
+    component: ApplicationExpertiseListContainer
+  },
+
+  {
+    exact: true,
+    path: ROUTES.APPLICATION_AUDIT_URL,
+    layout: Layouts,
+    component: ApplicationAuditListContainer
+  },
+  {
+    exact: true,
+    path: ROUTES.APPLICATION_ACCRED_URL,
+    layout: Layouts,
+    component: ApplicationAccredCommissionstListContainer
+  },
 ]

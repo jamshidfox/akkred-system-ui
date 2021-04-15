@@ -197,6 +197,21 @@ export const documentType = getFormattedListData([
 
 ])
 
+export const historyStatus = getFormattedListData([
+  {
+    id:'open',
+    name:'Открыто',
+  },
+  {
+    id:'pros',
+    name:'Данный этап',
+  },
+  {
+    id:'closed',
+    name:'Закрыто',
+  },
+
+])
 export const documentPlanOrderType = getFormattedListData([
   {
     id:'process',
