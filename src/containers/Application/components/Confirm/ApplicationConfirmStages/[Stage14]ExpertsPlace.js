@@ -50,18 +50,25 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal })
           return (
             <form onSubmit={handleSubmit}>
 
-              <Label>Reja</Label>
-
               <Row gutter={24}>
 
-                <Col span={12}>
+                <Col span={8}>
+                  <Field
+                    name="leadExpert"
+                    label="Guruh rahbari"
+                    component={UniversalSearchField}
+                    api={API.EMPLOYEES_LIST}
+                  />
+                </Col>
+
+                <Col span={8}>
                   <Field
                     name="plan"
                     label="Reja"
                     component={FileUploadField}
                   />
                 </Col>
-                <Col span={12}>
+                <Col span={8}>
                   <Field
                     name="notice"
                     label="Xabarnoma"

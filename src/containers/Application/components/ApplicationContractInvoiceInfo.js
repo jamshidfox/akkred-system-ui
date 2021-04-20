@@ -67,8 +67,8 @@ const ApplicationContractInvoiceInfo = props => {
   const tableHead =
     <TableRow header={true}>
       <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={4} >Миқдори </th>
-      <th colSpan={4} >Ставкаси </th>
+      <th colSpan={4} >Ставкаси</th>
+      <th colSpan={4} >Миқдори</th>
       <th colSpan={4} >Нархи</th>
       <th colSpan={4} >Статус </th>
       <th colSpan={4} >Контракт </th>
@@ -85,12 +85,13 @@ const ApplicationContractInvoiceInfo = props => {
   const tablePlaceList = contractPlace.map(client => {
     const {
       id,
-      price,
-      rate,
-      count,
-      totalAmount,
+      name,
+      rateType,
       file,
+      count,
       status,
+      totalAmount,
+      paymentType,
     } = client
 
     const statusText = documentPlanOrderType.object[status]
@@ -101,35 +102,36 @@ const ApplicationContractInvoiceInfo = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={5}>{price}</td>
-        <td colSpan={5}>{rate}</td>
-        <td colSpan={5}>{count}</td>
-        <td colSpan={3}>{totalAmount}</td>
-        <td colSpan={2}><Status color={statusColor}>
+        <td colSpan={4}>{name}</td>
+        <td colSpan={2}>{rateType}</td>
+        <td colSpan={2}>{count}</td>
+        <td colSpan={4}>{totalAmount}</td>
+        <td colSpan={4}><Status color={statusColor}>
           {statusText}
         </Status> </td>
-        <td colSpan={2} style={{
+        <td colSpan={4} style={{
           color: '#0f22ff'
         }}><a style={{
-            color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Baholash shartnomasi</a></td>
-        <td colSpan={2} style={{
+          color: '#0f22ff'
+        }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Shartnoma</a></td>
+        <td colSpan={4} style={{
           color: '#0f22ff'
         }}><a style={{
-            color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/media/${file && file.file}`}>Акт</a></td>
+          color: '#0f22ff'
+        }} href={`${API_URL}/media/${file}`}>Ekspertiza xulosasi</a></td>
 
       </TableRow>
     )
   })
   const tablePlaceHead =
     <TableRow header={true}>
-      <th colSpan={5} >Цена </th>
-      <th colSpan={5} >Ставка </th>
-      <th colSpan={5} >Количество </th>
-      <th colSpan={5} >Общее </th>
-      <th colSpan={2} >Контракт </th>
-      <th colSpan={2} >Акт </th>
+      <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
+      <th colSpan={2} >Миқдори </th>
+      <th colSpan={2} >Ставкаси </th>
+      <th colSpan={4} >Нархи</th>
+      <th colSpan={4} >Status </th>
+      <th colSpan={4} >Shartnoma </th>
+      <th colSpan={4} >Ekspertiza xulosasi </th>
     </TableRow>
   const tablePlace =
     <Table

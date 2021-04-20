@@ -59,7 +59,7 @@ export const STANDART_LIST = [
 ]
 
 export const TYPE_EXPERTS = [
-  { id: 'lead', name: 'Guruh rahbari' },
+  // { id: 'lead', name: 'Guruh rahbari' },
   { id: 'member', name: 'Guruh a’zosi' },
   { id: 'ekspert', name: 'Texnik ekspert' },
   { id: 'watcher', name: 'Kuzatuvchi' },

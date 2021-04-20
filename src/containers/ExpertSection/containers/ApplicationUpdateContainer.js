@@ -22,7 +22,7 @@ const getInitialValues = (data) => {
     status: prop('status', data),
     statusAssignment: prop('statusAssignment', data),
     application: path(['application', 'id'], data),
-    file: path(['assignment', 'file'], data),
+    assignment: path(['assignment', 'file'], data),
     case: prop('case', data),
     comments: prop('comments', data),
     closedDate: prop('closedDate', data),

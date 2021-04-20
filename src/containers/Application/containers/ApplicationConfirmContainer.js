@@ -27,6 +27,7 @@ const getClientItemParams = (onComplete) => ({
 const getInitialValues = data => {
   return {
 
+    id: prop('id', data),
     contracts: prop('contracts', data),
     contractPlace: prop('contractPlace', data),
     commissions: prop('commissions', data),
@@ -100,7 +101,7 @@ const ApplicationConfirmContainer = props => {
     const notice = path(['notice', 'id'], values)
     const privacy = path(['privacy', 'id'], values)
     const noticeFinal = path(['noticeFinal', 'id'], values)
-    const post_accred = path(['postaccred', 'id'], values)
+    const postAccred = path(['postaccred', 'id'], values)
     const listAttendees = path(['listAttendees', 'id'], values)
     const observationMap = path(['observationMap', 'id'], values)
     const nonConformities = path(['nonConformities', 'id'], values)
@@ -108,6 +109,7 @@ const ApplicationConfirmContainer = props => {
     const documentOne = path(['documentOne', 'id'], values)
     const documentTwo = path(['documentTwo', 'id'], values)
     const documentThree = path(['documentThree', 'id'], values)
+    const leadExpert = path(['leadExpert', 'id'], values)
     const newDAta = getSerializedData([
       'executors',
       'executor',
@@ -137,7 +139,7 @@ const ApplicationConfirmContainer = props => {
       notice,
       plan,
       command,
-      post_accred,
+      post_accred:postAccred,
       privacy:privacy,
       list_attendees:listAttendees,
       observation_map:observationMap,
@@ -146,6 +148,7 @@ const ApplicationConfirmContainer = props => {
       document_one:documentOne,
       document_two:documentTwo,
       document_three:documentThree,
+      lead_expert:leadExpert,
     }
     confirmModal.onClose()
     dispatch(applicationConfirmAction(params.id, data))

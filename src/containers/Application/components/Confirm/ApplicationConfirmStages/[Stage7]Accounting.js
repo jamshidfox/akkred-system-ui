@@ -18,6 +18,8 @@ const PageTitleNew = styled(PageTitle)`
 `
 const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) => {
   const contracts = prop('contracts', initialValues)
+  const idAp = prop('id', initialValues)
+    console.warn(initialValues)
 
   const tableList = contracts.map(client => {
     const {
@@ -43,7 +45,7 @@ const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) 
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications//pdf`}>Договор</a></td>
+          }} href={`http://127.0.0.1:8000/main/applications/${idAp}/pdf`}>Договор</a></td>
 
       </TableRow>
     )
@@ -51,8 +53,8 @@ const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) 
   const tableHead =
     <TableRow header={true}>
       <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={4} >Миқдори </th>
       <th colSpan={4} >Ставкаси </th>
+      <th colSpan={4} >Миқдори</th>
       <th colSpan={4} >Нархи</th>
       <th colSpan={4} >To’lov turi </th>
       <th colSpan={4} >Контракт </th>

@@ -7,6 +7,7 @@ import {
 } from '../../../../../components/FormField'
 import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
+import {API_URL} from "../../../../../constants/api";
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -18,12 +19,14 @@ const PageTitleNew = styled(PageTitle)`
 `
 const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, application }) => {
   const contracts = prop('contractPlace', initialValues)
+  const idAp = prop('id', initialValues)
 
   const tableList = contracts.map(client => {
     const {
       id,
       name,
       rateType,
+      file,
       count,
       totalAmount,
       paymentType,
@@ -35,15 +38,20 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
         key={id}
       >
         <td colSpan={4}>{name}</td>
-        <td colSpan={4}>{rateType}</td>
-        <td colSpan={4}>{count}</td>
+        <td colSpan={2}>{rateType}</td>
+        <td colSpan={2}>{count}</td>
         <td colSpan={4}>{totalAmount}</td>
         <td colSpan={4}>{paymentType}</td>
         <td colSpan={4} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications//pdf`}>Shartnoma</a></td>
+          }} href={`http://127.0.0.1:8000/main/applications/${idAp}/pdf`}>Shartnoma</a></td>
+          <td colSpan={4} style={{
+              color: '#0f22ff'
+          }}><a style={{
+              color: '#0f22ff'
+          }} href={`${API_URL}/media/${file}`}>Ekspertiza xulosasi</a></td>
 
       </TableRow>
     )
@@ -51,11 +59,12 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
   const tableHead =
     <TableRow header={true}>
       <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={4} >Миқдори </th>
-      <th colSpan={4} >Ставкаси </th>
+      <th colSpan={2} >Миқдори </th>
+      <th colSpan={2} >Ставкаси </th>
       <th colSpan={4} >Нархи</th>
       <th colSpan={4} >To’lov turi </th>
-      <th colSpan={4} >Контракт </th>
+      <th colSpan={4} >Shartnoma </th>
+      <th colSpan={4} >Ekspertiza xulosasi </th>
     </TableRow>
   const table =
     <Table

@@ -46,6 +46,9 @@ const ConfirmStageTwoChoiceExecutor = ({ onSubmit }) => {
                     label="Ijrochi 1"
                     component={UniversalSearchField}
                     api={API.EMPLOYEES_LIST}
+                    params={{
+                        executor: '0'
+                    }}
                   />
                 </Col>
               </Row>

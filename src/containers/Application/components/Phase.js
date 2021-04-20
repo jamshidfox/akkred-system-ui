@@ -30,11 +30,8 @@ const Status = styled('div')`
 `
 
 const Phase = props => {
-  const { id, stage, initialValues } = props
+  const { id, stage,historyStage ,historyPay} = props
 
-  const history = prop('history', initialValues)
-  const historyPay = prop('historyPay', initialValues)
-  console.warn(initialValues)
   const onCreateApplication = () => {
 
   }
@@ -48,11 +45,12 @@ const Phase = props => {
       <th colSpan={12} >Статус </th>
     </TableRow>
 
-  const tableDocList = history.map(client => {
+  const tableDocList = historyStage.map(client => {
     const {
       id,
       name,
-      status
+      status,
+      role,
 
     } = client
 
@@ -64,8 +62,9 @@ const Phase = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={12}>{name}</td>
-        <td colSpan={12}>  <Status color={statusColor}>
+        <td colSpan={8}>{name}</td>
+        <td colSpan={8}>{role}</td>
+        <td colSpan={8}>  <Status color={statusColor}>
           {statusText}
         </Status> </td>
 
@@ -74,7 +73,7 @@ const Phase = props => {
   })
   const tableDoc =
     <Table
-      isEmpty={isEmpty(history)}
+      isEmpty={isEmpty(historyStage)}
     >
       {tableHeadDoc}
       {tableDocList}
@@ -84,8 +83,9 @@ const Phase = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={12} >Наименование </th>
-      <th colSpan={12} >Статус </th>
+      <th colSpan={8} >Наименование </th>
+      <th colSpan={8} >Роль </th>
+      <th colSpan={8} >Статус </th>
     </TableRow>
 
   const tableList = historyPay.map(client => {
@@ -116,7 +116,7 @@ const Phase = props => {
     <Table
       isEmpty={isEmpty(historyPay)}
     >
-      <PageTitle name="Ariza " />
+      <PageTitle name="Ariza" />
       {tableHead}
       {tableList}
     </Table>
@@ -185,7 +185,7 @@ const Phase = props => {
 }
 
 Phase.defaultProps = {
-  history: [],
+  historyStage: [],
   historyPay: [],
 }
 

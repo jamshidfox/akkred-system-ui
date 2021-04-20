@@ -91,6 +91,9 @@ const ApplicationTabs = props => {
   const postAccred = prop('postAccred', initialValues)
   const noticeFin = prop('noticeFinal', initialValues)
 
+  const historyStage = prop('history', initialValues)
+  const historyPay = prop('historyPay', initialValues)
+
   var noticeFinal = []
   noticeFinal.push(noticeFin)
   const offices = []
@@ -103,7 +106,7 @@ const ApplicationTabs = props => {
         // onChange={tabData.onTabChange}
       >
         <Tab value={'stage'} label={'Bosqich'}>
-          <Phase id={id} stage={stage} initialValues={initialValues} />
+          <Phase id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} historyPay={historyPay} />
         </Tab>
         <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationUserInfo clientInfo={clientInfo} />

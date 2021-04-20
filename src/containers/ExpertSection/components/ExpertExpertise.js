@@ -15,8 +15,8 @@ import {
 } from '../../../components/FormField'
 import { ExpertsCreateModal } from '../../Application/components/Confirm/ExpertsPlace'
 import FileUploadField from '../../../components/FormField/File/FileUploadField'
+import * as API from '../../../constants/api'
 import ExpertsResultModal from './ExpertsResultModal'
-import * as API from '~/constants/api'
 
 const AddBtn = styled(SecondarySmallButton)`
 `
@@ -53,7 +53,7 @@ const ExpertExpertiseCreate = props => {
   const { onSubmit, initialValues, serviceModal } = props
   const onSubmitFalse = () => {
   }
-  const file = prop('file', initialValues)
+  const file = prop('assignment', initialValues)
   const statusAssignment = prop('statusAssignment', initialValues)
 
   return (
@@ -71,24 +71,17 @@ const ExpertExpertiseCreate = props => {
               <Row gutter={24}>
 
                 <Col span={8}>
-                  <Field name="statusAssignment" label="status" component={InputField} />
-                </Col>
-                <Col span={8}>
                   <Field name="application" label="application"
-                    api={API.APPLICATION_LIST}
+                    api={API.APPLICATION_LIST_ALL}
                     component={UniversalSearchField}
                   />
                 </Col>
               </Row>
               <Row gutter={24}>
-                {/* <Col span={4}> */}
-                {/*  <Field name="comments" label="comments" component={InputField} /> */}
-                {/* </Col> */}
-                {/* <Col span={4}> */}
-                {/*  <Field name="closedDate" label="closedDate" component={InputField} /> */}
-                {/* </Col> */}
-                <Col span={4}>
-                  <a href={`http://127.0.0.1:8000/media/${file}`}>Документ для экспертизы </a>
+                <Col span={4} >
+                  <a style={{
+                    color: 'blue'
+                  }} href={`${file}`}>Документ для экспертизы </a>
                 </Col>
               </Row>
 

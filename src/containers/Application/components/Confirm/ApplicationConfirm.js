@@ -1,7 +1,6 @@
 import React from 'react'
 import ApplicationConfirmDefault from './ApplicationConfirmStages/ApplicationConfirmDefault'
 import ConfirmStageTwoChoiceExecutor from './ApplicationConfirmStages/[Stage2]Executor'
-import ConfirmStageTwoChoiceExecutors from './ApplicationConfirmStages/[Stage5]Executors'
 import ConfirmStageContract from './ApplicationConfirmStages/[Stage6]Contract'
 import ConfirmStageAccounting from './ApplicationConfirmStages/[Stage7]Accounting'
 import ConfirmStageChoiceExperts from './ApplicationConfirmStages/[Stage10]Experts'
@@ -31,10 +30,6 @@ const ApplicationConfirm = props => {
   case 'stage_2':
     return (
       <ConfirmStageTwoChoiceExecutor onSubmit={onSubmit} />
-    )
-  case 'stage_3':
-    return (
-      <ConfirmStageTwoChoiceExecutors onSubmit={onSubmit} />
     )
   case 'stage_4':
     return (
@@ -120,19 +115,19 @@ const ApplicationConfirm = props => {
     )
   case 'stage_32':
     return (
-      <ConfirmAudit onSubmit={onSubmit} initialValues={initialValues} text={'Qabul qilish'} />
+      <ConfirmAudit onSubmit={onSubmit} initialValues={initialValues} text={'Tasdiqlash'} />
     )
   case 'stage_34':
     return (
-      <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Akrreditatsiya qilish'} />
+      <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
   case 'stage_35':
     return (
-      <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Maqulash'} />
+      <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
   case 'stage_36':
     return (
-      <ApplicationNoticeClient onSubmit={onSubmit} text={'Buyurtmachiga xabarnoma jo’natish'} />
+      <ApplicationNoticeClient onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
   case 'stage_37':
     return (
@@ -144,7 +139,7 @@ const ApplicationConfirm = props => {
     )
 
   default:
-    return <ApplicationConfirmDefault text={'Ro’yhatdan o’tkaziladi'} onSubmit={onSubmit} />
+    return <ApplicationConfirmDefault text={'Tasdiqlash'} onSubmit={onSubmit} />
   }
 }
 

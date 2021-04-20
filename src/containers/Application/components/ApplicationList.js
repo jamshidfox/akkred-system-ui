@@ -110,7 +110,9 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={2}>Завка №{id}/{registerDate}</td>
+        <td colSpan={2}><a style={{
+          color: 'blue'
+        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>Заявка №{id}/{registerDate}</a> </td>
         <td colSpan={8}>{objectFullName}</td>
 
         <td colSpan={6}>{objectFactAddress}</td>

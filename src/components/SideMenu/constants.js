@@ -53,7 +53,6 @@ export default [
         url: ROUTES.EXPERT_PLACE_LIST_URL,
       },
     ],
-    perms: ['expert'],
     icon: People,
   },
 
@@ -77,7 +76,7 @@ export default [
     name: 'Akrreditatsiya komissiyasi bo\'limi ',
     url: ROUTES.COMMISSION_LIST_URL,
     icon: People,
-    perms: ['director'],
+    perms: ['commission'],
   },
   {
     name: 'Reestr ',

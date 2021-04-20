@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { prop, propOr } from 'ramda'
+import { prop, path,propOr } from 'ramda'
 import PropTypes from 'prop-types'
 import { storageData } from 'utils/storage'
 import { mapResponseToFormError } from '../../utils/form'
@@ -153,10 +153,11 @@ const SideMenu = props => {
   // Data
   const userInfo = useSelector(prop(STATES.USER_INFO))
   const userInfoData = prop('data', userInfo)
+  const username = path(['user','username'], userInfoData)
 
   // Const
   const fullName = propOr('E-accreditation', 'fullName', userInfoData)
-  const email = propOr('Email не указан', 'email', userInfoData)
+  const email = propOr('Email не указан', 'email', username)
 
   // Handlers
   const handleToggleMenu = () => {
@@ -190,7 +191,7 @@ const SideMenu = props => {
             withSubtitle={!!email}
           >
             <h2>{fullName}</h2>
-            {email && <h3>{email}</h3>}
+            {username && <h3>{username}</h3>}
           </Title>}
         </MenuWrapper>
         <MenuList>

@@ -46,7 +46,7 @@ const PermissionButton = props => {
             paddingRight: '20px'
 
           }} >
-            <MediumButton >Ijrochini Tanlash </MediumButton>
+            <MediumButton >Case Manager Tanlash </MediumButton>
           </div>
         </Link>
 
@@ -64,7 +64,7 @@ const PermissionButton = props => {
             paddingRight: '20px'
 
           }} >
-            <MediumButton >Ijrochilani Tanlash </MediumButton>
+            <MediumButton >Case Manager tasdiqlash </MediumButton>
           </div>
         </Link>
 
@@ -567,32 +567,12 @@ const PermissionButton = props => {
             paddingBottom: '20px',
 
           }} >
-            <MediumButton>Akkreditatsiya komissiyasi rasmilashtiriladi</MediumButton>
+            <MediumButton>Akkreditatsiya komissiyasi yig’ilishinining bayonini rasmiylashtirish</MediumButton>
           </div>
         </Link>
 
       </Perms>
     )
-
-    // case 'stage_31':
-    //   return (
-    //     <Perms
-    //       perms={[headDepartment]}
-    //     >
-    //       <Link
-    //
-    //         to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-    //         <div style={{
-    //           paddingRight: '20px'
-    //
-    //         }} >
-    //           <MediumButton>Ijobiy Ekspertlar dalolatnomasi </MediumButton>
-    //         </div>
-    //       </Link>
-    //
-    //     </Perms>
-    //   )
-    //
   case 'stage_34':
     return (
       <Perms
@@ -607,7 +587,7 @@ const PermissionButton = props => {
               paddingRight: '20px'
 
             }} >
-              <MediumButton>Akrreditatsiya qilish </MediumButton>
+              <MediumButton>Bayon rasmiylashtirish</MediumButton>
             </div>
           </Link>
 
@@ -630,7 +610,7 @@ const PermissionButton = props => {
               paddingRight: '20px'
 
             }} >
-              <MediumButton>Maqulash</MediumButton>
+              <MediumButton>Akkreditasiya komissiyasi  bayonni tasdiqlash</MediumButton>
             </div>
           </Link>
 

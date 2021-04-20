@@ -38,7 +38,15 @@ const ExpertsCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="date"
-                  label="data"
+                  label="dan"
+                  component={DateField}
+                />
+              </FieldWrapper>
+
+              <FieldWrapper>
+                <Field
+                  name="toDate"
+                  label="gacha"
                   component={DateField}
                 />
               </FieldWrapper>
@@ -69,7 +77,6 @@ const ExpertsCreateModal = props => {
                   api={API.EMPLOYEES_LIST}
                 />
               </FieldWrapper>
-
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Tanlanash</MediumButton>
