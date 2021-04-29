@@ -67,34 +67,23 @@ const ExpertExpertiseCreate = props => {
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
               <Row gutter={24}>
-
-                <Col span={8}>
-                  <Field name="application" label="application"
-                    api={API.APPLICATION_LIST_ALL}
-                    component={UniversalSearchField}
-                  />
-                </Col>
-              </Row>
-              <Row gutter={24}>
-                <Col span={4} >
+                <Col span={20} >
                   <a style={{
                     color: 'blue'
                   }} href={`${file}`}>Документ для экспертизы </a>
                 </Col>
+
+                {statusAssignment === 'given' && (
+
+                  <Col span={4} >
+                    <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
+                  </Col>
+
+                )}
               </Row>
 
-              {statusAssignment === 'given' && (
-                <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
-
-              )}
-
               <ExpertsResultModal {...serviceModal} onSubmit={onSubmit} />
-
-              {/* <div style={{ textAlign: 'right' }}> */}
-              {/*  <MediumButton type={'submit'}>Сохранить</MediumButton> */}
-              {/* </div> */}
 
             </form>
           )

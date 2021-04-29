@@ -22,6 +22,7 @@ export const fields = [
   'phoneNumber',
   'lastName',
   'firstName',
+  'middleName',
   'role'
 ]
 
@@ -74,23 +75,22 @@ const ReservationCreate = props => {
                 </Col>
               </Row>
               <Row gutter={24}>
-                <Col span={4}>
-                  <Field name="fullName" label="Ф.И.O" component={InputField} />
-                </Col>
-                <Col span={4}>
+                <Col span={12}>
                   <Field name="email" label="mail" component={InputField} />
                 </Col>
-                <Col span={4}>
-                  <Field name="phoneNumber" label="phoneNumber" component={InputField} />
+                <Col span={12}>
+                  <Field name="phoneNumber" label="Номер телефона" component={InputField} />
                 </Col>
-                <Col span={4}>
-                  <Field name="lastName" label="lastName" component={InputField} />
+              </Row>
+              <Row gutter={24}>
+                <Col span={8}>
+                  <Field name="lastName" label="Фамилия" component={InputField} />
                 </Col>
-                <Col span={4}>
-                  <Field name="firstName" label="firstName" component={InputField} />
+                <Col span={8}>
+                  <Field name="firstName" label="Имя" component={InputField} />
                 </Col>
-                <Col span={4}>
-                  <Field name="middleName" label="middleName" component={InputField} />
+                <Col span={8}>
+                  <Field name="middleName" label="Отчество" component={InputField} />
                 </Col>
               </Row>
 

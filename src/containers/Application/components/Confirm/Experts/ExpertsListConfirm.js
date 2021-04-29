@@ -11,6 +11,7 @@ import { Table, TableCol, TableRow, TableColRight } from '../../../../../compone
 import { MediumButton, SecondarySmallButton } from '../../../../../components/UI'
 import * as ROUTES from '../../../../../constants/routes'
 import ApplicationClientDocument from '../../ApplicationClientDocuments'
+import {API_URL} from "../../../../../constants/api";
 
 const AddBtn = styled(SecondarySmallButton)`
 `
@@ -35,7 +36,7 @@ const ExpertsList = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${assignment && assignment.file}`}>hujjat</a></td>
+          }} href={`${API_URL}/media/${assignment && assignment.file.name}`}>hujjat</a></td>
 
       </TableRow>
     )

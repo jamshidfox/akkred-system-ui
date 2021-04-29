@@ -31,9 +31,9 @@ const OfficeList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8} >наименование </th>
-      <th colSpan={8} >адрес </th>
-      <th colSpan={8} >телефон </th>
+      <th colSpan={8} >Nomi </th>
+      <th colSpan={8} >Manzil </th>
+      <th colSpan={8} >Telefon raqami</th>
     </TableRow>
   const table =
     <Table
@@ -44,7 +44,6 @@ const OfficeList = props => {
     </Table>
   return (
     <>
-
 
       {table}
 

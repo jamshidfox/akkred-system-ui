@@ -7,6 +7,7 @@ import {
 } from '../../../../../components/FormField'
 import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
+import {API_URL} from "../../../../../constants/api";
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -19,7 +20,6 @@ const PageTitleNew = styled(PageTitle)`
 const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) => {
   const contracts = prop('contracts', initialValues)
   const idAp = prop('id', initialValues)
-    console.warn(initialValues)
 
   const tableList = contracts.map(client => {
     const {
@@ -45,7 +45,7 @@ const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) 
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${idAp}/pdf`}>Договор</a></td>
+          }} href={`${API_URL}/main/applications/${idAp}/pdf`}>Договор</a></td>
 
       </TableRow>
     )

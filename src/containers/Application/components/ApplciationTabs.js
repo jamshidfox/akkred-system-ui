@@ -3,13 +3,10 @@ import styled from 'styled-components'
 import { prop } from 'ramda'
 import { Tabs, Tab } from '../../../components/TabsDetail'
 import { Box } from '../../../components/StyledElems'
-import ApplicationCreate from './ApplicationCreate'
-import ApplicationUpdate from './ApplicationUpdate'
 import ApplicationUserInfo from './ApplicationUserInfo'
 import ApplicationAddInfo from './ApplicationAddInfo'
 import ApplicationContractInvoiceInfo from './ApplicationContractInvoiceInfo'
 import ApplicationExpertResult from './ApplicationExpertResult'
-import ApplicationItemTabOne from './Detail/Tabs/ApplicationItemTabOne'
 import ApplicationExpertPlaceResult from './ApplicationExpertPlaceResult'
 import ApplicationCommissionResult from './ApplicationCommissionResult'
 import ApplicationClientDocument from './ApplicationClientDocuments'
@@ -64,7 +61,7 @@ const ApplicationTabs = props => {
     staffList,
     mobileList,
 
-    accreditationList,
+    additionalActivityList,
 
     activityList,
 
@@ -120,10 +117,9 @@ const ApplicationTabs = props => {
             onCreateApplication={onCreateApplication}
             serviceList={serviceList}
             staffList={staffList}
-            officeList={offices}
+            additionalActivityList={additionalActivityList}
+            officeList={officeList}
             mobileList={mobileList}
-            accreditationList={accreditationList}
-            activityList={activityList}
             onTabChange={() => tabData.onTabChange(SERVICE)}
 
           />

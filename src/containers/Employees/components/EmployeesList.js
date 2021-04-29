@@ -34,16 +34,14 @@ const EmployeesList = props => {
   const data = prop('results', list)
   const loading = prop('loading', list)
   const count = path(['data', 'count'], list)
-  const linkAction = 'settings/employees/create'
+  const linkAction = 'create'
   const onDelete = () => {}
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8}>Ф.И.O</th>
-      <th colSpan={6}>Номер</th>
-      <th colSpan={3}>Адрес</th>
-      <th colSpan={4}>Email</th>
-      <th colSpan={4}>Должность</th>
-      <th colSpan={4}>Департамент</th>
+      <th colSpan={6}>login</th>
+      <th colSpan={4}>mail</th>
+      <th colSpan={12}>Ф.И.О</th>
+      {/*<th colSpan={6}>Должность</th>*/}
       <th colSpan={1} />
       <th colSpan={1} />
     </TableRow>
@@ -59,13 +57,11 @@ const EmployeesList = props => {
   const tableList = data.map(client => {
     const {
       id,
-      address ,
       firstName,
       lastName,
       mail,
-      phoneNumber,
+      username,
       role,
-      department,
     } = client
 
     // Render
@@ -74,12 +70,10 @@ const EmployeesList = props => {
         key={id}
         // onClick={handleRedirect}
       >
-        <td colSpan={8}>{firstName} {lastName}</td>
-        <td colSpan={6}>{phoneNumber}</td>
-        <td colSpan={3}>{address}</td>
+        <td colSpan={6}>{username} </td>
         <td colSpan={4}>{mail}</td>
-        <td colSpan={4}>фывыв</td>
-        <td colSpan={4}>ыфвфвфыв</td>
+        <td colSpan={12}>{firstName} {lastName}</td>
+        {/*<td colSpan={6}>{role.name}</td>*/}
 
         <td colSpan={1}>
           <Link style={style} to={sprintf(EMPLOYEES_UPDATE_URL, id)} ><img src={Edit} alt="Edit" /></Link>

@@ -11,19 +11,27 @@ import ExpertExpertiseCreate from '../components/ExpertExpertise'
 import * as ROUTES from '../../../constants/routes'
 import { mapResponseToFormError } from '../../../utils/form'
 
-const EMPTY_ARR = []
 const getEmployerItemParams = () => ({
   action: clientFetchItem,
   stateName: STATE.COMMISSION_ITEM,
 })
 
 const getInitialValues = (data) => {
-  console.warn(data,'data')
-
   return ({
     answerType: prop('answerType', data),
     application: path(['application', 'id'], data),
     comments: prop('comments', data),
+    documentNews: path(['application', 'documentNews'], data),
+    contractPlace: path(['application', 'contractPlace'], data),
+    contracts: path(['application', 'contracts'], data),
+    notice: path(['application', 'notice'], data),
+    plan: path(['application', 'plan'], data),
+    resultsPlace: path(['application', 'resultsPlace'], data),
+    additionalDocs: path(['application', 'additionalDocs'], data),
+    audits: path(['application', 'audits'], data),
+    command: path(['application', 'command'], data),
+    results: path(['application', 'results'], data),
+    postAccred: path(['application', 'postAccred'], data),
   })
 }
 
@@ -39,7 +47,6 @@ const EmployeesUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
   const initialValues = getInitialValues(data)
-  const updateData = useUpdate(getEmployeesUpdateParams())
 
   const confirmSubmit = values => {
     const newDAta = getSerializedData([

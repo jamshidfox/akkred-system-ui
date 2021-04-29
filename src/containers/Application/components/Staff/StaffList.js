@@ -24,9 +24,9 @@ const StaffList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>{name}</td>
-        <td colSpan={6}>{address}</td>
-        <td colSpan={6}>{phoneNumber}</td>
+        <td colSpan={8}>{name}</td>
+        <td colSpan={8}>{address}</td>
+        <td colSpan={8}>{phoneNumber}</td>
 
       </TableRow>
     )
@@ -34,9 +34,9 @@ const StaffList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6} >наименование </th>
-      <th colSpan={6} >адрес </th>
-      <th colSpan={6} >телефон </th>
+      <th colSpan={8} >F.I.Sh</th>
+      <th colSpan={8} >Manzil </th>
+      <th colSpan={8} >Telefon raqami</th>
     </TableRow>
   const table =
     <Table

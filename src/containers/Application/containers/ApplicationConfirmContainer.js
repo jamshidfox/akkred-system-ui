@@ -16,7 +16,7 @@ import ApplicationConfirm from '../components/Confirm/ApplicationConfirm'
 import * as ROUTES from '../../../constants/routes'
 import * as STATE from '../../../constants/stateNames'
 import ApplciationTabs from '../components/ApplciationTabs'
-import { mapBranches, mapExperts, mapExpertsPlace } from './utils'
+import {mapBranches, mapDocument, mapExperts, mapExpertsPlace, mapTravelData} from './utils'
 
 const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
@@ -38,6 +38,7 @@ const getInitialValues = data => {
     command: prop('command', data),
     audits: prop('audits', data),
     documentNews: prop('documentNews', data),
+    additionalDocs: prop('additionalDocs', data),
 
   }
 }
@@ -50,8 +51,40 @@ const ApplicationConfirmContainer = props => {
   const placeModal = useModal({ key: 'placeModal' })
 
   const [expertList, setExpertList] = useState(EMPTY_ARR)
+  const [documentList, setDocumentList] = useState(EMPTY_ARR)
   const [expertPlaceList, setExpertPlaceList] = useState(EMPTY_ARR)
+  const [travelDataList, setTravelDataList] = useState(EMPTY_ARR)
   const confirmModal = useModal({ key: 'confirmModal' })
+  const documentModal = useModal({ key: 'documentModal' })
+  const travelDataModal = useModal({ key: 'travelDataModal' })
+
+  const onAddTravelData = document => {
+    setTravelDataList([...travelDataList, document])
+    travelDataModal.onClose()
+  }
+
+  const onDeleteTravelData = (document) => {
+    travelDataList.forEach((element, index) => {
+      if (element.id === document.id) {
+        travelDataList.splice(index, 1)
+      }
+    })
+    travelDataModal.onClose()
+  }
+
+  const onAddDocument = document => {
+    setDocumentList([...documentList, document])
+    documentModal.onClose()
+  }
+
+  const onDeleteDocument = (document) => {
+    documentList.forEach((element, index) => {
+      if (element.file.id === document.file.id) {
+        documentList.splice(index, 1)
+      }
+    })
+    documentModal.onClose()
+  }
 
   const onComplete = ({ value }) => {
     // const experts = prop('experts', value)
@@ -93,6 +126,8 @@ const ApplicationConfirmContainer = props => {
   const stage = prop('stage', data)
 
   const confirmSubmit = values => {
+    const documents = map(mapDocument, documentList)
+    const travelData = map(mapTravelData, travelDataList)
     const experts = map(mapExperts, expertList)
     const expertsPlace = map(mapExpertsPlace, expertPlaceList)
     const file = path(['file', 'id'], values)
@@ -119,6 +154,7 @@ const ApplicationConfirmContainer = props => {
       'price',
       'count',
       'paymentType',
+      'typeContract',
       'from_date',
       'to_date',
       'assessmentStartDate',
@@ -133,8 +169,10 @@ const ApplicationConfirmContainer = props => {
     const data = {
       ...newDAta,
       experts,
+      documents_audits:documents,
       experts_place:expertsPlace,
       notice_final:noticeFinal,
+      travel_data:travelData,
       file,
       notice,
       plan,
@@ -163,6 +201,14 @@ const ApplicationConfirmContainer = props => {
       initialValues={initialValues}
       application={params.id}
       placeList={expertPlaceList}
+      documentModal={{ ...documentModal, onSubmit: onAddDocument }}
+      onDeleteDocument={onDeleteDocument}
+      documentList={documentList}
+
+      travelDataModal={{ ...travelDataModal, onSubmit: onAddTravelData }}
+      onDeleteTravelData={onDeleteTravelData}
+      travelDataList={travelDataList}
+
       expertModal={{ ...expertModal, onSubmit: onAddExpert, onUpdateExpert:onUpdateExpert }}
       placeModal={{ ...placeModal, onSubmit: onAddPlace, onUpdateExpert:onUpdatePlace }}
       stage={stage}

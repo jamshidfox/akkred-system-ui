@@ -15,8 +15,6 @@ const ActivityList = props => {
     const {
       id,
       name,
-      address,
-      phoneNumber,
     } = client
 
     // Render
@@ -24,9 +22,7 @@ const ActivityList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={8}>{name}</td>
-        <td colSpan={8}>{address}</td>
-        <td colSpan={8}>{phoneNumber}</td>
+        <td colSpan={24}>{name}</td>
 
       </TableRow>
     )
@@ -34,9 +30,7 @@ const ActivityList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8} >наименование </th>
-      <th colSpan={8} >адрес </th>
-      <th colSpan={8} >телефон </th>
+      <th colSpan={24} >Faoliyat turini</th>
     </TableRow>
   const table =
     <Table

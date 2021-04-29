@@ -7,7 +7,7 @@ import {
 } from '../../../../../components/FormField'
 import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
-import {API_URL} from "../../../../../constants/api";
+import { API_URL } from '../../../../../constants/api'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -46,11 +46,11 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${idAp}/pdf`}>Shartnoma</a></td>
-          <td colSpan={4} style={{
-              color: '#0f22ff'
-          }}><a style={{
-              color: '#0f22ff'
+          }} href={`${API_URL}/main/applications/${idAp}/audit`}>Shartnoma</a></td>
+        <td colSpan={4} style={{
+          color: '#0f22ff'
+        }}><a style={{
+            color: '#0f22ff'
           }} href={`${API_URL}/media/${file}`}>Ekspertiza xulosasi</a></td>
 
       </TableRow>

@@ -12,16 +12,24 @@ import ApplicationConfirmCommand from './ApplicationConfirmStages/[Stage26]Appli
 import ApplicationAssessmentStartDate from './ApplicationConfirmStages/[Stage30]ApplicationAssessmentStartDate'
 import ApplicationAssessmentEnd from './ApplicationConfirmStages/[Stage31]ApplicationAssessmentEnd'
 import ApplicationCommissionResult from './ApplicationConfirmStages/[Stage34]ApplicationCommission'
-import ApplicationNoticeClient from './ApplicationConfirmStages/[Stage36]ApplicationNoticeClient'
 import ApplicationReestr from './ApplicationConfirmStages/[Stage37]ApplicationReestr'
 import ApplicationPostAccred from './ApplicationConfirmStages/[Stage38]ApplicationPostAccred'
 import ConfirmStageChoiceExpertsPlaceConfirm from './ApplicationConfirmStages/[Stage21]ExpertsPlaceConfirm'
 import ConfirmPlanNotice from './ApplicationConfirmStages/[Stage23]PlanNotice'
 import ConfirmCommand from './ApplicationConfirmStages/[Stage27]Command'
-import ConfirmAudit from "./ApplicationConfirmStages/[Stage32]ConfirmAudit";
+import ConfirmAudit from './ApplicationConfirmStages/[Stage32]ConfirmAudit'
 
 const ApplicationConfirm = props => {
-  const { onSubmit, stage, expertList, expertModal, placeModal, placeList, application, initialValues, expertPlaceList } = props
+  const { onSubmit, stage,
+    expertList, expertModal,
+    placeModal, application,
+    initialValues, expertPlaceList,
+    documentModal, documentList,
+    onDeleteDocument,
+    travelDataModal,
+    onDeleteTravelData,
+    travelDataList,
+  } = props
   switch (stage) {
   case 'stage_1':
     return (
@@ -47,9 +55,9 @@ const ApplicationConfirm = props => {
     return (
       <ConfirmStageAccounting application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Shartnoma ro’yhatdan o’tkaziladi'} />
     )
-  case 'stage_8':
+  case 'stage_9':
     return (
-      <ConfirmStageAccounting application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Buyurtmachiga yuvorish'} />
+      <ConfirmStageAccounting application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
   case 'stage_10':
     return (
@@ -63,7 +71,7 @@ const ApplicationConfirm = props => {
     return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_14':
     return (
-      <ConfirmStageContractPlace onSubmit={onSubmit} />
+      <ConfirmStageContractPlace travelDataModal={travelDataModal} onDeleteTravelData={onDeleteTravelData} travelDataList={travelDataList} onSubmit={onSubmit}  />
     )
   case 'stage_15':
     return (
@@ -75,11 +83,11 @@ const ApplicationConfirm = props => {
     )
   case 'stage_17':
     return (
-      <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Shartnoma ro’yhatdan o’tkazish'} />
+      <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
-  case 'stage_18':
+  case 'stage_19':
     return (
-      <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Buyurtmachiga yuvorish'} />
+      <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
   case 'stage_20':
     return (
@@ -111,15 +119,11 @@ const ApplicationConfirm = props => {
     )
   case 'stage_31':
     return (
-      <ApplicationAssessmentEnd onSubmit={onSubmit} text={'Autditni yakunlash'} />
+      <ApplicationAssessmentEnd onSubmit={onSubmit} text={'Autditni yakunlash'} documentModal={documentModal} documentList={documentList} onDeleteDocument={onDeleteDocument} />
     )
   case 'stage_32':
     return (
       <ConfirmAudit onSubmit={onSubmit} initialValues={initialValues} text={'Tasdiqlash'} />
-    )
-  case 'stage_34':
-    return (
-      <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
   case 'stage_35':
     return (
@@ -127,7 +131,7 @@ const ApplicationConfirm = props => {
     )
   case 'stage_36':
     return (
-      <ApplicationNoticeClient onSubmit={onSubmit} text={'Tasdiqlash'} />
+      <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
   case 'stage_37':
     return (

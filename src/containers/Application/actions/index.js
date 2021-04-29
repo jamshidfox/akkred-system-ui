@@ -107,7 +107,7 @@ export const applicationRejectAction = (id) => {
 
 export const applicationFetchList = params => {
   params = {
-    status_stage: '0'
+    // status_stage: '0'
   }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

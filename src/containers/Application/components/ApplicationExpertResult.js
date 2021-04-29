@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { PageTitle } from 'components/UI'
 import { Table, TableRow } from '../../../components/Table'
 import { expertAnswerType } from '../../../constants/backend'
-import {API_URL} from "../../../constants/api";
+import { API_URL } from '../../../constants/api'
 
 const PageTitleNew = styled(PageTitle)`
  color: #2C3A50;
@@ -28,7 +28,7 @@ const statusColors = {
 }
 
 const ApplicationExpertResult = props => {
-  const { contracts, application, results } = props
+  const { results } = props
 
   const tableList = results.map(client => {
     const {
@@ -39,10 +39,6 @@ const ApplicationExpertResult = props => {
       status,
       file,
       act,
-      // price,
-      // rate,
-      // count,
-      // totalAmount,
     } = client
 
     const statusText = expertAnswerType.object[status]
@@ -58,7 +54,7 @@ const ApplicationExpertResult = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${assignment}`}>Задание</a></td>
+          }} href={`${API_URL}/media/${assignment}`}>Задание</a></td>
         <td colSpan={4}>{closedDate}</td>
         <td colSpan={5}><Status color={statusColor}>
           {statusText}
@@ -67,12 +63,12 @@ const ApplicationExpertResult = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file}`}>результат</a></td>
+          }} href={`${API_URL}/media/${file}`}>результат</a></td>
         <td colSpan={2} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${act}`}>Акты</a></td>
+          }} href={`${API_URL}/media/${act}`}>Акты</a></td>
 
       </TableRow>
     )
@@ -88,7 +84,7 @@ const ApplicationExpertResult = props => {
     </TableRow>
   const table =
     <Table
-      isEmpty={isEmpty(contracts)}
+      isEmpty={isEmpty(results)}
     >
       <PageTitleNew name="EKSPERTIZA natijalari" />
       {tableHead}
@@ -101,6 +97,10 @@ const ApplicationExpertResult = props => {
 
     </>
   )
+}
+
+ApplicationExpertResult.defaultProps = {
+  results: [],
 }
 
 export default ApplicationExpertResult

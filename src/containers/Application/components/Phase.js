@@ -30,7 +30,7 @@ const Status = styled('div')`
 `
 
 const Phase = props => {
-  const { id, stage,historyStage ,historyPay} = props
+  const { id, stage, historyStage } = props
 
   const onCreateApplication = () => {
 
@@ -41,8 +41,9 @@ const Phase = props => {
 
   const tableHeadDoc =
     <TableRow header={true}>
-      <th colSpan={12} >Наименование </th>
-      <th colSpan={12} >Статус </th>
+      <th colSpan={8} >Bosqich </th>
+      <th colSpan={8} >Javobgar </th>
+      <th colSpan={8} >Status </th>
     </TableRow>
 
   const tableDocList = historyStage.map(client => {
@@ -64,7 +65,7 @@ const Phase = props => {
       >
         <td colSpan={8}>{name}</td>
         <td colSpan={8}>{role}</td>
-        <td colSpan={8}>  <Status color={statusColor}>
+        <td colSpan={8}> <Status color={statusColor}>
           {statusText}
         </Status> </td>
 
@@ -79,54 +80,11 @@ const Phase = props => {
       {tableDocList}
     </Table>
 
-
-
-  const tableHead =
-    <TableRow header={true}>
-      <th colSpan={8} >Наименование </th>
-      <th colSpan={8} >Роль </th>
-      <th colSpan={8} >Статус </th>
-    </TableRow>
-
-  const tableList = historyPay.map(client => {
-    const {
-      id,
-      name,
-      text,
-      status
-
-    } = client
-
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12}>{name}</td>
-        <td colSpan={12}>  <Status color={statusColor}>
-          {text}
-        </Status> </td>
-
-      </TableRow>
-    )
-  })
-  const table =
-    <Table
-      isEmpty={isEmpty(historyPay)}
-    >
-      <PageTitle name="Ariza" />
-      {tableHead}
-      {tableList}
-    </Table>
-
   return (
 
     <BoxUI>
-      <PageTitle name="Ariza Bosqichi" />
+      <PageTitle name="Ariza Bosqichlari" />
       {tableDoc}
-      {table}
       <Form
         keepDirtyOnReinitialize={true}
         onSubmit={onCreateApplication}
@@ -144,7 +102,7 @@ const Phase = props => {
               )}
 
               <div>
-                {stage === 'stage_9' || stage === 'stage_19' || stage === 'stage_25'
+                {stage === 'stage_8' || stage === 'stage_18' || stage === 'stage_25' || stage === 'stage_34'
                   ? (<div >
                     <MediumButton style={{
                       background: '#2541ff'
@@ -164,12 +122,6 @@ const Phase = props => {
                       </div>
 
                     )}
-
-                    {/* <div > */}
-                    {/*  <MediumButton style={{ */}
-                    {/*    background: '#ff3454' */}
-                    {/*  }} >Отклонить</MediumButton> */}
-                    {/* </div> */}
 
                   </div>)
                 }

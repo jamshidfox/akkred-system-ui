@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { path, prop } from 'ramda'
 import { MediumButton } from '../../../../../components/UI'
 import {
   Field,
@@ -10,7 +11,9 @@ import {
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import { Box } from '../../../../../components/StyledElems'
 import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
-import { paymentTypes, rateTypes } from '../../../../../constants/backend'
+import { paymentTypes, rateTypes, typeContract } from '../../../../../constants/backend'
+import TravelDataList from '../TravelData/TravelDataList'
+import TravelDataCreateModal from '../TravelData/TravelDataCreateModal'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -42,13 +45,19 @@ const listDocument = [
   }
 
 ]
-const ConfirmStageContractPlace = ({ onSubmit }) => {
+const ConfirmStageContractPlace = ({
+  onSubmit,
+  travelDataModal,
+  onDeleteTravelData,
+  travelDataList, }) => {
   return (
 
     <BoxUI>
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => {
+        render={({ handleSubmit, ...formikProps }) => {
+          const values = prop('values', formikProps)
+          const isTypeContract = path(['typeContract', 'id'], values)
           return (
             <form onSubmit={handleSubmit}>
               <Label>Umumlashtirish</Label>
@@ -67,7 +76,7 @@ const ConfirmStageContractPlace = ({ onSubmit }) => {
 
               <Row gutter={24}>
 
-                <Col span={8}>
+                <Col span={24}>
                   <Field
                     name="name"
                     label="Товар (иш, хизмат)лар номи"
@@ -76,34 +85,11 @@ const ConfirmStageContractPlace = ({ onSubmit }) => {
                   />
                 </Col>
 
-                <Col span={8}>
-                  <Field
-                    name="count"
-                    label="Миқдори"
-                    component={InputField}
-                  />
-                </Col>
+              </Row>
 
-                <Col span={8}>
-                  <Field
-                    name="price"
-                    label="Narhi"
-                    component={InputField}
+              <Row gutter={24}>
 
-                  />
-                </Col>
-
-                <Col span={8}>
-                  <Field
-                    name="rate"
-                    label="Ставкаси"
-                    component={UniversalStaticSelectField}
-                    list={rateTypes}
-
-                  />
-                </Col>
-
-                <Col span={8}>
+                <Col span={6}>
                   <Field
                     name="paymentType"
                     label="To’lov turi"
@@ -113,7 +99,43 @@ const ConfirmStageContractPlace = ({ onSubmit }) => {
                   />
                 </Col>
 
+                <Col span={6}>
+                  <Field
+                    name="count"
+                    label="Miqdori"
+                    component={InputField}
+                  />
+                </Col>
+
+                <Col span={6}>
+                  <Field
+                    name="rate"
+                    label="Stafkasi"
+                    component={UniversalStaticSelectField}
+                    list={rateTypes}
+
+                  />
+                </Col>
+
+                <Col span={6}>
+                  <Field
+                    name="typeContract"
+                    label="Shartnoma turi"
+                    component={UniversalStaticSelectField}
+                    list={typeContract}
+
+                  />
+                </Col>
+
               </Row>
+
+              {isTypeContract === 'travel' && (
+                <div>
+                  <TravelDataList document={travelDataList} serviceModal={travelDataModal} onDeleteDocument={onDeleteTravelData} />
+                  <TravelDataCreateModal {...travelDataModal} />
+                </div>
+
+              )}
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Shartnoma rasmiylashtirish</MediumButton>

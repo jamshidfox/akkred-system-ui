@@ -86,6 +86,7 @@ export const makeRootReducer = asyncReducers => {
     [STATE.REESTR_CREATE]: createThunkReducer(actionTypes.REESTR_CREATE),
     [STATE.REESTR_UPDATE]: createThunkReducer(actionTypes.REESTR_UPDATE),
     [STATE.REESTR_ITEM]: createThunkReducer(actionTypes.REESTR_ITEM),
+    [STATE.TEMPLATE_LIST]: createThunkReducer(actionTypes.TEMPLATE_LIST),
     ...asyncReducers
   })
 }

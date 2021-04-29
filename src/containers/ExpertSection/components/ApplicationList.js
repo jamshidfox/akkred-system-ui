@@ -93,10 +93,6 @@ const ApplicationList = props => {
           })
         }
       },
-      {
-        name: 'Удалить',
-        onClick: () => onDelete(id)
-      }
     ]
 
     // Render

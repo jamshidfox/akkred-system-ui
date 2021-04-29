@@ -74,3 +74,17 @@ export const clientFetchItem = id => {
     })
   }
 }
+
+export const templateFetchList = params => {
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.TEMPLATE_LIST, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.TEMPLATE_LIST
+    })
+  }
+}

@@ -1,35 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
-import { prop } from 'ramda'
-import { PageTitle, MediumButton, SecondarySmallButton } from '../../../components/UI'
+import { prop, path } from 'ramda'
+import { SecondarySmallButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 
-import { Row as RowUI, Col } from '../../../components/Grid'
 import {
   Form,
-  Field,
-  InputField,
-  UniversalSearchField
 } from '../../../components/FormField'
-import { ExpertsCreateModal } from '../../Application/components/Confirm/ExpertsPlace'
-import FileUploadField from '../../../components/FormField/File/FileUploadField'
+import ApplicationClientDocument from '../../Application/components/ApplicationClientDocuments'
 import ExpertsResultModal from './ExpertsResultModal'
-import * as API from '~/constants/api'
+import TemplateDocumentList from './TemplateDocumentList'
 
 const AddBtn = styled(SecondarySmallButton)`
 `
-// export const fields = [
-//   'username',
-//   'password',
-//   'fullName',
-//   'email',
-//   'phoneNumber',
-//   'lastName',
-//   'firstName',
-//   'role'
-// ]
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -45,19 +30,16 @@ const Label = styled.div`
   color: ${props => props.theme.color.basic.default};
 `
 
-const Row = styled(RowUI)`
-  margin-bottom: 40px;
-`
-
 const ExpertExpertiseCreate = props => {
-  const { onSubmit, initialValues, serviceModal } = props
+  const { onSubmit, initialValues, serviceModal, listTemplate } = props
+  const list = path(['data', 'results'], listTemplate)
   const onSubmitFalse = () => {
   }
   const statusAssignment = prop('statusAssignment', initialValues)
+  const documents = prop('documents', initialValues)
 
   return (
     <BoxUI>
-      <PageTitle name="" />
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
@@ -66,19 +48,8 @@ const ExpertExpertiseCreate = props => {
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
-              <Row gutter={24}>
-
-                <Col span={8}>
-                  <Field name="statusAssignment" label="status" component={InputField} />
-                </Col>
-                <Col span={8}>
-                  <Field name="application" label="application"
-                    api={API.APPLICATION_LIST}
-                    component={UniversalSearchField}
-                  />
-                </Col>
-              </Row>
+              <TemplateDocumentList list={list} />
+              <ApplicationClientDocument docs={documents} />
 
               {statusAssignment === 'given' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Tasdiqlash</AddBtn>

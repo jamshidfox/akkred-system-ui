@@ -13,7 +13,47 @@ const PageTitleNew = styled(PageTitle)`
 `
 
 const ApplicationExpertPlaceResult = props => {
-  const { results, docs } = props
+  const { results, docs, additionalDocs } = props
+
+  const tableAddDocList = additionalDocs.map(client => {
+    const {
+      id,
+      name,
+      file,
+
+    } = client
+
+    // Render
+    return (
+      <TableRow
+        key={id}
+      >
+        <td colSpan={12}>{name}</td>
+
+        <td colSpan={12} style={{
+          color: '#0f22ff'
+        }}><a style={{
+            color: '#0f22ff'
+          }} href={`${file.file}`}>Hujjat</a></td>
+
+      </TableRow>
+    )
+  })
+
+  const tableAddDocHead =
+    <TableRow header={true}>
+      <th colSpan={12} >Hujjat nomi </th>
+      <th colSpan={12} >Hujjat </th>
+    </TableRow>
+
+  const tableAddDoc =
+    <Table
+      isEmpty={isEmpty(additionalDocs)}
+    >
+      <PageTitleNew name="Auditga tegishli qo'shimcha hujjatlar" />
+      {tableAddDocHead}
+      {tableAddDocList}
+    </Table>
 
   const tableList = results.map(client => {
     const {
@@ -34,22 +74,22 @@ const ApplicationExpertPlaceResult = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file.file}`}>Документ</a></td>
+          }} href={`${file.file}`}>Hujjat</a></td>
 
       </TableRow>
     )
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={12} >Наименование </th>
-      <th colSpan={12} >ссылка </th>
+      <th colSpan={12} >Hujjat nomi </th>
+      <th colSpan={12} >Hujjat </th>
     </TableRow>
 
   const tableHeadDoc =
     <TableRow header={true}>
-      <th colSpan={8} >Наименование </th>
-      <th colSpan={8} >тип </th>
-      <th colSpan={8} >ссылка </th>
+      <th colSpan={8} >Hujjat nomi </th>
+      <th colSpan={8} >Turi </th>
+      <th colSpan={8} >Hujjat </th>
     </TableRow>
   const tableAudit =
     <Table
@@ -82,7 +122,7 @@ const ApplicationExpertPlaceResult = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file.file}`}>Документ</a></td>
+          }} href={`${API_URL}${file.file}`}>Hujjat</a></td>
 
       </TableRow>
     )
@@ -100,6 +140,7 @@ const ApplicationExpertPlaceResult = props => {
     <>
       {tableAudit}
       {tableDoc}
+      {tableAddDoc}
 
     </>
   )
@@ -107,7 +148,8 @@ const ApplicationExpertPlaceResult = props => {
 
 ApplicationExpertPlaceResult.defaultProps = {
   results: [],
-  audits: [],
+  docs: [],
+  additionalDocs: [],
 }
 
 export default ApplicationExpertPlaceResult

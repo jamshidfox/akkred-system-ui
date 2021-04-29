@@ -10,15 +10,13 @@ import { sprintf } from 'sprintf-js'
 import { Table, TableCol, TableRow, TableColRight } from '../../../components/Table'
 import { MediumButton, SecondarySmallButton } from '../../../components/UI'
 import * as ROUTES from '../../../constants/routes'
+import { documentPlanOrderType } from '../../../constants/backend'
 import ExpertReject from './ExpertReject/ExpertRejectModal'
-import {documentPlanOrderType} from "../../../constants/backend";
-
 
 const PageTitleNew = styled(PageTitle)`
  color: #2C3A50;
 
 `
-
 
 const statusColors = {
   process: 'green',
@@ -51,8 +49,6 @@ const ApplicationAddInfo = props => {
       phoneNumber,
       role,
     } = client
-
-
 
     // Render
     return (
@@ -144,7 +140,6 @@ const ApplicationAddInfo = props => {
       status
 
     } = client
-
 
     const statusText = documentPlanOrderType.object[status]
     const statusColor = statusColors[status]

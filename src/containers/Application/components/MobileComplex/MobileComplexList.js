@@ -31,7 +31,7 @@ const MobileComplexList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={24} >наименование </th>
+      <th colSpan={24} >Rusumi, modeli, davlat raqami, shassi/kuzov № ni yozing  </th>
     </TableRow>
   const table =
     <Table
@@ -42,7 +42,6 @@ const MobileComplexList = props => {
     </Table>
   return (
     <>
-      <AddBtn >  мобильный испытательный комплексы </AddBtn>
       {table}
 
     </>

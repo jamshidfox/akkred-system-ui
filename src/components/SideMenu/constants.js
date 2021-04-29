@@ -38,7 +38,6 @@ export default [
         url: ROUTES.APPLICATION_ACCRED_URL,
       },
     ]
-    // a.mamanazarov@tace.uz
   },
   {
     name: 'Mutaxassislar bo\'limi',
@@ -83,50 +82,25 @@ export default [
     url: ROUTES.REESTR_LIST_URL,
     perms: ['executor'],
   },
-  // {
-  //   name: 'Сотрудники',
-  //   url: ROUTES.EMPLOYEES_LIST_URL,
-  //   icon: People,
-  //   perms: ['some_perms'],
-  // },
-  // {
-  //   name: 'Должности',
-  //   url: ROUTES.ROLE_LIST_URL,
-  //   icon: People,
-  // },
-  // {
-  //   name: 'Клиенты',
-  //   url: ROUTES.CLIENT_LIST_URL,
-  //   icon: People,
-  // },
-  // {
-  //   name: 'Группы',
-  //   url: ROUTES.GROUP_LIST_URL,
-  //   icon: People,
-  // },
+  {
+    name: 'Xodimlar',
+    url: ROUTES.EMPLOYEES_LIST_URL,
+    icon: People,
+    perms: ['some_perms'],
+  },
+  {
+    name: 'Lavozimlar',
+    url: ROUTES.ROLE_LIST_URL,
+    icon: People,
+    perms: ['admin'],
+  },
+  {
+    name: 'Guruhlar',
+    url: ROUTES.GROUP_LIST_URL,
+    icon: People,
+    perms: ['admin'],
+  },
 
-  // {
-  //   name: 'Договоры',
-  //   url: '/'
-  // },
-  //
-  // {
-  //   name: 'Учет аккред. органов',
-  //   url: '/'
-  // },
-  // {
-  //   name: 'Документы',
-  //   url: '/'
-  // },
-  //
-  // {
-  //   name: 'Учет экспертов-аудиторов',
-  //   url: '/'
-  // },
-  // {
-  //   name: 'Финансовая аналитика',
-  //   url: '/'
-  // },
   // {
   //   name: 'Настройка',
   //   url: '#',

@@ -15,12 +15,13 @@ const getInitialValues = (data) => {
   return ({
     username: prop('username', data),
     fullName: path('fullName', data),
-    role: path(['role', 'id'], data),
+    middleName: prop('middleName', data),
+    // role: path(['role', 'id'], data),
     mail: prop('mail', data),
+    role: prop('role', data),
     phoneNumber: prop('phoneNumber', data),
     lastName: prop('lastName', data),
     firstName: prop('firstName', data),
-    middleName: prop('middleName', data),
   })
 }
 

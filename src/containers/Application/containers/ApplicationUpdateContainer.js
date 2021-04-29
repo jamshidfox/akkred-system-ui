@@ -80,7 +80,6 @@ const getInitialValues = data => {
 
     clientInfo: clientInfo,
     executor: prop('executor', data),
-    // client: path(['client', 'id'], data),
     hasPartAnotherOrgan: prop('hasPartAnotherOrgan', data),
     proficiencyTestingProvider: prop('proficiencyTestingProvider', data),
     executors: prop('executors', data),
@@ -102,6 +101,11 @@ const getInitialValues = data => {
     commissions: prop('commissions', data),
     mobileComplexes: prop('mobileComplexes', data),
     offices: prop('offices', data),
+    certificationAccreditation: prop('certificationAccreditation', data),
+    certificationField: prop('certificationField', data),
+    accreditedByAnother: prop('accreditedByAnother', data),
+    consultingService: prop('consultingService', data),
+    certificateNumber: prop('certificateNumber', data),
 
   }
 }
@@ -114,8 +118,6 @@ const ApplicationUpdateContainer = props => {
   const [mobileList, setMobileList] = useState(EMPTY_ARR)
   const [officeList, setOfficeList] = useState(EMPTY_ARR)
   const [staffList, setStaffList] = useState(EMPTY_ARR)
-  const [activityList, setActivityList] = useState(EMPTY_ARR)
-  const [accreditationList, setAccreditationList] = useState(EMPTY_ARR)
   const [documentList, setDocumentList] = useState(EMPTY_ARR)
   const [additionalActivityList, setAdditionalActivityList] = useState(EMPTY_ARR)
 
@@ -123,21 +125,17 @@ const ApplicationUpdateContainer = props => {
     const branches = prop('branches', value)
     const documents = prop('documents', value)
     const additionalActivities = prop('additionalActivities', value)
-    const accreditationOthers = prop('accreditationOthers', value)
     const mobileComplex = prop('mobileComplexes', value)
     const staffs = prop('staffs', value)
     const offices = prop('offices', value)
-    const activities = prop('activities', value)
 
-    setServiceList([...branches])
     setDocumentList([...documents])
 
+    setAdditionalActivityList([...additionalActivities])
+    setServiceList([...branches])
     setMobileList([...mobileComplex])
     setOfficeList([...offices])
     setStaffList([...staffs])
-    setActivityList([...activities])
-    setAccreditationList([...accreditationOthers])
-    setAdditionalActivityList([...additionalActivities])
   }
   const { data } = useFetchItem(getClientItemParams(onComplete))
 
@@ -182,8 +180,6 @@ const ApplicationUpdateContainer = props => {
       tabData={{ tab, onTabChange }}
       update={update}
       serviceList={serviceList}
-      accreditationList={accreditationList}
-      activityList={activityList}
       staffList={staffList}
       mobileList={mobileList}
       officeList={officeList}

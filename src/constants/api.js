@@ -128,3 +128,6 @@ export const REESTR_UPDATE = `/${REESTR}/%d/`
 export const REESTR_DELETE = `/${REESTR}/%d/`
 export const REESTR_CONFIRM = `/${REESTR}/%d/paid/`
 export const REESTR_ITEM = `/${REESTR}/%d/`
+
+export const TEMPLATE = `${MAIN}/templates`
+export const TEMPLATE_LIST = `/${TEMPLATE}/`

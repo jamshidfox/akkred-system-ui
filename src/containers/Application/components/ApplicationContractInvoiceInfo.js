@@ -28,7 +28,7 @@ const Status = styled('div')`
 `
 
 const ApplicationContractInvoiceInfo = props => {
-  const { contracts, application, contractPlace, plan, notice, command, noticeFinal, postAccred } = props
+  const { contracts, application, contractPlace } = props
 
   const tableList = contracts.map(client => {
     const {
@@ -59,7 +59,7 @@ const ApplicationContractInvoiceInfo = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Договор</a></td>
+          }} href={`${API_URL}/main/applications/${application}/pdf`}>Договор</a></td>
 
       </TableRow>
     )
@@ -112,13 +112,13 @@ const ApplicationContractInvoiceInfo = props => {
         <td colSpan={4} style={{
           color: '#0f22ff'
         }}><a style={{
-          color: '#0f22ff'
-        }} href={`http://127.0.0.1:8000/main/applications/${application}/pdf`}>Shartnoma</a></td>
+            color: '#0f22ff'
+          }} href={`${API_URL}/main/applications/${application}/audit`}>Shartnoma</a></td>
         <td colSpan={4} style={{
           color: '#0f22ff'
         }}><a style={{
-          color: '#0f22ff'
-        }} href={`${API_URL}/media/${file}`}>Ekspertiza xulosasi</a></td>
+            color: '#0f22ff'
+          }} href={`${API_URL}/media/${file}`}>Ekspertiza xulosasi</a></td>
 
       </TableRow>
     )
@@ -142,227 +142,17 @@ const ApplicationContractInvoiceInfo = props => {
       {tablePlaceList}
     </Table>
 
-  // Notice
-  const tableNoticeList = notice.map(client => {
-    const {
-      id,
-      status,
-      file,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tableNoticeHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Документ </th>
-      <th colSpan={12} >Статус </th>
-
-    </TableRow>
-  const tableNotice =
-    <Table
-      isEmpty={isEmpty(notice)}
-    >
-      <PageTitleNew name="Xabarnoma" />
-      {tableNoticeHead}
-      {tableNoticeList}
-    </Table>
-
-  // Plan
-  const tablePlanList = plan.map(client => {
-    const {
-      id,
-      file,
-      status,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tablePlanHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Документ </th>
-      <th colSpan={12} >Статус </th>
-
-    </TableRow>
-  const tablePlan =
-    <Table
-      isEmpty={isEmpty(plan)}
-    >
-      <PageTitleNew name="Reja" />
-      {tablePlanHead}
-      {tablePlanList}
-    </Table>
-
-  // Command
-  const tableCommandList = command.map(client => {
-    const {
-      id,
-      file,
-      status,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tableCommandHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Документ </th>
-      <th colSpan={12} >Статус </th>
-    </TableRow>
-  const tableCommand =
-    <Table
-      isEmpty={isEmpty(command)}
-    >
-      <PageTitleNew name="Buyruq" />
-      {tableCommandHead}
-      {tableCommandList}
-    </Table>
-
-  // // PostAccred
-  // const tablePostAccredList = postAccred.map(client => {
-  //   const {
-  //     id,
-  //     file,
-  //     status,
-  //
-  //   } = client
-  //
-  //   const statusText = documentPlanOrderType.object[status]
-  //   const statusColor = statusColors[status]
-  //
-  //   // Render
-  //   return (
-  //     <TableRow
-  //       key={id}
-  //     >
-  //       <td colSpan={12} style={{
-  //         color: '#0f22ff'
-  //       }}><a style={{
-  //           color: '#0f22ff'
-  //         }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
-  //       <td colSpan={12} ><Status color={statusColor}>
-  //         {statusText}
-  //       </Status> </td>
-  //     </TableRow>
-  //   )
-  // })
-  // const tablePostAccredHead =
-  //   <TableRow header={true}>
-  //     <th colSpan={12} >Документ </th>
-  //     <th colSpan={12} >Статус </th>
-  //   </TableRow>
-  // const tablePostAccred =
-  //   <Table
-  //     isEmpty={isEmpty(postAccred)}
-  //   >
-  //     <PageTitleNew name="Postakkreditatsion shartnoma" />
-  //     {tablePostAccredHead}
-  //     {tablePostAccredList}
-  //   </Table>
-  //
-  // // NoticeFinal
-  // const tableNoticeFinalList = noticeFinal.map(client => {
-  //   const {
-  //     id,
-  //     file,
-  //
-  //   } = client
-  //
-  //   // Render
-  //   return (
-  //     <TableRow
-  //       key={id}
-  //     >
-  //       <td colSpan={24} style={{
-  //         color: '#0f22ff'
-  //       }}><a style={{
-  //           color: '#0f22ff'
-  //         }} href={`${file && file}`}>Hujjat</a></td>
-  //
-  //     </TableRow>
-  //   )
-  // })
-  // const tableNoticeFinalHead =
-  //   <TableRow header={true}>
-  //     <th colSpan={24} >Документ </th>
-  //   </TableRow>
-  // const tableNoticeFinal =
-  //   <Table
-  //     isEmpty={isEmpty(noticeFinal)}
-  //   >
-  //     <PageTitleNew name="Buyurtmachiga xabarnoma" />
-  //     {tableNoticeFinalHead}
-  //     {tableNoticeFinalList}
-  //   </Table>
-
   return (
     <>
       {table}
       {tablePlace}
-      {/*{tableNotice}*/}
-      {/*{tablePlan}*/}
-      {/*{tableCommand}*/}
-      {/*{tableNoticeFinal}*/}
-      {/*{tablePostAccred}*/}
 
     </>
   )
 }
 ApplicationContractInvoiceInfo.defaultProps = {
-  noticeFinal: [],
-  postAccred: [],
+  contracts: [],
+  contractPlace: [],
 }
 
 export default ApplicationContractInvoiceInfo

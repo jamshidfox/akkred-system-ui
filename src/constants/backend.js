@@ -52,10 +52,11 @@ export const STANDART_LIST = [
   { id: '17020', name: '(O‘z DSt ISO/IEC 17020:2019) Inspeksiya organi' },
   { id: '17021', name: '(O‘z DSt ISO/IEC 17021:2015) Menejment tizimlarini sertifikatlashtirish organi' },
   { id: '17065', name: '(O‘z DSt ISO/IEC 17065:2015 ) Mahsulot va xizmatlarni sertifikatlashtirish organi' },
-  { id: '17024', name: '(O‘z DSt ISO/IEC 17024:2009) Xodimlarni sertifikatlashtirish organlari' },
-  { id: '17025', name: '(O‘z DSt ISO/IEC 17025:2019) Putur yetkazmasdan tekshirish laboratoriyasini' },
-  { id: '17043', name: '(O‘z DSt ISO/IEC 17043:2015) Malakani tekshirish provayderi' },
-  { id: '3444', name: '(O‘z DSt 3444:2020) Oʻlchash vositalarni qiyoslash metrologiya xizmati/laboratoriyasini' },
+  { id: '17025SL', name: '(O‘z DSt ISO/IEC 17025:2019) Sinov laboratoriyalari' },
+  // { id: '17024', name: '(O‘z DSt ISO/IEC 17024:2009) Xodimlarni sertifikatlashtirish organlari' },
+  // { id: '17025', name: '(O‘z DSt ISO/IEC 17025:2019) Putur yetkazmasdan tekshirish laboratoriyasini' },
+  // { id: '17043', name: '(O‘z DSt ISO/IEC 17043:2015) Malakani tekshirish provayderi' },
+  // { id: '3444', name: '(O‘z DSt 3444:2020) Oʻlchash vositalarni qiyoslash metrologiya xizmati/laboratoriyasini' },
 ]
 
 export const TYPE_EXPERTS = [
@@ -78,20 +79,16 @@ export const RESULT_LIST = [
 
 export const APPLICATION_LIST = [
   { id: 'accreditation', name: 'Akkreditatsiya' },
-  { id: 'actualization', name: 'Актуализация' },
-  { id: 'reaccreditation', name: 'Переаккредитация' },
-  { id: 'renewal', name: 'Переоформления' },
-  { id: 'termination', name: 'Прекращение' },
-  { id: 'suspension', name: 'Приостановление' },
-  { id: 'abbreviations', name: 'Сокращения' },
+  { id: 'reaccreditation', name: 'Takroriy  akkreditatsiya' },
+  { id: 'actualization', name: 'Akkreditatsiya sohasini dolzarblashtirish' },
+  { id: 'expansion ', name: 'Akkreditatsiya sohasini kengaytirish' },
+  { id: 'abbreviations', name: 'Akkreditatsiya sohasini qisqartirish' },
 ]
 
 export const GENDER_LIST = [
   { id: 'male', name: 'мужчина' },
   { id: 'female', name: 'женщина' }
 ]
-
-export const GENDER = arrayObjToObj(GENDER_LIST)
 
 export const AGE_LIST = [
   { id: 'young', name: 'ребенок' },
@@ -101,30 +98,6 @@ export const AGE_LIST = [
 export const CLIENT_LIST = [
   { id: 'local', name: 'местный' },
   { id: 'foreigner', name: 'иностранец' }
-]
-export const SERVICE_FREQ = [
-  { id: 'vip', name: 'VIP' },
-  { id: 'simple', name: 'SIMPLE' }
-]
-
-export const USER_TYPES = [
-  { id: 'hole_registrar', name: 'регистратор' },
-  { id: 'hotel_manager', name: 'менеджер' },
-]
-
-export const PAYMENT_TYPES = [
-  { id: 'card', name: 'Card' },
-  { id: 'cash', name: 'Cash' },
-]
-
-export const BOOKING_TYPES = [
-  { id: 'remotely', name: 'Remotely' },
-  { id: 'placement', name: 'Placement' },
-]
-
-export const TRANSACTION_TYPES = [
-  { id: 'income', name: 'Доход' },
-  { id: 'outcome', name: 'Расход' },
 ]
 
 export const PARTNERS_TYPES = [
@@ -142,6 +115,32 @@ export const paymentTypes = [
   {
     id:'part',
     name:'15/85',
+  }
+
+]
+
+export const typeContract = [
+
+  {
+    id:'travel',
+    name:'xizmat safaridan',
+  },
+  {
+    id:'center',
+    name:'ish safari holda',
+  }
+
+]
+
+export const typeContractCount = [
+
+  {
+    id:'person',
+    name:'Kishi',
+  },
+  {
+    id:'day',
+    name:'Kun',
   }
 
 ]
@@ -170,7 +169,7 @@ export const answerCommissionType = getFormattedListData([
   },
   {
     id:'wait',
-    name:'В процессе',
+    name:'Jarayonda',
   },
 
   { id: 'partial_approved', name: 'Qisman rozi' },
@@ -180,19 +179,20 @@ export const answerCommissionType = getFormattedListData([
 export const documentType = getFormattedListData([
   {
     id:'ACCREDITATION_SCOPE_DRAFT',
-    name:'Проект области аккредитации',
+    name:'Akkreditatsiya sohasi loyihasi',
   },
   {
     id:'QUALITY_QUIDE',
-    name:'Руководство по качеству',
+    name:'Sifat boʻyicha qoʻllanma',
   },
   {
     id:'QUALITY_MANAGEMENT_SYSTEM_DOCUMENTATION',
-    name:'Документация Системы Менеджмента Качества',
+    name:'Sifat menejmenti tizimlari hujjatlari',
   },
   {
     id:'APPLICANT_DETAILS',
-    name:'Сведения о заявителе',
+    name:'Ariza beruvchi/akkreditatsiya obyekti haqida \n' +
+        'ma’lumot\n',
   }
 
 ])
@@ -200,34 +200,34 @@ export const documentType = getFormattedListData([
 export const historyStatus = getFormattedListData([
   {
     id:'open',
-    name:'Открыто',
+    name:'Ochiq',
   },
   {
     id:'pros',
-    name:'Данный этап',
+    name:'Jarayonda',
   },
   {
     id:'closed',
-    name:'Закрыто',
+    name:'Yopiq',
   },
 
 ])
 export const documentPlanOrderType = getFormattedListData([
   {
     id:'process',
-    name:'В процессе',
+    name:'Jarayonda',
   },
   {
     id:'confirm',
-    name:'Утвержден клиентом',
+    name:'Mijoz tasdiqlangan',
   },
   {
     id:'wait',
-    name:'Утвержден центром',
+    name:'Markaz tasdiqlangan',
   },
   {
     id:'reject',
-    name:'не утвержден',
+    name:'Tasdiqlanmagan',
   }
 
 ])
@@ -235,19 +235,19 @@ export const documentPlanOrderType = getFormattedListData([
 export const expertAnswerType = getFormattedListData([
   {
     id:'process',
-    name:'В процессе',
+    name:'Jarayonda',
   },
   {
     id:'confirm',
-    name:'Утвержден',
+    name:'Tasdiqlangan',
   },
   {
     id:'wait',
-    name:'Ждет ',
+    name:'Kutmoqda ',
   },
   {
     id:'reject',
-    name:'не утвержден',
+    name:'Tasdiqlanmagan',
   }
 
 ])
@@ -276,11 +276,11 @@ export const registryStatus = getFormattedListData([
 export const statusPayments = getFormattedListData([
   {
     id:'paid',
-    name:'Оплачен',
+    name:"To'langan",
   },
   {
     id:'unpaid',
-    name:'Не оплачен',
+    name:"To'lanmagan",
   },
 
 ])
@@ -288,11 +288,11 @@ export const statusPayments = getFormattedListData([
 export const statusAssignments = getFormattedListData([
   {
     id:'given',
-    name:'Открыто',
+    name:'Jarayonda',
   },
   {
     id:'done',
-    name:'Сделано',
+    name:'Tugallangan ish',
   },
 
 ])

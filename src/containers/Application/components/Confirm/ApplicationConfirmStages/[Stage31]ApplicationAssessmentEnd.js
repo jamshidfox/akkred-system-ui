@@ -1,21 +1,16 @@
-
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import { Box } from '../../../../../components/StyledElems'
 import {
   Field, Form,
   InputField,
-  NoopFields,
   DateField,
-  UniversalSearchField,
-  UniversalStaticSelectField
 } from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '../../../../../components/Grid'
-import * as API from '../../../../../constants/api'
-import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../../../constants/backend'
 import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
 import { MediumButton } from '../../../../../components/UI/Buttons'
+import { DocumentCreateModal, DocumentList } from '../Document'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -35,7 +30,7 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ApplicationAssessmentEnd = props => {
-  const { onSubmit, text } = props
+  const { onSubmit, text, documentList, documentModal, onDeleteDocument } = props
   return (
     <BoxUI>
       <Form
@@ -98,7 +93,7 @@ const ApplicationAssessmentEnd = props => {
                 </Col>
               </Row>
 
-              <Label>Murojaatchiga tegishli h uj j at la r</Label>
+              <Label>Murojaatchiga tegishli hujjatlar</Label>
 
               <Row gutter={24}>
                 <Col span={12}>
@@ -111,7 +106,7 @@ const ApplicationAssessmentEnd = props => {
                 <Col span={12}>
                   <Field
                     name="nameOne"
-                    label="Наименование"
+                    label="Hujjat nomi"
                     component={InputField}
                   />
                 </Col>
@@ -127,7 +122,7 @@ const ApplicationAssessmentEnd = props => {
                 <Col span={12}>
                   <Field
                     name="nameTwo"
-                    label="Наименование"
+                    label="Hujjat nomi"
                     component={InputField}
                   />
                 </Col>
@@ -144,11 +139,16 @@ const ApplicationAssessmentEnd = props => {
                 <Col span={12}>
                   <Field
                     name="nameThree"
-                    label="Наименование"
+                    label="Hujjat nomi"
                     component={InputField}
                   />
                 </Col>
               </Row>
+
+              <Label>Qo'shimcha hujjatlar</Label>
+              <DocumentList document={documentList} serviceModal={documentModal} onDeleteDocument={onDeleteDocument} />
+              <DocumentCreateModal {...documentModal} />
+
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>{text}</MediumButton>
               </div>

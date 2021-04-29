@@ -82,3 +82,5 @@ export const REESTR_DELETE = 'reestrDelete'
 export const REESTR_CONFIRM = 'reestrConfirm'
 
 export const PERMISSION_LIST = 'permissionList'
+
+export const TEMPLATE_LIST = 'templateList'

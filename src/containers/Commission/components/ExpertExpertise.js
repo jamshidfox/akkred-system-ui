@@ -15,6 +15,11 @@ import {
 } from '../../../components/FormField'
 import { ExpertsCreateModal } from '../../Application/components/Confirm/ExpertsPlace'
 import FileUploadField from '../../../components/FormField/File/FileUploadField'
+import ApplicationContractInvoiceInfo from '../../Application/components/ApplicationContractInvoiceInfo'
+import { Tab } from '../../../components/TabsDetail'
+import ApplicationAccreditationDocuments from '../../Application/components/ApplicationAccreditationDocuments'
+import ApplicationExpertResult from '../../Application/components/ApplicationExpertResult'
+import ApplicationExpertPlaceResult from '../../Application/components/ApplicationExpertPlaceResult'
 import ExpertsResultModal from './ExpertsResultModal'
 import * as API from '~/constants/api'
 
@@ -51,6 +56,18 @@ const Row = styled(RowUI)`
 
 const ExpertExpertiseCreate = props => {
   const { onSubmit, initialValues, serviceModal } = props
+
+  const id = prop('application', initialValues)
+  const contracts = prop('contracts', initialValues)
+  const contractPlace = prop('contractPlace', initialValues)
+  const plan = prop('plan', initialValues)
+  const notice = prop('notice', initialValues)
+  const command = prop('command', initialValues)
+  const results = prop('results', initialValues)
+  const documentNews = prop('documentNews', initialValues)
+  const audits = prop('audits', initialValues)
+  const additionalDocs = prop('additionalDocs', initialValues)
+
   const onSubmitFalse = () => {
   }
   const answerType = prop('answerType', initialValues)
@@ -66,19 +83,10 @@ const ExpertExpertiseCreate = props => {
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
-              <Row gutter={24}>
-
-                <Col span={8}>
-                  <Field name="application" label="application"
-                    api={API.APPLICATION_LIST}
-                    component={UniversalSearchField}
-                  />
-                </Col>
-
-              </Row>
-
-
+              <ApplicationContractInvoiceInfo contracts={contracts} application={id && id} contractPlace={contractPlace} />
+              <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} />
+              <ApplicationExpertResult results={results} />
+              <ApplicationExpertPlaceResult results={audits} docs={documentNews} additionalDocs={additionalDocs} />
               {answerType === 'wait' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Ovoz berish</AddBtn>
 

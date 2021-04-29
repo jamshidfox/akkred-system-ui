@@ -7,7 +7,7 @@ import { API_URL } from '../../../constants/api'
 import { documentType } from '../../../constants/backend'
 
 const PageTitleNew = styled(PageTitle)`
- color: #2C3A50;
+  color: #2C3A50;
   margin-bottom: 5px;
 
 `
@@ -17,9 +17,9 @@ const ApplicationClientDocument = props => {
 
   const tableHeadDoc =
     <TableRow header={true}>
-      <th colSpan={8} >Наименование </th>
-      <th colSpan={8} >тип </th>
-      <th colSpan={8} >ссылка </th>
+      <th colSpan={8} >Hujjat nomi</th>
+      <th colSpan={8} >Turi </th>
+      <th colSpan={8} >Hujjat </th>
     </TableRow>
 
   const tableDocList = docs.map(client => {
@@ -44,8 +44,8 @@ const ApplicationClientDocument = props => {
         <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
-          color: '#0f22ff'
-        }} href={`${file.file}`}>Документ</a></td>
+            color: '#0f22ff'
+          }} href={`${file.file}`}>Hujjat</a></td>
 
       </TableRow>
     )

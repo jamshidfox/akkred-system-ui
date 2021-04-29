@@ -1,7 +1,7 @@
 import React from 'react'
 import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import { MediumButton, PageTitle } from 'components/UI'
+import { PageTitle } from 'components/UI'
 import { Table, TableRow } from '../../../components/Table'
 import { API_URL } from '../../../constants/api'
 import { documentPlanOrderType } from '../../../constants/backend'
@@ -247,8 +247,9 @@ const ApplicationAccreditationDocuments = props => {
   )
 }
 ApplicationAccreditationDocuments.defaultProps = {
-  noticeFinal: [],
-  postAccred: [],
+  plan: [],
+  notice: [],
+  command: [],
 }
 
 export default ApplicationAccreditationDocuments
