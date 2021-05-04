@@ -2,13 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
 import {
-  Form,
+  Field,
+  Form, UniversalStaticSelectField,
 } from '../../../components/FormField'
 import { Box } from '../../../components/StyledElems'
 import { MediumButton, PageTitle } from '../../../components/UI'
 
 import { Table, TableRow } from '../../../components/Table'
-import { historyStatus } from '../../../constants/backend'
+import { APPLICATION_LIST, historyStatus, STANDART_LIST } from '../../../constants/backend'
+import { Col, Row } from '../../../components/Grid'
 import PermissionButton from './PermissionButton'
 
 const BoxUI = styled(Box)`
@@ -29,8 +31,12 @@ const Status = styled('div')`
   padding: 3px 12px;
 `
 
+const PassButton = styled('div')`
+  margin-top: 5px;
+`
+
 const Phase = props => {
-  const { id, stage, historyStage } = props
+  const { id, stage, historyStage, isExpertise } = props
 
   const onCreateApplication = () => {
 
@@ -83,8 +89,6 @@ const Phase = props => {
   return (
 
     <BoxUI>
-      <PageTitle name="Ariza Bosqichlari" />
-      {tableDoc}
       <Form
         keepDirtyOnReinitialize={true}
         onSubmit={onCreateApplication}
@@ -92,40 +96,77 @@ const Phase = props => {
           return (
             <form onSubmit={handleSubmit}>
 
-              {stage === 'stage_39' && (
+              <div style={{
+                display: 'flex',
+                marginBottom: '20px',
+              }}>
 
-                <div >
-                  <MediumButton style={{
-                    background: '#83bc15'
-                  }} >Ariza Yopildi</MediumButton>
-                </div>
-              )}
+                {stage === 'stage_39' && (
 
-              <div>
-                {stage === 'stage_8' || stage === 'stage_18' || stage === 'stage_25' || stage === 'stage_34'
-                  ? (<div >
+                  <PassButton >
                     <MediumButton style={{
-                      background: '#2541ff'
-                    }} onClick={waitModalOpen()}>Buyurtmachini javobini kutish</MediumButton>
-                  </div>)
-                  : (<div style={{
-                    display: 'flex'
+                      background: '#83bc15'
+                    }} >Ariza Yopildi</MediumButton>
+                  </PassButton>
+                )}
+                {(isExpertise === false && stage === 'stage_14') ? (
 
-                  }}>
+                  <PassButton >
+                    <MediumButton style={{
+                      background: '#a425ff'
+                    }} onClick={waitModalOpen()}> Ekspertiza</MediumButton>
+                  </PassButton>
+                ) : (
 
-                    {id && (
+                  <div>
+                    {stage === 'stage_8' || stage === 'stage_18' || stage === 'stage_25' || stage === 'stage_34'
+                      ? (<PassButton >
+                        <MediumButton style={{
+                          background: '#2541ff'
+                        }} onClick={waitModalOpen()}>Buyurtmachini javobini kutish</MediumButton>
+                      </PassButton>)
+                      : (<div style={{
+                        display: 'flex'
 
-                      <div>
+                      }}>
 
-                        <PermissionButton stage={stage} id={id} />
+                        {id && (
 
-                      </div>
+                          <PassButton>
 
-                    )}
+                            <PermissionButton stage={stage} id={id} />
 
-                  </div>)
-                }
+                          </PassButton>
+
+                        )}
+
+                      </div>)
+                    }
+                  </div>
+
+                )}
+
+                <PassButton>
+                  <MediumButton style={{
+                    background: '#ff2558'
+                  }} onClick={waitModalOpen()}>Rad etish</MediumButton>
+                </PassButton>
+
               </div>
+
+              <Row gutter={24}>
+
+                <Col span={24}>
+                  <PageTitle name="Ariza Bosqichlari" />
+                  {tableDoc}
+
+                </Col>
+                {/*<Col span={6}>*/}
+                {/*  <PageTitle name="Reject Bosqichlari" />*/}
+                {/*  {tableDoc}*/}
+
+                {/*</Col>*/}
+              </Row>
 
             </form>
           )

@@ -115,7 +115,7 @@ const Filter = props => {
         <Button
           text={
             <span>
-              {hasCount ? 'Фильтр:' : 'Фильтр'}
+              {hasCount ? 'Filtr:' : 'Filtr'}
               {hasCount &&
               <Count>{count}</Count>}
             </span>

@@ -10,33 +10,36 @@ import {
   Form,
 } from '../../../components/FormField'
 import ApplicationClientDocument from '../../Application/components/ApplicationClientDocuments'
+import ApplicationExpertPlaceResult from '../../Application/components/ApplicationExpertPlaceResult'
 import ExpertsResultModal from './ExpertsResultModal'
 import TemplateDocumentList from './TemplateDocumentList'
+import AuditResultConfirm from './AuditResultConfirmModal'
 
 const AddBtn = styled(SecondarySmallButton)`
+margin-right: 5px;
+`
+
+const ConfirmBtn = styled(SecondarySmallButton)`
+  background: #668edd;
+  color: white;
 `
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
-`
 
 const ExpertExpertiseCreate = props => {
-  const { onSubmit, initialValues, serviceModal, listTemplate } = props
+  const { onSubmit, initialValues, serviceModal, listTemplate, serviceResultModal, onSubmitResult } = props
   const list = path(['data', 'results'], listTemplate)
   const onSubmitFalse = () => {
   }
   const statusAssignment = prop('statusAssignment', initialValues)
+  const statusResult = prop('statusResult', initialValues)
   const documents = prop('documents', initialValues)
+
+  const documentNews = prop('documentNews', initialValues)
+  const audits = prop('audits', initialValues)
+  const additionalDocs = prop('additionalDocs', initialValues)
 
   return (
     <BoxUI>
@@ -48,15 +51,33 @@ const ExpertExpertiseCreate = props => {
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <TemplateDocumentList list={list} />
-              <ApplicationClientDocument docs={documents} />
+
+              {statusAssignment === 'given' && (
+                <div>
+                  <TemplateDocumentList list={list} />
+                  <ApplicationClientDocument docs={documents} />
+
+                </div>
+
+              )}
 
               {statusAssignment === 'given' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Tasdiqlash</AddBtn>
 
               )}
 
+              {statusResult === 'wait' && (
+                <ConfirmBtn onClick={() => serviceResultModal.onOpen()}>Tasdiqlash Audit natijalarini</ConfirmBtn>
+
+              )}
+
+              {statusResult === 'wait' && (
+                <ApplicationExpertPlaceResult results={audits} docs={documentNews} additionalDocs={additionalDocs} />
+
+              )}
+
               <ExpertsResultModal {...serviceModal} onSubmit={onSubmit} />
+              <AuditResultConfirm {...serviceResultModal} onSubmit={onSubmitResult} />
 
             </form>
           )

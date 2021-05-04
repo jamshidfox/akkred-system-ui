@@ -7,6 +7,7 @@ import ApplicationList from '../components/ApplicationList'
 import { fields } from '../components/CommentListFilterForm'
 import { applicationFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
+import * as ROUTES from '../../../constants/routes'
 
 // Enhance
 const enhance = compose(connect())
@@ -30,11 +31,23 @@ const ApplicationMyListContainer = props => {
   // FilterActions
   const filterActions = useFilterActions({ fields })
 
+  const tabsList = [
+    {
+      name: 'Mening arizalarim',
+      url: ROUTES.APPLICATION_MY_ORDERS_URL
+    },
+    {
+      name: 'Barcha arizalar',
+      url: ROUTES.APPLICATION_ALL_LIST_URL
+    }
+  ]
+
   // Render
   return (
     <ApplicationList
       my={'my'}
       list={list}
+      tabsList={tabsList}
       filterActions={filterActions}
       onDelete={deleteAction.onSubmit}
       {...props}

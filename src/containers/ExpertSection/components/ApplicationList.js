@@ -50,7 +50,7 @@ const ApplicationList = props => {
     />
 
   // Actions
-  const linkAction = '/application/create'
+  const linkAction = '#'
   const tableActions =
     <TableActions
       filterForm={<CommentListFilterForm />}
@@ -61,10 +61,10 @@ const ApplicationList = props => {
   // TableHead
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6}>Номер заявки</th>
-      <th colSpan={6}>Номер Задание</th>
-      <th colSpan={6}>Статус</th>
-      <th colSpan={6}>Дата закрытие</th>
+      <th colSpan={6}>Ariza nomeri</th>
+      <th colSpan={6}>Topshiriq nomeri</th>
+      <th colSpan={6}>Status</th>
+      <th colSpan={6}>Topshirilgan sana</th>
       <th />
     </TableRow>
 
@@ -86,7 +86,7 @@ const ApplicationList = props => {
     // MoreList
     const moreList = [
       {
-        name: 'Изменить',
+        name: 'Ko\'rish',
         onClick: () => {
           history.push({
             pathname: sprintf(ROUTES.EXPERT_EXPERTISE_UPDATE_URL, id)
@@ -102,8 +102,8 @@ const ApplicationList = props => {
       >
         <td colSpan={6}><a style={{
           color: 'blue'
-        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, application.id)}>Заявка №{application.id}/{application.registerDate}</a> </td>
-        <td colSpan={6}> №{id}/{openDate}</td>
+        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, application.id)}>Ariza №{application.id}/{application.registerDate}</a> </td>
+        <td colSpan={6}> №{id}/{application.id}/{application.registerDate}</td>
         <td colSpan={6}><Status color={statusColor}>
           {statusText}
         </Status></td>

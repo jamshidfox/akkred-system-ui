@@ -39,6 +39,7 @@ const getInitialValues = data => {
     audits: prop('audits', data),
     documentNews: prop('documentNews', data),
     additionalDocs: prop('additionalDocs', data),
+    isExpertise: prop('isExpertise', data),
 
   }
 }

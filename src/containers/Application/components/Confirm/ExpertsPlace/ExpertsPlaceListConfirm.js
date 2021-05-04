@@ -4,7 +4,6 @@ import { Table, TableRow } from '../../../../../components/Table'
 
 const ExpertsPlaceListConfirm = props => {
   const { branches } = props
-  console.warn(branches,'branches')
   // TableList
   const tableList = branches.map(client => {
     const {

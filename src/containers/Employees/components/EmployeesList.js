@@ -14,6 +14,7 @@ import { Box } from '../../../components/StyledElems'
 import Pagination from '../../../components/Pagination/Pagination'
 import { getTabsFromRoute } from '../../../utils/get'
 import Tabs from '../../../components/Tabs'
+import DropdownMore from '../../../components/Dropdown/more'
 import EmployeesListFilterForm from './EmployeesListFilterForm'
 
 const BoxUI = styled(Box)`
@@ -29,21 +30,21 @@ const style = {
 }
 
 const EmployeesList = props => {
-  const { list, filterActions, deleteModal } = props
+  const { list, filterActions, history } = props
+  console.warn(history,'history')
 
   const data = prop('results', list)
   const loading = prop('loading', list)
   const count = path(['data', 'count'], list)
   const linkAction = 'create'
   const onDelete = () => {}
+
   const tableHead =
     <TableRow header={true}>
       <th colSpan={6}>login</th>
-      <th colSpan={4}>mail</th>
-      <th colSpan={12}>Ф.И.О</th>
-      {/*<th colSpan={6}>Должность</th>*/}
-      <th colSpan={1} />
-      <th colSpan={1} />
+      <th colSpan={8}>F.I.O</th>
+      <th colSpan={8}>Lavozim</th>
+      <th />
     </TableRow>
   const tableActions = (
     <TableActions
@@ -59,10 +60,21 @@ const EmployeesList = props => {
       id,
       firstName,
       lastName,
-      mail,
       username,
       role,
     } = client
+
+    // MoreList
+    const moreList = [
+      {
+        name: "Ko'rish",
+        onClick: () => {
+          history.push({
+            pathname: sprintf(EMPLOYEES_UPDATE_URL, id)
+          })
+        }
+      },
+    ]
 
     // Render
     return (
@@ -71,20 +83,11 @@ const EmployeesList = props => {
         // onClick={handleRedirect}
       >
         <td colSpan={6}>{username} </td>
-        <td colSpan={4}>{mail}</td>
-        <td colSpan={12}>{firstName} {lastName}</td>
-        {/*<td colSpan={6}>{role.name}</td>*/}
-
-        <td colSpan={1}>
-          <Link style={style} to={sprintf(EMPLOYEES_UPDATE_URL, id)} ><img src={Edit} alt="Edit" /></Link>
-        </td>
-        <td colSpan={1}>
-          <span
-            style={style}
-            onClick={() => onDelete(id)}>
-            <img src={Trash} alt="Edit" />
-          </span>
-        </td>
+        <td colSpan={8}>{firstName} {lastName}</td>
+        <td colSpan={8}>{role && role.name}</td>
+        <DropdownMore
+          moreList={moreList}
+        />
       </TableRow>
     )
   })
@@ -120,7 +123,6 @@ const EmployeesList = props => {
 EmployeesList.propTypes = {
   list: PropTypes.object,
   filterActions: PropTypes.object,
-  deleteModal: PropTypes.object
 }
 
 export default EmployeesList

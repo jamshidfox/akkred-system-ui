@@ -5,6 +5,7 @@ import { useUpdate, useFetchItem } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
 import { EmployeesCreate, fields } from '../components'
 import { employeesUpdateAction, employeesFetchItem } from '../actions'
+import * as ROUTES from '../../../constants/routes'
 
 const getEmployerItemParams = () => ({
   action: employeesFetchItem,
@@ -29,6 +30,7 @@ const getEmployeesUpdateParams = () => ({
   stateName: STATE.EMPLOYEES_UPDATE,
   action: employeesUpdateAction,
   serializer: getSerializedData(fields),
+  redirectUrl: ROUTES.EMPLOYEES_LIST_URL
 })
 
 const EmployeesUpdateContainer = props => {

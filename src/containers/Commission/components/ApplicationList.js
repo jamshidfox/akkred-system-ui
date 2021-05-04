@@ -51,7 +51,7 @@ const ApplicationList = props => {
     />
 
   // Actions
-  const linkAction = '/application/create'
+  const linkAction = '#'
   const tableActions =
     <TableActions
       filterForm={<CommentListFilterForm />}
@@ -62,10 +62,10 @@ const ApplicationList = props => {
   // TableHead
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8}>Заяка</th>
-      <th colSpan={6}>Статус</th>
-      <th colSpan={3}>Наименование</th>
-      <th colSpan={4}>Дата</th>
+      <th colSpan={8}>Ariza</th>
+      <th colSpan={6}>Status</th>
+      <th colSpan={3}>Yuridik shaxsning to‘liq nomi</th>
+      <th colSpan={4}>Sana</th>
       <th />
     </TableRow>
 
@@ -84,17 +84,13 @@ const ApplicationList = props => {
     // MoreList
     const moreList = [
       {
-        name: 'Изменить',
+        name: 'Ovoz berish',
         onClick: () => {
           history.push({
             pathname: sprintf(ROUTES.COMMISSION_UPDATE_URL, id)
           })
         }
       },
-      {
-        name: 'Удалить',
-        onClick: () => onDelete(id)
-      }
     ]
 
     // Render
@@ -102,7 +98,7 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>Заяка №{application && application.id}/{ application && application.registerDate}</td>
+        <td colSpan={6}>Ariza №{application && application.id}/{ application && application.registerDate}</td>
 
         <td colSpan={8}><Status color={statusColor}>
           {statusText}

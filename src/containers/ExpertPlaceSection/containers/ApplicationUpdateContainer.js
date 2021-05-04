@@ -11,7 +11,7 @@ import {
   clientFetchItem,
   applicationConfirmAction,
   templateFetchList,
-  applicationFetchList
+  applicationFetchList, applicationConfirmResultAction
 } from '../actions'
 import ExpertExpertiseCreate from '../components/ExpertExpertise'
 import * as ROUTES from '../../../constants/routes'
@@ -36,10 +36,14 @@ const getInitialValues = (data) => {
     statusAssignment: prop('statusAssignment', data),
     application: path(['application', 'id'], data),
     documents: path(['application', 'documents'], data),
+    documentNews: path(['application', 'documentNews'], data),
+    audits: path(['application', 'audits'], data),
+    additionalDocs: path(['application', 'additionalDocs'], data),
     file: path(['assignment', 'file'], data),
     case: prop('case', data),
     comments: prop('comments', data),
     closedDate: prop('closedDate', data),
+    statusResult: prop('statusResult', data),
   })
 }
 
@@ -60,8 +64,22 @@ const EmployeesUpdateContainer = props => {
   const params = useParams()
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
+  const serviceResultModal = useModal({ key: 'serviceResultModal' })
   const initialValues = getInitialValues(data)
   const updateData = useUpdate(getEmployeesUpdateParams())
+
+  const confirmResultSubmit = values => {
+    const newDAta = getSerializedData([
+      'statusResult',
+      'comments',
+    ], values)
+    const data = {
+      ...newDAta,
+    }
+    dispatch(applicationConfirmResultAction(params.id, data))
+      .then(() => props.history.push(sprintf(ROUTES.EXPERT_PLACE_LIST_URL, params.id)))
+      .catch(mapResponseToFormError)
+  }
 
   const confirmSubmit = values => {
     const newDAta = getSerializedData([
@@ -79,9 +97,11 @@ const EmployeesUpdateContainer = props => {
   return (
     <ExpertExpertiseCreate
       onSubmit={confirmSubmit}
+      onSubmitResult={confirmResultSubmit}
       initialValues={initialValues}
       listTemplate={listTemplate}
       serviceModal={serviceModal}
+      serviceResultModal={serviceResultModal}
     />
   )
 }

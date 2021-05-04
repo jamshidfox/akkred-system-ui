@@ -35,7 +35,6 @@ export const clientExistingAction = ({ id, ...data }) => {
 }
 
 export const applicationUpdateAction = (id, data) => {
-  console.warn(data, 'data')
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .put(sprintf(API.APPLICATION_UPDATE, id), data)
@@ -106,9 +105,7 @@ export const applicationRejectAction = (id) => {
 }
 
 export const applicationFetchList = params => {
-  params = {
-    // status_stage: '0'
-  }
+  params = { ...params, status_stage: '0' }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.APPLICATION_LIST, { params })
@@ -123,9 +120,7 @@ export const applicationFetchList = params => {
 }
 
 export const applicationExpertiseFetchList = params => {
-  params = {
-    status_stage: '1'
-  }
+  params = { ...params, status_stage: '1' }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.APPLICATION_LIST, { params })
@@ -156,7 +151,7 @@ export const applicationAuditFetchList = params => {
   }
 }
 
-export const applicationComissionsFetchList = params => {
+export const applicationCommissionsFetchList = params => {
   params = {
     status_stage: '3'
   }
@@ -174,6 +169,7 @@ export const applicationComissionsFetchList = params => {
 }
 
 export const applicationFetchListAll = params => {
+  params = { ...params, all: 'true', status_stage: '0' }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.APPLICATION_LIST_ALL, { params })
@@ -187,6 +183,49 @@ export const applicationFetchListAll = params => {
   }
 }
 
+export const applicationExpertiseFetchListAll = params => {
+  params = { ...params, all: 'true', status_stage: '1' }
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.APPLICATION_LIST_ALL, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_LIST_ALL
+    })
+  }
+}
+
+export const applicationAuditFetchListAll = params => {
+  params = { ...params, all: 'true', status_stage: '2' }
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.APPLICATION_LIST_ALL, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_LIST_ALL
+    })
+  }
+}
+export const applicationCommissionFetchListAll = params => {
+  params = { ...params, all: 'true', status_stage: '3' }
+  return (dispatch, getState) => {
+    const payload = axios({ getState, dispatch })
+      .get(API.APPLICATION_LIST_ALL, { params })
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.APPLICATION_LIST_ALL
+    })
+  }
+}
 export const clientFetchItem = id => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

@@ -3,10 +3,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
-import ApplicationList from '../components/ApplicationList'
 import { fields } from '../components/CommentListFilterForm'
 import { applicationExpertiseFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
+import * as ROUTES from '../../../constants/routes'
+import ApplicationList from "../components/ApplicationList";
 
 // Enhance
 const enhance = compose(connect())
@@ -29,12 +30,23 @@ const ApplicationMyListContainer = props => {
 
   // FilterActions
   const filterActions = useFilterActions({ fields })
+  const tabsList = [
+    {
+      name: 'Mening arizalarim',
+      url: ROUTES.APPLICATION_EXPERTISE_URL
+    },
+    {
+      name: 'Barcha arizalar',
+      url: ROUTES.APPLICATION_ALL_EXPERTISE_URL
+    }
+  ]
 
   // Render
   return (
     <ApplicationList
       my={'my'}
       list={list}
+      tabsList={tabsList}
       filterActions={filterActions}
       onDelete={deleteAction.onSubmit}
       {...props}

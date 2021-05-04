@@ -18,7 +18,7 @@ export default [
           },
           {
             name: 'Barcha arizalar',
-            url: ROUTES.APPLICATION_ORDERS_URL
+            url: ROUTES.APPLICATION_ALL_LIST_URL
           }
         ]
       },
@@ -26,21 +26,51 @@ export default [
       {
         name: 'EKSPERTIZA',
         url: ROUTES.APPLICATION_EXPERTISE_URL,
+        tabs: [
+          {
+            name: 'Mening arizalarim',
+            url: ROUTES.APPLICATION_EXPERTISE_URL
+          },
+          {
+            name: 'Barcha arizalar',
+            url: ROUTES.APPLICATION_ALL_EXPERTISE_URL
+          }
+        ]
       },
 
       {
         name: 'AUDIT',
         url: ROUTES.APPLICATION_AUDIT_URL,
+        tabs: [
+          {
+            name: 'Mening arizalarim',
+            url: ROUTES.APPLICATION_AUDIT_URL
+          },
+          {
+            name: 'Barcha arizalar',
+            url: ROUTES.APPLICATION_ALL_AUDIT_URL
+          }
+        ]
       },
 
       {
         name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
         url: ROUTES.APPLICATION_ACCRED_URL,
+        tabs: [
+          {
+            name: 'Mening arizalarim',
+            url: ROUTES.APPLICATION_ACCRED_URL
+          },
+          {
+            name: 'Barcha arizalar',
+            url: ROUTES.APPLICATION_ALL_COMMISSION_URL
+          }
+        ]
       },
-    ]
+    ],
   },
   {
-    name: 'Mutaxassislar bo\'limi',
+    name:'Ijrochilar  bo\'limi',
     children: [
 
       {

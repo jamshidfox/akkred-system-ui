@@ -42,6 +42,11 @@ export const APPLICATION_EXPERTISE_URL = `/${APPLICATION}/expertise`
 export const APPLICATION_AUDIT_URL = `/${APPLICATION}/audit`
 export const APPLICATION_ACCRED_URL = `/${APPLICATION}/accred`
 
+export const APPLICATION_ALL_LIST_URL = `/${APPLICATION}/`
+export const APPLICATION_ALL_EXPERTISE_URL = `/${APPLICATION}/all/expertise`
+export const APPLICATION_ALL_AUDIT_URL = `/${APPLICATION}/all/audit`
+export const APPLICATION_ALL_COMMISSION_URL = `/${APPLICATION}/all/accred`
+
 export const APPLICATION_LIST_EXPERT_URL = `/${APPLICATION}/expert`
 export const APPLICATION_ITEM_PATH = `/${APPLICATION}/${ID}/`
 export const APPLICATION_ITEM_URL = `/${APPLICATION}/%d`

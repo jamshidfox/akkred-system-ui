@@ -47,6 +47,21 @@ export const applicationConfirmAction = (id, data) => {
   }
 }
 
+
+export const applicationConfirmResultAction = (id, data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+        .post(sprintf(API.EXPERT_PLACE_RESULT_CONFIRM, id), data)
+        .then(getPayloadFromSuccess)
+        .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.EXPERT_PLACE_RESULT_CONFIRM
+    })
+  }
+}
+
 export const applicationFetchList = params => {
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })

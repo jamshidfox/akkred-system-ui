@@ -205,7 +205,7 @@ const SideMenu = props => {
         smart={!open}
       >
         <Exit />
-        <span onClick={() => onLoginOut()}>Выйти</span>
+        <span onClick={() => onLoginOut()}>Chiqish</span>
       </LogOut>
     </Box>
   )

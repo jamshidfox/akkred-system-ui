@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { prop, isEmpty, path, propOr } from 'ramda'
 import Pagination from 'components/Pagination'
 import { Table, TableRow, TableActions } from 'components/Table'
-import { getTabsFromRoute } from 'utils/get'
 import Container from 'components/StyledElems/Container'
 import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
@@ -37,8 +36,8 @@ const ApplicationList = props => {
     list,
     filterActions,
     history,
-    onDelete,
-      my
+    tabsList,
+    my
   } = props
 
   // Data
@@ -47,7 +46,6 @@ const ApplicationList = props => {
   const listLoading = prop('loading', list)
 
   // TabsList
-  const tabsList = getTabsFromRoute()
 
   // Tabs
   const tabs =

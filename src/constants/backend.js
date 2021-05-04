@@ -47,6 +47,11 @@ export const ANSWER_TYPE_LIST = [
   { id: 'partial_approved', name: 'Qisman rozi' },
 ]
 
+export const AUDIT_RESULT_ANSWER_LIST = [
+  { id: 'approved', name: 'Rozi ' },
+  { id: 'partial_approved', name: 'Qisman rozi' },
+]
+
 export const STANDART_LIST = [
 
   { id: '17020', name: '(O‘z DSt ISO/IEC 17020:2019) Inspeksiya organi' },
@@ -208,7 +213,7 @@ export const historyStatus = getFormattedListData([
   },
   {
     id:'closed',
-    name:'Yopiq',
+    name:'Bajarildi',
   },
 
 ])
@@ -229,6 +234,13 @@ export const documentPlanOrderType = getFormattedListData([
     id:'reject',
     name:'Tasdiqlanmagan',
   }
+
+])
+export const expertAuditAnswerType = getFormattedListData([
+  { id: 'approved', name: 'Rozi ' },
+  { id: 'partial_approved', name: 'Qisman rozi' },
+  { id: 'wait', name: 'Jarayonda' },
+  { id: 'not_wait', name: 'audit' },
 
 ])
 

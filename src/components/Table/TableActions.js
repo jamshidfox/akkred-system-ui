@@ -43,7 +43,7 @@ const TableActions = props => {
       >
         <Button
           onClick={createModal.onOpen}
-          text={'Добавить'}
+          text={'Qo\'shish'}
           prefix={<Plus />}
         />
       </div>
@@ -54,7 +54,7 @@ const TableActions = props => {
         style={style}
       >
         <Button
-          text={'Добавить'}
+          text={'Qo\'shish'}
           prefix={<Plus />}
         />
       </Link>

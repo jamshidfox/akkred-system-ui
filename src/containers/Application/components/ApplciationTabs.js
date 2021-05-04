@@ -60,10 +60,7 @@ const ApplicationTabs = props => {
     officeList,
     staffList,
     mobileList,
-
     additionalActivityList,
-
-    activityList,
 
   } = props
   const id = prop('id', initialValues)
@@ -89,21 +86,18 @@ const ApplicationTabs = props => {
   const noticeFin = prop('noticeFinal', initialValues)
 
   const historyStage = prop('history', initialValues)
-  const historyPay = prop('historyPay', initialValues)
+  const isExpertise = prop('isExpertise', initialValues)
 
   var noticeFinal = []
   noticeFinal.push(noticeFin)
-  const offices = []
 
   return (
     <BoxUI>
       <Tabs
         initialValue={'stage'}
-        // value={tabData.tab}
-        // onChange={tabData.onTabChange}
       >
         <Tab value={'stage'} label={'Bosqich'}>
-          <Phase id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} historyPay={historyPay} />
+          <Phase id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} isExpertise={isExpertise} />
         </Tab>
         <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationUserInfo clientInfo={clientInfo} />

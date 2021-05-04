@@ -1,12 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { compose } from 'redux'
+import { connect, useDispatch } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
 import { employeesFetchList, employeesDeleteAction } from '../actions'
 import EmployeesList from '../components/EmployeesList'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 import { fields } from '../../Employees/components/EmployeesListFilterForm'
-
+import ApplicationList from "../../Application/components/ApplicationList";
+// Enhance
+const enhance = compose(connect())
 const getRoomListParams = () => ({
   action: employeesFetchList,
   stateName: STATE.EMPLOYEES_LIST,
@@ -29,9 +32,10 @@ const EmployeesListContainer = props => {
     <EmployeesList
       list={list}
       filterActions={filterActions}
+      {...props}
       // deleteModal={deleteModal}
     />
   )
 }
 
-export default EmployeesListContainer
+export default enhance(EmployeesListContainer)

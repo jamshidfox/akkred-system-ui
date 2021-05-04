@@ -4,8 +4,7 @@ import { prop, isEmpty, path } from 'ramda'
 import styled from 'styled-components'
 import Trash from 'images/trash-2.svg'
 import { ItemControlButton } from 'components/UI'
-import { TableCol, Table, TableRow, TableActions } from '../../../components/Table'
-import { MediumButton, PageTitle } from '../../../components/UI'
+import { Table, TableRow, TableActions } from '../../../components/Table'
 import { Box } from '../../../components/StyledElems'
 import Edit from '../../../images/edit.svg'
 import Pagination from '../../../components/Pagination/Pagination'
@@ -38,10 +37,7 @@ const RolesList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8}>Полное название юридического лица</th>
-      <th colSpan={6}>Номер</th>
-      <th colSpan={3}>Адрес</th>
-      <th colSpan={4}>Дата рождения</th>
+      <th colSpan={22}>Lavozim nomi</th>
       <th colSpan={1} />
       <th colSpan={1} />
     </TableRow>
@@ -55,7 +51,6 @@ const RolesList = props => {
     const {
       name = 'Title',
       id,
-      address = 'Address'
     } = client
 
     // Render
@@ -64,10 +59,7 @@ const RolesList = props => {
         key={id}
         // onClick={handleRedirect}
       >
-        <td colSpan={8}>{name}</td>
-        <td colSpan={6}>АА 3545332</td>
-        <td colSpan={3}>{address}</td>
-        <td colSpan={4}>BDay</td>
+        <td colSpan={22}>{name}</td>
 
         <td colSpan={1}>
           <ItemControlButton onClick={() => updateItemModal(client)}>

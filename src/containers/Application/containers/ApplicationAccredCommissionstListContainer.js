@@ -3,10 +3,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
-import ApplicationList from '../components/ApplicationList'
 import { fields } from '../components/CommentListFilterForm'
-import { applicationComissionsFetchList, applicationDeleteAction } from '../actions'
+import { applicationCommissionsFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
+import * as ROUTES from '../../../constants/routes'
+import ApplicationList from "../components/ApplicationList";
 
 // Enhance
 const enhance = compose(connect())
@@ -15,7 +16,7 @@ const enhance = compose(connect())
 const ApplicationAuditListContainer = props => {
   // FetchList
   const list = useFetchList({
-    action: applicationComissionsFetchList,
+    action: applicationCommissionsFetchList,
     stateName: STATE.APPLICATION_LIST,
     pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
   })
@@ -24,11 +25,22 @@ const ApplicationAuditListContainer = props => {
   const deleteAction = useDelete({
     action: applicationDeleteAction,
     stateName: STATE.APPLICATION_DELETE,
-    successAction: applicationComissionsFetchList
+    successAction: applicationCommissionsFetchList
   })
 
   // FilterActions
   const filterActions = useFilterActions({ fields })
+
+  const tabsList = [
+    {
+      name: 'Mening arizalarim',
+      url: ROUTES.APPLICATION_ACCRED_URL
+    },
+    {
+      name: 'Barcha arizalar',
+      url: ROUTES.APPLICATION_ALL_COMMISSION_URL
+    }
+  ]
 
   // Render
   return (
@@ -38,6 +50,7 @@ const ApplicationAuditListContainer = props => {
       filterActions={filterActions}
       onDelete={deleteAction.onSubmit}
       {...props}
+      tabsList={tabsList}
     />
   )
 }

@@ -106,6 +106,7 @@ const getInitialValues = data => {
     accreditedByAnother: prop('accreditedByAnother', data),
     consultingService: prop('consultingService', data),
     certificateNumber: prop('certificateNumber', data),
+    isExpertise: prop('isExpertise', data),
 
   }
 }

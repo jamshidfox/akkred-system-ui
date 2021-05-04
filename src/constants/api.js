@@ -93,6 +93,7 @@ export const EXPERT_PLACE_CREATE = `/${EXPERT_PLACE}/`
 export const EXPERT_PLACE_UPDATE = `/${EXPERT_PLACE}/%d/`
 export const EXPERT_PLACE_DELETE = `/${EXPERT_PLACE}/%d/`
 export const EXPERT_PLACE_CONFIRM = `/${EXPERT_PLACE}/%d/confirm/`
+export const EXPERT_PLACE_RESULT_CONFIRM = `/${EXPERT_PLACE}/%d/confirm_result/`
 export const EXPERT_PLACE_REJECT = `/${EXPERT_PLACE}/%d/reject/`
 export const EXPERT_PLACE_ITEM = `/${EXPERT_PLACE}/%d/`
 

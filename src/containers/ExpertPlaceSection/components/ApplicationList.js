@@ -10,12 +10,18 @@ import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Tabs from '../../../components/Tabs'
-import { statusAssignments } from '../../../constants/backend'
+import { statusAssignments, expertAuditAnswerType } from '../../../constants/backend'
 import CommentListFilterForm from './CommentListFilterForm'
 
 const statusColors = {
   done: 'green',
   given: 'red',
+}
+
+const statusResultColors = {
+  wait: 'red',
+  confirm: 'green',
+  not_wait: 'blue',
 }
 
 const Status = styled('div')`
@@ -60,13 +66,13 @@ const ApplicationList = props => {
 
   // TableHead
   const tableHead =
-      <TableRow header={true}>
-        <th colSpan={6}>Номер заявки</th>
-        <th colSpan={6}>Номер Задание</th>
-        <th colSpan={6}>Статус</th>
-        <th colSpan={6}>Дата закрытие</th>
-        <th />
-      </TableRow>
+    <TableRow header={true}>
+      <th colSpan={6}>Ariza raqami</th>
+      <th colSpan={6}>Vazifa raqami</th>
+      <th colSpan={6}>Status</th>
+      <th colSpan={6}>Natija statusi</th>
+      <th />
+    </TableRow>
 
   // TableList
   const tableList = listData.map(client => {
@@ -75,26 +81,24 @@ const ApplicationList = props => {
       application,
       openDate,
       statusAssignment,
-      closedDate,
+      statusResult,
     } = client
 
     const statusText = statusAssignments.object[statusAssignment]
+    const statusResultText = expertAuditAnswerType.object[statusResult]
     const statusColor = statusColors[statusAssignment]
+    const statusResultColor = statusResultColors[statusResult]
 
     // MoreList
     const moreList = [
       {
-        name: 'Изменить',
+        name: 'Ko\'rish',
         onClick: () => {
           history.push({
             pathname: sprintf(ROUTES.EXPERT_PLACE_UPDATE_URL, id)
           })
         }
       },
-      {
-        name: 'Удалить',
-        onClick: () => onDelete(id)
-      }
     ]
 
     // Render
@@ -104,12 +108,14 @@ const ApplicationList = props => {
       >
         <td colSpan={6}><a style={{
           color: 'blue'
-        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, application.id)}>Заявка №{application.id}/{application.registerDate}</a> </td>
+        }} href={sprintf(ROUTES.EXPERT_PLACE_UPDATE_URL, id)}>Ariza №{application.id}/{application.registerDate}</a> </td>
         <td colSpan={6}> №{id}/{openDate}</td>
         <td colSpan={6}><Status color={statusColor}>
           {statusText}
         </Status></td>
-        <td colSpan={6}>{closedDate}</td>
+        <td colSpan={6}><Status color={statusResultColor}>
+          {statusResultText}
+        </Status></td>
         <DropdownMore
           moreList={moreList}
         />

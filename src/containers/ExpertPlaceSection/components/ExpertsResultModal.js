@@ -29,13 +29,13 @@ const ExpertsResultModal = props => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <FieldWrapper>
-                <Field
-                  name="comments"
-                  label="comments"
-                  component={InputField}
-                />
-              </FieldWrapper>
+              {/*<FieldWrapper>*/}
+              {/*  <Field*/}
+              {/*    name="comments"*/}
+              {/*    label="comments"*/}
+              {/*    component={InputField}*/}
+              {/*  />*/}
+              {/*</FieldWrapper>*/}
 
               {/*<FieldWrapper>*/}
               {/*  <Field*/}

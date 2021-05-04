@@ -49,7 +49,7 @@ const ApplicationContractInvoiceInfo = props => {
         key={id}
       >
         <td colSpan={4}>{name}</td>
-        <td colSpan={4}>{rateType}</td>
+        <td colSpan={4}>{rateType}%</td>
         <td colSpan={4}>{count}</td>
         <td colSpan={4}>{totalAmount}</td>
         <td colSpan={4}><Status color={statusColor}>
@@ -59,19 +59,19 @@ const ApplicationContractInvoiceInfo = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}/main/applications/${application}/pdf`}>Договор</a></td>
+          }} href={`${API_URL}/main/applications/${application}/pdf`}>Shartnoma</a></td>
 
       </TableRow>
     )
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={4} >Ставкаси</th>
-      <th colSpan={4} >Миқдори</th>
-      <th colSpan={4} >Нархи</th>
-      <th colSpan={4} >Статус </th>
-      <th colSpan={4} >Контракт </th>
+      <th colSpan={4} >Tovar (ish, xizmat)lar nomi </th>
+      <th colSpan={4} >Stavkasi</th>
+      <th colSpan={4} >Miqdori</th>
+      <th colSpan={4} >Narxi</th>
+      <th colSpan={4} >Status </th>
+      <th colSpan={4} >Shartnoma </th>
     </TableRow>
   const table =
     <Table
@@ -91,6 +91,7 @@ const ApplicationContractInvoiceInfo = props => {
       count,
       status,
       totalAmount,
+      totalPrice,
       paymentType,
     } = client
 
@@ -103,9 +104,9 @@ const ApplicationContractInvoiceInfo = props => {
         key={id}
       >
         <td colSpan={4}>{name}</td>
-        <td colSpan={2}>{rateType}</td>
+        <td colSpan={2}>{rateType}%</td>
         <td colSpan={2}>{count}</td>
-        <td colSpan={4}>{totalAmount}</td>
+        <td colSpan={4}>{totalPrice}</td>
         <td colSpan={4}><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -125,10 +126,12 @@ const ApplicationContractInvoiceInfo = props => {
   })
   const tablePlaceHead =
     <TableRow header={true}>
-      <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={2} >Миқдори </th>
-      <th colSpan={2} >Ставкаси </th>
-      <th colSpan={4} >Нархи</th>
+
+
+      <th colSpan={4} >Tovar (ish, xizmat)lar nomi </th>
+      <th colSpan={2} >Stavkasi</th>
+      <th colSpan={2} >Miqdori</th>
+      <th colSpan={4} >Narxi</th>
       <th colSpan={4} >Status </th>
       <th colSpan={4} >Shartnoma </th>
       <th colSpan={4} >Ekspertiza xulosasi </th>

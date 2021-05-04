@@ -28,7 +28,7 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
       rateType,
       file,
       count,
-      totalAmount,
+      totalPrice,
       paymentType,
     } = client
 
@@ -38,9 +38,9 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
         key={id}
       >
         <td colSpan={4}>{name}</td>
-        <td colSpan={2}>{rateType}</td>
+        <td colSpan={2}>{rateType}%</td>
         <td colSpan={2}>{count}</td>
-        <td colSpan={4}>{totalAmount}</td>
+        <td colSpan={4}>{totalPrice}</td>
         <td colSpan={4}>{paymentType}</td>
         <td colSpan={4} style={{
           color: '#0f22ff'
@@ -58,10 +58,10 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={2} >Миқдори </th>
-      <th colSpan={2} >Ставкаси </th>
-      <th colSpan={4} >Нархи</th>
+      <th colSpan={4} >Tovar (ish, xizmat)lar nomi </th>
+      <th colSpan={2} >Stavkasi </th>
+      <th colSpan={2} >Miqdori </th>
+      <th colSpan={4} >Narxi</th>
       <th colSpan={4} >To’lov turi </th>
       <th colSpan={4} >Shartnoma </th>
       <th colSpan={4} >Ekspertiza xulosasi </th>

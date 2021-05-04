@@ -98,7 +98,7 @@ const ApplicationConfirm = props => {
   case 'stage_22':
     return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_23':
-    return <ConfirmPlanNotice onSubmit={onSubmit} text={'Tasdiqlash'} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_24':
     return <ConfirmPlanNotice onSubmit={onSubmit} text={'Junatish'} initialValues={initialValues} />
   case 'stage_26':

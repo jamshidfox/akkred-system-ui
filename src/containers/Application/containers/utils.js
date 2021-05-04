@@ -10,7 +10,7 @@ export const mapBranches = (item) => toSnakeCase({
 
 export const mapDocument = (item) => toSnakeCase({
   file:path(['file', 'id'], item),
-  id: prop('id', item),
+  name: prop('name', item),
 })
 
 export const mapTravelData = (item) => toSnakeCase({
