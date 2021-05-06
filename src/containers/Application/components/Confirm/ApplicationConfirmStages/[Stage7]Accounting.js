@@ -7,7 +7,7 @@ import {
 } from '../../../../../components/FormField'
 import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
-import {API_URL} from "../../../../../constants/api";
+import { API_URL } from '../../../../../constants/api'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -45,19 +45,20 @@ const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) 
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}/main/applications/${idAp}/pdf`}>Договор</a></td>
+          }} href={`${API_URL}/main/applications/${idAp}/pdf`}>Shartnoma</a></td>
 
       </TableRow>
     )
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={4} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={4} >Ставкаси </th>
-      <th colSpan={4} >Миқдори</th>
-      <th colSpan={4} >Нархи</th>
+      <th colSpan={4} >Tovar (ish, xizmat)lar nomi  </th>
+      <th colSpan={4} >Stavkasi </th>
+      <th colSpan={4} >Miqdori</th>
+      <th colSpan={4} >Narxi</th>
       <th colSpan={4} >To’lov turi </th>
-      <th colSpan={4} >Контракт </th>
+      <th colSpan={4} >Shartnoma </th>
+
     </TableRow>
   const table =
     <Table
@@ -79,7 +80,7 @@ const ConfirmStageAccounting = ({ onSubmit, text, initialValues, application }) 
               {table}
 
               <div style={{ textAlign: 'right', marginTop: '10px' }}>
-                <MediumButton type="submit">{text}</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

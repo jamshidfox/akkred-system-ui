@@ -36,7 +36,7 @@ const ExpertsList = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}/media/${assignment && assignment.file.name}`}>hujjat</a></td>
+          }} href={`${API_URL}/media/${assignment && assignment.file.name}`}>Hujjat</a></td>
 
       </TableRow>
     )
@@ -44,7 +44,7 @@ const ExpertsList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={12} >Expert </th>
+      <th colSpan={12} >Ijrochi </th>
       <th colSpan={12} >Hujjat </th>
     </TableRow>
   const table =

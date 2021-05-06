@@ -90,10 +90,10 @@ export const applicationConfirmAction = (id, data) => {
   }
 }
 
-export const applicationRejectAction = (id) => {
+export const applicationRejectAction = (id, data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
-      .post(sprintf(API.APPLICATION_REJECT, id))
+      .post(sprintf(API.APPLICATION_REJECT, id), data)
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

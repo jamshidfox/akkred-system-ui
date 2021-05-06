@@ -50,7 +50,7 @@ const ApplicationExpertPlaceResult = props => {
     <Table
       isEmpty={isEmpty(additionalDocs)}
     >
-      <PageTitleNew name="Auditga tegishli qo'shimcha hujjatlar" />
+      <PageTitleNew name="Baholashga tegishli qo'shimcha hujjatlar" />
       {tableAddDocHead}
       {tableAddDocList}
     </Table>
@@ -95,7 +95,7 @@ const ApplicationExpertPlaceResult = props => {
     <Table
       isEmpty={isEmpty(results)}
     >
-      <PageTitleNew name="Auditga tegishli hujjatlar" />
+      <PageTitleNew name="Baholashga tegishli hujjatlar" />
       {tableHead}
       {tableList}
     </Table>

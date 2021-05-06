@@ -43,10 +43,10 @@ const TravelDataList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8} >Товар (иш, хизмат)лар номи </th>
-      <th colSpan={4} >Ўлчов бирлиги </th>
-      <th colSpan={4} >Миқ-дори</th>
-      <th colSpan={6} >Нархи </th>
+      <th colSpan={8} >Tovar (ish, xizmat)lar nomi</th>
+      <th colSpan={4} >O‘lchov birligi </th>
+      <th colSpan={4} >Miqdori</th>
+      <th colSpan={6} >Narxi </th>
       <th colSpan={2} />
     </TableRow>
   const table =
@@ -58,7 +58,7 @@ const TravelDataList = props => {
     </Table>
   return (
     <>
-      <AddBtn onClick={() => serviceModal.onOpen()}>qo'shish </AddBtn>
+      <AddBtn onClick={() => serviceModal.onOpen()}>Qo'shish </AddBtn>
 
       {table}
 

@@ -49,14 +49,14 @@ const ApplicationReestr = props => {
         render={({ handleSubmit, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Реестр</Label>
+              <Label>Reestr</Label>
 
               <Row gutter={24}>
 
                 <Col span={8}>
                   <Field
                     name="number"
-                    label="Номер реестра"
+                    label="Ro'yxatdan o'tish raqami"
                     component={InputField}
 
                   />
@@ -65,7 +65,7 @@ const ApplicationReestr = props => {
                 <Col span={8}>
                   <Field
                     name="accreditationDate"
-                    label="Дата аккредитации"
+                    label="Akkreditatsiya qilingan sana"
                     component={DateField}
 
                   />
@@ -74,7 +74,7 @@ const ApplicationReestr = props => {
                 <Col span={8}>
                   <Field
                     name="statusDate"
-                    label="Дата статуса"
+                    label="Holat sanasi"
                     component={DateField}
 
                   />
@@ -83,7 +83,7 @@ const ApplicationReestr = props => {
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>{text}</MediumButton>
+                <MediumButton type={'submit'}>Tasdiqlash</MediumButton>
               </div>
 
             </form>

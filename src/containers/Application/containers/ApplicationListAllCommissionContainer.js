@@ -7,7 +7,7 @@ import { fields } from '../components/CommentListFilterForm'
 import { applicationCommissionFetchListAll, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 import * as ROUTES from '../../../constants/routes'
-import ApplicationList from '../../Commission/components/ApplicationList'
+import ApplicationList from '../components/ApplicationList'
 
 // Enhance
 const enhance = compose(connect())

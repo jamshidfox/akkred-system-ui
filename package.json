@@ -82,6 +82,7 @@
     "rxjs": "^6.5.2",
     "sass-loader": "^8.0.0",
     "sprintf-js": "^1.1.2",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "ui-cubic": "^1.0.3"
   }
 }

@@ -86,7 +86,7 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
               {table}
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">{text}</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

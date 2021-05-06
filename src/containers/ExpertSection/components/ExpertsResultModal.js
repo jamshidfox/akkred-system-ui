@@ -32,7 +32,7 @@ const ExpertsResultModal = props => {
               <FieldWrapper>
                 <Field
                   name="comments"
-                  label="comments"
+                  label="Izoh"
                   component={InputField}
                 />
               </FieldWrapper>
@@ -42,7 +42,7 @@ const ExpertsResultModal = props => {
                   component={FileUploadField}
 
                   name="file"
-                  label="Задание"
+                  label="Vazifa"
                 />
               </FieldWrapper>
 
@@ -51,12 +51,12 @@ const ExpertsResultModal = props => {
                   component={FileUploadField}
 
                   name="act"
-                  label="Акт"
+                  label="Akt"
                 />
               </FieldWrapper>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Сохранить</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

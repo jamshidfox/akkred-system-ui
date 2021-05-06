@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { prop } from 'ramda'
 import { MediumButton, Modal } from '../../../../../components/UI'
 import {
+  DateField,
   Field,
   Form,
+  InputField,
   UniversalSearchField,
+  UniversalStaticSelectField,
+  ImageUploadField,
 } from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
-import { RESULT_LIST } from '../../../../../constants/backend'
-import { Box } from '../../../../../components/StyledElems'
+import { ANSWER_LIST, RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
+import { Box } from '../../../../../components/StyledElems'
+import { ExpertsCreateModal, ExpertsListConfirm } from '../Experts'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -26,34 +32,25 @@ const Label = styled.div`
   color: ${props => props.theme.color.basic.default};
 `
 
-const Row = styled(RowUI)`
-  margin-bottom: 40px;
-`
-const ConfirmStageTwoChoiceExecutors = ({ onSubmit }) => {
+const ConfirmStageChoiceExpertHrConfirm = ({ onSubmit, serviceList, serviceModal, initialValues }) => {
+  const expertsPlace = prop('experts', initialValues)
+  const [serviceModalItem, setServiceModalItem] = useState(false)
+  const editModalOpen = (data) => {
+    setServiceModalItem(data)
+    serviceModal.onOpen()
+  }
   return (
 
-    <BoxUI >
+    <BoxUI>
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Row gutter={24}>
-                <Col span={24}>
-                  <Field
-                    name="executors"
-                    label="Ijrochilar"
-                    parent={parent}
-                    // params={{ children_only: false }}
-                    api={API.EMPLOYEES_LIST}
-                    component={UniversalMultiSelectField}
-                  />
-                </Col>
-
-              </Row>
-
+              <Label>Ekspertlar</Label>
+              <ExpertsListConfirm branches={expertsPlace} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Ijrochilani Tanlash </MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )
@@ -64,4 +61,4 @@ const ConfirmStageTwoChoiceExecutors = ({ onSubmit }) => {
   )
 }
 
-export default ConfirmStageTwoChoiceExecutors
+export default ConfirmStageChoiceExpertHrConfirm

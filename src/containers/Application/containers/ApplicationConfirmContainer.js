@@ -147,6 +147,7 @@ const ApplicationConfirmContainer = props => {
     const documentThree = path(['documentThree', 'id'], values)
     const leadExpert = path(['leadExpert', 'id'], values)
     const newDAta = getSerializedData([
+      'hr',
       'executors',
       'executor',
       'experts',

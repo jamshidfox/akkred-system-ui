@@ -102,7 +102,7 @@ const ConfirmAudit = ({ onSubmit, text, initialValues }) => {
     <Table
       isEmpty={isEmpty(docs)}
     >
-      <PageTitleNew name="Auditga tegishli hujjatlar" />
+      <PageTitleNew name="Baholashga tegishli hujjatlar" />
       {tableHeadDoc}
       {tableDocList}
     </Table>

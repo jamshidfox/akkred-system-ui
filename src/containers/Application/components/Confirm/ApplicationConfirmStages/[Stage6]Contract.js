@@ -56,7 +56,7 @@ const ConfirmStageContract = ({ onSubmit }) => {
                 <Col span={8}>
                   <Field
                     name="name"
-                    label="Товар (иш, хизмат)лар номи"
+                    label="Tovar (ish, xizmat)lar nomi"
                     component={InputField}
 
                   />
@@ -65,7 +65,7 @@ const ConfirmStageContract = ({ onSubmit }) => {
                 <Col span={8}>
                   <Field
                     name="count"
-                    label="Миқдори"
+                    label="Miqdori"
                     component={InputField}
                   />
                 </Col>
@@ -73,7 +73,7 @@ const ConfirmStageContract = ({ onSubmit }) => {
                 <Col span={8}>
                   <Field
                     name="rate"
-                    label="Ставкаси"
+                    label="Stavkasi"
                     component={UniversalStaticSelectField}
                     list={rateTypes}
 
@@ -93,7 +93,7 @@ const ConfirmStageContract = ({ onSubmit }) => {
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Shartnoma rasmiylashtirish</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

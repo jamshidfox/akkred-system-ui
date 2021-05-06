@@ -6,6 +6,7 @@ import {
 } from 'ramda'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { sprintf } from 'sprintf-js'
 import toSnakeCase from '../../../utils/toSnakeCase'
 
 import * as STATE from '../../../constants/stateNames'
@@ -16,11 +17,12 @@ import {
 } from '../../../hooks'
 import {
   clientFetchItem,
-  applicationUpdateAction, applicationConfirmRejectAction,
+  applicationUpdateAction, applicationConfirmRejectAction, applicationConfirmAction, applicationRejectAction,
 } from '../actions'
 import { mapResponseToFormError } from '../../../utils/form'
 import ApplciationTabs from '../components/ApplciationTabs'
-import { mapBranches, mapDocument } from './utils'
+import { getSerializedData } from '../../../utils/get'
+import { mapBranches, mapDocument, mapExperts, mapExpertsPlace, mapTravelData } from './utils'
 
 const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
@@ -107,6 +109,7 @@ const getInitialValues = data => {
     consultingService: prop('consultingService', data),
     certificateNumber: prop('certificateNumber', data),
     isExpertise: prop('isExpertise', data),
+    histories: prop('histories', data),
 
   }
 }
@@ -121,6 +124,7 @@ const ApplicationUpdateContainer = props => {
   const [staffList, setStaffList] = useState(EMPTY_ARR)
   const [documentList, setDocumentList] = useState(EMPTY_ARR)
   const [additionalActivityList, setAdditionalActivityList] = useState(EMPTY_ARR)
+  const rejectModal = useModal({ key: 'rejectModal' })
 
   const onComplete = ({ value }) => {
     const branches = prop('branches', value)
@@ -170,6 +174,19 @@ const ApplicationUpdateContainer = props => {
     setTab(val)
   }
 
+  const rejectSubmit = values => {
+    const newDAta = getSerializedData([
+      'comment'
+    ], values)
+    const data = {
+      ...newDAta,
+    }
+    rejectModal.onClose()
+    dispatch(applicationRejectAction(params.id, data))
+      .then(() => props.history.push(sprintf(ROUTES.APPLICATION_UPDATE_URL, params.id)))
+      .catch(mapResponseToFormError)
+  }
+
   const update = true
 
   return (
@@ -177,6 +194,7 @@ const ApplicationUpdateContainer = props => {
       onSubmit={() => null}
       initialValues={initialValues}
       expertRejectModal={{ ...expertRejectModal, onSubmit: onSubmitExpertRejectModal }}
+      rejectModal={{ ...rejectModal, onSubmit: rejectSubmit }}
       onCreateApplication={onCreateApplication}
       tabData={{ tab, onTabChange }}
       update={update}

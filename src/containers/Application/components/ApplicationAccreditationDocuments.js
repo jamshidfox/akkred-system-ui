@@ -51,7 +51,7 @@ const ApplicationAccreditationDocuments = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -60,8 +60,8 @@ const ApplicationAccreditationDocuments = props => {
   })
   const tableNoticeHead =
     <TableRow header={true}>
-      <th colSpan={12} >Документ </th>
-      <th colSpan={12} >Статус </th>
+      <th colSpan={12} >Hujjat </th>
+      <th colSpan={12} >Status </th>
 
     </TableRow>
   const tableNotice =
@@ -94,7 +94,7 @@ const ApplicationAccreditationDocuments = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -103,8 +103,8 @@ const ApplicationAccreditationDocuments = props => {
   })
   const tablePlanHead =
     <TableRow header={true}>
-      <th colSpan={12} >Документ </th>
-      <th colSpan={12} >Статус </th>
+      <th colSpan={12} >Hujjat </th>
+      <th colSpan={12} >Status </th>
 
     </TableRow>
   const tablePlan =
@@ -137,7 +137,7 @@ const ApplicationAccreditationDocuments = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Документ</a></td>
+          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -146,8 +146,8 @@ const ApplicationAccreditationDocuments = props => {
   })
   const tableCommandHead =
     <TableRow header={true}>
-      <th colSpan={12} >Документ </th>
-      <th colSpan={12} >Статус </th>
+      <th colSpan={12} >Hujjat </th>
+      <th colSpan={12} >Status </th>
     </TableRow>
   const tableCommand =
     <Table

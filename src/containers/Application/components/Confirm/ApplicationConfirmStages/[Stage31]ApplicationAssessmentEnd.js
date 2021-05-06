@@ -49,7 +49,7 @@ const ApplicationAssessmentEnd = props => {
                   />
                 </Col>
               </Row>
-              <Label>Auditga tegishli hujjatlarni yuklash</Label>
+              <Label>Baholashga tegishli hujjatlarni yuklash</Label>
               <Row gutter={24}>
                 <Col span={24}>
                   <Field
@@ -150,7 +150,7 @@ const ApplicationAssessmentEnd = props => {
               <DocumentCreateModal {...documentModal} />
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>{text}</MediumButton>
+                <MediumButton type={'submit'}>Tasdiqlash</MediumButton>
               </div>
 
             </form>

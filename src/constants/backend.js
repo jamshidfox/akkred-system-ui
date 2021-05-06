@@ -9,26 +9,6 @@ const getFormattedListData = list => ({
   list,
   object: arrayObjToObj(list)
 })
-export const PERCENTAGE = 'percentage'
-export const FIXED = 'fixed'
-export const INDIVIDUAL = 'individual'
-
-export const CALCULATION_TYPE_LIST = [
-  {
-    id: FIXED,
-    name: 'Фикс. стоимость'
-  },
-  {
-    id: PERCENTAGE,
-    name: 'В процентах'
-  },
-  {
-    id: INDIVIDUAL,
-    name: 'Индивидуальные цены'
-  },
-]
-
-export const CALCULATION_TYPE = arrayObjToObj(CALCULATION_TYPE_LIST)
 
 export const ANSWER_MONTH_LIST = [
   { id: 'LESS_THREE', name: '0-3 oy' },
@@ -38,7 +18,7 @@ export const ANSWER_MONTH_LIST = [
 
 export const ANSWER_LIST = [
   { id: 'yes', name: 'ha' },
-  { id: 'no', name: 'yoq' }
+  { id: 'no', name: 'yo`q' }
 ]
 
 export const ANSWER_TYPE_LIST = [
@@ -204,10 +184,6 @@ export const documentType = getFormattedListData([
 
 export const historyStatus = getFormattedListData([
   {
-    id:'open',
-    name:'Ochiq',
-  },
-  {
     id:'pros',
     name:'Jarayonda',
   },
@@ -266,22 +242,32 @@ export const expertAnswerType = getFormattedListData([
 
 export const registryStatus = getFormattedListData([
   { id: 'draft', title: 'qoralama' },
-  { id: 'active', title: 'faol' },
   { id: 'archive', title: 'arxiv' },
   { id: 'reject', title: 'rad etilgan' },
-  { id: 'leadership_review', title: 'rahbariyat ko’rib chiqishida' },
-  { id: 'received', title: 'qabul qilingan' },
-  { id: 'contract_formed', title: 'shartnoma rasmiylashtirilgan' },
-  { id: 'payment_process', title: 'to’lov jarayonida' },
-  { id: 'expertise', title: 'ekspertiza' },
-  { id: 'audit_contract_formed', title: 'audit uchun shartnoma rasmiylashtirilgan' },
-  { id: 'audit_payment_process', title: 'audit uchun to’lov jarayonida' },
-  { id: 'plan_order_formed', title: 'reja va buyruq rasmiylashtirilgan' },
-  { id: 'place_evaluation', title: 'joyida baholash' },
-  { id: 'accreditation_commission', title: 'akkreditatsiya komissiyasiga taqdim etilgan' },
-  { id: 'registry', title: 'davlat reestriga kiritilgan va guvohnoma rasmiylashtirilgan' },
-  { id: 'post_accreditation', title: 'post akkreditatsiaion hujjatlar rasmiyla shtirilgan' },
-  { id: 'paused', title: 'Пауза' },
+  { id: 'new', title: 'Yangi' },
+  { id: 'accepted', title: 'Qabul qilindi' },
+  { id: 'head_department_review', title: 'Bo’lim boshlig’I rezolyutsiyasida' },
+  { id: 'leadership_review', title: 'Rahbar rezolyutsiyasida' },
+  { id: 'document_analysis', title: 'Hujjatlar taxlili' },
+  { id: 'expertise_contract_formed', title: 'Ekspertiza shartnomasini rasmiylashtirish' },
+  { id: 'expertise_contract_accept', title: 'Ekspertiza shartnomasini rasmiylashtirish' },
+  { id: 'expertise_payment_process', title: 'Ekspertiza uchun to’lov jarayoni' },
+  { id: 'expertise_group_formed', title: 'Ekspertlar guruhini shakllantirish' },
+  { id: 'expertise', title: 'Ekspertiza' },
+  { id: 'expertise_finish', title: 'Baholash shartnomasini rasmiylashtirish' },
+  { id: 'audit_contract_formed', title: 'Baholash shartnomasini rasmiylashtirish' },
+  { id: 'audit_contract_accept', title: 'Baholash shartnomasini rasmiylashtirish' },
+  { id: 'audit_payment_process', title: 'Baholash uchun to’lov jarayoni' },
+  { id: 'audit_plan_formed', title: 'Baholash guruhini shakllantirish' },
+  { id: 'audit_plan_agreement', title: 'Baholash rejasini rasmiylashtirish' },
+  { id: 'audit_order_formed', title: 'Baholash buyrug’ini rasmiylashtirish' },
+  { id: 'audit', title: 'Baholash' },
+  { id: 'audit_finish', title: 'Baholash yakuni' },
+  { id: 'audit_document_analysis', title: 'Baholash hujjatlari taxlili' },
+  { id: 'accreditation_commission', title: 'Akrreditatsiya komissiyasi' },
+  { id: 'registry', title: 'Reestrga ro’yhatga olish' },
+  { id: 'post_accreditation', title: 'Akkreditatsiyadan keyingi shartnomani rasmiylashtirish' },
+  { id: 'finish', title: 'Tugallandi' },
 
 ])
 

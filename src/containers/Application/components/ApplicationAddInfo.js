@@ -41,7 +41,6 @@ const ApplicationAddInfo = props => {
     expertRejectModal.onOpen()
   }
 
-  const username = prop('username', executor)
   const tableList = executors.map(client => {
     const {
       id,
@@ -55,18 +54,18 @@ const ApplicationAddInfo = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={10}>{fullName}</td>
-        <td colSpan={6}>{phoneNumber}</td>
-        <td colSpan={6}>{role && role.name}</td>
+        <td colSpan={8}>{fullName}</td>
+        <td colSpan={8}>{phoneNumber}</td>
+        <td colSpan={8}>{role && role.name}</td>
 
       </TableRow>
     )
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={10} >Ф.И.О </th>
-      <th colSpan={6} >Телефон </th>
-      <th colSpan={6} >Должность </th>
+      <th colSpan={8} >F.I.O </th>
+      <th colSpan={8} >Telefon </th>
+      <th colSpan={8} >Lavozim </th>
     </TableRow>
   const table =
     <Table
@@ -81,10 +80,11 @@ const ApplicationAddInfo = props => {
 
   const tableHeadExpertise =
     <TableRow header={true}>
-      <th colSpan={6} >Ф.И.О </th>
-      <th colSpan={6} >Должность </th>
-      <th colSpan={6} >Статус </th>
-      <th colSpan={6} > </th>
+      <th colSpan={8} >F.I.O </th>
+      <th colSpan={8} >Telefon </th>
+      <th colSpan={8} >Lavozim </th>
+
+
     </TableRow>
   const tableListExpertise = experts.map(client => {
     const {
@@ -103,14 +103,10 @@ const ApplicationAddInfo = props => {
         key={id}
       >
 
-        <td colSpan={6}>{expert.fullName}</td>
-        <td colSpan={6}>{expert.role && expert.role.name}</td>
+        <td colSpan={8}>{expert.fullName}</td>
+        <td colSpan={8}>{expert.phoneNumber}</td>
+        <td colSpan={8}>{expert.role && expert.role.name}</td>
 
-        <td colSpan={6}><Status color={statusColor}>
-          {statusText}
-        </Status></td>
-        <td colSpan={6}> <div onClick={expertRejectModalOpen}>Net</div></td>
-        <ExpertReject initialValues={{ expert:expert.id }} {...expertRejectModal} />
 
       </TableRow>
     )
@@ -128,21 +124,16 @@ const ApplicationAddInfo = props => {
 
   const tableHeadExpertisePlace =
     <TableRow header={true}>
-      <th colSpan={6} >Ф.И.О </th>
-      <th colSpan={6} >Телефон </th>
-      <th colSpan={6} >Должность </th>
-      <th colSpan={6} >Статус </th>
+      <th colSpan={8} >F.I.O </th>
+      <th colSpan={8} >Telefon </th>
+      <th colSpan={8} >Lavozim </th>
     </TableRow>
   const tableListExpertisePlace = expertsPlace.map(client => {
     const {
       id,
       expert,
-      status
 
     } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
 
     // Render
     return (
@@ -150,12 +141,9 @@ const ApplicationAddInfo = props => {
         key={id}
       >
 
-        <td colSpan={6}>{expert.fullName}</td>
-        <td colSpan={6}>{expert.phoneNumber}</td>
-        <td colSpan={6}>{expert.role && expert.role.name}</td>
-        <td colSpan={6}><Status color={statusColor}>
-          {statusText}
-        </Status></td>
+        <td colSpan={8}>{expert.fullName}</td>
+        <td colSpan={8}>{expert.phoneNumber}</td>
+        <td colSpan={8}>{expert.role && expert.role.name}</td>
 
       </TableRow>
     )

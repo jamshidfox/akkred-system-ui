@@ -34,7 +34,7 @@ const ExpertsList = props => {
           color: '#0f22ff'
         }}><a style={{
           color: '#0f22ff'
-        }} href={`${assignment && assignment.file}`}>hujjat</a></td>
+        }} href={`${assignment && assignment.file}`}>Hujjat</a></td>
 
       </TableRow>
     )

@@ -2,24 +2,28 @@ import React from 'react'
 import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
 import {
-  Field,
-  Form, UniversalStaticSelectField,
+  Form,
 } from '../../../components/FormField'
 import { Box } from '../../../components/StyledElems'
-import { MediumButton, PageTitle } from '../../../components/UI'
+import { MediumButton, PageTitle, SecondarySmallButton } from '../../../components/UI'
 
 import { Table, TableRow } from '../../../components/Table'
-import { APPLICATION_LIST, historyStatus, STANDART_LIST } from '../../../constants/backend'
+import { historyStatus, registryStatus } from '../../../constants/backend'
 import { Col, Row } from '../../../components/Grid'
 import PermissionButton from './PermissionButton'
+import RejectCreateModal from './RejectCreateModal'
 
+const AddBtn = styled(SecondarySmallButton)`
+  height: 36px;
+  font-size: 14px;
+`
 const BoxUI = styled(Box)`
   padding: 25px;
 `
 const statusColors = {
   closed:'green',
   pros:'blue',
-  open:'red'
+  // open:'red'
 }
 
 const Status = styled('div')`
@@ -33,10 +37,13 @@ const Status = styled('div')`
 
 const PassButton = styled('div')`
   margin-top: 5px;
+  display: flex;
 `
 
 const Phase = props => {
-  const { id, stage, historyStage, isExpertise } = props
+  const { id, stage, historyStage, isExpertise, initialValues, rejectModal, histories, } = props
+  const status = prop('status', initialValues)
+  const statusText = registryStatus.object[status]
 
   const onCreateApplication = () => {
 
@@ -71,9 +78,15 @@ const Phase = props => {
       >
         <td colSpan={8}>{name}</td>
         <td colSpan={8}>{role}</td>
-        <td colSpan={8}> <Status color={statusColor}>
-          {statusText}
-        </Status> </td>
+        <td colSpan={8}>
+          {status !== 'open' && (
+            <Status color={statusColor}>
+              {statusText}
+            </Status>
+
+          )}
+
+        </td>
 
       </TableRow>
     )
@@ -85,10 +98,77 @@ const Phase = props => {
       {tableHeadDoc}
       {tableDocList}
     </Table>
+    // History Reject
+  const tableHeadHistoryReject =
+    <TableRow header={true}>
+      <th colSpan={8} >Bosqich </th>
+      <th colSpan={8} >Javobgar </th>
+      <th colSpan={8} >Status </th>
+    </TableRow>
+
+  const tableHistoryRejectList = histories.map(client => {
+    const {
+      id,
+      comment,
+      status,
+      user,
+
+    } = client
+
+    const statusText = historyStatus.object[status]
+    const statusColor = statusColors[status]
+
+    // Render
+    return (
+      <TableRow
+        key={id}
+      >
+        <td colSpan={8}>{comment}</td>
+        <td colSpan={8}>{user.full_name}</td>
+        <td colSpan={8}>
+          {status !== 'open' && (
+            <Status color={statusColor}>
+              {statusText}
+            </Status>
+
+          )}
+
+        </td>
+
+      </TableRow>
+    )
+  })
+  const tableHistoryReject =
+    <Table
+      isEmpty={isEmpty(histories)}
+    >
+      {tableHeadHistoryReject}
+      {tableHistoryRejectList}
+    </Table>
 
   return (
 
     <BoxUI>
+
+      <div style={{
+        borderBottom: '1px solid rgb(246, 246, 246)',
+        display: 'flex',
+        paddingBottom: '20px',
+        marginBottom: '20px'
+      }}>
+
+        <div style={{
+
+          color: 'rgb(154, 166, 172)',
+          fontWeight: '500',
+          marginRight: '5px'
+        }}> Ariza statusi</div> <div
+          style={{
+            color: 'rgb(103, 112, 230)'
+          }}
+        >{statusText}</div>
+      </div>
+
       <Form
         keepDirtyOnReinitialize={true}
         onSubmit={onCreateApplication}
@@ -100,16 +180,7 @@ const Phase = props => {
                 display: 'flex',
                 marginBottom: '20px',
               }}>
-
-                {stage === 'stage_39' && (
-
-                  <PassButton >
-                    <MediumButton style={{
-                      background: '#83bc15'
-                    }} >Ariza Yopildi</MediumButton>
-                  </PassButton>
-                )}
-                {(isExpertise === false && stage === 'stage_14') ? (
+                {(status === 'expertise') ? (
 
                   <PassButton >
                     <MediumButton style={{
@@ -136,6 +207,16 @@ const Phase = props => {
 
                             <PermissionButton stage={stage} id={id} />
 
+                            {(status !== 'finish' || status !== 'expertise' || status !== 'audit') && (
+                              <div>
+                                <RejectCreateModal {...rejectModal} />
+                                <AddBtn onClick={() => rejectModal.onOpen()} >Rad Etish</AddBtn>
+
+                              </div>
+
+                            )
+                            }
+
                           </PassButton>
 
                         )}
@@ -146,26 +227,24 @@ const Phase = props => {
 
                 )}
 
-                <PassButton>
-                  <MediumButton style={{
-                    background: '#ff2558'
-                  }} onClick={waitModalOpen()}>Rad etish</MediumButton>
-                </PassButton>
-
               </div>
 
               <Row gutter={24}>
 
-                <Col span={24}>
+                <Col span={18}>
                   <PageTitle name="Ariza Bosqichlari" />
                   {tableDoc}
 
                 </Col>
-                {/*<Col span={6}>*/}
-                {/*  <PageTitle name="Reject Bosqichlari" />*/}
-                {/*  {tableDoc}*/}
+                {histories.length > 0 && (
+                  <Col span={6}>
+                    <PageTitle name="Reject Bosqichlari" />
+                    {tableHistoryReject}
 
-                {/*</Col>*/}
+                  </Col>
+
+                )}
+
               </Row>
 
             </form>
@@ -180,6 +259,7 @@ const Phase = props => {
 Phase.defaultProps = {
   historyStage: [],
   historyPay: [],
+  histories: [],
 }
 
 export default Phase

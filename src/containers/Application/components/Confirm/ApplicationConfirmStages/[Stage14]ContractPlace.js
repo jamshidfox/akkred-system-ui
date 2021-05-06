@@ -79,7 +79,7 @@ const ConfirmStageContractPlace = ({
                 <Col span={24}>
                   <Field
                     name="name"
-                    label="Товар (иш, хизмат)лар номи"
+                    label="Tovar (ish, xizmat)lar nomi"
                     component={InputField}
 
                   />
@@ -138,7 +138,7 @@ const ConfirmStageContractPlace = ({
               )}
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Shartnoma rasmiylashtirish</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

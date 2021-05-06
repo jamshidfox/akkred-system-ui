@@ -100,7 +100,7 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal })
               <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} />
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Tanlanash</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

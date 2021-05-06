@@ -136,7 +136,7 @@ const ConfirmPlanNotice = ({ onSubmit, text, initialValues }) => {
               {tableNotice}
 
               <div style={{ textAlign: 'right', marginTop: '10px' }}>
-                <MediumButton type="submit">{text}</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

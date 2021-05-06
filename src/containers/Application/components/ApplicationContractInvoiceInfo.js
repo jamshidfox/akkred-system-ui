@@ -127,7 +127,6 @@ const ApplicationContractInvoiceInfo = props => {
   const tablePlaceHead =
     <TableRow header={true}>
 
-
       <th colSpan={4} >Tovar (ish, xizmat)lar nomi </th>
       <th colSpan={2} >Stavkasi</th>
       <th colSpan={2} >Miqdori</th>

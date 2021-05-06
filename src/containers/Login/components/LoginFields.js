@@ -54,7 +54,7 @@ const LoginFields = props => {
           <Field
             name={'username'}
             component={IconInputField}
-            placeholder={'Введите логин'}
+            placeholder={'Login kiriting'}
             icon={Person}
           />
         </InputWrap>
@@ -62,7 +62,7 @@ const LoginFields = props => {
           <Field
             name={'password'}
             component={IconInputField}
-            placeholder={'Введите пароль'}
+            placeholder={'Parolni kiriting'}
             type={'password'}
             icon={Lock}
           />
@@ -74,8 +74,7 @@ const LoginFields = props => {
       </Fields>
 
       <Actions>
-        <Forgot>Забыли пароль?</Forgot>
-        <SubmitButton type={'submit'}>Войти</SubmitButton>
+        <SubmitButton type={'submit'}>Kirish</SubmitButton>
       </Actions>
     </Box>
   )

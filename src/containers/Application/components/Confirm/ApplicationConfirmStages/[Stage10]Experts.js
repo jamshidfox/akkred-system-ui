@@ -1,19 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { MediumButton, Modal } from '../../../../../components/UI'
+import { MediumButton } from '../../../../../components/UI'
 import {
-  DateField,
-  Field,
   Form,
-  InputField,
-  UniversalSearchField,
-  UniversalStaticSelectField,
-  ImageUploadField,
 } from '../../../../../components/FormField'
-import { Col, Row as RowUI } from '../../../../../components/Grid'
-import * as API from '../../../../../constants/api'
-import { RESULT_LIST } from '../../../../../constants/backend'
-import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
+import { Row as RowUI } from '../../../../../components/Grid'
 import { Box } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsList } from '../Experts'
 
@@ -48,12 +39,11 @@ const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal , appli
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
               <ExpertsList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} application={application} />
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Tanlanash</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

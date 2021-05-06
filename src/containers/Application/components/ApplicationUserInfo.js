@@ -148,13 +148,13 @@ const ApplicationUserInfo = props => {
 
               </Row>
 
-              <Label>Банковские реквизиты</Label>
+              <Label>Bank rekvizitlari</Label>
 
               <Row gutter={24}>
 
                 <Col span={8}>
                   <Field
-                    label={'Наименование банка'}
+                    label={'Bank nomi'}
                     name={'bankName'}
                     component={InputField}
                   />
@@ -162,7 +162,7 @@ const ApplicationUserInfo = props => {
 
                 <Col span={8}>
                   <Field
-                    label={'Л/Р '}
+                    label={'SH/h '}
                     name={'paymentAccount'}
                     component={InputField}
                   />
@@ -170,7 +170,7 @@ const ApplicationUserInfo = props => {
 
                 <Col span={8}>
                   <Field
-                    label={'ОКЕД'}
+                    label={'OKED'}
                     name={'oked'}
                     component={InputField}
                   />
@@ -180,25 +180,18 @@ const ApplicationUserInfo = props => {
 
               <Row gutter={24}>
 
-                <Col span={8}>
-                  <Field
-                    label={'Инн банка'}
-                    name={'bankInn'}
-                    component={InputField}
-                  />
-                </Col>
 
-                <Col span={8}>
+                <Col span={12}>
                   <Field
-                    label={'МФО банка'}
+                    label={'Banki MFO '}
                     name={'bankMfo'}
                     component={InputField}
                   />
                 </Col>
 
-                <Col span={8}>
+                <Col span={12}>
                   <Field
-                    label={'СОГУ'}
+                    label={'SOGU'}
                     name={'soogu'}
                     component={InputField}
                   />

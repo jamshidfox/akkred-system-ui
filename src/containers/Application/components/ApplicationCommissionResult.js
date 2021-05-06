@@ -55,9 +55,9 @@ const ApplicationCommissionResult = props => {
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8} >komissiyasi </th>
-      <th colSpan={8} >javobi </th>
-      <th colSpan={8} >izoh </th>
+      <th colSpan={8} >Komissiyasi </th>
+      <th colSpan={8} >Javobi </th>
+      <th colSpan={8} >Izoh </th>
     </TableRow>
   const table =
     <Table

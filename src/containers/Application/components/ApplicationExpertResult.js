@@ -36,57 +36,42 @@ const ApplicationExpertResult = props => {
       expert,
       assignment,
       closedDate,
-      status,
       file,
-      act,
     } = client
-
-    const statusText = expertAnswerType.object[status]
-    const statusColor = statusColors[status]
 
     // Render
     return (
       <TableRow
         key={id}
       >
-        <td colSpan={5}>{expert.username}</td>
-        <td colSpan={5} style={{
+        <td colSpan={6}>{expert.username}</td>
+        <td colSpan={6} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}/media/${assignment}`}>Задание</a></td>
-        <td colSpan={4}>{closedDate}</td>
-        <td colSpan={5}><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-        <td colSpan={3} style={{
+          }} href={`${API_URL}/media/${assignment}`}>Vazifa</a></td>
+        <td colSpan={6}>{closedDate}</td>
+        <td colSpan={6} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}/media/${file}`}>результат</a></td>
-        <td colSpan={2} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}/media/${act}`}>Акты</a></td>
+          }} href={`${API_URL}/media/${file}`}>Natija</a></td>
 
       </TableRow>
     )
   })
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={5} >Эксперт </th>
-      <th colSpan={5} >Задание </th>
-      <th colSpan={4} >дата зкарытие </th>
-      <th colSpan={5} >статус </th>
-      <th colSpan={3} >результат </th>
-      <th colSpan={2} > Акты выпол.работ </th>
+      <th colSpan={6} >Ijrochi </th>
+      <th colSpan={6} >Vazifa </th>
+      <th colSpan={6} >Bajarilgan sana </th>
+      <th colSpan={6} >Natija </th>
     </TableRow>
   const table =
     <Table
       isEmpty={isEmpty(results)}
     >
-      <PageTitleNew name="EKSPERTIZA natijalari" />
+      <PageTitleNew name="Ekspertiza natijalari" />
       {tableHead}
       {tableList}
     </Table>

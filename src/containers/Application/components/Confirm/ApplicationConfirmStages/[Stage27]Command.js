@@ -74,7 +74,7 @@ const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
     <Table
       isEmpty={isEmpty(command)}
     >
-      <PageTitleNew name="buyruq" />
+      <PageTitleNew name="Buyruq" />
       {tableCommandHead}
       {tableCommandList}
     </Table>
@@ -90,7 +90,7 @@ const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
               {tableCommand}
 
               <div style={{ textAlign: 'right', marginTop: '10px' }}>
-                <MediumButton type="submit">{text}</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

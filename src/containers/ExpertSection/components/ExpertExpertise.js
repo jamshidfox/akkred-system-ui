@@ -71,13 +71,13 @@ const ExpertExpertiseCreate = props => {
                 <Col span={20} >
                   <a style={{
                     color: 'blue'
-                  }} href={`${file}`}>Документ для экспертизы </a>
+                  }} href={`${file}`}>Hujjat </a>
                 </Col>
 
                 {statusAssignment === 'given' && (
 
                   <Col span={4} >
-                    <AddBtn onClick={() => serviceModal.onOpen()}>Закрыть задание</AddBtn>
+                    <AddBtn onClick={() => serviceModal.onOpen()}>Vazifani yopish</AddBtn>
                   </Col>
 
                 )}

@@ -45,9 +45,7 @@ const BoxUI = styled(Box)`
   padding: 25px;
 `
 
-export const GUEST = 'guest'
 export const SERVICE = 'service'
-export const PAYMENT = 'payment'
 
 const ApplicationTabs = props => {
   const { onSubmit,
@@ -61,6 +59,7 @@ const ApplicationTabs = props => {
     staffList,
     mobileList,
     additionalActivityList,
+    rejectModal,
 
   } = props
   const id = prop('id', initialValues)
@@ -86,6 +85,7 @@ const ApplicationTabs = props => {
   const noticeFin = prop('noticeFinal', initialValues)
 
   const historyStage = prop('history', initialValues)
+  const histories = prop('histories', initialValues)
   const isExpertise = prop('isExpertise', initialValues)
 
   var noticeFinal = []
@@ -97,7 +97,7 @@ const ApplicationTabs = props => {
         initialValue={'stage'}
       >
         <Tab value={'stage'} label={'Bosqich'}>
-          <Phase id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} isExpertise={isExpertise} />
+          <Phase id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} isExpertise={isExpertise} rejectModal={rejectModal} expertRejectModal={expertRejectModal} histories={histories} />
         </Tab>
         <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
           <ApplicationUserInfo clientInfo={clientInfo} />
@@ -135,7 +135,7 @@ const ApplicationTabs = props => {
           <ApplicationExpertResult results={results} application={id} />
         </Tab>
 
-        <Tab value={'place'} label={'Osenka natijalari'}>
+        <Tab value={'place'} label={'Baholash natijalari'}>
           <ApplicationExpertPlaceResult results={audits} docs={documentNews} application={id} />
         </Tab>
 

@@ -13,7 +13,7 @@ import {
 } from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
-import { RESULT_LIST } from '../../../../../constants/backend'
+import { ANSWER_LIST, RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
 import { Box } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsListConfirm } from '../Experts'
@@ -49,8 +49,17 @@ const ConfirmStageChoiceExpertsConfirm = ({ onSubmit, serviceList, serviceModal,
             <form onSubmit={handleSubmit}>
               <Label>Ekspertlar</Label>
               <ExpertsListConfirm branches={expertsPlace} serviceModal={serviceModal} editModalOpen={editModalOpen} />
-
-              <div style={{ textAlign: 'right' }}>
+              <Col span={8}>
+                <Field
+                  name="hr"
+                  label="Kadrlar bo’limi bilan kelishish"
+                  component={UniversalStaticSelectField}
+                  list={ANSWER_LIST}
+                />
+              </Col>
+              <div style={{
+                textAlign: 'right',
+                marginTop: '8px' }}>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>

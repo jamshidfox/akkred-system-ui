@@ -13,7 +13,7 @@ import {
 } from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
-import { ANSWER_LIST, documentPlanOrderType, RESULT_LIST } from '../../../../../constants/backend'
+import { documentPlanOrderType, RESULT_LIST } from '../../../../../constants/backend'
 import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
 import { Box } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsListConfirm } from '../Experts'
@@ -53,7 +53,7 @@ const Status = styled('div')`
   line-height: 16px;
   padding: 3px 12px;
 `
-const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, serviceList, serviceModal, initialValues }) => {
+const ConfirmStageChoiceExpertsHrPlaceConfirm = ({ onSubmit, serviceList, serviceModal, initialValues }) => {
   const expertsPlace = prop('expertsPlace', initialValues)
   const notice = prop('notice', initialValues)
   const plan = prop('plan', initialValues)
@@ -160,17 +160,7 @@ const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, serviceList, serviceM
               <ExpertsPlaceListConfirm branches={expertsPlace} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               {tablePlan}
               {tableNotice}
-
-              <Col span={8}>
-                <Field
-                  name="hr"
-                  label="Kadrlar bo’limi bilan kelishish"
-                  component={UniversalStaticSelectField}
-                  list={ANSWER_LIST}
-                />
-              </Col>
-              <div style={{ textAlign: 'right',
-                marginTop: '8px' }}>
+              <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
@@ -182,4 +172,4 @@ const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, serviceList, serviceM
   )
 }
 
-export default ConfirmStageChoiceExpertsPlaceConfirm
+export default ConfirmStageChoiceExpertsHrPlaceConfirm

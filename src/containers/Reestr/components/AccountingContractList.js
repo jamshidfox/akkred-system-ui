@@ -1,5 +1,5 @@
 import * as ROUTES from 'constants/routes'
-import {registryStatus, statusPayments} from 'constants/backend'
+import { registryStatus, statusPayments } from 'constants/backend'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { prop, isEmpty, path, propOr } from 'ramda'
@@ -52,10 +52,9 @@ const AccountingContractList = props => {
   // TableHead
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6}>Номер заявки</th>
-      <th colSpan={6}>Номер Реестра</th>
-      <th colSpan={6}>Статус</th>
-      <th colSpan={6}>Дата аккредитации</th>
+      <th colSpan={8}>Reestr raqami</th>
+      <th colSpan={8}>Status</th>
+      <th colSpan={8}>Akkreditatsiya qilingan sana</th>
       <th />
     </TableRow>
 
@@ -86,14 +85,12 @@ const AccountingContractList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}><a style={{
-          color: 'blue'
-        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, application.id)}>Заявка №{application.id}/{application.registerDate}</a> </td>
-        <td colSpan={6}> {number}</td>
-        <td colSpan={6}><Status color={statusColor}>
+
+        <td colSpan={8}> {number}</td>
+        <td colSpan={8}><Status color={statusColor}>
           {statusText}
         </Status></td>
-        <td colSpan={6}>{accreditationDate}</td>
+        <td colSpan={8}>{accreditationDate}</td>
         <DropdownMore
           moreList={moreList}
         />

@@ -6105,6 +6105,11 @@ react-dom@^0.14||^15.5.4||^16.1.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
+react-fast-compare@^3.0.1:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
 react-fc@^0.41.0:
   version "0.41.0"
   resolved "https://registry.yarnpkg.com/react-fc/-/react-fc-0.41.0.tgz#3eaba06a8b93524ca5a4f2293f22de5d6a9630c9"
@@ -7592,6 +7597,14 @@ uglify-js@3.4.x:
   dependencies:
     commander "~2.19.0"
     source-map "~0.6.1"
+
+ui-cubic@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ui-cubic/-/ui-cubic-1.0.3.tgz#5e05a8cfe0614d1d4f6d9ef8b0f7e4f561485f41"
+  integrity sha512-lfORKkcjYw9av7JbdfHbo6pvFuE6XaZ6JzbtwemrdhEOESe5CF324VjSrh6XhwkqK40vzBm7oq49+vjZXdhGVg==
+  dependencies:
+    prop-types "^15.7.2"
+    react-fast-compare "^3.0.1"
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

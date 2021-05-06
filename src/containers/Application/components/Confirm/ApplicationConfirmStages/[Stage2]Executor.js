@@ -37,13 +37,12 @@ const ConfirmStageTwoChoiceExecutor = ({ onSubmit }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
               <Row gutter={24}>
 
                 <Col span={8}>
                   <Field
                     name="executor"
-                    label="Ijrochi 1"
+                    label="Ijrochi"
                     component={UniversalSearchField}
                     api={API.EMPLOYEES_LIST}
                   />
@@ -51,7 +50,7 @@ const ConfirmStageTwoChoiceExecutor = ({ onSubmit }) => {
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type="submit">Ijrochini Tanlash</MediumButton>
+                <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>
             </form>
           )

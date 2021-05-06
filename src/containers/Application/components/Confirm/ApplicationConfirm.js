@@ -18,6 +18,8 @@ import ConfirmStageChoiceExpertsPlaceConfirm from './ApplicationConfirmStages/[S
 import ConfirmPlanNotice from './ApplicationConfirmStages/[Stage23]PlanNotice'
 import ConfirmCommand from './ApplicationConfirmStages/[Stage27]Command'
 import ConfirmAudit from './ApplicationConfirmStages/[Stage32]ConfirmAudit'
+import ConfirmStageChoiceExpertHrConfirm from "./ApplicationConfirmStages/[Stage12]ExpertsConfirm";
+import ConfirmStageChoiceExpertsHrPlaceConfirm from "./ApplicationConfirmStages/[Stage22]ExpertsPlaceConfirm";
 
 const ApplicationConfirm = props => {
   const { onSubmit, stage,
@@ -66,9 +68,9 @@ const ApplicationConfirm = props => {
   case 'stage_11':
     return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_12':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertHrConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_13':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertHrConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_14':
     return (
       <ConfirmStageContractPlace travelDataModal={travelDataModal} onDeleteTravelData={onDeleteTravelData} travelDataList={travelDataList} onSubmit={onSubmit}  />
@@ -96,9 +98,9 @@ const ApplicationConfirm = props => {
   case 'stage_21':
     return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_22':
-    return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertsHrPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_23':
-    return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertsHrPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_24':
     return <ConfirmPlanNotice onSubmit={onSubmit} text={'Junatish'} initialValues={initialValues} />
   case 'stage_26':
