@@ -13,6 +13,7 @@ import ApplicationClientDocument from './ApplicationClientDocuments'
 import ApplicationDetail from './ApplicationDetail'
 import Phase from './Phase'
 import ApplicationAccreditationDocuments from './ApplicationAccreditationDocuments'
+import TaskItem from "./Items/TaskItem";
 
 export const fields = [
   'address',
@@ -118,6 +119,9 @@ const ApplicationTabs = props => {
 
           />
         </Tab>
+        <Tab value={'detail'} label={'Detail'}>
+          <TaskItem description={'description'} withoutIs={'withoutIs'} />
+        </Tab>
 
         <Tab value={'documents'} label={'Murojaatchiga tegishli hujjatlar '}>
           <ApplicationClientDocument docs={documents} />
@@ -131,7 +135,7 @@ const ApplicationTabs = props => {
         <Tab value={'documentsAccred'} label={'Akrreditatsiyaga tegishli hujjatlar '}>
           <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />
         </Tab>
-        <Tab value={'expertiza'} label={'EKSPERTIZA natijalari'}>
+        <Tab value={'expertiza'} label={'Ekspertiza natijalari'}>
           <ApplicationExpertResult results={results} application={id} />
         </Tab>
 

@@ -34,6 +34,7 @@ const TableActions = props => {
     searchKey,
     linkAction,
     createModal,
+    notCreate
   } = props
 
   const addButton = createModal
@@ -59,29 +60,6 @@ const TableActions = props => {
         />
       </Link>
     )
-  // let buttonType
-  // if (createModal) {
-  //   buttonType =
-  //     <div style={style}
-  //
-  //     >
-  //       <Button
-  //         onClick={createModal.onOpen}
-  //         text={'Добавить'}
-  //         prefix={<Plus />}
-  //       />
-  //     </div>
-  // } else {
-  //   buttonType = <Link style={style}
-  //     to={`${linkAction}`}
-  //   >
-  //     <Button
-  //       text={'Добавить'}
-  //       prefix={<Plus />}
-  //     />
-  //   </Link>
-  // }
-
   return (
     <Container>
       {filterActions && (
@@ -92,7 +70,7 @@ const TableActions = props => {
 
       <Actions>
         {extraButtons}
-        {addButton}
+        {!notCreate && addButton}
         <SearchField key={searchKey} />
       </Actions>
     </Container>

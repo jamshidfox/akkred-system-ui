@@ -183,7 +183,7 @@ const ApplicationUpdateContainer = props => {
     }
     rejectModal.onClose()
     dispatch(applicationRejectAction(params.id, data))
-      .then(() => props.history.push(sprintf(ROUTES.APPLICATION_UPDATE_URL, params.id)))
+      .then(() => props.history.push(ROUTES.APPLICATION_LIST_URL))
       .catch(mapResponseToFormError)
   }
 

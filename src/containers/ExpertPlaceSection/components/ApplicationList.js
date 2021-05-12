@@ -62,6 +62,7 @@ const ApplicationList = props => {
       filterForm={<CommentListFilterForm />}
       filterActions={filterActions}
       linkAction={linkAction}
+      notCreate={true}
     />
 
   // TableHead

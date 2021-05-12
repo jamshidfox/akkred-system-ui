@@ -13,7 +13,7 @@ export default [
         url: ROUTES.APPLICATION_MY_ORDERS_URL,
         tabs: [
           {
-            name: 'Mening arizalarim',
+            name: 'Ko`rib chiqish uchun',
             url: ROUTES.APPLICATION_MY_ORDERS_URL
           },
           {
@@ -24,11 +24,11 @@ export default [
       },
 
       {
-        name: 'EKSPERTIZA',
+        name: 'Ekspertiza',
         url: ROUTES.APPLICATION_EXPERTISE_URL,
         tabs: [
           {
-            name: 'Mening arizalarim',
+            name: 'Ko`rib chiqish uchun',
             url: ROUTES.APPLICATION_EXPERTISE_URL
           },
           {
@@ -39,11 +39,11 @@ export default [
       },
 
       {
-        name: 'AUDIT',
+        name: 'Baholash',
         url: ROUTES.APPLICATION_AUDIT_URL,
         tabs: [
           {
-            name: 'Mening arizalarim',
+            name: 'Ko`rib chiqish uchun',
             url: ROUTES.APPLICATION_AUDIT_URL
           },
           {
@@ -58,7 +58,7 @@ export default [
         url: ROUTES.APPLICATION_ACCRED_URL,
         tabs: [
           {
-            name: 'Mening arizalarim',
+            name: 'Ko`rib chiqish uchun',
             url: ROUTES.APPLICATION_ACCRED_URL
           },
           {
@@ -85,22 +85,22 @@ export default [
     icon: People,
   },
 
-  {
-    name: 'Buxgalteriya bo\'limi',
-    children: [
-
-      {
-        name: 'Ekspertiza shartnomasi',
-        url: ROUTES.CONTRACT_LIST_URL,
-      },
-      {
-        name: 'Baholash shartnomasi',
-        url: ROUTES.CONTRACT_PLACE_LIST_URL,
-      },
-    ],
-    perms: ['accountant'],
-    icon: People,
-  },
+  // {
+  //   name: 'Buxgalteriya bo\'limi',
+  //   children: [
+  //
+  //     {
+  //       name: 'Ekspertiza shartnomasi',
+  //       url: ROUTES.CONTRACT_LIST_URL,
+  //     },
+  //     {
+  //       name: 'Baholash shartnomasi',
+  //       url: ROUTES.CONTRACT_PLACE_LIST_URL,
+  //     },
+  //   ],
+  //   perms: ['accountant'],
+  //   icon: People,
+  // },
   {
     name: 'Akrreditatsiya komissiyasi bo\'limi ',
     url: ROUTES.COMMISSION_LIST_URL,

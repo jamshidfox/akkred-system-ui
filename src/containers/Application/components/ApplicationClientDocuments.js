@@ -17,12 +17,13 @@ const ApplicationClientDocument = props => {
 
   const tableHeadDoc =
     <TableRow header={true}>
-      <th colSpan={8} >Hujjat nomi</th>
+      <th colSpan={2} >#</th>
+      <th colSpan={6} >Hujjat nomi</th>
       <th colSpan={8} >Turi </th>
       <th colSpan={8} >Hujjat </th>
     </TableRow>
 
-  const tableDocList = docs.map(client => {
+  const tableDocList = docs.map((client, index) => {
     const {
       id,
       name,
@@ -32,13 +33,15 @@ const ApplicationClientDocument = props => {
     } = client
 
     const statusText = documentType.object[type]
+    const order = index + 1
 
     // Render
     return (
       <TableRow
         key={id}
       >
-        <td colSpan={8}>{name}</td>
+        <td colSpan={2}>{order}</td>
+        <td colSpan={6}>{name}</td>
         <td colSpan={8}>{statusText}</td>
 
         <td colSpan={12} style={{

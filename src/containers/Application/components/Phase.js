@@ -8,22 +8,18 @@ import { Box } from '../../../components/StyledElems'
 import { MediumButton, PageTitle, SecondarySmallButton } from '../../../components/UI'
 
 import { Table, TableRow } from '../../../components/Table'
-import { historyStatus, registryStatus } from '../../../constants/backend'
+import { historyStatus, registryStatus, stepName } from '../../../constants/backend'
 import { Col, Row } from '../../../components/Grid'
 import PermissionButton from './PermissionButton'
 import RejectCreateModal from './RejectCreateModal'
 
-const AddBtn = styled(SecondarySmallButton)`
-  height: 36px;
-  font-size: 14px;
-`
+
 const BoxUI = styled(Box)`
   padding: 25px;
 `
 const statusColors = {
   closed:'green',
   pros:'blue',
-  // open:'red'
 }
 
 const Status = styled('div')`
@@ -39,11 +35,16 @@ const PassButton = styled('div')`
   margin-top: 5px;
   display: flex;
 `
+const WaitButton = styled(MediumButton)`
+  background: #668edd;
+  pointer-events: none
+`
 
 const Phase = props => {
-  const { id, stage, historyStage, isExpertise, initialValues, rejectModal, histories, } = props
+  const { id, stage, historyStage, initialValues, rejectModal, histories, } = props
   const status = prop('status', initialValues)
   const statusText = registryStatus.object[status]
+  const stepText = stepName.object[stage]
 
   const onCreateApplication = () => {
 
@@ -83,9 +84,7 @@ const Phase = props => {
             <Status color={statusColor}>
               {statusText}
             </Status>
-
           )}
-
         </td>
 
       </TableRow>
@@ -101,39 +100,28 @@ const Phase = props => {
     // History Reject
   const tableHeadHistoryReject =
     <TableRow header={true}>
-      <th colSpan={8} >Bosqich </th>
       <th colSpan={8} >Javobgar </th>
-      <th colSpan={8} >Status </th>
+      <th colSpan={8} >Sabab </th>
+      <th colSpan={8} >Sana </th>
     </TableRow>
 
   const tableHistoryRejectList = histories.map(client => {
     const {
       id,
       comment,
-      status,
       user,
+      createdDate,
 
     } = client
-
-    const statusText = historyStatus.object[status]
-    const statusColor = statusColors[status]
 
     // Render
     return (
       <TableRow
         key={id}
       >
+        <td colSpan={8}>{user.username}</td>
         <td colSpan={8}>{comment}</td>
-        <td colSpan={8}>{user.full_name}</td>
-        <td colSpan={8}>
-          {status !== 'open' && (
-            <Status color={statusColor}>
-              {statusText}
-            </Status>
-
-          )}
-
-        </td>
+        <td colSpan={8}>{createdDate}</td>
 
       </TableRow>
     )
@@ -183,40 +171,24 @@ const Phase = props => {
                 {(status === 'expertise') ? (
 
                   <PassButton >
-                    <MediumButton style={{
-                      background: '#a425ff'
-                    }} onClick={waitModalOpen()}> Ekspertiza</MediumButton>
+                    <WaitButton onClick={waitModalOpen()}>Ekspertiza</WaitButton>
                   </PassButton>
                 ) : (
 
                   <div>
                     {stage === 'stage_8' || stage === 'stage_18' || stage === 'stage_25' || stage === 'stage_34'
                       ? (<PassButton >
-                        <MediumButton style={{
-                          background: '#2541ff'
-                        }} onClick={waitModalOpen()}>Buyurtmachini javobini kutish</MediumButton>
+                        <WaitButton onClick={waitModalOpen()}>{stepText}</WaitButton>
                       </PassButton>)
                       : (<div style={{
                         display: 'flex'
-
                       }}>
 
                         {id && (
 
                           <PassButton>
-
-                            <PermissionButton stage={stage} id={id} />
-
-                            {(status !== 'finish' || status !== 'expertise' || status !== 'audit') && (
-                              <div>
-                                <RejectCreateModal {...rejectModal} />
-                                <AddBtn onClick={() => rejectModal.onOpen()} >Rad Etish</AddBtn>
-
-                              </div>
-
-                            )
-                            }
-
+                            <PermissionButton stage={stage} id={id} onClick={() => rejectModal.onOpen()} />
+                            <RejectCreateModal {...rejectModal} />
                           </PassButton>
 
                         )}
@@ -238,7 +210,7 @@ const Phase = props => {
                 </Col>
                 {histories.length > 0 && (
                   <Col span={6}>
-                    <PageTitle name="Reject Bosqichlari" />
+                    <PageTitle name="Rad Sabablari " />
                     {tableHistoryReject}
 
                   </Col>

@@ -1,9 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { sprintf } from 'sprintf-js'
+import styled from 'styled-components'
 import Perms from '../../../components/Perms/Perms'
 import * as ROUTES from '../../../constants/routes'
-import { MediumButton } from '../../../components/UI/Buttons'
+import { MediumButton, SecondarySmallButton } from '../../../components/UI/Buttons'
+import { stepName } from '../../../constants/backend'
 
 const caseManager = 'caseManager'
 const executor = 'executor'
@@ -13,24 +15,43 @@ const headHr = 'headHr'
 const accountant = 'accountant'
 const director = 'director'
 
+const AddBtn = styled(SecondarySmallButton)`
+  height: 36px;
+  font-size: 14px;
+`
+
+const LinkBtn = styled(Link)`
+  padding-right: 20px
+
+`
+
+const WrapperBtn = styled('div')`
+  display: flex
+
+`
+
 const PermissionButton = props => {
-  const { stage, id } = props
+  const { stage, id, onClick } = props
+  var n = id.toString()
+  var executorPersonal = 'executor_' + n
+  var expertHeadPersonal = 'audit_' + n
+  var listExecutor = [executorPersonal, executor]
+  var listExpertHead = [expertHeadPersonal, expertHead]
+  const stepText = stepName.object[stage]
+
   switch (stage) {
   case 'stage_1':
     return (
       <Perms
         perms={[caseManager]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-          }} >
-            <MediumButton >Ro’yhatdan o’tkaziladi</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_2':
@@ -38,16 +59,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headDepartment]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Case Manager Tanlash </MediumButton>
-          </div>
-        </Link>
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
 
       </Perms>
     )
@@ -56,35 +74,28 @@ const PermissionButton = props => {
       <Perms
         perms={[director]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Case Manager tasdiqlash</MediumButton>
-          </div>
-        </Link>
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
 
       </Perms>
     )
   case 'stage_4':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Shartnoma rasmiylashtirish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_5':
@@ -92,17 +103,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headDepartment]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Hisobchiga yuvorish </MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -111,17 +118,13 @@ const PermissionButton = props => {
       <Perms
         perms={[accountant]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Rahnariyatga junatish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -130,17 +133,13 @@ const PermissionButton = props => {
       <Perms
         perms={[director]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Shartnoma ro’yhatdan o’tkaziladi </MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -149,36 +148,28 @@ const PermissionButton = props => {
       <Perms
         perms={[accountant]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >To'langan</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_10':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Ekspertiza uchun ekspert yoki ekspertlar bazadan tanlanadi</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -187,17 +178,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headDepartment]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Ekspertlar guruhini tasdiqlash(Kadrlar bo’limi bilan kelishish)</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_12':
@@ -205,17 +192,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headHr]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Ekspertlar guruhini tasdiqlash(Rahbariyatga yuvorish)</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -224,36 +207,28 @@ const PermissionButton = props => {
       <Perms
         perms={[director]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Ekspertlar guruhini tasdiqlash</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_14':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Umumlashtirish va Shartnoma rasmilashtirish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -262,17 +237,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headDepartment]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Umumlashtirish va Shartnoma rasmilashtirish (Hisobchiga yuvorish)</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -281,17 +252,13 @@ const PermissionButton = props => {
       <Perms
         perms={[accountant]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Umumlashtirish va Shartnoma rasmilashtirish (Rahbariyatga yuvorish)</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -300,17 +267,13 @@ const PermissionButton = props => {
       <Perms
         perms={[director]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Shartnoma ro’yhatdan o’tkazish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -319,36 +282,28 @@ const PermissionButton = props => {
       <Perms
         perms={[accountant]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >To'langan</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_20':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Baholashda ishtirok etgan ekspertlar bazadan tanlanadi </MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_21':
@@ -356,17 +311,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headDepartment]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Kadrlar bo’limi bilan kelishish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_22':
@@ -374,17 +325,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headHr]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Rahbariyatga jonatish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_23':
@@ -392,55 +339,43 @@ const PermissionButton = props => {
       <Perms
         perms={[director]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton >Reja va xabarnoma tasqidlanadi</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_24':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton > Buyurtmachiga junatish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_26':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton>Baholash uchun buyruq loyihasi qilinadi</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_27':
@@ -448,17 +383,13 @@ const PermissionButton = props => {
       <Perms
         perms={[headDepartment]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton>Baholash uchun buyruq loyihasi qilinadi(Rahbariyatga junatish)</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
 
@@ -467,130 +398,95 @@ const PermissionButton = props => {
       <Perms
         perms={[director]}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton>Buyruq va reja imzolanadi</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_29':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton>Baholashga tegishli barcha hujjatlar ekspertlarga beriladi</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_30':
     return (
       <Perms
-        perms={[expertHead]}
+        perms={listExpertHead}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton>Audit boshlanishi tasdiqlash</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_31':
     return (
       <Perms
-        perms={[expertHead]}
+        perms={listExpertHead}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton>Autditni yakunlash</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_32':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px'
-
-          }} >
-            <MediumButton>Qabul qilish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_33':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <Link
-
-          to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-          <div style={{
-            paddingRight: '20px',
-            paddingBottom: '20px',
-
-          }} >
-            <MediumButton>Akkreditatsiya komissiyasi yig’ilishinining bayonini rasmiylashtirish</MediumButton>
-          </div>
-        </Link>
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
       </Perms>
     )
   case 'stage_35':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <div>
-
-          <Link
-
+        <WrapperBtn>
+          <LinkBtn
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-            <div style={{
-              paddingRight: '20px'
-
-            }} >
-              <MediumButton>Bayon rasmiylashtirish</MediumButton>
-            </div>
-          </Link>
-
-        </div>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
 
       </Perms>
     )
@@ -600,74 +496,47 @@ const PermissionButton = props => {
       <Perms
         perms={['boss']}
       >
-        <div>
-
-          <Link
-
+        <WrapperBtn>
+          <LinkBtn
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-            <div style={{
-              paddingRight: '20px'
-
-            }} >
-              <MediumButton>Akkreditasiya komissiyasi  bayonni tasdiqlash</MediumButton>
-            </div>
-          </Link>
-
-        </div>
-
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_37':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <div>
-
-          <Link
-
+        <WrapperBtn>
+          <LinkBtn
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-            <div style={{
-              paddingRight: '20px'
-
-            }} >
-              <MediumButton>Reestrda ro’yhatga olish</MediumButton>
-            </div>
-          </Link>
-
-        </div>
-
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_38':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
-        <div>
-
-          <Link
-
+        <WrapperBtn>
+          <LinkBtn
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
-            <div style={{
-              paddingRight: '20px'
-
-            }} >
-              <MediumButton>Postakkreditatsion shartnoma rasmiylashtirish</MediumButton>
-            </div>
-          </Link>
-
-        </div>
-
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
       </Perms>
     )
 
   case 'stage_39':
     return (
       <Perms
-        perms={[executor]}
+        perms={listExecutor}
       >
         <div />
 

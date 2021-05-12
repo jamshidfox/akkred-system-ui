@@ -294,3 +294,167 @@ export const statusAssignments = getFormattedListData([
   },
 
 ])
+
+export const stepName = getFormattedListData([
+  {
+    id:'stage_1',
+    name:'Ro’yhatdan o’tkaziladi',
+  },
+  {
+    id:'stage_2',
+    name:'Case Manager Tanlash',
+  },
+  {
+    id:'stage_3',
+    name:'Case Manager tasdiqlash',
+  },
+  {
+    id:'stage_4',
+    name:'Shartnoma rasmiylashtirish',
+  },
+  {
+    id:'stage_5',
+    name:'Hisobchiga yuvorish',
+  },
+  {
+    id:'stage_6',
+    name:'Rahnariyatga junatish',
+  },
+  {
+    id:'stage_7',
+    name:'Shartnoma ro’yhatdan o’tkaziladi',
+  },
+  {
+    id:'stage_8',
+    name:'Buyurtmachini javobini kutish',
+  },
+  {
+    id:'stage_9',
+    name:'To\'langan',
+  },
+  {
+    id:'stage_10',
+    name:'Ekspertiza uchun ekspert yoki ekspertlar bazadan tanlanadi',
+  },
+  {
+    id:'stage_11',
+    name:'Ekspertlar guruhini tasdiqlash(Kadrlar bo’limi bilan kelishish)',
+  },
+  {
+    id:'stage_12',
+    name:'Ekspertlar guruhini tasdiqlash(Rahbariyatga yuvorish)',
+  },
+  {
+    id:'stage_13',
+    name:'Ekspertlar guruhini tasdiqlash(Rahbariyatga yuvorish)',
+  },
+  {
+    id:'stage_14',
+    name:'Umumlashtirish va Shartnoma rasmilashtirish',
+  },
+  {
+    id:'stage_15',
+    name:'Umumlashtirish va Shartnoma rasmilashtirish (Hisobchiga yuvorish)',
+  },
+  {
+    id:'stage_16',
+    name:'Umumlashtirish va Shartnoma rasmilashtirish (Rahbariyatga yuvorish)',
+  },
+  {
+    id:'stage_17',
+    name:'Shartnoma ro’yhatdan o’tkazish',
+  },
+  {
+    id:'stage_18',
+    name:'Buyurtmachini javobini kutish',
+  },
+  {
+    id:'stage_19',
+    name:'To\'langan',
+  },
+  {
+    id:'stage_20',
+    name:'Baholashda ishtirok etgan ekspertlar bazadan tanlanadi',
+  },
+  {
+    id:'stage_21',
+    name:'Kadrlar bo’limi bilan kelishish',
+  },
+  {
+    id:'stage_22',
+    name:'Rahbariyatga jonatish',
+  },
+  {
+    id:'stage_23',
+    name:'Reja va xabarnoma tasqidlanadi',
+  },
+  {
+    id:'stage_24',
+    name:'Buyurtmachiga junatish',
+  },
+  {
+    id:'stage_25',
+    name:'Buyurtmachini javobini kutish',
+  },
+  {
+    id:'stage_26',
+    name:'Baholash uchun buyruq loyihasi qilinadi',
+  },
+  {
+    id:'stage_27',
+    name:'Baholash uchun buyruq loyihasi qilinadi(Rahbariyatga junatish)',
+  },
+  {
+    id:'stage_28',
+    name:'Buyruq  imzolanadi',
+  },
+  {
+    id:'stage_29',
+    name:'Baholashga tegishli barcha hujjatlar ekspertlarga beriladi',
+  },
+  {
+    id:'stage_30',
+    name:'Audit boshlanishi tasdiqlash',
+  },
+  {
+    id:'stage_31',
+    name:'Autditni yakunlash',
+  },
+  {
+    id:'stage_32',
+    name:'Qabul qilish',
+  },
+  {
+    id:'stage_33',
+    name:'Akkreditatsiya komissiyasi yig’ilishinining bayonini rasmiylashtirish',
+  },
+  {
+    id:'stage_34',
+    name:'Komissiya',
+  },
+  {
+    id:'stage_35',
+    name:'Bayon rasmiylashtirish',
+  },
+  {
+    id:'stage_36',
+    name:'Akkreditasiya komissiyasi  bayonni tasdiqlash',
+  },
+  {
+    id:'stage_37',
+    name:'Reestrda ro’yhatga olish',
+  },
+  {
+    id:'stage_38',
+    name:'Postakkreditatsion shartnoma rasmiylashtirish',
+  },
+  {
+    id:'stage_39',
+    name:'Yopildi',
+  },
+  {
+    id:'stage_40',
+    name:'Yopildi',
+  },
+
+])

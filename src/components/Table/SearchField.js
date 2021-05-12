@@ -56,7 +56,7 @@ const SearchField = props => {
       onEnter={onEnter}
       data-cy={'table-search'}
       value={decodedValue}
-      placeholder={'Поиск...'}
+      placeholder={'Izlash...'}
       {...props}
     />
   )

@@ -1,5 +1,5 @@
-// export const DOMAIN_URL = 'http://localhost:8000'
-export const DOMAIN_URL = 'https://akkred.uz:8080'
+export const DOMAIN_URL = 'http://localhost:8000'
+// export const DOMAIN_URL = 'https://akkred.uz:8080'
 export const API_URL = `${DOMAIN_URL}`
 
 const MAIN = 'main'
