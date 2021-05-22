@@ -10,7 +10,7 @@ import {
   Form,
 } from '../../../components/FormField'
 import ApplicationClientDocument from '../../Application/components/ApplicationClientDocuments'
-import ApplicationExpertPlaceResult from '../../Application/components/ApplicationExpertPlaceResult'
+import ApplicationExpertAuditResult from '../../Application/components/ApplicationExpertAuditResult'
 import ExpertsResultModal from './ExpertsResultModal'
 import TemplateDocumentList from './TemplateDocumentList'
 import AuditResultConfirm from './AuditResultConfirmModal'
@@ -72,7 +72,7 @@ const ExpertExpertiseCreate = props => {
               )}
 
               {statusResult === 'wait' && (
-                <ApplicationExpertPlaceResult results={audits} docs={documentNews} additionalDocs={additionalDocs} />
+                <ApplicationExpertAuditResult results={audits} docs={documentNews} additionalDocs={additionalDocs} />
 
               )}
 

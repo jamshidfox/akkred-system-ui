@@ -18,8 +18,14 @@ import ConfirmStageChoiceExpertsPlaceConfirm from './ApplicationConfirmStages/[S
 import ConfirmPlanNotice from './ApplicationConfirmStages/[Stage23]PlanNotice'
 import ConfirmCommand from './ApplicationConfirmStages/[Stage27]Command'
 import ConfirmAudit from './ApplicationConfirmStages/[Stage32]ConfirmAudit'
-import ConfirmStageChoiceExpertHrConfirm from "./ApplicationConfirmStages/[Stage12]ExpertsConfirm";
-import ConfirmStageChoiceExpertsHrPlaceConfirm from "./ApplicationConfirmStages/[Stage22]ExpertsPlaceConfirm";
+import ConfirmStageChoiceExpertHrConfirm from './ApplicationConfirmStages/[Stage12]ExpertsConfirm'
+import ConfirmStageChoiceExpertsHrPlaceConfirm from './ApplicationConfirmStages/[Stage22]ExpertsPlaceConfirm'
+import ConfirmStageContractSign from './ApplicationConfirmStages/[Stage7]ContractSign'
+import ConfirmStageAccountingContractAudit from './ApplicationConfirmStages/[Stage15]ContractAuditSign'
+import ConfirmStageChoiceExpertsSign from './ApplicationConfirmStages/[Stage23]ExpertsAuditSign'
+import OrderSign from './ApplicationConfirmStages/[Stage22]OrderSign'
+import CommissionResultSign from './ApplicationConfirmStages/[Stage36]CommissionResultSign'
+import ConfirmStageExecutorConfirm from "./ApplicationConfirmStages/[Stage3]ExecutorConfirm";
 
 const ApplicationConfirm = props => {
   const { onSubmit, stage,
@@ -31,6 +37,7 @@ const ApplicationConfirm = props => {
     travelDataModal,
     onDeleteTravelData,
     travelDataList,
+    onSuccess
   } = props
   switch (stage) {
   case 'stage_1':
@@ -40,6 +47,10 @@ const ApplicationConfirm = props => {
   case 'stage_2':
     return (
       <ConfirmStageTwoChoiceExecutor onSubmit={onSubmit} />
+    )
+  case 'stage_3':
+    return (
+      <ConfirmStageExecutorConfirm onSubmit={onSubmit} initialValues={initialValues} />
     )
   case 'stage_4':
     return (
@@ -55,7 +66,7 @@ const ApplicationConfirm = props => {
     )
   case 'stage_7':
     return (
-      <ConfirmStageAccounting application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Shartnoma ro’yhatdan o’tkaziladi'} />
+      <ConfirmStageContractSign application={application} initialValues={initialValues} onSuccess={onSuccess} text={'Shartnoma ro’yhatdan o’tkaziladi'} />
     )
   case 'stage_9':
     return (
@@ -73,7 +84,7 @@ const ApplicationConfirm = props => {
     return <ConfirmStageChoiceExpertHrConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
   case 'stage_14':
     return (
-      <ConfirmStageContractPlace travelDataModal={travelDataModal} onDeleteTravelData={onDeleteTravelData} travelDataList={travelDataList} onSubmit={onSubmit}  />
+      <ConfirmStageContractPlace travelDataModal={travelDataModal} onDeleteTravelData={onDeleteTravelData} travelDataList={travelDataList} onSubmit={onSubmit} />
     )
   case 'stage_15':
     return (
@@ -85,7 +96,7 @@ const ApplicationConfirm = props => {
     )
   case 'stage_17':
     return (
-      <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
+      <ConfirmStageAccountingContractAudit initialValues={initialValues} onSuccess={onSuccess} text={'Tasdiqlash'} />
     )
   case 'stage_19':
     return (
@@ -100,7 +111,7 @@ const ApplicationConfirm = props => {
   case 'stage_22':
     return <ConfirmStageChoiceExpertsHrPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_23':
-    return <ConfirmStageChoiceExpertsHrPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
+    return <ConfirmStageChoiceExpertsSign onSuccess={onSuccess} serviceModal={expertModal} initialValues={initialValues} />
   case 'stage_24':
     return <ConfirmPlanNotice onSubmit={onSubmit} text={'Junatish'} initialValues={initialValues} />
   case 'stage_26':
@@ -113,7 +124,7 @@ const ApplicationConfirm = props => {
     )
   case 'stage_28':
     return (
-      <ConfirmCommand onSubmit={onSubmit} initialValues={initialValues} text={'Imzolash'} />
+      <OrderSign onSuccess={onSuccess} initialValues={initialValues} />
     )
   case 'stage_30':
     return (
@@ -133,7 +144,7 @@ const ApplicationConfirm = props => {
     )
   case 'stage_36':
     return (
-      <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
+      <CommissionResultSign initialValues={initialValues} onSuccess={onSuccess} text={'Tasdiqlash'} />
     )
   case 'stage_37':
     return (

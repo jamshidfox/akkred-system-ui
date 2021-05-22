@@ -66,16 +66,17 @@ const ApplicationList = props => {
   // TableHead
   const tableHead =
     <TableRow header={true}>
+      <th colSpan={1}>#</th>
       <th colSpan={2}>Nomer</th>
       <th colSpan={8}>Yuridik shaxsning to‘liq nomi</th>
       <th colSpan={6}>Manzili</th>
       <th colSpan={4}>Pochta</th>
-      <th colSpan={4}>Status</th>
+      <th colSpan={3}>Status</th>
       <th />
     </TableRow>
 
   // TableList
-  const tableList = listData.map(application => {
+  const tableList = listData.map((application, index) => {
     const {
       id,
       objectFullName,
@@ -87,6 +88,7 @@ const ApplicationList = props => {
 
     const statusText = registryStatus.object[status]
     const statusColor = statusColors[my]
+    const order = index + 1
 
     // MoreList
     const moreList = [
@@ -105,6 +107,8 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
+
+        <td colSpan={1}>{order} </td>
         <td colSpan={2}><a style={{
           color: 'blue'
         }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>Ariza №{id}/{registerDate}</a> </td>
@@ -112,7 +116,7 @@ const ApplicationList = props => {
 
         <td colSpan={6}>{objectFactAddress}</td>
         <td colSpan={4}>{objectEmail}</td>
-        <td colSpan={4}><Status color={statusColor}>
+        <td colSpan={3}><Status color={statusColor}>
           {statusText}
         </Status> </td>
         <DropdownMore

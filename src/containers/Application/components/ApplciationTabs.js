@@ -7,13 +7,14 @@ import ApplicationUserInfo from './ApplicationUserInfo'
 import ApplicationAddInfo from './ApplicationAddInfo'
 import ApplicationContractInvoiceInfo from './ApplicationContractInvoiceInfo'
 import ApplicationExpertResult from './ApplicationExpertResult'
-import ApplicationExpertPlaceResult from './ApplicationExpertPlaceResult'
+import ApplicationExpertAuditResult from './ApplicationExpertAuditResult'
 import ApplicationCommissionResult from './ApplicationCommissionResult'
 import ApplicationClientDocument from './ApplicationClientDocuments'
 import ApplicationDetail from './ApplicationDetail'
 import Phase from './Phase'
 import ApplicationAccreditationDocuments from './ApplicationAccreditationDocuments'
 import TaskItem from "./Items/TaskItem";
+import Detail from "../actions/Detail";
 
 export const fields = [
   'address',
@@ -119,9 +120,9 @@ const ApplicationTabs = props => {
 
           />
         </Tab>
-        <Tab value={'detail'} label={'Detail'}>
-          <TaskItem description={'description'} withoutIs={'withoutIs'} />
-        </Tab>
+        {/*<Tab value={'detail'} label={'Detail'}>*/}
+        {/*  <Detail description={'description'} withoutIs={'withoutIs'} />*/}
+        {/*</Tab>*/}
 
         <Tab value={'documents'} label={'Murojaatchiga tegishli hujjatlar '}>
           <ApplicationClientDocument docs={documents} />
@@ -140,7 +141,7 @@ const ApplicationTabs = props => {
         </Tab>
 
         <Tab value={'place'} label={'Baholash natijalari'}>
-          <ApplicationExpertPlaceResult results={audits} docs={documentNews} application={id} />
+          <ApplicationExpertAuditResult results={audits} docs={documentNews} application={id} />
         </Tab>
 
         <Tab value={'commissions'} label={'Akrreditatsiya komissiyasi '}>

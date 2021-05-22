@@ -1,10 +1,15 @@
 import React from 'react'
-import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import { PageRowTitle } from 'components/UI'
-import { Table, TableRow } from '../../../components/Table'
-import { API_URL } from '../../../constants/api'
-import { documentPlanOrderType } from '../../../constants/backend'
+import { isEmpty, prop } from 'ramda'
+import { PageRowTitle } from '../../../../../components/UI'
+import { documentPlanOrderType } from '../../../../../constants/backend'
+import { Box } from '../../../../../components/StyledElems'
+import { Table, TableRow } from '../../../../../components/Table'
+import EImzoForm from '../../../../EImzoDialog/EImzoForm'
+
+const BoxUI = styled(Box)`
+  padding: 25px;
+`
 
 const statusColors = {
   process: 'green',
@@ -21,9 +26,10 @@ const Status = styled('div')`
   line-height: 16px;
   padding: 3px 12px;
 `
-
-const ApplicationAccreditationDocuments = props => {
-  const { plan, notice, command } = props
+const ConfirmStageChoiceExpertsSign = ({ onSuccess, serviceModal, initialValues }) => {
+  const expertsPlace = prop('expertsPlace', initialValues)
+  const notice = prop('notice', initialValues)
+  const plan = prop('plan', initialValues)
 
   // Notice
   const tableNoticeList = notice.map(client => {
@@ -46,7 +52,7 @@ const ApplicationAccreditationDocuments = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
+          }} href={`${file && file.file}`}>Hujjat</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -63,7 +69,6 @@ const ApplicationAccreditationDocuments = props => {
     <Table
       isEmpty={isEmpty(notice)}
     >
-      <PageRowTitle name="Xabarnoma" />
       {tableNoticeHead}
       {tableNoticeList}
     </Table>
@@ -89,7 +94,7 @@ const ApplicationAccreditationDocuments = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
+          }} href={`${file && file.file}`}>Hujjat</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -106,66 +111,21 @@ const ApplicationAccreditationDocuments = props => {
     <Table
       isEmpty={isEmpty(plan)}
     >
-      <PageRowTitle name="Reja" />
       {tablePlanHead}
       {tablePlanList}
     </Table>
 
-  // Command
-  const tableCommandList = command.map(client => {
-    const {
-      id,
-      file,
-      status,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tableCommandHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Hujjat </th>
-      <th colSpan={12} >Status </th>
-    </TableRow>
-  const tableCommand =
-    <Table
-      isEmpty={isEmpty(command)}
-    >
-      <PageRowTitle name="Buyruq" />
-      {tableCommandHead}
-      {tableCommandList}
-    </Table>
-
   return (
-    <>
-      {tableNotice}
-      {tablePlan}
-      {tableCommand}
 
-    </>
+    <BoxUI >
+      <PageRowTitle name="Reja" />
+      {tablePlan}
+      <PageRowTitle name="Xabarnoma" />
+      {tableNotice}
+      <EImzoForm text={'sad'} onSubmit={onSuccess} />
+    </BoxUI>
+
   )
 }
-ApplicationAccreditationDocuments.defaultProps = {
-  plan: [],
-  notice: [],
-  command: [],
-}
 
-export default ApplicationAccreditationDocuments
+export default ConfirmStageChoiceExpertsSign

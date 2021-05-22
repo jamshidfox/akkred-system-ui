@@ -1,15 +1,10 @@
 import React from 'react'
 import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import { PageTitle } from 'components/UI'
+import { PageRowTitle } from 'components/UI'
 import { Table, TableRow } from '../../../components/Table'
 import { expertAnswerType } from '../../../constants/backend'
 import { API_URL } from '../../../constants/api'
-
-const PageTitleNew = styled(PageTitle)`
- color: #2C3A50;
-
-`
 
 const Status = styled('div')`
   border-radius: ${props => props.theme.borderRadius};
@@ -71,7 +66,7 @@ const ApplicationExpertResult = props => {
     <Table
       isEmpty={isEmpty(results)}
     >
-      <PageTitleNew name="Ekspertiza natijalari" />
+      <PageRowTitle name="Ekspertiza natijalari" />
       {tableHead}
       {tableList}
     </Table>

@@ -19,7 +19,7 @@ import ApplicationContractInvoiceInfo from '../../Application/components/Applica
 import { Tab } from '../../../components/TabsDetail'
 import ApplicationAccreditationDocuments from '../../Application/components/ApplicationAccreditationDocuments'
 import ApplicationExpertResult from '../../Application/components/ApplicationExpertResult'
-import ApplicationExpertPlaceResult from '../../Application/components/ApplicationExpertPlaceResult'
+import ApplicationExpertAuditResult from '../../Application/components/ApplicationExpertAuditResult'
 import ExpertsResultModal from './ExpertsResultModal'
 import * as API from '~/constants/api'
 
@@ -86,7 +86,7 @@ const ExpertExpertiseCreate = props => {
               <ApplicationContractInvoiceInfo contracts={contracts} application={id && id} contractPlace={contractPlace} />
               <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} />
               <ApplicationExpertResult results={results} />
-              <ApplicationExpertPlaceResult results={audits} docs={documentNews} additionalDocs={additionalDocs} />
+              <ApplicationExpertAuditResult results={audits} docs={documentNews} additionalDocs={additionalDocs} />
               {answerType === 'wait' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Ovoz berish</AddBtn>
 

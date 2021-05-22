@@ -16,7 +16,7 @@ import ApplicationConfirm from '../components/Confirm/ApplicationConfirm'
 import * as ROUTES from '../../../constants/routes'
 import * as STATE from '../../../constants/stateNames'
 import ApplciationTabs from '../components/ApplciationTabs'
-import {mapBranches, mapDocument, mapExperts, mapExpertsPlace, mapTravelData} from './utils'
+import { mapBranches, mapDocument, mapExperts, mapExpertsPlace, mapTravelData } from './utils'
 
 const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
@@ -29,6 +29,7 @@ const getInitialValues = data => {
 
     id: prop('id', data),
     contracts: prop('contracts', data),
+    executors: prop('executors', data),
     contractPlace: prop('contractPlace', data),
     commissions: prop('commissions', data),
     experts: prop('experts', data),
@@ -126,6 +127,16 @@ const ApplicationConfirmContainer = props => {
 
   const stage = prop('stage', data)
 
+  const onSuccess = (...datas) => {
+    const data = {
+      text:[ ...datas ]
+    }
+
+    dispatch(applicationConfirmAction(params.id, data))
+      .then(() => props.history.push(sprintf(ROUTES.APPLICATION_UPDATE_URL, params.id)))
+      .catch(mapResponseToFormError)
+  }
+
   const confirmSubmit = values => {
     const documents = map(mapDocument, documentList)
     const travelData = map(mapTravelData, travelDataList)
@@ -198,6 +209,7 @@ const ApplicationConfirmContainer = props => {
   return (
     <ApplicationConfirm
       onSubmit={confirmSubmit}
+      onSuccess={onSuccess}
       expertList={expertList}
       expertPlaceList={expertPlaceList}
       initialValues={initialValues}

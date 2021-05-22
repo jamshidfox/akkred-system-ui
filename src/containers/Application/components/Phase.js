@@ -204,13 +204,13 @@ const Phase = props => {
               <Row gutter={24}>
 
                 <Col span={18}>
-                  <PageTitle name="Ariza Bosqichlari" />
+                  <PageTitle name="Arizani ijro etish bosqichlari" />
                   {tableDoc}
 
                 </Col>
                 {histories.length > 0 && (
                   <Col span={6}>
-                    <PageTitle name="Rad Sabablari " />
+                    <PageTitle name="Rad sabablari " />
                     {tableHistoryReject}
 
                   </Col>

@@ -1,15 +1,10 @@
 import React from 'react'
 import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import { MediumButton, PageTitle } from 'components/UI'
+import { PageRowTitle } from 'components/UI'
 import { Table, TableRow } from '../../../components/Table'
 import { API_URL } from '../../../constants/api'
 import { documentPlanOrderType } from '../../../constants/backend'
-
-const PageTitleNew = styled(PageTitle)`
- color: #2C3A50;
-
-`
 
 const statusColors = {
   process: 'green',
@@ -77,7 +72,7 @@ const ApplicationContractInvoiceInfo = props => {
     <Table
       isEmpty={isEmpty(contracts)}
     >
-      <PageTitleNew name="Ekspertiza shartnomasi" />
+      <PageRowTitle name="Ekspertiza shartnomasi" />
       {tableHead}
       {tableList}
     </Table>
@@ -139,7 +134,7 @@ const ApplicationContractInvoiceInfo = props => {
     <Table
       isEmpty={isEmpty(contracts)}
     >
-      <PageTitleNew name="Baholash shartnomasi" />
+      <PageRowTitle name="Baholash shartnomasi" />
       {tablePlaceHead}
       {tablePlaceList}
     </Table>

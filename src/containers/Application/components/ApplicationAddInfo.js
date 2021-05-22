@@ -1,47 +1,13 @@
 import React from 'react'
-import { isEmpty, prop } from 'ramda'
-import PropTypes from 'prop-types'
+import { isEmpty } from 'ramda'
 import styled from 'styled-components'
-import Edit from 'images/edit.svg'
-import Trash from 'images/trash-2.svg'
-import { ItemControlButton, PageTitle } from 'components/UI'
-import { Link } from 'react-router-dom'
-import { sprintf } from 'sprintf-js'
-import { Table, TableCol, TableRow, TableColRight } from '../../../components/Table'
-import { MediumButton, SecondarySmallButton } from '../../../components/UI'
-import * as ROUTES from '../../../constants/routes'
-import { documentPlanOrderType } from '../../../constants/backend'
-import ExpertReject from './ExpertReject/ExpertRejectModal'
-
-const PageTitleNew = styled(PageTitle)`
- color: #2C3A50;
-
-`
-
-const statusColors = {
-  process: 'green',
-  confirm: 'green',
-  wait: 'green',
-  reject: 'red',
-}
-
-const Status = styled('div')`
-  border-radius: ${props => props.theme.borderRadius};
-  border: 1px solid;
-  color: ${props => props.color};
-  display: inline-block;
-  line-height: 16px;
-  padding: 3px 12px;
-`
+import { PageRowTitle } from 'components/UI'
+import { Table, TableRow } from '../../../components/Table'
 
 const ApplicationAddInfo = props => {
-  const { executor, executors, experts, expertsPlace, expertRejectModal } = props
+  const { executors, experts, expertsPlace } = props
 
-  const expertRejectModalOpen = () => {
-    expertRejectModal.onOpen()
-  }
-
-  const tableList = executors.map(client => {
+  const tableList = executors.map((client, index) => {
     const {
       id,
       fullName,
@@ -71,7 +37,7 @@ const ApplicationAddInfo = props => {
     <Table
       isEmpty={isEmpty(executors)}
     >
-      <PageTitleNew name="Markazdan ijrochlar" />
+      <PageRowTitle name="Markazdan ijrochlar" />
       {tableHead}
       {tableList}
     </Table>
@@ -84,18 +50,13 @@ const ApplicationAddInfo = props => {
       <th colSpan={8} >Telefon </th>
       <th colSpan={8} >Lavozim </th>
 
-
     </TableRow>
   const tableListExpertise = experts.map(client => {
     const {
       id,
       expert,
-      status,
 
     } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
 
     // Render
     return (
@@ -107,7 +68,6 @@ const ApplicationAddInfo = props => {
         <td colSpan={8}>{expert.phoneNumber}</td>
         <td colSpan={8}>{expert.role && expert.role.name}</td>
 
-
       </TableRow>
     )
   })
@@ -115,7 +75,7 @@ const ApplicationAddInfo = props => {
     <Table
       isEmpty={isEmpty(experts)}
     >
-      <PageTitle name="Ekspertiza uchun ekspertlar guruhi" />
+      <PageRowTitle name="Ekspertiza uchun ekspertlar guruhi" />
       {tableHeadExpertise}
       {tableListExpertise}
     </Table>
@@ -152,7 +112,7 @@ const ApplicationAddInfo = props => {
     <Table
       isEmpty={isEmpty(expertsPlace)}
     >
-      <PageTitle name="Baholash uchun ekspertlar guruhi" />
+      <PageRowTitle name="Baholash uchun ekspertlar guruhi" />
       {tableHeadExpertisePlace}
       {tableListExpertisePlace}
     </Table>
@@ -163,8 +123,6 @@ const ApplicationAddInfo = props => {
       {tableExpertise}
       {tableExpertisePlace}
 
-      {/* {table3} */}
-      {/* {table4} */}
     </>
   )
 }

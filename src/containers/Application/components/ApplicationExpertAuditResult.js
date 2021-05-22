@@ -1,18 +1,11 @@
 import React from 'react'
 import { isEmpty, } from 'ramda'
-import styled from 'styled-components'
-import { PageTitle } from 'components/UI'
+import { PageRowTitle } from 'components/UI'
 import { Table, TableRow } from '../../../components/Table'
 import { API_URL } from '../../../constants/api'
 import { documentType } from '../../../constants/backend'
 
-const PageTitleNew = styled(PageTitle)`
- color: #2C3A50;
-  margin-bottom: 5px;
-
-`
-
-const ApplicationExpertPlaceResult = props => {
+const ApplicationExpertAuditResult = props => {
   const { results, docs, additionalDocs } = props
 
   const tableAddDocList = additionalDocs.map(client => {
@@ -50,7 +43,7 @@ const ApplicationExpertPlaceResult = props => {
     <Table
       isEmpty={isEmpty(additionalDocs)}
     >
-      <PageTitleNew name="Baholashga tegishli qo'shimcha hujjatlar" />
+      <PageRowTitle name="Baholashga tegishli qo'shimcha hujjatlar" />
       {tableAddDocHead}
       {tableAddDocList}
     </Table>
@@ -95,7 +88,7 @@ const ApplicationExpertPlaceResult = props => {
     <Table
       isEmpty={isEmpty(results)}
     >
-      <PageTitleNew name="Baholashga tegishli hujjatlar" />
+      <PageRowTitle name="Baholashga tegishli hujjatlar" />
       {tableHead}
       {tableList}
     </Table>
@@ -131,7 +124,7 @@ const ApplicationExpertPlaceResult = props => {
     <Table
       isEmpty={isEmpty(docs)}
     >
-      <PageTitleNew name="Murojaatchiga tegishli hujjatlar" />
+      <PageRowTitle name="Murojaatchiga tegishli hujjatlar" />
       {tableHeadDoc}
       {tableDocList}
     </Table>
@@ -146,10 +139,10 @@ const ApplicationExpertPlaceResult = props => {
   )
 }
 
-ApplicationExpertPlaceResult.defaultProps = {
+ApplicationExpertAuditResult.defaultProps = {
   results: [],
   docs: [],
   additionalDocs: [],
 }
 
-export default ApplicationExpertPlaceResult
+export default ApplicationExpertAuditResult

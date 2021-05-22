@@ -17,7 +17,7 @@ const AddBtn = styled(SecondarySmallButton)`
 `
 
 const ExpertsList = props => {
-  const { serviceModal, branches, editModalOpen } = props
+  const { branches } = props
   // TableList
   const tableList = branches.map(client => {
     const {
