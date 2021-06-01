@@ -61,7 +61,7 @@ const ExpertExpertiseCreate = props => {
   const contracts = prop('contracts', initialValues)
   const contractPlace = prop('contractPlace', initialValues)
   const plan = prop('plan', initialValues)
-  const notice = prop('notice', initialValues)
+  const postAccred = prop('postAccred', initialValues)
   const command = prop('command', initialValues)
   const results = prop('results', initialValues)
   const documentNews = prop('documentNews', initialValues)
@@ -84,8 +84,8 @@ const ExpertExpertiseCreate = props => {
           return (
             <form onSubmit={handleSubmit}>
               <ApplicationContractInvoiceInfo contracts={contracts} application={id && id} contractPlace={contractPlace} />
-              <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} />
-              <ApplicationExpertResult results={results} />
+              <ApplicationAccreditationDocuments plan={plan} postAccred={postAccred} idAp={id && id} command={command} />
+              {/*<ApplicationExpertResult results={results} />*/}
               <ApplicationExpertAuditResult results={audits} docs={documentNews} additionalDocs={additionalDocs} />
               {answerType === 'wait' && (
                 <AddBtn onClick={() => serviceModal.onOpen()}>Ovoz berish</AddBtn>

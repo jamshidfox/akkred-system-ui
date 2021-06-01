@@ -25,12 +25,9 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal , application}) => {
+const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal, application, onDeleteExpert }) => {
   const [serviceModalItem, setServiceModalItem] = useState(false)
-  const editModalOpen = (data) => {
-    setServiceModalItem(data)
-    serviceModal.onOpen()
-  }
+
   return (
 
     <BoxUI>
@@ -39,7 +36,7 @@ const ConfirmStageChoiceExperts = ({ onSubmit, serviceList, serviceModal , appli
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <ExpertsList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
+              <ExpertsList branches={serviceList} serviceModal={serviceModal} onDeleteExpert={onDeleteExpert} />
               <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} application={application} />
 
               <div style={{ textAlign: 'right' }}>

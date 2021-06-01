@@ -54,7 +54,7 @@ export default [
       },
 
       {
-        name: 'AKKREDITATSIYA KOMISSIYASIGA TAQDIM ETILGAN',
+        name: 'Akkreditatsiya komissiyasiga taqdim etilgan',
         url: ROUTES.APPLICATION_ACCRED_URL,
         tabs: [
           {

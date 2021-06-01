@@ -16,8 +16,8 @@ const Container = styled('div')`
 `
 
 const TextArea = styled('textarea')`
-  background: ${({ theme }) => theme.input.backgroundColor};
-  border-radius: ${props => props.theme.input.borderRadius};
+  background: white;
+  border-radius: 50px;
   border: 1px solid transparent;
   color: inherit;
   display: block;
@@ -27,21 +27,19 @@ const TextArea = styled('textarea')`
   padding: 20px;
   min-height: 160px;
   resize: none;
-  transition: ${props => props.theme.cube.transition};
   width: 100%;
 
   ::placeholder {
-    color: ${({ theme }) => theme.text.placeholder};
+    color: black;
   }
 
   :hover {
-    background: ${({ theme }) => theme.background.inputHover};
+    background: #bab1b1;
   }
 
   :focus {
     background: white;
-    border-color: ${props =>
-    props.error ? props.theme.cube.colorRed : props.theme.cube.primaryColor};
+    border-color: #bab1b1;
   }
 `
 

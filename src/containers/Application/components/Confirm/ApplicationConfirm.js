@@ -25,19 +25,26 @@ import ConfirmStageAccountingContractAudit from './ApplicationConfirmStages/[Sta
 import ConfirmStageChoiceExpertsSign from './ApplicationConfirmStages/[Stage23]ExpertsAuditSign'
 import OrderSign from './ApplicationConfirmStages/[Stage22]OrderSign'
 import CommissionResultSign from './ApplicationConfirmStages/[Stage36]CommissionResultSign'
-import ConfirmStageExecutorConfirm from "./ApplicationConfirmStages/[Stage3]ExecutorConfirm";
+import ConfirmStageExecutorConfirm from './ApplicationConfirmStages/[Stage3]ExecutorConfirm'
+import PostAccredSign from './ApplicationConfirmStages/[Stage39]ApplicationPostAccredSign'
 
 const ApplicationConfirm = props => {
   const { onSubmit, stage,
-    expertList, expertModal,
-    placeModal, application,
-    initialValues, expertPlaceList,
-    documentModal, documentList,
+    expertList,
+    expertModal,
+    placeModal,
+    onDeletePlace,
+    application,
+    initialValues,
+    expertPlaceList,
+    documentModal,
+    documentList,
     onDeleteDocument,
     travelDataModal,
     onDeleteTravelData,
     travelDataList,
-    onSuccess
+    onSuccess,
+    onDeleteExpert
   } = props
   switch (stage) {
   case 'stage_1':
@@ -74,7 +81,7 @@ const ApplicationConfirm = props => {
     )
   case 'stage_10':
     return (
-      <ConfirmStageChoiceExperts onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} />
+      <ConfirmStageChoiceExperts onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} onDeleteExpert={onDeleteExpert} />
     )
   case 'stage_11':
     return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
@@ -104,7 +111,7 @@ const ApplicationConfirm = props => {
     )
   case 'stage_20':
     return (
-      <ConfirmStageChoiceExpertsPlace onSubmit={onSubmit} serviceModal={placeModal} serviceList={expertPlaceList} />
+      <ConfirmStageChoiceExpertsPlace onSubmit={onSubmit} onDeletePlace={onDeletePlace} serviceModal={placeModal} serviceList={expertPlaceList} />
     )
   case 'stage_21':
     return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
@@ -153,6 +160,10 @@ const ApplicationConfirm = props => {
   case 'stage_38':
     return (
       <ApplicationPostAccred onSubmit={onSubmit} text={'Rasmiylashtirish'} />
+    )
+  case 'stage_39':
+    return (
+      <PostAccredSign onSuccess={onSuccess} initialValues={initialValues} />
     )
 
   default:

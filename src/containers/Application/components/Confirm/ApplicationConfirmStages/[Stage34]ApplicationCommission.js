@@ -17,8 +17,9 @@ import * as API from '../../../../../constants/api'
 import { ANSWER_LIST, APPLICATION_LIST, STANDART_LIST } from '../../../../../constants/backend'
 import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
 import { MediumButton } from '../../../../../components/UI/Buttons'
-import ApplicationCommissionResult from "../../ApplicationCommissionResult";
-import ApplicationCommissionResultList from "./AccredCommissionList";
+import ApplicationCommissionResult from '../../ApplicationCommissionResult'
+import TinyEditor from '../../../../../components/UI/Editor'
+import ApplicationCommissionResultList from './AccredCommissionList'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -52,6 +53,17 @@ const ApplicationCommission = props => {
             <form onSubmit={handleSubmit}>
 
               <ApplicationCommissionResultList results={commissions} />
+
+              <Row gutter={24}>
+
+                <Col span={24}>
+                  <Field
+                    name="content"
+                    label="Kun Tartibi"
+                    component={TinyEditor}
+                  />
+                </Col>
+              </Row>
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Tasdiqlash</MediumButton>

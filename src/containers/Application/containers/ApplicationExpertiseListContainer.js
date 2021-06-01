@@ -32,7 +32,7 @@ const ApplicationMyListContainer = props => {
   const filterActions = useFilterActions({ fields })
   const tabsList = [
     {
-      name: 'Mening arizalarim',
+      name: 'Ko`rib chiqish uchun',
       url: ROUTES.APPLICATION_EXPERTISE_URL
     },
     {

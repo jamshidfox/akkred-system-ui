@@ -25,7 +25,7 @@ const TravelDataCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name={'name'}
-                  label={'Товар (иш, хизмат)лар номи'}
+                  label={'Tovar (ish, xizmat)lar nomi'}
                   component={InputField}
 
                 />
@@ -34,7 +34,7 @@ const TravelDataCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="type"
-                  label="Ўлчов бирлиги"
+                  label="O‘lchov birligi"
                   component={UniversalStaticSelectField}
                   list={typeContractCount}
                 />
@@ -44,7 +44,7 @@ const TravelDataCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="count"
-                  label="Миқ-дори"
+                  label="Miqdori"
                   component={InputField}
                 />
               </FieldWrapper>
@@ -52,7 +52,7 @@ const TravelDataCreateModal = props => {
               <FieldWrapper>
                 <Field
                   name="price"
-                  label="Нархи"
+                  label="Narxi"
                   component={InputField}
                 />
               </FieldWrapper>

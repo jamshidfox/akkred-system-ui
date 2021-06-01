@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0",
+    "@tinymce/tinymce-react": "^3.12.6",
     "axios": "^0.18.0",
     "fast-deep-equal": "^3.0.1",
     "final-form": "^4.18.7",

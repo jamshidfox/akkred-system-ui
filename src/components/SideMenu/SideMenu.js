@@ -12,6 +12,7 @@ import MenuIcon from '../../icons/Menu'
 import Exit from '../../icons/Exit'
 import { loginAction, userInfoFetch, logoutAction } from '../../containers/Login/actions'
 import constants from './constants'
+import {useHistory} from "react-router-dom";
 
 // Styles
 const Box = styled('div')`
@@ -150,6 +151,7 @@ const SideMenu = props => {
     setOpen
   } = props
   const dispatch = useDispatch()
+  const history = useHistory()
   // Data
   const userInfo = useSelector(prop(STATES.USER_INFO))
   const userInfoData = prop('data', userInfo)

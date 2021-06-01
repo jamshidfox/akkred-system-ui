@@ -33,7 +33,7 @@ const ApplicationMyListContainer = props => {
 
   const tabsList = [
     {
-      name: 'Mening arizalarim',
+      name: 'Ko`rib chiqish uchun',
       url: ROUTES.APPLICATION_MY_ORDERS_URL
     },
     {

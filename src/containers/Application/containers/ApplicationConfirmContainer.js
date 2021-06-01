@@ -32,6 +32,8 @@ const getInitialValues = data => {
     executors: prop('executors', data),
     contractPlace: prop('contractPlace', data),
     commissions: prop('commissions', data),
+    postAccred: prop('postAccred', data),
+    protocol: prop('protocol', data),
     experts: prop('experts', data),
     expertsPlace: prop('expertsPlace', data),
     plan: prop('plan', data),
@@ -108,6 +110,15 @@ const ApplicationConfirmContainer = props => {
     expertModal.onClose()
   }
 
+  const onDeleteExpert = (branch) => {
+    expertList.forEach((element, index) => {
+      if (element.id === branch.id) {
+        expertList.splice(index, 1)
+      }
+    })
+    expertModal.onClose()
+  }
+
   const onAddPlace = place => {
     setExpertPlaceList([...expertPlaceList, place])
     placeModal.onClose()
@@ -120,6 +131,16 @@ const ApplicationConfirmContainer = props => {
     })
     placeModal.onClose()
   }
+
+  const onDeletePlace = (branch) => {
+    expertPlaceList.forEach((element, index) => {
+      if (element.id === branch.id) {
+        expertPlaceList.splice(index, 1)
+      }
+    })
+    placeModal.onClose()
+  }
+
   const params = useParams()
 
   const { data } = useFetchItem(getClientItemParams(onComplete))
@@ -143,9 +164,6 @@ const ApplicationConfirmContainer = props => {
     const experts = map(mapExperts, expertList)
     const expertsPlace = map(mapExpertsPlace, expertPlaceList)
     const file = path(['file', 'id'], values)
-    const command = path(['command', 'id'], values)
-    const plan = path(['plan', 'id'], values)
-    const notice = path(['notice', 'id'], values)
     const privacy = path(['privacy', 'id'], values)
     const noticeFinal = path(['noticeFinal', 'id'], values)
     const postAccred = path(['postaccred', 'id'], values)
@@ -170,6 +188,7 @@ const ApplicationConfirmContainer = props => {
       'typeContract',
       'from_date',
       'to_date',
+      'content',
       'assessmentStartDate',
       'assessmentEndDate',
       'nameOne',
@@ -178,6 +197,8 @@ const ApplicationConfirmContainer = props => {
       'number',
       'accreditationDate',
       'statusDate',
+      'typeOrder',
+      'countries',
     ], values)
     const data = {
       ...newDAta,
@@ -187,9 +208,6 @@ const ApplicationConfirmContainer = props => {
       notice_final:noticeFinal,
       travel_data:travelData,
       file,
-      notice,
-      plan,
-      command,
       post_accred:postAccred,
       privacy:privacy,
       list_attendees:listAttendees,
@@ -215,6 +233,7 @@ const ApplicationConfirmContainer = props => {
       initialValues={initialValues}
       application={params.id}
       placeList={expertPlaceList}
+
       documentModal={{ ...documentModal, onSubmit: onAddDocument }}
       onDeleteDocument={onDeleteDocument}
       documentList={documentList}
@@ -224,7 +243,9 @@ const ApplicationConfirmContainer = props => {
       travelDataList={travelDataList}
 
       expertModal={{ ...expertModal, onSubmit: onAddExpert, onUpdateExpert:onUpdateExpert }}
+      onDeleteExpert={onDeleteExpert}
       placeModal={{ ...placeModal, onSubmit: onAddPlace, onUpdateExpert:onUpdatePlace }}
+      onDeletePlace={onDeletePlace}
       stage={stage}
     />
   )

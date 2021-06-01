@@ -35,57 +35,14 @@ const Status = styled('div')`
   padding: 3px 12px;
 `
 const ConfirmPlanNotice = ({ onSubmit, text, initialValues }) => {
-  const notice = prop('notice', initialValues)
   const plan = prop('plan', initialValues)
+  const idAp = prop('id', initialValues)
 
-  // Notice
-  const tableNoticeList = notice.map(client => {
-    const {
-      id,
-      status,
-      file,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${file && file.file}`}>Hujjat</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tableNoticeHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Hujjat </th>
-      <th colSpan={12} >Status </th>
-
-    </TableRow>
-  const tableNotice =
-    <Table
-      isEmpty={isEmpty(notice)}
-    >
-      <PageTitleNew name="Xabarnoma" />
-      {tableNoticeHead}
-      {tableNoticeList}
-    </Table>
 
   // Plan
   const tablePlanList = plan.map(client => {
     const {
       id,
-      file,
       status,
 
     } = client
@@ -101,8 +58,8 @@ const ConfirmPlanNotice = ({ onSubmit, text, initialValues }) => {
         <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
-            color: '#0f22ff'
-          }} href={`${file && file.file}`}>Hujjat</a></td>
+          color: '#0f22ff'
+        }} href={`${API_URL}/main/applications/${idAp}/plan`}>Reja</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -133,7 +90,6 @@ const ConfirmPlanNotice = ({ onSubmit, text, initialValues }) => {
           return (
             <form onSubmit={handleSubmit}>
               {tablePlan}
-              {tableNotice}
 
               <div style={{ textAlign: 'right', marginTop: '10px' }}>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>

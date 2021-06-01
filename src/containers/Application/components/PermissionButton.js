@@ -536,10 +536,28 @@ const PermissionButton = props => {
   case 'stage_39':
     return (
       <Perms
+        perms={['director']}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+
+  case 'stage_41':
+    return (
+      <Perms
         perms={listExecutor}
       >
-        <div />
-
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
       </Perms>
     )
 

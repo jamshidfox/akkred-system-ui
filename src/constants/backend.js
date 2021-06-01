@@ -265,7 +265,7 @@ export const registryStatus = getFormattedListData([
   { id: 'audit_finish', title: 'Baholash yakuni' },
   { id: 'audit_document_analysis', title: 'Baholash hujjatlari taxlili' },
   { id: 'accreditation_commission', title: 'Akrreditatsiya komissiyasi' },
-  { id: 'registry', title: 'Reestrga ro’yhatga olish' },
+  { id: 'registry', title: 'Reestrda ro’yhatga olish' },
   { id: 'post_accreditation', title: 'Akkreditatsiyadan keyingi shartnomani rasmiylashtirish' },
   { id: 'finish', title: 'Tugallandi' },
 
@@ -298,31 +298,31 @@ export const statusAssignments = getFormattedListData([
 export const stepName = getFormattedListData([
   {
     id:'stage_1',
-    name:'Ro’yhatdan o’tkaziladi',
+    name:'Ro’yhatga olish',
   },
   {
     id:'stage_2',
-    name:'Case Manager Tanlash',
+    name:'Ijrochini tanlash',
   },
   {
     id:'stage_3',
-    name:'Case Manager tasdiqlash',
+    name:'Ijrochini tasdiqlash',
   },
   {
     id:'stage_4',
-    name:'Shartnoma rasmiylashtirish',
+    name:'E-shartnomasini rasmiylashtirish',
   },
   {
     id:'stage_5',
-    name:'Hisobchiga yuvorish',
+    name:'Hisobchi bilan kelishish',
   },
   {
     id:'stage_6',
-    name:'Rahnariyatga junatish',
+    name:'Rahbariyatga kiritish ',
   },
   {
     id:'stage_7',
-    name:'Shartnoma ro’yhatdan o’tkaziladi',
+    name:'E-shartnomani ro\'yhatga olish',
   },
   {
     id:'stage_8',
@@ -330,35 +330,35 @@ export const stepName = getFormattedListData([
   },
   {
     id:'stage_9',
-    name:'To\'langan',
+    name:'E-to’lovni tekshirish',
   },
   {
     id:'stage_10',
-    name:'Ekspertiza uchun ekspert yoki ekspertlar bazadan tanlanadi',
+    name:'E-ekspertlar tanlash',
   },
   {
     id:'stage_11',
-    name:'Ekspertlar guruhini tasdiqlash(Kadrlar bo’limi bilan kelishish)',
+    name:'Kadrlar bo’limi bilan kelishish',
   },
   {
     id:'stage_12',
-    name:'Ekspertlar guruhini tasdiqlash(Rahbariyatga yuvorish)',
+    name:'Rahbariyatga kiritish',
   },
   {
     id:'stage_13',
-    name:'Ekspertlar guruhini tasdiqlash(Rahbariyatga yuvorish)',
+    name:'Ekspertizaga jo’natish',
   },
   {
     id:'stage_14',
-    name:'Umumlashtirish va Shartnoma rasmilashtirish',
+    name:'Ekspertiza xulosasi va b-shartnomani rasmiylashtirish',
   },
   {
     id:'stage_15',
-    name:'Umumlashtirish va Shartnoma rasmilashtirish (Hisobchiga yuvorish)',
+    name:'Hisobchi bilan kelishish',
   },
   {
     id:'stage_16',
-    name:'Umumlashtirish va Shartnoma rasmilashtirish (Rahbariyatga yuvorish)',
+    name:'Rahbariyatga kiritish',
   },
   {
     id:'stage_17',
@@ -370,11 +370,11 @@ export const stepName = getFormattedListData([
   },
   {
     id:'stage_19',
-    name:'To\'langan',
+    name:'B- to’lovni tekshirish',
   },
   {
     id:'stage_20',
-    name:'Baholashda ishtirok etgan ekspertlar bazadan tanlanadi',
+    name:'B-ekspertlarni tanlash',
   },
   {
     id:'stage_21',
@@ -382,27 +382,27 @@ export const stepName = getFormattedListData([
   },
   {
     id:'stage_22',
-    name:'Rahbariyatga jonatish',
+    name:'Rahbariyatga kiritish',
   },
   {
     id:'stage_23',
-    name:'Reja va xabarnoma tasqidlanadi',
+    name:'B-rejasini rasmiylashtirish',
   },
   {
     id:'stage_24',
-    name:'Buyurtmachiga junatish',
+    name:'B-rejani buyurtmachiga jo’natish',
   },
   {
     id:'stage_25',
-    name:'Buyurtmachini javobini kutish',
+    name:'B-rejani kelishish',
   },
   {
     id:'stage_26',
-    name:'Baholash uchun buyruq loyihasi qilinadi',
+    name:'B-buyruqni ramiylashtirish',
   },
   {
     id:'stage_27',
-    name:'Baholash uchun buyruq loyihasi qilinadi(Rahbariyatga junatish)',
+    name:'Rahbariyatga kiritish',
   },
   {
     id:'stage_28',
@@ -410,23 +410,23 @@ export const stepName = getFormattedListData([
   },
   {
     id:'stage_29',
-    name:'Baholashga tegishli barcha hujjatlar ekspertlarga beriladi',
+    name:'Hujatlarni ekspertlarga jo’natish',
   },
   {
     id:'stage_30',
-    name:'Audit boshlanishi tasdiqlash',
+    name:'Baholashni tasdiqlash',
   },
   {
     id:'stage_31',
-    name:'Autditni yakunlash',
+    name:'Baholashni yakunlash',
   },
   {
     id:'stage_32',
-    name:'Qabul qilish',
+    name:'Baholash natijalarini qabul qilish',
   },
   {
     id:'stage_33',
-    name:'Akkreditatsiya komissiyasi yig’ilishinining bayonini rasmiylashtirish',
+    name:'Baholash natijalarini taxlili',
   },
   {
     id:'stage_34',
@@ -442,7 +442,7 @@ export const stepName = getFormattedListData([
   },
   {
     id:'stage_37',
-    name:'Reestrda ro’yhatga olish',
+    name:'Davlat reestriga kiritish',
   },
   {
     id:'stage_38',
@@ -450,11 +450,15 @@ export const stepName = getFormattedListData([
   },
   {
     id:'stage_39',
-    name:'Yopildi',
+    name:'Postakkreditatsion shartnoma imzolash',
   },
   {
     id:'stage_40',
-    name:'Yopildi',
+    name:'Buyurtmachini javobini kutish',
+  },
+  {
+    id:'stage_41',
+    name:'Yopish',
   },
 
 ])

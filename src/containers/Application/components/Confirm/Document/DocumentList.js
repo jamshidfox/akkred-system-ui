@@ -33,7 +33,7 @@ const DocumentList = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} target={'_blank'} href={`${file.file}`}>{'ссылка'}</a></td>
+          }} target={'_blank'} href={`${file.file}`}>{'Hujjat'}</a></td>
 
         <ItemControlButton onClick={() => onDeleteDocument(client)}>
           <img src={Trash} alt="Trash" />

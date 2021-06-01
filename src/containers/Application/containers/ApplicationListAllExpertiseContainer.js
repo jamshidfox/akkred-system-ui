@@ -30,7 +30,7 @@ const ApplicationListAllExpertiseContainer = props => {
 
   const tabsList = [
     {
-      name: 'Mening arizalarim',
+      name: 'Ko`rib chiqish uchun',
       url: ROUTES.APPLICATION_EXPERTISE_URL
     },
     {

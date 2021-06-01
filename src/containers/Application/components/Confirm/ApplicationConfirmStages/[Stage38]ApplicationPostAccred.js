@@ -51,17 +51,6 @@ const ApplicationPostAccred = props => {
             <form onSubmit={handleSubmit}>
               <Label>Postakkreditatsion shartnoma rasmiylashtirish</Label>
 
-              <Row gutter={24}>
-
-                <Col span={12}>
-                  <Field
-                    name="postaccred"
-                    label="Shartnoma"
-                    component={FileUploadField}
-                  />
-                </Col>
-
-              </Row>
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Tasdiqlash</MediumButton>

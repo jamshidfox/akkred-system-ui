@@ -31,7 +31,7 @@ const ApplicationListAllCommissionContainer = props => {
   // TabsList
   const tabsList = [
     {
-      name: 'Mening arizalarim',
+      name: 'Ko`rib chiqish uchun',
       url: ROUTES.APPLICATION_ACCRED_URL
     },
     {

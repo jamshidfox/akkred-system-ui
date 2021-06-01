@@ -54,7 +54,7 @@ const ApplicationAssessmentEnd = props => {
                 <Col span={24}>
                   <Field
                     name="privacy"
-                    label="ЗАЯВЛЕНИЕОКОНФИДЕНЦИАЛЬНОСТИ И БЕСПРИСТРАСТНОСТИ"
+                    label="Guvohlik baholash so‘rovi"
                     component={FileUploadField}
                   />
                 </Col>
@@ -64,14 +64,14 @@ const ApplicationAssessmentEnd = props => {
                 <Col span={12}>
                   <Field
                     name="listAttendees"
-                    label="Лист присутствующих"
+                    label="Ishtirok etuvchilar varog‘i"
                     component={FileUploadField}
                   />
                 </Col>
                 <Col span={12}>
                   <Field
                     name="observationMap"
-                    label="Карта наблюдений"
+                    label="Kuzatishlar kartasi"
                     component={FileUploadField}
                   />
                 </Col>
@@ -80,14 +80,14 @@ const ApplicationAssessmentEnd = props => {
                 <Col span={12}>
                   <Field
                     name="nonConformities"
-                    label="ОТЧЕТ О ВЫЯВЛЕННЫХ НЕСООТВЕТСТВИЯХ"
+                    label="Nomuvofiqliklar to‘g‘risida hisobot"
                     component={FileUploadField}
                   />
                 </Col>
                 <Col span={12}>
                   <Field
                     name="groupReport"
-                    label="ОТЧЕТ ГРУППЫ ПО ОЦЕНКЕ"
+                    label="Baholash guruhining hisoboti"
                     component={FileUploadField}
                   />
                 </Col>

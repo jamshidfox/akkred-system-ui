@@ -35,7 +35,7 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal }) => {
+const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal, onDeletePlace }) => {
   const [serviceModalItem, setServiceModalItem] = useState(false)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
@@ -61,20 +61,6 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal })
                   />
                 </Col>
 
-                <Col span={8}>
-                  <Field
-                    name="plan"
-                    label="Reja"
-                    component={FileUploadField}
-                  />
-                </Col>
-                <Col span={8}>
-                  <Field
-                    name="notice"
-                    label="Xabarnoma"
-                    component={FileUploadField}
-                  />
-                </Col>
               </Row>
 
               <Label>Joyiga chiqib o’rganish muddati</Label>
@@ -96,7 +82,7 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal })
                   />
                 </Col>
               </Row>
-              <ExpertsList branches={serviceList} serviceModal={serviceModal} editModalOpen={editModalOpen} />
+              <ExpertsList branches={serviceList} serviceModal={serviceModal} onDeletePlace={onDeletePlace} />
               <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} />
 
               <div style={{ textAlign: 'right' }}>

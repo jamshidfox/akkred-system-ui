@@ -15,8 +15,7 @@ const AddBtn = styled(SecondarySmallButton)`
 `
 
 const ExpertsList = props => {
-  const { serviceModal, branches, editModalOpen } = props
-  console.warn(branches,'branches')
+  const { serviceModal, branches, onDeletePlace } = props
   // TableList
   const tableList = branches.map(client => {
     const {
@@ -32,10 +31,14 @@ const ExpertsList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>{expert.fullName}</td>
+        <td colSpan={6}>{expert.username}</td>
         <td colSpan={6}>{type.name}</td>
         <td colSpan={6}>{date}</td>
-        <td colSpan={6}>{address.name}</td>
+        <td colSpan={4}>{address.name}</td>
+
+        <ItemControlButton onClick={() => onDeletePlace(client)}>
+          <img src={Trash} alt="Trash" />
+        </ItemControlButton>
 
       </TableRow>
     )
@@ -46,7 +49,8 @@ const ExpertsList = props => {
       <th colSpan={6} >Expert</th>
       <th colSpan={6} >Roli </th>
       <th colSpan={6} >Data </th>
-      <th colSpan={6} >Manzil </th>
+      <th colSpan={4} >Manzil </th>
+      <th colSpan={2} />
     </TableRow>
   const table =
     <Table

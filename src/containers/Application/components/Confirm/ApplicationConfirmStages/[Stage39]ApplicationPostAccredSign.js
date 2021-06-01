@@ -1,22 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
-import { MediumButton, PageTitle } from '../../../../../components/UI'
-import {
-  Form,
-} from '../../../../../components/FormField'
+import { PageRowTitle } from '../../../../../components/UI'
+
 import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
 import { documentPlanOrderType } from '../../../../../constants/backend'
+import EImzoForm from '../../../../EImzoDialog/EImzoForm'
 import { API_URL } from '../../../../../constants/api'
 
 const BoxUI = styled(Box)`
   padding: 25px;
-`
-
-const PageTitleNew = styled(PageTitle)`
-  color: #2C3A50;
-
 `
 
 const statusColors = {
@@ -34,15 +28,14 @@ const Status = styled('div')`
   line-height: 16px;
   padding: 3px 12px;
 `
-const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
-  const command = prop('command', initialValues)
+const PostAccredSign = ({ onSuccess, initialValues }) => {
+  const command = prop('postAccred', initialValues)
   const idAp = prop('id', initialValues)
 
   // Command
   const tableCommandList = command.map(client => {
     const {
       id,
-      file,
       status,
 
     } = client
@@ -59,7 +52,7 @@ const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}/main/applications/${idAp}/order`}>Buyruq</a></td>
+          }} href={`${API_URL}/main/applications/${idAp}/post_accred`}>Shartnoma</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -75,7 +68,6 @@ const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
     <Table
       isEmpty={isEmpty(command)}
     >
-      <PageTitleNew name="Buyruq" />
       {tableCommandHead}
       {tableCommandList}
     </Table>
@@ -83,23 +75,12 @@ const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
   return (
 
     <BoxUI >
-      <Form
-        onSubmit={onSubmit}
-        render={({ handleSubmit }) => {
-          return (
-            <form onSubmit={handleSubmit}>
-              {tableCommand}
-
-              <div style={{ textAlign: 'right', marginTop: '10px' }}>
-                <MediumButton type="submit">Tasdiqlash</MediumButton>
-              </div>
-            </form>
-          )
-        }}
-      />
+      <PageRowTitle name="Postakkreditatsion shartnoma " />
+      {tableCommand}
+      <EImzoForm text={'sad'} onSubmit={onSuccess} />
     </BoxUI>
 
   )
 }
 
-export default ConfirmCommand
+export default PostAccredSign

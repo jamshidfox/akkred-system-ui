@@ -30,8 +30,17 @@ const ExpertsCreateModal = props => {
             <form onSubmit={handleSubmit}>
               <FieldWrapper>
                 <Field
+                  component={UniversalSearchField}
+                  // params={{ children_only: false }}
+                  name={'expert'}
+                  label={'Expert'}
+                  api={API.EMPLOYEES_LIST}
+                />
+              </FieldWrapper>
+              <FieldWrapper>
+                <Field
                   name="cases"
-                  label="izoh"
+                  label="Standart bandi "
                   component={InputField}
                 />
               </FieldWrapper>
@@ -66,15 +75,6 @@ const ExpertsCreateModal = props => {
                   label="Manzili"
                   component={UniversalStaticSelectField}
                   list={ADDRESS_TYPE}
-                />
-              </FieldWrapper>
-              <FieldWrapper>
-                <Field
-                  component={UniversalSearchField}
-                  // params={{ children_only: false }}
-                  name={'expert'}
-                  label={'Expert'}
-                  api={API.EMPLOYEES_LIST}
                 />
               </FieldWrapper>
 

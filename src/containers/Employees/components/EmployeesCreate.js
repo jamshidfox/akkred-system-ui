@@ -13,6 +13,7 @@ import {
   UniversalSearchField
 } from '../../../components/FormField'
 import * as API from '~/constants/api'
+import TextArea from "../../../components/UI/TextArea/TextArea";
 
 export const fields = [
   'username',

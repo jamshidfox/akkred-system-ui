@@ -19,6 +19,7 @@ import { Box } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsListConfirm } from '../Experts'
 import ExpertsPlaceListConfirm from '../ExpertsPlace/ExpertsPlaceListConfirm'
 import { Table, TableRow } from '../../../../../components/Table'
+import { API_URL } from '../../../../../constants/api'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -53,64 +54,14 @@ const Status = styled('div')`
   line-height: 16px;
   padding: 3px 12px;
 `
-const ConfirmStageChoiceExpertsHrPlaceConfirm = ({ onSubmit, serviceList, serviceModal, initialValues }) => {
-  const expertsPlace = prop('expertsPlace', initialValues)
-  const notice = prop('notice', initialValues)
+const ConfirmStageChoiceExpertsHrPlaceConfirm = ({ onSubmit, initialValues }) => {
   const plan = prop('plan', initialValues)
-  const [serviceModalItem, setServiceModalItem] = useState(false)
-  const editModalOpen = (data) => {
-    setServiceModalItem(data)
-    serviceModal.onOpen()
-  }
-
-  // Notice
-  const tableNoticeList = notice.map(client => {
-    const {
-      id,
-      status,
-      file,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${file && file.file}`}>Hujjat</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tableNoticeHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Hujjat </th>
-      <th colSpan={12} >Status </th>
-
-    </TableRow>
-  const tableNotice =
-    <Table
-      isEmpty={isEmpty(notice)}
-    >
-      <PageTitleNew name="Xabarnoma" />
-      {tableNoticeHead}
-      {tableNoticeList}
-    </Table>
+  const idAp = prop('id', initialValues)
 
   // Plan
   const tablePlanList = plan.map(client => {
     const {
       id,
-      file,
       status,
 
     } = client
@@ -123,11 +74,12 @@ const ConfirmStageChoiceExpertsHrPlaceConfirm = ({ onSubmit, serviceList, servic
       <TableRow
         key={id}
       >
+
         <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${file && file.file}`}>Hujjat</a></td>
+          }} href={`${API_URL}/main/applications/${idAp}/plan`}>Reja</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -156,10 +108,7 @@ const ConfirmStageChoiceExpertsHrPlaceConfirm = ({ onSubmit, serviceList, servic
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Ekspertlar</Label>
-              <ExpertsPlaceListConfirm branches={expertsPlace} serviceModal={serviceModal} editModalOpen={editModalOpen} />
               {tablePlan}
-              {tableNotice}
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
               </div>

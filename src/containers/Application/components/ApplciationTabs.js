@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { prop } from 'ramda'
 import { Tabs, Tab } from '../../../components/TabsDetail'
 import { Box } from '../../../components/StyledElems'
+import Detail from '../actions/Detail'
 import ApplicationUserInfo from './ApplicationUserInfo'
 import ApplicationAddInfo from './ApplicationAddInfo'
 import ApplicationContractInvoiceInfo from './ApplicationContractInvoiceInfo'
@@ -13,8 +14,7 @@ import ApplicationClientDocument from './ApplicationClientDocuments'
 import ApplicationDetail from './ApplicationDetail'
 import Phase from './Phase'
 import ApplicationAccreditationDocuments from './ApplicationAccreditationDocuments'
-import TaskItem from "./Items/TaskItem";
-import Detail from "../actions/Detail";
+import TaskItem from './Items/TaskItem'
 
 export const fields = [
   'address',
@@ -120,9 +120,9 @@ const ApplicationTabs = props => {
 
           />
         </Tab>
-        {/*<Tab value={'detail'} label={'Detail'}>*/}
-        {/*  <Detail description={'description'} withoutIs={'withoutIs'} />*/}
-        {/*</Tab>*/}
+        {/* <Tab value={'detail'} label={'Detail'}> */}
+        {/*  <Detail description={'description'} withoutIs={'withoutIs'} /> */}
+        {/* </Tab> */}
 
         <Tab value={'documents'} label={'Murojaatchiga tegishli hujjatlar '}>
           <ApplicationClientDocument docs={documents} />
@@ -134,7 +134,7 @@ const ApplicationTabs = props => {
           <ApplicationContractInvoiceInfo contracts={contracts} application={id && id} contractPlace={contractPlace} plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />
         </Tab>
         <Tab value={'documentsAccred'} label={'Akrreditatsiyaga tegishli hujjatlar '}>
-          <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />
+          <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} idAp={id && id} />
         </Tab>
         <Tab value={'expertiza'} label={'Ekspertiza natijalari'}>
           <ApplicationExpertResult results={results} application={id} />

@@ -33,7 +33,7 @@ const ApplicationListAllAuditContainer = props => {
 
   const tabsList = [
     {
-      name: 'Mening arizalarim',
+      name: 'Ko`rib chiqish uchun',
       url: ROUTES.APPLICATION_AUDIT_URL
     },
     {

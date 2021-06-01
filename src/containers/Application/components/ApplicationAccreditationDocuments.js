@@ -23,56 +23,14 @@ const Status = styled('div')`
 `
 
 const ApplicationAccreditationDocuments = props => {
-  const { plan, notice, command } = props
+  const { plan, postAccred, command, idAp } = props
 
   // Notice
-  const tableNoticeList = notice.map(client => {
-    const {
-      id,
-      status,
-      file,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tableNoticeHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Hujjat </th>
-      <th colSpan={12} >Status </th>
-
-    </TableRow>
-  const tableNotice =
-    <Table
-      isEmpty={isEmpty(notice)}
-    >
-      <PageRowTitle name="Xabarnoma" />
-      {tableNoticeHead}
-      {tableNoticeList}
-    </Table>
 
   // Plan
   const tablePlanList = plan.map(client => {
     const {
       id,
-      file,
       status,
 
     } = client
@@ -89,7 +47,7 @@ const ApplicationAccreditationDocuments = props => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
+          }} href={`${API_URL}/main/applications/${idAp}/plan`}>Reja</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -115,7 +73,6 @@ const ApplicationAccreditationDocuments = props => {
   const tableCommandList = command.map(client => {
     const {
       id,
-      file,
       status,
 
     } = client
@@ -128,11 +85,12 @@ const ApplicationAccreditationDocuments = props => {
       <TableRow
         key={id}
       >
+
         <td colSpan={12} style={{
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}${file && file.file}`}>Hujjat</a></td>
+          }} href={`${API_URL}/main/applications/${idAp}/order`}>Buyruq</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
@@ -153,11 +111,53 @@ const ApplicationAccreditationDocuments = props => {
       {tableCommandList}
     </Table>
 
+  // PostAccred
+  const tablePostAccredList = postAccred.map(client => {
+    const {
+      id,
+      status,
+
+    } = client
+
+    const statusText = documentPlanOrderType.object[status]
+    const statusColor = statusColors[status]
+
+    // Render
+    return (
+      <TableRow
+        key={id}
+      >
+
+        <td colSpan={12} style={{
+          color: '#0f22ff'
+        }}><a style={{
+            color: '#0f22ff'
+          }} href={`${API_URL}/main/applications/${idAp}/post_accred`}>Shartnoma</a></td>
+        <td colSpan={12} ><Status color={statusColor}>
+          {statusText}
+        </Status> </td>
+      </TableRow>
+    )
+  })
+  const tablePostAccredHead =
+    <TableRow header={true}>
+      <th colSpan={12} >Hujjat </th>
+      <th colSpan={12} >Status </th>
+    </TableRow>
+  const tablePostAccred =
+    <Table
+      isEmpty={isEmpty(postAccred)}
+    >
+      <PageRowTitle name="Akkreditatsiyadan keyingi Shartnoma" />
+      {tablePostAccredHead}
+      {tablePostAccredList}
+    </Table>
+
   return (
     <>
-      {tableNotice}
       {tablePlan}
       {tableCommand}
+      {tablePostAccred}
 
     </>
   )
@@ -166,6 +166,7 @@ ApplicationAccreditationDocuments.defaultProps = {
   plan: [],
   notice: [],
   command: [],
+  postAccred: [],
 }
 
 export default ApplicationAccreditationDocuments

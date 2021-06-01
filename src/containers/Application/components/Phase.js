@@ -176,7 +176,7 @@ const Phase = props => {
                 ) : (
 
                   <div>
-                    {stage === 'stage_8' || stage === 'stage_18' || stage === 'stage_25' || stage === 'stage_34'
+                    {stage === 'stage_8' || stage === 'stage_18' || stage === 'stage_25' || stage === 'stage_34' || stage === 'stage_40'
                       ? (<PassButton >
                         <WaitButton onClick={waitModalOpen()}>{stepText}</WaitButton>
                       </PassButton>)

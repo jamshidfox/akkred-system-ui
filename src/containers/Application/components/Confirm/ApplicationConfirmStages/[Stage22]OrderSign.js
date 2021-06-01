@@ -7,6 +7,7 @@ import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
 import { documentPlanOrderType } from '../../../../../constants/backend'
 import EImzoForm from '../../../../EImzoDialog/EImzoForm'
+import { API_URL } from '../../../../../constants/api'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -29,12 +30,12 @@ const Status = styled('div')`
 `
 const OrderSign = ({ onSuccess, initialValues }) => {
   const command = prop('command', initialValues)
+  const idAp = prop('id', initialValues)
 
   // Command
   const tableCommandList = command.map(client => {
     const {
       id,
-      file,
       status,
 
     } = client
@@ -51,7 +52,7 @@ const OrderSign = ({ onSuccess, initialValues }) => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${file && file.file}`}>Hujjat</a></td>
+          }} href={`${API_URL}/main/applications/${idAp}/order`}>Buyruq</a></td>
         <td colSpan={12} ><Status color={statusColor}>
           {statusText}
         </Status> </td>
