@@ -5,6 +5,11 @@ import { PageRowTitle } from 'components/UI'
 import { Table, TableRow } from '../../../components/Table'
 import { API_URL } from '../../../constants/api'
 import { documentPlanOrderType } from '../../../constants/backend'
+import Analysis from './ApplicationGenerateDocs/Analysis'
+import ConclusionGroup from './ApplicationGenerateDocs/ConclusionGroup'
+import PostAccreditation from './ApplicationGenerateDocs/PostAccreditation'
+import AuditOrder from './ApplicationGenerateDocs/AuditOrder'
+import PlanAudit from './ApplicationGenerateDocs/PlanAudit'
 
 const statusColors = {
   process: 'green',
@@ -23,141 +28,15 @@ const Status = styled('div')`
 `
 
 const ApplicationAccreditationDocuments = props => {
-  const { plan, postAccred, command, idAp } = props
-
-  // Notice
-
-  // Plan
-  const tablePlanList = plan.map(client => {
-    const {
-      id,
-      status,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}/main/applications/${idAp}/plan`}>Reja</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tablePlanHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Hujjat </th>
-      <th colSpan={12} >Status </th>
-
-    </TableRow>
-  const tablePlan =
-    <Table
-      isEmpty={isEmpty(plan)}
-    >
-      <PageRowTitle name="Reja" />
-      {tablePlanHead}
-      {tablePlanList}
-    </Table>
-
-  // Command
-  const tableCommandList = command.map(client => {
-    const {
-      id,
-      status,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}/main/applications/${idAp}/order`}>Buyruq</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tableCommandHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Hujjat </th>
-      <th colSpan={12} >Status </th>
-    </TableRow>
-  const tableCommand =
-    <Table
-      isEmpty={isEmpty(command)}
-    >
-      <PageRowTitle name="Buyruq" />
-      {tableCommandHead}
-      {tableCommandList}
-    </Table>
-
-  // PostAccred
-  const tablePostAccredList = postAccred.map(client => {
-    const {
-      id,
-      status,
-
-    } = client
-
-    const statusText = documentPlanOrderType.object[status]
-    const statusColor = statusColors[status]
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-
-        <td colSpan={12} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}/main/applications/${idAp}/post_accred`}>Shartnoma</a></td>
-        <td colSpan={12} ><Status color={statusColor}>
-          {statusText}
-        </Status> </td>
-      </TableRow>
-    )
-  })
-  const tablePostAccredHead =
-    <TableRow header={true}>
-      <th colSpan={12} >Hujjat </th>
-      <th colSpan={12} >Status </th>
-    </TableRow>
-  const tablePostAccred =
-    <Table
-      isEmpty={isEmpty(postAccred)}
-    >
-      <PageRowTitle name="Akkreditatsiyadan keyingi Shartnoma" />
-      {tablePostAccredHead}
-      {tablePostAccredList}
-    </Table>
+  const { plan, postAccred, command, idAp, analysis, conclusions } = props
 
   return (
     <>
-      {tablePlan}
-      {tableCommand}
-      {tablePostAccred}
+      <Analysis analysis={analysis} idAp={idAp} />
+      <ConclusionGroup conclusions={conclusions} idAp={idAp} />
+      <PlanAudit plan={plan} idAp={idAp} />
+      <AuditOrder auditOrders={command} idAp={idAp} />
+      <PostAccreditation postAccreditation={postAccred} idAp={idAp} />
 
     </>
   )
@@ -167,6 +46,8 @@ ApplicationAccreditationDocuments.defaultProps = {
   notice: [],
   command: [],
   postAccred: [],
+  analysis: [],
+  conclusions: [],
 }
 
 export default ApplicationAccreditationDocuments

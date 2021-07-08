@@ -18,6 +18,67 @@ const Text = styled('span')`
   text-overflow: ellipsis;
   transition: ${({ theme }) => theme.transition.primary};
 `
+
+const ItemAkkred = styled('a')`
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: ${({ smart }) => smart ? 'center' : 'flex-start'};
+  align-items: center;
+  padding: ${({ smart }) => smart ? 0 : '10px 14px 10px 52px'};
+  margin: ${({ isSub, withChildren, smart }) =>
+          `${isSub ? '10px' : '20px'} 8px ${withChildren ? '0' : isSub ? '10px' : '20px'} ${(isSub && !smart) ? '17px' : '8px'}`};
+  user-select: none;
+  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
+  background: ${({ theme, isActive }) => isActive && theme.palette.secondary};
+  color: ${({ theme, isActive }) => isActive && theme.palette.primary};
+  border-radius: 8px;
+  min-height: 40px;
+  height: 40px;
+  transition: ${({ theme }) => theme.transition.primary};
+  &:first-child{
+    margin-top: ${({ isSub }) => isSub && '20px'};
+  }
+  & svg{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    transition: ${({ theme }) => theme.transition.primary};
+    &:first-child{
+      left: ${({ smart }) => smart ? '11px' : '18px'};
+      color: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
+    }
+    &:last-child{
+      right: 9px;
+      stroke-width: 2px;
+      color: ${({ theme, isActive }) => isActive ? theme.palette.primary : '#7d8893'};
+      transform: ${({ isOpen }) => isOpen ? 'translateY(-50%) rotate(-180deg)' : 'translateY(-50%) rotate(0)'};
+    }
+  }
+  &:hover {
+    background: ${({ theme, isActive }) => !isActive && theme.background.linkHover};
+    transition: ${({ theme }) => theme.transition.primary};
+    & span{
+      color: ${({ theme, isActive }) => !isActive && theme.palette.primary};
+      transition: ${({ theme }) => theme.transition.primary};
+    }
+    & svg:first-child * {
+      color: ${({ theme }) => theme.palette.primary}
+      transition: ${({ theme }) => theme.transition.primary};
+    }
+    & svg:last-child * {
+      color: ${({ theme }) => theme.palette.primary}
+      transition: ${({ theme }) => theme.transition.primary};
+    }
+  }
+  &:active {
+    opacity: 0.7;
+    transition: ${({ theme }) => theme.transition.primary};
+  }
+`
+
 const Item = styled(Link)`
   position: relative;
   display: flex;
@@ -26,7 +87,7 @@ const Item = styled(Link)`
   align-items: center;
   padding: ${({ smart }) => smart ? 0 : '10px 14px 10px 52px'};
   margin: ${({ isSub, withChildren, smart }) =>
-    `${isSub ? '10px' : '20px'} 8px ${withChildren ? '0' : isSub ? '10px' : '20px'} ${(isSub && !smart) ? '17px' : '8px'}`};
+  `${isSub ? '10px' : '20px'} 8px ${withChildren ? '0' : isSub ? '10px' : '20px'} ${(isSub && !smart) ? '17px' : '8px'}`};
   user-select: none;
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
   background: ${({ theme, isActive }) => isActive && theme.palette.secondary};
@@ -82,6 +143,7 @@ const MenuItem = props => {
   const {
     name,
     icon,
+    outside,
     url,
     pathname,
     withChildren,
@@ -95,17 +157,35 @@ const MenuItem = props => {
   } = props
 
   // Render
+
+  if (!outside) {
+    return (
+      <Item
+        to={withChildren ? '#' : url}
+        isActive={isActive || (url === pathname)}
+        onClick={onClick}
+        isSub={isSub}
+        withChildren={withChildren}
+        disabled={disabled}
+        isOpen={isOpen}
+        smart={smart}
+        {...rest}
+      >
+        {icon ? icon() : <Grid />}
+        <Text
+          smart={smart}
+        >
+          {name}
+        </Text>
+        {withChildren && !smart &&
+        <ArrowDown />}
+      </Item>
+    )
+  }
   return (
-    <Item
-      to={withChildren ? '#' : url}
-      isActive={isActive || (url === pathname)}
-      onClick={onClick}
-      isSub={isSub}
-      withChildren={withChildren}
-      disabled={disabled}
-      isOpen={isOpen}
-      smart={smart}
-      {...rest}
+    <ItemAkkred
+      href={url}
+      target={'_blank'}
     >
       {icon ? icon() : <Grid />}
       <Text
@@ -115,7 +195,7 @@ const MenuItem = props => {
       </Text>
       {withChildren && !smart &&
       <ArrowDown />}
-    </Item>
+    </ItemAkkred>
   )
 }
 

@@ -13,7 +13,6 @@ import { Col, Row } from '../../../components/Grid'
 import PermissionButton from './PermissionButton'
 import RejectCreateModal from './RejectCreateModal'
 
-
 const BoxUI = styled(Box)`
   padding: 25px;
 `
@@ -176,7 +175,7 @@ const Phase = props => {
                 ) : (
 
                   <div>
-                    {stage === 'stage_8' || stage === 'stage_18' || stage === 'stage_25' || stage === 'stage_34' || stage === 'stage_40'
+                    {stage === 'new_sign_by_client' || stage === 'expertise_sign_contract_audit_client' || stage === 'audit_sign_plan_client' || stage === 'commission_vote_participants' || stage === 'post_sign_post_client'
                       ? (<PassButton >
                         <WaitButton onClick={waitModalOpen()}>{stepText}</WaitButton>
                       </PassButton>)

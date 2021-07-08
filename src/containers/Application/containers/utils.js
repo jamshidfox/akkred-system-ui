@@ -23,6 +23,9 @@ export const mapTravelData = (item) => toSnakeCase({
 export const mapExperts = (item) => toSnakeCase({
   expert:path(['expert', 'id'], item),
   assignment:path(['assignment', 'id'], item),
+  type:path(['type', 'id'], item),
+  direction:prop('direction', item),
+  standard:prop('standard', item),
 })
 
 export const mapExpertsPlace = (item) => toSnakeCase({

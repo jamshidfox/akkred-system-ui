@@ -61,7 +61,7 @@ export const applicationDeleteAction = (id) => {
   }
 }
 
-export const applicationConfirmAction = (id,data) => {
+export const applicationConfirmAction = (id, data) => {
   return (dispatch, getState) => {
     const payload = axios({ dispatch, getState })
       .post(sprintf(API.EXPERT_EXPERTISE_CONFIRM, id), data)
@@ -71,6 +71,20 @@ export const applicationConfirmAction = (id,data) => {
     return dispatch({
       payload,
       type: actionTypes.EXPERT_EXPERTISE_CONFIRM
+    })
+  }
+}
+
+export const expertAnswerAction = (id, data) => {
+  return (dispatch, getState) => {
+    const payload = axios({ dispatch, getState })
+      .post(sprintf(API.EXPERT_EXPERTISE_ANSWER, id), data)
+      .then(getPayloadFromSuccess)
+      .catch(getPayloadFromError)
+
+    return dispatch({
+      payload,
+      type: actionTypes.EXPERT_EXPERTISE_ANSWER
     })
   }
 }

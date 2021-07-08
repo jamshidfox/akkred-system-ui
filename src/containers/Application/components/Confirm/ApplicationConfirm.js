@@ -3,10 +3,8 @@ import ApplicationConfirmDefault from './ApplicationConfirmStages/ApplicationCon
 import ConfirmStageTwoChoiceExecutor from './ApplicationConfirmStages/[Stage2]Executor'
 import ConfirmStageContract from './ApplicationConfirmStages/[Stage6]Contract'
 import ConfirmStageAccounting from './ApplicationConfirmStages/[Stage7]Accounting'
-import ConfirmStageChoiceExperts from './ApplicationConfirmStages/[Stage10]Experts'
 import ConfirmStageContractPlace from './ApplicationConfirmStages/[Stage14]ContractPlace'
 import ConfirmStageChoiceExpertsPlace from './ApplicationConfirmStages/[Stage14]ExpertsPlace'
-import ConfirmStageChoiceExpertsConfirm from './ApplicationConfirmStages/[Stage11]ExpertsConfirm'
 import ConfirmStageAccountingContractPlace from './ApplicationConfirmStages/[Stage15]Accounting'
 import ApplicationConfirmCommand from './ApplicationConfirmStages/[Stage26]ApplicationConfirmCommand'
 import ApplicationAssessmentStartDate from './ApplicationConfirmStages/[Stage30]ApplicationAssessmentStartDate'
@@ -15,7 +13,6 @@ import ApplicationCommissionResult from './ApplicationConfirmStages/[Stage34]App
 import ApplicationReestr from './ApplicationConfirmStages/[Stage37]ApplicationReestr'
 import ApplicationPostAccred from './ApplicationConfirmStages/[Stage38]ApplicationPostAccred'
 import ConfirmStageChoiceExpertsPlaceConfirm from './ApplicationConfirmStages/[Stage21]ExpertsPlaceConfirm'
-import ConfirmPlanNotice from './ApplicationConfirmStages/[Stage23]PlanNotice'
 import ConfirmCommand from './ApplicationConfirmStages/[Stage27]Command'
 import ConfirmAudit from './ApplicationConfirmStages/[Stage32]ConfirmAudit'
 import ConfirmStageChoiceExpertHrConfirm from './ApplicationConfirmStages/[Stage12]ExpertsConfirm'
@@ -25,8 +22,17 @@ import ConfirmStageAccountingContractAudit from './ApplicationConfirmStages/[Sta
 import ConfirmStageChoiceExpertsSign from './ApplicationConfirmStages/[Stage23]ExpertsAuditSign'
 import OrderSign from './ApplicationConfirmStages/[Stage22]OrderSign'
 import CommissionResultSign from './ApplicationConfirmStages/[Stage36]CommissionResultSign'
-import ConfirmStageExecutorConfirm from './ApplicationConfirmStages/[Stage3]ExecutorConfirm'
 import PostAccredSign from './ApplicationConfirmStages/[Stage39]ApplicationPostAccredSign'
+import NewCreateAnalysisApplication from './ApplicationConfirmStages/NewCreateAnalysisApplication'
+import NewFillUpAnalysisApplication from './ApplicationConfirmStages/NewFillUpAnalysisApplication'
+import ExpertiseChoiceExperts from './ApplicationConfirmStages/ExpertiseChoiceExperts'
+import ExpertiseConfirmExpertsDepartment from './ApplicationConfirmStages/ExpertiseConfirmExpertsDepartment'
+import ExpertiseConfirmExpertsHr from './ApplicationConfirmStages/ExpertiseConfirmExpertsHr'
+import ReAuditEndDeadline from './ApplicationConfirmStages/ReAuditEndDeadline'
+import ReAuditCreateOrder from './ApplicationConfirmStages/ReAuditCreateOrder'
+import ReAuditAcceptOrder from './ApplicationConfirmStages/ReAuditAcceptOrder'
+import ReAuditSignOrderCenter from './ApplicationConfirmStages/ReAuditSignOrderCenter'
+import ReAuditEndAudit from './ApplicationConfirmStages/ReAuditEndAudit'
 
 const ApplicationConfirm = props => {
   const { onSubmit, stage,
@@ -44,126 +50,153 @@ const ApplicationConfirm = props => {
     onDeleteTravelData,
     travelDataList,
     onSuccess,
-    onDeleteExpert
+    onDeleteExpert,
+    onUpdatePlace
   } = props
   switch (stage) {
-  case 'stage_1':
+  case 'new_register_application':
     return (
       <ApplicationConfirmDefault text={'Ro’yhatdan o’tkaziladi'} onSubmit={onSubmit} />
     )
-  case 'stage_2':
+  case 'new_create_analysis_application':
+    return (
+      <NewCreateAnalysisApplication onSubmit={onSubmit} />
+    )
+  case 'new_choice_executor':
     return (
       <ConfirmStageTwoChoiceExecutor onSubmit={onSubmit} />
     )
-  case 'stage_3':
+  case 'new_fill_up_analysis_application':
     return (
-      <ConfirmStageExecutorConfirm onSubmit={onSubmit} initialValues={initialValues} />
+      <NewFillUpAnalysisApplication onSubmit={onSubmit} initialValues={initialValues} />
     )
-  case 'stage_4':
+  case 'new_create_contract':
     return (
       <ConfirmStageContract onSubmit={onSubmit} />
     )
-  case 'stage_5':
+  case 'new_confirm_by_department':
     return (
       <ConfirmStageAccounting application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Hisobchiga junatish'} />
     )
-  case 'stage_6':
+  case 'new_confirm_by_account':
     return (
       <ConfirmStageAccounting application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Rahnariyatga junatish'} />
     )
-  case 'stage_7':
+  case 'new_sign_by_center':
     return (
       <ConfirmStageContractSign application={application} initialValues={initialValues} onSuccess={onSuccess} text={'Shartnoma ro’yhatdan o’tkaziladi'} />
     )
-  case 'stage_9':
+  case 'new_confirm_payment':
     return (
       <ConfirmStageAccounting application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
-  case 'stage_10':
+  case 'expertise_choice_experts':
     return (
-      <ConfirmStageChoiceExperts onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} onDeleteExpert={onDeleteExpert} />
+      <ExpertiseChoiceExperts onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} application={application} onDeleteExpert={onDeleteExpert} initialValues={initialValues} />
     )
-  case 'stage_11':
-    return <ConfirmStageChoiceExpertsConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
-  case 'stage_12':
-    return <ConfirmStageChoiceExpertHrConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
-  case 'stage_13':
-    return <ConfirmStageChoiceExpertHrConfirm onSubmit={onSubmit} serviceModal={expertModal} serviceList={expertList} initialValues={initialValues} />
-  case 'stage_14':
+  case 'expertise_confirm_experts_department':
+    return <ExpertiseConfirmExpertsDepartment onSubmit={onSubmit} initialValues={initialValues} />
+  case 'expertise_confirm_experts_hr':
+    return <ExpertiseConfirmExpertsHr onSubmit={onSubmit} initialValues={initialValues} />
+  case 'expertise_confirm_experts_center':
+    return <ConfirmStageChoiceExpertHrConfirm onSuccess={onSuccess} initialValues={initialValues} />
+  case 'expertise_create_contract_audit':
     return (
-      <ConfirmStageContractPlace travelDataModal={travelDataModal} onDeleteTravelData={onDeleteTravelData} travelDataList={travelDataList} onSubmit={onSubmit} />
+      <ConfirmStageContractPlace travelDataModal={travelDataModal} onDeleteTravelData={onDeleteTravelData} travelDataList={travelDataList} onSubmit={onSubmit} initialValues={initialValues} />
     )
-  case 'stage_15':
+  case 'expertise_confirm_contract_audit_department':
     return (
       <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Hisobchiga  junatish'} />
     )
-  case 'stage_16':
+  case 'expertise_confirm_contract_audit_account':
     return (
       <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Rahnariyatga  junatish'} />
     )
-  case 'stage_17':
+  case 'expertise_sign_contract_audit_center':
     return (
       <ConfirmStageAccountingContractAudit initialValues={initialValues} onSuccess={onSuccess} text={'Tasdiqlash'} />
     )
-  case 'stage_19':
+  case 'expertise_confirm_payment_contract_audit':
     return (
       <ConfirmStageAccountingContractPlace application={application} initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
-  case 'stage_20':
+  case 'audit_choice_experts':
     return (
-      <ConfirmStageChoiceExpertsPlace onSubmit={onSubmit} onDeletePlace={onDeletePlace} serviceModal={placeModal} serviceList={expertPlaceList} />
+      <ConfirmStageChoiceExpertsPlace onSubmit={onSubmit} onDeletePlace={onDeletePlace} serviceModal={placeModal} onUpdatePlace={onUpdatePlace} serviceList={expertPlaceList} initialValues={initialValues} />
     )
-  case 'stage_21':
+  case 'audit_confirm_experts_department':
     return <ConfirmStageChoiceExpertsPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
-  case 'stage_22':
+  case 'audit_confirm_experts_hr':
     return <ConfirmStageChoiceExpertsHrPlaceConfirm onSubmit={onSubmit} serviceModal={expertModal} initialValues={initialValues} />
-  case 'stage_23':
+  case 'audit_sign_plan_center':
     return <ConfirmStageChoiceExpertsSign onSuccess={onSuccess} serviceModal={expertModal} initialValues={initialValues} />
-  case 'stage_24':
-    return <ConfirmPlanNotice onSubmit={onSubmit} text={'Junatish'} initialValues={initialValues} />
-  case 'stage_26':
+  case 'audit_create_order':
     return (
       <ApplicationConfirmCommand onSubmit={onSubmit} text={'Baholash uchun buyruq loyihasi qilinadi'} />
     )
-  case 'stage_27':
+  case 'audit_accept_order':
     return (
       <ConfirmCommand onSubmit={onSubmit} initialValues={initialValues} text={'Junatish'} />
     )
-  case 'stage_28':
+  case 'audit_sign_order_center':
     return (
       <OrderSign onSuccess={onSuccess} initialValues={initialValues} />
     )
-  case 'stage_30':
+  case 'audit_start_audit':
     return (
       <ApplicationAssessmentStartDate onSubmit={onSubmit} text={'Audit boshlanishi tasdiqlash'} />
     )
-  case 'stage_31':
+  case 'audit_end_audit':
     return (
-      <ApplicationAssessmentEnd onSubmit={onSubmit} text={'Autditni yakunlash'} documentModal={documentModal} documentList={documentList} onDeleteDocument={onDeleteDocument} />
+      <ApplicationAssessmentEnd onSubmit={onSubmit} text={'Autditni yakunlash'} documentModal={documentModal} documentList={documentList} onDeleteDocument={onDeleteDocument} initialValues={initialValues} />
     )
-  case 'stage_32':
+  case 'audit_accept_audit_result':
     return (
       <ConfirmAudit onSubmit={onSubmit} initialValues={initialValues} text={'Tasdiqlash'} />
     )
-  case 'stage_35':
+  case 'commission_create_protocol':
     return (
       <ApplicationCommissionResult initialValues={initialValues} onSubmit={onSubmit} text={'Tasdiqlash'} />
     )
-  case 'stage_36':
+  case 'commission_sign_protocol_center':
     return (
       <CommissionResultSign initialValues={initialValues} onSuccess={onSuccess} text={'Tasdiqlash'} />
     )
-  case 'stage_37':
+  case 'commission_register_create':
     return (
       <ApplicationReestr onSubmit={onSubmit} text={'Reesrda ro’yhatga olish'} />
     )
-  case 'stage_38':
+  case 'post_create_post':
     return (
       <ApplicationPostAccred onSubmit={onSubmit} text={'Rasmiylashtirish'} />
     )
-  case 'stage_39':
+  case 'post_sign_post_center':
     return (
       <PostAccredSign onSuccess={onSuccess} initialValues={initialValues} />
+    )
+  case 're_audit_end_deadline':
+    return (
+      <ReAuditEndDeadline onSubmit={onSubmit} initialValues={initialValues} />
+    )
+  case 're_audit_create_order':
+    return (
+      <ReAuditCreateOrder onSubmit={onSubmit} initialValues={initialValues} />
+    )
+  case 're_audit_accept_order':
+    return (
+      <ReAuditAcceptOrder onSubmit={onSubmit} initialValues={initialValues} />
+    )
+  case 're_audit_sign_order_center':
+    return (
+      <ReAuditSignOrderCenter onSuccess={onSuccess} initialValues={initialValues} />
+    )
+  case 're_audit_end_audit':
+    return (
+      <ReAuditEndAudit onSubmit={onSubmit} initialValues={initialValues} />
+    )
+  case 're_audit_accept_audit_result':
+    return (
+      <ConfirmAudit onSubmit={onSubmit} initialValues={initialValues} text={'Tasdiqlash'} />
     )
 
   default:

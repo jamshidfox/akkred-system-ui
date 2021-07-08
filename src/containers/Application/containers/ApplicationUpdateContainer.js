@@ -50,6 +50,7 @@ const getInitialValues = data => {
     paymentAccount: prop('paymentAccount', data),
     oked: prop('oked', data),
     soogu: prop('soogu', data),
+
   }
 
   return {
@@ -110,6 +111,11 @@ const getInitialValues = data => {
     certificateNumber: prop('certificateNumber', data),
     isExpertise: prop('isExpertise', data),
     histories: prop('histories', data),
+    planWorks: prop('planWorks', data),
+    planProofWorks: prop('planProofWorks', data),
+    reAuditOrders: prop('reAuditOrders', data),
+    analysis: prop('analysis', data),
+    conclusions: prop('conclusions', data),
 
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import arrayMutators from 'final-form-arrays'
 import PropTypes from 'prop-types'
-import { PageTitle, MediumButton } from '../../../components/UI'
+import { PageRowTitle, MediumButton } from '../../../components/UI'
 import { Box } from '../../../components/StyledElems'
 
 import { Row as RowUI, Col } from '../../../components/Grid'
@@ -10,10 +10,11 @@ import {
   Form,
   Field,
   InputField,
-  UniversalSearchField
+  UniversalSearchField,
 } from '../../../components/FormField'
+import TextArea from '../../../components/UI/TextArea/TextArea'
+import FileUploadField from '../../../components/FormField/File/FileUploadField'
 import * as API from '~/constants/api'
-import TextArea from "../../../components/UI/TextArea/TextArea";
 
 export const fields = [
   'username',
@@ -24,7 +25,8 @@ export const fields = [
   'lastName',
   'firstName',
   'middleName',
-  'role'
+  'role',
+  'resume',
 ]
 
 const BoxUI = styled(Box)`
@@ -50,7 +52,7 @@ const ReservationCreate = props => {
 
   return (
     <BoxUI>
-      <PageTitle name="Добавить сотрудника" />
+      <PageRowTitle name="Xodimni qo'shish" />
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}
@@ -59,44 +61,47 @@ const ReservationCreate = props => {
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Основная информация</Label>
               <Row gutter={24}>
 
                 <Col span={8}>
-                  <Field name="username" label="Логин" component={InputField} />
+                  <Field name="username" label="Login" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="role" label="Должность"
+                  <Field name="role" label="Lavozim"
                     api={API.ROLE_LIST}
                     component={UniversalSearchField}
                   />
                 </Col>
                 <Col span={8}>
-                  <Field name="password" label="Пароль" component={InputField} />
-                </Col>
-              </Row>
-              <Row gutter={24}>
-                <Col span={12}>
-                  <Field name="email" label="mail" component={InputField} />
-                </Col>
-                <Col span={12}>
-                  <Field name="phoneNumber" label="Номер телефона" component={InputField} />
+                  <Field name="password" label="Parol" component={InputField} />
                 </Col>
               </Row>
               <Row gutter={24}>
                 <Col span={8}>
-                  <Field name="lastName" label="Фамилия" component={InputField} />
+                  <Field name="email" label="Pochta" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="firstName" label="Имя" component={InputField} />
+                  <Field name="phoneNumber" label="Telefon raqami" component={InputField} />
+                </Col>
+
+                <Col span={8}>
+                  <Field name="resume" label="Resume" component={FileUploadField} />
+                </Col>
+              </Row>
+              <Row gutter={24}>
+                <Col span={8}>
+                  <Field name="lastName" label="Familiya" component={InputField} />
                 </Col>
                 <Col span={8}>
-                  <Field name="middleName" label="Отчество" component={InputField} />
+                  <Field name="firstName" label="Ism" component={InputField} />
+                </Col>
+                <Col span={8}>
+                  <Field name="middleName" label="Otasini ismi" component={InputField} />
                 </Col>
               </Row>
 
               <div style={{ textAlign: 'right' }}>
-                <MediumButton type={'submit'}>Сохранить</MediumButton>
+                <MediumButton type={'submit'}>Saqlash</MediumButton>
               </div>
 
             </form>

@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { prop, path, map } from 'ramda'
+
 import arrayMutators from 'final-form-arrays'
 import { Box } from '../../../../../components/StyledElems'
 import {
@@ -11,6 +13,7 @@ import { Col, Row as RowUI } from '../../../../../components/Grid'
 import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
 import { MediumButton } from '../../../../../components/UI/Buttons'
 import { DocumentCreateModal, DocumentList } from '../Document'
+import AuditResults from '../../ApplicationGenerateDocs/AuditResults'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -30,9 +33,11 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 const ApplicationAssessmentEnd = props => {
-  const { onSubmit, text, documentList, documentModal, onDeleteDocument } = props
+  const { onSubmit, text, documentList, documentModal, onDeleteDocument, initialValues } = props
+  const expertsPlace = prop('expertsPlace', initialValues)
   return (
     <BoxUI>
+      <AuditResults results={expertsPlace} />
       <Form
         keepDirtyOnReinitialize={true}
         mutators={arrayMutators}

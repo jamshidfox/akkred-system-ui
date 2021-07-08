@@ -1,5 +1,5 @@
 export const DOMAIN_URL = 'http://localhost:8000'
-// export const DOMAIN_URL = 'https://akkred.uz:8080'
+// export const DOMAIN_URL = 'https://e.akkred.uz:8081'
 export const API_URL = `${DOMAIN_URL}`
 
 const MAIN = 'main'
@@ -84,6 +84,7 @@ export const EXPERT_EXPERTISE_CREATE = `/${EXPERT_EXPERTISE}/`
 export const EXPERT_EXPERTISE_UPDATE = `/${EXPERT_EXPERTISE}/%d/`
 export const EXPERT_EXPERTISE_DELETE = `/${EXPERT_EXPERTISE}/%d/`
 export const EXPERT_EXPERTISE_CONFIRM = `/${EXPERT_EXPERTISE}/%d/confirm/`
+export const EXPERT_EXPERTISE_ANSWER = `/${EXPERT_EXPERTISE}/%d/answer/`
 export const EXPERT_EXPERTISE_REJECT = `/${EXPERT_EXPERTISE}/%d/reject/`
 export const EXPERT_EXPERTISE_ITEM = `/${EXPERT_EXPERTISE}/%d/`
 
@@ -94,8 +95,20 @@ export const EXPERT_PLACE_UPDATE = `/${EXPERT_PLACE}/%d/`
 export const EXPERT_PLACE_DELETE = `/${EXPERT_PLACE}/%d/`
 export const EXPERT_PLACE_CONFIRM = `/${EXPERT_PLACE}/%d/confirm/`
 export const EXPERT_PLACE_RESULT_CONFIRM = `/${EXPERT_PLACE}/%d/confirm_result/`
+export const EXPERT_PLACE_ANSWER = `/${EXPERT_PLACE}/%d/answer/`
 export const EXPERT_PLACE_REJECT = `/${EXPERT_PLACE}/%d/reject/`
 export const EXPERT_PLACE_ITEM = `/${EXPERT_PLACE}/%d/`
+
+export const RE_AUDIT_EXPERT = 'main/re_audit_expert'
+export const RE_AUDIT_EXPERT_LIST = `/${RE_AUDIT_EXPERT}/`
+export const RE_AUDIT_EXPERT_CREATE = `/${RE_AUDIT_EXPERT}/`
+export const RE_AUDIT_EXPERT_UPDATE = `/${RE_AUDIT_EXPERT}/%d/`
+export const RE_AUDIT_EXPERT_DELETE = `/${RE_AUDIT_EXPERT}/%d/`
+export const RE_AUDIT_EXPERT_CONFIRM = `/${RE_AUDIT_EXPERT}/%d/confirm/`
+export const RE_AUDIT_EXPERT_RESULT_CONFIRM = `/${RE_AUDIT_EXPERT}/%d/confirm_result/`
+export const RE_AUDIT_EXPERT_ANSWER = `/${RE_AUDIT_EXPERT}/%d/answer/`
+export const RE_AUDIT_EXPERT_REJECT = `/${RE_AUDIT_EXPERT}/%d/reject/`
+export const RE_AUDIT_EXPERT_ITEM = `/${RE_AUDIT_EXPERT}/%d/`
 
 export const COMMISSION = 'main/commissions'
 export const COMMISSION_LIST = `/${COMMISSION}/`
@@ -132,3 +145,12 @@ export const REESTR_ITEM = `/${REESTR}/%d/`
 
 export const TEMPLATE = `${MAIN}/templates`
 export const TEMPLATE_LIST = `/${TEMPLATE}/`
+
+
+
+
+export const TEMPLATE_DOCUMENT_LIST = `${MAIN}/templates/`
+export const TEMPLATE_DOCUMENT_CREATE = `${TEMPLATE_DOCUMENT_LIST}`
+export const TEMPLATE_DOCUMENT_UPDATE = `${TEMPLATE_DOCUMENT_LIST}%d/`
+export const TEMPLATE_DOCUMENT_ITEM = `${TEMPLATE_DOCUMENT_LIST}%d/`
+export const TEMPLATE_DOCUMENT_DELETE = `${TEMPLATE_DOCUMENT_LIST}%d/`

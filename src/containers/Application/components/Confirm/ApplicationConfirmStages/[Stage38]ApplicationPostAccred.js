@@ -51,7 +51,6 @@ const ApplicationPostAccred = props => {
             <form onSubmit={handleSubmit}>
               <Label>Postakkreditatsion shartnoma rasmiylashtirish</Label>
 
-
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Tasdiqlash</MediumButton>
               </div>

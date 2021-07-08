@@ -12,18 +12,22 @@ import roles from './Role'
 import groups from './Groups'
 import applications from './Application'
 import expertSection from './ExpertSection'
+import reAuditExpertSection from './ReAuditExpertSection'
 import ExpertPlaceSection from './ExpertPlaceSection'
 import Commission from './Commission'
 import AccountingContract from './AccountingContract'
 import AccountingContractPlace from './AccountingContractPlace'
 import Reestr from './Reestr'
+import templateDocument from './TemplateDocument'
 
 const tester = () => [
+  ...templateDocument(),
   ...client(),
   ...employees(),
   ...roles(),
   ...applications(),
   ...groups(),
+  ...reAuditExpertSection(),
   ...expertSection(),
   ...ExpertPlaceSection(),
   ...Commission(),

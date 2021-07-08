@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
-import { MediumButton, Modal, PageTitle } from '../../../../../components/UI'
+import { MediumButton, Modal, PageRowTitle, PageTitle } from '../../../../../components/UI'
 import {
   DateField,
   Field,
@@ -25,19 +25,9 @@ const BoxUI = styled(Box)`
   padding: 25px;
 `
 
-const PageTitleNew = styled(PageTitle)`
-  color: #2C3A50;
-
-`
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
+const DivButton = styled('div')`
+  margin-top: 10px;
+  text-align: right;
 `
 const statusColors = {
   process: 'green',
@@ -96,7 +86,6 @@ const ConfirmStageChoiceExpertsHrPlaceConfirm = ({ onSubmit, initialValues }) =>
     <Table
       isEmpty={isEmpty(plan)}
     >
-      <PageTitleNew name="Reja" />
       {tablePlanHead}
       {tablePlanList}
     </Table>
@@ -108,10 +97,11 @@ const ConfirmStageChoiceExpertsHrPlaceConfirm = ({ onSubmit, initialValues }) =>
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
+              <PageRowTitle name="Reja" />
               {tablePlan}
-              <div style={{ textAlign: 'right' }}>
+              <DivButton>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
-              </div>
+              </DivButton>
             </form>
           )
         }}

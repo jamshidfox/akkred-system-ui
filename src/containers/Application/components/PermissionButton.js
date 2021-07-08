@@ -30,6 +30,11 @@ const WrapperBtn = styled('div')`
 
 `
 
+const WaitButton = styled(MediumButton)`
+  background: #668edd;
+  pointer-events: none
+`
+
 const PermissionButton = props => {
   const { stage, id, onClick } = props
   var n = id.toString()
@@ -40,7 +45,7 @@ const PermissionButton = props => {
   const stepText = stepName.object[stage]
 
   switch (stage) {
-  case 'stage_1':
+  case 'new_register_application':
     return (
       <Perms
         perms={[caseManager]}
@@ -54,7 +59,21 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_2':
+
+  case 'new_create_analysis_application':
+    return (
+      <Perms
+        perms={[caseManager]}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+  case 'new_choice_executor':
     return (
       <Perms
         perms={[headDepartment]}
@@ -64,12 +83,11 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
 
       </Perms>
     )
-  case 'stage_3':
+  case 'new_confirm_executor':
     return (
       <Perms
         perms={[director]}
@@ -79,12 +97,12 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
 
       </Perms>
     )
-  case 'stage_4':
+
+  case 'new_fill_up_analysis_application':
     return (
       <Perms
         perms={listExecutor}
@@ -94,11 +112,23 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_5':
+  case 'new_create_contract':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+  case 'new_confirm_by_department':
     return (
       <Perms
         perms={[headDepartment]}
@@ -113,7 +143,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_6':
+  case 'new_confirm_by_account':
     return (
       <Perms
         perms={[accountant]}
@@ -128,7 +158,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_7':
+  case 'new_sign_by_center':
     return (
       <Perms
         perms={[director]}
@@ -143,7 +173,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_9':
+  case 'new_confirm_payment':
     return (
       <Perms
         perms={[accountant]}
@@ -153,12 +183,11 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
       </Perms>
     )
 
-  case 'stage_10':
+  case 'expertise_choice_experts':
     return (
       <Perms
         perms={listExecutor}
@@ -168,12 +197,11 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
       </Perms>
     )
 
-  case 'stage_11':
+  case 'expertise_confirm_experts_department':
     return (
       <Perms
         perms={[headDepartment]}
@@ -187,7 +215,7 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_12':
+  case 'expertise_confirm_experts_hr':
     return (
       <Perms
         perms={[headHr]}
@@ -202,7 +230,14 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_13':
+  case 'expertise_request_to_experts':
+    return (
+      <WaitButton>
+        Ekspertlaga so`rov
+      </WaitButton>
+    )
+
+  case 'expertise_confirm_experts_center':
     return (
       <Perms
         perms={[director]}
@@ -217,7 +252,21 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_14':
+  case 'expertise_sign_experts_client':
+    return (
+      <WaitButton>
+        Buyurtmachi
+      </WaitButton>
+    )
+
+  case 'expertise_expertise_start':
+    return (
+      <WaitButton>
+        Ekpertiza
+      </WaitButton>
+    )
+
+  case 'expertise_create_contract_audit':
     return (
       <Perms
         perms={listExecutor}
@@ -227,12 +276,11 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
       </Perms>
     )
 
-  case 'stage_15':
+  case 'expertise_confirm_contract_audit_department':
     return (
       <Perms
         perms={[headDepartment]}
@@ -247,7 +295,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_16':
+  case 'expertise_confirm_contract_audit_account':
     return (
       <Perms
         perms={[accountant]}
@@ -262,7 +310,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_17':
+  case 'expertise_sign_contract_audit_center':
     return (
       <Perms
         perms={[director]}
@@ -277,7 +325,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_19':
+  case 'expertise_confirm_payment_contract_audit':
     return (
       <Perms
         perms={[accountant]}
@@ -287,12 +335,11 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
       </Perms>
     )
 
-  case 'stage_20':
+  case 'audit_choice_experts':
     return (
       <Perms
         perms={listExecutor}
@@ -302,11 +349,10 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_21':
+  case 'audit_confirm_experts_department':
     return (
       <Perms
         perms={[headDepartment]}
@@ -320,7 +366,7 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_22':
+  case 'audit_confirm_experts_hr':
     return (
       <Perms
         perms={[headHr]}
@@ -334,7 +380,13 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_23':
+  case 'audit_request_to_experts':
+    return (
+      <WaitButton>
+        So'rov
+      </WaitButton>
+    )
+  case 'audit_sign_plan_center':
     return (
       <Perms
         perms={[director]}
@@ -349,7 +401,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_24':
+  case 'audit_send_plan':
     return (
       <Perms
         perms={listExecutor}
@@ -364,7 +416,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_26':
+  case 'audit_create_order':
     return (
       <Perms
         perms={listExecutor}
@@ -374,11 +426,10 @@ const PermissionButton = props => {
             to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
             <MediumButton >{stepText}</MediumButton>
           </LinkBtn>
-          <AddBtn onClick={onClick} >Rad Etish</AddBtn>
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_27':
+  case 'audit_accept_order':
     return (
       <Perms
         perms={[headDepartment]}
@@ -393,7 +444,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_28':
+  case 'audit_sign_order_center':
     return (
       <Perms
         perms={[director]}
@@ -407,7 +458,7 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_29':
+  case 'audit_approved_audit':
     return (
       <Perms
         perms={listExecutor}
@@ -421,7 +472,7 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_30':
+  case 'audit_start_audit':
     return (
       <Perms
         perms={listExpertHead}
@@ -435,7 +486,13 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_31':
+  case 'audit_process_audit':
+    return (
+      <WaitButton>
+        Baholash
+      </WaitButton>
+    )
+  case 'audit_end_audit':
     return (
       <Perms
         perms={listExpertHead}
@@ -449,7 +506,7 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_32':
+  case 'audit_accept_audit_result':
     return (
       <Perms
         perms={listExecutor}
@@ -463,7 +520,21 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_33':
+  case 'audit_create_analysis':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton > {stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+
+  case 'commission_send_participants':
     return (
       <Perms
         perms={listExecutor}
@@ -476,7 +547,7 @@ const PermissionButton = props => {
         </WrapperBtn>
       </Perms>
     )
-  case 'stage_35':
+  case 'commission_create_protocol':
     return (
       <Perms
         perms={listExecutor}
@@ -491,7 +562,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_36':
+  case 'commission_sign_protocol_center':
     return (
       <Perms
         perms={['boss']}
@@ -505,7 +576,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_37':
+  case 'commission_register_create':
     return (
       <Perms
         perms={listExecutor}
@@ -519,7 +590,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_38':
+  case 'post_create_post':
     return (
       <Perms
         perms={listExecutor}
@@ -533,7 +604,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_39':
+  case 'post_sign_post_center':
     return (
       <Perms
         perms={['director']}
@@ -547,7 +618,7 @@ const PermissionButton = props => {
       </Perms>
     )
 
-  case 'stage_41':
+  case 'finish':
     return (
       <Perms
         perms={listExecutor}
@@ -561,6 +632,146 @@ const PermissionButton = props => {
       </Perms>
     )
 
+  case 're_audit_start_deadline':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+
+  case 're_audit_create_plan':
+    return (
+      <WaitButton>
+        {stepText}
+      </WaitButton>
+    )
+
+  case 're_audit_create_proof_plan':
+    return (
+      <WaitButton>
+        {stepText}
+      </WaitButton>
+    )
+  case 're_audit_end_deadline':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+
+  case 're_audit_create_order':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+  case 're_audit_accept_order':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+
+  case 're_audit_choice_experts':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+  case 're_audit_sign_order_center':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+  case 're_audit_start_audit':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+  case 're_audit_end_audit':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+  case 're_audit_accept_audit_result':
+    return (
+      <Perms
+        perms={listExecutor}
+      >
+        <WrapperBtn>
+          <LinkBtn
+            to={sprintf(ROUTES.APPLICATION_CONFIRM_PATH, id)}>
+            <MediumButton >{stepText}</MediumButton>
+          </LinkBtn>
+        </WrapperBtn>
+      </Perms>
+    )
+
+  case 're_audit_process_audit':
+    return (
+      <WaitButton>
+        O'rganish
+      </WaitButton>
+    )
   default:
     return (
       <Perms

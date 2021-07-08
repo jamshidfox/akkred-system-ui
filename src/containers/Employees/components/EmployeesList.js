@@ -16,6 +16,7 @@ import { getTabsFromRoute } from '../../../utils/get'
 import Tabs from '../../../components/Tabs'
 import DropdownMore from '../../../components/Dropdown/more'
 import EmployeesListFilterForm from './EmployeesListFilterForm'
+import { showToast } from '../../../components/Toast'
 
 const BoxUI = styled(Box)`
   display: flex;
@@ -30,8 +31,7 @@ const style = {
 }
 
 const EmployeesList = props => {
-  const { list, filterActions, history } = props
-  console.warn(history,'history')
+  const { list, filterActions, history, deleteModal } = props
 
   const data = prop('results', list)
   const loading = prop('loading', list)
@@ -74,6 +74,19 @@ const EmployeesList = props => {
           })
         }
       },
+
+      {
+        name: 'O\'chirish',
+        onClick: () => deleteModal.onSubmit(client.id)
+      },
+      {
+        name:'Show Error',
+        onClick:() =>
+          showToast({
+            title: 'Удалено',
+            message: 'Данные удалены',
+          })
+      }
     ]
 
     // Render

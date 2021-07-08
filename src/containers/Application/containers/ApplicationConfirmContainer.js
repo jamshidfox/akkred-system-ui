@@ -28,6 +28,7 @@ const getInitialValues = data => {
   return {
 
     id: prop('id', data),
+    analysis: prop('analysis', data),
     contracts: prop('contracts', data),
     executors: prop('executors', data),
     contractPlace: prop('contractPlace', data),
@@ -43,6 +44,14 @@ const getInitialValues = data => {
     documentNews: prop('documentNews', data),
     additionalDocs: prop('additionalDocs', data),
     isExpertise: prop('isExpertise', data),
+    leadExpert: prop('leadExpert', data),
+    planProofWorks: prop('planProofWorks', data),
+    planWorks: prop('planWorks', data),
+    reAuditOrders: prop('reAuditOrders', data),
+    executor: prop('executor', data),
+    archiveExperts: prop('archiveExperts', data),
+    archiveExpertsAudit: prop('archiveExpertsAudit', data),
+    conclusions: prop('conclusions', data),
 
   }
 }
@@ -92,9 +101,7 @@ const ApplicationConfirmContainer = props => {
 
   const onComplete = ({ value }) => {
     // const experts = prop('experts', value)
-    // const expertsPlace = prop('expertsPlace', value)
-    // setExpertList([...experts])
-    // setExpertPlaceList([...expertsPlace])
+    // setExpertPlaceList([...experts])
   }
 
   const onAddExpert = expert => {
@@ -125,7 +132,7 @@ const ApplicationConfirmContainer = props => {
   }
   const onUpdatePlace = (branch) => {
     expertPlaceList.forEach((element, index) => {
-      if (element.id === branch.id) {
+      if (element.expert.id === branch.expert.id) {
         expertPlaceList.splice(index, 1, branch)
       }
     })
@@ -176,7 +183,24 @@ const ApplicationConfirmContainer = props => {
     const documentThree = path(['documentThree', 'id'], values)
     const leadExpert = path(['leadExpert', 'id'], values)
     const newDAta = getSerializedData([
+      'typeApplication',
+      'completedIn',
+      'orderSignedByRelevantPersons',
+      'accreditationProject',
+      'msDocumentation',
+      'accreditationInfo',
+
+      'typeStandard',
+      'qOne',
+      'qTwo',
+      'qThree',
+      'qFour',
+      'resultsAnalysis',
+      'resourceAnalysis',
+      'resultAccept',
+
       'hr',
+      'auditResult',
       'executors',
       'executor',
       'experts',
@@ -199,6 +223,7 @@ const ApplicationConfirmContainer = props => {
       'statusDate',
       'typeOrder',
       'countries',
+      'analysis',
     ], values)
     const data = {
       ...newDAta,
@@ -244,7 +269,8 @@ const ApplicationConfirmContainer = props => {
 
       expertModal={{ ...expertModal, onSubmit: onAddExpert, onUpdateExpert:onUpdateExpert }}
       onDeleteExpert={onDeleteExpert}
-      placeModal={{ ...placeModal, onSubmit: onAddPlace, onUpdateExpert:onUpdatePlace }}
+      placeModal={{ ...placeModal, onSubmit: onAddPlace }}
+      onUpdatePlace={onUpdatePlace}
       onDeletePlace={onDeletePlace}
       stage={stage}
     />

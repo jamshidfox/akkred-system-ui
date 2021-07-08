@@ -9,6 +9,31 @@ const getFormattedListData = list => ({
   list,
   object: arrayObjToObj(list)
 })
+export const standardList = getFormattedListData([
+  { id: '17020', name: '(O‘z DSt ISO/IEC 17020:2019) Inspeksiya organi' },
+  { id: '17021', name: '(O‘z DSt ISO/IEC 17021:2015) Menejment tizimlarini sertifikatlashtirish organi' },
+  { id: '17065', name: '(O‘z DSt ISO/IEC 17065:2015 ) Mahsulot va xizmatlarni sertifikatlashtirish organi' },
+  { id: '17025SL', name: '(O‘z DSt ISO/IEC 17025:2019) Sinov laboratoriyalari' },
+])
+
+export const applicationList = getFormattedListData([
+  { id: 'accreditation', name: 'Akkreditatsiya' },
+  { id: 'reaccreditation', name: 'Takroriy  akkreditatsiya' },
+  { id: 'actualization', name: 'Akkreditatsiya sohasini dolzarblashtirish' },
+  { id: 'expansion ', name: 'Akkreditatsiya sohasini kengaytirish' },
+  { id: 'abbreviations', name: 'Akkreditatsiya sohasini qisqartirish' },
+])
+
+export const answerMonthList = getFormattedListData([
+  { id: 'LESS_THREE', name: '0-3 oy' },
+  { id: 'LESS_SIX', name: '3-6 oy' },
+  { id: 'MORE_SIX', name: '6 oydan ortiq' }
+])
+
+export const answerList = getFormattedListData([
+  { id: 'yes', name: 'ha' },
+  { id: 'no', name: 'yo’q' }
+])
 
 export const ANSWER_MONTH_LIST = [
   { id: 'LESS_THREE', name: '0-3 oy' },
@@ -27,6 +52,28 @@ export const ANSWER_TYPE_LIST = [
   { id: 'partial_approved', name: 'Qisman rozi' },
 ]
 
+export const answerTypeList = getFormattedListData([
+  { id: 'approved', name: 'Rozi ' },
+  { id: 'reject', name: 'Rozi emas' },
+  { id: 'partial_approved', name: 'Qisman rozi' },
+])
+
+export const EXPERT_ANSWER_TYPE_LIST = [
+  { id: 'approved', name: 'Rozi ' },
+  { id: 'reject', name: 'Rozi emas' },
+]
+
+export const TEMPLATE_DOCUMENT_TYPE_LIST = [
+  { id: 'client', name: 'Buyurtmachi ' },
+  { id: 'center', name: 'Center' },
+]
+
+export const templateDocument = getFormattedListData([
+  { id: 'client', name: 'Buyurtmachi ' },
+  { id: 'center', name: 'Center' },
+
+])
+
 export const AUDIT_RESULT_ANSWER_LIST = [
   { id: 'approved', name: 'Rozi ' },
   { id: 'partial_approved', name: 'Qisman rozi' },
@@ -44,8 +91,26 @@ export const STANDART_LIST = [
   // { id: '3444', name: '(O‘z DSt 3444:2020) Oʻlchash vositalarni qiyoslash metrologiya xizmati/laboratoriyasini' },
 ]
 
+export const AUDIT_RESULT_LIST = [
+
+  { id: 'positive', name: 'Qabul qilish' },
+  { id: 'negative', name: 'Qabul qilmaslik' },
+]
+
+export const answerTypeTextList = getFormattedListData([
+  { id: 'reject', name: 'Rozi emas' },
+  { id: 'approved', name: 'Rozi' }
+])
+
+export const roleTypeTextList = getFormattedListData([
+  { id: 'lead', name: 'Guruh rahbari' },
+  { id: 'member', name: 'Guruh a’zosi' },
+  { id: 'ekspert', name: 'Texnik ekspert' },
+  { id: 'watcher', name: 'Kuzatuvchi' },
+])
+
 export const TYPE_EXPERTS = [
-  // { id: 'lead', name: 'Guruh rahbari' },
+  { id: 'lead', name: 'Guruh rahbari' },
   { id: 'member', name: 'Guruh a’zosi' },
   { id: 'ekspert', name: 'Texnik ekspert' },
   { id: 'watcher', name: 'Kuzatuvchi' },
@@ -55,6 +120,11 @@ export const ADDRESS_TYPE = [
   { id: 'fact_address', name: 'MBO faktik mazili' },
   { id: 'address', name: 'Markaz' },
 ]
+
+export const addressTypeList = getFormattedListData([
+  { id: 'fact_address', name: 'MBO faktik mazili' },
+  { id: 'address', name: 'Markaz' },
+])
 
 export const RESULT_LIST = [
   { id: 'good', name: 'да' },
@@ -297,168 +367,441 @@ export const statusAssignments = getFormattedListData([
 
 export const stepName = getFormattedListData([
   {
-    id:'stage_1',
+    id:'new_register_application',
     name:'Ro’yhatga olish',
   },
   {
-    id:'stage_2',
+    id:'new_create_analysis_application',
+    name:'Buyurtma tahlili',
+  },
+  {
+    id:'new_choice_executor',
     name:'Ijrochini tanlash',
   },
   {
-    id:'stage_3',
+    id:'new_fill_up_analysis_application',
+    name:'Resurslarni tahlili',
+  },
+  {
+    id:'new_confirm_executor',
     name:'Ijrochini tasdiqlash',
   },
   {
-    id:'stage_4',
+    id:'new_create_contract',
     name:'E-shartnomasini rasmiylashtirish',
   },
   {
-    id:'stage_5',
+    id:'new_confirm_by_department',
     name:'Hisobchi bilan kelishish',
   },
   {
-    id:'stage_6',
+    id:'new_confirm_by_account',
     name:'Rahbariyatga kiritish ',
   },
   {
-    id:'stage_7',
+    id:'new_sign_by_center',
     name:'E-shartnomani ro\'yhatga olish',
   },
   {
-    id:'stage_8',
+    id:'new_sign_by_client',
     name:'Buyurtmachini javobini kutish',
   },
   {
-    id:'stage_9',
+    id:'new_confirm_payment',
     name:'E-to’lovni tekshirish',
   },
   {
-    id:'stage_10',
+    id:'expertise_choice_experts',
     name:'E-ekspertlar tanlash',
   },
   {
-    id:'stage_11',
+    id:'expertise_confirm_experts_department',
     name:'Kadrlar bo’limi bilan kelishish',
   },
   {
-    id:'stage_12',
+    id:'expertise_confirm_experts_hr',
     name:'Rahbariyatga kiritish',
   },
   {
-    id:'stage_13',
-    name:'Ekspertizaga jo’natish',
+    id:'expertise_confirm_experts_center',
+    name:'Baholash guruhini imzolash',
   },
   {
-    id:'stage_14',
+    id:'expertise_create_contract_audit',
     name:'Ekspertiza xulosasi va b-shartnomani rasmiylashtirish',
   },
   {
-    id:'stage_15',
+    id:'expertise_confirm_contract_audit_department',
     name:'Hisobchi bilan kelishish',
   },
   {
-    id:'stage_16',
+    id:'expertise_confirm_contract_audit_account',
     name:'Rahbariyatga kiritish',
   },
   {
-    id:'stage_17',
+    id:'expertise_sign_contract_audit_center',
     name:'Shartnoma ro’yhatdan o’tkazish',
   },
   {
-    id:'stage_18',
+    id:'expertise_sign_contract_audit_client',
     name:'Buyurtmachini javobini kutish',
   },
   {
-    id:'stage_19',
+    id:'expertise_confirm_payment_contract_audit',
     name:'B- to’lovni tekshirish',
   },
   {
-    id:'stage_20',
+    id:'audit_choice_experts',
     name:'B-ekspertlarni tanlash',
   },
   {
-    id:'stage_21',
+    id:'audit_confirm_experts_department',
     name:'Kadrlar bo’limi bilan kelishish',
   },
   {
-    id:'stage_22',
+    id:'audit_confirm_experts_hr',
     name:'Rahbariyatga kiritish',
   },
   {
-    id:'stage_23',
+    id:'audit_sign_plan_center',
     name:'B-rejasini rasmiylashtirish',
   },
   {
-    id:'stage_24',
+    id:'audit_send_plan',
     name:'B-rejani buyurtmachiga jo’natish',
   },
   {
-    id:'stage_25',
+    id:'audit_sign_plan_client',
     name:'B-rejani kelishish',
   },
   {
-    id:'stage_26',
+    id:'audit_create_order',
     name:'B-buyruqni ramiylashtirish',
   },
   {
-    id:'stage_27',
+    id:'audit_accept_order',
     name:'Rahbariyatga kiritish',
   },
   {
-    id:'stage_28',
+    id:'audit_sign_order_center',
     name:'Buyruq  imzolanadi',
   },
   {
-    id:'stage_29',
+    id:'audit_approved_audit',
     name:'Hujatlarni ekspertlarga jo’natish',
   },
   {
-    id:'stage_30',
+    id:'audit_start_audit',
     name:'Baholashni tasdiqlash',
   },
   {
-    id:'stage_31',
+    id:'audit_end_audit',
     name:'Baholashni yakunlash',
   },
   {
-    id:'stage_32',
+    id:'audit_accept_audit_result',
     name:'Baholash natijalarini qabul qilish',
   },
   {
-    id:'stage_33',
-    name:'Baholash natijalarini taxlili',
+    id:'commission_send_participants',
+    name:'Hujjatlarni akkreditatsiya komissiyasiga kiritis',
   },
   {
-    id:'stage_34',
-    name:'Komissiya',
+    id:'commission_vote_participants',
+    name:'Akkreditatsiya komissiyasi',
   },
   {
-    id:'stage_35',
+    id:'commission_create_protocol',
     name:'Bayon rasmiylashtirish',
   },
   {
-    id:'stage_36',
+    id:'commission_sign_protocol_center',
     name:'Akkreditasiya komissiyasi  bayonni tasdiqlash',
   },
   {
-    id:'stage_37',
+    id:'commission_register_create',
     name:'Davlat reestriga kiritish',
   },
   {
-    id:'stage_38',
+    id:'post_create_post',
     name:'Postakkreditatsion shartnoma rasmiylashtirish',
   },
   {
-    id:'stage_39',
+    id:'post_sign_post_center',
     name:'Postakkreditatsion shartnoma imzolash',
   },
   {
-    id:'stage_40',
+    id:'post_sign_post_client',
     name:'Buyurtmachini javobini kutish',
   },
   {
-    id:'stage_41',
+    id:'finish',
     name:'Yopish',
+  },
+  {
+    id:'re_audit_start_deadline',
+    name:'Muddat berish',
+  },
+  {
+    id:'re_audit_create_plan',
+    name:'Harakatlar rejasini kutish',
+  },
+  {
+    id:'re_audit_create_proof_plan',
+    name:'Hisobotni kutish',
+  },
+  {
+    id:'re_audit_end_deadline',
+    name:'Hisobotni qabul qilish',
+  },
+  {
+    id:'re_audit_create_order',
+    name:'Takroriy buyruqni rasmiylashtirish',
+  },
+  {
+    id:'re_audit_accept_order',
+    name:'Takroriy buyruqni kelishish',
+  },
+  {
+    id:'re_audit_sign_order_center',
+    name:'Takroriy buyruqni tasdiqlash',
+  },
+  {
+    id:'re_audit_start_audit',
+    name:'O`rganishni boshlash',
+  },
+  {
+    id:'re_audit_end_audit',
+    name:'O`rganishni tugallash ',
+  },
+  {
+    id:'re_audit_accept_audit_result',
+    name:'O`rganish natijalarini qabul qilish ',
+  },
+  {
+    id:'audit_create_analysis',
+    name:'O`rganish natijalari tahlili ',
+  },
+
+])
+
+
+export const stageName = getFormattedListData([
+  {
+    id:'new_register_application',
+    name:'Ro’yhatga olish',
+  },
+  {
+    id:'new_create_analysis_application',
+    name:'Buyurtma tahlili',
+  },
+  {
+    id:'new_choice_executor',
+    name:'Ijrochini tanlash',
+  },
+  {
+    id:'new_fill_up_analysis_application',
+    name:'Buyurtma tahlili',
+  },
+  {
+    id:'new_confirm_executor',
+    name:'Ijrochini tasdiqlash',
+  },
+  {
+    id:'new_create_contract',
+    name:'E-shartnomasini rasmiylashtirish',
+  },
+  {
+    id:'new_confirm_by_department',
+    name:'Hisobchi bilan kelishish',
+  },
+  {
+    id:'new_confirm_by_account',
+    name:'Rahbariyatga kiritish ',
+  },
+  {
+    id:'new_sign_by_center',
+    name:'E-shartnomani ro\'yhatga olish',
+  },
+  {
+    id:'new_sign_by_client',
+    name:'Buyurtmachini javobini kutish',
+  },
+  {
+    id:'new_confirm_payment',
+    name:'E-to’lovni tekshirish',
+  },
+  {
+    id:'expertise_choice_experts',
+    name:'E-ekspertlar tanlash',
+  },
+  {
+    id:'expertise_confirm_experts_department',
+    name:'Kadrlar bo’limi bilan kelishish',
+  },
+  {
+    id:'expertise_confirm_experts_hr',
+    name:'Rahbariyatga kiritish',
+  },
+  {
+    id:'expertise_confirm_experts_center',
+    name:'Ekspertizaga jo’natish',
+  },
+  {
+    id:'expertise_create_contract_audit',
+    name:'Ekspertiza xulosasi va b-shartnomani rasmiylashtirish',
+  },
+  {
+    id:'expertise_confirm_contract_audit_department',
+    name:'Hisobchi bilan kelishish',
+  },
+  {
+    id:'expertise_confirm_contract_audit_account',
+    name:'Rahbariyatga kiritish',
+  },
+  {
+    id:'expertise_sign_contract_audit_center',
+    name:'Shartnoma ro’yhatdan o’tkazish',
+  },
+  {
+    id:'expertise_sign_contract_audit_client',
+    name:'Buyurtmachini javobini kutish',
+  },
+  {
+    id:'expertise_confirm_payment_contract_audit',
+    name:'B- to’lovni tekshirish',
+  },
+  {
+    id:'audit_choice_experts',
+    name:'B-ekspertlarni tanlash',
+  },
+  {
+    id:'audit_confirm_experts_department',
+    name:'Kadrlar bo’limi bilan kelishish',
+  },
+  {
+    id:'audit_confirm_experts_hr',
+    name:'Rahbariyatga kiritish',
+  },
+  {
+    id:'audit_sign_plan_center',
+    name:'B-rejasini rasmiylashtirish',
+  },
+  {
+    id:'audit_send_plan',
+    name:'B-rejani buyurtmachiga jo’natish',
+  },
+  {
+    id:'audit_sign_plan_client',
+    name:'B-rejani kelishish',
+  },
+  {
+    id:'audit_create_order',
+    name:'B-buyruqni ramiylashtirish',
+  },
+  {
+    id:'audit_accept_order',
+    name:'Rahbariyatga kiritish',
+  },
+  {
+    id:'audit_sign_order_center',
+    name:'Buyruq  imzolanadi',
+  },
+  {
+    id:'audit_approved_audit',
+    name:'Hujatlarni ekspertlarga jo’natish',
+  },
+  {
+    id:'audit_start_audit',
+    name:'Baholashni tasdiqlash',
+  },
+  {
+    id:'audit_end_audit',
+    name:'Baholashni yakunlash',
+  },
+  {
+    id:'audit_accept_audit_result',
+    name:'Baholash natijalarini qabul qilish',
+  },
+  {
+    id:'commission_send_participants',
+    name:'Hujjatlarni akkreditatsiya komissiyasiga kiritis',
+  },
+  {
+    id:'commission_vote_participants',
+    name:'Akkreditatsiya komissiyasi',
+  },
+  {
+    id:'commission_create_protocol',
+    name:'Bayon rasmiylashtirish',
+  },
+  {
+    id:'commission_sign_protocol_center',
+    name:'Akkreditasiya komissiyasi  bayonni tasdiqlash',
+  },
+  {
+    id:'commission_register_create',
+    name:'Davlat reestriga kiritish',
+  },
+  {
+    id:'post_create_post',
+    name:'Postakkreditatsion shartnoma rasmiylashtirish',
+  },
+  {
+    id:'post_sign_post_center',
+    name:'Postakkreditatsion shartnoma imzolash',
+  },
+  {
+    id:'post_sign_post_client',
+    name:'Buyurtmachini javobini kutish',
+  },
+  {
+    id:'finish',
+    name:'Yopish',
+  },
+  {
+    id:'re_audit_start_deadline',
+    name:'Muddat berish',
+  },
+  {
+    id:'re_audit_create_plan',
+    name:'Harakatlar rejasini kutish',
+  },
+  {
+    id:'re_audit_create_proof_plan',
+    name:'Hisobotni kutish',
+  },
+  {
+    id:'re_audit_end_deadline',
+    name:'Hisobotni qabul qilish',
+  },
+  {
+    id:'re_audit_create_order',
+    name:'Takroriy buyruqni rasmiylashtirish',
+  },
+  {
+    id:'re_audit_accept_order',
+    name:'Takroriy buyruqni kelishish',
+  },
+  {
+    id:'re_audit_sign_order_center',
+    name:'Takroriy buyruqni tasdiqlash',
+  },
+  {
+    id:'re_audit_start_audit',
+    name:'O`rganishni boshlash',
+  },
+  {
+    id:'re_audit_end_audit',
+    name:'O`rganishni tugallash ',
+  },
+  {
+    id:'re_audit_accept_audit_result',
+    name:'O`rganish natijalarini qabul qilish ',
+  },
+  {
+    id:'audit_create_analysis',
+    name:'O`rganish natijalari tahlili ',
   },
 
 ])

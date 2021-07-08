@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
-import { MediumButton, PageTitle } from '../../../../../components/UI'
+import { MediumButton, PageRowTitle, PageTitle } from '../../../../../components/UI'
 import {
   Field,
   Form,
@@ -36,6 +36,11 @@ const Status = styled('div')`
   display: inline-block;
   line-height: 16px;
   padding: 3px 12px;
+`
+
+const DivButton = styled('div')`
+  margin-top: 10px;
+  text-align: right;
 `
 const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, initialValues }) => {
   const plan = prop('plan', initialValues)
@@ -79,7 +84,6 @@ const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, initialValues }) => {
     <Table
       isEmpty={isEmpty(plan)}
     >
-      <PageTitleNew name="Reja" />
       {tablePlanHead}
       {tablePlanList}
     </Table>
@@ -91,8 +95,9 @@ const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, initialValues }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-
+              <PageRowTitle name="Reja" />
               {tablePlan}
+              <DivButton />
 
               <Col span={8}>
                 <Field
@@ -102,10 +107,9 @@ const ConfirmStageChoiceExpertsPlaceConfirm = ({ onSubmit, initialValues }) => {
                   list={ANSWER_LIST}
                 />
               </Col>
-              <div style={{ textAlign: 'right',
-                marginTop: '8px' }}>
+              <DivButton >
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
-              </div>
+              </DivButton>
             </form>
           )
         }}

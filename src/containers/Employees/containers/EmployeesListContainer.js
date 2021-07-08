@@ -7,7 +7,6 @@ import { employeesFetchList, employeesDeleteAction } from '../actions'
 import EmployeesList from '../components/EmployeesList'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 import { fields } from '../../Employees/components/EmployeesListFilterForm'
-import ApplicationList from "../../Application/components/ApplicationList";
 // Enhance
 const enhance = compose(connect())
 const getRoomListParams = () => ({
@@ -16,24 +15,24 @@ const getRoomListParams = () => ({
   pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
 })
 
-// const getBuildingDeleteParams = (onSuccess) => ({
-//   stateName: STATE.BUILDING_DELETE,
-//   action: employeesDeleteAction,
-//   onSuccess
-// })
+const getBuildingDeleteParams = (onSuccess) => ({
+  stateName: STATE.EMPLOYEES_DELETE,
+  action: employeesDeleteAction,
+  onSuccess
+})
 
 const EmployeesListContainer = props => {
   const dispatch = useDispatch()
   const list = useFetchList(getRoomListParams())
   const filterActions = useFilterActions({ fields })
   const onSuccess = () => dispatch(employeesFetchList())
-  // const deleteModal = useDelete(getBuildingDeleteParams(onSuccess))
+  const deleteModal = useDelete(getBuildingDeleteParams(onSuccess))
   return (
     <EmployeesList
       list={list}
       filterActions={filterActions}
       {...props}
-      // deleteModal={deleteModal}
+      deleteModal={deleteModal}
     />
   )
 }

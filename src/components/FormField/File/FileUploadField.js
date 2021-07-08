@@ -3,9 +3,11 @@ import PropTypes from 'prop-types'
 import { path } from 'ramda'
 import styled from 'styled-components'
 import { UploadCloud, Paperclip, Trash2 } from 'react-feather'
+import { getFieldError } from '../../../utils/form'
 import FileWrapper from './FileWrapper'
 import { InputError, InputLabel } from '~/components/UI'
 import Loader from '~/components/Loader'
+import InputWrapper from '../../UI/Input/InputWrapper'
 
 const Container = styled('div')`
   position:relative;
@@ -82,7 +84,8 @@ const FileUploadField = props => {
     label,
     placeholder,
     state,
-    onInputChange
+    onInputChange,
+    meta
   } = props
 
   const fieldName = path(['name'], input) + '_file'
@@ -93,11 +96,13 @@ const FileUploadField = props => {
   const fileName = path(['name'], fieldValue)
   const fileExt = path(['ext'], fieldValue)
   const fileFullName = fileName + fileExt
+  const errorR = getFieldError(meta)
+
 
   const onRemoveFile = () => input.onChange(null)
 
   return (
-    <Container>
+    <InputWrapper error={errorR}>
       <InputLabel>{label}</InputLabel>
 
       <FileInput onChange={onInputChange} type={'file'} id={fieldName} />
@@ -112,7 +117,7 @@ const FileUploadField = props => {
           )
           : (
             <PlaceholderText>
-              {loading ? 'Загружается . . .' : placeholder}
+              {loading ? 'Yuklanmoqda . . .' : placeholder}
             </PlaceholderText>
           )}
 
@@ -125,14 +130,14 @@ const FileUploadField = props => {
           <label htmlFor={fieldName}>
             <UploadButton>
               <UploadCloud size={18} />
-              <span>Выбрать</span>
+              <span>Tanlang</span>
             </UploadButton>
           </label>
         )}
       </InputContainer>
 
       <InputError>{error}</InputError>
-    </Container>
+    </InputWrapper>
   )
 }
 
@@ -145,7 +150,7 @@ FileUploadField.propTypes = {
 }
 
 FileUploadField.defaultProps = {
-  placeholder: 'Загрузите файл'
+  placeholder: 'Faylni yuklang'
 }
 
 export default FileWrapper(FileUploadField)

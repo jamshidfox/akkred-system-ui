@@ -1,79 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
-import { isEmpty, prop } from 'ramda'
-import { MediumButton, PageTitle } from '../../../../../components/UI'
+import { prop } from 'ramda'
+import { MediumButton } from '../../../../../components/UI'
 import {
   Form,
 } from '../../../../../components/FormField'
 import { Box } from '../../../../../components/StyledElems'
-import { Table, TableRow } from '../../../../../components/Table'
-import { API_URL } from '../../../../../constants/api'
+import ContractAudit from '../../ApplicationGenerateDocs/ContractAudit'
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
 
-const PageTitleNew = styled(PageTitle)`
-  color: #2C3A50;
-
+const DivButton = styled('div')`
+  margin-top: 10px;
+  text-align: right;
 `
-const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, application }) => {
+const ConfirmStageAccountingContractPlace = ({ onSubmit, initialValues }) => {
   const contracts = prop('contractPlace', initialValues)
   const idAp = prop('id', initialValues)
-
-  const tableList = contracts.map(client => {
-    const {
-      id,
-      name,
-      rateType,
-      file,
-      count,
-      totalPrice,
-      paymentType,
-    } = client
-
-    // Render
-    return (
-      <TableRow
-        key={id}
-      >
-        <td colSpan={4}>{name}</td>
-        <td colSpan={2}>{rateType}%</td>
-        <td colSpan={2}>{count}</td>
-        <td colSpan={4}>{totalPrice}</td>
-        <td colSpan={4}>{paymentType}</td>
-        <td colSpan={4} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}/main/applications/${idAp}/audit`}>Shartnoma</a></td>
-        <td colSpan={4} style={{
-          color: '#0f22ff'
-        }}><a style={{
-            color: '#0f22ff'
-          }} href={`${API_URL}/media/${file}`}>Ekspertiza xulosasi</a></td>
-
-      </TableRow>
-    )
-  })
-  const tableHead =
-    <TableRow header={true}>
-      <th colSpan={4} >Tovar (ish, xizmat)lar nomi </th>
-      <th colSpan={2} >Stavkasi </th>
-      <th colSpan={2} >Miqdori </th>
-      <th colSpan={4} >Narxi</th>
-      <th colSpan={4} >To’lov turi </th>
-      <th colSpan={4} >Shartnoma </th>
-      <th colSpan={4} >Ekspertiza xulosasi </th>
-    </TableRow>
-  const table =
-    <Table
-      isEmpty={isEmpty(contracts)}
-    >
-      <PageTitleNew name="Ekspertiza shartnomasi" />
-      {tableHead}
-      {tableList}
-    </Table>
 
   return (
 
@@ -83,11 +28,10 @@ const ConfirmStageAccountingContractPlace = ({ onSubmit, text, initialValues, ap
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
-              {table}
-
-              <div style={{ textAlign: 'right' }}>
+              <ContractAudit contracts={contracts} idAp={idAp} />
+              <DivButton>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
-              </div>
+              </DivButton>
             </form>
           )
         }}

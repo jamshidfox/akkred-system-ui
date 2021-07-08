@@ -2,6 +2,14 @@ import * as ROUTES from '../../constants/routes'
 import People from '../../icons/People'
 import Settings from '../../icons/Settings'
 import Document from '../../icons/Document'
+import Calendar from '../../icons/Calendar'
+import Chess from '../../icons/Chess'
+import CreditCard from '../../icons/CreditCard'
+import Triangle from '../../icons/Triangle'
+import Welcome from '../../icons/Welcome'
+import Globe from '../../icons/Globe'
+import Person from '../../icons/pack/Person'
+import BarChart from '../../icons/BarChart'
 
 export default [
   {
@@ -71,6 +79,7 @@ export default [
   },
   {
     name:'Ijrochilar  bo\'limi',
+    icon: Person,
     children: [
 
       {
@@ -81,8 +90,11 @@ export default [
         name: 'Baholash',
         url: ROUTES.EXPERT_PLACE_LIST_URL,
       },
+      {
+        name: "O'rganish",
+        url: ROUTES.RE_AUDIT_EXPERT_LIST_URL,
+      },
     ],
-    icon: People,
   },
 
   // {
@@ -104,13 +116,14 @@ export default [
   {
     name: 'Akrreditatsiya komissiyasi bo\'limi ',
     url: ROUTES.COMMISSION_LIST_URL,
-    icon: People,
-    perms: ['commission'],
+    icon: Globe,
+    // perms: ['commission'],
   },
   {
     name: 'Reestr ',
     url: ROUTES.REESTR_LIST_URL,
     perms: ['executor'],
+    icon: BarChart,
   },
   {
     name: 'Xodimlar',
@@ -121,27 +134,70 @@ export default [
   {
     name: 'Lavozimlar',
     url: ROUTES.ROLE_LIST_URL,
-    icon: People,
+    icon: Welcome,
     perms: ['admin'],
   },
   {
     name: 'Guruhlar',
     url: ROUTES.GROUP_LIST_URL,
-    icon: People,
+    icon: CreditCard,
     perms: ['admin'],
   },
-
   // {
-  //   name: 'Настройка',
-  //   url: '#',
-  //   icon: Settings,
-  //   children: [
-  //
-  //     {
-  //       name: 'Регион',
-  //       url: '/',
-  //       icon: People,
-  //     }
-  //   ]
-  // }
+  //   name: 'Hujjatlar',
+  //   url: ROUTES.TEMPLATE_DOCUMENT_LIST_URL,
+  //   icon: People,
+  //   perms: ['admin'],
+  // },
+
+  {
+    name:'Ishlar narhini hisoblash',
+    icon: Calendar,
+    url:'https://akkred.uz/calculate',
+    outside:true
+  },
+  {
+    name:'Inspeksiya nazorati',
+    icon: Chess,
+    url:'https://akkred.uz/inspections',
+    outside:true
+  },
+  {
+    name: 'Hujjatlar',
+    icon: Settings,
+    children: [
+      {
+        name: 'Ma`qullash hujjatlari',
+        url: 'https://akkred.uz/documents?parents=7',
+        outside:true,
+
+      },
+      {
+        name: 'Akkreditasiya hujjatlari',
+        url: 'https://akkred.uz/documents?parents=1',
+        outside:true,
+
+      },
+      {
+        name: 'Normativ-huquqiy hujjatlar',
+        url: 'https://akkred.uz/documents?parents=3',
+        outside:true,
+
+      },
+      {
+        name: 'IAF hujjatlar',
+        url: 'https://www.iaf.nu/articles/Mandatory_Documents_/38',
+        outside:true,
+
+      },
+      {
+        name: 'ILAC hujjatlar',
+        url: 'https://www.iaf.nu/articles/Mandatory_Documents_/38',
+        outside:true,
+
+      },
+
+    ],
+
+  },
 ]

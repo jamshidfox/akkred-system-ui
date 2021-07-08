@@ -48,6 +48,12 @@ export const EXPERT_EXPERTISE_CREATE = 'expertExpertiseCreate'
 export const EXPERT_EXPERTISE_UPDATE = 'expertExpertiseUpdate'
 export const EXPERT_EXPERTISE_DELETE = 'expertExpertiseDelete'
 
+export const RE_AUDIT_EXPERT_LIST = 'reAuditExpertList'
+export const RE_AUDIT_EXPERT_ITEM = 'reAuditExpertItem'
+export const RE_AUDIT_EXPERT_CREATE = 'reAuditExpertCreate'
+export const RE_AUDIT_EXPERT_UPDATE = 'reAuditExpertUpdate'
+export const RE_AUDIT_EXPERT_DELETE = 'reAuditExpertDelete'
+
 export const EXPERT_PLACE_LIST = 'expertPlaceList'
 export const EXPERT_PLACE_ITEM = 'expertPlaceItem'
 export const EXPERT_PLACE_CREATE = 'expertPlaceCreate'
@@ -80,6 +86,12 @@ export const REESTR_CREATE = 'reestrCreate'
 export const REESTR_UPDATE = 'reestrUpdate'
 export const REESTR_DELETE = 'reestrDelete'
 export const REESTR_CONFIRM = 'reestrConfirm'
+
+export const TEMPLATE_DOCUMENT_LIST = 'templateDocumentList'
+export const TEMPLATE_DOCUMENT_ITEM = 'templateDocumentItem'
+export const TEMPLATE_DOCUMENT_CREATE = 'templateDocumentCreate'
+export const TEMPLATE_DOCUMENT_UPDATE = 'templateDocumentUpdate'
+export const TEMPLATE_DOCUMENT_DELETE = 'templateDocumentDelete'
 
 export const PERMISSION_LIST = 'permissionList'
 

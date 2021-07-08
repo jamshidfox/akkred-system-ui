@@ -17,21 +17,20 @@ const ExpertsCreateModal = props => {
     onClose,
     open,
     initialValues,
-    onUpdateService,
+    onUpdatePlace,
     onSubmit
   } = props
 
   return (
     <Modal onClose={onClose} open={open} width={'400px'}>
       <Form
-        onSubmit={initialValues ? onUpdateService : onSubmit}
+        onSubmit={initialValues ? onUpdatePlace : onSubmit}
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
               <FieldWrapper>
                 <Field
                   component={UniversalSearchField}
-                  // params={{ children_only: false }}
                   name={'expert'}
                   label={'Expert'}
                   api={API.EMPLOYEES_LIST}
@@ -77,6 +76,7 @@ const ExpertsCreateModal = props => {
                   list={ADDRESS_TYPE}
                 />
               </FieldWrapper>
+
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Tanlanash</MediumButton>

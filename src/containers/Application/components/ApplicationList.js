@@ -1,5 +1,5 @@
 import * as ROUTES from 'constants/routes'
-import { registryStatus } from 'constants/backend'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { prop, isEmpty, path, propOr } from 'ramda'
@@ -9,15 +9,11 @@ import Container from 'components/StyledElems/Container'
 import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
+import { stageName } from '../../../constants/backend'
 import Tabs from '../../../components/Tabs'
 import CommentListFilterForm from './CommentListFilterForm'
 
 const statusColors = {
-  // draft: 'green',
-  // active: 'green',
-  // inactive: 'red',
-  // paused: 'yellow',
-  // extended: 'blue'
   my:'red',
   all:'green'
 }
@@ -83,10 +79,11 @@ const ApplicationList = props => {
       objectFactAddress,
       objectEmail,
       status,
+      stage,
       registerDate,
     } = application
 
-    const statusText = registryStatus.object[status]
+    const statusText = stageName.object[stage]
     const statusColor = statusColors[my]
     const order = index + 1
 

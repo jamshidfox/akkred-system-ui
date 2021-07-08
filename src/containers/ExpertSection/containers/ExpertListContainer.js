@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
-import ApplicationList from '../components/ApplicationList'
+import ExpertList from '../components/ExpertList'
 import { fields } from '../components/CommentListFilterForm'
 import { applicationFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
@@ -12,7 +12,7 @@ import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 const enhance = compose(connect())
 
 // Component
-const ApplicationListContainer = props => {
+const ExpertListContainer = props => {
   // FetchList
   const list = useFetchList({
     action: applicationFetchList,
@@ -32,7 +32,7 @@ const ApplicationListContainer = props => {
 
   // Render
   return (
-    <ApplicationList
+    <ExpertList
       list={list}
       filterActions={filterActions}
       onDelete={deleteAction.onSubmit}
@@ -41,4 +41,4 @@ const ApplicationListContainer = props => {
   )
 }
 
-export default enhance(ApplicationListContainer)
+export default enhance(ExpertListContainer)

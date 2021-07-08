@@ -1,8 +1,8 @@
 import * as ROUTES from '../../constants/routes'
 import Layouts from '../../components/Layouts/Layout'
 
-import ApplicationListContainer from './containers/ApplicationListContainer'
-import EmployeesUpdateContainer from './containers/ApplicationUpdateContainer'
+import ExpertListContainer from './containers/ExpertListContainer'
+import ExpertDetailContainer from './containers/ExpertDetailContainer'
 
 export default () => [
 
@@ -10,14 +10,14 @@ export default () => [
     exact: true,
     path: ROUTES.EXPERT_EXPERTISE_LIST_URL,
     layout: Layouts,
-    component: ApplicationListContainer
+    component: ExpertListContainer
   },
 
   {
     exact: true,
     path: ROUTES.EXPERT_EXPERTISE_UPDATE_PATH,
     layout: Layouts,
-    component: EmployeesUpdateContainer
+    component: ExpertDetailContainer
   },
 
 ]

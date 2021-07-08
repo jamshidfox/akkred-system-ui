@@ -15,6 +15,8 @@ import ApplicationDetail from './ApplicationDetail'
 import Phase from './Phase'
 import ApplicationAccreditationDocuments from './ApplicationAccreditationDocuments'
 import TaskItem from './Items/TaskItem'
+import ApplicationInfoDetail from './ApplicationInfoDetail'
+import ReAuditDocument from './ReAuditDocument'
 
 export const fields = [
   'address',
@@ -68,7 +70,6 @@ const ApplicationTabs = props => {
   const stage = prop('stage', initialValues)
   const clientInfo = prop('clientInfo', initialValues)
   const executor = prop('executor', initialValues)
-  const executors = prop('executors', initialValues)
   const experts = prop('experts', initialValues)
   const expertise = prop('expertise', initialValues)
   const expertsPlace = prop('expertsPlace', initialValues)
@@ -76,6 +77,7 @@ const ApplicationTabs = props => {
   const contracts = prop('contracts', initialValues)
   const contractPlace = prop('contractPlace', initialValues)
   const plan = prop('plan', initialValues)
+  const analysis = prop('analysis', initialValues)
   const notice = prop('notice', initialValues)
   const command = prop('command', initialValues)
   const results = prop('results', initialValues)
@@ -85,6 +87,7 @@ const ApplicationTabs = props => {
   const audits = prop('audits', initialValues)
   const postAccred = prop('postAccred', initialValues)
   const noticeFin = prop('noticeFinal', initialValues)
+  const conclusions = prop('conclusions', initialValues)
 
   const historyStage = prop('history', initialValues)
   const histories = prop('histories', initialValues)
@@ -92,6 +95,9 @@ const ApplicationTabs = props => {
 
   var noticeFinal = []
   noticeFinal.push(noticeFin)
+
+  var executors = []
+  executors.push(executor)
 
   return (
     <BoxUI>
@@ -101,8 +107,9 @@ const ApplicationTabs = props => {
         <Tab value={'stage'} label={'Bosqich'}>
           <Phase id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} isExpertise={isExpertise} rejectModal={rejectModal} expertRejectModal={expertRejectModal} histories={histories} />
         </Tab>
-        <Tab value={'guest'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
-          <ApplicationUserInfo clientInfo={clientInfo} />
+
+        <Tab value={'info'} label={'Yuridik shaxs to’g’risida ma’lumot'}>
+          <ApplicationInfoDetail clientInfo={clientInfo} initialValues={initialValues} />
         </Tab>
 
         <Tab value={'service'} label={'Ariza '}>
@@ -134,7 +141,7 @@ const ApplicationTabs = props => {
           <ApplicationContractInvoiceInfo contracts={contracts} application={id && id} contractPlace={contractPlace} plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />
         </Tab>
         <Tab value={'documentsAccred'} label={'Akrreditatsiyaga tegishli hujjatlar '}>
-          <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} idAp={id && id} />
+          <ApplicationAccreditationDocuments plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} idAp={id && id} analysis={analysis} conclusions={conclusions} />
         </Tab>
         <Tab value={'expertiza'} label={'Ekspertiza natijalari'}>
           <ApplicationExpertResult results={results} application={id} />
@@ -142,6 +149,9 @@ const ApplicationTabs = props => {
 
         <Tab value={'place'} label={'Baholash natijalari'}>
           <ApplicationExpertAuditResult results={audits} docs={documentNews} application={id} />
+        </Tab>
+        <Tab value={'reAudit'} label={'O`rganish'}>
+          <ReAuditDocument initialValues={initialValues} />
         </Tab>
 
         <Tab value={'commissions'} label={'Akrreditatsiya komissiyasi '}>

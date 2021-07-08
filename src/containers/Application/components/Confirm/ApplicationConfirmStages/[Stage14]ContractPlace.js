@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { path, prop } from 'ramda'
-import { MediumButton } from '../../../../../components/UI'
+import { MediumButton, PageRowTitle } from '../../../../../components/UI'
 import {
   Field,
   Form,
@@ -14,45 +14,30 @@ import FileUploadField from '../../../../../components/FormField/File/FileUpload
 import { paymentTypes, rateTypes, typeContract } from '../../../../../constants/backend'
 import TravelDataList from '../TravelData/TravelDataList'
 import TravelDataCreateModal from '../TravelData/TravelDataCreateModal'
+import ExpertiseResults from '../../ApplicationGenerateDocs/ExpertiseResults'
 
 const BoxUI = styled(Box)`
   padding: 25px;
-`
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
 `
 
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 
-const listDocument = [
-
-  {
-    id:'one',
-    name:'100',
-  },
-  {
-    id:'two',
-    name:'15/85',
-  }
-
-]
+const DivButton = styled('div')`
+  margin-top: 10px;
+  text-align: right;
+`
 const ConfirmStageContractPlace = ({
   onSubmit,
   travelDataModal,
   onDeleteTravelData,
-  travelDataList, }) => {
+  travelDataList, initialValues }) => {
+  const experts = prop('experts', initialValues)
   return (
 
     <BoxUI>
+      <ExpertiseResults results={experts} />
       <Form
         onSubmit={onSubmit}
         render={({ handleSubmit, ...formikProps }) => {
@@ -60,7 +45,7 @@ const ConfirmStageContractPlace = ({
           const isTypeContract = path(['typeContract', 'id'], values)
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Umumlashtirish</Label>
+              <PageRowTitle name="Umumlashtirish" />
 
               <Row gutter={24}>
                 <Col span={12}>
@@ -72,7 +57,7 @@ const ConfirmStageContractPlace = ({
                 </Col>
               </Row>
 
-              <Label>Shartnoma</Label>
+              <PageRowTitle name="Shartnoma" />
 
               <Row gutter={24}>
 
@@ -137,9 +122,9 @@ const ConfirmStageContractPlace = ({
 
               )}
 
-              <div style={{ textAlign: 'right' }}>
+              <DivButton>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
-              </div>
+              </DivButton>
             </form>
           )
         }}

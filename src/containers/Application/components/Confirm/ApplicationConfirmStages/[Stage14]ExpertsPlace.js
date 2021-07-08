@@ -1,22 +1,19 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { MediumButton, Modal } from '../../../../../components/UI'
+import { prop } from 'ramda'
+import { MediumButton, PageRowTitle } from '../../../../../components/UI'
 import {
   DateField,
   Field,
   Form,
-  InputField,
   UniversalSearchField,
-  UniversalStaticSelectField,
-  ImageUploadField,
 } from '../../../../../components/FormField'
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import * as API from '../../../../../constants/api'
-import { RESULT_LIST } from '../../../../../constants/backend'
-import UniversalMultiSelectField from '../../../../../components/FormField/Select/UniversalMultiSelectField'
-import { Box, FieldWrapper } from '../../../../../components/StyledElems'
+import { Box } from '../../../../../components/StyledElems'
 import { ExpertsCreateModal, ExpertsList } from '../ExpertsPlace'
-import FileUploadField from '../../../../../components/FormField/File/FileUploadField'
+import { ExpertsListConfirm } from '../Experts'
+import ExpertsArchiveList from '../Experts/ExpertsArchiveList'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -35,8 +32,15 @@ const Label = styled.div`
 const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
-const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal, onDeletePlace }) => {
+
+const DivButton = styled('div')`
+  margin-top: 10px;
+  text-align: right;
+`
+const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal, onDeletePlace, onUpdatePlace, initialValues }) => {
   const [serviceModalItem, setServiceModalItem] = useState(false)
+  const experts = prop('experts', initialValues)
+  const archiveExpertsAudit = prop('archiveExpertsAudit', initialValues)
   const editModalOpen = (data) => {
     setServiceModalItem(data)
     serviceModal.onOpen()
@@ -46,9 +50,23 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal, o
     <BoxUI>
       <Form
         onSubmit={onSubmit}
+        initialValues={initialValues}
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
+
+              <PageRowTitle name="Dastlabki ijrochilar" />
+
+              <ExpertsListConfirm branches={experts} />
+
+              {archiveExpertsAudit.length > 0 && (
+                <div>
+                  <PageRowTitle name="Rozi bolmagan Ijrochilar" />
+                  <ExpertsArchiveList list={archiveExpertsAudit} />
+
+                </div>
+
+              )}
 
               <Row gutter={24}>
 
@@ -82,12 +100,12 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal, o
                   />
                 </Col>
               </Row>
-              <ExpertsList branches={serviceList} serviceModal={serviceModal} onDeletePlace={onDeletePlace} />
-              <ExpertsCreateModal {...serviceModal} initialValues={serviceModalItem} />
+              <ExpertsList branches={serviceList} editModalOpen={editModalOpen} serviceModal={serviceModal} {...serviceModal} onDeletePlace={onDeletePlace} />
+              <ExpertsCreateModal {...serviceModal} onUpdatePlace={onUpdatePlace} initialValues={serviceModalItem} />
 
-              <div style={{ textAlign: 'right' }}>
+              <DivButton>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
-              </div>
+              </DivButton>
             </form>
           )
         }}

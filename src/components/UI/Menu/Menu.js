@@ -31,11 +31,13 @@ const Menu = props => {
   return list.map((item, index) => {
     const {
       children,
+      outside,
       url,
       perms = [],
       tabs = [],
       ...rest
     } = item
+
 
     // Const
     const withCurrentTab = children && find(({ tabs = [] }) => {
@@ -64,6 +66,7 @@ const Menu = props => {
         smart={!open}
         isActive={isActiveTab}
         url={url}
+        outside={outside}
         {...rest}
       />
 
@@ -73,6 +76,7 @@ const Menu = props => {
         <MenuItem
           pathname={pathname}
           withChildren={true}
+          outside={outside}
           url={url}
           smart={!open}
           isOpen={isOpen}
@@ -95,6 +99,7 @@ const Menu = props => {
             const subItemContent =
               <MenuItem
                 pathname={pathname}
+                outside={outside}
                 smart={!open}
                 isSub={true}
                 isActive={isActiveChild}

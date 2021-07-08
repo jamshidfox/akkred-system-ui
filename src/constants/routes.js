@@ -94,6 +94,16 @@ export const EXPERT_PLACE_UPDATE_PATH = `/${EXPERT_PLACE}/${ID}/`
 export const EXPERT_PLACE_CONFIRM_URL = `/${EXPERT_PLACE}/confirm/${ID}`
 export const EXPERT_PLACE_CONFIRM_PATH = `/${EXPERT_PLACE}/confirm/%d`
 
+const RE_AUDIT_EXPERT = 're_audit_expert'
+export const RE_AUDIT_EXPERT_LIST_URL = `/${RE_AUDIT_EXPERT}/`
+export const RE_AUDIT_EXPERT_ITEM_PATH = `/${RE_AUDIT_EXPERT}/${ID}/`
+export const RE_AUDIT_EXPERT_ITEM_URL = `/${RE_AUDIT_EXPERT}/%d`
+export const RE_AUDIT_EXPERT_CREATE_URL = `/${RE_AUDIT_EXPERT}/create`
+export const RE_AUDIT_EXPERT_UPDATE_URL = `/${RE_AUDIT_EXPERT}/%d`
+export const RE_AUDIT_EXPERT_UPDATE_PATH = `/${RE_AUDIT_EXPERT}/${ID}/`
+export const RE_AUDIT_EXPERT_CONFIRM_URL = `/${RE_AUDIT_EXPERT}/confirm/${ID}`
+export const RE_AUDIT_EXPERT_CONFIRM_PATH = `/${RE_AUDIT_EXPERT}/confirm/%d`
+
 const CLIENT_INFO = 'client_info'
 export const CLIENT_INFO_LIST_URL = `/${CLIENT_INFO}/`
 export const CLIENT_INFO_ITEM_URL = `/${CLIENT_INFO}/%d`
@@ -125,3 +135,11 @@ export const REESTR_ITEM_PATH = `/${REESTR}/${ID}/`
 export const REESTR_CREATE_URL = `/${REESTR}/create`
 export const REESTR_UPDATE_URL = `/${REESTR}/%d`
 export const REESTR_UPDATE_PATH = `/${REESTR}/${ID}/`
+
+const TEMPLATE_DOCUMENT = 'template'
+export const TEMPLATE_DOCUMENT_LIST_URL = `/${TEMPLATE_DOCUMENT}/`
+export const TEMPLATE_DOCUMENT_ITEM_URL = `/${TEMPLATE_DOCUMENT}/%d`
+export const TEMPLATE_DOCUMENT_ITEM_PATH = `/${TEMPLATE_DOCUMENT}/${ID}/`
+export const TEMPLATE_DOCUMENT_CREATE_URL = `/${TEMPLATE_DOCUMENT}/create`
+export const TEMPLATE_DOCUMENT_UPDATE_URL = `/${TEMPLATE_DOCUMENT}/%d`
+export const TEMPLATE_DOCUMENT_UPDATE_PATH = `/${TEMPLATE_DOCUMENT}/${ID}/`

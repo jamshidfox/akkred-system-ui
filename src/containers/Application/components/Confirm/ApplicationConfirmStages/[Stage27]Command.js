@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
-import { MediumButton, PageTitle } from '../../../../../components/UI'
+import { MediumButton, PageRowTitle, PageTitle } from '../../../../../components/UI'
 import {
   Form,
 } from '../../../../../components/FormField'
@@ -14,9 +14,9 @@ const BoxUI = styled(Box)`
   padding: 25px;
 `
 
-const PageTitleNew = styled(PageTitle)`
-  color: #2C3A50;
-
+const DivButton = styled('div')`
+  margin-top: 10px;
+  text-align: right;
 `
 
 const statusColors = {
@@ -75,7 +75,6 @@ const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
     <Table
       isEmpty={isEmpty(command)}
     >
-      <PageTitleNew name="Buyruq" />
       {tableCommandHead}
       {tableCommandList}
     </Table>
@@ -88,11 +87,12 @@ const ConfirmCommand = ({ onSubmit, text, initialValues }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
+              <PageRowTitle name="Buyruq" />
               {tableCommand}
 
-              <div style={{ textAlign: 'right', marginTop: '10px' }}>
+              <DivButton>
                 <MediumButton type="submit">Tasdiqlash</MediumButton>
-              </div>
+              </DivButton>
             </form>
           )
         }}

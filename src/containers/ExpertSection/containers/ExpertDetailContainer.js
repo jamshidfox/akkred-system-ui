@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { prop, path, map } from 'ramda'
+import React from 'react'
+import { prop, path } from 'ramda'
 import { sprintf } from 'sprintf-js'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import * as STATE from '../../../constants/stateNames'
 import { useUpdate, useFetchItem, useModal } from '../../../hooks'
 import { getSerializedData } from '../../../utils/get'
-import { applicationUpdateAction, clientFetchItem, applicationConfirmAction } from '../actions'
+import { applicationUpdateAction, clientFetchItem, applicationConfirmAction, expertAnswerAction } from '../actions'
 import ExpertExpertiseCreate from '../components/ExpertExpertise'
 import * as ROUTES from '../../../constants/routes'
 import { mapResponseToFormError } from '../../../utils/form'
@@ -21,11 +21,13 @@ const getInitialValues = (data) => {
   return ({
     status: prop('status', data),
     statusAssignment: prop('statusAssignment', data),
-    application: path(['application', 'id'], data),
+    application: prop('application', data),
     assignment: path(['assignment', 'file'], data),
+    file: path(['file', 'file'], data),
     case: prop('case', data),
     comments: prop('comments', data),
     closedDate: prop('closedDate', data),
+    answerType: prop('answerType', data),
   })
 }
 
@@ -35,11 +37,12 @@ const getEmployeesUpdateParams = () => ({
   serializer: getSerializedData(),
 })
 
-const EmployeesUpdateContainer = props => {
+const ExpertDetailContainer = props => {
   const { data } = useFetchItem(getEmployerItemParams())
   const params = useParams()
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
+  const answerModal = useModal({ key: 'answerModal' })
   const initialValues = getInitialValues(data)
   const updateData = useUpdate(getEmployeesUpdateParams())
 
@@ -56,13 +59,28 @@ const EmployeesUpdateContainer = props => {
       .then(() => props.history.push(sprintf(ROUTES.EXPERT_EXPERTISE_LIST_URL, params.id)))
       .catch(mapResponseToFormError)
   }
+
+  const answerSubmit = values => {
+    const newDAta = getSerializedData([
+      'comments',
+      'answer_type',
+    ], values)
+    const data = {
+      ...newDAta,
+    }
+    dispatch(expertAnswerAction(params.id, data))
+      .then(() => props.history.push(sprintf(ROUTES.EXPERT_EXPERTISE_LIST_URL, params.id)))
+      .catch(mapResponseToFormError)
+  }
   return (
     <ExpertExpertiseCreate
       onSubmit={confirmSubmit}
+      answerSubmit={answerSubmit}
       initialValues={initialValues}
       serviceModal={serviceModal}
+      answerModal={answerModal}
     />
   )
 }
 
-export default EmployeesUpdateContainer
+export default ExpertDetailContainer

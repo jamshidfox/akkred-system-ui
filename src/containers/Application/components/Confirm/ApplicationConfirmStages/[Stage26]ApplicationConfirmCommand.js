@@ -12,19 +12,15 @@ import {
 import { Col, Row as RowUI } from '../../../../../components/Grid'
 import { typeContract } from '../../../../../constants/backend'
 import { MediumButton } from '../../../../../components/UI/Buttons'
+import { PageRowTitle } from '../../../../../components/UI'
+import TinyEditor from '../../../../../components/UI/Editor'
 
 const BoxUI = styled(Box)`
   padding: 25px;
 `
-const Label = styled.div`
-  margin-bottom: 16px;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 0.25px;
-  color: ${props => props.theme.color.basic.default};
+const DivButton = styled('div')`
+  margin-top: 10px;
+  text-align: right;
 `
 
 const Row = styled(RowUI)`
@@ -43,7 +39,20 @@ const ApplicationConfirmCommand = props => {
           const isTypeOrder = path(['typeOrder', 'id'], values)
           return (
             <form onSubmit={handleSubmit}>
-              <Label>Buyruq</Label>
+              <PageRowTitle name="Buyruq" />
+
+
+
+              <Row gutter={24}>
+                <Col span={24}>
+                  <Field
+                    name="content"
+                    label="Buyruq"
+                    component={TinyEditor}
+                  />
+                </Col>
+
+              </Row>
 
               <Row gutter={24}>
                 <Col span={24}>
@@ -58,23 +67,9 @@ const ApplicationConfirmCommand = props => {
 
               </Row>
 
-              <Row gutter={24}>
-                {isTypeOrder === 'travel' && (
-                  <Col span={24}>
-                    <Field
-                      name="countries"
-                      label="Shahar(-lar)"
-                      component={InputField}
-                    />
-                  </Col>
-
-                )}
-
-              </Row>
-
-              <div style={{ textAlign: 'right' }}>
+              <DivButton>
                 <MediumButton type={'submit'}>Tasdiqlash</MediumButton>
-              </div>
+              </DivButton>
 
             </form>
           )

@@ -3,7 +3,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
 import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
-import ApplicationList from '../components/ApplicationList'
+import ExpertAuditList from '../components/ExpertAuditList'
 import { fields } from '../components/CommentListFilterForm'
 import { applicationFetchList, applicationDeleteAction } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
@@ -31,7 +31,7 @@ const ApplicationListContainer = props => {
   const filterActions = useFilterActions({ fields })
   // Render
   return (
-    <ApplicationList
+    <ExpertAuditList
       list={list}
       filterActions={filterActions}
       onDelete={deleteAction.onSubmit}

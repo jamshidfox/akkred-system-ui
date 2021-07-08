@@ -10,14 +10,13 @@ import {
   applicationUpdateAction,
   clientFetchItem,
   applicationConfirmAction,
-  templateFetchList,
-  applicationFetchList, applicationConfirmResultAction
+  templateFetchList, applicationConfirmResultAction, expertAuditAnswerAction
 } from '../actions'
-import ExpertExpertiseCreate from '../components/ExpertExpertise'
 import * as ROUTES from '../../../constants/routes'
 import { mapResponseToFormError } from '../../../utils/form'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 import { fields } from '../components/CommentListFilterForm'
+import ExpertAuditDetail from '../components/ExpertAuditDetail'
 
 const EMPTY_ARR = []
 const getEmployerItemParams = () => ({
@@ -34,16 +33,18 @@ const getInitialValues = (data) => {
   return ({
     status: prop('status', data),
     statusAssignment: prop('statusAssignment', data),
-    application: path(['application', 'id'], data),
-    documents: path(['application', 'documents'], data),
-    documentNews: path(['application', 'documentNews'], data),
-    audits: path(['application', 'audits'], data),
-    additionalDocs: path(['application', 'additionalDocs'], data),
-    file: path(['assignment', 'file'], data),
+    expert: prop('expert', data),
+    application: prop('application', data),
+    // application: path(['application', 'id'], data),
+    assignment: path(['assignment', 'file'], data),
     case: prop('case', data),
     comments: prop('comments', data),
     closedDate: prop('closedDate', data),
-    statusResult: prop('statusResult', data),
+    answerType: prop('answerType', data),
+    type: prop('type', data),
+    date: prop('date', data),
+    toDate: prop('toDate', data),
+    addressType: prop('addressType', data),
   })
 }
 
@@ -65,6 +66,7 @@ const EmployeesUpdateContainer = props => {
   const dispatch = useDispatch()
   const serviceModal = useModal({ key: 'serviceModal' })
   const serviceResultModal = useModal({ key: 'serviceResultModal' })
+  const answerModal = useModal({ key: 'answerModal' })
   const initialValues = getInitialValues(data)
   const updateData = useUpdate(getEmployeesUpdateParams())
 
@@ -84,8 +86,6 @@ const EmployeesUpdateContainer = props => {
   const confirmSubmit = values => {
     const newDAta = getSerializedData([
       'file',
-      'act',
-      'comments',
     ], values)
     const data = {
       ...newDAta,
@@ -94,13 +94,28 @@ const EmployeesUpdateContainer = props => {
       .then(() => props.history.push(sprintf(ROUTES.EXPERT_PLACE_LIST_URL, params.id)))
       .catch(mapResponseToFormError)
   }
+
+  const answerSubmit = values => {
+    const newDAta = getSerializedData([
+      'comments',
+      'answer_type',
+    ], values)
+    const data = {
+      ...newDAta,
+    }
+    dispatch(expertAuditAnswerAction(params.id, data))
+      .then(() => props.history.push(sprintf(ROUTES.EXPERT_PLACE_LIST_URL, params.id)))
+      .catch(mapResponseToFormError)
+  }
   return (
-    <ExpertExpertiseCreate
+    <ExpertAuditDetail
       onSubmit={confirmSubmit}
       onSubmitResult={confirmResultSubmit}
       initialValues={initialValues}
       listTemplate={listTemplate}
       serviceModal={serviceModal}
+      answerModal={answerModal}
+      answerSubmit={answerSubmit}
       serviceResultModal={serviceResultModal}
     />
   )

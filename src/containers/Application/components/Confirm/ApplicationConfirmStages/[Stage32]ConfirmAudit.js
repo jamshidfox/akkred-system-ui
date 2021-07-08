@@ -1,22 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import { isEmpty, prop } from 'ramda'
-import { MediumButton, PageTitle } from '../../../../../components/UI'
+import { MediumButton, PageRowTitle } from '../../../../../components/UI'
 import {
-  Form,
+  Field,
+  Form, UniversalStaticSelectField,
 } from '../../../../../components/FormField'
 import { Box } from '../../../../../components/StyledElems'
 import { Table, TableRow } from '../../../../../components/Table'
-import { documentType } from '../../../../../constants/backend'
+import { APPLICATION_LIST, AUDIT_RESULT_LIST, documentType, STANDART_LIST } from '../../../../../constants/backend'
 import { API_URL } from '../../../../../constants/api'
+import { Col, Row } from '../../../../../components/Grid'
 
 const BoxUI = styled(Box)`
   padding: 25px;
-`
-
-const PageTitleNew = styled(PageTitle)`
-  color: #2C3A50;
-
 `
 
 const ConfirmAudit = ({ onSubmit, text, initialValues }) => {
@@ -55,7 +52,6 @@ const ConfirmAudit = ({ onSubmit, text, initialValues }) => {
     <TableRow header={true}>
       <th colSpan={8} >Hujjat nomi </th>
       <th colSpan={8} >Turi </th>
-
       <th colSpan={8} >Havola </th>
     </TableRow>
 
@@ -63,7 +59,6 @@ const ConfirmAudit = ({ onSubmit, text, initialValues }) => {
     <Table
       isEmpty={isEmpty(results)}
     >
-      <PageTitleNew name="Murojaatchiga tegishli hujjatlar" />
       {tableAuditHead}
       {tableAuditList}
     </Table>
@@ -102,7 +97,6 @@ const ConfirmAudit = ({ onSubmit, text, initialValues }) => {
     <Table
       isEmpty={isEmpty(docs)}
     >
-      <PageTitleNew name="Baholashga tegishli hujjatlar" />
       {tableHeadDoc}
       {tableDocList}
     </Table>
@@ -143,7 +137,6 @@ const ConfirmAudit = ({ onSubmit, text, initialValues }) => {
     <Table
       isEmpty={isEmpty(additionalDocs)}
     >
-      <PageTitleNew name="Qo'shimcha hujjatlar" />
       {tableAddDocHead}
       {tableAddDocList}
     </Table>
@@ -156,10 +149,23 @@ const ConfirmAudit = ({ onSubmit, text, initialValues }) => {
         render={({ handleSubmit }) => {
           return (
             <form onSubmit={handleSubmit}>
+              <PageRowTitle name="Baholashga tegishli hujjatlar" />
               {tableDoc}
+              <PageRowTitle name="Murojaatchiga tegishli hujjatlar" />
               {tableAudit}
+              <PageRowTitle name="Qo'shimcha hujjatlar" />
               {tableAddDoc}
+              <Row gutter={24}>
 
+                <Col span={24}>
+                  <Field
+                    name="auditResult"
+                    label="Baholash natijasi"
+                    component={UniversalStaticSelectField}
+                    list={AUDIT_RESULT_LIST}
+                  />
+                </Col>
+              </Row>
               <div style={{ textAlign: 'right', marginTop: '10px' }}>
                 <MediumButton type="submit">{text}</MediumButton>
               </div>

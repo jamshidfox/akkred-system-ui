@@ -2,8 +2,8 @@ import React from 'react'
 import { isEmpty, path, prop } from 'ramda'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Edit from 'images/edit.svg'
 import Trash from 'images/trash-2.svg'
+import Edit from 'images/edit.svg'
 import { ItemControlButton } from 'components/UI'
 import { Link } from 'react-router-dom'
 import { sprintf } from 'sprintf-js'
@@ -15,9 +15,9 @@ const AddBtn = styled(SecondarySmallButton)`
 `
 
 const ExpertsList = props => {
-  const { serviceModal, branches, onDeletePlace } = props
+  const { serviceModal, branches, onDeletePlace, editModalOpen } = props
   // TableList
-  const tableList = branches.map(client => {
+  const tableList = branches.map((client, index) => {
     const {
       id,
       type,
@@ -29,12 +29,16 @@ const ExpertsList = props => {
     // Render
     return (
       <TableRow
-        key={id}
+        key={index}
       >
-        <td colSpan={6}>{expert.username}</td>
-        <td colSpan={6}>{type.name}</td>
-        <td colSpan={6}>{date}</td>
-        <td colSpan={4}>{address.name}</td>
+        <td colSpan={6}>{expert && expert.username}</td>
+        <td colSpan={6}>{type && type.name}</td>
+        <td colSpan={6}>{date && date}</td>
+        <td colSpan={4}>{address && address.name}</td>
+
+        {/*<ItemControlButton onClick={() => editModalOpen(client)}>*/}
+        {/*  <img src={Edit} alt="Edit" />*/}
+        {/*</ItemControlButton>*/}
 
         <ItemControlButton onClick={() => onDeletePlace(client)}>
           <img src={Trash} alt="Trash" />
@@ -46,9 +50,9 @@ const ExpertsList = props => {
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6} >Expert</th>
+      <th colSpan={6} >Ijrochi</th>
       <th colSpan={6} >Roli </th>
-      <th colSpan={6} >Data </th>
+      <th colSpan={6} >Sana </th>
       <th colSpan={4} >Manzil </th>
       <th colSpan={2} />
     </TableRow>

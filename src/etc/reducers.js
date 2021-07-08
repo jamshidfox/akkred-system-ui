@@ -67,6 +67,11 @@ export const makeRootReducer = asyncReducers => {
     [STATE.EXPERT_PLACE_UPDATE]: createThunkReducer(actionTypes.EXPERT_PLACE_UPDATE),
     [STATE.EXPERT_PLACE_ITEM]: createThunkReducer(actionTypes.EXPERT_PLACE_ITEM),
 
+    [STATE.RE_AUDIT_EXPERT_LIST]: createThunkReducer(actionTypes.RE_AUDIT_EXPERT_LIST),
+    [STATE.RE_AUDIT_EXPERT_CREATE]: createThunkReducer(actionTypes.RE_AUDIT_EXPERT_CREATE),
+    [STATE.RE_AUDIT_EXPERT_UPDATE]: createThunkReducer(actionTypes.RE_AUDIT_EXPERT_UPDATE),
+    [STATE.RE_AUDIT_EXPERT_ITEM]: createThunkReducer(actionTypes.RE_AUDIT_EXPERT_ITEM),
+
     [STATE.COMMISSION_LIST]: createThunkReducer(actionTypes.COMMISSION_LIST),
     [STATE.COMMISSION_CREATE]: createThunkReducer(actionTypes.COMMISSION_CREATE),
     [STATE.COMMISSION_UPDATE]: createThunkReducer(actionTypes.COMMISSION_UPDATE),
@@ -87,6 +92,11 @@ export const makeRootReducer = asyncReducers => {
     [STATE.REESTR_UPDATE]: createThunkReducer(actionTypes.REESTR_UPDATE),
     [STATE.REESTR_ITEM]: createThunkReducer(actionTypes.REESTR_ITEM),
     [STATE.TEMPLATE_LIST]: createThunkReducer(actionTypes.TEMPLATE_LIST),
+
+    [STATE.TEMPLATE_DOCUMENT_LIST]: createThunkReducer(actionTypes.TEMPLATE_DOCUMENT_LIST),
+    [STATE.TEMPLATE_DOCUMENT_CREATE]: createThunkReducer(actionTypes.TEMPLATE_DOCUMENT_CREATE),
+    [STATE.TEMPLATE_DOCUMENT_UPDATE]: createThunkReducer(actionTypes.TEMPLATE_DOCUMENT_UPDATE),
+    [STATE.TEMPLATE_DOCUMENT_ITEM]: createThunkReducer(actionTypes.TEMPLATE_DOCUMENT_ITEM),
     ...asyncReducers
   })
 }
