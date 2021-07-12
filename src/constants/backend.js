@@ -56,6 +56,7 @@ export const answerTypeList = getFormattedListData([
   { id: 'approved', name: 'Rozi ' },
   { id: 'reject', name: 'Rozi emas' },
   { id: 'partial_approved', name: 'Qisman rozi' },
+  { id: 'wait', name: 'Jarayonda' },
 ])
 
 export const EXPERT_ANSWER_TYPE_LIST = [

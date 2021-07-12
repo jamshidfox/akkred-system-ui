@@ -1,5 +1,5 @@
 import * as ROUTES from 'constants/routes'
-import {statusAssignments, statusPayments} from 'constants/backend'
+import { statusAssignments, statusPayments } from 'constants/backend'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { prop, isEmpty, path, propOr } from 'ramda'
@@ -11,11 +11,16 @@ import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Tabs from '../../../components/Tabs'
+import { answerTypeList } from '../../../constants/backend'
 import CommentListFilterForm from './CommentListFilterForm'
 
 const statusColors = {
   done: 'green',
   given: 'red',
+  approved: 'green',
+  reject: 'red',
+  wait: 'red',
+
 }
 
 const Status = styled('div')`
@@ -65,7 +70,7 @@ const ExpertList = props => {
       <th colSpan={6}>Ariza nomeri</th>
       <th colSpan={6}>Topshiriq nomeri</th>
       <th colSpan={6}>Status</th>
-      <th colSpan={6}>Topshirilgan sana</th>
+      <th colSpan={6}>So`rov</th>
       <th />
     </TableRow>
 
@@ -74,15 +79,16 @@ const ExpertList = props => {
     const {
       id,
       application,
-      openDate,
+      answerType,
       statusAssignment,
-      closedDate,
       // address,
       // stage
     } = client
 
     const statusText = statusAssignments.object[statusAssignment]
     const statusColor = statusColors[statusAssignment]
+    const answerText = answerTypeList.object[answerType]
+    const answerTypeTypColor = statusColors[answerType]
 
     // MoreList
     const moreList = [
@@ -103,12 +109,14 @@ const ExpertList = props => {
       >
         <td colSpan={6}><a style={{
           color: 'blue'
-        }} href={sprintf(ROUTES.EXPERT_EXPERTISE_UPDATE_URL,id)}>Ariza №{application.id}/{application.registerDate}</a> </td>
+        }} href={sprintf(ROUTES.EXPERT_EXPERTISE_UPDATE_URL, id)}>Ariza №{application.id}/{application.registerDate}</a> </td>
         <td colSpan={6}> №{id}/{application.id}/{application.registerDate}</td>
         <td colSpan={6}><Status color={statusColor}>
           {statusText}
         </Status></td>
-        <td colSpan={6}>{closedDate}</td>
+        <td colSpan={6}> <Status color={answerTypeTypColor}>
+          {answerText}
+        </Status></td>
         <DropdownMore
           moreList={moreList}
         />

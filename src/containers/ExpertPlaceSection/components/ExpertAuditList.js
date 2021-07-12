@@ -10,12 +10,15 @@ import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
 import Tabs from '../../../components/Tabs'
-import { statusAssignments, expertAuditAnswerType } from '../../../constants/backend'
+import { statusAssignments, expertAuditAnswerType, answerTypeList } from '../../../constants/backend'
 import CommentListFilterForm from './CommentListFilterForm'
 
 const statusColors = {
   done: 'green',
   given: 'red',
+  approved: 'green',
+  reject: 'red',
+  wait: 'red',
 }
 
 const statusResultColors = {
@@ -71,7 +74,7 @@ const ExpertAuditList = props => {
       <th colSpan={6}>Ariza raqami</th>
       <th colSpan={6}>Vazifa raqami</th>
       <th colSpan={6}>Status</th>
-      <th colSpan={6}>Natija statusi</th>
+      <th colSpan={6}>So`rov</th>
       <th />
     </TableRow>
 
@@ -83,12 +86,15 @@ const ExpertAuditList = props => {
       openDate,
       statusAssignment,
       statusResult,
+      answerType
     } = client
 
     const statusText = statusAssignments.object[statusAssignment]
     const statusResultText = expertAuditAnswerType.object[statusResult]
     const statusColor = statusColors[statusAssignment]
     const statusResultColor = statusResultColors[statusResult]
+    const answerText = answerTypeList.object[answerType]
+    const answerTypeTypColor = statusColors[answerType]
 
     // MoreList
     const moreList = [
@@ -114,8 +120,8 @@ const ExpertAuditList = props => {
         <td colSpan={6}><Status color={statusColor}>
           {statusText}
         </Status></td>
-        <td colSpan={6}><Status color={statusResultColor}>
-          {statusResultText}
+        <td colSpan={6}> <Status color={answerTypeTypColor}>
+          {answerText}
         </Status></td>
         <DropdownMore
           moreList={moreList}

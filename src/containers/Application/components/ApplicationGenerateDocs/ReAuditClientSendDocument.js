@@ -3,13 +3,13 @@ import { isEmpty } from 'ramda'
 import { PageRowTitle } from '../../../../components/UI'
 
 import { Table, TableRow } from '../../../../components/Table'
-import { API_URL } from '../../../../constants/api'
 
 const ReAuditClientSendDocument = ({ planWorks, results }) => {
   // Client
   const tablePlanProofWorksList = results.map(client => {
     const {
       id,
+      file,
 
     } = client
     // Render
@@ -23,7 +23,7 @@ const ReAuditClientSendDocument = ({ planWorks, results }) => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={`${API_URL}`}>Hujjat</a></td>
+          }} href={`${file && file.file}`}>Hujjat</a></td>
 
       </TableRow>
     )
@@ -45,12 +45,13 @@ const ReAuditClientSendDocument = ({ planWorks, results }) => {
   const tableHeadPlanWorks =
     <TableRow header={true}>
       <th colSpan={12} >Hujjat nomi </th>
-      <th colSpan={12} >havola </th>
+      <th colSpan={12} >Havola </th>
     </TableRow>
 
   const tablePlanWorksList = planWorks.map(client => {
     const {
       id,
+      file,
     } = client
 
     // Render
@@ -64,7 +65,7 @@ const ReAuditClientSendDocument = ({ planWorks, results }) => {
           color: '#0f22ff'
         }}><a style={{
             color: '#0f22ff'
-          }} href={``}>Hujjat</a></td>
+          }} href={`${file && file.file}`}>Hujjat</a></td>
 
       </TableRow>
     )

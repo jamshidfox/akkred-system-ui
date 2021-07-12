@@ -71,9 +71,7 @@ const ApplicationTabs = props => {
   const clientInfo = prop('clientInfo', initialValues)
   const executor = prop('executor', initialValues)
   const experts = prop('experts', initialValues)
-  const expertise = prop('expertise', initialValues)
   const expertsPlace = prop('expertsPlace', initialValues)
-  const assignments = prop('assignments', initialValues)
   const contracts = prop('contracts', initialValues)
   const contractPlace = prop('contractPlace', initialValues)
   const plan = prop('plan', initialValues)
@@ -97,7 +95,9 @@ const ApplicationTabs = props => {
   noticeFinal.push(noticeFin)
 
   var executors = []
-  executors.push(executor)
+  if (executor) {
+    executors.push(executor)
+  }
 
   return (
     <BoxUI>
@@ -135,7 +135,7 @@ const ApplicationTabs = props => {
           <ApplicationClientDocument docs={documents} />
         </Tab>
         <Tab value={'v'} label={'Ijrochi va ekspertlar'}>
-          <ApplicationAddInfo executor={executor} executors={executors} expertise={expertise} expertRejectModal={expertRejectModal} experts={experts} assignments={assignments} expertsPlace={expertsPlace} />
+          <ApplicationAddInfo executors={executors} experts={experts} expertsPlace={expertsPlace} />
         </Tab>
         <Tab value={'c'} label={'Shartnomalar va to’lov ma’lumotlari'}>
           <ApplicationContractInvoiceInfo contracts={contracts} application={id && id} contractPlace={contractPlace} plan={plan} notice={notice} command={command} postAccred={postAccred} noticeFinal={noticeFinal} />

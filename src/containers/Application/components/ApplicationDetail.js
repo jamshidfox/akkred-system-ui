@@ -83,48 +83,64 @@ const ApplicationApplicationDetail = props => {
 
       </TableRow>
 
-      <TableRow style={getDisplayStyle(show17065Fields)}>
-        <td colSpan={6}>Sertifikatlashtirish organi xususiy laboratoriyaga egami?</td>
-        <td colSpan={18}>{labaratoriya}</td>
+      {show17065Fields && (
+        <TableRow >
+          <td colSpan={6}>Sertifikatlashtirish organi xususiy laboratoriyaga egami?</td>
+          <td colSpan={18}>{labaratoriya}</td>
+        </TableRow>
 
-      </TableRow>
-      <TableRow style={getDisplayStyle(show17065Fields)}>
-        <td colSpan={6}>Sertifikatlashtirish organi jalb etilgan xodimlarga egami?</td>
-        <td colSpan={18}>{outsource}</td>
+      )}
 
-      </TableRow>
+      {show17065Fields && (
+        <TableRow >
+          <td colSpan={6}>Sertifikatlashtirish organi jalb etilgan xodimlarga egami?</td>
+          <td colSpan={18}>{outsource}</td>
+        </TableRow>
 
-      <TableRow style={getDisplayStyle(show17065Fields)}>
-        <td colSpan={6}>Laboratoriya akkreditatsiyadan oʻtganmi? Agarda ha boʻlsa, akkreditatsiya toʻgʻrisidagi guvohnoma raqamini korsating</td>
-        <td colSpan={18}>{isAkkred}</td>
+      )}
 
-      </TableRow>
+      {show17065Fields && (
+        <TableRow >
+          <td colSpan={6}>Laboratoriya akkreditatsiyadan oʻtganmi? Agarda ha boʻlsa, akkreditatsiya toʻgʻrisidagi guvohnoma raqamini korsating</td>
+          <td colSpan={18}>{isAkkred}</td>
+        </TableRow>
 
+      )}
 
-      <TableRow style={getDisplayStyle(showActivityCertification)}>
-        <td colSpan={12}>Sertifikatlashtirish organi boshqa akkreditatsiya organi,
-          shu jumladan chet el akkreditatsiyadan oʻtkazish organlari tomonidan akkreditatsiyadan oʻtkazilganmi?
-          Agarda ha boʻlsa, organ nomini koʻrsating</td>
-        <td colSpan={12}>{certificationAccreditation}</td>
+      {showActivityCertification && (
 
-      </TableRow>
+        <TableRow >
+          <td colSpan={12}>Sertifikatlashtirish organi boshqa akkreditatsiya organi,
+            shu jumladan chet el akkreditatsiyadan oʻtkazish organlari tomonidan akkreditatsiyadan oʻtkazilganmi?
+            Agarda ha boʻlsa, organ nomini koʻrsating</td>
+          <td colSpan={12}>{certificationAccreditation}</td>
 
+        </TableRow>
 
-      <TableRow style={getDisplayStyle(showActivityCertification)}>
-        <td colSpan={12}>Ariza berilgan soha boʻyicha sertifikatlashtirish ishlari olib borilganmi?
-          Agarda ha boʻlsa, taqdim etilgan sertifikatlar miqdori (har bir ariza berilgan soha uchun):</td>
-        <td colSpan={12}>{certificationField}</td>
+      )}
 
-      </TableRow>
+      {showActivityCertification && (
 
-      <TableRow style={getDisplayStyle(showActivityCertification)}>
-        <td colSpan={12}>Ariza berilgan sohalarning qaysi biri boshqa
-          (chet el) akkreditatsiyadan oʻtkazish organlari tomonidan akkreditatsiyadan oʻtkazilganmi?
-          Agarda ha boʻlsa, taqdim etilgan sertifikatlar miqdori (har bir ariza berilgan soha uchun):
-        </td>
-        <td colSpan={12}>{accreditedByAnother}</td>
+        <TableRow >
+          <td colSpan={12}>Ariza berilgan soha boʻyicha sertifikatlashtirish ishlari olib borilganmi?
+            Agarda ha boʻlsa, taqdim etilgan sertifikatlar miqdori (har bir ariza berilgan soha uchun):</td>
+          <td colSpan={12}>{certificationField}</td>
 
-      </TableRow>
+        </TableRow>
+
+      )}
+
+      {showActivityCertification && (
+
+        <TableRow >
+          <td colSpan={12}>Ariza berilgan sohalarning qaysi biri boshqa
+            (chet el) akkreditatsiyadan oʻtkazish organlari tomonidan akkreditatsiyadan oʻtkazilganmi?
+            Agarda ha boʻlsa, taqdim etilgan sertifikatlar miqdori (har bir ariza berilgan soha uchun):
+          </td>
+          <td colSpan={12}>{accreditedByAnother}</td>
+        </TableRow>
+
+      )}
 
     </Table>
 
@@ -152,13 +168,13 @@ const ApplicationApplicationDetail = props => {
 
         )}
 
-        {/*{additionalActivityList.length > 0 && (*/}
-        {/*  <div>*/}
-        {/*    <PageRowTitle name="Boshqa faoliyat turi" />*/}
-        {/*    <AddActivityList branches={additionalActivityList} />*/}
-        {/*  </div>*/}
+        {/* {additionalActivityList.length > 0 && ( */}
+        {/*  <div> */}
+        {/*    <PageRowTitle name="Boshqa faoliyat turi" /> */}
+        {/*    <AddActivityList branches={additionalActivityList} /> */}
+        {/*  </div> */}
 
-        {/*)}*/}
+        {/* )} */}
 
       </FieldWrapper>
 

@@ -137,25 +137,6 @@ const Phase = props => {
 
     <BoxUI>
 
-      <div style={{
-        borderBottom: '1px solid rgb(246, 246, 246)',
-        display: 'flex',
-        paddingBottom: '20px',
-        marginBottom: '20px'
-      }}>
-
-        <div style={{
-
-          color: 'rgb(154, 166, 172)',
-          fontWeight: '500',
-          marginRight: '5px'
-        }}> Ariza statusi</div> <div
-          style={{
-            color: 'rgb(103, 112, 230)'
-          }}
-        >{statusText}</div>
-      </div>
-
       <Form
         keepDirtyOnReinitialize={true}
         onSubmit={onCreateApplication}
