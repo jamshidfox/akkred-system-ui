@@ -13,6 +13,7 @@ const Logo = styled('div')`
   color: #fff;
   font-size: 84px;
   font-family: "Aleo", sans-serif;
+  text-align: center;
 `
 const Intro = styled('div')`
   font-size: 10px;
@@ -30,8 +31,8 @@ const Login = props => {
   return (
     <Wrapper>
       <LogoWrap>
-        <Logo>E-Accred</Logo>
-        <Intro>Application management system</Intro>
+        <Logo>Akkreditatsiya</Logo>
+        <Intro>avtomatlashtirilgan axborot tizimi</Intro>
       </LogoWrap>
       <FinalForm onSubmit={onLogin}>
         <LoginFields />

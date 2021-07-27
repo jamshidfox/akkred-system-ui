@@ -9,7 +9,7 @@ import { Box as BoxUI } from '~/components/StyledElems'
 
 const Box = styled(BoxUI)`
   box-shadow: 0 16px 24px rgba(8, 35, 48, 0.16);
-  width: 430px;
+  //width: 430px;
   padding: 56px;
 `
 const Fields = styled('div')`
@@ -25,13 +25,6 @@ const Actions = styled('div')`
   display:flex;
   justify-content: space-between;
   margin-top: 40px;
-`
-const Forgot = styled('div')`
-  color: ${props => props.theme.color.basic.default};
-  cursor:pointer;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
 `
 const SubmitButton = styled(MediumButton)`
   width: 120px;

@@ -129,7 +129,7 @@ export default [
     name: 'Xodimlar',
     url: ROUTES.EMPLOYEES_LIST_URL,
     icon: People,
-    perms: ['some_perms'],
+    perms: ['headHr'],
   },
   {
     name: 'Lavozimlar',

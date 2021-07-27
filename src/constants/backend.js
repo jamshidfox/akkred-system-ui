@@ -12,6 +12,7 @@ const getFormattedListData = list => ({
 export const standardList = getFormattedListData([
   { id: '17020', name: '(O‘z DSt ISO/IEC 17020:2019) Inspeksiya organi' },
   { id: '17021', name: '(O‘z DSt ISO/IEC 17021:2015) Menejment tizimlarini sertifikatlashtirish organi' },
+  { id: '17024', name: '(O‘z DSt ISO/IEC 17024:2009) Xodimlarni sertifikatlashtirish ' },
   { id: '17065', name: '(O‘z DSt ISO/IEC 17065:2015 ) Mahsulot va xizmatlarni sertifikatlashtirish organi' },
   { id: '17025SL', name: '(O‘z DSt ISO/IEC 17025:2019) Sinov laboratoriyalari' },
 ])
@@ -31,8 +32,17 @@ export const answerMonthList = getFormattedListData([
 ])
 
 export const answerList = getFormattedListData([
-  { id: 'yes', name: 'ha' },
-  { id: 'no', name: 'yo’q' }
+  { id: 'yes', name: 'Ha' },
+  { id: 'no', name: 'Yo’q' }
+])
+
+export const answerYearList = getFormattedListData([
+  { id: 'require', name: 'talablarga binoan' },
+  { id: 'once', name: 'yiliga 1marta' },
+  { id: 'two_times', name: 'yiliga 2 marta' },
+  { id: 'three_times', name: 'yiliga 3 marta' },
+  { id: 'four_times', name: 'yiliga 4 marta' },
+  { id: 'more_four_times', name: '4 martadan ortiq' },
 ])
 
 export const ANSWER_MONTH_LIST = [
@@ -585,7 +595,6 @@ export const stepName = getFormattedListData([
   },
 
 ])
-
 
 export const stageName = getFormattedListData([
   {

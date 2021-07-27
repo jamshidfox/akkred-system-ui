@@ -2,7 +2,7 @@ import React from 'react'
 import { equals, includes, prop } from 'ramda'
 import { Table, TableRow } from '../../../components/Table'
 import { PageRowTitle } from '../../../components/UI'
-import { standardList, applicationList, answerList, answerMonthList } from '../../../constants/backend'
+import { standardList, applicationList, answerList, answerMonthList,answerYearList } from '../../../constants/backend'
 import { FieldWrapper } from '../../../components/StyledElems'
 import { BranchList } from './Branch'
 import { OfficeList } from './Office'
@@ -33,12 +33,24 @@ const ApplicationApplicationDetail = props => {
   const certificationAccreditation = prop('certificationAccreditation', initialValues)
   const certificationField = prop('certificationField', initialValues)
   const accreditedByAnother = prop('accreditedByAnother', initialValues)
+  const assessmentAgency = prop('assessmentAgency', initialValues)
+  const certificateAgency = prop('certificateAgency', initialValues)
+  const educationalInstitution = prop('educationalInstitution', initialValues)
+  const inManufacture = prop('inManufacture', initialValues)
+  const anotherPlace = prop('anotherPlace', initialValues)
+  const howOftenExam = prop('howOftenExam', initialValues)
 
   const typeApplicationText = applicationList.object[typeApplication]
   const typeStandardText = standardList.object[typeStandard]
   const managementAnalysisText = answerList.object[managementAnalysis]
   const managementSystemText = answerMonthList.object[managementSystem]
   const internalAuditText = answerList.object[internalAudit]
+
+  const certificateAgencyText = answerList.object[certificateAgency]
+  const educationalInstitutionText = answerList.object[educationalInstitution]
+  const inManufactureText = answerList.object[inManufacture]
+  const anotherPlaceText = answerList.object[anotherPlace]
+  const howOftenExamText = answerYearList.object[howOftenExam]
 
   const BranchOfficeDisplayList = ['17020', '17021', '17024', '17025', '17065']
   const showBranchOffice = includes(typeStandard, BranchOfficeDisplayList)
@@ -52,6 +64,7 @@ const ApplicationApplicationDetail = props => {
   const ActivityCertificationDisplayList = ['17021', '17024', '17065']
   const showActivityCertification = includes(typeStandard, ActivityCertificationDisplayList)
   const show17065Fields = equals(typeStandard, '17065')
+  const show17024Fields = equals(typeStandard, '17024')
 
   const tableApplication =
     <Table
@@ -103,6 +116,55 @@ const ApplicationApplicationDetail = props => {
         <TableRow >
           <td colSpan={6}>Laboratoriya akkreditatsiyadan oʻtganmi? Agarda ha boʻlsa, akkreditatsiya toʻgʻrisidagi guvohnoma raqamini korsating</td>
           <td colSpan={18}>{isAkkred}</td>
+        </TableRow>
+
+      )}
+
+
+      {show17024Fields && (
+        <TableRow >
+          <td colSpan={6}>Sizning baholashingiz qayerda oʻtkaziladi?</td>
+          <td colSpan={18}>{assessmentAgency}</td>
+        </TableRow>
+
+      )}
+
+      {show17024Fields && (
+        <TableRow >
+          <td colSpan={6}>Sertifikatlashtirish organidami?</td>
+          <td colSpan={18}>{certificateAgencyText}</td>
+        </TableRow>
+
+      )}
+
+      {show17024Fields && (
+        <TableRow >
+          <td colSpan={6}>Ta’lim muassasasidami?</td>
+          <td colSpan={18}>{educationalInstitutionText}</td>
+        </TableRow>
+
+      )}
+
+      {show17024Fields && (
+        <TableRow >
+          <td colSpan={6}>Ishlab chiqarishdami?</td>
+          <td colSpan={18}>{inManufactureText}</td>
+        </TableRow>
+
+      )}
+
+      {show17024Fields && (
+        <TableRow >
+          <td colSpan={6}>Boshqa joylardami?</td>
+          <td colSpan={18}>{anotherPlaceText}</td>
+        </TableRow>
+
+      )}
+
+      {show17024Fields && (
+        <TableRow >
+          <td colSpan={6}>Imtixonlar qanday oraliqda oʻtkaziladi?</td>
+          <td colSpan={18}>{howOftenExamText}</td>
         </TableRow>
 
       )}
