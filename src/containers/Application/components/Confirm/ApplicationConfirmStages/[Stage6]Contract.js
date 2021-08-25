@@ -29,16 +29,60 @@ const Row = styled(RowUI)`
   margin-bottom: 40px;
 `
 
-const listDocument = [
+const listNameContract = [
 
   {
-    id:'one',
-    name:'100',
+    id:'menejment tizimlarini sertifikatlashtirish organi hujjatlarini ekspertiza qilish',
+    name:'menejment tizimlarini sertifikatlashtirish organi hujjatlarini ekspertiza qilish',
   },
   {
-    id:'two',
-    name:'15/85',
-  }
+    id:'Yukni ortishdan oldin va tushirish vaqtidagi inspeksiyani o‘tkazuvchi inspeksiya organi hujjatlarini ekspertiza qilish',
+    name:'Yukni ortishdan oldin va tushirish vaqtidagi inspeksiyani o‘tkazuvchi inspeksiya organi hujjatlarini ekspertiza qilish',
+  },
+  {
+    id:'qiyoslash laboratoriyasi hujjatlarni ekspertiza qilish',
+    name:'qiyoslash laboratoriyasi hujjatlarni ekspertiza qilish'
+  },
+  {
+    id:'sinov laboratoriyasi hujjatlarini ekspertiza qilish',
+    name:'sinov laboratoriyasi hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'putur yetkazmasdan tekshirish laboratoriyasi hujjatlarini ekspertiza qilish',
+    name:'putur yetkazmasdan tekshirish laboratoriyasi hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'sinov laboratoriyalar majmuasi  hujjatlarini ekspertiza qilish',
+    name:'sinov laboratoriyalar majmuasi  hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'maxsulotlarni sertifikatlashtirish organi hujjatlarini ekspertiza qilish',
+    name:'maxsulotlarni sertifikatlashtirish organi hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'xizmatlarni sertifikatlashtirish organi hujjatlarini ekspertiza qilish',
+    name:'xizmatlarni sertifikatlashtirish organi hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'metrologiya xizmati (kalibrlash laboratoriyasi) hujjatlarini ekspertiza qilish',
+    name:'metrologiya xizmati (kalibrlash laboratoriyasi) hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'mutaxassislarni sertifikatlashtirish organi  hujjatlarini ekspertiza qilish',
+    name:'mutaxassislarni sertifikatlashtirish organi  hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'sinov markazi hujjatlarini ekspertiza qilish',
+    name:'sinov markazi hujjatlarini ekspertiza qilish'
+  },
+  {
+    id:'mahsulotlarini sertifikatlashtirish organi materiallarini dolzarblashtirish',
+    name:'mahsulotlarini sertifikatlashtirish organi materiallarini dolzarblashtirish'
+  },
+  {
+    id:'sinov laboratoriyasi materiallarini dolzarblashtirish',
+    name:'sinov laboratoriyasi materiallarini dolzarblashtirish'
+  },
 
 ]
 
@@ -57,7 +101,8 @@ const ConfirmStageContract = ({ onSubmit }) => {
                   <Field
                     name="name"
                     label="Tovar (ish, xizmat)lar nomi"
-                    component={InputField}
+                    component={UniversalStaticSelectField}
+                    list={listNameContract}
 
                   />
                 </Col>

@@ -15,6 +15,8 @@ import {
 import TextArea from '../../../components/UI/TextArea/TextArea'
 import FileUploadField from '../../../components/FormField/File/FileUploadField'
 import * as API from '~/constants/api'
+import UniversalMultiSelectField from '../../../components/FormField/Select/UniversalMultiSelectField'
+import { TYPE_STANDARD_LIST } from '../../../constants/api'
 
 export const fields = [
   'username',
@@ -27,6 +29,7 @@ export const fields = [
   'middleName',
   'role',
   'resume',
+  'typeStandard',
 ]
 
 const BoxUI = styled(Box)`
@@ -97,6 +100,17 @@ const ReservationCreate = props => {
                 </Col>
                 <Col span={8}>
                   <Field name="middleName" label="Otasini ismi" component={InputField} />
+                </Col>
+              </Row>
+
+              <Row gutter={24}>
+                <Col span={8}>
+                  <Field
+                    name="typeStandard"
+                    label="Подкатегория"
+                    api={API.TYPE_STANDARD_LIST}
+                    component={UniversalMultiSelectField}
+                  />
                 </Col>
               </Row>
 

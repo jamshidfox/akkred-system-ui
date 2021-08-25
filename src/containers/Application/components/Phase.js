@@ -42,7 +42,7 @@ const WaitButton = styled(MediumButton)`
 const Phase = props => {
   const { id, stage, historyStage, initialValues, rejectModal, histories, } = props
   const status = prop('status', initialValues)
-  const statusText = registryStatus.object[status]
+  const executor = prop('executor', initialValues)
   const stepText = stepName.object[stage]
 
   const onCreateApplication = () => {
@@ -184,13 +184,25 @@ const Phase = props => {
               <Row gutter={24}>
 
                 <Col span={18}>
-                  <PageTitle name="Arizani ijro etish bosqichlari" />
+                  <div style={{
+                    display: 'flex',
+                    justifyContent:'space-between'
+                  }}>
+                    <PageTitle name="Arizani ijro etish bosqichlari" />
+                    {executor && (
+                      <div> <strong> Ijrochi</strong>:  {executor.firstName && executor.firstName} {executor.lastName && executor.lastName} {executor.middleName && executor.middleName} - {executor.username && executor.username}</div>
+
+                    )}
+
+                    <div />
+
+                  </div>
                   {tableDoc}
 
                 </Col>
                 {histories.length > 0 && (
                   <Col span={6}>
-                    <PageTitle name="Rad sabablari " />
+                    <PageTitle name="Rad sabablari" />
                     {tableHistoryReject}
 
                   </Col>

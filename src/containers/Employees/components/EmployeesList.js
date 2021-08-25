@@ -75,18 +75,18 @@ const EmployeesList = props => {
         }
       },
 
-      {
-        name: 'O\'chirish',
-        onClick: () => deleteModal.onSubmit(client.id)
-      },
-      {
-        name:'Show Error',
-        onClick:() =>
-          showToast({
-            title: 'Удалено',
-            message: 'Данные удалены',
-          })
-      }
+      // {
+      //   name: 'O\'chirish',
+      //   onClick: () => deleteModal.onSubmit(client.id)
+      // },
+      // {
+      //   name:'Show Error',
+      //   onClick:() =>
+      //     showToast({
+      //       title: 'Удалено',
+      //       message: 'Данные удалены',
+      //     })
+      // }
     ]
 
     // Render

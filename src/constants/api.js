@@ -1,5 +1,5 @@
-export const DOMAIN_URL = 'http://localhost:8000'
-// export const DOMAIN_URL = 'https://e.akkred.uz:8081'
+// export const DOMAIN_URL = 'http://localhost:8000'
+export const DOMAIN_URL = 'https://e.akkred.uz:8081'
 export const API_URL = `${DOMAIN_URL}`
 
 const MAIN = 'main'
@@ -35,6 +35,9 @@ export const ROLE_CREATE = `/${ROLE}/`
 export const ROLE_UPDATE = `/${ROLE}/%d/`
 export const ROLE_ITEM = `/${ROLE}/%d/`
 export const ROLE_DELETE = `/${ROLE}/%d/`
+
+export const TYPE_STANDARD = `${MAIN}/type_standards`
+export const TYPE_STANDARD_LIST = `/${TYPE_STANDARD}/`
 
 export const GROUP = `${MAIN}/group`
 export const GROUP_LIST = `/${GROUP}/`
@@ -145,9 +148,6 @@ export const REESTR_ITEM = `/${REESTR}/%d/`
 
 export const TEMPLATE = `${MAIN}/templates`
 export const TEMPLATE_LIST = `/${TEMPLATE}/`
-
-
-
 
 export const TEMPLATE_DOCUMENT_LIST = `${MAIN}/templates/`
 export const TEMPLATE_DOCUMENT_CREATE = `${TEMPLATE_DOCUMENT_LIST}`

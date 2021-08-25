@@ -5,7 +5,8 @@ import { PageRowTitle } from '../../../components/UI'
 
 const ApplicationInfoDetail = props => {
   const { clientInfo } = props
-  const legalEntityFullName = prop('legalEntityFullName', clientInfo)
+  const legalEntityName = prop('legalEntityName', clientInfo)
+  const leaderEntityFullName = prop('leaderEntityFullName', clientInfo)
   const objectFullName = prop('objectFullName', clientInfo)
   const objectLegalAddress = prop('objectLegalAddress', clientInfo)
   const objectFactAddress = prop('objectFactAddress', clientInfo)
@@ -27,7 +28,7 @@ const ApplicationInfoDetail = props => {
     >
       <TableRow>
         <td colSpan={6}>Yuridik shaxsning to‘liq nomi</td>
-        <td colSpan={18}>{legalEntityFullName} </td>
+        <td colSpan={18}>{legalEntityName} </td>
       </TableRow>
       <TableRow>
         <td colSpan={6}>Akkreditatsiya obyektining to‘liq nomi</td>
@@ -66,7 +67,7 @@ const ApplicationInfoDetail = props => {
       </TableRow>
       <TableRow>
         <td colSpan={10}>Rahbar yuridik shaxsining F.I.Sh.</td>
-        <td colSpan={14}>{legalEntityFullName}</td>
+        <td colSpan={14}>{leaderEntityFullName}</td>
       </TableRow>
 
       <TableRow>

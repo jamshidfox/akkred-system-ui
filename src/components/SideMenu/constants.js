@@ -167,12 +167,6 @@ export default [
     icon: Settings,
     children: [
       {
-        name: 'Ma`qullash hujjatlari',
-        url: 'https://akkred.uz/documents?parents=7',
-        outside:true,
-
-      },
-      {
         name: 'Akkreditasiya hujjatlari',
         url: 'https://akkred.uz/documents?parents=1',
         outside:true,

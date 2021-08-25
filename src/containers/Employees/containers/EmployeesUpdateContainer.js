@@ -23,6 +23,7 @@ const getInitialValues = (data) => {
     phoneNumber: prop('phoneNumber', data),
     lastName: prop('lastName', data),
     firstName: prop('firstName', data),
+    typeStandard: prop('typeStandard', data),
   })
 }
 
