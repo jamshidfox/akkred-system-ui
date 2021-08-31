@@ -97,6 +97,11 @@ export const makeRootReducer = asyncReducers => {
     [STATE.TEMPLATE_DOCUMENT_CREATE]: createThunkReducer(actionTypes.TEMPLATE_DOCUMENT_CREATE),
     [STATE.TEMPLATE_DOCUMENT_UPDATE]: createThunkReducer(actionTypes.TEMPLATE_DOCUMENT_UPDATE),
     [STATE.TEMPLATE_DOCUMENT_ITEM]: createThunkReducer(actionTypes.TEMPLATE_DOCUMENT_ITEM),
+
+    [STATE.TECHNICAL_EXPERT_LIST]: createThunkReducer(actionTypes.TECHNICAL_EXPERT_LIST),
+    [STATE.TECHNICAL_EXPERT_CREATE]: createThunkReducer(actionTypes.TECHNICAL_EXPERT_CREATE),
+    [STATE.TECHNICAL_EXPERT_UPDATE]: createThunkReducer(actionTypes.TECHNICAL_EXPERT_UPDATE),
+    [STATE.TECHNICAL_EXPERT_ITEM]: createThunkReducer(actionTypes.TECHNICAL_EXPERT_ITEM),
     ...asyncReducers
   })
 }

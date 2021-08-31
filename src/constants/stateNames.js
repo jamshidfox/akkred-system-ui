@@ -9,6 +9,12 @@ export const CLIENT_CREATE = 'clientCreate'
 export const CLIENT_ITEM = 'clientItem'
 export const CLIENT_DELETE = 'clientDelete'
 
+export const TECHNICAL_EXPERT_LIST = 'technicalExpertList'
+export const TECHNICAL_EXPERT_UPDATE = 'technicalExpertUpdate'
+export const TECHNICAL_EXPERT_CREATE = 'technicalExpertCreate'
+export const TECHNICAL_EXPERT_ITEM = 'technicalExpertItem'
+export const TECHNICAL_EXPERT_DELETE = 'technicalExpertDelete'
+
 export const APPLICATION_LIST = 'applicationList'
 export const APPLICATION_LIST_ALL = 'applicationListAll'
 export const APPLICATION_UPDATE = 'applicationUpdate'

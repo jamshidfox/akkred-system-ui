@@ -16,9 +16,12 @@ export const EMPLOYEES_CREATE_URL = `/${SETTINGS}/${EMPLOYEES}/create`
 export const EMPLOYEES_LIST_PATH = `/${SETTINGS}/${EMPLOYEES}/${ID}`
 export const EMPLOYEES_UPDATE_URL = `/${SETTINGS}/${EMPLOYEES}/%d`
 
-export const PARTNERS = 'partners'
-export const PARTNERS_LIST_URL = `/${SETTINGS}/${PARTNERS}/`
-export const PARTNERS_UPDATE_URL = `/${SETTINGS}/${PARTNERS}/%d`
+export const TECHNICAL_EXPERT = 'technical_experts'
+export const TECHNICAL_EXPERT_TYPE_LIST = `/${SETTINGS}/${TECHNICAL_EXPERT}/`
+export const TECHNICAL_EXPERT_LIST_URL = `/${SETTINGS}/${TECHNICAL_EXPERT}/`
+export const TECHNICAL_EXPERT_CREATE_URL = `/${SETTINGS}/${TECHNICAL_EXPERT}/create`
+export const TECHNICAL_EXPERT_LIST_PATH = `/${SETTINGS}/${TECHNICAL_EXPERT}/${ID}`
+export const TECHNICAL_EXPERT_UPDATE_URL = `/${SETTINGS}/${TECHNICAL_EXPERT}/%d`
 
 export const ROLE = 'roles'
 export const ROLE_LIST_URL = `/${ROLE}/`

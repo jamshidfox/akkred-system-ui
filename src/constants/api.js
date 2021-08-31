@@ -14,6 +14,12 @@ export const EMPLOYEES_UPDATE = `${EMPLOYEES_LIST}%d/`
 export const EMPLOYEES_ITEM = `${EMPLOYEES_LIST}%d/`
 export const EMPLOYEES_DELETE = `${EMPLOYEES_LIST}%d/`
 
+export const TECHNICAL_EXPERT_LIST = `${MAIN}/technical_experts/`
+export const TECHNICAL_EXPERT_CREATE = `${TECHNICAL_EXPERT_LIST}`
+export const TECHNICAL_EXPERT_UPDATE = `${TECHNICAL_EXPERT_LIST}%d/`
+export const TECHNICAL_EXPERT_ITEM = `${TECHNICAL_EXPERT_LIST}%d/`
+export const TECHNICAL_EXPERT_DELETE = `${TECHNICAL_EXPERT_LIST}%d/`
+
 export const AUTH = 'auth'
 export const AUTH_ACCESS_TOKEN = `/${AUTH}/access-token/`
 export const AUTH_REFRESH_TOKEN = `/${AUTH}/refresh-token/`

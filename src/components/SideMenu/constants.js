@@ -10,6 +10,7 @@ import Welcome from '../../icons/Welcome'
 import Globe from '../../icons/Globe'
 import Person from '../../icons/pack/Person'
 import BarChart from '../../icons/BarChart'
+import { TECHNICAL_EXPERT } from '../../constants/routes'
 
 export default [
   {
@@ -124,6 +125,12 @@ export default [
     url: ROUTES.REESTR_LIST_URL,
     perms: ['executor'],
     icon: BarChart,
+  },
+  {
+    name: 'Texnik mutaxassislar',
+    url: ROUTES.TECHNICAL_EXPERT_LIST_URL,
+    icon: People,
+    perms: ['headHr'],
   },
   {
     name: 'Xodimlar',
