@@ -29,13 +29,11 @@ const TechnicalExpertsList = props => {
   const loading = prop('loading', list)
   const count = path(['data', 'count'], list)
   const linkAction = 'create'
-  const onDelete = () => {}
 
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={6}>login</th>
-      <th colSpan={8}>F.I.O</th>
-      <th colSpan={8}>Lavozim</th>
+      <th colSpan={12}>F.I.O</th>
+      <th colSpan={12}>Ish joyi</th>
       <th />
     </TableRow>
   const tableActions = (
@@ -50,9 +48,10 @@ const TechnicalExpertsList = props => {
   const tableList = data.map(client => {
     const {
       id,
-      firstName,
+      fullName,
       lastName,
-      email,
+      firstName,
+      middleName,
       job,
     } = client
 
@@ -67,10 +66,10 @@ const TechnicalExpertsList = props => {
         }
       },
 
-      // {
-      //   name: 'O\'chirish',
-      //   onClick: () => deleteModal.onSubmit(client.id)
-      // },
+      {
+        name: 'O\'chirish',
+        onClick: () => deleteModal.onSubmit(client.id)
+      },
       // {
       //   name:'Show Error',
       //   onClick:() =>
@@ -87,9 +86,8 @@ const TechnicalExpertsList = props => {
         key={id}
         // onClick={handleRedirect}
       >
-        <td colSpan={6}>{email} </td>
-        <td colSpan={8}>{firstName} {lastName}</td>
-        <td colSpan={8}>{job && job}</td>
+        <td colSpan={12}>{lastName} {firstName} {middleName}</td>
+        <td colSpan={12}>{job && job}</td>
         <DropdownMore
           moreList={moreList}
         />

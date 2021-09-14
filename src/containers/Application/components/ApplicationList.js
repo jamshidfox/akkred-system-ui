@@ -66,8 +66,9 @@ const ApplicationList = props => {
       <th colSpan={2}>Nomer</th>
       <th colSpan={8}>Yuridik shaxsning to‘liq nomi</th>
       <th colSpan={6}>Manzili</th>
-      <th colSpan={4}>Pochta</th>
-      <th colSpan={3}>Status</th>
+      <th colSpan={2}>Pochta</th>
+      <th colSpan={2}>Status</th>
+      <th colSpan={2}>Qolgan kun</th>
       <th />
     </TableRow>
 
@@ -78,7 +79,7 @@ const ApplicationList = props => {
       objectFullName,
       objectFactAddress,
       objectEmail,
-      status,
+      deadlineDate,
       stage,
       registerDate,
     } = application
@@ -112,10 +113,23 @@ const ApplicationList = props => {
         <td colSpan={8}>{objectFullName}</td>
 
         <td colSpan={6}>{objectFactAddress}</td>
-        <td colSpan={4}>{objectEmail}</td>
-        <td colSpan={3}><Status color={statusColor}>
+        <td colSpan={2}>{objectEmail}</td>
+
+        <td colSpan={2}><Status color={statusColor}>
           {statusText}
         </Status> </td>
+        <td colSpan={2}>
+
+          {deadlineDate < 2
+            ? (<Status color={'red'}>
+              {deadlineDate}
+            </Status>)
+            : (<Status color={'green'}>
+              {deadlineDate}
+            </Status>)
+          }
+        </td>
+
         <DropdownMore
           moreList={moreList}
         />

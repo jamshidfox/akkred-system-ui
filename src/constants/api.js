@@ -55,15 +55,8 @@ export const GROUP_DELETE = `/${GROUP}/%d/`
 export const PERMISSION = `${MAIN}/permission`
 export const PERMISSION_LIST = `/${PERMISSION}/`
 
-export const ROOM_TYPE = 'hotels/rooms_category'
-export const ROOM_TYPE_LIST = `/${ROOM_TYPE}/`
-
-export const ROOM_DELETE = 'hotels/rooms_category/%d/'
-
 export const HOTEL_ATTRACTION_TYPE = `hotels/attractions_type`
 export const HOTEL_ATTRACTION_TYPE_LIST = `/${HOTEL_ATTRACTION_TYPE}/`
-
-const CLIENTS = 'clients'
 
 export const CLIENT = `${MAIN}/clients`
 export const CLIENT_LIST = `/${CLIENT}/`

@@ -5,13 +5,14 @@ import {
   Form,
 } from '../../../components/FormField'
 import { Box } from '../../../components/StyledElems'
-import { MediumButton, PageTitle, SecondarySmallButton } from '../../../components/UI'
+import { MediumButton, PageTitle } from '../../../components/UI'
 
 import { Table, TableRow } from '../../../components/Table'
-import { historyStatus, registryStatus, stepName } from '../../../constants/backend'
+import { historyStatus, stepName } from '../../../constants/backend'
 import { Col, Row } from '../../../components/Grid'
 import PermissionButton from './PermissionButton'
 import RejectCreateModal from './RejectCreateModal'
+import ApplicationPhaseDetail from './ApplicationPhaseDetail'
 
 const BoxUI = styled(Box)`
   padding: 25px;
@@ -40,9 +41,10 @@ const WaitButton = styled(MediumButton)`
 `
 
 const Phase = props => {
-  const { id, stage, historyStage, initialValues, rejectModal, histories, } = props
+  const { id, stage, historyStage, initialValues, rejectModal, histories, clientInfo } = props
   const status = prop('status', initialValues)
   const executor = prop('executor', initialValues)
+  const deadlineDate = prop('deadlineDate', initialValues)
   const stepText = stepName.object[stage]
 
   const onCreateApplication = () => {
@@ -93,6 +95,7 @@ const Phase = props => {
     <Table
       isEmpty={isEmpty(historyStage)}
     >
+      <PageTitle name="Arizani ijro etish bosqichlari" />
       {tableHeadDoc}
       {tableDocList}
     </Table>
@@ -184,19 +187,8 @@ const Phase = props => {
               <Row gutter={24}>
 
                 <Col span={18}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent:'space-between'
-                  }}>
-                    <PageTitle name="Arizani ijro etish bosqichlari" />
-                    {executor && (
-                      <div> <strong> Ijrochi</strong>:  {executor.firstName && executor.firstName} {executor.lastName && executor.lastName} {executor.middleName && executor.middleName} - {executor.username && executor.username}</div>
 
-                    )}
-
-                    <div />
-
-                  </div>
+                  <ApplicationPhaseDetail executor={executor} clientInfo={clientInfo} initialValues={initialValues} />
                   {tableDoc}
 
                 </Col>

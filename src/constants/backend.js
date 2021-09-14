@@ -16,6 +16,7 @@ export const standardList = getFormattedListData([
   { id: '17065', name: '(O‘z DSt ISO/IEC 17065:2015 ) Mahsulot va xizmatlarni sertifikatlashtirish organi' },
   { id: '17025SL', name: '(O‘z DSt ISO/IEC 17025:2019) Sinov laboratoriyalari' },
   { id: '3444', name: '(O‘z DSt 3444:2020) Oʻlchash vositalarni qiyoslash metrologiya xizmati/laboratoriyasi' },
+  { id: '17025KL', name: '(O‘z DSt ISO/IEC 17025:2019) Kalibrlash laboratoriyasi' },
 ])
 
 export const STANDART_LIST = [
@@ -26,6 +27,7 @@ export const STANDART_LIST = [
   { id: '17065', name: '(O‘z DSt ISO/IEC 17065:2015 ) Mahsulot va xizmatlarni sertifikatlashtirish organi' },
   { id: '17025SL', name: '(O‘z DSt ISO/IEC 17025:2019) Sinov laboratoriyalari' },
   { id: '3444', name: '(O‘z DSt 3444:2020) Oʻlchash vositalarni qiyoslash metrologiya xizmati/laboratoriyasi' },
+  { id: '17025KL', name: '(O‘z DSt ISO/IEC 17025:2019)  Kalibrlash laboratoriyasi' },
   // { id: '17024', name: '(O‘z DSt ISO/IEC 17024:2009) Xodimlarni sertifikatlashtirish organlari' },
   // { id: '17025', name: '(O‘z DSt ISO/IEC 17025:2019) Putur yetkazmasdan tekshirish laboratoriyasini' },
   // { id: '17043', name: '(O‘z DSt ISO/IEC 17043:2015) Malakani tekshirish provayderi' },
@@ -437,8 +439,16 @@ export const stepName = getFormattedListData([
     name:'Rahbariyatga kiritish',
   },
   {
+    id:'expertise_request_to_experts',
+    name:'Ekspertlaga so`rov ',
+  },
+  {
     id:'expertise_confirm_experts_center',
     name:'Baholash guruhini imzolash',
+  },
+  {
+    id:'expertise_sign_experts_client',
+    name: 'Buyurtmachi tomonidan imzolanis'
   },
   {
     id:'expertise_create_contract_audit',
@@ -651,6 +661,14 @@ export const stageName = getFormattedListData([
   {
     id:'expertise_confirm_experts_department',
     name:'Kadrlar bo’limi bilan kelishish',
+  },
+  {
+    id:'expertise_request_to_experts',
+    name:'Ekspertlaga so`rov ',
+  },
+  {
+    id:'expertise_sign_experts_client',
+    name: 'Buyurtmachi tomonidan imzolanish'
   },
   {
     id:'expertise_confirm_experts_hr',

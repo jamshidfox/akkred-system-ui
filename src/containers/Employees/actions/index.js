@@ -48,6 +48,7 @@ export const employeesDeleteAction = id => {
 }
 
 export const employeesFetchList = params => {
+  params = { ...params, employee: '0' }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
       .get(API.EMPLOYEES_LIST, { params })

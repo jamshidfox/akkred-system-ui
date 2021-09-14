@@ -105,7 +105,7 @@ const ApplicationTabs = props => {
         initialValue={'stage'}
       >
         <Tab value={'stage'} label={'Bosqich'}>
-          <Phase id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} isExpertise={isExpertise} rejectModal={rejectModal} expertRejectModal={expertRejectModal} histories={histories} />
+          <Phase clientInfo={clientInfo} id={id} stage={stage} initialValues={initialValues} historyStage={historyStage} isExpertise={isExpertise} rejectModal={rejectModal} expertRejectModal={expertRejectModal} histories={histories} />
         </Tab>
 
         <Tab value={'info'} label={'Yuridik shaxs to’g’risida ma’lumot'}>

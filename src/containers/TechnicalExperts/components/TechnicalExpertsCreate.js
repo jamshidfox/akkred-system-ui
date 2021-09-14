@@ -18,11 +18,11 @@ import * as API from '~/constants/api'
 export const fields = [
   'email',
   'password',
-  'email',
-  'phoneNumber',
+  'middleName',
   'lastName',
   'firstName',
-  'middleName',
+  'email',
+  'phoneNumber',
   'genderType',
   'dateOfBirth',
   'job',
@@ -53,15 +53,15 @@ const ReservationCreate = props => {
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <Row gutter={24}>
+              {/* <Row gutter={24}> */}
 
-                <Col span={12}>
-                  <Field name="email" label="Login" component={InputField} />
-                </Col>
-                <Col span={12}>
-                  <Field name="password" label="Parol" component={InputField} />
-                </Col>
-              </Row>
+              {/* <Col span={12}> */}
+              {/*   <Field name="email" label="Login" component={InputField} /> */}
+              {/* </Col> */}
+              {/* <Col span={12}> */}
+              {/*   <Field name="password" label="Parol" component={InputField} /> */}
+              {/* </Col> */}
+              {/* </Row> */}
 
               <Row gutter={24}>
                 <Col span={8}>
@@ -105,7 +105,7 @@ const ReservationCreate = props => {
                 <Col span={8}>
                   <Field
                     name="typeStandard"
-                    label="Подкатегория"
+                    label="Akkreditatsiya sxemasi"
                     api={API.TYPE_STANDARD_LIST}
                     component={UniversalMultiSelectField}
                   />
