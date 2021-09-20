@@ -707,6 +707,10 @@ export const stageName = getFormattedListData([
     name:'B-ekspertlarni tanlash',
   },
   {
+    id:'expertise_expertise_start',
+    name:'Ekspertiza',
+  },
+  {
     id:'audit_confirm_experts_department',
     name:'Kadrlar bo’limi bilan kelishish',
   },
