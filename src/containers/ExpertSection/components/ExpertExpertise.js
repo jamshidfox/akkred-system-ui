@@ -41,12 +41,14 @@ const ExpertExpertiseCreate = props => {
   const statusAssignment = prop('statusAssignment', initialValues)
   const status = prop('status', initialValues)
   const assignment = prop('assignment', initialValues)
+  const expert = prop('expert', initialValues)
+  const firstName = prop('firstName', expert) || '-'
+  const lastName = prop('lastName', expert) || '-'
+  const middleName = prop('middleName', expert) || '-'
 
   const applicationText = applicationList.object[typeApplication]
   const standardText = standardList.object[typeStandard]
   const answerText = answerTypeList.object[answerType]
-
-
 
   const tableDetail =
     <Table
@@ -57,10 +59,8 @@ const ExpertExpertiseCreate = props => {
           <td colSpan={18}>
             <a style={{
               color: 'blue'
-            }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>Ariza №{id}/{application.registerDate}</a></td>
-
+            }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>№ AK-{application.applicationNumber && application.applicationNumber}-21</a></td>
         )}
-
       </TableRow>
       <TableRow>
         <td colSpan={6}>Ariza turi </td>
@@ -73,6 +73,11 @@ const ExpertExpertiseCreate = props => {
 
       </TableRow>
 
+      <TableRow>
+        <td colSpan={6}>Ijrochi</td>
+        <td colSpan={18}>{firstName} {lastName} {middleName}</td>
+
+      </TableRow>
       <TableRow>
         <td colSpan={6}>So`rov javobi</td>
         <td colSpan={18}>{answerText}</td>
@@ -102,7 +107,6 @@ const ExpertExpertiseCreate = props => {
         </TableRow>
 
       )}
-
 
       {statusAssignment === 'done' && (
 

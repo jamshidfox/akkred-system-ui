@@ -65,7 +65,7 @@ const ExpertsList = props => {
     </Table>
   return (
     <>
-      <AddBtn onClick={() => serviceModal.onOpen()}>Qo'shish</AddBtn>
+      <AddBtn onClick={() => serviceModal.onOpen()}>Ijrochilar Qo'shish</AddBtn>
       {table}
 
     </>

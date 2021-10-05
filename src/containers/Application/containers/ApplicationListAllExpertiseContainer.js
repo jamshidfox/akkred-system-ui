@@ -2,31 +2,25 @@ import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import * as STATE from '../../../constants/stateNames'
-import { useFetchList, useFilterActions, useDelete } from '../../../hooks'
+import { useFetchList, useFilterActions } from '../../../hooks'
 import ApplicationList from '../components/ApplicationList'
 import { fields } from '../components/CommentListFilterForm'
-import { applicationExpertiseFetchListAll, applicationDeleteAction } from '../actions'
+import { applicationExpertiseFetchListAll } from '../actions'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 import * as ROUTES from '../../../constants/routes'
 
 // Enhance
 const enhance = compose(connect())
 
+const getListParams = () => ({
+  action: applicationExpertiseFetchListAll,
+  stateName: STATE.APPLICATION_LIST_ALL,
+  pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
+})
+
 // Component
 const ApplicationListAllExpertiseContainer = props => {
-  // FetchList
-  const list = useFetchList({
-    action: applicationExpertiseFetchListAll,
-    stateName: STATE.APPLICATION_LIST_ALL,
-    pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
-  })
-
   // Handlers
-  const deleteAction = useDelete({
-    action: applicationDeleteAction,
-    stateName: STATE.APPLICATION_DELETE,
-    successAction: applicationExpertiseFetchListAll
-  })
 
   const tabsList = [
     {
@@ -40,6 +34,7 @@ const ApplicationListAllExpertiseContainer = props => {
   ]
 
   // FilterActions
+  const list = useFetchList(getListParams())
   const filterActions = useFilterActions({ fields })
 
   // Render
@@ -48,7 +43,6 @@ const ApplicationListAllExpertiseContainer = props => {
       my={'all'}
       list={list}
       filterActions={filterActions}
-      onDelete={deleteAction.onSubmit}
       {...props}
       tabsList={tabsList}
     />

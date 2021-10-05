@@ -42,6 +42,11 @@ const ExpertAuditDetail = props => {
   const addressType = prop('addressType', initialValues)
   const assignment = prop('assignment', initialValues)
 
+  const expert = prop('expert', initialValues)
+  const firstName = prop('firstName', expert) || '-'
+  const lastName = prop('lastName', expert) || '-'
+  const middleName = prop('middleName', expert) || '-'
+
   const applicationText = applicationList.object[typeApplication]
   const standardText = standardList.object[typeStandard]
   const answerText = answerTypeList.object[answerType]
@@ -87,6 +92,12 @@ const ExpertAuditDetail = props => {
       <TableRow>
         <td colSpan={6}>Ijrochi ro`li</td>
         <td colSpan={18}>{typeText}</td>
+
+      </TableRow>
+
+      <TableRow>
+        <td colSpan={6}>Ijrochi</td>
+        <td colSpan={18}>{firstName} {lastName} {middleName}</td>
 
       </TableRow>
 

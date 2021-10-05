@@ -12,14 +12,15 @@ import * as ROUTES from '../../../constants/routes'
 // Enhance
 const enhance = compose(connect())
 
+const getListParams = () => ({
+  action: applicationFetchListAll,
+  stateName: STATE.APPLICATION_LIST_ALL,
+  pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
+})
+
 // Component
 const ApplicationListContainer = props => {
   // FetchList
-  const list = useFetchList({
-    action: applicationFetchListAll,
-    stateName: STATE.APPLICATION_LIST_ALL,
-    pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
-  })
 
   // Handlers
   const deleteAction = useDelete({
@@ -28,7 +29,7 @@ const ApplicationListContainer = props => {
     successAction: applicationFetchListAll
   })
 
-  // FilterActions
+  const list = useFetchList(getListParams())
   const filterActions = useFilterActions({ fields })
 
   const tabsList = [

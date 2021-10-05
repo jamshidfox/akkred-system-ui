@@ -8,7 +8,10 @@ const Executors = props => {
 
   const tableList = executors.map((client, index) => {
     const {
-      fullName,
+      username,
+      firstName,
+      lastName,
+      middleName,
       phoneNumber,
       role,
     } = client
@@ -18,7 +21,7 @@ const Executors = props => {
       <TableRow
         key={index}
       >
-        <td colSpan={8}>{fullName}</td>
+        <td colSpan={8}>{firstName && firstName} {lastName && lastName} {middleName && middleName}({username})</td>
         <td colSpan={8}>{phoneNumber}</td>
         <td colSpan={8}>{role && role.name}</td>
 

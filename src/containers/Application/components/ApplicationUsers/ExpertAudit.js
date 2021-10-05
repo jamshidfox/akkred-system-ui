@@ -1,5 +1,5 @@
 import React from 'react'
-import { isEmpty } from 'ramda'
+import { isEmpty, prop } from 'ramda'
 import { PageRowTitle } from 'components/UI'
 import { Table, TableRow } from '../../../../components/Table'
 
@@ -18,13 +18,18 @@ const ExpertAudit = props => {
 
     } = client
 
+    const username = prop('username', expert) || '-'
+    const firstName = prop('firstName', expert) || '-'
+    const lastName = prop('lastName', expert) || '-'
+    const middleName = prop('middleName', expert) || '-'
+
     // Render
     return (
       <TableRow
         key={index}
       >
 
-        <td colSpan={8}>{expert.fullName}</td>
+        <td colSpan={8}>{firstName} {lastName} {middleName} ({username})</td>
         <td colSpan={8}>{expert.phoneNumber}</td>
         <td colSpan={8}>{expert.role && expert.role.name}</td>
 

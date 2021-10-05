@@ -22,6 +22,7 @@ const getInitialValues = (data) => {
     status: prop('status', data),
     statusAssignment: prop('statusAssignment', data),
     application: prop('application', data),
+    expert: prop('expert', data),
     assignment: path(['assignment', 'file'], data),
     file: path(['file', 'file'], data),
     case: prop('case', data),
@@ -45,6 +46,7 @@ const ExpertDetailContainer = props => {
   const answerModal = useModal({ key: 'answerModal' })
   const initialValues = getInitialValues(data)
   const updateData = useUpdate(getEmployeesUpdateParams())
+  console.warn(initialValues,'initialValues')
 
   const confirmSubmit = values => {
     const newDAta = getSerializedData([

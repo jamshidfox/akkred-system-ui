@@ -20,6 +20,7 @@ const ApplicationPhaseDetail = props => {
   const typeApplication = prop('typeApplication', initialValues)
   const deadlineDate = prop('deadlineDate', initialValues)
   const typeStandard = prop('typeStandard', initialValues)
+  const deadlineStage = prop('deadlineStage', initialValues)
   const typeApplicationText = applicationList.object[typeApplication]
   const typeStandardText = standardList.object[typeStandard]
 
@@ -63,6 +64,11 @@ const ApplicationPhaseDetail = props => {
             {deadlineDate}
           </Status>)
         }</td>
+
+      </TableRow>
+      <TableRow>
+        <td colSpan={6}>Bosqichning oxirgi muddati</td>
+        <td colSpan={18}>{deadlineStage}</td>
 
       </TableRow>
 

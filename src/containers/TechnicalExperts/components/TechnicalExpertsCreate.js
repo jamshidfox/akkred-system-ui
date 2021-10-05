@@ -53,15 +53,15 @@ const ReservationCreate = props => {
         render={({ handleSubmit, values, ...formikProps }) => {
           return (
             <form onSubmit={handleSubmit}>
-              {/* <Row gutter={24}> */}
+              <Row gutter={24}>
 
-              {/* <Col span={12}> */}
-              {/*   <Field name="email" label="Login" component={InputField} /> */}
-              {/* </Col> */}
-              {/* <Col span={12}> */}
-              {/*   <Field name="password" label="Parol" component={InputField} /> */}
-              {/* </Col> */}
-              {/* </Row> */}
+                <Col span={12}>
+                  <Field name="email" label="Login" component={InputField} />
+                </Col>
+                <Col span={12}>
+                  <Field name="password" label="Parol" component={InputField} />
+                </Col>
+              </Row>
 
               <Row gutter={24}>
                 <Col span={8}>

@@ -67,8 +67,8 @@ const ExpertList = props => {
   // TableHead
   const tableHead =
     <TableRow header={true}>
+      <th colSpan={6}>Ijrochi</th>
       <th colSpan={6}>Ariza nomeri</th>
-      <th colSpan={6}>Topshiriq nomeri</th>
       <th colSpan={6}>Status</th>
       <th colSpan={6}>So`rov</th>
       <th />
@@ -81,6 +81,7 @@ const ExpertList = props => {
       application,
       answerType,
       statusAssignment,
+      expert,
       // address,
       // stage
     } = client
@@ -109,8 +110,8 @@ const ExpertList = props => {
       >
         <td colSpan={6}><a style={{
           color: 'blue'
-        }} href={sprintf(ROUTES.EXPERT_EXPERTISE_UPDATE_URL, id)}>Ariza №{application.id}/{application.registerDate}</a> </td>
-        <td colSpan={6}> №{id}/{application.id}/{application.registerDate}</td>
+        }} href={sprintf(ROUTES.EXPERT_EXPERTISE_UPDATE_URL, id)}>{expert.firstName} {expert.lastName} {expert.middleName} ({expert.username})</a> </td>
+        <td colSpan={6}>Ariza № AK-{application.applicationNumber && application.applicationNumber}-21</td>
         <td colSpan={6}><Status color={statusColor}>
           {statusText}
         </Status></td>

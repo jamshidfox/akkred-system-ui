@@ -4,13 +4,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { prop, isEmpty, path, propOr } from 'ramda'
 import Pagination from 'components/Pagination'
-import { Table, TableRow, TableActions } from 'components/Table'
 import Container from 'components/StyledElems/Container'
 import DropdownMore from 'components/Dropdown/more'
 import { sprintf } from 'sprintf-js'
 import styled from 'styled-components'
+import { Table, TableRow, TableActions } from '../../../components/Table'
 import { stageName } from '../../../constants/backend'
 import Tabs from '../../../components/Tabs'
+import { Box } from '../../../components/StyledElems'
 import CommentListFilterForm from './CommentListFilterForm'
 
 const statusColors = {
@@ -25,6 +26,13 @@ const Status = styled('div')`
   display: inline-block;
   line-height: 16px;
   padding: 3px 12px;
+`
+
+const BoxUI = styled(Box)`
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+  padding: 20px 25px 25px;
 `
 
 const ApplicationList = props => {
@@ -82,6 +90,7 @@ const ApplicationList = props => {
       deadlineDate,
       stage,
       registerDate,
+      applicationNumber,
     } = application
 
     const statusText = stageName.object[stage]
@@ -109,7 +118,7 @@ const ApplicationList = props => {
         <td colSpan={1}>{order} </td>
         <td colSpan={2}><a style={{
           color: 'blue'
-        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>Ariza №{id}/{registerDate}</a> </td>
+        }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>AK-{applicationNumber && applicationNumber}-21</a> </td>
         <td colSpan={8}>{objectFullName}</td>
 
         <td colSpan={6}>{objectFactAddress}</td>
@@ -120,7 +129,7 @@ const ApplicationList = props => {
         </Status> </td>
         <td colSpan={2}>
 
-          {deadlineDate < 2
+          {deadlineDate < 1
             ? (<Status color={'red'}>
               {deadlineDate}
             </Status>)

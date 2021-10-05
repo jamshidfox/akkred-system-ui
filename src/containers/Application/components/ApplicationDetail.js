@@ -2,7 +2,7 @@ import React from 'react'
 import { equals, includes, prop } from 'ramda'
 import { Table, TableRow } from '../../../components/Table'
 import { PageRowTitle } from '../../../components/UI'
-import { standardList, applicationList, answerList, answerMonthList,answerYearList } from '../../../constants/backend'
+import { standardList, applicationList, answerList, answerMonthList, answerYearList } from '../../../constants/backend'
 import { FieldWrapper } from '../../../components/StyledElems'
 import { BranchList } from './Branch'
 import { OfficeList } from './Office'
@@ -30,9 +30,9 @@ const ApplicationApplicationDetail = props => {
   const labaratoriya = prop('labaratoriya', initialValues)
   const outsource = prop('outsource', initialValues)
   const isAkkred = prop('isAkkred', initialValues)
-  const certificationAccreditation = prop('certificationAccreditation', initialValues)
-  const certificationField = prop('certificationField', initialValues)
-  const accreditedByAnother = prop('accreditedByAnother', initialValues)
+  const certificationAccreditation = prop('certificationAccreditation', initialValues) || 'Yo`q'
+  const certificationField = prop('certificationField', initialValues) || 'Yo`q'
+  const accreditedByAnother = prop('accreditedByAnother', initialValues) || 'Yo`q'
   const assessmentAgency = prop('assessmentAgency', initialValues)
   const certificateAgency = prop('certificateAgency', initialValues)
   const educationalInstitution = prop('educationalInstitution', initialValues)
@@ -50,6 +50,8 @@ const ApplicationApplicationDetail = props => {
   const educationalInstitutionText = answerList.object[educationalInstitution]
   const inManufactureText = answerList.object[inManufacture]
   const anotherPlaceText = answerList.object[anotherPlace]
+  const labaratoriyaText = answerList.object[labaratoriya]
+  const outsourceText = answerList.object[outsource]
   const howOftenExamText = answerYearList.object[howOftenExam]
 
   const BranchOfficeDisplayList = ['17020', '17021', '17024', '17025', '17065']
@@ -99,7 +101,7 @@ const ApplicationApplicationDetail = props => {
       {show17065Fields && (
         <TableRow >
           <td colSpan={6}>Sertifikatlashtirish organi xususiy laboratoriyaga egami?</td>
-          <td colSpan={18}>{labaratoriya}</td>
+          <td colSpan={18}>{labaratoriyaText}</td>
         </TableRow>
 
       )}
@@ -107,7 +109,7 @@ const ApplicationApplicationDetail = props => {
       {show17065Fields && (
         <TableRow >
           <td colSpan={6}>Sertifikatlashtirish organi jalb etilgan xodimlarga egami?</td>
-          <td colSpan={18}>{outsource}</td>
+          <td colSpan={18}>{outsourceText}</td>
         </TableRow>
 
       )}
@@ -119,7 +121,6 @@ const ApplicationApplicationDetail = props => {
         </TableRow>
 
       )}
-
 
       {show17024Fields && (
         <TableRow >

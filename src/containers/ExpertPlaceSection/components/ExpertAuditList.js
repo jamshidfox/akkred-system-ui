@@ -86,6 +86,7 @@ const ExpertAuditList = props => {
       openDate,
       statusAssignment,
       statusResult,
+      expert,
       answerType
     } = client
 
@@ -115,8 +116,9 @@ const ExpertAuditList = props => {
       >
         <td colSpan={6}><a style={{
           color: 'blue'
-        }} href={sprintf(ROUTES.EXPERT_PLACE_UPDATE_URL, id)}>Ariza №{application.id}/{application.registerDate}</a> </td>
+        }} href={sprintf(ROUTES.EXPERT_PLACE_UPDATE_URL, id)} >{expert.firstName} {expert.lastName} {expert.middleName} ({expert.username})</a></td>
         <td colSpan={6}> №{id}/{openDate}</td>
+        <td colSpan={6}> Ariza № AK-{application.applicationNumber && application.applicationNumber}-21</td>
         <td colSpan={6}><Status color={statusColor}>
           {statusText}
         </Status></td>

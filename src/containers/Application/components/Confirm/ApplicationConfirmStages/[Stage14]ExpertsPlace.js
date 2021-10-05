@@ -55,10 +55,6 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal, o
           return (
             <form onSubmit={handleSubmit}>
 
-              <PageRowTitle name="Dastlabki ijrochilar" />
-
-              <ExpertsListConfirm branches={experts} />
-
               {archiveExpertsAudit.length > 0 && (
                 <div>
                   <PageRowTitle name="Rozi bolmagan Ijrochilar" />
@@ -67,19 +63,6 @@ const ConfirmStageChoiceExpertsPlace = ({ onSubmit, serviceList, serviceModal, o
                 </div>
 
               )}
-
-              <Row gutter={24}>
-
-                <Col span={8}>
-                  <Field
-                    name="leadExpert"
-                    label="Guruh rahbari"
-                    component={UniversalSearchField}
-                    api={API.EMPLOYEES_LIST}
-                  />
-                </Col>
-
-              </Row>
 
               <Label>Joyiga chiqib o’rganish muddati</Label>
 

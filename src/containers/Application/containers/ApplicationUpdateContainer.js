@@ -57,6 +57,7 @@ const getInitialValues = data => {
   return {
 
     id: prop('id', data),
+    deadlineStage: prop('deadlineStage', data),
     internalAudit: prop('internalAudit', data),
     deadlineDate: prop('deadlineDate', data),
     stage: prop('stage', data),

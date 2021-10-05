@@ -9,8 +9,8 @@ const ApplicationClientDocument = props => {
 
   const tableHeadDoc =
     <TableRow header={true}>
-      <th colSpan={8} >Hujjat nomi</th>
       <th colSpan={8} >Turi </th>
+      <th colSpan={8} >Yuklangan hujjat nomi</th>
       <th colSpan={8} >Hujjat </th>
     </TableRow>
 
@@ -30,9 +30,8 @@ const ApplicationClientDocument = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={8}>{name}</td>
         <td colSpan={8}>{statusText}</td>
-
+        <td colSpan={8}>{name}</td>
         <td colSpan={8} style={{
           color: '#0f22ff'
         }}><a style={{

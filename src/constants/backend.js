@@ -121,6 +121,7 @@ export const answerTypeTextList = getFormattedListData([
 export const roleTypeTextList = getFormattedListData([
   { id: 'lead', name: 'Guruh rahbari' },
   { id: 'member', name: 'Guruh a’zosi' },
+  { id: 'expert', name: 'Texnik ekspert' },
   { id: 'ekspert', name: 'Texnik ekspert' },
   { id: 'watcher', name: 'Kuzatuvchi' },
 ])
@@ -128,7 +129,7 @@ export const roleTypeTextList = getFormattedListData([
 export const TYPE_EXPERTS = [
   { id: 'lead', name: 'Guruh rahbari' },
   { id: 'member', name: 'Guruh a’zosi' },
-  { id: 'ekspert', name: 'Texnik ekspert' },
+  { id: 'expert', name: 'Texnik ekspert' },
   { id: 'watcher', name: 'Kuzatuvchi' },
 ]
 

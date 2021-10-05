@@ -118,7 +118,7 @@ export default [
     name: 'Akrreditatsiya komissiyasi bo\'limi ',
     url: ROUTES.COMMISSION_LIST_URL,
     icon: Globe,
-    // perms: ['commission'],
+    perms: ['commission'],
   },
   {
     name: 'Reestr ',
