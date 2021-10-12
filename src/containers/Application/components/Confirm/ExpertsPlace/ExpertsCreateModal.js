@@ -20,6 +20,7 @@ const ExpertsCreateModal = props => {
     onUpdatePlace,
     onSubmit
   } = props
+  const required = value => (value ? undefined : { file: ['This field is required.'], name: ['This field is required.'] })
 
   return (
     <Modal onClose={onClose} open={open} width={'400px'}>
@@ -34,6 +35,7 @@ const ExpertsCreateModal = props => {
                   name={'expert'}
                   label={'Expert'}
                   api={API.EMPLOYEES_LIST}
+                  validate={required}
                 />
               </FieldWrapper>
               <FieldWrapper>
@@ -41,6 +43,7 @@ const ExpertsCreateModal = props => {
                   name="cases"
                   label="Standart bandi "
                   component={InputField}
+                  validate={required}
                 />
               </FieldWrapper>
               <FieldWrapper>
@@ -48,6 +51,7 @@ const ExpertsCreateModal = props => {
                   name="date"
                   label="dan"
                   component={DateField}
+                  validate={required}
                 />
               </FieldWrapper>
 
@@ -56,6 +60,7 @@ const ExpertsCreateModal = props => {
                   name="toDate"
                   label="gacha"
                   component={DateField}
+                  validate={required}
                 />
               </FieldWrapper>
 
@@ -65,6 +70,7 @@ const ExpertsCreateModal = props => {
                   label="Ekspertning roli"
                   component={UniversalStaticSelectField}
                   list={TYPE_EXPERTS}
+                  validate={required}
                 />
               </FieldWrapper>
 
@@ -74,9 +80,9 @@ const ExpertsCreateModal = props => {
                   label="Manzili"
                   component={UniversalStaticSelectField}
                   list={ADDRESS_TYPE}
+                  validate={required}
                 />
               </FieldWrapper>
-
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type="submit">Tanlanash</MediumButton>

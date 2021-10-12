@@ -19,6 +19,7 @@ const ExpertExpertiseCreateModal = props => {
     open,
     onSubmit
   } = props
+  const required = value => (value ? undefined : { file: ['This field is required.'], name: ['This field is required.'] })
 
   return (
     <Modal onClose={onClose} open={open} width={'400px'}>
@@ -33,6 +34,7 @@ const ExpertExpertiseCreateModal = props => {
                   name={'expert'}
                   label={'Expert'}
                   api={API.EMPLOYEES_LIST}
+                  validate={required}
                 />
               </FieldWrapper>
 
@@ -42,6 +44,7 @@ const ExpertExpertiseCreateModal = props => {
                   label="Ekspertning roli"
                   component={UniversalStaticSelectField}
                   list={TYPE_EXPERTS}
+                  validate={required}
                 />
               </FieldWrapper>
 
@@ -50,25 +53,25 @@ const ExpertExpertiseCreateModal = props => {
                   component={FileUploadField}
                   name={'assignment'}
                   label={'hujjat '}
+                  validate={required}
                 />
               </FieldWrapper>
-
-
 
               <FieldWrapper>
                 <Field
                   component={InputField}
                   name={'direction'}
                   label={'Menedjment tizimi hujjatlariga va akkreditatsiya sohasiga asosan jalb etiladigan baholash yoʼnalishi '}
+                  validate={required}
                 />
               </FieldWrapper>
-
 
               <FieldWrapper>
                 <Field
                   component={InputField}
                   name={'standard'}
                   label={'Meʼyoriy huquqiy hujjat va standart talablari'}
+                  validate={required}
                 />
               </FieldWrapper>
 

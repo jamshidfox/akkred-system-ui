@@ -115,7 +115,7 @@ const ApplicationList = props => {
         key={id}
       >
 
-        <td colSpan={1}>{order} </td>
+        <td colSpan={1}>{id} </td>
         <td colSpan={2}><a style={{
           color: 'blue'
         }} href={sprintf(ROUTES.APPLICATION_UPDATE_URL, id)}>AK-{applicationNumber && applicationNumber}-21</a> </td>

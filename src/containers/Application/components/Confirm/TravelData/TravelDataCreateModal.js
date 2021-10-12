@@ -15,6 +15,9 @@ const TravelDataCreateModal = props => {
     onSubmit
   } = props
 
+  const required = value => (value ? undefined : { file: ['This field is required.'], name: ['This field is required.'] })
+
+
   return (
     <Modal onClose={onClose} open={open} width={'400px'}>
       <Form
@@ -27,6 +30,7 @@ const TravelDataCreateModal = props => {
                   name={'name'}
                   label={'Tovar (ish, xizmat)lar nomi'}
                   component={InputField}
+                  validate={required}
 
                 />
               </FieldWrapper>
@@ -37,6 +41,7 @@ const TravelDataCreateModal = props => {
                   label="O‘lchov birligi"
                   component={UniversalStaticSelectField}
                   list={typeContractCount}
+                  validate={required}
                 />
 
               </FieldWrapper>
@@ -46,6 +51,7 @@ const TravelDataCreateModal = props => {
                   name="count"
                   label="Miqdori"
                   component={InputField}
+                  validate={required}
                 />
               </FieldWrapper>
 
@@ -54,6 +60,7 @@ const TravelDataCreateModal = props => {
                   name="price"
                   label="Narxi"
                   component={InputField}
+                  validate={required}
                 />
               </FieldWrapper>
               <div style={{ textAlign: 'right' }}>
