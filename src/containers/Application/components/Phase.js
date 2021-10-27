@@ -8,7 +8,7 @@ import { Box } from '../../../components/StyledElems'
 import { MediumButton, PageTitle } from '../../../components/UI'
 
 import { Table, TableRow } from '../../../components/Table'
-import { historyStatus, stepName } from '../../../constants/backend'
+import { historyStatus, stepName, stageName } from '../../../constants/backend'
 import { Col, Row } from '../../../components/Grid'
 import PermissionButton from './PermissionButton'
 import RejectCreateModal from './RejectCreateModal'
@@ -45,7 +45,7 @@ const Phase = props => {
   const status = prop('status', initialValues)
   const executor = prop('executor', initialValues)
   const deadlineDate = prop('deadlineDate', initialValues)
-  const stepText = stepName.object[stage]
+  const stepText = stageName.object[stage]
 
   const onCreateApplication = () => {
 
@@ -159,7 +159,7 @@ const Phase = props => {
                 ) : (
 
                   <div>
-                    {stage === 'new_sign_by_client' || stage === 'expertise_sign_contract_audit_client' || stage === 'audit_sign_plan_client' || stage === 'commission_vote_participants' || stage === 'post_sign_post_client'
+                    {stage === 'new_sign_by_client' || stage === 'expertise_sign_contract_audit_client' || stage === 'audit_sign_plan_client' || stage === 'commission_vote_participants' || stage === 'post_sign_post_client' || stage === 'new_pay_by_client' || stage === 'expertise_pay_contract_audit_client'
                       ? (<PassButton >
                         <WaitButton onClick={waitModalOpen()}>{stepText}</WaitButton>
                       </PassButton>)

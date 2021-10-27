@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Perms from '../../../components/Perms/Perms'
 import * as ROUTES from '../../../constants/routes'
 import { MediumButton, SecondarySmallButton } from '../../../components/UI/Buttons'
-import { stepName } from '../../../constants/backend'
+import { stepName, stageName } from '../../../constants/backend'
 
 const caseManager = 'caseManager'
 const executor = 'executor'
@@ -42,7 +42,7 @@ const PermissionButton = props => {
   var expertHeadPersonal = 'audit_' + n
   var listExecutor = [executorPersonal, executor]
   var listExpertHead = [expertHeadPersonal, expertHead]
-  const stepText = stepName.object[stage]
+  const stepText = stageName.object[stage]
 
   switch (stage) {
   case 'new_register_application':

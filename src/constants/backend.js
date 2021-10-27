@@ -424,6 +424,10 @@ export const stepName = getFormattedListData([
     name:'Buyurtmachini javobini kutish',
   },
   {
+    id:'new_pay_by_client',
+    name:'Buyurtmachini to`lovini kutish',
+  },
+  {
     id:'new_confirm_payment',
     name:'E-to’lovni tekshirish',
   },
@@ -652,6 +656,10 @@ export const stageName = getFormattedListData([
     name:'Buyurtmachini javobini kutish',
   },
   {
+    id:'new_pay_by_client',
+    name:'Buyurtmachini to`lovini kutish',
+  },
+  {
     id:'new_confirm_payment',
     name:'E-to’lovni tekshirish',
   },
@@ -682,6 +690,10 @@ export const stageName = getFormattedListData([
   {
     id:'expertise_create_contract_audit',
     name:'Ekspertiza xulosasi va b-shartnomani rasmiylashtirish',
+  },
+  {
+    id: 'expertise_pay_contract_audit_client',
+    name: 'To’lov'
   },
   {
     id:'expertise_confirm_contract_audit_department',

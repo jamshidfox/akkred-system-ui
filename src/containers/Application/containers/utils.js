@@ -37,4 +37,5 @@ export const mapExpertsPlace = (item) => toSnakeCase({
   assignment:path(['assignment', 'id'], item),
   type:path(['type', 'id'], item),
   address_type:path(['address', 'id'], item),
+  standard:prop('standard', item),
 })

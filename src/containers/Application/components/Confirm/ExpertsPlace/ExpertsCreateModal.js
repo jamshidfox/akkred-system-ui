@@ -40,7 +40,7 @@ const ExpertsCreateModal = props => {
               </FieldWrapper>
               <FieldWrapper>
                 <Field
-                  name="cases"
+                  name="standard"
                   label="Standart bandi "
                   component={InputField}
                   validate={required}
