@@ -41,8 +41,6 @@ const ApplicationConfirmCommand = props => {
             <form onSubmit={handleSubmit}>
               <PageRowTitle name="Buyruq" />
 
-
-
               <Row gutter={24}>
                 <Col span={24}>
                   <Field
