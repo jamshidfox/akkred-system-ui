@@ -2,7 +2,6 @@ import React from 'react'
 import Layouts, { LoginLayout } from '../components/Layouts'
 import * as ROUTES from '../constants/routes'
 import UIs from './UIs'
-import Example from './example'
 import Login from './Login'
 import Register from './Register'
 import ClientInfo from './ClientInfo'
@@ -53,12 +52,6 @@ const tester = () => [
     path: ROUTES.SETTINGS_CLIENT_INFO_URL,
     layout: Layouts,
     component: ClientInfo
-  },
-  {
-    exact: true,
-    path: '/',
-    layout: Layouts,
-    component: Example
   },
   {
     exact: true,

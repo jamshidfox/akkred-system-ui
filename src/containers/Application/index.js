@@ -1,7 +1,6 @@
 import * as ROUTES from '../../constants/routes'
 import Layouts from '../../components/Layouts/Layout'
 
-import ApplicationCreateContainer from './containers/ApplicationCreateContainer'
 import ApplicationListContainer from './containers/ApplicationListContainer'
 import ApplicationExpertiseListContainer from './containers/ApplicationExpertiseListContainer'
 import ApplicationAuditListContainer from './containers/ApplicationAuditListContainer'
@@ -20,12 +19,6 @@ export default () => [
     path: ROUTES.APPLICATION_UPDATE_PATH,
     layout: Layouts,
     component: ApplicationUpdateContainer,
-  },
-  {
-    exact: true,
-    path: ROUTES.APPLICATION_CREATE_URL,
-    layout: Layouts,
-    component: ApplicationCreateContainer
   },
   {
     exact: true,

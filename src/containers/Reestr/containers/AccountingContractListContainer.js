@@ -27,8 +27,6 @@ const AccountingContractListContainer = props => {
     successAction: applicationFetchList
   })
 
-
-
   // FilterActions
   const filterActions = useFilterActions({ fields })
 
