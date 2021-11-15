@@ -7,7 +7,6 @@ import { templateDocumentFetchList, templateDocumentDeleteAction } from '../acti
 import TemplateDocumentList from '../components/TemplateDocumentList'
 import { DEFAULT_PICK_PARAMS } from '../../../utils/isEquals'
 import { fields } from '../../Employees/components/EmployeesListFilterForm'
-import ApplicationList from "../../Application/components/ApplicationList";
 // Enhance
 const enhance = compose(connect())
 const getRoomListParams = () => ({

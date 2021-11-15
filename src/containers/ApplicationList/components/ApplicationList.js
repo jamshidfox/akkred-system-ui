@@ -12,7 +12,7 @@ import { Table, TableRow, TableActions } from '../../../components/Table'
 import { stageName } from '../../../constants/backend'
 import Tabs from '../../../components/Tabs'
 import { Box } from '../../../components/StyledElems'
-import CommentListFilterForm from './CommentListFilterForm'
+import CommentListFilterForm from './EmployeesListFilterForm'
 
 const statusColors = {
   my:'red',

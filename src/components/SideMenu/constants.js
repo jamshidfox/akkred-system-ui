@@ -10,7 +10,7 @@ import Welcome from '../../icons/Welcome'
 import Globe from '../../icons/Globe'
 import Person from '../../icons/pack/Person'
 import BarChart from '../../icons/BarChart'
-import { TECHNICAL_EXPERT } from '../../constants/routes'
+import { APPLICATION_ALL_NEW_LIST_URL, TECHNICAL_EXPERT } from '../../constants/routes'
 
 export default [
   {
@@ -150,12 +150,12 @@ export default [
     icon: CreditCard,
     perms: ['admin'],
   },
-  // {
-  //   name: 'Hujjatlar',
-  //   url: ROUTES.TEMPLATE_DOCUMENT_LIST_URL,
-  //   icon: People,
-  //   perms: ['admin'],
-  // },
+  {
+    name: 'APPLICATION_ALL_NEW_LIST_URL',
+    url: ROUTES.APPLICATION_ALL_NEW_LIST_URL,
+    icon: People,
+    perms: ['admin'],
+  },
 
   {
     name:'Ishlar narhini hisoblash',

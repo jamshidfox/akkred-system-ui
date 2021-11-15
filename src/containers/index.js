@@ -19,8 +19,10 @@ import AccountingContractPlace from './AccountingContractPlace'
 import Reestr from './Reestr'
 import templateDocument from './TemplateDocument'
 import technicalExperts from './TechnicalExperts'
+import applicationList from './ApplicationList'
 
 const tester = () => [
+  ...applicationList(),
   ...technicalExperts(),
   ...templateDocument(),
   ...client(),
