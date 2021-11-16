@@ -11,6 +11,13 @@ import ApplicationCommissionMyListContainer from './containers/Commission/Applic
 import ApplicationCommissionListContainer from './containers/Commission/ApplicationCommissionListContainer'
 
 export default () => [
+
+  {
+    exact: true,
+    path: '/',
+    layout: Layouts,
+    component: ApplicationNewListContainer
+  },
   {
     exact: true,
     path: ROUTES.APPLICATION_ALL_LIST_URL,
