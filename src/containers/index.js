@@ -14,8 +14,6 @@ import expertSection from './ExpertSection'
 import reAuditExpertSection from './ReAuditExpertSection'
 import ExpertPlaceSection from './ExpertPlaceSection'
 import Commission from './Commission'
-import AccountingContract from './AccountingContract'
-import AccountingContractPlace from './AccountingContractPlace'
 import Reestr from './Reestr'
 import templateDocument from './TemplateDocument'
 import technicalExperts from './TechnicalExperts'
@@ -34,8 +32,6 @@ const tester = () => [
   ...expertSection(),
   ...ExpertPlaceSection(),
   ...Commission(),
-  ...AccountingContract(),
-  ...AccountingContractPlace(),
   ...Reestr(),
   {
     exact: true,
