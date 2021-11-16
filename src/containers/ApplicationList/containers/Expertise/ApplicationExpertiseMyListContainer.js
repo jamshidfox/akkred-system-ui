@@ -7,12 +7,12 @@ import ApplicationList from '../../components/ApplicationList'
 import { DEFAULT_PICK_PARAMS } from '../../../../utils/isEquals'
 import { fields } from '../../../Employees/components/EmployeesListFilterForm'
 import * as ROUTES from '../../../../constants/routes'
-import { applicationAuditMyFetchList } from '../../actions'
+import { applicationExpertiseMyFetchList } from '../../actions'
 
 // Enhance
 const enhance = compose(connect())
 const getRoomListParams = () => ({
-  action: applicationAuditMyFetchList,
+  action: applicationExpertiseMyFetchList,
   stateName: STATE.APPLICATION_LIST,
   pickParams: [...DEFAULT_PICK_PARAMS, ...fields]
 })

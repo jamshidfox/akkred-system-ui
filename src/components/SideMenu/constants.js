@@ -5,12 +5,10 @@ import Document from '../../icons/Document'
 import Calendar from '../../icons/Calendar'
 import Chess from '../../icons/Chess'
 import CreditCard from '../../icons/CreditCard'
-import Triangle from '../../icons/Triangle'
 import Welcome from '../../icons/Welcome'
 import Globe from '../../icons/Globe'
 import Person from '../../icons/pack/Person'
 import BarChart from '../../icons/BarChart'
-import { APPLICATION_ALL_NEW_LIST_URL, TECHNICAL_EXPERT } from '../../constants/routes'
 
 export default [
   {
@@ -150,13 +148,6 @@ export default [
     icon: CreditCard,
     perms: ['admin'],
   },
-  {
-    name: 'APPLICATION_ALL_NEW_LIST_URL',
-    url: ROUTES.APPLICATION_ALL_NEW_LIST_URL,
-    icon: People,
-    perms: ['admin'],
-  },
-
   {
     name:'Ishlar narhini hisoblash',
     icon: Calendar,
