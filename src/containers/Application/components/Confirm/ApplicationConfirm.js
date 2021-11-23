@@ -33,6 +33,7 @@ import ReAuditCreateOrder from './ApplicationConfirmStages/ReAuditCreateOrder'
 import ReAuditAcceptOrder from './ApplicationConfirmStages/ReAuditAcceptOrder'
 import ReAuditSignOrderCenter from './ApplicationConfirmStages/ReAuditSignOrderCenter'
 import ReAuditEndAudit from './ApplicationConfirmStages/ReAuditEndAudit'
+import CommissionSendParticipants from './ApplicationConfirmStages/CommissionSendParticipants'
 
 const ApplicationConfirm = props => {
   const { onSubmit, stage,
@@ -51,7 +52,10 @@ const ApplicationConfirm = props => {
     travelDataList,
     onSuccess,
     onDeleteExpert,
-    onUpdatePlace
+    onUpdatePlace,
+    commissionModal,
+    commissionList,
+    onDeleteCommission,
   } = props
   switch (stage) {
   case 'new_register_application':
@@ -153,6 +157,10 @@ const ApplicationConfirm = props => {
   case 'audit_accept_audit_result':
     return (
       <ConfirmAudit onSubmit={onSubmit} initialValues={initialValues} text={'Tasdiqlash'} />
+    )
+  case 'commission_send_participants':
+    return (
+      <CommissionSendParticipants onSubmit={onSubmit} commissionModal={commissionModal} commissionList={commissionList} onDeleteCommission={onDeleteCommission} />
     )
   case 'commission_create_protocol':
     return (

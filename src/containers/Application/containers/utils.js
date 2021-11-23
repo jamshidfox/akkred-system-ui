@@ -39,3 +39,8 @@ export const mapExpertsPlace = (item) => toSnakeCase({
   address_type:path(['address', 'id'], item),
   standard:prop('standard', item),
 })
+export const mapCommissions = (item) => toSnakeCase({
+
+  commission:path(['commission', 'id'], item),
+
+})

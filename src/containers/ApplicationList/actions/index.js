@@ -4,6 +4,7 @@ import axios, {
   getPayloadFromError,
   getPayloadFromSuccess
 } from '../../../utils/axios'
+import { APPLICATION_LIST_ALL } from '../../../constants/api'
 
 export const applicationFetchMyList = params => {
   params = { ...params, status_stage: '0' }
@@ -54,7 +55,7 @@ export const applicationExpertiseAllFetchList = params => {
   params = { ...params, all: 'true', status_stage: '1' }
   return (dispatch, getState) => {
     const payload = axios({ getState, dispatch })
-      .get(API.APPLICATION_LIST, { params })
+      .get(API.APPLICATION_LIST_ALL, { params })
       .then(getPayloadFromSuccess)
       .catch(getPayloadFromError)
 

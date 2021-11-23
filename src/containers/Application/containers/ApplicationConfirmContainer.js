@@ -16,12 +16,12 @@ import ApplicationConfirm from '../components/Confirm/ApplicationConfirm'
 import * as ROUTES from '../../../constants/routes'
 import * as STATE from '../../../constants/stateNames'
 import ApplciationTabs from '../components/ApplciationTabs'
-import { mapBranches, mapDocument, mapExperts, mapExpertsPlace, mapTravelData } from './utils'
+import { mapBranches, mapCommissions, mapDocument, mapExperts, mapExpertsPlace, mapTravelData } from './utils'
 
 const getClientItemParams = (onComplete) => ({
   action: clientFetchItem,
   stateName: STATE.APPLICATION_ITEM,
-  onComplete:onComplete
+  onComplete: onComplete
 })
 
 const getInitialValues = data => {
@@ -62,8 +62,10 @@ const ApplicationConfirmContainer = props => {
   const dispatch = useDispatch()
   const expertModal = useModal({ key: 'expertModal' })
   const placeModal = useModal({ key: 'placeModal' })
+  const commissionModal = useModal({ key: 'commissionModal' })
 
   const [expertList, setExpertList] = useState(EMPTY_ARR)
+  const [commissionList, setCommissionList] = useState(EMPTY_ARR)
   const [documentList, setDocumentList] = useState(EMPTY_ARR)
   const [expertPlaceList, setExpertPlaceList] = useState(EMPTY_ARR)
   const [travelDataList, setTravelDataList] = useState(EMPTY_ARR)
@@ -148,6 +150,28 @@ const ApplicationConfirmContainer = props => {
     placeModal.onClose()
   }
 
+  const onAddCommission = place => {
+    setCommissionList([...commissionList, place])
+    commissionModal.onClose()
+  }
+  const onUpdateCommission = (branch) => {
+    commissionList.forEach((element, index) => {
+      if (element.expert.id === branch.expert.id) {
+        commissionList.splice(index, 1, branch)
+      }
+    })
+    commissionModal.onClose()
+  }
+
+  const onDeleteCommission = (branch) => {
+    commissionList.forEach((element, index) => {
+      if (element.id === branch.id) {
+        commissionList.splice(index, 1)
+      }
+    })
+    commissionModal.onClose()
+  }
+
   const params = useParams()
 
   const { data } = useFetchItem(getClientItemParams(onComplete))
@@ -157,7 +181,7 @@ const ApplicationConfirmContainer = props => {
 
   const onSuccess = (...datas) => {
     const data = {
-      text:[ ...datas ]
+      text: [...datas]
     }
 
     dispatch(applicationConfirmAction(params.id, data))
@@ -170,6 +194,7 @@ const ApplicationConfirmContainer = props => {
     const travelData = map(mapTravelData, travelDataList)
     const experts = map(mapExperts, expertList)
     const expertsPlace = map(mapExpertsPlace, expertPlaceList)
+    const commissions = map(mapCommissions, commissionList)
     const file = path(['file', 'id'], values)
     const privacy = path(['privacy', 'id'], values)
     const noticeFinal = path(['noticeFinal', 'id'], values)
@@ -228,21 +253,22 @@ const ApplicationConfirmContainer = props => {
     const data = {
       ...newDAta,
       experts,
-      documents_audits:documents,
-      experts_place:expertsPlace,
-      notice_final:noticeFinal,
-      travel_data:travelData,
+      documents_audits: documents,
+      experts_place: expertsPlace,
+      notice_final: noticeFinal,
+      travel_data: travelData,
       file,
-      post_accred:postAccred,
-      privacy:privacy,
-      list_attendees:listAttendees,
-      observation_map:observationMap,
-      non_conformities:nonConformities,
-      group_report:groupReport,
-      document_one:documentOne,
-      document_two:documentTwo,
-      document_three:documentThree,
-      lead_expert:leadExpert,
+      commissions,
+      post_accred: postAccred,
+      privacy: privacy,
+      list_attendees: listAttendees,
+      observation_map: observationMap,
+      non_conformities: nonConformities,
+      group_report: groupReport,
+      document_one: documentOne,
+      document_two: documentTwo,
+      document_three: documentThree,
+      lead_expert: leadExpert,
     }
     confirmModal.onClose()
     dispatch(applicationConfirmAction(params.id, data))
@@ -258,6 +284,7 @@ const ApplicationConfirmContainer = props => {
       initialValues={initialValues}
       application={params.id}
       placeList={expertPlaceList}
+      commissionList={commissionList}
 
       documentModal={{ ...documentModal, onSubmit: onAddDocument }}
       onDeleteDocument={onDeleteDocument}
@@ -267,8 +294,12 @@ const ApplicationConfirmContainer = props => {
       onDeleteTravelData={onDeleteTravelData}
       travelDataList={travelDataList}
 
-      expertModal={{ ...expertModal, onSubmit: onAddExpert, onUpdateExpert:onUpdateExpert }}
+      expertModal={{ ...expertModal, onSubmit: onAddExpert, onUpdateExpert: onUpdateExpert }}
+
+      commissionModal={{ ...commissionModal, onSubmit: onAddCommission, onUpdateCommission: onUpdateCommission }}
+
       onDeleteExpert={onDeleteExpert}
+      onDeleteCommission={onDeleteCommission}
       placeModal={{ ...placeModal, onSubmit: onAddPlace }}
       onUpdatePlace={onUpdatePlace}
       onDeletePlace={onDeletePlace}

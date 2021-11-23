@@ -63,10 +63,11 @@ const ApplicationList = props => {
   // TableHead
   const tableHead =
     <TableRow header={true}>
-      <th colSpan={8}>Ariza</th>
-      <th colSpan={6}>Status</th>
-      <th colSpan={3}>Yuridik shaxsning to‘liq nomi</th>
-      <th colSpan={4}>Sana</th>
+      <th colSpan={6}>Ariza</th>
+      <th colSpan={6}>Yuridik shaxsning to‘liq nomi</th>
+      <th colSpan={8}>Sana</th>
+      <th colSpan={3}>Status</th>
+
       <th />
     </TableRow>
 
@@ -76,6 +77,7 @@ const ApplicationList = props => {
       id,
       answerType,
       application,
+      commission,
 
     } = client
 
@@ -99,13 +101,15 @@ const ApplicationList = props => {
       <TableRow
         key={id}
       >
-        <td colSpan={6}>Ariza №{application && application.id}/{ application && application.registerDate}</td>
+        <td colSpan={6}>Ariza № AK-{application.applicationNumber && application.applicationNumber}-21</td>
 
-        <td colSpan={8}><Status color={statusColor}>
+        <td colSpan={6}>{application.name}</td>
+        <td colSpan={8}><a style={{
+          color: 'blue'
+        }} href={sprintf(ROUTES.COMMISSION_UPDATE_URL, id)}>{commission.firstName} {commission.lastName} {commission.middleName} ({commission.username})</a> </td>
+        <td colSpan={3}><Status color={statusColor}>
           {statusText}
         </Status></td>
-        <td colSpan={3}>{application.name}</td>
-        <td colSpan={4}>{application && application.registerDate}</td>
         <DropdownMore
           moreList={moreList}
         />
@@ -134,7 +138,6 @@ const ApplicationList = props => {
   // Render
   return (
     <Container>
-      {/* {tabs} */}
       {table}
       {pagination}
     </Container>
@@ -144,7 +147,6 @@ const ApplicationList = props => {
 ApplicationList.propTypes = {
   list: PropTypes.object,
   filterActions: PropTypes.object
-  // onDelete: PropTypes.func
 }
 
 export default ApplicationList

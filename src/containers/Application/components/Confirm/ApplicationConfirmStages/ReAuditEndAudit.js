@@ -151,8 +151,8 @@ const ReAuditEndAudit = props => {
               </Row>
 
               {/*<Label>Qo'shimcha hujjatlar</Label>*/}
-              {/*<DocumentList document={documentList} serviceModal={documentModal} onDeleteDocument={onDeleteDocument} />*/}
-              {/*<DocumentCreateModal {...documentModal} />*/}
+              {/*<CommissionList document={documentList} serviceModal={documentModal} onDeleteDocument={onDeleteDocument} />*/}
+              {/*<CommissionCreateModal {...documentModal} />*/}
 
               <div style={{ textAlign: 'right' }}>
                 <MediumButton type={'submit'}>Tasdiqlash</MediumButton>
