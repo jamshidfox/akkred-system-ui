@@ -14,6 +14,7 @@ const headDepartment = 'headDepartment'
 const headHr = 'headHr'
 const accountant = 'accountant'
 const director = 'director'
+const secretary = 'secretary'
 
 const AddBtn = styled(SecondarySmallButton)`
   height: 36px;
@@ -537,7 +538,7 @@ const PermissionButton = props => {
   case 'commission_send_participants':
     return (
       <Perms
-        perms={listExecutor}
+        perms={[secretary]}
       >
         <WrapperBtn>
           <LinkBtn

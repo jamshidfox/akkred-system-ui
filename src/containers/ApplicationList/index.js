@@ -63,13 +63,13 @@ export default () => [
     exact: true,
     path: ROUTES.APPLICATION_ACCRED_URL,
     layout: Layouts,
-    component: ApplicationCommissionListContainer
+    component: ApplicationCommissionMyListContainer
   },
 
   {
     exact: true,
     path: ROUTES.APPLICATION_ALL_COMMISSION_URL,
     layout: Layouts,
-    component: ApplicationCommissionMyListContainer
+    component: ApplicationCommissionListContainer
   },
 ]
