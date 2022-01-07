@@ -8,7 +8,8 @@ import theme from './constants/theme'
 import AuthLayout from './components/Layouts/AuthLayout'
 import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
 const App = ({ routes, store }) => {
   return (
     <Provider store={store}>

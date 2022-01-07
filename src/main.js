@@ -5,6 +5,7 @@ import { setObservableConfig } from 'react-fc'
 import createStore from './etc/store'
 import './root.css'
 
+
 setObservableConfig({
   // Converts a plain ES observable to an RxJS 6 observable
   fromESObservable: from

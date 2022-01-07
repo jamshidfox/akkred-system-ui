@@ -39,6 +39,16 @@ export const CLIENT_CREATE_URL = `/${CLIENT}/create`
 export const CLIENT_UPDATE_URL = `/${CLIENT}/%d`
 export const CLIENT_UPDATE_PATH = `/${CLIENT}/${ID}/`
 
+const DASHBOARD = 'dashboard'
+export const DASHBOARD_ = `/${DASHBOARD}`
+export const DASHBOARD_APPLICATION = `/${DASHBOARD}/application`
+export const DASHBOARD_PAYMENTS = `/${DASHBOARD}/payments`
+export const DASHBOARD_LISTS = `/${DASHBOARD}/lists`
+export const DASHBOARD_SIGNITURES = `/${DASHBOARD}/signutares`
+export const DASHBOARD_AKKREDATIONS = `/${DASHBOARD}/akkredations`
+
+
+
 const APPLICATION = 'application'
 export const APPLICATION_LIST_URL = `/${APPLICATION}/`
 export const APPLICATION_EXPERTISE_URL = `/${APPLICATION}/expertise`

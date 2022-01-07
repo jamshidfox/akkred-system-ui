@@ -20,7 +20,6 @@ import {
   isEmpty,
   not
 } from 'ramda'
-
 const parseParams = url => {
   const [, search] = split('?', url)
   const searchToObject = pipe(

@@ -49,15 +49,19 @@ const Menu = props => {
     const isActiveTab = tabs.find(({ url }) => url === pathname)
     const isOpen = `${openSubmenus}` === `${index}`
     const hasPerms = !isEmpty(perms)
-
     if ((isSubActiveTab || isSubActive) && openSubmenus === null) {
       setOpenSubmenus(`${index}`)
     }
 
     // Handlers
-    const handleToggleSubMenus = () => !isOpen
+    const handleToggleSubMenus = () =>{
+      !isOpen
       ? setOpenSubmenus(`${index}`)
       : (`${openSubmenus}` === `${index}`) && setOpenSubmenus('')
+      if(url === '/dashboard'){
+        // window.location.pathname = url
+      }
+    }
 
     // MenuItem
     const menuItem =
@@ -72,12 +76,12 @@ const Menu = props => {
 
     // MenuItemWithChildren
     const menuItemWithChildren =
-      <>
+    <>
         <MenuItem
           pathname={pathname}
+          url={url}
           withChildren={true}
           outside={outside}
-          url={url}
           smart={!open}
           isOpen={isOpen}
           onClick={handleToggleSubMenus}

@@ -18,12 +18,14 @@ import Reestr from './Reestr'
 import templateDocument from './TemplateDocument'
 import technicalExperts from './TechnicalExperts'
 import applicationList from './ApplicationList'
+import dashboard from "./DashBoard"
 
 const tester = () => [
   ...applicationList(),
   ...technicalExperts(),
   ...templateDocument(),
   ...client(),
+  ...dashboard(),
   ...employees(),
   ...roles(),
   ...applications(),

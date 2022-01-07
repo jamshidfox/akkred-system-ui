@@ -20,6 +20,8 @@ const Text = styled('span')`
 `
 
 const ItemAkkred = styled('a')`
+  text-decoration: none;
+  color: black;
   position: relative;
   display: flex;
   flex-flow: row nowrap;
@@ -80,6 +82,8 @@ const ItemAkkred = styled('a')`
 `
 
 const Item = styled(Link)`
+  text-decoration: none;
+  color: black;
   position: relative;
   display: flex;
   flex-flow: row nowrap;
@@ -155,10 +159,10 @@ const MenuItem = props => {
     disabled,
     ...rest
   } = props
-
   // Render
 
   if (!outside) {
+    console.log(smart)
     return (
       <Item
         to={withChildren ? '#' : url}

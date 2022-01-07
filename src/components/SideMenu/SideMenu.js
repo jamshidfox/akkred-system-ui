@@ -33,7 +33,7 @@ const Box = styled('div')`
   border-radius: ${({ theme }) => theme.borderRadius.primary};
   box-shadow: ${({ theme }) => theme.boxShadow.primary};
   transition: ${({ theme }) => theme.transition.primary};
-`
+  `
 const MenuList = styled('div')`
   max-height: calc(100vh - 30px - 79px - 82px);
   overflow-y: scroll;

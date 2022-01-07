@@ -2,6 +2,7 @@ import * as ROUTES from '../../constants/routes'
 import People from '../../icons/People'
 import Settings from '../../icons/Settings'
 import Document from '../../icons/Document'
+import Dashboard from '../../icons/Dashboard'
 import Calendar from '../../icons/Calendar'
 import Chess from '../../icons/Chess'
 import CreditCard from '../../icons/CreditCard'
@@ -11,6 +12,32 @@ import Person from '../../icons/pack/Person'
 import BarChart from '../../icons/BarChart'
 
 export default [
+  {
+    name: 'Dashboard',
+    icon: Dashboard,
+    children: [
+      {
+        name: 'Dashboard',
+        url: ROUTES.DASHBOARD_
+      },
+      {
+        name: 'Arizalar ',
+        url: ROUTES.DASHBOARD_APPLICATION
+      },
+      {
+        name: `Shartnomalar`,
+        url: ROUTES.DASHBOARD_PAYMENTS
+      },
+      {
+        name: 'Ro’yhatlar ',
+        url: ROUTES.DASHBOARD_LISTS
+      },
+      // {
+      //   name: 'Akkreditatsiya ',
+      //   url: ROUTES.DASHBOARD_AKKREDATIONS
+      // },
+    ]
+  },
   {
     name: 'Arizalar',
     icon: Document,

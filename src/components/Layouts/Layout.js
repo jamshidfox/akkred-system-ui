@@ -33,7 +33,6 @@ const Layout = ({ children }) => {
 
   // States
   const [isOpenMenu, setIsOpenMenu] = useState(isOpenMenuInitial)
-
   // Render
   return (
     <>
