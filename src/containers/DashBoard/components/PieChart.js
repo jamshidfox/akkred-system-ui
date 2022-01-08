@@ -30,7 +30,7 @@ const SimplePieChart = props => {
   }
 
   return (
-    <Card>
+    <Card className='h-100'>
         <div className='p-3'>
           <CardTitle tag='h4'>Akkreditatsiya</CardTitle>
           <small className='text-muted'>Akkreditatsiya bo'yicha barcha malumo'tlar</small>
