@@ -155,7 +155,7 @@ const ChartjsLineChart = () => {
       }
     }
   ]
-
+// Updated
   return (
     <div>
         <div className='d-flex justify-content-between w-100'>
