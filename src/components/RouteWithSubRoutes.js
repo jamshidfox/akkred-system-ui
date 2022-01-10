@@ -21,17 +21,14 @@ const RouteWithSubRoutes = ({ routes, ...route }) => {
       <Route
         exact={true}
         path={route.path}
-        render={props => (
+        render={(props) => (
           <route.layout>
             <route.component {...props} />
           </route.layout>
         )}
       />
       {routes.map((route, index) => (
-        <RouteWithSubRoutes
-          key={index}
-          {...route}
-        />
+        <RouteWithSubRoutes key={index} {...route} />
       ))}
     </>
   )
@@ -42,11 +39,11 @@ RouteWithSubRoutes.propTypes = {
   path: PropTypes.string.isRequired,
   layout: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   component: PropTypes.any.isRequired,
-  routes: PropTypes.array
+  routes: PropTypes.array,
 }
 
 RouteWithSubRoutes.defaultProps = {
-  routes: []
+  routes: [],
 }
 
 export default RouteWithSubRoutes
