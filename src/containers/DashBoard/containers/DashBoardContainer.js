@@ -61,7 +61,7 @@ const Dashboard = () => {
           />
         </Col>
         <Col xl="6" lg="12">
-          <GoalOverview success={'green'} title="Progress" />
+          <GoalOverview success={'green'} title="Arizalar" />
         </Col>
       </Row>
     </div>
