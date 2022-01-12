@@ -58,6 +58,6 @@ const Navbar = () => {
         </AvatarContainer>
       </Col>
     </div>
-  )
+  ) //
 }
 export default Navbar
