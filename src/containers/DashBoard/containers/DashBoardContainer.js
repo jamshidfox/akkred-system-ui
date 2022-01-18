@@ -30,17 +30,11 @@ const Dashboard = () => {
   return (
     <div className="m-4">
       <Row>
-        <Col xl="5">
-          <FileterDateFrom />
+        <Col xl="6">
+          <FileterDateFrom title={'Dan'} />
         </Col>
-        <Col xl="1" className="d-flex align-items-center justify-content-center">
-          Dan
-        </Col>
-        <Col xl="5">
-          <FileterDateTo />
-        </Col>
-        <Col xl="1" className="d-flex align-items-center justify-content-center">
-          Gacha
+        <Col xl="6">
+          <FileterDateTo title={'Gacha'} />
         </Col>
       </Row>
       <Row className="mt-4">
